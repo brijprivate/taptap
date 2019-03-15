@@ -1,0 +1,207 @@
+<ion-header>
+  <ion-navbar>
+    <a class="helpimg">
+      <button ion-button class="mybutton">
+        <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+          <g>
+            <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
+            <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
+            <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
+          </g>
+        </svg>
+      </button>
+    </a>
+    <p class="name">JS</p>
+    <p class="userName">John Doe<button ion-button class="editProfile">
+        <svg version="1.1" id="pencilSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+          <g>
+            <g>
+              <path d="M149.996,0C67.157,0,0.001,67.161,0.001,149.997S67.157,300,149.996,300s150.003-67.163,150.003-150.003
+			S232.835,0,149.996,0z M221.302,107.945l-14.247,14.247l-29.001-28.999l-11.002,11.002l29.001,29.001l-71.132,71.126
+			l-28.999-28.996L84.92,186.328l28.999,28.999l-7.088,7.088l-0.135-0.135c-0.786,1.294-2.064,2.238-3.582,2.575l-27.043,6.03
+			c-0.405,0.091-0.817,0.135-1.224,0.135c-1.476,0-2.91-0.581-3.973-1.647c-1.364-1.359-1.932-3.322-1.512-5.203l6.027-27.035
+			c0.34-1.517,1.286-2.798,2.578-3.582l-0.137-0.137L192.3,78.941c1.678-1.675,4.404-1.675,6.082,0.005l22.922,22.917
+			C222.982,103.541,222.982,106.267,221.302,107.945z" />
+            </g>
+          </g>
+        </svg>
+      </button></p>
+    <hr class="hrLine">
+    <ion-grid>
+      <ion-row class="firstcol">
+        <ion-col col-4>
+          <p class="numb">AE3451</p>
+          <p class="identity">Unique Identity</p>
+        </ion-col>
+        <ion-col col-4>
+          <p class="numb">
+            <ion-icon name="star"></ion-icon>1243
+          </p>
+          <p class="identity">Favourite Item</p>
+        </ion-col>
+        <ion-col col-4>
+          <p class="numb">2</p>
+          <p class="identity">Paired Device</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card class="tapCard">
+        <ion-card-content>
+          <ion-item>
+            <ion-icon item-start>
+              <img src="../../assets/images/pen.png" class="pen">
+            </ion-icon>
+            <span class="online">
+              <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
+                  </g>
+                </g>
+              </svg>
+            </span>
+            Tap-Tap Pen
+          </ion-item>
+          <hr class="margino">
+          <ion-item>
+            <ion-icon item-start>
+              <img src="../../assets/images/pen.png" class="pen">
+            </ion-icon>
+            <span class="online">
+              <svg version="1.1" id="circlegrey" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
+                  </g>
+                </g>
+              </svg>
+            </span>
+            Tap-Tap Key ring
+          </ion-item>
+          <hr class="margino">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <button ion-button outline class="newpair" (click)="pairDevice()">
+                  <ion-icon name="add"></ion-icon>Pair new device
+                </button>
+              </ion-col>
+              <ion-col col-6>
+                <button ion-button outline class="view" (click)="manageDevice()">View and manage</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-card class="tapCard">
+    <ion-card-content>
+      <ion-item>
+        <ion-icon item-start>
+          <img src="../../assets/images/pen.png" class="pen">
+        </ion-icon>
+        <span class="online">
+          <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
+              </g>
+            </g>
+          </svg>
+        </span>
+        Tap-Tap Pen
+      </ion-item>
+      <hr>
+      <ion-item>
+        <ion-icon item-start>
+          <img src="../../assets/images/pen.png" class="pen">
+        </ion-icon>
+        <span class="online">
+          <svg version="1.1" id="circlegrey" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+            style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
+              </g>
+            </g>
+          </svg>
+        </span>
+        Tap-Tap Key ring
+      </ion-item>
+      <hr>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button outline class="newpair">
+              <ion-icon name="add"></ion-icon>Pair new device
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button outline class="view">View and manage</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card class="recordCard">
+          <ion-card-content>
+            <img src="../../assets/images/alarm-clock.png" class="record">
+            <p class="recordContent">Record Time</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card class="recordCard" (click)="recordMilage()">
+          <ion-card-content>
+            <img src="../../assets/images/fast.png" class="record">
+            <p class="recordContent">Record Milage</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-card class="recordCard">
+          <ion-card-content>
+            <ion-item>
+              <ion-icon item-start>
+                <svg version="1.1" id="CircleDesign" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="438.533px" height="438.533px"
+                  viewBox="0 0 438.533 438.533" style="enable-background:new 0 0 438.533 438.533;" xml:space="preserve">
+                  <g>
+                    <path
+                      d="M409.133,109.203c-19.608-33.592-46.205-60.189-79.798-79.796C295.736,9.801,259.058,0,219.273,0
+                               c-39.781,0-76.47,9.801-110.063,29.407c-33.595,19.604-60.192,46.201-79.8,79.796C9.801,142.8,0,179.489,0,219.267
+                               c0,39.78,9.804,76.463,29.407,110.062c19.607,33.592,46.204,60.189,79.799,79.798c33.597,19.605,70.283,29.407,110.063,29.407
+                               s76.47-9.802,110.065-29.407c33.593-19.602,60.189-46.206,79.795-79.798c19.603-33.596,29.403-70.284,29.403-110.062
+                               C438.533,179.485,428.732,142.795,409.133,109.203z M353.742,297.208c-13.894,23.791-32.736,42.633-56.527,56.534
+                               c-23.791,13.894-49.771,20.834-77.945,20.834c-28.167,0-54.149-6.94-77.943-20.834c-23.791-13.901-42.633-32.743-56.527-56.534
+                               c-13.897-23.791-20.843-49.772-20.843-77.941c0-28.171,6.949-54.152,20.843-77.943c13.891-23.791,32.738-42.637,56.527-56.53
+                               c23.791-13.895,49.772-20.84,77.943-20.84c28.173,0,54.154,6.945,77.945,20.84c23.791,13.894,42.634,32.739,56.527,56.53
+                               c13.895,23.791,20.838,49.772,20.838,77.943C374.58,247.436,367.637,273.417,353.742,297.208z" />
+                  </g>
+                </svg>
+              </ion-icon>
+              No Tap statistics available
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

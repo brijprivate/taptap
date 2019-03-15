@@ -1,0 +1,17 @@
+page-dashboard {
+    .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+        color: #6355cb !important;
+    }
+    .tabs-md .tab-button[aria-selected=true] {
+        color: #6355cb !important;
+    }
+    ion-icon.tab-button-icon.icon.icon-md.ion-md-finger-print {
+        background: #6355cb;
+        color: #fff !important;
+        border-radius: 50%;
+        height: 56px;
+        width: 56px;
+        font-size: 37px;
+        line-height: 55px;
+    }
+}

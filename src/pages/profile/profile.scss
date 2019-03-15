@@ -1,0 +1,148 @@
+page-profile {
+    .toolbar-background {
+        background-color: #6354cb;
+        height: 243px;
+      }
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 2em 0 1em 0;
+    }
+    .toolbar-md {
+        padding: 0px;
+    }
+    a.helpimg {
+        top: 1em;
+        right: 0em;
+        position: absolute;
+        color: #fff;
+    }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    p.name {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        color: #6150c2;
+        background: #dddcfe;
+        font-size: 24px;
+        line-height: 61px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    p.userName {
+        color: #fff;
+        font-size: 21px;
+        margin: 0;
+    }
+
+  button.editProfile.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+        height: 38px;
+        width: 55px;
+        vertical-align: middle;
+    }
+    svg#pencilSvg {
+        height: 40px;
+        fill: #e1defd;
+    }
+    ion-row.firstcol.row p {
+        margin: 0;
+        color: #fff;
+    }
+    hr.hrLine {
+        margin: 0;
+    }
+    ion-row.firstcol.row {
+        padding: 0 1em;
+    }
+    p.numb {
+        padding-bottom: 4px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    p.identity {
+        font-size: 10px;
+    }
+    button.newpair.disable-hover.button.button-md.button-outline.button-outline-md {
+        font-size: 13px;
+        border-radius: 5px;
+        text-transform: capitalize;
+        color: #60c7c2;
+        border: 1px solid #60c7c2;
+    }
+    button.view.disable-hover.button.button-md.button-outline.button-outline-md {
+        font-size: 13px;
+        border-radius: 5px;
+        text-transform: capitalize;
+        margin-left: 10px;
+        color: #7f6bc4;
+        border: 1px solid #7f6bc4;
+    }
+    ion-icon.icon.icon-md.ion-md-add {
+        margin-right: 7px;
+        font-size: 19px;
+    }
+    ion-card-content.card-content.card-content-md {
+        border-radius: 5px;
+        padding: 4px 13px 0 4px;
+    }
+    img.pen {
+        height: 37px;
+        width: 37px;
+    }
+    svg#circle {
+        height: 11px;
+        width: 10px;
+        fill: #6ee578;
+    }
+    svg#circlegrey {
+        height: 11px;
+        width: 10px;
+        fill: #e5e5e5;
+    }
+
+    ion-card.tapCard.card.card-md .item-inner {
+        margin: 0;
+    }
+    img.record {
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    p.recordContent {
+        margin-top: 10px;
+    }
+    svg#CircleDesign {
+        height: 50px;
+        width: 50px;
+        fill: #e4e2e3;
+        background: #f3f3ff;
+        border-radius: 50px;
+    }
+    hr.margino {
+        margin: 0;
+    }
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none;
+    }
+    ion-content.content.content-md {
+        margin-top: -3em;
+        background: #f8f7fd;
+    }
+    .card-md{
+    box-shadow: 1px 1px 18px 1px #0000001f;
+    }
+    ion-card.recordCard.card.card-md {
+        text-align: center;
+        padding: 2em 0;
+    }
+}

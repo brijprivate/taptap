@@ -1,0 +1,96 @@
+page-managedevice {
+    .toolbar-background {
+        background-color: #6354cb;
+      }
+      button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    .toolbar-title.toolbar-title-md {
+        color: #fff;
+    }
+    button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
+        position: absolute;
+        right: 0;
+        bottom: -11px;
+        box-shadow: none;
+        background: transparent;
+    }
+    ion-icon.icon.icon-md.ion-md-arrow-back {
+        margin-right: 1em;
+    }
+    img.pen {
+        height: 37px;
+        width: 37px;
+    }
+    svg#circle {
+        height: 11px;
+        width: 10px;
+        fill: #6ee578;
+    }
+    svg#circlegrey {
+        height: 11px;
+        width: 10px;
+        fill: #e5e5e5;
+    }
+    .item-inner {
+        border-bottom: none !important;
+    }
+    hr.margino {
+        margin: 0;
+    }
+    ion-item.manageCard.item.item-block.item-md {
+        padding: 0;
+    }
+    .detail ion-card-header.card-header.card-header-md {
+        padding-left: 8px;
+    }
+    p.manageContent {
+        margin: 7px 0 0 13px;
+        color: #969698;
+        font-style: italic;
+        font-weight: 400;
+    }
+    ion-icon.icon.icon-md.ion-md-trash.item-icon {
+        color: #e6e4ec;
+        font-size: 26px;
+        margin-bottom: 31px;
+    }
+    button.viewInfo.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        color: #6452b5;
+        text-transform: capitalize;
+        box-shadow: none;
+    }
+    button.viewInfonext.disable-hover.button.button-md.button-default.button-default-md{
+        background: transparent;
+        color: #dc6871;
+        text-transform: capitalize;
+        box-shadow: none;
+    }
+    ion-card.detail.card.card-md {
+    box-shadow: 1px 1px 18px 1px #0000001f;
+    }
+    .detail ion-card-content.card-content.card-content-md {
+        padding-bottom: 0;
+    }
+    ion-icon.plucircle.icon.icon-md {
+        height: 34px;
+        width: 34px;
+        position: absolute;
+        right: 5em;
+        bottom: -1em;
+        fill: #45bbb9;
+        color: #fff;
+        background: #fff;
+        border-radius: 23px;
+    }
+    ion-navbar.toolbar.toolbar-md {
+        position: relative;
+    }
+}

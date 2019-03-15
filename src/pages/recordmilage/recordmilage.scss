@@ -1,0 +1,117 @@
+page-recordmilage {
+    .toolbar-background {
+        background-color: #6354cb;
+      }
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 2em 0;
+    }
+    img.record {
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    a.helpimg {
+        top: 1em;
+        right: 0em;
+        position: absolute;
+        color: #fff;
+    }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    .toolbar-title.toolbar-title-md {
+        color: #393079;
+        font-size: 24px;
+        margin-top: 10px;
+    }
+    p.type {
+        text-align: center;
+        color: #8d8686;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    p.typea {
+        margin-bottom: 8px;
+        color: #8d8686;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    ion-segment.typeRecord.segment.segment-md {
+        border-left: 2px solid #e1e1e6;
+        border-top: 2px solid #e1e1e6;
+        border-bottom: 0;
+        border-radius: 5px;
+    }
+    ion-segment-button.segment-button {
+        color: #919594 !important;
+        border-right: 1px solid #a6a6a6;
+    }
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+        border-bottom: 2px solid #624eb0;
+        opacity: 1;
+        color: #624eb0 !important;
+    }
+    .segment-md .segment-button.activated, page-recordmilage .segment-md .segment-button.segment-activated {
+        border-bottom: 2px solid #624eb0;
+        opacity: 1;
+        border-color: #624eb0;
+        color: #624eb0 !important;
+        border-right: 1px solid #e1e1e6 !important;
+    }
+    p.typerecord {
+        color: #0c0c0ccc;
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 0 3em 0;
+    }
+    .recordContent {
+        padding: 0 2em;
+    }
+    p.typerecordtime {
+        color: #8b9594;
+        font-size: 22px;
+        font-weight: 500;
+        margin: 0 0 2em 0;
+    }
+    ion-grid.kmhr.grid {
+        padding: 0;
+    }
+    ion-grid.kmhr.grid ion-col.col {
+        padding: 0;
+    }
+    p.mile {
+        display: -webkit-box;
+        margin: 0;
+        line-height: 28px;
+        color: grey;
+    }
+    ion-toggle.toggle.toggle-md.toggle-checked {
+        padding-top: 8px;
+    }
+    span.km {
+        color: #8e8dea;
+        font-weight: 500;
+    }
+    button.start.disable-hover.button.button-md.button-default.button-default-md {
+        background: #c5efed;
+        color: #56c8c7;
+        box-shadow: none;
+        text-transform: capitalize;
+        width: 100%;
+    }
+    button.stop.disable-hover.button.button-md.button-default.button-default-md {
+        background: #fadce2;
+        color: #ee9aad;
+        box-shadow: none;
+        text-transform: capitalize;
+        width: 100%;
+    }
+}

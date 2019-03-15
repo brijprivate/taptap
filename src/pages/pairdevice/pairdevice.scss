@@ -1,0 +1,40 @@
+page-pairdevice {
+    .toolbar-background {
+        background: linear-gradient(to right, #7357cf, #6367be,#6961c4,#5d6fb5);
+      }
+      svg#fingerTap {
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        background: #fff;
+        padding: 1em;
+        fill: #736ebd;
+    }
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 9em 0 1em 0;
+        position: relative;
+    }
+    a.help {
+        top: 3em;
+        right: 2em;
+        position: absolute;
+        color: #fff;
+        font-size: 15px;
+    }
+    ion-row.centerPlace.row {
+        text-align: center;
+    }
+    button.pairbutton.disable-hover.button.button-md.button-default.button-default-md {
+        background-color: #5c67f8;
+        padding: 22px 45px;
+        text-transform:capitalize;
+    }
+    ion-list.listView.list.list-md{
+        padding: 1em 0 4em 0;
+    }
+    p.device {
+        color: #fff;
+        margin-top: 2em;
+    }
+}
