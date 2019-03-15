@@ -22,16 +22,16 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   pairDevice(){
-    this.navCtrl.setRoot(PairdevicePage);
+    this.navCtrl.push(PairdevicePage);
   }
   manageDevice(){
-    this.navCtrl.setRoot(ManagedevicePage);
+    this.navCtrl.push(ManagedevicePage);
   }
   recordMilage(){
-    this.navCtrl.setRoot(RecordmilagePage);
+    this.navCtrl.push(RecordmilagePage);
   }
   recordTime(){
-    this.navCtrl.setRoot(RecordtimePage);  
+    this.navCtrl.push(RecordtimePage);  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
