@@ -15,6 +15,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { ManagedevicePage } from '../pages/managedevice/managedevice';
 import { RecordmilagePage } from '../pages/recordmilage/recordmilage';
 import { SavemilagePage } from '../pages/savemilage/savemilage';
+import { RecordtimePage } from '../pages/recordtime/recordtime';
+import { SaveTimePage } from '../pages/save-time/save-time';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SavemilagePage } from '../pages/savemilage/savemilage';
     HelpPage,
     ManagedevicePage,
     RecordmilagePage,
-    SavemilagePage 
+    SavemilagePage,
+    RecordtimePage,
+    SaveTimePage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { SavemilagePage } from '../pages/savemilage/savemilage';
     HelpPage,
     ManagedevicePage,
     RecordmilagePage,
-    SavemilagePage
+    SavemilagePage,
+    RecordtimePage,
+    SaveTimePage
   ],
   providers: [
     StatusBar,

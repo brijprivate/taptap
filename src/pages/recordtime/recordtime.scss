@@ -1,6 +1,6 @@
-page-recordmilage {
+page-recordtime {
     .toolbar-background {
-        background-color: #6354cb;
+        background-color: #4fbeba;
       }
     .toolbar-content.toolbar-content-md {
         text-align: center;
@@ -28,7 +28,7 @@ page-recordmilage {
         fill: #fff;
     }
     .toolbar-title.toolbar-title-md {
-        color: #393079;
+        color: #2c7172;
         font-size: 24px;
         margin-top: 10px;
     }
@@ -36,12 +36,6 @@ page-recordmilage {
         text-align: center;
         color: #8d8686;
         font-size: 15px;
-        font-weight: 500;
-    }
-    p.typea {
-        margin-bottom: 8px;
-        color: #8d8686;
-        font-size: 13px;
         font-weight: 500;
     }
     ion-segment.typeRecord.segment.segment-md {
@@ -66,40 +60,6 @@ page-recordmilage {
         color: #624eb0 !important;
         border-right: 1px solid #e1e1e6 !important;
     }
-    p.typerecord {
-        color: #0c0c0ccc;
-        font-size: 14px;
-        font-weight: 500;
-        margin: 0 0 3em 0;
-    }
-    .recordContent {
-        padding: 0 2em;
-    }
-    p.typerecordtime {
-        color: #8b9594;
-        font-size: 22px;
-        font-weight: 500;
-        margin: 0 0 2em 0;
-    }
-    ion-grid.kmhr.grid {
-        padding: 0;
-    }
-    ion-grid.kmhr.grid ion-col.col {
-        padding: 0;
-    }
-    p.mile {
-        display: -webkit-box;
-        margin: 0;
-        line-height: 28px;
-        color: grey;
-    }
-    ion-toggle.toggle.toggle-md.toggle-checked {
-        padding-top: 8px;
-    }
-    span.km {
-        color: #8e8dea;
-        font-weight: 500;
-    }
     button.start.disable-hover.button.button-md.button-default.button-default-md {
         background: #c5efed;
         color: #56c8c7;
@@ -115,5 +75,15 @@ page-recordmilage {
         text-transform: capitalize;
         width: 100%;
         height: 50px;
+    }
+    p.speed {
+        color: #626d6b;
+        text-align: center;
+        font-size: 37px;
+        margin: 20px 0;
+        font-weight: 500;
+    }
+    .recordContent.recorCa {
+        margin-top: 6em;
     }
 }

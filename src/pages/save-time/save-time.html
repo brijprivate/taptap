@@ -1,0 +1,93 @@
+<!--
+  Generated template for the SaveTimePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <a class="helpimg">
+          <button ion-button class="mybutton">
+              <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+                <g>
+                  <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
+                  <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
+                  <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
+                </g>
+              </svg>
+          </button>
+        </a>
+        <img src="../../assets/images/fast.png" class="record">
+        <ion-title>Record Time</ion-title>
+        <p class="dist">12hrs 32 min </p>
+      </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <p class="typem">Personal</p>
+          </ion-col>
+          <ion-col col-6>
+            <p class="typel">04/03/19</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <hr>
+      <div class="graph">
+      <p class="typeop etype">
+        <span class="online">
+          <svg version="1.1" id="bluecircle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
+              </g>
+            </g>
+          </svg>
+        </span>
+        11:30:21
+      </p>
+      <p class="typeop">
+        <span class="online">
+          <svg version="1.1" id="bluecircle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
+              </g>
+            </g>
+          </svg>
+        </span>
+        12:54:55
+      </p>
+    </div>
+      <hr class="mTop">
+      <ion-list>
+        <p class="title">Time title</p>
+        <ion-item>
+          <ion-input type="text" placeholder="Time is money"></ion-input>
+        </ion-item>
+        <p class="title">Time description</p>
+        <ion-item>
+          <ion-input type="text" placeholder="Trying to record space time and inventing time machine"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-grid class="saveGrid">
+    
+          <ion-row>
+            <ion-col col-2><button ion-button class="previous">
+                <svg version="1.1" id="arropre" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 477.175 477.175" style="enable-background:new 0 0 477.175 477.175;" xml:space="preserve">
+             <g>
+               <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                 c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"/>
+             </g>
+    </svg>                 </button></ion-col>
+            <ion-col col-10><button ion-button class="saveButton">Save</button></ion-col>
+    
+          </ion-row>
+        </ion-grid>
+</ion-content>

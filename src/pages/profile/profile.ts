@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PairdevicePage } from '../pairdevice/pairdevice';
 import { ManagedevicePage } from '../managedevice/managedevice';
 import { RecordmilagePage } from '../recordmilage/recordmilage';
+import { RecordtimePage } from '../recordtime/recordtime';
 
 /**
  * Generated class for the ProfilePage page.
@@ -28,6 +29,9 @@ export class ProfilePage {
   }
   recordMilage(){
     this.navCtrl.setRoot(RecordmilagePage);
+  }
+  recordTime(){
+    this.navCtrl.setRoot(RecordtimePage);  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');

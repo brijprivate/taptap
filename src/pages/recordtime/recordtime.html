@@ -1,0 +1,49 @@
+<!--
+  Generated template for the RecordtimePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <a class="helpimg">
+            <button ion-button class="mybutton">
+              <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+                <g>
+                  <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
+                  <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
+                  <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
+                </g>
+              </svg>
+            </button>
+          </a>
+        <img src="../../assets/images/alarm-clock.png" class="record">
+      <ion-title>Record Time</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <p class="type">Record type</p>
+    <div padding>
+        <ion-segment [(ngModel)]="record" class="typeRecord">
+          <ion-segment-button value="Personal">
+            Personal
+          </ion-segment-button>
+          <ion-segment-button value="Business">
+            Business
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+    <hr class="margino">
+    <p class="speed">00:00:00</p>
+    <hr class="margino">
+    <div class="recordContent recorCa">
+      <ion-grid>
+          <ion-row>
+            <ion-col col-6><button ion-button class="start" (click)="saveTime()">Start</button></ion-col>
+            <ion-col col-6><button ion-button class="stop">Stop</button></ion-col>
+          </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

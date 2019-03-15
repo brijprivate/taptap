@@ -1,7 +1,12 @@
-page-savemilage {
+page-save-time {
     .toolbar-background {
-        background-color: #6354cb;
+        background-color: #4fbeba;
       }
+      .toolbar-title.toolbar-title-md {
+        color: #2c7172;
+        font-size: 24px;
+        margin-top: 10px;
+    }
     .toolbar-content.toolbar-content-md {
         text-align: center;
         padding: 2em 0;
@@ -26,11 +31,6 @@ page-savemilage {
         height: 15px;
         width: 15px;
         fill: #fff;
-    }
-    .toolbar-title.toolbar-title-md {
-        color: #393079;
-        font-size: 24px;
-        margin-top: 10px;
     }
     p.typem 
     {
@@ -75,11 +75,11 @@ page-savemilage {
     input.text-input.text-input-md::placeholder{
         color:#000;
     }
-    p.typeo {
+    p.typeop {
         color: #969a9b;
-        font-size: 13px;
+        font-size: 23px;
         font-weight: 500;
-        padding-left: 6em;
+        padding-left: 4em;
         margin-top: 0;
     }
     svg#bluecircle {
@@ -87,13 +87,13 @@ page-savemilage {
         width: 10px;
         fill: #5865f6;
     }
-    p.typeo.etype:after {
+    p.typeop.etype:after {
         border-bottom: 1px solid #dbd4f4;
         position: absolute;
         height: 1px;
-        width: 42px;
-        top: 4vh;
-        left: 62px;
+        width: 46px;
+        top: 18vh;
+        left: 89px;
         transform: rotate(90deg);
         content: "";
     }
@@ -131,10 +131,6 @@ page-savemilage {
         font-size: 19px;
         font-weight: 500;
         margin: 7px 0 0 0;
-    }
-    span.kmi {
-        font-size: 13px;
-        margin-left: 5px;
     }
     svg#arropre {
         height: 20px;
