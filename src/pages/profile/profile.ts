@@ -34,7 +34,7 @@ export class ProfilePage {
     this.navCtrl.push('RecordtimePage');  
   }
   editprofile(){
-    this.navCtrl.setRoot('EditprofilePage'); 
+    this.navCtrl.push('EditprofilePage'); 
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');

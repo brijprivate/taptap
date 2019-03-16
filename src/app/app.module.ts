@@ -18,10 +18,11 @@ import { SaveTimePage } from '../pages/save-time/save-time';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom ',tabsHideOnSubPages: true}),
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
+    
+  entryComponents: [  
     MyApp,
     HomePage,
     SavemilagePage,
