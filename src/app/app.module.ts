@@ -11,10 +11,7 @@ import { SaveTimePage } from '../pages/save-time/save-time';
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    SavemilagePage,
-    SaveTimePage,
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -23,10 +20,7 @@ import { SaveTimePage } from '../pages/save-time/save-time';
   bootstrap: [IonicApp],
     
   entryComponents: [  
-    MyApp,
-    HomePage,
-    SavemilagePage,
-    SaveTimePage,
+    MyApp
   ],
   providers: [
     StatusBar,
