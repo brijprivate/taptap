@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
+    
   ],
   imports: [
     BrowserModule,
@@ -27,6 +28,7 @@ import { HomePage } from '../pages/home/home';
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
+   
   ],
   providers: [
     StatusBar,
