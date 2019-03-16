@@ -38,13 +38,13 @@ page-editprofile {
         padding-left: 2em;
     }
     p.name {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         border-radius: 50px;
         color: #6150c2;
         background: #dddcfe;
-        font-size: 24px;
-        line-height: 61px;
+        font-size: 30px;
+        line-height: 71px;
         margin: 0 auto;
         padding: 0;
         margin-bottom: 12px;
@@ -53,6 +53,7 @@ page-editprofile {
         color: #fff;
         font-size: 19px;
         margin: 0;
+        padding-bottom: 10px;
     }
     svg#pencilSvg {
         height: 40px;
@@ -68,5 +69,28 @@ page-editprofile {
         background: #6355cb;
         text-align: center;
         padding-top: 2em;
+    }
+    p.inputTitle {
+        color: #807f8c;
+        font-weight: 500;
+        margin: 10px 0 0px 29px;
+    }
+    ion-list.mobileSp.list.list-md {
+        padding: 1em 2em ;
+    }
+    .mobileSp ion-label {
+        min-width: 400px;
+        margin-top: 0;
+        color: #717376 !important;
+        font-weight: 500;
+    }
+    ion-item.item.item-block.item-md.item-input.item-label-fixed {
+        padding: 0 0 7px 0;
+    }
+    button.save.disable-hover.button.button-md.button-default.button-default-md {
+        margin-top: 2em;
+        width: 100%;
+        background: #6354cb;
+        text-transform: capitalize;
     }
 }

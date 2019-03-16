@@ -1,0 +1,79 @@
+page-merchant {
+    .toolbar-background {
+        background-color: #6354cb;
+      }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    .toolbar-title.toolbar-title-md {
+        color: #fff;
+    }
+    button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
+        position: absolute;
+        right: 0;
+        bottom: -11px;
+        box-shadow: none;
+        background: transparent;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #fff;
+    }
+    ion-icon.icon.icon-md.ion-md-search {
+        font-size: 28px;
+    }
+    p.day {
+        text-align: center;
+        position: relative;
+        color: #a3a5b1;
+    }
+    p.day:before {
+        content: "";
+        position: absolute;
+        height: 1px;
+        border-top: 1px solid #e5e5e5;
+        top: 7px;
+        width: 84px;
+        left: 6vw;
+    }
+    p.day:after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        border-top: 1px solid #e5e5e5;
+        top: 7px;
+        width: 84px;
+        right: 6vw;
+    }
+    ion-icon.merchantIcon.icon.icon-md.item-icon {
+        margin: 0;
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+    .item-inner {
+        border-bottom: 0 !important;
+    }
+    ion-badge.badge.badge-md {
+        background: transparent;
+        color: #9a9da6;
+        font-weight: 400;
+    }
+    ion-icon.merchantIcon.icon.icon-md.item-icon {
+        margin: 0;
+        color: #b0b0e0;
+        vertical-align: bottom;
+        padding-right: 6px;
+    }
+    ion-icon.merchantIcon.icon.icon-md.ion-md-contact.item-icon {
+        color: #9f90c6;
+    }
+    ion-icon.merchantIcon.icon.icon-md.ion-md-desktop.item-icon {
+        color: #a0c2be;
+    }
+}

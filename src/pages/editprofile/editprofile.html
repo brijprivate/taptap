@@ -44,19 +44,51 @@
                 </ion-col>
             </ion-row>
           </ion-grid>
-          <ion-list>
-
+        </div>
+          <ion-list class="mobileSp">
+              <p class="inputTitle">Name</p>   
               <ion-item>
-                <ion-label floating>Username</ion-label>
-                <ion-input type="text"></ion-input>
-              </ion-item>
-            
-              <ion-item>
-                <ion-label floating>Password</ion-label>  <ion-icon name="person"></ion-icon>
-
-                <ion-input type="text"></ion-input>
-              </ion-item>
-            
+                  <ion-label fixed>
+                    <ion-icon name="person"></ion-icon>&nbsp;&nbsp;
+                    John Doe</ion-label>
+                  <ion-input type="text" value=""></ion-input>
+                </ion-item>     
+                <p class="inputTitle">Email address</p>   
+                <ion-item>
+                    <ion-label fixed>
+                      <ion-icon name="mail"></ion-icon>&nbsp;&nbsp;
+                      abc@gmail.com</ion-label>
+                    <ion-input type="text" value=""></ion-input>
+                  </ion-item>  
+                  <p class="inputTitle"></p>     
+                  <ion-item>
+                      <ion-label fixed>
+                        <ion-icon name="lock"></ion-icon>&nbsp;&nbsp;
+                        Change Password</ion-label>
+                      <ion-input type="text" value=""></ion-input>
+                    </ion-item>  
+                  <p class="inputTitle">Company Name</p>   
+                  <ion-item>
+                      <ion-label fixed>
+                        <ion-icon name="home"></ion-icon>&nbsp;&nbsp;
+                        Lorem Ipsum</ion-label>
+                      <ion-input type="text" value=""></ion-input>
+                    </ion-item>  
+                    <p class="inputTitle">Phone</p>   
+                    <ion-item>
+                        <ion-label fixed>
+                          <ion-icon name="call"></ion-icon>&nbsp;&nbsp;
+                          1234567890</ion-label>
+                        <ion-input type="text" value=""></ion-input>
+                      </ion-item>  
+                      <p class="inputTitle">Address</p>   
+                      <ion-item>
+                          <ion-label fixed>
+                            <ion-icon name="pin"></ion-icon>&nbsp;&nbsp;
+                            Lorem ipsum</ion-label>
+                          <ion-input type="text" value=""></ion-input>
+                        </ion-item>  
+                        <button ion-button class="save">Save Changes</button>
             </ion-list>
-      </div>
+    
 </ion-content>
