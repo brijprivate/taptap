@@ -6,33 +6,35 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { PairdevicePage } from '../pages/pairdevice/pairdevice';
+// import { PairdevicePage } from '../pages/pairdevice/pairdevice';
 import { DashboardPage } from '../pages/dashboard/dashboard';
-import { HelpPage } from '../pages/help/help';
-import { TaptapPage } from '../pages/taptap/taptap';
-import { SearchPage } from '../pages/search/search';
-import { ProfilePage } from '../pages/profile/profile';
-import { ManagedevicePage } from '../pages/managedevice/managedevice';
-import { RecordmilagePage } from '../pages/recordmilage/recordmilage';
+// import { HelpPage } from '../pages/help/help';
+// import { TaptapPage } from '../pages/taptap/taptap';
+// import { SearchPage } from '../pages/search/search';
+// import { ProfilePage } from '../pages/profile/profile';
+// import { ManagedevicePage } from '../pages/managedevice/managedevice';
+// import { RecordmilagePage } from '../pages/recordmilage/recordmilage';
 import { SavemilagePage } from '../pages/savemilage/savemilage';
-import { RecordtimePage } from '../pages/recordtime/recordtime';
+// import { RecordtimePage } from '../pages/recordtime/recordtime';
 import { SaveTimePage } from '../pages/save-time/save-time';
+// import { TabPage } from '../pages/tab/tab';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    PairdevicePage,
+    // PairdevicePage,
     DashboardPage,
-    ProfilePage,
-    SearchPage,
-    TaptapPage,
-    HelpPage,
-    ManagedevicePage,
-    RecordmilagePage,
+    // ProfilePage,
+    // SearchPage,
+    // TaptapPage,
+    // HelpPage,
+    // ManagedevicePage,
+    // RecordmilagePage,
     SavemilagePage,
-    RecordtimePage,
-    SaveTimePage
+    // RecordtimePage,
+    SaveTimePage,
+    // TabPage
   ],
   imports: [
     BrowserModule,
@@ -42,17 +44,18 @@ import { SaveTimePage } from '../pages/save-time/save-time';
   entryComponents: [
     MyApp,
     HomePage,
-    PairdevicePage,
+    // PairdevicePage,
     DashboardPage,
-    ProfilePage,
-    SearchPage,
-    TaptapPage,
-    HelpPage,
-    ManagedevicePage,
-    RecordmilagePage,
+    // ProfilePage,
+    // SearchPage,
+    // TaptapPage,
+    // HelpPage,
+    // ManagedevicePage,
+    // RecordmilagePage,
     SavemilagePage,
-    RecordtimePage,
-    SaveTimePage
+    // RecordtimePage,
+    SaveTimePage,
+    // TabPage
   ],
   providers: [
     StatusBar,

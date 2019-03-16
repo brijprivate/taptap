@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
-import { SearchPage } from '../search/search';
-import { TaptapPage } from '../taptap/taptap';
-import { HelpPage } from '../help/help';
+// import { ProfilePage } from '../profile/profile';
+// import { SearchPage } from '../search/search';
+// import { TaptapPage } from '../taptap/taptap';
+// import { HelpPage } from '../help/help';
 
 /**
  * Generated class for the DashboardPage page.
@@ -18,10 +18,10 @@ import { HelpPage } from '../help/help';
   templateUrl: 'dashboard.html',
 })
 export class DashboardPage {
-  profilePage= ProfilePage;
-  searchPage=SearchPage;
-  taptapPage=TaptapPage;
-  helpPage=HelpPage;
+  profilePage= 'ProfilePage';
+  searchPage='SearchPage';
+  taptapPage='TaptapPage';
+  helpPage='HelpPage';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   
   }
