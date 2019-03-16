@@ -18,12 +18,14 @@
             </svg>
           </button>
         </a>
-      <img src="../../assets/images/fast.png" class="record">
-    <ion-title>Record Milage</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <div class="milageTitle">
+      <img src="../../assets/images/fast.png" class="record">
+      <p>Record Milage</p>
+  </div>
 <p class="type">Record type</p>
 <div padding>
     <ion-segment [(ngModel)]="record" class="typeRecord">

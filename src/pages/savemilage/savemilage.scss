@@ -18,6 +18,28 @@ page-savemilage {
         position: absolute;
         color: #fff;
     }
+    .milageTitle {
+        text-align: center;
+        background: #6355cb;
+    }
+    p.milr {
+        color: #393079;
+        font-size: 24px;
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none !important;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #fff;
+    }
+    .hrLt {
+        padding: 0 1em;
+    }
     button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
         background: transparent;
         box-shadow: none;
@@ -115,6 +137,9 @@ page-savemilage {
         height: 46px;
         text-transform: capitalize;
     }
+    span.online {
+        position: relative;
+    }
     ion-grid.saveGrid.grid {
         margin-top: 3em;
     }
@@ -130,7 +155,8 @@ page-savemilage {
         color: #fff;
         font-size: 19px;
         font-weight: 500;
-        margin: 7px 0 0 0;
+        margin: 7px 0 9px 0;
+        padding-bottom: 1em;
     }
     span.kmi {
         font-size: 13px;

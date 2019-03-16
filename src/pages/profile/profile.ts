@@ -22,7 +22,7 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   pairDevice(){
-    this.navCtrl.setRoot('PairdevicePage');
+    this.navCtrl.push('PairdevicePage');
   }
   manageDevice(){
     this.navCtrl.push('ManagedevicePage');
@@ -32,6 +32,9 @@ export class ProfilePage {
   }
   recordTime(){
     this.navCtrl.push('RecordtimePage');  
+  }
+  editprofile(){
+    this.navCtrl.setRoot('EditprofilePage'); 
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');

@@ -1,0 +1,72 @@
+page-editprofile {
+    .toolbar-background {
+        background-color: #6354cb;
+        height: 243px;
+      }
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 24px 0 19px 0;
+    }
+    .toolbar-md {
+        position: relative;
+        padding: 0px;
+    }
+    a.helpimg {
+        top: 1em;
+        right: 0em;
+        position: absolute;
+        color: #fff;
+    }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#language {
+        height: 20px;
+        width: 20px;
+        background: #6355cb;
+        fill: #fff;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    button.buttonSvg {
+        background: transparent;
+        float: left;
+        padding-left: 2em;
+    }
+    p.name {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        color: #6150c2;
+        background: #dddcfe;
+        font-size: 24px;
+        line-height: 61px;
+        margin: 0 auto;
+        padding: 0;
+        margin-bottom: 12px;
+    }
+    p.userName {
+        color: #fff;
+        font-size: 19px;
+        margin: 0;
+    }
+    svg#pencilSvg {
+        height: 40px;
+        fill: #e1defd;
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+    p.userName.remove {
+        color: #ffffffa6 !important;
+    }
+    .landscape {
+        background: #6355cb;
+        text-align: center;
+        padding-top: 2em;
+    }
+}

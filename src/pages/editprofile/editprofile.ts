@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the SavemilagePage page.
+ * Generated class for the EditprofilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,19 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-savemilage',
-  templateUrl: 'savemilage.html',
+  selector: 'page-editprofile',
+  templateUrl: 'editprofile.html',
 })
-export class SavemilagePage {
+export class EditprofilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  // backprevious(){
-  //   // this.navCtrl.pop('RecordtimePage');
 
-  // }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SavemilagePage');
+    console.log('ionViewDidLoad EditprofilePage');
   }
 
 }
