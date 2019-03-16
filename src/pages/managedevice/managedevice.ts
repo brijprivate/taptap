@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
+// import { ProfilePage } from '../profile/profile';
 
 /**
  * Generated class for the ManagedevicePage page.
@@ -19,7 +19,7 @@ export class ManagedevicePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   backProfile(){
-    this.navCtrl.setRoot(ProfilePage);
+    this.navCtrl.push('ProfilePage');
 
   }
   ionViewDidLoad() {

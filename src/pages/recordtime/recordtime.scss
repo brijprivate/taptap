@@ -57,8 +57,8 @@ page-recordtime {
         font-weight: 500;
     }
     ion-segment.typeRecord.segment.segment-md {
-        border-left: 2px solid #e1e1e6;
-        border-top: 2px solid #e1e1e6;
+        border-left: 1px solid #e1e1e6;
+        border-top: 1px solid #e1e1e6;
         border-bottom: 0;
         border-radius: 5px;
     }
@@ -67,7 +67,8 @@ page-recordtime {
         border-right: 1px solid #a6a6a6;
     }
     .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
-        border-bottom: 2px solid #624eb0;
+        // border-bottom: 2px solid #624eb0;
+        border: 1px solid #624eb0;
         opacity: 1;
         color: #624eb0 !important;
     }
@@ -93,6 +94,10 @@ page-recordtime {
         text-transform: capitalize;
         width: 100%;
         height: 50px;
+    }
+    .segment-md .segment-button {
+        height: 4.8rem;
+        line-height: 43px;
     }
     p.speed {
         color: #626d6b;

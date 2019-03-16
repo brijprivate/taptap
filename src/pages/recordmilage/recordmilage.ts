@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SavemilagePage } from '../savemilage/savemilage';
+// import { SavemilagePage } from '../savemilage/savemilage';
 
 /**
  * Generated class for the RecordmilagePage page.
@@ -19,7 +19,7 @@ export class RecordmilagePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   saveMilage(){
-    this.navCtrl.setRoot(SavemilagePage);
+    this.navCtrl.push('SavemilagePage');
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RecordmilagePage');

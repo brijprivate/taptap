@@ -107,15 +107,14 @@ page-save-time {
         width: 10px;
         fill: #5865f6;
     }
-    p.typeop.etype:after {
-        border-bottom: 1px solid #dbd4f4;
-        position: absolute;
-        height: 1px;
-        width: 44px;
-        top: 41vh;
-        left: 90px;
-        transform: rotate(90deg);
-        content: "";
+   .online.line:after {
+    border-left: 1px solid #dbd4f4;
+    position: absolute;
+    height: 40px;
+    width: 1px;
+    top: 21px;
+    left: 5px;
+    content: "";
     }
     p.typeo.etype {
         position: relative;

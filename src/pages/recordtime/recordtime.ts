@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SaveTimePage } from '../save-time/save-time';
+// import { SaveTimePage } from '../save-time/save-time';
 
 /**
  * Generated class for the RecordtimePage page.
@@ -19,7 +19,7 @@ export class RecordtimePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   saveTime(){
-    this.navCtrl.setRoot(SaveTimePage);
+    this.navCtrl.push('SaveTimePage');
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RecordtimePage');

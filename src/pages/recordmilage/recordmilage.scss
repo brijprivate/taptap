@@ -11,10 +11,10 @@ page-recordmilage {
         background: #6355cb;
     }
     .milageTitle p {
-        color: #393079;
-        font-size: 24px;
+        color: #100c2f;
+        font-size: 25px;
         margin-top: 10px;
-        padding-bottom: 26px;
+        padding-bottom: 45px;
     }
     .scroll-content {
         padding: 0 !important;
@@ -64,17 +64,25 @@ page-recordmilage {
         font-weight: 500;
     }
     ion-segment.typeRecord.segment.segment-md {
-        border-left: 2px solid #e1e1e6;
-        border-top: 2px solid #e1e1e6;
+        border-left: 1px solid #e1e1e6;
+        border-top: 1px solid #e1e1e6;
         border-bottom: 0;
         border-radius: 5px;
     }
     ion-segment-button.segment-button {
-        color: #919594 !important;
+        color: #6b7170 !important;
         border-right: 1px solid #a6a6a6;
     }
+    .segment-md .segment-button{
+        height: 4.8rem;
+        line-height: 43px;
+    }
     .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
-        border-bottom: 2px solid #624eb0;
+        // border-bottom: 2px solid #624eb0;
+        border-width: 1px;
+        border-color: #624eb0;
+        border-style: solid;
+        border-radius: 4px;
         opacity: 1;
         color: #624eb0 !important;
     }
@@ -121,7 +129,7 @@ page-recordmilage {
     }
     button.start.disable-hover.button.button-md.button-default.button-default-md {
         background: #c5efed;
-        color: #56c8c7;
+        color: #35a5a4;
         box-shadow: none;
         text-transform: capitalize;
         width: 100%;
@@ -129,7 +137,7 @@ page-recordmilage {
     }
     button.stop.disable-hover.button.button-md.button-default.button-default-md {
         background: #fadce2;
-        color: #ee9aad;
+        color: #ea8da2;
         box-shadow: none;
         text-transform: capitalize;
         width: 100%;
