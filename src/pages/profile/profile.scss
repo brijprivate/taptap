@@ -93,7 +93,7 @@ page-profile {
     }
     ion-card-content.card-content.card-content-md {
         border-radius: 5px;
-        padding: 4px 13px 0 4px;
+        padding: 4px 13px 0 13px;
     }
     img.pen {
         height: 37px;
@@ -155,6 +155,9 @@ page-profile {
     }
     ion-card.tapCard.card.card-md {
         margin-top: -2em;
+        width: calc(100% - 30px);
+        margin-left: auto;
+        margin-right: auto;
     }
     .scroll-content {
         padding: 0 !important;
@@ -171,6 +174,36 @@ page-profile {
         padding-left: 2em;
     }
     .nopadd{
-        padding: 0;
+        padding: 0 !important;
+    }
+    .custompadd{
+        padding: 0 5px 5px 5px;
+    }
+    .card-md {
+        width: calc(100% - 15px);
+    }
+    ion-card.recordCard.m1.card.card-md {
+        margin: 0 11px;
+    }
+    ion-card.recordCard.m2.card.card-md {
+        margin: 0px 4px;
+    }
+    canvas.chartjs-render-monitor {
+        margin-left: -25px;
+        width: 115px !important;
+        height: 57px !important;
+      
+    }
+    img.records {
+        width: 23px;
+        margin: 8px auto 0;
+    }
+    p.dd {
+        font-size: 12px;
+        margin: 5px;
+    }
+    p.dd span {
+        color: #969292;
+        font-size: 8px;
     }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Chart } from 'chart.js';
 
 /**
  * Generated class for the ProfilePage page.
@@ -14,29 +15,80 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
+  @ViewChild('barCanvas') barCanvas;
+  @ViewChild('doughnutCanvas') doughnutCanvas;
+  @ViewChild('lineCanvas') lineCanvas;
+
+
+  doughnutChart: any;
+  barChart: any;
+
+  lineChart: any;
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  pairDevice(){
+
+  ionViewDidLoad() {
+    var _base = this;
+    setTimeout(function () {
+      _base.doughnutChart = new Chart(_base.doughnutCanvas.nativeElement, {
+
+        type: 'doughnut',
+        data: {
+          labels: ["Milage", "Time"],
+          datasets: [{
+
+            // label: '# of Votes',
+            data: [12, 19],
+            backgroundColor: [
+              '#ef4745',
+              '#6cdd4d',
+
+            ],
+
+          }]
+        },
+        options: {
+          legend: {
+              display: false,
+             
+          }
+      }
+
+      });
+
+    }, 3000);
+
+
+
+  }
+
+
+
+
+
+  pairDevice() {
     this.navCtrl.push('PairdevicePage');
   }
-  manageDevice(){
+  manageDevice() {
     this.navCtrl.push('ManagedevicePage');
   }
-  recordMilage(){
+  recordMilage() {
     this.navCtrl.push('RecordmilagePage');
   }
-  recordTime(){
-    this.navCtrl.push('RecordtimePage');  
+  recordTime() {
+    this.navCtrl.push('RecordtimePage');
   }
-  editprofile(){
-    this.navCtrl.push('EditprofilePage'); 
+  editprofile() {
+    this.navCtrl.push('EditprofilePage');
   }
-  merchant(){
-    this.navCtrl.push('MerchantPage'); 
+  merchant() {
+    this.navCtrl.push('MerchantPage');
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad ProfilePage');
+  // }
 
 }
