@@ -59,7 +59,7 @@ export class ProfilePage {
 
       });
 
-    }, 3000);
+    }, 1000);
 
 
 
