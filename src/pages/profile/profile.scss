@@ -144,7 +144,8 @@ page-profile {
     }
     ion-card.recordCard.card.card-md {
         text-align: center;
-        padding: 2em 0;
+        padding: 1.5em 0;
+        margin: 0 10px;
     }
     .landscape {
         background: #6355cb;
@@ -168,5 +169,8 @@ page-profile {
         background: transparent;
         float: left;
         padding-left: 2em;
+    }
+    .nopadd{
+        padding: 0;
     }
 }

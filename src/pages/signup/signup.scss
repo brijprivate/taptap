@@ -1,0 +1,84 @@
+page-signup {
+    p.sub {
+        color: #676b88;
+        margin: 10px 0 1.6em;
+    }
+    p.head {
+        font-size: 25px;
+        color: #303644;
+        margin: 23px 0 0 0;
+    }
+
+    .social
+    button {
+        text-align: center;
+        width: 90%;
+        background: #fff;
+        box-shadow: none;
+        border: 1px solid #323544;
+        color: #323544;
+        position: relative;
+        text-transform: inherit;
+        margin: 7px 0;
+        height: 40px;
+    }
+     svg {
+        height: 22px;
+        position: absolute;
+        left: 11px;
+    }
+    .item-md.item-input.input-has-focus .item-inner {
+        box-shadow: none;
+    }
+    ion-label {
+        color: #666a88 !important;
+    }
+    .hr {
+        position: relative;
+        width: 40%;
+        margin: 28px auto 5px;
+        border-bottom: 1px solid #585c77;
+        height: 1px;
+    }
+    .hr span {
+        position: absolute;
+        background: #fff;
+        padding: 0 15px;
+        top: -13px;
+        left: 33%;
+        color: #585c77;
+        font-size: 17px;
+        text-transform: uppercase;
+   
+    }
+    ion-item ion-icon.icon.icon-md {
+        padding: 0;
+        margin-top: 1.2em;
+        margin-right: -10px;
+        color: #666b89;
+    }
+
+    .inputs ion-buttons.bar-buttons.bar-buttons-md {
+        width: 90%;
+        background: #5c67f8;
+        margin: 1em;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 53px;
+        border-radius: 7px;
+    }
+    .ftr p {
+        color: #555977;
+        font-size: 17px;
+        margin: 12px 24px 0;
+    }
+    .ftr p span {
+        color: #3a549e;
+        font-size: 18px;
+    }
+    span.tnc {
+        color: #323642 !important;
+    }
+
+}
