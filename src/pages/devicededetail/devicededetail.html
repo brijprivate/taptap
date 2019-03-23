@@ -1,0 +1,71 @@
+<!--
+  Generated template for the DevicededetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>devicededetail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="blue">
+    <div class="pen">
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" viewBox="0 0 314.021 314.021" style="enable-background:new 0 0 314.021 314.021;"
+        xml:space="preserve">
+        <g>
+          <path style="fill:#010002;" d="M278.214,72.465c5.015,5.009,5.015,13.124,0,18.134L88.358,264.551l-26.613,24.383L24.345,251.53
+		l24.383-26.613L202.953,56.589l-5.755-5.76l-72.796,72.802c-2.502,2.502-6.565,2.502-9.067,0l-0.995-0.995
+		c-2.502-2.502-2.502-6.565,0-9.067L214.783,13.136c2.507-2.502,6.565-2.502,9.072,0l0.995,0.99c2.502,2.502,2.502,6.565,0,9.067
+		l-14.044,14.044l5.156,5.162l6.723-7.332c5.004-5.009,13.119-5.009,18.134,0L278.214,72.465z M0,306.987l6.309,6.32l51.046-21.86
+		l-35.506-35.506L0,306.987z M272.024,0.713l21.087,21.087L278.116,6.805l-28.207,28.202l30.127,30.127l28.207-28.207l5.765,5.765
+		C314.008,42.697,315.933,4.88,272.024,0.713z" />
+        </g>
+
+
+      </svg>
+
+    </div>
+  </div>
+  <div class="cont">
+    <div class="container">
+      <p>Tap-Tap Pen <span>Online</span> </p>
+      <ion-item>
+        <ion-label floating>Time title</ion-label>
+        <ion-input  value=" this is just a random text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Time description</ion-label>
+        <ion-input value=" this is just a random text"></ion-input>
+      </ion-item>
+      <div class="gap"></div>
+      
+    </div>
+    <div class="tog">
+        <ion-list>
+            <ion-item>
+              <ion-label style="color:red;" >Lost or stolen</ion-label>
+              <ion-toggle [(ngModel)]="lost"></ion-toggle>
+            </ion-item>
+          </ion-list>
+    </div>
+  
+    <div class="container">
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input value="brij" [readonly]=true></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Phine</ion-label>
+      <ion-input value="7998989748" [readonly]=true></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input value="abcd@gmail.com" [readonly]=true></ion-input>
+    </ion-item>
+  </div>
+  </div>
+</ion-content>

@@ -25,5 +25,7 @@ export class ManagedevicePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ManagedevicePage');
   }
-
+  gotodevice(){
+    this.navCtrl.push('DevicededetailPage')
+  }
 }
