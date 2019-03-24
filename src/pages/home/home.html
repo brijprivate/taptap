@@ -1,14 +1,142 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+
+
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <div class="main">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1>
+
+        </ion-col>
+        <ion-col col-3>
+          <div class="img">
+            <img src="../../assets/images/modi.jpeg" alt="">
+          </div>
+        </ion-col>
+        <ion-col col-8>
+          <div style="margin-left:3px;">
+            <p class="name">Montaki Cake</p>
+            <p class="det"><span>
+                <ion-icon name="star"></ion-icon>
+              </span> <span class="num">1234</span> <span class="sm">favorite icon</span></p>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+  <div class="paddi">
+
+    <!-- <ion-toolbar> -->
+    <ion-segment [(ngModel)]="page" color="dark">
+      <ion-segment-button value="camera" (click)="selectedTab(0)">
+        <!-- <ion-icon name="camera"></ion-icon> -->
+        Tap chart
+      </ion-segment-button>
+      <ion-segment-button value="bookmark" (click)="selectedTab(1)">
+        <!-- <ion-icon name="bookmark"></ion-icon> -->
+        tap history
+      </ion-segment-button>
+
+    </ion-segment>
+    <!-- </ion-toolbar> -->
+  </div>
+
+  <ion-slides #slider>
+    <ion-slide>
+      <div class="canvas">
+        <canvas #doughnutCanvas></canvas>
+        <div class="somedata">
+          <p><span>Today 30</span><span>Total 3.7k</span></p>
+        </div>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-4>
+              <p class="count">1.8k</p>
+              <p class="catog colo1">Fashion</p>
+            </ion-col>
+            <ion-col col-4>
+              <p class="count ">4.9k</p>
+              <p class="catog colo2">General</p>
+            </ion-col>
+            <ion-col col-4>
+              <p class="count">3.7k</p>
+              <p class="catog colo3">Contacts</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </div>
+      <div class="secondseg">
+        <ion-segment [(ngModel)]="record" class="typeRecord">
+          <ion-segment-button value="Personal">
+            Personal
+          </ion-segment-button>
+          <ion-segment-button value="Business">
+            Business
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <button class="btn">
+        <ion-icon  name="add"></ion-icon>
+        Tap new items
+      </button>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="filter">
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+
+
+      </div>
+        <p class="day">Mon Mar 2019</p>
+        <ion-item>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          General
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <p class="day">Mon Mar 2019</p>
+        <ion-item>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          General
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+    </ion-slide>
+
+  </ion-slides>
+
+
+
+
+
+
 </ion-content>

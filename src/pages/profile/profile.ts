@@ -60,9 +60,6 @@ export class ProfilePage {
       });
 
     }, 1000);
-
-
-
   }
 
 

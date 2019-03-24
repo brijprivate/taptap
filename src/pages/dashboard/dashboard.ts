@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 // import { ProfilePage } from '../profile/profile';
 // import { SearchPage } from '../search/search';
 // import { TaptapPage } from '../taptap/taptap';
@@ -22,6 +23,8 @@ export class DashboardPage {
   searchPage='SearchPage';
   taptapPage='TaptapPage';
   helpPage='HelpPage';
+  homePage=HomePage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   
   }
