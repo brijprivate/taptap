@@ -84,6 +84,9 @@ export class ProfilePage {
   merchant() {
     this.navCtrl.push('MerchantPage');
   }
+  category(){
+    this.navCtrl.push('CategoryPage');
+  }
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad ProfilePage');
   // }

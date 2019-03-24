@@ -4,13 +4,13 @@ page-devicededetail {
       }
     .blue{
         background: #6355cb;
-        height: 18vh;
+        height: 11vh;
         position: relative;
         .pen {
-            height: 15vh;
-            width: 15vh;
+            height: 13vh;
+            width: 13vh;
             position: absolute;
-            top: 69%;
+            top: 30%;
             background: #fff;
             border-radius: 50%;
             padding: 2em;
@@ -26,7 +26,7 @@ page-devicededetail {
             top: 0;
             bottom: 0;
             margin: auto;
-            box-shadow: 0px 0px 44px 34px #b7a6a64d;
+            box-shadow:0px 0px 40px 11px #b7a6a64d;
             border-radius: 50%;
             z-index: -9;
         }
@@ -47,14 +47,17 @@ page-devicededetail {
         color: #fff;
     }
     .cont {
-        margin-top: 10vh;
+        margin-top: 8vh;
         text-align: center;
         font-size: 18px;
     }
     .cont p span {
-        padding: 0px 6px;
-        background: #7cda7c;
+        background: #6ee579;
         margin: 0 7px;
+        padding: 4px 7px 4px 7px;
+        color: #4a9d50;
+        font-size: 12px;
+        border-radius: 4px;
     }
     .container {
         margin: 0 2em;
@@ -64,5 +67,65 @@ page-devicededetail {
     }
     .tog {
         margin: 0 1em;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
+        position: absolute;
+        right: 0;
+        bottom: -11px;
+        box-shadow: none;
+        background: transparent;
+    }
+    p.tapPen {
+        color: #53565a;
+        font-size: 13px;
+        margin-bottom: 4em;
+    }
+    ion-input.input.input-md {
+        color: #1f2127;
+        font-size: 13px;
+    }
+    ion-label {
+        margin-left: 2px !important;
+        font-size: 13px;
+    }
+    input.text-input.text-input-md {
+        margin-top: 3px;
+    }
+    .tog ion-list.list.list-md {
+        margin-bottom: 0;
+    }
+    ion-grid.saveGrid.grid {
+        margin-top: 3em;
+        padding-right: 2em;
+        padding-left: 1em;
+    }
+    button.previous.disable-hover.button.button-md.button-default.button-default-md {
+        height: 46px;
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid #9e9e9e;
+        border-radius: 5px;
+        color: #9e9e9e;
+    }
+    svg#arropre {
+        height: 17px;
+        width: 17px;
+        fill: #b3adad;
+    }
+    button.saveButton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        color: #6255ca;
+        border: 1px solid #6255ca;
+        box-shadow: none;
+        border-radius: 5px;
+        width: 188px;
+        margin-left: 1em;
+        height: 46px;
+        text-transform: capitalize;
     }
 }
