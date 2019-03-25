@@ -291,5 +291,28 @@ page-home {
         ion-icon.merchantIcon.icon.icon-md.ion-md-desktop.item-icon {
             color: #a0c2be;
         }
+        ion-slide.swiper-slide {
+            background: #fff;
+        }
+        .filter {
+            background: #e5e2fd;
+            padding: 0 2em;
+        }
+        ion-icon.filterIcon.icon.icon-md.ion-md-funnel {
+            color: #8083a2;
+            float: left;
+        }
+        ion-col.allIcon.col {
+            text-align: right;
+        }
+        ion-icon.merchantIcon.icon.icon-md.ion-md-search {
+            color: #8083a2;
+            margin-right: 1em;
+            font-size: 25px;
+        }
+        icon.merchantIcon.icon.icon-md.ion-md-more {
+            color: #8083a2;
+            font-size: 26px;
+        }
 
 }
