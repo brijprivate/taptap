@@ -81,6 +81,10 @@ export class ProfilePage {
   editprofile() {
     this.navCtrl.push('EditprofilePage');
   }
+  profileDetail(){
+    this.navCtrl.push('ProfiledetailPage');
+  }
+  
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad ProfilePage');
   // }
