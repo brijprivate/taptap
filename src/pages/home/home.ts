@@ -25,6 +25,12 @@ export class HomePage {
   selectedTab(index) {
     this.slider.slideTo(index);
   }
+  merchant() {
+    this.navCtrl.push('MerchantPage');
+  }
+  category(){
+    this.navCtrl.push('CategoryPage');
+  }
   ionViewDidLoad() {
     var _base = this;
     setTimeout(function () {
