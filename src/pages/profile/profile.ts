@@ -86,7 +86,7 @@ export class ProfilePage {
   }
   category(){
     this.navCtrl.push('CategoryPage');
-  }
+  }   
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad ProfilePage');
   // }
