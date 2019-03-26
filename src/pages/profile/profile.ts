@@ -87,6 +87,10 @@ export class ProfilePage {
   category(){
     this.navCtrl.push('CategoryPage');
   }   
+  profileDetail(){
+    this.navCtrl.push('ProfiledetailPage');
+  }
+  
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad ProfilePage');
   // }

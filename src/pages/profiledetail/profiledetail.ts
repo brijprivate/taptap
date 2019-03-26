@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the PairdevicePage page.
+ * Generated class for the ProfiledetailPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,18 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-pairdevice',
-  templateUrl: 'pairdevice.html',
+  selector: 'page-profiledetail',
+  templateUrl: 'profiledetail.html',
 })
-export class PairdevicePage {
+export class ProfiledetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  nfcKey(){
-    this.navCtrl.push('NfckeyPage'); 
-  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PairdevicePage');
+    console.log('ionViewDidLoad ProfiledetailPage');
   }
 
 }

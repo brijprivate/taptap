@@ -2,14 +2,47 @@ page-home {
     .toolbar-background.toolbar-background-md {
         background: #6354cb;
     }
-  
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 2em 0 1em 0;
+    }
+    .toolbar-md {
+        position: relative;
+        padding: 0px;
+    }
+    a.helpimg {
+        top: 1em;
+        right: 0em;
+        position: absolute;
+        color: #fff;
+    }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    svg#language {
+        height: 20px;
+        width: 20px;
+        background: #6355cb;
+        fill: #fff;
+    }
+    button.buttonSvg {
+        background: transparent;
+        float: right;
+        margin-right: 3em;
+    }
     .scroll-content {
         padding: 0 !important;
     }
     .main {
         background: #6354cb;
         color: #fff;
-        padding: 11vh 1em 4vh;
+        padding: 1vh 1em 4vh;
         .img {    
             height: 10.5vh;
             width: 10.5vh;
@@ -72,7 +105,7 @@ page-home {
         border-style: solid;
         border-radius: 4px;
         opacity: 1;
-        color: #624eb0 !important;
+        color: #9e67eb !important;
     }
     .segment-md .segment-button.activated, page-recordmilage .segment-md .segment-button.segment-activated {
         border-bottom: 2px solid #624eb0;
@@ -83,6 +116,7 @@ page-home {
     }
     ion-segment.segment.segment-md {
         background: #fff;
+        box-shadow: 0 3px 14px 1px #f6f5fc;
     }
     ion-segment-button.segment-button.segment-activated {
         border-width: 0 0 1px 0 !important;
@@ -101,17 +135,24 @@ page-home {
         background: #e7e4fe;
         font-size: 11px;
         margin: 0 2em;
-        padding: 5px 16px;
+        padding: 5px 21px;
+        font-weight: 500;
         color: #6254ca;
         border-radius: 3px;
     }
     p.catog {
-        margin: 6px 0 0;
-        font-size: 10px;
+        margin: 3px 0 0;
+        font-size: 11px;
     }
+    ion-icon.icon.icon-md.ion-md-add {
+        margin-right: 10px;
+        font-weight: 600;
+    }
+    
     p.count {
         margin: 6px 0 0;
         font-size: 15px;
+        font-weight: 500;
         color: #666b89;
     }
     .colo1{
@@ -130,12 +171,22 @@ page-home {
             border: none !important;
         }
          ion-segment-button.segment-button {
-            border: 1px solid gray !important;
-            border-radius: 3px;
-            margin: 0 1em;
+            border: 1px solid #e0dafe !important;
+            border-radius: 3px !important;
+            margin-right: 10px;
             line-height: 33px !important;
+            font-size: 12px !important;
             height: 5.5vh !important;
+            text-transform: capitalize !important;
+            color: #a3a6b3 !important;
+        }        
         }
+        hr.marginO {
+            margin: 10px 0 5px 0;
+            background-color: #f9f9f9 !important;
+        }
+        .somedata p {
+            margin-bottom: 28px !important;
         }
         .btn {
             width: 82%;
@@ -143,6 +194,8 @@ page-home {
             color: #fff;
             padding: 1em 0;
             border-radius: 3px;
+            margin-bottom: 2em;
+            font-weight: 500;
         }
 
 
@@ -190,6 +243,7 @@ page-home {
             text-align: center;
             position: relative;
             color: #a3a5b1;
+            font-size: 12px;
         }
         p.day:before {
             content: "";
@@ -221,17 +275,44 @@ page-home {
             color: #9a9da6;
             font-weight: 400;
         }
+        ion-label.label.label-md {
+            font-size: 14px;
+        }
         ion-icon.merchantIcon.icon.icon-md.item-icon {
             margin: 0;
             color: #b0b0e0;
             vertical-align: bottom;
             padding-right: 6px;
+            font-size: 17px;
         }
         ion-icon.merchantIcon.icon.icon-md.ion-md-contact.item-icon {
             color: #9f90c6;
         }
         ion-icon.merchantIcon.icon.icon-md.ion-md-desktop.item-icon {
             color: #a0c2be;
+        }
+        ion-slide.swiper-slide {
+            background: #fff;
+        }
+        .filter {
+            background: #e5e2fd;
+            padding: 0 2em;
+        }
+        ion-icon.filterIcon.icon.icon-md.ion-md-funnel {
+            color: #8083a2;
+            float: left;
+        }
+        ion-col.allIcon.col {
+            text-align: right;
+        }
+        ion-icon.merchantIcon.icon.icon-md.ion-md-search {
+            color: #8083a2;
+            margin-right: 1em;
+            font-size: 25px;
+        }
+        icon.merchantIcon.icon.icon-md.ion-md-more {
+            color: #8083a2;
+            font-size: 26px;
         }
 
 }

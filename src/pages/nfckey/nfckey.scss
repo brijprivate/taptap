@@ -1,0 +1,143 @@
+page-nfckey {
+    .toolbar-background {
+        background-color: #6354cb;
+        height: 243px;
+      }
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 2em 0 1em 0;
+    }
+    .toolbar-md {
+        position: relative;
+        padding: 0px;
+    }
+    a.helpimg {
+        top: 1em;
+        right: 0em;
+        position: absolute;
+        color: #fff;
+    }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #fff;
+    }
+    svg#language {
+        height: 20px;
+        width: 20px;
+        background: #6355cb;
+        fill: #fff;
+    }
+    button.buttonSvg {
+        background: transparent;
+        float: right;
+        margin-right: 3em;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #fff;
+    }
+    .nfcKey {
+        background: #6355cb;
+        height: 155px;
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+    img.nfc {
+        height: 151px;
+        width: auto;
+        margin: auto;
+    }
+    ion-card.keyCard.card.card-md {
+        margin-top: -7em;
+        width: calc(100% - 51px);
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0px 2px 6px 2px #f8f8fa;
+        border-radius: 5px;
+    }
+    p.nfcKeyContent {
+        margin: auto;
+        color: #fff;
+        margin-left: 2em;
+        font-size: 17px;
+        padding-top: 1em;
+    } 
+    ion-icon.icon.icon-md.ion-md-key {
+        margin-right: 8px;
+    }
+    svg#nfc {
+        height: 35px;
+        width: 35px;
+        fill: #626381;
+    }
+    svg#verified {
+        height: 16px;
+        width: 21px;
+        vertical-align: middle;
+    }
+    ion-card.nestech.card.card-md {
+        background: #e6ecfe;
+        text-align: center;
+        box-shadow: none;
+        margin-top: 2em;
+        width: calc(100% - 51px);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4em;
+        padding: 2em 0;
+    }
+    p.inc {
+        color: #303444;
+        margin-top: 3px;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    p.verl {
+        color: #69a9e9;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    button.pcode.disable-hover.button.button-md.button-outline.button-outline-md {
+        width: 100%;
+        border: 1px solid #d9d9d9;
+        color: #0e0f16;
+        text-transform: capitalize;
+        margin-bottom: 1em;
+        height: 42px;
+        font-weight: 400;
+    }
+    .buttonDiv {
+        padding: 0 2em;
+    }
+    button.pcodea.disable-hover.button.button-md.button-outline.button-outline-md {
+        width: 100%;
+        border: 1px solid #89d9d8;
+        color: #50c0bd;
+        text-transform: capitalize;
+        margin-bottom: 1em;
+        height: 42px;
+        font-weight: 500;
+    }
+    ion-icon.icon.icon-md.ion-md-share {
+        font-size: 16px;
+        font-weight: 800;
+    }
+    ion-icon.icon.icon-md.ion-md-add {
+        font-size: 16px;
+        font-weight: 800;
+    }
+    button.pcodec.disable-hover.button.button-md.button-outline.button-outline-md {
+        width: 100%;
+        border: 1px solid #c6b4eb;
+        color: #6355cb;
+        text-transform: capitalize;
+        margin-bottom: 1em;
+        height: 42px;
+        font-weight: 400;
+    }
+}
