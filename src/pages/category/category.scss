@@ -1,6 +1,7 @@
 page-category {
     .toolbar-background {
-        background-color: #6354cb;
+        // background-color: #6354cb;
+        background-color:#f3f2f7;
         height: 243px;
       }
     .toolbar-content.toolbar-content-md {
@@ -24,13 +25,13 @@ page-category {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #fff;
+        fill: #6b708d;
     }
     svg#language {
         height: 20px;
         width: 20px;
-        background: #6355cb;
-        fill: #fff;
+        background: #f3f2f7;
+        fill: #6b708d;
     }
     button.buttonSvg {
         background: transparent;
@@ -38,14 +39,16 @@ page-category {
         margin-right: 3em;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
-        color: #fff;
+        color: #6b708d;
     }
     .milageTitle {
         text-align: center;
-        background: #6355cb;
+        // background: #6355cb;
+        background:#f3f2f7;
     }
     .milageTitle p {
         color: #fff;
+        color:#6b708d;
         font-size: 20px;
         margin-top: 10px;
         padding-bottom: 45px;

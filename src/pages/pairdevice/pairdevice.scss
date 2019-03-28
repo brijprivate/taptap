@@ -2,8 +2,11 @@ page-pairdevice {
     .toolbar-background {
         background: linear-gradient(to right, #7357cf, #6367be,#6961c4,#5d6fb5);
       }
+      ion-content.content.content-md {
+        background: linear-gradient(to right, #7357cf, #6367be, #6961c4, #5d6fb5);
+    }
       .bluePair {
-        background: linear-gradient(to right, #7357cf, #6367be,#6961c4,#5d6fb5);
+        // background: linear-gradient(to right, #7357cf, #6367be,#6961c4,#5d6fb5);
         text-align: center;
         position: relative;
     }
@@ -44,15 +47,22 @@ page-pairdevice {
         padding-bottom: 3em;
     }
     button.pairbutton.disable-hover.button.button-md.button-default.button-default-md {
-        background-color: #5c67f8;
+        background-color: #fff;
         padding: 22px 45px;
-        text-transform:capitalize;
+        text-transform: capitalize;
+        color: #6663c1;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #fff;
     }
     ion-list.listView.list.list-md{
         padding: 1em 1em 4em 1em;
+    }
+    .list-md .item-input:last-child {
+        background: transparent;
+    }
+   ion-label#lbl-15 {
+    color: #fff;
     }
 
 }

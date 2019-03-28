@@ -1,6 +1,6 @@
 page-recordmilage {
     .toolbar-background {
-        background-color: #6354cb;
+        background-color: #f3f2f7;
       }
     .toolbar-content.toolbar-content-md {
         text-align: center;
@@ -8,10 +8,10 @@ page-recordmilage {
     }
     .milageTitle {
         text-align: center;
-        background: #6355cb;
+        background: #f3f2f7;
     }
     .milageTitle p {
-        color: #100c2f;
+        color:#656a88;
         font-size: 25px;
         margin-top: 10px;
         padding-bottom: 45px;
@@ -23,7 +23,7 @@ page-recordmilage {
         background-image: none !important;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
-        color: #fff;
+color:#6b708d;
     }
     hr.margino {
         margin-right: 1em;
@@ -48,7 +48,7 @@ page-recordmilage {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #fff;
+        fill:#6b708d;;
     }
     
     p.type {
