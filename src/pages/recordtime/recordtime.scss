@@ -1,6 +1,6 @@
 page-recordtime {
     .toolbar-background {
-        background-color: #4fbeba;
+        background-color:#f3f2f7;
       }
     .toolbar-content.toolbar-content-md {
         text-align: center;
@@ -25,14 +25,14 @@ page-recordtime {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #fff;
+        fill: #6b708d;
     }
     .milageTitle {
         text-align: center;
-        background: #4fbeba;
+        background: #f3f2f7;
     }
     .milageTitle p {
-        color: #2c7172;
+        color:#656a88;
         font-size: 24px;
         margin-top: 10px;
         padding-bottom: 26px;
@@ -44,7 +44,7 @@ page-recordtime {
         background-image: none !important;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
-        color: #fff;
+        color: #6b708d;
     }
     hr.margino {
         margin-right: 1em;

@@ -1,6 +1,6 @@
 page-managedevice {
     .toolbar-background {
-        background-color: #6354cb;
+        background-color: #f3f2f7;
       }
       button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
         background: transparent;
@@ -9,10 +9,10 @@ page-managedevice {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #fff;
+        fill: #6b708d;
     }
     .toolbar-title.toolbar-title-md {
-        color: #fff;
+        color: #5c6173;
     }
     button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
         position: absolute;
@@ -22,7 +22,7 @@ page-managedevice {
         background: transparent;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
-        color: #fff;
+      color:#76798a;
     }
     ion-icon.icon.icon-md.ion-md-arrow-back {
         margin-right: 1em;

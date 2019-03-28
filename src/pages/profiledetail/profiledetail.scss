@@ -1,6 +1,6 @@
 page-profiledetail {
     .toolbar-background {
-        background-color: #6354cb;
+        background-color: #f3f2f7;
         height: 243px;
       }
     .toolbar-content.toolbar-content-md {
@@ -24,13 +24,13 @@ page-profiledetail {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #fff;
+        fill: #6b708d;
     }
     svg#language {
         height: 20px;
         width: 20px;
-        background: #6355cb;
-        fill: #fff;
+        background: #f3f2f7;
+        fill: #6b708d;
     }
     button.buttonSvg {
         background: transparent;
@@ -38,23 +38,23 @@ page-profiledetail {
         margin-right: 3em;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
-        color: #fff;
+        color: #6b708d;
     }
     .scroll-content {
         padding: 0 !important;
     }
     p.detailName {
         margin: 0;
-        color: #fff;
+        color: #484d63;
         font-size: 22px;
         font-weight: 400;
     }
     svg#contact {
-        fill: #fff;
+       fill:#6e57ce;
         margin-bottom: 4px;
     }
     .profileContent {
-        background: #6355cb;
+        background: #f3f2f7;
         padding: 1em 0 2em 3em;
     }
     ion-item.item.item-block.item-md {
@@ -80,8 +80,8 @@ page-profiledetail {
         float: right;
     }
     button.aContact {
-        color: #60cbc9;
-        border: 1px solid #60cbc9;
+        color: #6b708d;
+        border: 1px solid #6b708d;
         background: transparent;
         border-radius: 3px;
         height: 42px;
@@ -91,11 +91,17 @@ page-profiledetail {
         padding: 4em 2em;
     }
     button.share {
-        color: #6354cb;
-        border: 1px solid #6354cb;
+        color: #6b708d;
+        border: 1px solid #6b708d;
         background: transparent;
         border-radius: 3px;
         height: 42px;
         width: 130px;
+    }
+    ion-icon.icon.icon-md.ion-md-share{
+        color: #8376f9;
+    }
+    ion-icon.icon.icon-md.ion-md-person {
+        color: #8376f9;
     }
 }

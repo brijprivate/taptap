@@ -1,6 +1,6 @@
 page-home {
     .toolbar-background.toolbar-background-md {
-        background: #6354cb;
+        background-color:#f3f2f7;
     }
     .toolbar-content.toolbar-content-md {
         text-align: center;
@@ -23,13 +23,13 @@ page-home {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #fff;
+        fill: #6b708d;
     }
     svg#language {
         height: 20px;
         width: 20px;
-        background: #6355cb;
-        fill: #fff;
+        background: #f3f2f7;
+        fill: #6b708d;
     }
     button.buttonSvg {
         background: transparent;
@@ -40,8 +40,8 @@ page-home {
         padding: 0 !important;
     }
     .main {
-        background: #6354cb;
-        color: #fff;
+        background: #f3f2f7;
+        color: #6856cd;
         padding: 1vh 1em 4vh;
         .img {    
             height: 10.5vh;
@@ -59,6 +59,7 @@ page-home {
         p.name {
             margin: 8px 0 0 0;
             font-size: 19px;
+            color: #41485d;
         }
         span.sm {
             font-size: 10px;
@@ -77,7 +78,7 @@ page-home {
         
     }
     .paddi {
-        margin: -3vh 9vw 0;
+        // margin: -3vh 9vw 0;
     }
     .swiper-slide {
         align-items: baseline;
@@ -196,36 +197,11 @@ page-home {
             border-radius: 3px;
             margin-bottom: 2em;
             font-weight: 500;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        }  
         button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
             background: transparent;
             box-shadow: none;
         }
-        svg#editButton {
-            height: 15px;
-            width: 15px;
-            fill: #fff;
-        }
-        
         button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
             position: absolute;
             right: 0;
@@ -295,23 +271,23 @@ page-home {
             background: #fff;
         }
         .filter {
-            background: #e5e2fd;
+            background: #6354cb;
             padding: 0 2em;
         }
         ion-icon.filterIcon.icon.icon-md.ion-md-funnel {
-            color: #8083a2;
+            color: #fff;
             float: left;
         }
         ion-col.allIcon.col {
             text-align: right;
         }
         ion-icon.merchantIcon.icon.icon-md.ion-md-search {
-            color: #8083a2;
+            color: #fff;
             margin-right: 1em;
             font-size: 25px;
         }
-        icon.merchantIcon.icon.icon-md.ion-md-more {
-            color: #8083a2;
+        ion-icon.merchantIcon.icon.icon-md.ion-md-more{
+            color: #fff;
             font-size: 26px;
         }
 
