@@ -12,10 +12,12 @@
 
 <ion-content padding>
 <ion-tabs>
-    <ion-tab [root]="profilePage" tabTitle="home" tabIcon="person"></ion-tab>
+    <ion-tab [root]=" homePage" tabTitle="home" tabIcon="home"></ion-tab>
     <ion-tab [root]="searchPage" tabTitle="Search" tabIcon="search"></ion-tab>
-    <ion-tab [root]="homePage" tabIcon="finger-print"></ion-tab>
-    <ion-tab [root]="taptapPage" tabTitle="fav"tabIcon="trending-up"></ion-tab>
-    <ion-tab [root]="helpPage" tabTitle="more" tabIcon="help-circle"></ion-tab>
+    <ion-tab [root]="profilePage" name="custom-mynewicon" tabIcon="custom-chat"></ion-tab>
+
+
+    <ion-tab [root]="taptapPage" tabTitle="fav"tabIcon="heart"></ion-tab>
+    <ion-tab [root]="helpPage" tabTitle="more" tabIcon="menu"></ion-tab>
 </ion-tabs>
 </ion-content>

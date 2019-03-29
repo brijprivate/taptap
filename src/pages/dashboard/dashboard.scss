@@ -5,13 +5,62 @@ page-dashboard {
     .tabs-md .tab-button[aria-selected=true] {
         color: #6355cb !important;
     }
-    ion-icon.tab-button-icon.icon.icon-md.ion-md-finger-print {
-        background: #6355cb;
-        color: #fff !important;
-        border-radius: 50%;
-        height: 56px;
-        width: 56px;
-        font-size: 37px;
-        line-height: 55px;
+    // ion-icon.tab-button-icon.icon.icon-md.ion-md-finger-print {
+    //     background: #6355cb;
+    //     color: #fff !important;
+    //     border-radius: 50%;
+    //     height: 56px;
+    //     width: 56px;
+    //     font-size: 37px;
+    //     line-height: 55px;
+    // }
+
+
+    // ion-icon {
+    //     &[class*="custom-"] {
+    //       mask-size: contain;
+    //       mask-position: 50% 50%;
+    //       mask-repeat: no-repeat;
+    //       background: currentColor;
+    //       width: 1em;
+    //       height: 1em;
+    //     }
+    //     &[class*="custom-mynewicon"] {
+    //       mask-image: url(../assets/images/pen.png);
+    //     }
+    //   }
+
+    ion-icon {
+        &[class*="custom-"] {
+            // margin: 0 5px 0 0;
+            vertical-align: middle;
+            $sz: 20px;
+            width: $sz;
+            height: $sz;
+        } // custom icons
+        &[class*="chat"][ng-reflect-is-active="true"] {
+            background: url(../../assets/images/logo_transparent.png) no-repeat;
+            background-size: contain;
+            height: 60px;
+            width: 60px;
+        }//in case of active
+        &[class*="chat"][ng-reflect-is-active="false"] {
+            background: url(../../assets/images/logo_transparent.png) no-repeat;
+            background-size: contain;
+            height: 60px;
+            width: 60px;
+        }//in case of inactive
+        &[class*="group"] {
+            background: url(../../assets/images/logo_transparent.png) no-repeat;
+            background-size: contain;
+            height: 60px;
+            width: 60px;
+        }
     }
+    a#tab-t0-2 {
+        padding: 0;
+    }
+
 }
+
+
