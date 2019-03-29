@@ -42,7 +42,7 @@ page-home {
     .main {
         background: #f3f2f7;
         color: #6856cd;
-        padding: 1vh 1em 4vh;
+        padding: 4vh 3vh;
         .img {    
             height: 10.5vh;
             width: 10.5vh;
@@ -61,18 +61,23 @@ page-home {
             font-size: 19px;
             color: #41485d;
         }
-        span.sm {
-            font-size: 10px;
+        p.sm {
+            font-size: 11px;
+            margin: 0;
+            text-align: center;
+            color: #6d58ce;
         }
-        span.num {
-            font-size: 15px;
-            margin: 0 3px;
+        p.num {
+            font-size: 9px;
+            text-align: center;
+            margin: 0;
+            color: #666a88;
         }
         ion-icon.icon.icon-md.ion-md-star {
-            font-size: 1.3em;
+            font-size: 11px;
             margin: 0 2px;
         }
-        p.det {
+        .det {
             margin: 5px 0px;
         }
         
@@ -86,7 +91,7 @@ page-home {
         height: 80%;
     }
     ion-slides.slides.slides-md.slides-0 {
-        height: 86%;
+        // height: 86%;
     }
     ion-segment.typeRecord.segment.segment-md {
         border-left: 1px solid #e1e1e6;
@@ -117,7 +122,7 @@ page-home {
     }
     ion-segment.segment.segment-md {
         background: #fff;
-        box-shadow: 0 3px 14px 1px #f6f5fc;
+        // box-shadow: 0 3px 14px 1px #f6f5fc;
     }
     ion-segment-button.segment-button.segment-activated {
         border-width: 0 0 1px 0 !important;

@@ -26,10 +26,10 @@ export class HomePage {
     this.slider.slideTo(index);
   }
   merchant() {
-    this.navCtrl.push('MerchantPage');
+    // this.navCtrl.push('MerchantPage');
   }
   category(){
-    this.navCtrl.push('CategoryPage');
+    // this.navCtrl.push('CategoryPage');
   }
   ionViewDidLoad() {
     var _base = this;
@@ -44,15 +44,17 @@ export class HomePage {
             // label: '# of Votes',
             data: [12, 19],
             backgroundColor: [
-              '#ef4745',
-              '#6cdd4d',
+              '#74abfc',
+              '#41c3fb',
 
             ],
 
           }]
         },
         options: {
+          cutoutPercentage: 80,
           legend: {
+
               display: false,
              
           }
