@@ -1,9 +1,9 @@
 page-devicededetail {
     .toolbar-background {
-        background-color: #6354cb;
+        background-color: #f3f2f7;
       }
     .blue{
-        background: #6355cb;
+        background: #f3f2f7;
         height: 11vh;
         position: relative;
         .pen {
@@ -11,7 +11,7 @@ page-devicededetail {
             width: 13vh;
             position: absolute;
             top: 30%;
-            background: #fff;
+            background: #6354cb;
             border-radius: 50%;
             padding: 2em;
             left: 0;
@@ -38,13 +38,13 @@ page-devicededetail {
         background-image: none !important;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
-        color: #fff;
+        color: #6b708d;
     }
     .button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
-        color: #fff;
+        color: #6b708d;
     }
     .toolbar-title.toolbar-title-md {
-        color: #fff;
+        color: #6b708d;
     }
     .cont {
         margin-top: 8vh;
@@ -52,7 +52,7 @@ page-devicededetail {
         font-size: 18px;
     }
     .cont p span {
-        background: #6ee579;
+        background: #c5efed;
         margin: 0 7px;
         padding: 4px 7px 4px 7px;
         color: #4a9d50;
@@ -71,7 +71,7 @@ page-devicededetail {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #fff;
+        fill: #6b708d;
     }
     button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
         position: absolute;
