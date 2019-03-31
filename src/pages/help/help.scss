@@ -1,3 +1,108 @@
 page-help {
-
+    .toolbar-background {
+        background-color: #f3f2f7;
+        height: 243px;
+      }
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 2em 0 1em 0;
+    }
+    .toolbar-md {
+        position: relative;
+        padding: 0px;
+    }
+    a.helpimg {
+        top: 1em;
+        right: 0em;
+        position: absolute;
+        color: #fff;
+    }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #6b708d;
+    }
+    svg#language {
+        height: 20px;
+        width: 20px;
+        background: #f3f2f7;
+        fill: #6b708d;
+    }
+    button.buttonSvg {
+        background: transparent;
+        float: right;
+        margin-right: 3em;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #6b708d;
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+    p.detailName {
+        margin: 0;
+        color: #484d63;
+        font-size: 22px;
+        font-weight: 400;
+        text-align: center;
+    }
+    svg#contact {
+       fill:#6e57ce;
+        margin-bottom: 4px;
+    }
+    .profileContent {
+        background: #f3f2f7;
+        padding: 1em 0 2em 0em;
+    }
+    ion-item.item.item-block.item-md {
+        padding-left: 0;
+    }
+    .pContent {
+        margin-left: 3em;
+    }
+    p.cName {
+        font-size: 12px;
+        color: rgba(84, 87, 98, 0.72);
+    }
+    ion-icon.icon.icon-md {
+        margin-bottom: 3px;
+        margin-right: 5px;
+        font-size: 18px;
+    }
+    p.cNumber {
+        color: #525662;
+        font-size: 14px;
+    }
+    ion-icon.icon.icon-md.ion-md-copy.item-icon {
+        float: right;
+    }
+    button.aContact {
+        color: #6b708d;
+        border: 1px solid #6b708d;
+        background: transparent;
+        border-radius: 3px;
+        height: 42px;
+        width: 130px;
+    }
+    ion-grid.paddingL.grid {
+        padding: 4em 2em;
+    }
+    button.share {
+        color: #6b708d;
+        border: 1px solid #6b708d;
+        background: transparent;
+        border-radius: 3px;
+        height: 42px;
+        width: 130px;
+    }
+    ion-icon.icon.icon-md.ion-md-share{
+        color: #8376f9;
+    }
+    ion-icon.icon.icon-md.ion-md-person {
+        color: #8376f9;
+    }
 }

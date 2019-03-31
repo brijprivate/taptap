@@ -191,7 +191,7 @@ page-search {
         color: #4bcffb;
     }
     .scroll {
-        height: 63vh;
+        height: 47vh;
         overflow-y: scroll;
         position: absolute;
         left: 0;
@@ -328,6 +328,11 @@ page-search {
             text-align: center;
             color: #585656;
             font-weight: 600;
+        }
+        .paddi p {
+            color: #696464;
+            text-align: center;
+            margin: 12px 0;
         }
 }
 
