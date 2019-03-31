@@ -43,14 +43,15 @@ export class ProfilePage {
             // label: '# of Votes',
             data: [12, 19],
             backgroundColor: [
-              '#ef4745',
-              '#6cdd4d',
+              '#74abfc',
+              '#41c3fb',
 
             ],
 
           }]
         },
         options: {
+          cutoutPercentage: 80,
           legend: {
               display: false,
              

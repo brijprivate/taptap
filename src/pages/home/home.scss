@@ -40,9 +40,9 @@ page-home {
         padding: 0 !important;
     }
     .main {
-        background: #f3f2f7;
+        background: #f8f8f8;
         color: #6856cd;
-        padding: 4vh 3vh;
+        // padding: 4vh 3vh;
         .img {    
             height: 10.5vh;
             width: 10.5vh;
@@ -54,21 +54,22 @@ page-home {
                 border-radius: 50%;
                 padding: 2px;
                 border: 1px solid #fff;
+                margin: 7%;
             }
         }
         p.name {
-            margin: 8px 0 0 0;
+            margin: 8px 0 0 9%;
             font-size: 19px;
             color: #41485d;
         }
         p.sm {
-            font-size: 11px;
+            font-size: 12px;
             margin: 0;
             text-align: center;
             color: #6d58ce;
         }
         p.num {
-            font-size: 9px;
+            font-size: 12px;
             text-align: center;
             margin: 0;
             color: #666a88;
@@ -87,11 +88,14 @@ page-home {
     }
     .swiper-slide {
         align-items: baseline;
+        // margin-top: 4vh;
+        // height: 80%;
+    }
+    .canvas {
         margin-top: 4vh;
-        height: 80%;
     }
     ion-slides.slides.slides-md.slides-0 {
-        // height: 86%;
+        height: 76%;
     }
     ion-segment.typeRecord.segment.segment-md {
         border-left: 1px solid #e1e1e6;
@@ -132,11 +136,20 @@ page-home {
     ion-segment-button.segment-button {
         line-height: 36px !important;
         height:6.5vh !important;
-        font-size: 10px !important;
+        font-size: 12px !important;
+        text-transform: capitalize !important;
     }
 
-
-
+    .filter input::placeholder  {
+        color: #fff;
+    }
+    ion-item.item.item-block.item-md.item-input {
+        padding: 0;
+        width: 100%;
+        background: #6354cb;
+        color: #fff;
+    }
+    
     .somedata p span {
         background: #e7e4fe;
         font-size: 11px;
@@ -148,7 +161,7 @@ page-home {
     }
     p.catog {
         margin: 3px 0 0;
-        font-size: 11px;
+        font-size: 12px;
     }
     ion-icon.icon.icon-md.ion-md-add {
         margin-right: 10px;
@@ -170,8 +183,15 @@ page-home {
     .colo3{
         color: #4bcffb;
     }
+    .scroll {
+        height: 47vh;
+        overflow-y: scroll;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
     .secondseg {
-        margin: 1.2em auto;
+        margin: 0.9em auto;
         width: 82%;
         ion-segment.segment.segment-md {
             border: none !important;
@@ -184,7 +204,7 @@ page-home {
             font-size: 12px !important;
             height: 5.5vh !important;
             text-transform: capitalize !important;
-            color: #a3a6b3 !important;
+            color: #000 !important;
         }        
         }
         hr.marginO {
@@ -200,7 +220,7 @@ page-home {
             color: #fff;
             padding: 1em 0;
             border-radius: 3px;
-            margin-bottom: 2em;
+            margin-top: 19px;
             font-weight: 500;
         }  
         button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
@@ -225,6 +245,7 @@ page-home {
             position: relative;
             color: #a3a5b1;
             font-size: 12px;
+            margin-top: 19px;
         }
         p.day:before {
             content: "";
@@ -275,10 +296,10 @@ page-home {
         ion-slide.swiper-slide {
             background: #fff;
         }
-        .filter {
-            background: #6354cb;
-            padding: 0 2em;
-        }
+        // .filter {
+        //     background: #6354cb;
+        //     padding: 0 2em;
+        // }
         ion-icon.filterIcon.icon.icon-md.ion-md-funnel {
             color: #fff;
             float: left;

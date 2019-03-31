@@ -64,5 +64,20 @@ page-pairdevice {
    ion-label#lbl-15 {
     color: #fff;
     }
+    ion-label {
+        color: #fff !important;
+    }
 
+    ion-input.input.input-md {
+        color: #fff;
+    }
+   
+      .list-md .item-input.input-has-focus:last-child {
+        border-bottom-color: #fff;
+        box-shadow: none !important;
+      }
+      
+   
+      
+      
 }

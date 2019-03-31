@@ -30,33 +30,46 @@ page-dashboard {
     //     }
     //   }
 
-    ion-icon {
-        &[class*="custom-"] {
-            // margin: 0 5px 0 0;
-            vertical-align: middle;
-            $sz: 20px;
-            width: $sz;
-            height: $sz;
-        } // custom icons
-        &[class*="chat"][ng-reflect-is-active="true"] {
-            background: url(../../assets/images/logo_transparent.png) no-repeat;
-            background-size: contain;
-            height: 60px;
-            width: 60px;
-        }//in case of active
-        &[class*="chat"][ng-reflect-is-active="false"] {
-            background: url(../../assets/images/logo_transparent.png) no-repeat;
-            background-size: contain;
-            height: 60px;
-            width: 60px;
-        }//in case of inactive
-        &[class*="group"] {
-            background: url(../../assets/images/logo_transparent.png) no-repeat;
-            background-size: contain;
-            height: 60px;
-            width: 60px;
-        }
+    ion-icon.tab-button-icon.icon.icon-md.ion-md-custom-chat 
+    {
+        background: url(../../assets/images/Logo_after.png) no-repeat;
+        background-size: contain;
+        height: 35px;
+        width: 35px;
     }
+    .tabs-md .tab-button[aria-selected=true] .tab-button-icon.icon.icon-md.ion-md-custom-chat {
+        background: url(../../assets/images/logo_before.png) no-repeat;
+        background-size: contain;
+        height: 35px;
+        width: 35px;
+    }
+    // ion-icon {
+    //     &[class*="custom-"] {
+    //         // margin: 0 5px 0 0;
+    //         vertical-align: middle;
+    //         $sz: 20px;
+    //         width: $sz;
+    //         height: $sz;
+    //     } // custom icons
+    //     &[class*="chat"][ng-reflect-is-active="true"] {
+    //         background: url(../../assets/images/logo_transparent.png) no-repeat;
+    //         background-size: contain;
+    //         height: 60px;
+    //         width: 60px;
+    //     }//in case of active
+    //     &[class*="chat"][ng-reflect-is-active="false"] {
+    //         background: url(../../assets/images/logo_transparent.png) no-repeat;
+    //         background-size: contain;
+    //         height: 60px;
+    //         width: 60px;
+    //     }//in case of inactive
+    //     &[class*="group"] {
+    //         background: url(../../assets/images/logo_transparent.png) no-repeat;
+    //         background-size: contain;
+    //         height: 60px;
+    //         width: 60px;
+    //     }
+    // }
     a#tab-t0-2 {
         padding: 0;
     }

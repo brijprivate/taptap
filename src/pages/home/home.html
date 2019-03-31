@@ -38,24 +38,24 @@
           </div>
         </ion-col>
         <ion-col col-9>
-          <div style="margin-left:3px;">
-            <p class="name">Montaki Cake</p>
-            <ion-grid style="margin-left:-14px;">
+          <div >
+            <p class="name">Brij Kishor</p>
+            <ion-grid>
                 <ion-row>
           
                   <ion-col col-4>
                  
                       <p class="sm"> AI32G5</p>
-                       <p class="num">unique Identity</p>
+                       <p class="num">UID</p>
                     </ion-col>
                     <ion-col col-4>
                    
                         <p class="sm"> <ion-icon name="star"></ion-icon>
                           1340</p>
-                         <p class="num">favorite items</p>
+                         <p class="num">Favorite</p>
                       </ion-col>
                       <ion-col col-4>
-                          <p class="sm">2</p>  <p class="num">paired devices</p>
+                          <p class="sm">2</p>  <p class="num">Devices</p>
                         </ion-col>
                     </ion-row>
                     </ion-grid>
@@ -118,21 +118,26 @@
 
     <ion-slide>
       <div class="filter">
-
-        <ion-grid>
+          <ion-item>
+              <ion-input type="text" placeholder="search"></ion-input>
+              <ion-icon item-end name="search" ></ion-icon>
+            </ion-item>
+        <!-- <ion-grid>
           <ion-row>
+             
             <ion-col col-6>
-              <ion-icon name="funnel" class="filterIcon"></ion-icon>
             </ion-col>
             <ion-col col-6 class="allIcon">
+
+               
+
               <ion-icon name="search" class="merchantIcon"></ion-icon>
-              <ion-icon name="more" class="merchantIcon"></ion-icon>
             </ion-col>
           </ion-row>
-        </ion-grid>
+        </ion-grid> -->
 
       </div>
-      <div class="secondseg">
+      <!-- <div class="secondseg">
         <ion-segment [(ngModel)]="record" class="typeRecord">
           <ion-segment-button value="Personal" (click)="category()">
             Category
@@ -141,7 +146,11 @@
             Merchants
           </ion-segment-button>
         </ion-segment>
-      </div>
+      </div> -->
+
+      <div class="scroll">
+
+     
       <p class="day">Mon Mar 2019</p>
       <ion-item>
         <ion-icon name="apps" class="merchantIcon"></ion-icon>
@@ -178,6 +187,7 @@
         Amazon
         <ion-badge item-end>14:21 GMT</ion-badge>
       </ion-item>
+    </div>
     </ion-slide>
 
   </ion-slides>
