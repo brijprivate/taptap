@@ -1,25 +1,28 @@
 page-profile {
+    .p0{
+        padding: 0;
+    }
     .main {
         background: #f8f8f8;
         color: #6856cd;
-        padding-top: 49px;
+        padding-top: 42px;
         // padding: 4vh 3vh;
         .img {    
-            height: 10.5vh;
-            width: 10.5vh;
+            height: 8.5vh;
+            width: 8.5vh;
           
             margin:auto;
             img {
                 height: 100%;
                 width: 100%;
                 border-radius: 50%;
-                padding: 2px;
+                // padding: 2px;
                 border: 1px solid #fff;
-                margin: 7%;
+                margin: 7% 25%;
             }
         }
         p.name {
-            margin: 8px 0 0 9%;
+            margin: 0px 0 0 9%;
             font-size: 19px;
             color: #41485d;
         }
@@ -28,6 +31,7 @@ page-profile {
             margin: 0;
             text-align: center;
             color: #6d58ce;
+            font-weight: 600;
         }
         p.num {
             font-size: 12px;

@@ -139,7 +139,9 @@ page-search {
         margin: 4% auto;
 
     }
-
+    input.text-input.text-input-md {
+        padding: 5px;
+    }
     ion-segment-button.segment-button {
         // line-height: 36px !important;
         // height:6.5vh !important;
@@ -148,15 +150,23 @@ page-search {
     }
 
     .filter input::placeholder  {
-        color: #fff;
+        color: #999;
     }
     ion-item.item.item-block.item-md.item-input {
         padding: 0;
         width: 100%;
-        background: #6354cb;
-        color: #fff;
+        background: #f8f8f8;
+        color: #000;;
+        height: 42px;
+        border-radius: 23px;
     }
-    
+    .filter {
+        height: 80px;
+        background: #41c3fb;
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
+    }
     .somedata p span {
         background: #e7e4fe;
         font-size: 11px;
@@ -191,7 +201,7 @@ page-search {
         color: #4bcffb;
     }
     .scroll {
-        height: 47vh;
+        height: 56vh;
         overflow-y: scroll;
         position: absolute;
         left: 0;
@@ -247,6 +257,7 @@ page-search {
         }
         ion-icon.icon.icon-md.ion-md-search {
             font-size: 28px;
+            color: #999;
         }
         p.day {
             text-align: center;

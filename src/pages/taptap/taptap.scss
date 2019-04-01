@@ -148,13 +148,15 @@ page-taptap {
     }
 
     .filter input::placeholder  {
-        color: #fff;
+        color: #999;
     }
     ion-item.item.item-block.item-md.item-input {
         padding: 0;
         width: 100%;
-        background: #6354cb;
-        color: #fff;
+        background: #f8f8f8;
+        color: #000;;
+        height: 42px;
+        border-radius: 23px;
     }
     
     .somedata p span {
@@ -191,7 +193,7 @@ page-taptap {
         color: #4bcffb;
     }
     .scroll {
-        height: 47vh;
+        height: 56vh;
         overflow-y: scroll;
         position: absolute;
         left: 0;
@@ -247,6 +249,7 @@ page-taptap {
         }
         ion-icon.icon.icon-md.ion-md-search {
             font-size: 28px;
+            color: #999;
         }
         p.day {
             text-align: center;
@@ -294,6 +297,9 @@ page-taptap {
             padding-right: 6px;
             font-size: 17px;
         }
+        input.text-input.text-input-md {
+            padding: 5px;
+        }
         ion-icon.merchantIcon.icon.icon-md.ion-md-contact.item-icon {
             color: #9f90c6;
         }
@@ -303,10 +309,13 @@ page-taptap {
         ion-slide.swiper-slide {
             background: #fff;
         }
-        // .filter {
-        //     background: #6354cb;
-        //     padding: 0 2em;
-        // }
+        .filter {
+            height: 80px;
+            background: #41c3fb;
+            display: flex;
+            align-items: center;
+            padding: 0 1em;
+        }
         ion-icon.filterIcon.icon.icon-md.ion-md-funnel {
             color: #fff;
             float: left;

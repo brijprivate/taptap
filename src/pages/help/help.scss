@@ -45,7 +45,7 @@ page-help {
     }
     p.detailName {
         margin: 0;
-        color: #484d63;
+        color: #fff;
         font-size: 22px;
         font-weight: 400;
         text-align: center;
@@ -55,8 +55,9 @@ page-help {
         margin-bottom: 4px;
     }
     .profileContent {
-        background: #f3f2f7;
-        padding: 1em 0 2em 0em;
+        background: #7ed8f8;
+        height: 80px;
+        line-height: 80px;
     }
     ion-item.item.item-block.item-md {
         padding-left: 0;
