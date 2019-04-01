@@ -40,7 +40,8 @@ page-home {
         padding: 0 !important;
     }
     .main {
-        background: #6168bb;
+        // background: #6168bb;
+        background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
         color: #6856cd;
         
         .img {    
@@ -147,7 +148,8 @@ page-home {
     }
     .filter {
         height: 55px;
-        background: #6168bb;
+        // background: #6168bb;
+        background: linear-gradient(to bottom, #7357cf, #6367be, #6961c4, #5d6fb5);
         display: flex;
         align-items: center;
         padding: 0 1em;
@@ -239,7 +241,8 @@ page-home {
         }
         .btn {
             width: 82%;
-            background: #6254ca;
+            background: #5c6eb5;
+            // background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
             color: #fff;
             padding: 1em 0;
             border-radius: 3px;
