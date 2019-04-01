@@ -3,7 +3,7 @@ page-profile {
         padding: 0;
     }
     .main {
-        background: #f8f8f8;
+        background: #6168bb;
         color: #6856cd;
         padding-top: 42px;
         // padding: 4vh 3vh;
@@ -17,27 +17,27 @@ page-profile {
                 width: 100%;
                 border-radius: 50%;
                 // padding: 2px;
-                border: 1px solid #fff;
+                // border: 1px solid #fff;
                 margin: 7% 25%;
             }
         }
         p.name {
             margin: 0px 0 0 9%;
             font-size: 19px;
-            color: #41485d;
+            color: #fff;
         }
         p.sm {
             font-size: 12px;
             margin: 0;
             text-align: center;
-            color: #6d58ce;
+            color: #fff;
             font-weight: 600;
         }
         p.num {
             font-size: 12px;
             text-align: center;
             margin: 0;
-            color: #666a88;
+            color: #000;
         }
         ion-icon.icon.icon-md.ion-md-star {
             font-size: 11px;
