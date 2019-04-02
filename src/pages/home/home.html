@@ -111,17 +111,14 @@
           </ion-row>
         </ion-grid> -->
         <div class="arrowbutton">
-          <!-- <button (click)="this.Slides.slidePrev()" class="backBtn"> 
-            <ion-icon name="arrow-back"></ion-icon> 
-          </button> -->
+          
           <ul class="list-inline sileUl">
             <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
-                <!-- <ion-icon name="arrow-back"></ion-icon>  -->
                 <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
               </button>
             </li>
             <li>
-              <ion-slides loop slidesPerView="3">
+              <ion-slides loop slidesPerView="3" #slides>
 
                 <ion-slide>
                   <p class="count">1.8k</p>
@@ -151,8 +148,13 @@
                   <p class="count">1.8k</p>
                   <p class="catog colo1">Fashion 7</p>
                 </ion-slide>
-
-
+              </ion-slides>
+            </li>
+            <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
+                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+              </button>
+            </li>
+          </ul>
 
                 <!-- <ion-slide>
                         <ion-grid>
@@ -210,13 +212,8 @@
                         </ion-grid>
                       </ion-slide> -->
 
-              </ion-slides>
-            </li>
-            <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
-                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-              </button>
-            </li>
-          </ul>
+              
+          
 
           <!-- <button (click)="this.Slides.slideNext()" class="nextBtn"> 
             <ion-icon name="arrow-forward">

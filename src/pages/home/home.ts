@@ -12,7 +12,7 @@ export class HomePage {
     loop: true
   };
   public images: any;
-  @ViewChild('mySlider') slider: Slides;
+  @ViewChild('slider') slider: Slides;
   @ViewChild('slides') slides: Slides;
   page = 0;
   @ViewChild('barCanvas') barCanvas;
