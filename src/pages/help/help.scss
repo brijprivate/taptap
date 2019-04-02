@@ -54,9 +54,13 @@ page-help {
        fill:#6e57ce;
         margin-bottom: 4px;
     }
+    .item-block {
+        min-height: 30px;
+        height: 45px;
+    }
     .profileContent {
-        // background: #6168bb;
-        background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
+        background: #6354cb;
+        // background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
         height: 81px;
         line-height: 81px;
     }

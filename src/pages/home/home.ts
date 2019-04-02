@@ -44,8 +44,8 @@ export class HomePage {
             // label: '# of Votes',
             data: [12, 19],
             backgroundColor: [
-              '#74abfc',
-              '#41c3fb',
+              '#a25757',
+              '#93ca79',
 
             ],
 
