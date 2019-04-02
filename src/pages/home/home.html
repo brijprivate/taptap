@@ -110,96 +110,118 @@
             </ion-col>
           </ion-row>
         </ion-grid> -->
+        <div class="arrowbutton">
+          <!-- <button (click)="this.Slides.slidePrev()" class="backBtn"> 
+            <ion-icon name="arrow-back"></ion-icon> 
+          </button> -->
+          <ul class="list-inline sileUl">
+            <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
+                <!-- <ion-icon name="arrow-back"></ion-icon>  -->
+                <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+              </button>
+            </li>
+            <li>
+              <ion-slides loop slidesPerView="3">
 
-        <ion-slides loop slidesPerView="3">
-          <ion-slide>
-            <p class="count">1.8k</p>
-            <p class="catog colo1">Fashion 1</p>
-          </ion-slide>
-          <ion-slide>
-              <p class="count ">4.9k</p>
-              <p class="catog colo2">General 2</p>
-          </ion-slide>
-          <ion-slide>
-              <p class="count">3.7k</p>
-              <p class="catog colo3">Contact 3</p>
-          </ion-slide>
-          <ion-slide>
-            <p class="count">1.8k</p>
-            <p class="catog colo1">Fashion 4</p>
-          </ion-slide>
-          <ion-slide>
-            <p class="count">1.8k</p>
-            <p class="catog colo1">Fashion 5</p>
-          </ion-slide>
-          <ion-slide>
-            <p class="count">1.8k</p>
-            <p class="catog colo1">Fashion 6</p>
-          </ion-slide>
-          <ion-slide>
-            <p class="count">1.8k</p>
-            <p class="catog colo1">Fashion 7</p>
-          </ion-slide>
-       
-
-
-          <!-- <ion-slide>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-4>
+                <ion-slide>
                   <p class="count">1.8k</p>
                   <p class="catog colo1">Fashion 1</p>
-                </ion-col>
-                <ion-col col-4>
+                </ion-slide>
+                <ion-slide>
                   <p class="count ">4.9k</p>
                   <p class="catog colo2">General 2</p>
-                </ion-col>
-                <ion-col col-4>
+                </ion-slide>
+                <ion-slide>
                   <p class="count">3.7k</p>
                   <p class="catog colo3">Contact 3</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-slide>
-
-          <ion-slide>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-4>
+                </ion-slide>
+                <ion-slide>
                   <p class="count">1.8k</p>
-                  <p class="catog colo1">Lorem 4</p>
-                </ion-col>
-                <ion-col col-4>
-                  <p class="count ">4.9k</p>
-                  <p class="catog colo2">Ipsum 5</p>
-                </ion-col>
-                <ion-col col-4>
-                  <p class="count">3.7k</p>
-                  <p class="catog colo3">Contact 6</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-slide>
-          <ion-slide>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-4>
+                  <p class="catog colo1">Fashion 4</p>
+                </ion-slide>
+                <ion-slide>
+                  <p class="count">1.8k</p>
+                  <p class="catog colo1">Fashion 5</p>
+                </ion-slide>
+                <ion-slide>
+                  <p class="count">1.8k</p>
+                  <p class="catog colo1">Fashion 6</p>
+                </ion-slide>
+                <ion-slide>
                   <p class="count">1.8k</p>
                   <p class="catog colo1">Fashion 7</p>
-                </ion-col>
-                <ion-col col-4>
-                  <p class="count ">4.9k</p>
-                  <p class="catog colo2">General 8</p>
-                </ion-col>
-                <ion-col col-4>
-                  <p class="count">3.7k</p>
-                  <p class="catog colo3">Contacts 9</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-slide> -->
-        </ion-slides>
+                </ion-slide>
 
+
+
+                <!-- <ion-slide>
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col col-4>
+                              <p class="count">1.8k</p>
+                              <p class="catog colo1">Fashion 1</p>
+                            </ion-col>
+                            <ion-col col-4>
+                              <p class="count ">4.9k</p>
+                              <p class="catog colo2">General 2</p>
+                            </ion-col>
+                            <ion-col col-4>
+                              <p class="count">3.7k</p>
+                              <p class="catog colo3">Contact 3</p>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+                      </ion-slide>
+            
+                      <ion-slide>
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col col-4>
+                              <p class="count">1.8k</p>
+                              <p class="catog colo1">Lorem 4</p>
+                            </ion-col>
+                            <ion-col col-4>
+                              <p class="count ">4.9k</p>
+                              <p class="catog colo2">Ipsum 5</p>
+                            </ion-col>
+                            <ion-col col-4>
+                              <p class="count">3.7k</p>
+                              <p class="catog colo3">Contact 6</p>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+                      </ion-slide>
+                      <ion-slide>
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col col-4>
+                              <p class="count">1.8k</p>
+                              <p class="catog colo1">Fashion 7</p>
+                            </ion-col>
+                            <ion-col col-4>
+                              <p class="count ">4.9k</p>
+                              <p class="catog colo2">General 8</p>
+                            </ion-col>
+                            <ion-col col-4>
+                              <p class="count">3.7k</p>
+                              <p class="catog colo3">Contacts 9</p>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+                      </ion-slide> -->
+
+              </ion-slides>
+            </li>
+            <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
+                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+              </button>
+            </li>
+          </ul>
+
+          <!-- <button (click)="this.Slides.slideNext()" class="nextBtn"> 
+            <ion-icon name="arrow-forward">
+          </ion-icon> </button> -->
+        </div>
         <hr class="marginO">
       </div>
 

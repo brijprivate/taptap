@@ -13,6 +13,7 @@ export class HomePage {
   };
   public images: any;
   @ViewChild('mySlider') slider: Slides;
+  @ViewChild('slides') slides: Slides;
   page = 0;
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -33,6 +34,12 @@ export class HomePage {
   }
   category(){
     // this.navCtrl.push('CategoryPage');
+  }
+  next() {
+    this.slides.slideNext();
+  }
+  prev() {
+    this.slides.slidePrev();
   }
   ionViewDidLoad() {
     var _base = this;
