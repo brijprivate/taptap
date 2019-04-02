@@ -7,13 +7,16 @@ import { Chart } from 'chart.js';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  mySlideOptions = {
+    initialSlide: 1,
+    loop: true
+  };
   public images: any;
-  @ViewChild('slider') slider: Slides;
+  @ViewChild('mySlider') slider: Slides;
   page = 0;
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
   @ViewChild('lineCanvas') lineCanvas;
-
 
   doughnutChart: any;
   barChart: any;
