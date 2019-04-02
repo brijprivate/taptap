@@ -96,9 +96,16 @@ page-editprofile {
         padding-left: 0;
     }
     button.save.disable-hover.button.button-md.button-default.button-default-md {
+        // margin-top: 2em;
+        // width: 100%;
+        // background: #6354cb;
+        // text-transform: capitalize;
         margin-top: 2em;
         width: 100%;
-        background: #6354cb;
+        background: #fff;
         text-transform: capitalize;
+        color: #222;
+        border: 1px solid #222;
+        border-radius: 4px;
     }
 }

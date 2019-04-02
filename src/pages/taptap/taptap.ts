@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 })
 export class TaptapPage {
   @ViewChild('slider') slider: Slides;
-
+  @ViewChild('slides') slides: Slides;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -24,5 +24,11 @@ export class TaptapPage {
   }
   selectedTab(index) {
     this.slider.slideTo(index);
+  }
+  next() {
+    this.slides.slideNext();
+  }
+  prev() {
+    this.slides.slidePrev();
   }
 }

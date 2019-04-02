@@ -78,12 +78,21 @@ page-profile {
         fill: #6b708d;
     }
     ion-card.recordCard.m1.card.card-md {
-        background: #f1f1f1;   
+        background: #fff;
+        -webkit-box-shadow: none;
         box-shadow: none;
+        border: 1px solid #222;
+        border-radius: 4px;
     }
     ion-card.recordCard.m2.card.card-md {
-        background: #f1f1f1;
+        background: #fff;
+        -webkit-box-shadow: none;
         box-shadow: none;
+        border: 1px solid #222;
+        border-radius: 4px;
+        svg{
+            fill:#a25757
+        }
     }
     p.name {
         // width: 60px;
@@ -305,11 +314,27 @@ page-profile {
     ion-grid.custompadd.grid svg {
         height: 35px;
         width: 35px;
-        fill: #777171;
+        fill: #93ca78;
     }
     canvas.chartjs-render-monitor {
         height: 43vw !important;
         width: 85vw !important;
         margin: 16px auto !important;
+    }
+    i.fa.fa-bell {
+        position: absolute;
+        font-size: 15px;
+        z-index: 999;
+        color: #fff;
+        right: 13px;
+        top: 53px;
+    }
+    .main span {
+        position: absolute;
+        z-index: 99999;
+        color: #4c1414;
+        right: 16px;
+        right: 18px;
+        font-size: 11px;
     }
 }

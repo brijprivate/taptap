@@ -1,6 +1,6 @@
 page-recordtime {
     .toolbar-background {
-        background-color:#f3f2f7;
+        background-color:#6354cb;
       }
     .toolbar-content.toolbar-content-md {
         text-align: center;
@@ -25,14 +25,14 @@ page-recordtime {
     svg#editButton {
         height: 15px;
         width: 15px;
-        fill: #6b708d;
+        fill: #fff;
     }
     .milageTitle {
         text-align: center;
-        background: #f3f2f7;
+        background: #6354cb;
     }
     .milageTitle p {
-        color:#656a88;
+        color:#fff;
         font-size: 24px;
         margin-top: 10px;
         padding-bottom: 26px;
@@ -80,20 +80,32 @@ page-recordtime {
         border-right: 1px solid #e1e1e6 !important;
     }
     button.start.disable-hover.button.button-md.button-default.button-default-md {
-        background: #c5efed;
-        color: #56c8c7;
+        background: #fff;
+        color: #222;
+        -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: capitalize;
         width: 100%;
         height: 50px;
+        border: 1px solid #222;
+        border-radius: 4px;
     }
     button.stop.disable-hover.button.button-md.button-default.button-default-md {
-        background: #fadce2;
-        color: #ee9aad;
+        // background: #fadce2;
+        // color: #ee9aad;
+        // box-shadow: none;
+        // text-transform: capitalize;
+        // width: 100%;
+        // height: 50px;
+        background: #fff;
+        color: #222;
+        -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: capitalize;
         width: 100%;
         height: 50px;
+        border: 1px solid #222;
+        border-radius: 4px;
     }
     .segment-md .segment-button {
         height: 4.8rem;

@@ -38,6 +38,70 @@
    
 
     </div>
+    <div class="arrowbutton">
+
+        <ul class="list-inline sileUl">
+          <!-- <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
+              <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+            </button>
+          </li> -->
+          <li>
+            <ion-slides  slidesPerView="5" #slides>
+    
+              <ion-slide>
+                <p class="count">January</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count ">February</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">March</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">April</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">May</p>
+              </ion-slide>
+              <ion-slide>
+                <p class="count">June</p>
+              </ion-slide>
+              <ion-slide>
+                <p class="count">July</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">August</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">September</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">October</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">November</p>
+    
+              </ion-slide>
+              <ion-slide>
+                <p class="count">December</p>
+    
+              </ion-slide>
+            </ion-slides>
+          </li>
+          <!-- <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
+              <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+            </button>
+          </li> -->
+        </ul>
+      </div>
     <!-- <div class="main">
       <ion-grid>
         <ion-row>
@@ -77,7 +141,7 @@
   
     </div> -->
     <div class="paddi">
-      <p> <strong>7000</strong> Favourite in March 2019</p>
+      <p> <strong>7000</strong> favourites in March 2019</p>
       <!-- <ion-toolbar> -->
       <ion-segment [(ngModel)]="page" color="dark">
         <ion-segment-button value="camera" (click)="selectedTab(0)">

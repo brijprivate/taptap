@@ -29,16 +29,81 @@
 
 <ion-content>
 
-    <!-- <p class="fav">Search</p> -->
-      <div class="filter">
-          <ion-item>
-              <ion-input type="text" placeholder="search"></ion-input>
-              <ion-icon item-end name="search" ></ion-icon>
-            </ion-item>
-     
-  
-      </div>
-      <!-- <div class="main">
+  <!-- <p class="fav">Search</p> -->
+  <div class="filter">
+    <ion-item>
+      <ion-input type="text" placeholder="search"></ion-input>
+      <ion-icon item-end name="search"></ion-icon>
+    </ion-item>
+
+
+  </div>
+
+  <div class="arrowbutton">
+
+    <ul class="list-inline sileUl">
+      <!-- <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
+          <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        </button>
+      </li> -->
+      <li>
+        <ion-slides  slidesPerView="5" #slides>
+
+          <ion-slide>
+            <p class="count">January</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count ">February</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">March</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">April</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">May</p>
+          </ion-slide>
+          <ion-slide>
+            <p class="count">June</p>
+          </ion-slide>
+          <ion-slide>
+            <p class="count">July</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">August</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">September</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">October</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">November</p>
+
+          </ion-slide>
+          <ion-slide>
+            <p class="count">December</p>
+
+          </ion-slide>
+        </ion-slides>
+      </li>
+      <!-- <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
+          <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+        </button>
+      </li> -->
+    </ul>
+  </div>
+  <!-- <div class="main">
         <ion-grid>
           <ion-row>
     
@@ -76,28 +141,28 @@
         </ion-grid>
     
       </div> -->
-      <div class="paddi">
-          <p><strong>6000</strong> searches in March 2019</p>
+  <div class="paddi">
+    <p><strong>6000</strong> searches in March 2019</p>
 
-        <!-- <ion-toolbar> -->
-        <ion-segment [(ngModel)]="page" color="dark">
-          <ion-segment-button value="camera" (click)="selectedTab(0)">
-            <!-- <ion-icon name="camera"></ion-icon> -->
-            Merchant
-          </ion-segment-button>
-          <ion-segment-button value="bookmark" (click)="selectedTab(1)">
-            <!-- <ion-icon name="bookmark"></ion-icon> -->
-            Category
-          </ion-segment-button>
-    
-        </ion-segment>
-        <!-- </ion-toolbar> -->
-      </div>
-    
-      <ion-slides #slider>
-        <ion-slide>
-           
-            <!-- <div class="secondseg">
+    <!-- <ion-toolbar> -->
+    <ion-segment [(ngModel)]="page" color="dark">
+      <ion-segment-button value="camera" (click)="selectedTab(0)">
+        <!-- <ion-icon name="camera"></ion-icon> -->
+        Merchant
+      </ion-segment-button>
+      <ion-segment-button value="bookmark" (click)="selectedTab(1)">
+        <!-- <ion-icon name="bookmark"></ion-icon> -->
+        Category
+      </ion-segment-button>
+
+    </ion-segment>
+    <!-- </ion-toolbar> -->
+  </div>
+
+  <ion-slides #slider>
+    <ion-slide>
+
+      <!-- <div class="secondseg">
               <ion-segment [(ngModel)]="record" class="typeRecord">
                 <ion-segment-button value="Personal" (click)="category()">
                   Category
@@ -107,52 +172,52 @@
                 </ion-segment-button>
               </ion-segment>
             </div> -->
-      
-            <div class="scroll">
-      
-           
-            <p class="day">Mon Mar 2019</p>
-            <ion-item>
-              <ion-icon name="apps" class="merchantIcon"></ion-icon>
-              General
-              <ion-badge item-end>14:21 GMT</ion-badge>
-            </ion-item>
-            <hr>
-            <ion-item>
-              <ion-icon name="contact" class="merchantIcon"></ion-icon>
-              Max Payment
-              <ion-badge item-end>14:21 GMT</ion-badge>
-            </ion-item>
-            <hr>
-            <ion-item>
-              <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-              Amazon
-              <ion-badge item-end>14:21 GMT</ion-badge>
-            </ion-item>
-            <p class="day">Mon Jan 2019</p>
-            <ion-item>
-              <ion-icon name="apps" class="merchantIcon"></ion-icon>
-              General
-              <ion-badge item-end>14:21 GMT</ion-badge>
-            </ion-item>
-            <hr>
-            <ion-item>
-              <ion-icon name="contact" class="merchantIcon"></ion-icon>
-              Max Payment
-              <ion-badge item-end>14:21 GMT</ion-badge>
-            </ion-item>
-            <hr>
-            <ion-item>
-              <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-              Amazon
-              <ion-badge item-end>14:21 GMT</ion-badge>
-            </ion-item>
-          </div>
-          </ion-slide>
-      
-        <ion-slide>
-         
-          <!-- <div class="secondseg">
+
+      <div class="scroll">
+
+
+        <p class="day">Mon Mar 2019</p>
+        <ion-item>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          General
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <p class="day">Mon Jan 2019</p>
+        <ion-item>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          General
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+
+      <!-- <div class="secondseg">
             <ion-segment [(ngModel)]="record" class="typeRecord">
               <ion-segment-button value="Personal" (click)="category()">
                 Category
@@ -162,54 +227,54 @@
               </ion-segment-button>
             </ion-segment>
           </div> -->
-    
-          <div class="scroll">
-    
-         
-          <p class="day">Mon Mar 2019</p>
-          <ion-item>
-            <ion-icon name="apps" class="merchantIcon"></ion-icon>
-            General
-            <ion-badge item-end>14:21 GMT</ion-badge>
-          </ion-item>
-          <hr>
-          <ion-item>
-            <ion-icon name="contact" class="merchantIcon"></ion-icon>
-            Max Payment
-            <ion-badge item-end>14:21 GMT</ion-badge>
-          </ion-item>
-          <hr>
-          <ion-item>
-            <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-            Amazon
-            <ion-badge item-end>14:21 GMT</ion-badge>
-          </ion-item>
-          <p class="day">Mon Jan 2019</p>
-          <ion-item>
-            <ion-icon name="apps" class="merchantIcon"></ion-icon>
-            General
-            <ion-badge item-end>14:21 GMT</ion-badge>
-          </ion-item>
-          <hr>
-          <ion-item>
-            <ion-icon name="contact" class="merchantIcon"></ion-icon>
-            Max Payment
-            <ion-badge item-end>14:21 GMT</ion-badge>
-          </ion-item>
-          <hr>
-          <ion-item>
-            <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-            Amazon
-            <ion-badge item-end>14:21 GMT</ion-badge>
-          </ion-item>
-        </div>
-        </ion-slide>
-    
-      </ion-slides>
-    
-    
-    
-    
-    
-    
-    </ion-content>
+
+      <div class="scroll">
+
+
+        <p class="day">Mon Mar 2019</p>
+        <ion-item>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          General
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <p class="day">Mon Jan 2019</p>
+        <ion-item>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          General
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+
+
+
+
+
+
+</ion-content>

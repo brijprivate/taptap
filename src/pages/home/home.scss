@@ -132,7 +132,7 @@ page-home {
         // box-shadow: 0 3px 14px 1px #f6f5fc;
     }
     ion-segment-button.segment-button.segment-activated {
-        border-width: 0 0 1px 0 !important;
+        border-width: 0 0 0px 0 !important;
         border-radius: 0 !important;
      
     }
@@ -240,14 +240,24 @@ page-home {
             margin-bottom: 28px !important;
         }
         .btn {
+            // width: 82%;
+            // background: #6354cb;
+            // // background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
+            // color: #fff;
+            // padding: 1em 0;
+            // border-radius: 3px;
+            // margin-top: 19px;
+            // font-weight: 500;
+
             width: 82%;
-            background: #6354cb;
-            // background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
-            color: #fff;
+            background: #ffffff;
+            color: #222;
             padding: 1em 0;
             border-radius: 3px;
             margin-top: 19px;
             font-weight: 500;
+            border: 1px solid #222;
+            border-radius: 5px;
         }  
         button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
             background: transparent;
@@ -355,7 +365,7 @@ page-home {
             right: 0px;
             z-index: 9;
             background: transparent;
-            color: #6354cb;
+            color: gray;
             -webkit-box-shadow: none;
             box-shadow: none;
             font-size: 18px;
@@ -367,7 +377,7 @@ page-home {
             left: 0px;
             z-index: 9;
             background: transparent;
-            color: #6354cb;
+            color: gray;
             box-shadow: none;
             font-size: 18px;
             padding-left:5px;
@@ -393,4 +403,19 @@ page-home {
         //     border: none;
         //     background: green;
         //  }
+        i.fa.fa-bell {
+            position: absolute;
+            font-size: 15px;
+            z-index: 999;
+            color: #fff;
+            right: 13px;
+            top: 11px;
+        }
+        .main span {
+            position: absolute;
+            z-index: 99999;
+            color: #4c1414;
+            right: 18px;
+            font-size: 11px;
+        }
 }

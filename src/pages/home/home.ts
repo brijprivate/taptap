@@ -48,7 +48,7 @@ export class HomePage {
 
         type: 'doughnut',
         data: {
-          labels: ["Milage", "Time"],
+          labels: ["Total", "Total"],
           datasets: [{
 
             // label: '# of Votes',
