@@ -1,71 +1,48 @@
-<ion-header>
-  <ion-navbar>
-    <button class="buttonSvg">
-      <svg id="language" height="512pt" viewBox="0 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="m437 212.820312h-74.40625c-8.285156 0-15 6.71875-15 15 0 1.957032.386719 3.820313 1.066406 5.535157 2.203125 5.542969 7.605469 9.464843 13.933594 9.464843h74.40625c24.8125 0 45 20.1875 45 45v149.179688c0 24.8125-20.1875 45-45 45h-169.574219c-24.8125 0-45-20.1875-45-45v-164.527344c0-9.195312 7.480469-16.675781 16.675781-16.675781h33.796876c25.738281 0 46.675781-20.9375 46.675781-46.675781v-134.121094c0-41.355469-33.644531-75-75-75h-169.574219c-41.355469 0-75 33.644531-75 75v159.574219c0 41.355469 33.644531 75 75 75h117.425781v127.425781c0 41.355469 33.644531 75 75 75h169.574219c41.355469 0 75-33.644531 75-75v-149.179688c0-41.351562-33.644531-75-75-75zm-244.574219 66.753907h-117.425781c-24.8125 0-45-20.1875-45-45v-159.574219c0-24.8125 20.1875-45 45-45h169.574219c24.8125 0 45 20.1875 45 45v134.121094c0 9.195312-7.480469 16.675781-16.675781 16.675781h-33.796876c-25.738281 0-46.675781 20.9375-46.675781 46.675781zm0 0" />
-        <path
-          d="m283.6875 439.785156c48.21875 0 87.445312-39.226562 87.445312-87.441406v-4.527344h13.671876v76.96875c0 8.285156 6.714843 15 15 15 8.285156 0 15-6.714844 15-15v-76.96875h5.933593c8.285157 0 15-6.714844 15-15 0-8.28125-6.714843-15-15-15h-5.933593v-38.175781c0-8.285156-6.714844-15-15-15-8.285157 0-15 6.714844-15 15v38.175781h-71.832032c-8.285156 0-15 6.71875-15 15 0 8.285156 6.714844 15 15 15h28.160156v4.527344c0 31.671875-25.769531 57.441406-57.445312 57.441406-8.285156 0-15 6.71875-15 15 0 8.285156 6.714844 15 15 15zm0 0" />
-        <path
-          d="m219.222656 188.644531-45.628906-107.484375c-2.351562-5.539062-7.789062-9.136718-13.808594-9.136718-6.015625 0-11.453125 3.597656-13.804687 9.136718l-45.628907 107.484375c-3.238281 7.625.320313 16.429688 7.945313 19.667969 1.910156.8125 3.898437 1.195312 5.851563 1.195312 5.839843 0 11.390624-3.429687 13.816406-9.140624l8.855468-20.863282h45.933594l8.855469 20.863282c3.238281 7.625 12.042969 11.183593 19.667969 7.945312s11.183594-12.042969 7.945312-19.667969zm-69.664062-39.140625 10.226562-24.097656 10.230469 24.097656zm0 0" />
-      </svg>
-    </button>
-    <a class="helpimg">
-      <button ion-button class="mybutton" (click)="merchant()">
-        <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
-          <g>
-            <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
-            <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
-            <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
-          </g>
-        </svg>
-      </button>
-    </a>
-  </ion-navbar>
-</ion-header>
+
 
 <ion-content padding>
 
-  <div class="landscape">
-    <p class="name">JS</p>
-    <p class="userName">John Doe<button ion-button class="editProfile" (click)="editprofile()">
-        <svg version="1.1" id="pencilSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          x="0px" y="0px" viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
-          <g>
-            <g>
-              <path d="M149.996,0C67.157,0,0.001,67.161,0.001,149.997S67.157,300,149.996,300s150.003-67.163,150.003-150.003
-			S232.835,0,149.996,0z M221.302,107.945l-14.247,14.247l-29.001-28.999l-11.002,11.002l29.001,29.001l-71.132,71.126
-			l-28.999-28.996L84.92,186.328l28.999,28.999l-7.088,7.088l-0.135-0.135c-0.786,1.294-2.064,2.238-3.582,2.575l-27.043,6.03
-			c-0.405,0.091-0.817,0.135-1.224,0.135c-1.476,0-2.91-0.581-3.973-1.647c-1.364-1.359-1.932-3.322-1.512-5.203l6.027-27.035
-			c0.34-1.517,1.286-2.798,2.578-3.582l-0.137-0.137L192.3,78.941c1.678-1.675,4.404-1.675,6.082,0.005l22.922,22.917
-			C222.982,103.541,222.982,106.267,221.302,107.945z" />
-            </g>
-          </g>
-        </svg>
-      </button></p>
-    <hr class="hrLine">
-    <ion-grid>
-      <ion-row class="firstcol">
-        <ion-col col-4>
-          <p class="numb">AE3451</p>
-          <p class="identity">Unique Identity</p>
-        </ion-col>
-        <ion-col col-4>
-          <p class="numb">
-            <ion-icon name="star"></ion-icon>1243
-          </p>
-          <p class="identity">Favourite Item</p>
-        </ion-col>
-        <ion-col col-4>
-          <p class="numb">2</p>
-          <p class="identity">Paired Device</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
 
+  <div class="main">
+      <i class="fa fa-bell" aria-hidden="true"></i><span>5</span>
 
+      <ion-grid class="p0">
+        <ion-row>
+  
+          <ion-col col-3>
+            <div class="img" (click)="profileDetail()">
+              <img src="../../assets/images/modi.jpeg" alt="">
+            </div>
+          </ion-col>
+          <ion-col col-9>
+            <div >
+              <p class="name" (click)="editprofile()">Brij Kishor</p>
+              <ion-grid>
+                  <ion-row>
+            
+                    <ion-col col-4>
+                   
+                        <p class="sm"> AI32G5</p>
+                         <p class="num">UID</p>
+                      </ion-col>
+                      <ion-col col-4 (click)="merchant()">
+                     
+                          <p class="sm"> <ion-icon name="star"></ion-icon>
+                            1340</p>
+                           <p class="num">Favourite</p>
+                        </ion-col>
+                        <ion-col col-4>
+                            <p class="sm">2</p>  <p class="num">Devices</p>
+                          </ion-col>
+                      </ion-row>
+                      </ion-grid>
+            </div>
+  
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+    </div>
   <ion-card class="tapCard">
     <ion-card-content>
       <ion-item>
@@ -85,23 +62,7 @@
         Tap-Tap Pen
       </ion-item>
       <hr class="margino">
-      <!-- <ion-item>
-        <ion-icon item-start>
-          <img src="../../assets/images/pen.png" class="pen">
-        </ion-icon>
-        <span class="online">
-          <svg version="1.1" id="circlegrey" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-            style="enable-background:new 0 0 512 512;" xml:space="preserve">
-            <g>
-              <g>
-                <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
-              </g>
-            </g>
-          </svg>
-        </span>
-        Tap-Tap Key ring
-      </ion-item> -->
+     
       <hr class="margino">
       <ion-grid>
         <ion-row text-center>
@@ -118,29 +79,62 @@
     </ion-card-content>
   </ion-card>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="canvas">
+      <canvas #doughnutCanvas></canvas>
+      <div class="somedata">
+        <p><span>Time 30</span><span>Milage 3.7k</span></p>
+      </div>
+    </div>
 
   <ion-grid class="custompadd">
     <ion-row>
       <ion-col col-6 class="nopadd">
         <ion-card class="recordCard m1" (click)="recordTime()">
           <ion-card-content>
-            <img src="../../assets/images/alarm-clock.png" class="record">
+            <!-- <img src="../../assets/images/alarm-clock.png" class="record"> -->
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="97.16px" height="97.16px" viewBox="0 0 97.16 97.16" style="enable-background:new 0 0 97.16 97.16;" xml:space="preserve"
+           >
+         <g>
+           <g>
+             <path d="M48.58,0C21.793,0,0,21.793,0,48.58s21.793,48.58,48.58,48.58s48.58-21.793,48.58-48.58S75.367,0,48.58,0z M48.58,86.823
+               c-21.087,0-38.244-17.155-38.244-38.243S27.493,10.337,48.58,10.337S86.824,27.492,86.824,48.58S69.667,86.823,48.58,86.823z"/>
+             <path d="M73.898,47.08H52.066V20.83c0-2.209-1.791-4-4-4c-2.209,0-4,1.791-4,4v30.25c0,2.209,1.791,4,4,4h25.832
+               c2.209,0,4-1.791,4-4S76.107,47.08,73.898,47.08z"/>
+           </g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         </svg>
+         
             <p class="recordContent">Record Time</p>
           </ion-card-content>
         </ion-card>
@@ -148,7 +142,63 @@
       <ion-col col-6 class="nopadd">
         <ion-card class="recordCard m2" (click)="recordMilage()">
           <ion-card-content>
-            <img src="../../assets/images/fast.png" class="record">
+            <!-- <img src="../../assets/images/fast.png" class="record"> -->
+            <svg   version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+         <g>
+           <g>
+             <g>
+               <path d="M435.143,129.356c-6.796-6.795-17.463-7.797-25.407-2.384c-29.926,20.398-180.03,122.969-196.162,139.1
+                 c-23.394,23.395-23.394,61.459,0,84.854c11.697,11.696,27.063,17.545,42.427,17.545c15.364,0,30.729-5.849,42.427-17.545
+                 c16.131-16.132,118.701-166.236,139.1-196.162C442.939,146.821,441.938,136.153,435.143,129.356z M270.142,322.641
+                 c-7.797,7.799-20.486,7.799-28.283,0c-7.798-7.797-7.799-20.482-0.004-28.28c6.268-6.194,48.885-36.588,101.319-73.035
+                 C306.728,273.76,276.334,316.375,270.142,322.641z"/>
+               <path d="M92.231,401.523l-24.69,12.044C49.475,381.325,40,345.338,40,308.499c0-26.991,4.977-52.842,14.06-76.683l28.291,13.57
+                 c2.79,1.338,5.735,1.972,8.636,1.972c7.453,0,14.608-4.185,18.047-11.355c4.776-9.959,0.576-21.906-9.384-26.683l-27.932-13.398
+                 c34.717-56.62,94.784-96.095,164.283-102.505v30.081c0,11.046,8.954,20,20,20c11.046,0,20-8.954,20-20V93.402
+                 c23.828,2.169,46.884,8.237,68.771,18.117c10.065,4.545,21.912,0.066,26.457-9.999c4.545-10.068,0.068-21.913-10-26.458
+                 C328.063,60.091,292.659,52.499,256,52.499c-68.38,0-132.667,26.628-181.02,74.98C26.629,175.832,0,240.119,0,308.499
+                 c0,50.53,14.998,99.674,43.373,142.115c3.822,5.715,10.141,8.886,16.639,8.886c2.954,0,5.946-0.655,8.757-2.026l41-20
+                 c9.928-4.843,14.05-16.816,9.207-26.744C114.133,400.803,102.159,396.682,92.231,401.523z"/>
+               <path d="M489.436,203.271c-4.544-10.067-16.387-14.547-26.458-10c-10.067,4.545-14.544,16.39-9.999,26.457
+                 C465.601,247.686,472,277.553,472,308.499c0,36.894-9.506,72.939-27.625,105.218l-25.777-12.275
+                 c-9.971-4.748-21.906-0.515-26.656,9.459c-4.749,9.972-0.514,21.907,9.459,26.656l42,20c2.763,1.315,5.692,1.944,8.588,1.944
+                 c6.5,0,12.82-3.175,16.637-8.886C497.002,408.173,512,359.029,512,308.499C512,271.84,504.408,236.436,489.436,203.271z"/>
+             </g>
+           </g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         <g>
+         </g>
+         </svg>
+         
             <p class="recordContent">Record Milage</p>
           </ion-card-content>
         </ion-card>
@@ -156,84 +206,5 @@
     </ion-row>
   </ion-grid>
 
-  <!-- No statics -->
-
-  <!-- <ion-grid>
-   
-        <ion-card class="recordCard nopadd">
-          <ion-card-content>
-            <ion-item>
-              <ion-icon item-start>
-                <svg version="1.1" id="CircleDesign" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="438.533px" height="438.533px"
-                  viewBox="0 0 438.533 438.533" style="enable-background:new 0 0 438.533 438.533;" xml:space="preserve">
-                  <g>
-                    <path
-                      d="M409.133,109.203c-19.608-33.592-46.205-60.189-79.798-79.796C295.736,9.801,259.058,0,219.273,0
-                               c-39.781,0-76.47,9.801-110.063,29.407c-33.595,19.604-60.192,46.201-79.8,79.796C9.801,142.8,0,179.489,0,219.267
-                               c0,39.78,9.804,76.463,29.407,110.062c19.607,33.592,46.204,60.189,79.799,79.798c33.597,19.605,70.283,29.407,110.063,29.407
-                               s76.47-9.802,110.065-29.407c33.593-19.602,60.189-46.206,79.795-79.798c19.603-33.596,29.403-70.284,29.403-110.062
-                               C438.533,179.485,428.732,142.795,409.133,109.203z M353.742,297.208c-13.894,23.791-32.736,42.633-56.527,56.534
-                               c-23.791,13.894-49.771,20.834-77.945,20.834c-28.167,0-54.149-6.94-77.943-20.834c-23.791-13.901-42.633-32.743-56.527-56.534
-                               c-13.897-23.791-20.843-49.772-20.843-77.941c0-28.171,6.949-54.152,20.843-77.943c13.891-23.791,32.738-42.637,56.527-56.53
-                               c23.791-13.895,49.772-20.84,77.943-20.84c28.173,0,54.154,6.945,77.945,20.84c23.791,13.894,42.634,32.739,56.527,56.53
-                               c13.895,23.791,20.838,49.772,20.838,77.943C374.58,247.436,367.637,273.417,353.742,297.208z" />
-                  </g>
-                </svg>
-              </ion-icon>
-              No Tap statistics available
-            </ion-item>
-          </ion-card-content>
-        </ion-card>
-    
-  </ion-grid> -->
-
-<!-- No statics end -->
-  <ion-grid>
-    <!-- <ion-row>
-      <ion-col col-12> -->
-        <ion-card class="recordCard nopadd">
-          <ion-card-content>
-              <ion-grid>
-                <ion-row>
-                    <ion-col col-4>
-                        <canvas #doughnutCanvas></canvas>
-
-                    </ion-col>
-                    <ion-col col-4>
-                       
-                            <img src="../../assets/images/alarm-clock.png" class="records">
-                            <p class="dd">23K <span>Tapped</span></p>
-                         
-                       
-                      </ion-col>
-                      <ion-col col-4>
-                       
-                                <img src="../../assets/images/fast.png" class="records">
-                                <p class="dd">12K <span>Tapped</span></p>
-                            
-                        </ion-col>
-                </ion-row>
-              </ion-grid>
-
-
-           
-          </ion-card-content>
-        </ion-card>
-      <!-- </ion-col>
-    </ion-row> -->
-  </ion-grid>
-
-
-
-
-
-
-
-  <!-- <ion-card>
- 
-      <ion-card-content>
-        <canvas #doughnutCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-</ion-content> -->
+  
+</ion-content> 

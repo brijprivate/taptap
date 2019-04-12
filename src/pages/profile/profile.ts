@@ -43,14 +43,15 @@ export class ProfilePage {
             // label: '# of Votes',
             data: [12, 19],
             backgroundColor: [
-              '#ef4745',
-              '#6cdd4d',
+              '#a25757',
+              '#93ca79',
 
             ],
 
           }]
         },
         options: {
+          cutoutPercentage: 80,
           legend: {
               display: false,
              
@@ -60,9 +61,6 @@ export class ProfilePage {
       });
 
     }, 1000);
-
-
-
   }
 
 
@@ -87,6 +85,13 @@ export class ProfilePage {
   merchant() {
     this.navCtrl.push('MerchantPage');
   }
+  category(){
+    this.navCtrl.push('CategoryPage');
+  }   
+  profileDetail(){
+    this.navCtrl.push('ProfiledetailPage');
+  }
+  
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad ProfilePage');
   // }

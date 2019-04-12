@@ -1,0 +1,137 @@
+page-category {
+    .toolbar-background {
+        // background-color: #6354cb;
+        background-color:#f3f2f7;
+        height: 243px;
+      }
+    .toolbar-content.toolbar-content-md {
+        text-align: center;
+        padding: 2em 0 1em 0;
+    }
+    .toolbar-md {
+        position: relative;
+        padding: 0px;
+    }
+    a.helpimg {
+        top: 1em;
+        right: 0em;
+        position: absolute;
+        color: #fff;
+    }
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    svg#editButton {
+        height: 15px;
+        width: 15px;
+        fill: #6b708d;
+    }
+    svg#language {
+        height: 20px;
+        width: 20px;
+        background: #f3f2f7;
+        fill: #6b708d;
+    }
+    button.buttonSvg {
+        background: transparent;
+        float: right;
+        margin-right: 3em;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #6b708d;
+    }
+    .milageTitle {
+        text-align: center;
+        // background: #6355cb;
+        background:#f3f2f7;
+    }
+    .milageTitle p {
+        color: #fff;
+        color:#6b708d;
+        font-size: 20px;
+        margin-top: 10px;
+        padding-bottom: 45px;
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+    img.record {
+        height: 32px;
+        width: 32px;    
+        text-align: center;
+        margin: 0 auto;
+    }
+    .dashboardSection {
+        padding: 1em 2em;
+    }
+    button.save.disable-hover.button.button-md.button-default.button-default-md {
+        margin-top: 2em;
+        width: 100%;
+        background: #5c67f8;
+        text-transform: capitalize;
+    }
+    .item-inner {
+        border-bottom: none !important;
+    }
+    svg#category {
+        height: 25px;
+        width: 25px;
+        fill: #a9a8db;
+    }
+    p.general {
+        margin: 0;
+        color: #525152;
+        font-size: 18px;
+        font-weight: 400;
+    }
+    ion-grid.grid {
+        padding: 1em 1em 0 2em;
+    }
+    ion-row.listen.row p {
+        margin: 0 0 8px 0;
+        color: #4e4f58;
+        font-weight: 500;
+        font-size: 12px;
+    }
+    span.numerm {
+        color:#a5a6ad;
+    }
+    ion-checkbox.checkbox.checkbox-md {
+        float: right;
+        margin-right: 1em;
+    }
+    .checkbox-md .checkbox-checked {
+        border-color: #90f1c3;
+        background-color: #90f1c3;
+        border-radius: 50%;
+    }
+    .checkbox-md .checkbox-icon {
+        border-radius: 50%;
+    }
+hr.marginO {
+    margin: 0;
+}
+svg#fashion {
+    height: 30px;
+    width: 30px;
+    fill: #cb76ab;
+}
+svg#contact {
+    height: 25px;
+    width: 25px;
+    fill: #a080da;
+}
+svg#pk {
+    height: 25px;
+    width: 25px;
+    fill: #63b0b7;
+}
+ion-grid.grid:hover {
+    box-shadow: 1px 1px 15px 7px #f2f2f2;
+}
+svg#verified {
+    height: 17px;
+    width: 32px;
+}
+}

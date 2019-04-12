@@ -17,7 +17,9 @@ export class PairdevicePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  nfcKey(){
+    this.navCtrl.push('NfckeyPage'); 
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad PairdevicePage');
   }
