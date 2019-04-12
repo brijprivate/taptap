@@ -31,10 +31,10 @@
     <ion-grid>
         <ion-row>
           <ion-col col-6>
-            <p class="typem">Personal</p>
+            <p class="typem">{{recordtype}}</p>
           </ion-col>
           <ion-col col-6>
-            <p class="typel">04/03/19</p>
+            <p class="typel">{{presentDate | date:'dd/MM/yyyy'}}</p>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -51,7 +51,7 @@
             </g>
           </svg>
         </span>
-        11:30:21
+        00:00:00
       </p>
       <p class="typeop">
         <span class="online">
@@ -64,18 +64,18 @@
             </g>
           </svg>
         </span>
-        12:54:55
+        {{endtime}}
       </p>
     </div>
       <hr class="mTop">
       <ion-list>
         <p class="title">Time title</p>
         <ion-item>
-          <ion-input type="text" placeholder="Time is money"></ion-input>
+          <ion-input type="text" placeholder="Time is money" [(ngModel)]="title"></ion-input>
         </ion-item>
         <p class="title">Time description</p>
         <ion-item>
-          <ion-input type="text" placeholder="Trying to record space time and inventing time machine"></ion-input>
+          <ion-input type="text" placeholder="Trying to record space time and inventing time machine" [(ngModel)]="description"></ion-input>
         </ion-item>
       </ion-list>
       <ion-grid class="saveGrid">
@@ -89,7 +89,7 @@
                  c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"/>
              </g>
     </svg>                 </button></ion-col>
-            <ion-col col-10><button ion-button class="saveButton">Save</button></ion-col>
+            <ion-col col-10><button ion-button class="saveButton" (click)="saveTime()">Save</button></ion-col>
     
           </ion-row>
         </ion-grid>

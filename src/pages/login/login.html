@@ -15,7 +15,7 @@
   <p class="sub">Please Login to continue</p>
   <div class="social">
     <ion-buttons>
-      <button ion-button (click)="someThingLikeLogOut()">
+      <button ion-button (click)="fbLogin()">
 
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
           x="0px" y="0px" viewBox="0 0 455.73 455.73" style="enable-background:new 0 0 455.73 455.73;"
@@ -29,7 +29,7 @@
       </button>
     </ion-buttons>
     <ion-buttons>
-      <button ion-button (click)="someThingLikeLogOut()">
+      <button ion-button (click)="googlelogin()">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
           x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
           <path style="fill:#FBBB00;" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256
@@ -71,17 +71,17 @@
       <ion-label floating>Email Address</ion-label>
       <ion-icon name="mail" item-left></ion-icon>
 
-      <ion-input type="text"> </ion-input>
+      <ion-input type="text" [(ngModel)]="email"> </ion-input>
 
     </ion-item>
     <ion-item>
       <ion-label floating>Password</ion-label>
       <ion-icon name="lock" item-left></ion-icon>
 
-      <ion-input type="Password"> </ion-input>
+      <ion-input type="Password" [(ngModel)]="password"> </ion-input>
 
     </ion-item>
-    <button  class="signUp">Login</button>
+    <button  class="signUp" (click)="login()">Login</button>
 
   </div>
   <div class="ftr">

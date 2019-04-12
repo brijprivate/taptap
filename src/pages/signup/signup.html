@@ -63,7 +63,7 @@
       <ion-label floating>Name</ion-label>
       <ion-icon name="person" item-left></ion-icon>
 
-      <ion-input type="text"> </ion-input>
+      <ion-input type="text" [(ngModel)]="name" > </ion-input>
 
     </ion-item>
 
@@ -71,21 +71,21 @@
       <ion-label floating>Email Address</ion-label>
       <ion-icon name="mail" item-left></ion-icon>
 
-      <ion-input type="text"> </ion-input>
+      <ion-input type="text" [(ngModel)]="email" > </ion-input>
 
     </ion-item>
     <ion-item>
       <ion-label floating>Password</ion-label>
       <ion-icon name="lock" item-left></ion-icon>
 
-      <ion-input type="Password"> </ion-input>
+      <ion-input type="Password" [(ngModel)]="password" > </ion-input>
 
     </ion-item>
-    <button (click)="dashboard()" class="signUp">Signup</button>
+    <button (click)="verify()" class="signUp">Signup</button>
 
   </div>
   <div class="ftr">
-    <p (click)="verifyOtp()">Already have account ? <span (click)="login()">Login</span></p>
+    <p >Already have account ? <span (click)="login()">Login</span></p>
     <p class="nmar">by creating your account you agree to our <span class="tnc nmar">Terms and condition</span></p>
   </div>
 </ion-content>
