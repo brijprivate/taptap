@@ -5,14 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    // HomePage,
     // SavemilagePage,
     // SaveTimePage,
     
@@ -25,7 +25,7 @@ import { HomePage } from '../pages/home/home';
     
   entryComponents: [  
     MyApp,
-    HomePage,
+    // HomePage,
     // SavemilagePage,
     // SaveTimePage,
    
