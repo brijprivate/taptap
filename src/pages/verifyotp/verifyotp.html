@@ -12,14 +12,14 @@
     <p class="verify">Verification</p>
     <p class="subContent">Please enter the verification code we sent you to your email address</p>
     <div class="input">
-      <ion-input type="number" placeholder="otp" maxlength="4"></ion-input>
+      <ion-input type="number" placeholder="otp" maxlength="4" [(ngModel)]="otp"></ion-input>
     </div>
    
 
     <ion-grid class="buttonGrid">
         <ion-row>
           <ion-col col-7>
-            <button ion-button class="verifyCode">Verify code</button>
+            <button ion-button class="verifyCode" (click)="otpVerification()">Verify code</button>
           </ion-col>
           <ion-col col-5>
               <button ion-button class="resend" outline>Resend</button>

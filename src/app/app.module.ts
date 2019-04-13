@@ -5,7 +5,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+<<<<<<< HEAD
 // import { HomePage } from '../pages/home/home';
+=======
+import { HomePage } from '../pages/home/home';
+import { HttpProvider } from '../providers/http/http';
+import { LoginsignupProvider } from '../providers/loginsignup/loginsignup';
+import { SharedserviceProvider } from '../providers/sharedservice/sharedservice';
+import { NfctagProvider } from '../providers/nfctag/nfctag';
+import { Facebook } from '@ionic-native/facebook';
+import { Network } from '@ionic-native/network';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { NFC, Ndef } from '@ionic-native/nfc';
+>>>>>>> e1fcec351ea87d32d4e3ad98044b319c48886be8
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
 
@@ -20,6 +33,8 @@ import { MyApp } from './app.component';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom ',tabsHideOnSubPages: true}),
+    HttpModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
     
@@ -32,8 +47,16 @@ import { MyApp } from './app.component';
   ],
   providers: [
     StatusBar,
+    SharedserviceProvider,
+    HttpProvider,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LoginsignupProvider,
+    NfctagProvider,
+    Facebook,
+    Network,
+    NFC,
+    Ndef
   ]
 })
 export class AppModule {}

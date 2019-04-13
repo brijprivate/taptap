@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { PairdevicePage } from '../pairdevice/pairdevice';
+import { NfctagProvider } from '../../providers/nfctag/nfctag';
+import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 
 /**
  * Generated class for the ProfilePage page.
@@ -19,16 +22,23 @@ export class ProfilePage {
   @ViewChild('doughnutCanvas') doughnutCanvas;
   @ViewChild('lineCanvas') lineCanvas;
 
-
   doughnutChart: any;
   barChart: any;
-
   lineChart: any;
-
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  public userId:any;
+  public userName:any;
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public nfctagProvider:NfctagProvider,
+    public loginsignupProvider:LoginsignupProvider,
+    public loading:LoadingController) 
+    {
+      this.userId = localStorage.getItem("userId");
+      if(this.userId){
+        this.getpairedDevice();
+        this.getprofiledata();
+      }
+    }
 
   ionViewDidLoad() {
     var _base = this;
@@ -45,19 +55,15 @@ export class ProfilePage {
             backgroundColor: [
               '#a25757',
               '#93ca79',
-
             ],
-
           }]
         },
         options: {
           cutoutPercentage: 80,
           legend: {
-              display: false,
-             
+              display: false,            
           }
-      }
-
+        }
       });
 
     }, 1000);
@@ -92,8 +98,33 @@ export class ProfilePage {
     this.navCtrl.push('ProfiledetailPage');
   }
   
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad ProfilePage');
-  // }
+ //Get paired devices...
+ getpairedDevice(){
+   let _base  = this;
+   this.nfctagProvider.getpairdevice(this.userId).then(function(success:any){
+     console.log("paired devices--------------?>>>>>>>>>");
+     console.log(success);
+   },function(err){
+     console.log(err);
+   })
+ }
 
+  //Get profile data...
+  getprofiledata(){
+    let _base = this;
+    let loader = this.loading.create({
+      content:"Please wait..."
+    });
+    loader.present();
+    this.loginsignupProvider.getProfile(this.userId).then(function(success:any){
+      console.log(success);
+      loader.dismiss();
+      if(success){
+        _base.userName = success.result.name;
+      }
+    },function(err){
+      loader.dismiss();
+      console.log(err);
+    })
+  }
 }

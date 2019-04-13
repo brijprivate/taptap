@@ -33,13 +33,13 @@
       <ion-list class="listView">
           <ion-item>
             <ion-label floating>Enter Pairing Code</ion-label>
-            <ion-input type="text" value=""></ion-input>
+            <ion-input type="text" [(ngModel)]="paircode"></ion-input>
           </ion-item>      
         </ion-list>
         <ion-grid>
             <ion-row class="centerPlace">
               <ion-col col-12>
-                  <button ion-button class="pairbutton" (click)="nfcKey()">Pair Device</button>
+                  <button ion-button class="pairbutton"  (click)="pairDevice()">Pair Device</button>
               </ion-col>
             </ion-row>
             </ion-grid>

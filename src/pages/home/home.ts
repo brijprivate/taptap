@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
+import { NavController, Slides, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 
 @Component({
   selector: 'page-home',
@@ -21,10 +22,19 @@ export class HomePage {
 
   doughnutChart: any;
   barChart: any;
+  
+  public userId:any;
+  public userName:any;
 
   lineChart: any;
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public loginsignupProvider:LoginsignupProvider) 
+  {
+    this.userId = localStorage.getItem("userId");
+    if(this.userId){
+      this.getprofiledata();
+    }
   }
   selectedTab(index) {
     this.slider.slideTo(index);
@@ -66,13 +76,23 @@ export class HomePage {
           legend: {
 
               display: false,
-             
           }
       }
-
       });
 
     }, 1000);
   }
 
+   //Get profile data...
+   getprofiledata(){
+    let _base = this;
+    this.loginsignupProvider.getProfile(this.userId).then(function(success:any){
+      console.log(success);
+      if(success){
+        _base.userName = success.result.name;
+      }
+    },function(err){
+      console.log(err);
+    })
+  }
 }
