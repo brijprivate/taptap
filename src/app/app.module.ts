@@ -15,6 +15,8 @@ import { Network } from '@ionic-native/network';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { NFC, Ndef } from '@ionic-native/nfc';
+import { Camera } from '@ionic-native/camera';
+import { Crop } from '@ionic-native/crop';
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
 
@@ -52,7 +54,9 @@ import { NFC, Ndef } from '@ionic-native/nfc';
     Facebook,
     Network,
     NFC,
-    Ndef
+    Ndef,
+    Crop,
+    Camera,
   ]
 })
 export class AppModule {}

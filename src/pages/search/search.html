@@ -47,7 +47,7 @@
         </button>
       </li> -->
       <li>
-        <ion-slides  slidesPerView="5" #slides>
+        <ion-slides slidesPerView="5" #slides>
 
           <ion-slide>
             <p class="count">January</p>
@@ -146,11 +146,11 @@
 
     <!-- <ion-toolbar> -->
     <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="camera" (click)="selectedTab(0)">
+      <ion-segment-button value="camera" (click)="merchant()">
         <!-- <ion-icon name="camera"></ion-icon> -->
         Merchant
       </ion-segment-button>
-      <ion-segment-button value="bookmark" (click)="selectedTab(1)">
+      <ion-segment-button value="bookmark" (click)="category()">
         <!-- <ion-icon name="bookmark"></ion-icon> -->
         Category
       </ion-segment-button>
@@ -175,45 +175,51 @@
 
       <div class="scroll">
 
+        <div *ngFor="let item of tapItems">
+          <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
+          <ion-item>
+            <ion-icon name="apps" class="merchantIcon"></ion-icon>
+            {{item.purpose}}
+            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+          </ion-item>
+          <hr>
 
-        <p class="day">Mon Mar 2019</p>
-        <ion-item>
-          <ion-icon name="apps" class="merchantIcon"></ion-icon>
-          General
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="contact" class="merchantIcon"></ion-icon>
-          Max Payment
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-          Amazon
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <p class="day">Mon Jan 2019</p>
-        <ion-item>
-          <ion-icon name="apps" class="merchantIcon"></ion-icon>
-          General
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="contact" class="merchantIcon"></ion-icon>
-          Max Payment
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-          Amazon
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
+        </div>
       </div>
+
+      <!-- for merchant -->
+      <div class="scroll" *ngIf="ifmerchant ==true">
+        <div *ngFor="let item of tapItems">
+          <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
+          <ion-item>
+            <ion-icon name="apps" class="merchantIcon"></ion-icon>
+            {{item.fashionId.storeId.name}}
+            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+          </ion-item>
+          <hr>
+        </div>
+      </div>
+      <!-- for merchant -->
+
+      <!-- for month -->
+      <div class="scroll" *ngIf="ifmonth ==true">
+        <div *ngFor="let item of tapItems">
+          <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
+          <ion-item>
+            <ion-icon name="apps" class="merchantIcon"></ion-icon>
+            {{item.fashionId.storeId.name}}
+            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+          </ion-item>
+          <hr>
+        </div>
+      </div>
+      <!-- for month -->
+
+
+
+
     </ion-slide>
+
 
     <ion-slide>
 
@@ -278,3 +284,35 @@
 
 
 </ion-content>
+
+
+
+<!--<ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <p class="day">Mon Jan 2019</p>
+        <ion-item>
+          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          General
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="contact" class="merchantIcon"></ion-icon>
+          Max Payment
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item>
+        <hr>
+        <ion-item>
+          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
+          Amazon
+          <ion-badge item-end>14:21 GMT</ion-badge>
+        </ion-item> -->

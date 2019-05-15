@@ -73,4 +73,17 @@ export class NfctagProvider {
       });
     }
 
+      //API call for tap item...
+      createTap(data) {
+        let _base = this;
+        return new Promise(function (resolve, reject) {
+          // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+          _base.http.post(_base.apiUrl + 'tapped/create',data)
+            .then(function (success) {
+              resolve(success);
+            }, function (error) {
+              reject(error);
+            });
+        });
+      }
 }

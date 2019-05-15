@@ -1,0 +1,304 @@
+<!--
+  Generated template for the BusinessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div class="head">
+    <div class="mdl">
+      <ion-icon name="calendar" ></ion-icon>
+
+      <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+      <p>Developers conference</p>
+      <ion-icon name="heart"></ion-icon>
+    </div>
+  </div>
+  <!-- <div class="landscape"> -->
+  <!-- <img src="../../assets/images/Logo_after.png" alt="">
+    <button type="button" class="close" aria-label="Close">
+        <ion-icon name="camera"></ion-icon> Upload
+  
+      upload
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+
+  <!-- </div> -->
+  <div class="imgss">
+    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+    <ion-slides>
+      <ion-slide>
+        <img src="../../assets/images/a.jpeg">
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/images/a.jpeg">
+      </ion-slide>
+      <!-- <ion-slide>
+            <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
+          </ion-slide> -->
+    </ion-slides>
+  </div>
+
+
+  <!-- event start -->
+  <div class="showcontent" *ngIf = "eventdata.eventId">
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="calendar"></ion-icon>
+        Event Title
+      </p>
+      <p class="data">{{eventdata.eventId.event_title}}</p>
+    </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Event description
+      </p>
+      <p class="data">{{eventdata.eventId.description}}</p>
+    </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="pin"></ion-icon>
+        Location
+      </p>
+      <p class="data"> {{eventdata.eventId.location}}</p>
+    </div>
+    <div class="cont marginadj">
+      <p class="header">
+        <ion-icon name="clock"></ion-icon>
+        Timings
+      </p>
+      <!-- <p class="data">Meeting, durgapur, 2019</p> -->
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <div class="time">
+              <span>start</span>
+              <p class="header">{{eventdata.eventId.startTime | date:'dd'}}th {{thisMonth}} {{eventdata.eventId.startTime | date:'yyyy'}}</p>
+              <p class="header">{{eventdata.eventId.startTime | date:'HH:mm'}}</p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <div class="time">
+              <span>End</span>
+              <p class="header">{{eventdata.eventId.endTime | date:'dd'}}th {{thisMonth}} {{eventdata.eventId.endTime | date:'yyyy'}}</p>
+              <p class="header">{{eventdata.eventId.endTime | date:'HH:mm'}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+ <!-- event end -->
+
+  <!-- contact start -->
+  <div class="showcontent" *ngIf = "eventdata.contactId">
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="calendar"></ion-icon>
+        Name
+      </p>
+      <p class="data">{{eventdata.contactId.name}}</p>
+    </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Company
+      </p>
+      <p class="data">{{eventdata.contactId.company}}</p>
+    </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="pin"></ion-icon>
+        Location
+      </p>
+      <p class="data"> {{eventdata.contactId.address}}</p>
+    </div>
+
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Contact No
+      </p>
+      <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+    </div>
+
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Website
+      </p>
+      <p class="data">{{eventdata.contactId.link}}</p>
+    </div>
+  </div>
+ <!-- contact end -->
+
+
+  <!-- sports start -->
+  <div class="showcontent" *ngIf = "eventdata.sportId">
+      <div class="cont">
+          <p class="header">
+            <ion-icon name="calendar"></ion-icon>
+            Sport Name
+          </p>
+          <p class="data">{{eventdata.sportId.sport_name}}</p>
+        </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="calendar"></ion-icon>
+        Club Name
+      </p>
+      <p class="data">{{eventdata.sportId.club_name}}</p>
+    </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Description
+      </p>
+      <p class="data">{{eventdata.sportId.company}}</p>
+    </div>
+
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Website
+      </p>
+      <p class="data">{{eventdata.sportId.webLink}}</p>
+    </div>
+  </div>
+ <!-- sports end -->
+
+  <!-- general start -->
+  <div class="showcontent" *ngIf = "eventdata.generalId">
+     
+   
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Description
+      </p>
+      <p class="data">{{eventdata.generalId.description}}</p>
+    </div>
+
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Website
+      </p>
+      <p class="data">{{eventdata.generalId.weblink}}</p>
+    </div>
+  </div>
+ <!-- general end -->
+
+  <!-- Groceries start -->
+  <div class="showcontent" *ngIf = "eventdata.groceryId">
+     
+   
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="paper"></ion-icon>
+          Product Name
+        </p>
+        <p class="data">{{eventdata.groceryId.product_name}}</p>
+      </div>
+
+      <div class="cont">
+          <p class="header">
+            <ion-icon name="paper"></ion-icon>
+            Description
+          </p>
+          <p class="data">{{eventdata.groceryId.description}}</p>
+        </div>
+  
+        <div class="cont">
+            <p class="header">
+              <ion-icon name="paper"></ion-icon>
+              Quantity
+            </p>
+            <p class="data">{{eventdata.groceryId.quantity}}</p>
+          </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="paper"></ion-icon>
+          Price
+        </p>
+        <p class="data">{{eventdata.groceryId.price}}</p>
+      </div>
+
+    </div>
+   <!-- Groceries end -->
+
+
+   <!-- Fashion start -->
+  <div class="showcontent" *ngIf = "eventdata.groceryId">
+     
+   
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="paper"></ion-icon>
+          Product
+        </p>
+        <p class="data">{{eventdata.fashionId.name}}</p>
+      </div>
+
+      <div class="cont">
+          <p class="header">
+            <ion-icon name="paper"></ion-icon>
+            Description
+          </p>
+          <p class="data">{{eventdata.fashionId.description}}</p>
+        </div>
+  
+        <div class="cont">
+            <p class="header">
+              <ion-icon name="paper"></ion-icon>
+              Size
+            </p>
+            <p class="data">{{eventdata.fashionId.size}}</p>
+          </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="paper"></ion-icon>
+          Price
+        </p>
+        <p class="data">{{eventdata.fashionId.price}}</p>
+      </div>
+
+      <div class="cont">
+          <p class="header">
+            <ion-icon name="paper"></ion-icon>
+            Website
+          </p>
+          <p class="data">{{eventdata.fashionId.weblink}}</p>
+        </div>
+    </div>
+   <!-- Fashion end -->
+
+  <ion-grid class="saveGrid">
+    <ion-row>
+
+      <ion-col col-6>
+        <button class="share" outline>
+          <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+        </button> </ion-col>
+      <ion-col col-6>
+        <button class="share" outline>
+          <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+        </button> </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

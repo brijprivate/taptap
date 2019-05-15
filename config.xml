@@ -91,4 +91,9 @@
         <variable name="APP_NAME" value="TapTap" />
     </plugin>
     <plugin name="phonegap-nfc" spec="^1.0.3" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-filepath" spec="^1.5.1" />
+    <plugin name="cordova-plugin-crop" spec="^0.4.0" />
 </widget>
