@@ -1,0 +1,249 @@
+page-tapdetails {
+    .head {
+        height: 14vh;
+        background: #f8f8f8;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #222;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 14px;
+            ion-icon.icon.icon-md.ion-md-arrow-round-back {
+                color: gray !important;
+            }
+        }   
+        ion-icon.icon.icon-md.ion-md-heart{
+            margin-right: 7px;
+            font-size: 26px;
+            color: #de1010;
+            vertical-align: middle;
+            margin-top: 15px;
+            float:right;
+        }
+        ion-icon.icon.icon-md {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+            margin-left: 1em;
+        }
+    }
+    ion-slide.swiper-slide {
+        // width: 99px !important;
+    }
+    ion-datetime.datetime.datetime-md {
+        color: #222;
+    }
+    
+    ion-icon.icon.icon-md.ion-ios-briefcase-outline {
+        margin-right: 10px;
+        font-size: 26px;
+        color: #222;
+    }
+    ion-icon.icon.icon-md.ion-md-time.item-icon {
+        font-size: 29px;
+        margin: -11px 5px 0px -15px;
+    }
+    
+    .scroll-content {
+        padding: 0 !important;
+    }
+    .landscape {
+        padding: 1em;
+        background: #f8f8f8;
+        text-align: center;
+        margin: -1em 1em 0 1em;
+        -webkit-box-shadow: -1px 3px 10px 0px #d6d6d6;
+        box-shadow: -1px 3px 10px 0px #d6d6d6;
+        img {
+            height: 17vh;
+            width: 17vh;
+        }
+    }
+    ion-item ion-icon.icon.icon-md {
+        padding: 0;
+        margin-top: 25px;
+        font-size: 23px;
+        // margin-right: -18px;
+        color: #9093a9;
+    }
+    p.inputTitle {
+        color: #807f8c;
+        font-weight: 500;
+        margin: 10px 0 0px 29px;
+    }
+    ion-list.mobileSp.list.list-md {
+        padding: 1em 2em ;
+    }
+    .mobileSp ion-label {
+        margin-top: 0;
+        font-weight: 400;
+        font-size: 15px;
+        color: #83889e !important;
+    }
+
+    
+    button.save.disable-hover.button.button-md.button-default.button-default-md {
+        margin-left: 1em;
+        box-shadow: none;
+        height: 46px;
+        width: 100%;
+        background: #fff !important;
+        text-transform: capitalize;
+        color: #222 !important;
+        border: 1px solid #222 !important;
+        border-radius: 4px !important;
+    }
+    svg#arropre {
+        height: 20px;
+        width: 20px;
+        fill: #222;
+    }
+    button.previous.disable-hover.button.button-md.button-default.button-default-md {
+        height: 46px;
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid #222;
+        border-radius: 5px;
+        color: #222;
+    }
+   
+    ion-icon.icon.icon-md.ion-md-create.item-icon {
+        font-size: 13px;
+    }
+    ion-grid.saveGrid.grid {
+      text-align: center;
+      margin: 1em 0;
+    }
+    ion-icon.icon.icon-md.ion-md-close.item-icon {
+        font-size: 13px;
+    }
+    button.upload.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        color: #222;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 1px solid #222;
+        margin-top: 2.6em;
+        font-size: 12px;
+        width: 86%;
+    }
+    ion-icon.icon.icon-md.ion-md-camera {
+        margin-right: 10px;
+      }
+
+    .imgss {
+        height: 20vh;
+        width: 20vh;
+        margin: auto;
+        padding: 1em;
+        background: #f8f8f8;
+        border-radius: 19px;
+        margin-top: -2em;
+        box-shadow: -1px 3px 10px 0px #d6d6d68c;
+        position: relative;
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .slide-zoom {
+            height: 100%;
+        }
+        .swiper-container{
+            // border-radius: 50%;
+        }
+        i.fa.fa-chevron-circle-left {
+            z-index: 99;
+            position: absolute;
+            top: 43%;
+            left: 0;
+            color: #757171;
+        }
+        i.fa.fa-chevron-circle-right {
+            position: absolute;
+            top: 43%;
+            right: 0;
+            color: #757171;
+        }
+    }
+    p.header {
+        color: #7c8198;
+        margin: 4px;
+    }
+    .showcontent {
+        padding: 13px 0 0;    }
+    p.data {
+    color: #222222db;
+    font-size: 15px;
+    margin: 8px 0;
+    }
+    .cont {
+        border-bottom: 1px solid #d8d0d030;
+        padding: 0 2em;
+        margin:1.2em 1em 9px;
+                ion-icon {
+            margin-right: 13px;
+            font-size: 22px;
+            vertical-align: middle;
+        }
+    }
+    .time {
+        background: #e6ecfe;
+        padding: 7px 5px;
+        border-radius: 4px;
+        text-align: center;
+    }
+    .time span {
+        position: absolute;
+        top: -2px;
+        left: 20px;
+        color: #fff;
+        background: #1185e0;
+        border-radius: 3px;
+        line-height: 15px;
+        padding: 0 3px;
+        font-size: 12px;
+    }
+    .time:after {
+        content: "";
+        background: #fff;
+        height: 11px;
+        width: 11px;
+        position: absolute;
+        border-radius: 50%;
+        top: 41%;
+        left: -1px;
+    }
+    .time:before {
+        content: "";
+        background: #fff;
+        height: 11px;
+        width: 11px;
+        position: absolute;
+        border-radius: 50%;
+        top: 41%;
+        right: 0;
+    }
+    button.share {
+        color: #6b708d;
+        border: 1px solid #6b708d;
+        background: transparent;
+        border-radius: 3px;
+        height: 42px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .cont.marginadj {
+        margin: 0 0px 0 7px;
+    }
+
+}

@@ -1,0 +1,83 @@
+page-tapmodal {
+
+    .main-view{
+        background: transparent;
+      }
+      ion-app.md .scroll-content {
+        padding: 0;
+    }
+      .overlay {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: .5;
+        background-color: #333;
+      }
+      .modal_content {
+        position: absolute;
+        top: calc(50% - (50%/2));
+        left: 0;
+        right: 0;
+        width: 80%;
+        height: 50%;
+        // padding: 10px;
+        z-index: 100;
+        margin: 0 auto;
+        // padding: 10px;
+        color: #333;
+        background: #fff !important;
+          background: -moz-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+        background: -webkit-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+        background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+        border-radius: 5px;
+        box-shadow: 0 2px 3px rgba(51, 51, 51, .35);
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        overflow: hidden;
+        text-align: center;
+          }
+      p.apr {
+        margin: 0;
+        color: #fff;
+        text-align: center;
+        font-size: 27px;
+        padding: 12px;
+        background: #1e1e1e;
+    }
+    ion-badge.badge.badge-md {
+        background: none;
+        color: #4e4c4c;
+        font-size: 14px;
+    }
+    ion-item.item.item-block.item-md {
+        padding: 12px;
+        font-size: 17px;
+    }
+    .near {
+        width: 100%;
+        height: auto;
+        margin: 14px 0;
+    }
+    .modal_content.backgrnd {
+        background: #1e1e1e !important;
+    }
+    .right {
+        height: 95px;
+        width: 95px;
+        margin: 10px 0;
+    }
+    .modal_content button {
+        background: #fff;
+        border: none;
+        box-shadow: none;
+        color: #333;
+        width: 45%;
+        margin: 10px auto;
+        border-radius: 21px;
+        border: 1px solid #333;
+    }
+
+}

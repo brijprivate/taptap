@@ -48,14 +48,14 @@
 
                 <ion-col col-4>
 
-                  <p class="sm"> AI32G5</p>
+                  <p class="sm"> {{userId}}</p>
                   <p class="num">UID</p>
                 </ion-col>
                 <ion-col col-4>
 
                   <p class="sm">
                     <ion-icon name="star"></ion-icon>
-                    1340
+                    {{favourite}}
                   </p>
                   <p class="num">Favourite</p>
                 </ion-col>
@@ -94,7 +94,7 @@
       <div class="canvas">
         <canvas #doughnutCanvas></canvas>
         <div class="somedata">
-          <p><span>Today 30</span><span>Total 3.7k</span></p>
+          <p><span>Today {{todaysTap}}</span><span>Total {{totalcount}}</span></p>
         </div>
         <hr class="marginO">
         <!-- <ion-grid>
@@ -124,33 +124,37 @@
               <ion-slides loop slidesPerView="3" #slides>
 
                 <ion-slide>
-                  <p class="count">1.8k</p>
+                  <p class="count">{{fashion}}</p>
                   <p class="catog colo1">Fashion</p>
                 </ion-slide>
                 <ion-slide>
-                  <p class="count ">4.9k</p>
+                  <p class="count ">{{general}}</p>
                   <p class="catog colo2">General</p>
                 </ion-slide>
                 <ion-slide>
-                  <p class="count">3.7k</p>
+                  <p class="count">{{contact}}</p>
                   <p class="catog colo3">Contact</p>
                 </ion-slide>
                 <ion-slide>
-                  <p class="count">1.4k</p>
+                  <p class="count">{{groceries}}</p>
                   
                   <p class="catog colo1">Groceries</p>
                 </ion-slide>
                 <ion-slide>
-                  <p class="count">1.6k</p>
+                  <p class="count">{{event}}</p>
                   <p class="catog colo1">Event</p>
                 </ion-slide>
                 <ion-slide>
-                  <p class="count">1.1k</p>
-                  <p class="catog colo1">Identification</p>
+                  <p class="count">{{buisness}}</p>
+                  <p class="catog colo1">Buisness</p>
                 </ion-slide>
                 <ion-slide>
-                  <p class="count">1.3k</p>
+                  <p class="count">{{sports}}</p>
                   <p class="catog colo1">Sports</p>
+                </ion-slide>
+                <ion-slide>
+                  <p class="count">{{favourite}}</p>
+                  <p class="catog colo1">Favourite</p>
                 </ion-slide>
               </ion-slides>
             </li>
@@ -226,7 +230,7 @@
         <hr class="marginO">
       </div>
 
-      <button class="btn">
+      <button class="btn" (click)="tapItem()">
         <ion-icon name="add"></ion-icon>
         Tap new items
       </button>
@@ -264,23 +268,25 @@
         </ion-segment>
       </div> -->
 
-      <div class="scroll">
-
-
-        <p class="day">Mon Mar 2019</p>
-        <ion-item>
+     
+      <div class="scroll" >
+         
+          <div *ngFor="let item of tapItems">
+        <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
+        
+        <ion-item (click)="gotoDetails(item)">
           <ion-icon name="apps" class="merchantIcon"></ion-icon>
-          General
-          <ion-badge item-end>14:21 GMT</ion-badge>
+          {{item.purpose}}
+          <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
         </ion-item>
         <hr>
-        <ion-item>
+        <!-- <ion-item>
           <ion-icon name="contact" class="merchantIcon"></ion-icon>
           Max Payment
           <ion-badge item-end>14:21 GMT</ion-badge>
         </ion-item>
-        <hr>
-        <ion-item>
+        <hr> -->
+        <!-- <ion-item>
           <ion-icon name="desktop" class="merchantIcon"></ion-icon>
           Amazon
           <ion-badge item-end>14:21 GMT</ion-badge>
@@ -302,8 +308,9 @@
           <ion-icon name="desktop" class="merchantIcon"></ion-icon>
           Amazon
           <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
+        </ion-item> -->
       </div>
+    </div>
     </ion-slide>
 
   </ion-slides>

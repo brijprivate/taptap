@@ -62,7 +62,7 @@ export class PairdevicePage {
           console.log("tag data", tagContent);
           console.log("whole data", data.tag);
           console.log("tag id", s);
-          this.tapData = s;
+          this.tapData = s.substring(0, s.length - 1);
           return s.substring(0, s.length - 1);
           
           } 
