@@ -35,7 +35,7 @@ export class MyApp {
       splashScreen.hide();
 
       _base.deeplinks.route({
-        '/': {},
+        '/product': {},
       }).subscribe(match => {
         // match.$route - the route we matched, which is the matched entry from the arguments to route()
         // match.$args - the args passed in the link
