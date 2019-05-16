@@ -43,6 +43,7 @@ export class MyApp {
         console.log('Successfully matched route', match);
         console.log(match.$args.category);
         console.log(match.$args.id);
+        alert(match.$args.category+"-"+match.$args.id)
       }, nomatch => {
         // nomatch.$link - the full link data
         console.error('Got a deeplink that didn\'t match', nomatch);
