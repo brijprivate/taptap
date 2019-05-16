@@ -24,7 +24,7 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 @NgModule({
   declarations: [
     MyApp,
-    // HomePage,
+    HomePage,
     // SavemilagePage,
     // SaveTimePage,
     
@@ -39,7 +39,7 @@ import { Deeplinks } from '@ionic-native/deeplinks';
     
   entryComponents: [  
     MyApp,
-    // HomePage,
+    HomePage,
     // SavemilagePage,
     // SaveTimePage,
    
