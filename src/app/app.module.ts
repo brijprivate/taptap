@@ -19,6 +19,7 @@ import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { Crop } from '@ionic-native/crop';
     Ndef,
     Crop,
     Camera,
+    Deeplinks
   ]
 })
 export class AppModule {}
