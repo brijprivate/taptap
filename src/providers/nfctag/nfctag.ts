@@ -47,10 +47,11 @@ export class NfctagProvider {
 
      //API call for pair device...
      verifyDevice(data) {
+       console.log(data);
       let _base = this;
       return new Promise(function (resolve, reject) {
         // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-        _base.http.get(_base.apiUrl + 'device/verifyuser?owner='+data)
+        _base.http.get(_base.apiUrl + 'device/verifyuser?owner='+data.userid +'&'+'nfc_id='+data.nfcId)
           .then(function (success) {
             resolve(success);
           }, function (error) {
@@ -86,4 +87,32 @@ export class NfctagProvider {
             });
         });
       }
+
+        //API call for tap item...
+        createMilage(data) {
+          let _base = this;
+          return new Promise(function (resolve, reject) {
+            // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+            _base.http.post(_base.apiUrl + 'milage/recordMilage',data)
+              .then(function (success) {
+                resolve(success);
+              }, function (error) {
+                reject(error);
+              });
+          });
+        }
+
+        //create favourite....
+        createFav(data) {
+          let _base = this;
+          return new Promise(function (resolve, reject) {
+            // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+            _base.http.post(_base.apiUrl + 'favourite/addFavourite',data)
+              .then(function (success) {
+                resolve(success);
+              }, function (error) {
+                reject(error);
+              });
+          });
+        }
 }

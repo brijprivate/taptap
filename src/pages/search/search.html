@@ -146,11 +146,11 @@
 
     <!-- <ion-toolbar> -->
     <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="camera" (click)="merchant()">
+      <ion-segment-button value="camera" (click)="selectedTab(0)">
         <!-- <ion-icon name="camera"></ion-icon> -->
         Merchant
       </ion-segment-button>
-      <ion-segment-button value="bookmark" (click)="category()">
+      <ion-segment-button value="bookmark" (click)="selectedTab(1)">
         <!-- <ion-icon name="bookmark"></ion-icon> -->
         Category
       </ion-segment-button>
@@ -177,7 +177,7 @@
 
         <div *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
-          <ion-item>
+          <ion-item (click)="gotodetails(item)">
             <ion-icon name="apps" class="merchantIcon"></ion-icon>
             {{item.purpose}}
             <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
@@ -187,27 +187,17 @@
         </div>
       </div>
 
-      <!-- for merchant -->
-      <div class="scroll" *ngIf="ifmerchant ==true">
-        <div *ngFor="let item of tapItems">
-          <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
-          <ion-item>
-            <ion-icon name="apps" class="merchantIcon"></ion-icon>
-            {{item.fashionId.storeId.name}}
-            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
-          </ion-item>
-          <hr>
-        </div>
-      </div>
-      <!-- for merchant -->
 
+    </ion-slide>
+
+  <ion-slide>
       <!-- for month -->
       <div class="scroll" *ngIf="ifmonth ==true">
         <div *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
-          <ion-item>
+          <ion-item >
             <ion-icon name="apps" class="merchantIcon"></ion-icon>
-            {{item.fashionId.storeId.name}}
+            {{item.storeId.name}}
             <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
           </ion-item>
           <hr>
@@ -215,70 +205,9 @@
       </div>
       <!-- for month -->
 
-
-
-
-    </ion-slide>
-
-
-    <ion-slide>
-
-      <!-- <div class="secondseg">
-            <ion-segment [(ngModel)]="record" class="typeRecord">
-              <ion-segment-button value="Personal" (click)="category()">
-                Category
-              </ion-segment-button>
-              <ion-segment-button value="Business" (click)="merchant()">
-                Merchants
-              </ion-segment-button>
-            </ion-segment>
-          </div> -->
-
-      <div class="scroll">
-
-
-        <p class="day">Mon Mar 2019</p>
-        <ion-item>
-          <ion-icon name="apps" class="merchantIcon"></ion-icon>
-          General
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="contact" class="merchantIcon"></ion-icon>
-          Max Payment
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-          Amazon
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <p class="day">Mon Jan 2019</p>
-        <ion-item>
-          <ion-icon name="apps" class="merchantIcon"></ion-icon>
-          General
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="contact" class="merchantIcon"></ion-icon>
-          Max Payment
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-          Amazon
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-      </div>
-    </ion-slide>
+  </ion-slide>
 
   </ion-slides>
-
-
 
 
 

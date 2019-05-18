@@ -7,6 +7,10 @@ import { HomePage } from '../pages/home/home';
 import { PairdevicePage } from '../pages/pairdevice/pairdevice';
 import { SharedserviceProvider } from './../providers/sharedservice/sharedservice';
 import { Network } from '@ionic-native/network';
+import { BackgroundGeolocation, BackgroundGeolocationConfig, 
+  BackgroundGeolocationResponse,BackgroundGeolocationEvents } from '@ionic-native/background-geolocation';
+import { platformBrowser } from '@angular/platform-browser';
+  declare var window;
 @Component({
   templateUrl: 'app.html'
 })
@@ -15,23 +19,27 @@ export class MyApp {
   public disconnectSubscription: any;
   public connectSubscription: any;
   public networkStatus: String = "";
+  public arr;
 
-  constructor(platform: Platform, 
+  constructor(private platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
     private network: Network,
     public sharedservice: SharedserviceProvider,
-    private toast: ToastController) 
+    private toast: ToastController,
+    private backgroundGeolocation: BackgroundGeolocation) 
     {
-      platform.ready().then(() => {
+      // platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleLightContent();
       statusBar.backgroundColorByHexString("#6354cb");
       // statusBar.styleDefault();
       splashScreen.hide();
+      this.arr = [];
+      this.initializeApp();
       
-    });
+    // });
 
     if (
       localStorage.getItem("userId") != undefined &&
@@ -76,6 +84,45 @@ export class MyApp {
         closeButtonText: "Retry"
       })
       .present();
+  }
+
+  initializeApp(){
+    this.platform.ready().then(()=>{
+
+      console.log("initialized------------------------>>>>>>>>>>>>>>");
+      const config: BackgroundGeolocationConfig = {
+        desiredAccuracy: 10,
+        stationaryRadius: 20,
+        distanceFilter: 30,
+        debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+        stopOnTerminate: false, // enable this to clear background location settings when the app terminates
+  };
+  
+    this.backgroundGeolocation.configure(config)
+    .then(() => {
+  
+      console.log(location);
+      this.backgroundGeolocation.on(BackgroundGeolocationEvents.location)
+      .subscribe((location:BackgroundGeolocationResponse)=>{
+        var locationstr = localStorage.getItem("location");
+        // console.log(locationstr);
+        console.log("original locationn-------------->>>>>>>>>>>>>");
+        console.log(location);
+        // if(locationstr == null){
+          this.arr.push(location);
+          this.sharedservice.locations(location);
+          // console.log(location);
+        // }
+        // else{
+        //   var locationarr = (locationstr);
+        //   this.arr = locationstr;
+        // }
+        // localStorage.setItem("location",this.arr);
+      })
+    })
+    window.app = this;
+    });
+   
   }
 }
 

@@ -41,6 +41,9 @@ export class SearchPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
+  selectedTab(index) {
+    this.slides.slideTo(index);
+  }
   next() {
     this.slides.slideNext();
   }
@@ -87,5 +90,9 @@ export class SearchPage {
   category(){
     this.ifmerchant = false;
 
+  }
+  //Go to details page ....
+  gotodetails(item){
+    this.navCtrl.push('TapdetailsPage',{itemdetails:item});
   }
 }

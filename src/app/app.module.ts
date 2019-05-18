@@ -17,6 +17,9 @@ import { HttpModule } from '@angular/http';
 import { NFC, Ndef } from '@ionic-native/nfc';
 import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
+
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
 
@@ -57,6 +60,8 @@ import { Crop } from '@ionic-native/crop';
     Ndef,
     Crop,
     Camera,
+    BackgroundGeolocation,
+    NativeGeocoder
   ]
 })
 export class AppModule {}

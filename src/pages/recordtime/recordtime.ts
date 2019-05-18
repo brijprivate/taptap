@@ -76,7 +76,7 @@ export class RecordtimePage {
           console.log("tag id", s);
           this.tapData = s.substring(0, s.length - 1);
           if(this.tapData){
-
+            this.verifytag();
           }
           return s.substring(0, s.length - 1);
           
@@ -129,7 +129,7 @@ export class RecordtimePage {
       _base.deviceVerify = true;
     },function(err){
       console.log(err);
-      alert("Something went wrong, Please try again");
+      alert("Your device is not paired");
     })
   }
   presentAlert() {
@@ -144,11 +144,24 @@ export class RecordtimePage {
   //Start record time...
 
   start() {
-
-    if(!this.tapData)
+    let _base= this;
+    if(this.isnetwork == "Offline")
     {
       let showtoast = this.toast.create({
-        message: "Please approach your nfc device to verify",
+        message: "Please check your internet connection and try again",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
+    }
+
+    else if(!this.tapData || this.deviceVerify ==false)
+    {
+      let showtoast = this.toast.create({
+        message: "Please approach your paired nfc device to verify",
         duration: 60000,
         position: "bottom",
         showCloseButton: true,
@@ -218,6 +231,17 @@ export class RecordtimePage {
   //Stop clock...
   stop() 
   {
+    if(!this.time || !this.tapData || !this.record){
+      let showtoast = this.toast.create({
+        message: "Please start ",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
+    }
     this.running = false;
     this.timeStopped = new Date();
     clearInterval(this.started);
