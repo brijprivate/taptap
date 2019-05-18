@@ -22,6 +22,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     Camera,
     BackgroundGeolocation,
     NativeGeocoder
+    Deeplinks
   ]
 })
 export class AppModule {}

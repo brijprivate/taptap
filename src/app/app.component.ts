@@ -11,11 +11,13 @@ import { BackgroundGeolocation, BackgroundGeolocationConfig,
   BackgroundGeolocationResponse,BackgroundGeolocationEvents } from '@ionic-native/background-geolocation';
 import { platformBrowser } from '@angular/platform-browser';
   declare var window;
+import { Deeplinks } from '@ionic-native/deeplinks';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:string = '';
+  rootPage: string = '';
   public disconnectSubscription: any;
   public connectSubscription: any;
   public networkStatus: String = "";
@@ -27,6 +29,7 @@ export class MyApp {
     private network: Network,
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
+    private deeplinks: Deeplinks,
     private backgroundGeolocation: BackgroundGeolocation) 
     {
       // platform.ready().then(() => {
@@ -41,6 +44,24 @@ export class MyApp {
       
     // });
 
+      this.deeplinks.route({
+        '/product': {},
+      }).subscribe(match => {
+        // match.$route - the route we matched, which is the matched entry from the arguments to route()
+        // match.$args - the args passed in the link
+        // match.$link - the full link data
+        console.log('Successfully matched route', match);
+        console.log(match.$args.category);
+        console.log(match.$args.id);
+        alert(match.$args.category+"-"+match.$args.id)
+      }, nomatch => {
+        // nomatch.$link - the full link data
+        console.error('Got a deeplink that didn\'t match', nomatch);
+      });
+
+
+    // });
+
     if (
       localStorage.getItem("userId") != undefined &&
       localStorage.getItem("userId").length != 0
@@ -52,12 +73,11 @@ export class MyApp {
     }
   }
 
-   /**check network status - online/offline */
-   checkNetworkStatus() 
-   {
+  /**check network status - online/offline */
+  checkNetworkStatus() {
     // watch network for a disconnect
     this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-          this.sharedservice.setnetworkStat('Offline');
+      this.sharedservice.setnetworkStat('Offline');
       console.log("network was disconnected :-(");
       if (this.networkStatus == "" || this.networkStatus == "Online") {
         this.showToast();
@@ -66,15 +86,14 @@ export class MyApp {
     });
     // watch network for a connection
     this.connectSubscription = this.network.onConnect().subscribe(() => {
-          this.sharedservice.setnetworkStat('Online');
+      this.sharedservice.setnetworkStat('Online');
       console.log("network connected!");
       if (this.networkStatus == "" || this.networkStatus == "Offline") {
         this.networkStatus = "Online";
       }
     });
   }
-  showToast() 
-  {
+  showToast() {
     this.toast
       .create({
         message: "No Internet Connection, Turn on data to access all features",
