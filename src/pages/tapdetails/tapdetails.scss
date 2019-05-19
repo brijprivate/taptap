@@ -245,5 +245,16 @@ page-tapdetails {
     .cont.marginadj {
         margin: 0 0px 0 7px;
     }
-
+    ion-icon.icon.icon-md.ion-md-heart {
+        float: right;
+        margin-right: 19px;
+        color: red;
+        font-size: 35px;
+    }
+    ion-icon.icon.icon-md.ion-md-heart-outline {
+        float: right;
+        margin-right: 19px;
+        color: red;
+        font-size: 35px;
+    }
 }

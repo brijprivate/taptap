@@ -132,11 +132,11 @@
 
     <!-- <ion-toolbar> -->
     <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="camera" (click)="merchant()">
+      <ion-segment-button value="camera" (click)="selectedTab(0)">
         <!-- <ion-icon name="camera"></ion-icon> -->
         Merchant
       </ion-segment-button>
-      <ion-segment-button value="bookmark" (click)="category()">
+      <ion-segment-button value="bookmark" (click)="selectedTab(1)">
         <!-- <ion-icon name="bookmark"></ion-icon> -->
         Category
       </ion-segment-button>
@@ -163,16 +163,17 @@
 
         <div style="padding:0 1em;" class="animated 800s zoomIn delay-2s" *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
-          <ion-item>
-              <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
-              <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
-              <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
-              <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
-              <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left *ngIf='item.purpose=="Verification"'></ion-icon>
-              <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
-              <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
+          <ion-item (click)="gotodetails(item)">
+            <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
+            <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
+            <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
+            <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
+            <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
+            <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left *ngIf='item.purpose=="Verification"'></ion-icon>
+            <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
+            <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
 
-            <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+          <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
             {{item.purpose}}
             <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
           </ion-item>
@@ -180,9 +181,9 @@
 
         </div>
       </div>
-
+      <!-- *ngIf="ifmerchant ==true" -->
       <!-- for merchant -->
-      <div class="scroll" *ngIf="ifmerchant ==true">
+      <div class="scroll">
         <div style="padding:0 1em;" *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
           <ion-item>
@@ -195,13 +196,16 @@
       </div>
       <!-- for merchant -->
 
+    </ion-slide>
+
+  <ion-slide>
       <!-- for month -->
       <div class="scroll" *ngIf="ifmonth ==true">
         <div  style="padding:0 1em;" *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
-          <ion-item>
-            <ion-icon name="apps" class="merchantIcon"></ion-icon>A
-            <!-- {{item.fashionId.storeId.name}} -->
+          <ion-item >
+            <ion-icon name="apps" class="merchantIcon"></ion-icon>
+            {{item.storeId.name}}
             <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
           </ion-item>
           <!-- <hr> -->
@@ -209,70 +213,9 @@
       </div>
       <!-- for month -->
 
-
-
-
-    </ion-slide>
-
-
-    <ion-slide>
-
-      <!-- <div class="secondseg">
-            <ion-segment [(ngModel)]="record" class="typeRecord">
-              <ion-segment-button value="Personal" (click)="category()">
-                Category
-              </ion-segment-button>
-              <ion-segment-button value="Business" (click)="merchant()">
-                Merchants
-              </ion-segment-button>
-            </ion-segment>
-          </div> -->
-
-      <div class="scroll">
-
-
-        <p class="day">Mon Mar 2019</p>
-        <ion-item>
-          <ion-icon name="apps" class="merchantIcon"></ion-icon>
-          General
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="contact" class="merchantIcon"></ion-icon>
-          Max Payment
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-          Amazon
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <p class="day">Mon Jan 2019</p>
-        <ion-item>
-          <ion-icon name="apps" class="merchantIcon"></ion-icon>
-          General
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="contact" class="merchantIcon"></ion-icon>
-          Max Payment
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-        <hr>
-        <ion-item>
-          <ion-icon name="desktop" class="merchantIcon"></ion-icon>
-          Amazon
-          <ion-badge item-end>14:21 GMT</ion-badge>
-        </ion-item>
-      </div>
-    </ion-slide>
+  </ion-slide>
 
   </ion-slides>
-
-
 
 
 

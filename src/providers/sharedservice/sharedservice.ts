@@ -19,6 +19,7 @@ export class SharedserviceProvider {
   // public medicines:any=[];
   private isModal = new BehaviorSubject<boolean>(false);
   private networkStatus=new BehaviorSubject<string>('');
+  private location=new BehaviorSubject<object>({});
   // isModalOpen = this.isModal.asObservable();
 
   constructor(public http: Http) {
@@ -54,6 +55,12 @@ export class SharedserviceProvider {
   getNetworkStat(){
    return this.networkStatus.asObservable();
   }
+  locations(stat){
+    this.location.next(stat);
+  }
+  getlocation(){
+    return this.location.asObservable();
+   }
 
 
   // gettreatmentdetails(data)

@@ -115,7 +115,9 @@ export class HomePage {
       this.getpresentdateCount();
       this. getAllTapItem();
     }
+    if(this.totalcount){
 
+    
     var _base = this;
     setTimeout(function () {
       _base.doughnutChart = new Chart(_base.doughnutCanvas.nativeElement, {
@@ -143,7 +145,8 @@ export class HomePage {
       }
       });
 
-    }, 1000);
+    }, 3000);
+  }
   }
 
   selectedTab(index) {
@@ -162,33 +165,33 @@ export class HomePage {
     this.slides.slidePrev();
   }
   ionViewDidLoad() {
-    // var _base = this;
-    // setTimeout(function () {
-    //   _base.doughnutChart = new Chart(_base.doughnutCanvas.nativeElement, {
+    var _base = this;
+    setTimeout(function () {
+      _base.doughnutChart = new Chart(_base.doughnutCanvas.nativeElement, {
 
-    //     type: 'doughnut',
-    //     data: {
-    //       labels: ["Total", "Total"],
-    //       datasets: [{
+        type: 'doughnut',
+        data: {
+          labels: ["Total", "Total"],
+          datasets: [{
 
-    //         // label: '# of Votes',
-    //         data: [_base.todaysTap, _base.totalcount],
-    //         backgroundColor: [
-    //           '#a25757',
-    //           '#93ca79',
-    //         ],
-    //       }]
-    //     },
-    //     options: {
-    //       cutoutPercentage: 80,
-    //       legend: {
+            // label: '# of Votes',
+            data: [_base.todaysTap, _base.totalcount],
+            backgroundColor: [
+              '#a25757',
+              '#93ca79',
+            ],
+          }]
+        },
+        options: {
+          cutoutPercentage: 80,
+          legend: {
 
-    //           display: false,
-    //       }
-    //   }
-    //   });
+              display: false,
+          }
+      }
+      });
 
-    // }, 1000);
+    }, 3000);
   }
 
    //Get profile data...

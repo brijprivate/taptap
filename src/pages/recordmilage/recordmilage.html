@@ -40,14 +40,14 @@
 <hr class="margino">
 <div class="recordContent">
 <p class="typea">Start Location</p>
-<p class="typerecord">Example Location</p>
+<p class="typerecord" *ngIf="checkp == true">{{currentPosition.locality}},{{currentPosition.thoroughfare}}</p>
 <p class="typea">Timer</p>
-<p class="typerecordtime">11:30:21</p>
+<p class="typerecordtime">{{time}}</p>
 <p class="typea">Octometer</p>
 <ion-grid class="kmhr">
     <ion-row>
       <ion-col col-6>
-          <p class="typerecordtime">0 km/hrs</p>
+          <p class="typerecordtime"> {{totaldis}}km</p>
       </ion-col>
       <ion-col col-6>
          <p class="mile">Mile<ion-toggle checked="true"></ion-toggle><span class="km">Kms</span></p> 
@@ -56,9 +56,10 @@
   </ion-grid>
   <ion-grid>
       <ion-row>
-        <ion-col col-6><button ion-button class="start" (click)="saveMilage()">Start</button></ion-col>
-        <ion-col col-6><button ion-button class="stop">Stop</button></ion-col>
+        <ion-col col-6><button ion-button class="start" (click)="startBackgroundTrack()">Start</button></ion-col>
+        <ion-col col-6><button ion-button class="stop" (click)="stopBackgroundTrack()">Stop</button></ion-col>
       </ion-row>
     </ion-grid>
 </div>
+
 </ion-content>

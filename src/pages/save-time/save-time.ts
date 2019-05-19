@@ -108,6 +108,7 @@ export class SaveTimePage {
     this.nfctagPro.recordTime(timedata).then(function(success:any){
       console.log(success);
       loader.dismiss();
+      alert("ya hooooooooooooooooooooooooooooooooooooooo");
     },function(err){
       console.log(err);
       loader.dismiss();
