@@ -55,7 +55,7 @@ page-help {
         margin-bottom: 4px;
     }
     .item-block {
-        min-height: 30px;
+        min-height: 54px;
         height: 45px;
     }
     .profileContent {
@@ -68,7 +68,8 @@ page-help {
         padding-left: 0;
     }
     .pContent {
-        margin-left: 3em;
+        margin-left: 2em;
+        margin-bottom: 13px;
     }
     p.cName {
         font-size: 15px;
@@ -110,5 +111,71 @@ page-help {
     }
     ion-icon.icon.icon-md.ion-md-person {
         color: #8376f9;
+    }
+    ion-icon.icon.icon-md.ion-md-notifications-outline.item-icon {
+        color: #9679db;
+    }
+    ion-icon.icon.icon-md.ion-md-paper.item-icon {
+        color: #a0c2be;
+    }
+    ion-icon.icon.icon-md.ion-md-briefcase.item-icon {
+        color: #d98136;
+    }
+    ion-icon.icon.icon-md.ion-md-planet.item-icon {
+        color: #ef94c8;
+    }
+    ion-icon.icon.icon-md.ion-md-help-circle.item-icon {
+        color: #9acd329e;
+    }
+    ion-icon.icon.icon-md.ion-md-cube.item-icon {
+        color: rgba(77, 85, 170, 0.7);
+    }
+    .contentDetail {
+        padding: 0 2em;
+    }
+    .head {
+        height: 12vh;
+        background: #6354cb;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 0 18px;
+        }   
+             ion-icon.icon.icon-md.ion-md-menu{
+            margin-right: 7px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            margin-top: 12px;
+            float:right;
+
+        }
+        ion-icon.icon.icon-md {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+    }
+    svg#moreSvg {
+        height: 28px;
+        width: 30px;
+        fill:#fff;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
+    ion-icon.icon.icon-md.ion-md-power {
+        vertical-align: middle;
     }
 }

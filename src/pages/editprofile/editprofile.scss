@@ -68,7 +68,7 @@ page-editprofile {
     .landscape {
         background: #6355cb;
         text-align: center;
-        padding-top: 2em;
+        padding-top: 1em;
     }
     ion-item ion-icon.icon.icon-md {
         padding: 0;
@@ -107,5 +107,13 @@ page-editprofile {
         color: #222;
         border: 1px solid #222;
         border-radius: 4px;
+        margin-bottom: 2em;
+    }
+    img.editImg {
+        border: 2px solid #fff;
+        padding: 10px;
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
     }
 }

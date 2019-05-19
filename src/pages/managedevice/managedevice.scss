@@ -28,8 +28,8 @@ page-managedevice {
         margin-right: 1em;
     }
     img.pen {
-        height: 37px;
-        width: 37px;
+        height: 32px;
+        width: 32px;
     }
     svg#circle {
         height: 11px;
@@ -92,6 +92,7 @@ page-managedevice {
         color: #fff;
         background: #fff;
         border-radius: 23px;
+        z-index: 1;
     }
     ion-navbar.toolbar.toolbar-md {
         position: relative;

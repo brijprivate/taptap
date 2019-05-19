@@ -256,9 +256,11 @@ page-taptap {
             position: relative;
             color: #a3a5b1;
             font-size: 12px;
+            background: #f7f7f7;
+            padding: 5px 0;
         }
         p.day:before {
-            content: "";
+            // content: "";
             position: absolute;
             height: 1px;
             border-top: 1px solid #e5e5e5;
@@ -267,7 +269,7 @@ page-taptap {
             left: 6vw;
         }
         p.day:after {
-            content: "";
+            // content: "";
             position: absolute;
             height: 1px;
             border-top: 1px solid #e5e5e5;
@@ -351,7 +353,8 @@ page-taptap {
         position: relative;
         list-style-type: none;
         margin-left: 0;
-        padding: 0 1em;
+        padding: 8px 10px;
+        margin: 0;
     }
     button.btnNext.disable-hover.button.button-md.button-default.button-default-md.button-md-primary {
         position: absolute;
@@ -393,4 +396,128 @@ page-taptap {
 
 
     // slider end
+    .head {
+
+        height: 13vh;
+        // margin-bottom: 1em;
+        background: #6354cb;
+        // background: rgba(99, 84, 203, 0.6);
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 0 18px;
+            ion-icon.icon.icon-md.ion-md-arrow-round-back {
+                color: gray !important;
+            }
+        }   
+             ion-icon.icon.icon-md.ion-md-menu{
+            margin-right: 7px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+            margin-top: 12px;
+            float:right;
+        }
+        ion-icon.icon.icon-md {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+        }
+    }
+    // search
+    input {
+        outline: none;
+    }
+    input[type=search] {
+        -webkit-appearance: textfield;
+        -webkit-box-sizing: content-box;
+        font-family: inherit;
+        font-size: 100%;
+    }
+    input::-webkit-search-decoration,
+    input::-webkit-search-cancel-button {
+        display: none; 
+    }
+    
+    
+    input[type=search] {
+        background: #ffffff url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+        border: solid 1px #ccc;
+        padding: 9px 10px 9px 32px;
+        width: 55px;
+        
+        -webkit-border-radius: 10em;
+        -moz-border-radius: 10em;
+        border-radius: 10em;
+        
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+    }
+    input[type=search]:focus {
+        width: 130px;
+        background-color: #fff;
+        border-color: #66CC75;
+        
+        -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+        -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+        box-shadow: 0 0 5px rgba(109,207,246,.5);
+    }
+    
+    
+    input:-moz-placeholder {
+        color: #999;
+    }
+    input::-webkit-input-placeholder {
+        color: #999;
+    }
+    
+    /* Demo 2 */
+    #demo-2 input[type=search] {
+        width: 15px;
+        padding-left: 10px;
+        color: transparent;
+        cursor: pointer;
+        margin-top: 9px;
+    }
+    #demo-2 input[type=search]:hover {
+        background-color: #fff;
+    }
+    #demo-2 input[type=search]:focus {
+        width: 130px;
+        padding-left: 32px;
+        color: #000;
+        background-color: #fff;
+        cursor: auto;
+    }
+    #demo-2 input:-moz-placeholder {
+        color: transparent;
+    }
+    #demo-2 input::-webkit-input-placeholder {
+        color: transparent;
+    }
+    form#demo-2 {
+        float: right;
+    }
+
+    // search
+
+    i.fa.fa-heart {
+        color: #fff;
+        font-size: 19px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
 }

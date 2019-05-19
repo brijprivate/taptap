@@ -58,10 +58,16 @@
             text-transform: uppercase;
         }
         ion-item ion-icon.icon.icon-md {
+            // padding: 0;
+            // margin-top: 1.2em;
+            // margin-right: -10px;
+            // color: #989baf;
             padding: 0;
-            margin-top: 1.2em;
+            margin-top: 29px;
             margin-right: -10px;
             color: #989baf;
+            font-size: 24px;
+            margin-bottom: 0;
         }
     
         .inputs ion-buttons.bar-buttons.bar-buttons-md {
@@ -111,6 +117,11 @@
             margin-top: 1.5em;
             color: #fff;
             width: 99%;
+        }
+        img.tapLogo {
+            height: 50px;
+            width: 50px;
+            margin-top: 1em;
         }
     
     }

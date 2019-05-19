@@ -34,6 +34,7 @@
     "@ionic-native/status-bar": "~4.18.0",
     "@ionic/angular": "^4.1.2",
     "@ionic/storage": "2.2.0",
+    "animate.css": "^3.7.0",
     "chart.js": "^2.8.0",
     "cordova-android": "7.1.4",
     "cordova-plugin-camera": "^4.0.3",

@@ -5,7 +5,7 @@ page-pairdevice {
       }
       ion-content.content.content-md {
         // background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
-        background: #6354cb;
+        background: #fff;
     }
       .bluePair {
         // background: linear-gradient(to right, #7357cf, #6367be,#6961c4,#5d6fb5);
@@ -18,8 +18,9 @@ page-pairdevice {
         border-radius: 50px;
         background: #fff;
         padding: 1em;
-        margin-top: 2em;
-        fill: #736ebd;
+        margin-top: 4em;
+        fill: #6354cb;
+        border: 2px solid #6354cb;
     }
     .scroll-content {
         padding: 56px 0 0 0 !important;
@@ -44,7 +45,7 @@ page-pairdevice {
         text-align: center;
     }
     p.device {
-        color: #fff;
+        color: #222;
         margin-top: 2em;
         padding-bottom: 3em;
     }
@@ -52,7 +53,9 @@ page-pairdevice {
         background-color: #fff;
         padding: 22px 45px;
         text-transform: capitalize;
-        color: #6663c1;
+        color: #6354cb;
+        border: 1px solid #6354cb;
+        box-shadow: none;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #fff;
@@ -80,6 +83,59 @@ page-pairdevice {
       }
       
    
-      
-      
+      .head {
+        // height: 14vh;
+        // background: #f8f8f8;
+        // display: table;
+        // width: 100%;
+        height: 12vh;
+    background: #6354cb;
+    display: table;
+    width: 100%;
+    position: absolute;
+    top: 0;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 14px;
+            ion-icon.icon.icon-md.ion-md-arrow-round-back {
+                color: gray !important;
+            }
+        }   
+             ion-icon.icon.icon-md.ion-md-menu{
+            margin-right: 7px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+            margin-top: 12px;
+            float:right;
+        }
+        ion-icon.icon.icon-md {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+        }
+    }
+   
+    i.fa.fa-chevron-left {
+        margin-right: 10px;
+        color: #fff;
+    }  
+    ion-label {
+        color: #6354cb !important;
+    }
+    ion-item.item.item-block.item-md.item-input.item-label-floating :focus {
+        border-bottom: 1px solid #9E9E9E !important;
+        width: 72% !important;
+        margin: auto !important;
+    }
 }

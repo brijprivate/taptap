@@ -30,18 +30,18 @@
 <ion-content>
   <div class="main">
 
-      <i class="fa fa-bell" aria-hidden="true"></i><span>5</span>
+      <i class="fa fa-bell animated 800s wobble delay-5s" aria-hidden="true"></i><span>5</span>
 
     <ion-grid class="p0">
       <ion-row>
 
         <ion-col col-3>
           <div class="img">
-            <img src="../../assets/images/modi.jpeg" alt="">
+            <img src="../../assets/images/modi.jpeg" class="animated 800s pulse delay-5s" alt="">
           </div>
         </ion-col>
         <ion-col col-9>
-          <div>
+          <div class="profile">
             <p class="name">{{userName}}</p>
             <ion-grid>
               <ion-row>
@@ -60,7 +60,11 @@
                   <p class="num">Favourite</p>
                 </ion-col>
                 <ion-col col-4>
-                  <p class="sm">2</p>
+           
+
+                  <p class="sm">
+                      <ion-icon ios="ios-pricetags" md="md-pricetags"></ion-icon>
+                    2</p>
                   <p class="num">Devices</p>
                 </ion-col>
               </ion-row>
@@ -72,7 +76,7 @@
     </ion-grid>
 
   </div>
-  <div class="paddi">
+  <div class="paddi animated 800s zoomIn delay-3s">
 
     <!-- <ion-toolbar> -->
     <ion-segment [(ngModel)]="page" color="dark">
@@ -89,7 +93,7 @@
     <!-- </ion-toolbar> -->
   </div>
 
-  <ion-slides #slider>
+  <ion-slides #slider class="animated 800s zoomIn delay-3s">
     <ion-slide>
       <div class="canvas">
         <canvas #doughnutCanvas></canvas>
@@ -239,9 +243,13 @@
     <ion-slide>
       <div class="filter">
         <ion-item>
-          <ion-input type="text" placeholder="search"></ion-input>
+          <ion-input type="text" placeholder="Search"></ion-input>
           <ion-icon item-end name="search"></ion-icon>
         </ion-item>
+        </div>
+        <!-- <form id="demo-2" class="animated 800s fadeInRight delay-5s">
+            <input type="search" placeholder="Search">
+          </form> -->
         <!-- <ion-grid>
           <ion-row>
              
@@ -256,7 +264,7 @@
           </ion-row>
         </ion-grid> -->
 
-      </div>
+     
       <!-- <div class="secondseg">
         <ion-segment [(ngModel)]="record" class="typeRecord">
           <ion-segment-button value="Personal" (click)="category()">
@@ -269,17 +277,28 @@
       </div> -->
 
      
-      <div class="scroll" >
+      <div class="scroll animated 800s zoomIn delay-3s" >
          
           <div *ngFor="let item of tapItems">
         <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
         
         <ion-item (click)="gotoDetails(item)">
-          <ion-icon name="apps" class="merchantIcon"></ion-icon>
+          <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
+
+          <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
+              <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
+              <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
+              <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
+              <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left *ngIf='item.purpose=="Verification"'></ion-icon>
+              <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
+              <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
+
+            <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+
           {{item.purpose}}
           <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
         </ion-item>
-        <hr>
+        <!-- <hr> -->
         <!-- <ion-item>
           <ion-icon name="contact" class="merchantIcon"></ion-icon>
           Max Payment
