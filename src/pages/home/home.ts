@@ -128,8 +128,8 @@ export class HomePage {
           datasets: [{
 
             // label: '# of Votes',
-            // data: [_base.todaysTap, _base.totalcount],
-            data: [15, 25],
+            data: [_base.todaysTap, _base.totalcount],
+            // data: [15, 25],
             backgroundColor: [
               '#a25757',
               '#93ca79',
