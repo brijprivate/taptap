@@ -43,7 +43,7 @@
   <div class="head">
     <div class="mdl">
       <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-      <svg version="1.1" id="moreSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      <!-- <svg version="1.1" id="moreSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <g>
 	<g>
@@ -167,9 +167,11 @@
 			S504.213,477.867,499.093,477.867z"/>
 	</g>
 </g>
-</svg>
-      <p>More</p>
-      <ion-icon  ios="ios-menu" md="md-menu"></ion-icon>
+</svg> -->
+      <p><span>
+          <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+        </span> More</p>
+      <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
     </div>
 
   </div>
@@ -177,18 +179,18 @@
     <ion-item (click)="notification()">
       <div class="pContent">
         <p class="cName ">
-          <ion-icon name="notifications-outline"item-left></ion-icon>
+          <ion-icon name="notifications-outline" item-left></ion-icon>
           <!-- <i class="fa fa-bell animated infinite wobble delay-0.1s "></i> -->
-          
+
           <!-- <i class="fa fa-spinner animated "></i> -->
           Notifications
-          <span style="float:right">{{5}}</span>
+          <span style="float:right; margin-top: 14px;">{{5}}</span>
         </p>
         <!-- <p class="cNumber">Montaki Cake</p> -->
       </div>
     </ion-item>
 
-    <ion-item >
+    <ion-item>
       <div class="pContent">
         <p class="cName">
           <ion-icon name="paper" item-left></ion-icon>
@@ -223,7 +225,7 @@
             </p>
           </div>
         </ion-item> -->
-    <ion-item (click)="goto('HelpPage')" >
+    <ion-item (click)="goto('HelpPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="help-circle" item-left></ion-icon>
@@ -232,7 +234,7 @@
         <!-- <p class="cNumber">Montaki Cake</p> -->
       </div>
     </ion-item>
-    <ion-item (click)="goto('SharePage')" >
+    <ion-item (click)="goto('SharePage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="cube" item-left></ion-icon>

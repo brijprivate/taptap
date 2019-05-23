@@ -110,6 +110,7 @@ page-home {
     ion-slides.slides.slides-md.slides-0 {
         height: 76%;
     }
+    
     ion-segment.typeRecord.segment.segment-md {
         border-left: 1px solid #e1e1e6;
         border-top: 1px solid #e1e1e6;
@@ -437,7 +438,7 @@ page-home {
         }
         canvas.chartjs-render-monitor {
             width: 76% !important;
-            height: 138px !important;
+            height: 76% !important;
             margin: auto;
         }
         .profile {
