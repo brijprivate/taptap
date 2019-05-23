@@ -15,10 +15,10 @@
   <div class="head">
       <div class="mdl">
           <!-- <img src="../../assets/images/Logo_after.png" class="tapLogo" item-left> -->
-          <ion-icon ios="ios-book" md="md-book" class="animated 800s fadeInLeft delay-2s" item-left></ion-icon>
-        <p class="animated 800s lightSpeedIn delay-2s">Search</p>
+          <ion-icon ios="ios-book" md="md-book" class="animated 800s fadeInLeft delay-0.2s" item-left></ion-icon>
+        <p class="animated 800s lightSpeedIn delay-0.2s">Search</p>
         <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
-        <form id="demo-2" class="animated 800s fadeInRight delay-2s">
+        <form id="demo-2" class="animated 800s fadeInRight delay-0.2s">
           <input type="search" placeholder="Search">
         </form>
       </div>
@@ -161,7 +161,7 @@
 
       <div class="scroll">
 
-        <div style="padding:0 1em;" class="animated 800s zoomIn delay-2s" *ngFor="let item of tapItems">
+        <div style="padding:0 1em;" class="animated 800s zoomIn delay-0.2s" *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
           <ion-item (click)="gotodetails(item)">
             <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
