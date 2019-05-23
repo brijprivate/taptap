@@ -272,6 +272,11 @@ page-home {
             font-weight: 500;
             border: 1px solid #222;
             border-radius: 5px;
+            box-shadow: 0px 0px 8px 3px #00000030;
+            font-size: 18px;
+        }
+        ion-icon.icon.icon-md.ion-md-add {
+            color: #6354cb;
         }  
         button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
             background: transparent;
