@@ -2,13 +2,13 @@ page-more {
 
     .head {
         height: 14vh;
-        background: #f8f8f8;
+        background: #6354cb;
         display: table;
         width: 100%;
         p{
             // margin-right: 11em;
             font-size: 18px;
-            color: #222;
+            color: #fff;
             display: inline-block;
             vertical-align: middle;
 
@@ -19,9 +19,9 @@ page-more {
             padding: 0 18px;
         }   
              ion-icon.icon.icon-md.ion-md-menu{
-            margin-right: 7px;
+            margin-right: 10px;
             font-size: 26px;
-            color: #222;
+            color: #fff;
             vertical-align: middle;
             // margin-top: 12px;
             // float:right;
@@ -185,5 +185,14 @@ page-more {
     }
     .contentDetail {
         padding: 0 2em;
+    }
+    span.notify {
+        // background: red;
+        // color: #fff;
+        // height: 25px;
+        // width: 25px;
+        // border-radius: 50%;
+        // padding-left: 8px;
+        // padding-top: 4px;
     }
 }
