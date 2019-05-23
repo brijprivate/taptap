@@ -103,15 +103,25 @@ export class SaveTimePage {
       startTime:"00:00:00",
       endTime:this.endtime,
       userId:this.userId,
-      Nfc_id:this.nfcid
+      nfc_id:this.nfcid
     }
     this.nfctagPro.recordTime(timedata).then(function(success:any){
       console.log(success);
       loader.dismiss();
-      alert("ya hooooooooooooooooooooooooooooooooooooooo");
+     _base.presentAlert();
+     _base.navCtrl.push('ProfilePage');
     },function(err){
       console.log(err);
       loader.dismiss();
     })
+
+  }
+  presentAlert() {
+    let alert = this.alert.create({
+      title: 'Confirmation',
+      subTitle: 'Time Saved',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

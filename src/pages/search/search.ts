@@ -15,7 +15,9 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  @ViewChild('slides') slides: Slides;
+  @ViewChild('slider') slider: Slides;
+  @ViewChild('slider1') slider1: Slides;
+
 
   public tapItems:any;
   public userId:any;
@@ -42,13 +44,13 @@ export class SearchPage {
     console.log('ionViewDidLoad SearchPage');
   }
   selectedTab(index) {
-    this.slides.slideTo(index);
+    this.slider.slideTo(index);
   }
   next() {
-    this.slides.slideNext();
+    this.slider1.slideNext();
   }
   prev() {
-    this.slides.slidePrev();
+    this.slider1.slidePrev();
   }
 
    //get all tap items....

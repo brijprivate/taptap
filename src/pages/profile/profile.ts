@@ -27,6 +27,9 @@ export class ProfilePage {
   lineChart: any;
   public userId:any;
   public userName:any;
+  favourite:"0";
+  public devices:any=[];
+  devicecount: any;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public nfctagProvider:NfctagProvider,
@@ -40,6 +43,14 @@ export class ProfilePage {
       }
     }
 
+    ionViewDidEnter(){
+      this.userId = localStorage.getItem("userId");
+      if(this.userId){
+        this.getpairedDevice();
+        this.getprofiledata();
+        this.getDashboarddata();
+      }
+    }
   ionViewDidLoad() {
     var _base = this;
     setTimeout(function () {
@@ -103,7 +114,9 @@ export class ProfilePage {
    let _base  = this;
    this.nfctagProvider.getpairdevice(this.userId).then(function(success:any){
      console.log("paired devices--------------?>>>>>>>>>");
-     console.log(success);
+     console.log(success.result.length);
+     _base.devices = success.result;
+     _base.devicecount = success.result.length;
    },function(err){
      console.log(err);
    })
@@ -112,18 +125,44 @@ export class ProfilePage {
   //Get profile data...
   getprofiledata(){
     let _base = this;
-    let loader = this.loading.create({
-      content:"Please wait..."
-    });
-    loader.present();
+    // let loader = this.loading.create({
+    //   content:"Please wait..."
+    // });
+    // loader.present();
     this.loginsignupProvider.getProfile(this.userId).then(function(success:any){
       console.log(success);
-      loader.dismiss();
+      // loader.dismiss();
       if(success){
         _base.userName = success.result.name;
       }
     },function(err){
+      // loader.dismiss();
+      console.log(err);
+    })
+  }
+  getDashboarddata()
+  {
+    let _base = this;
+    let loader = this.loading.create({
+      content:"Please wait..."
+    });
+    loader.present();
+
+    this.loginsignupProvider.getDashboard(this.userId).then(function(success:any){
+      console.log("dashboard data ---------->>>>>>"+ success);
+      console.log(success);
+
+      // _base.fashion = success.result.fashion;
+      // _base.buisness = success.result.buisness;
+      // _base.contact = success.result.contact;
+      // _base.event = success.result.event;
+      // _base.general = success.result.general;
+      _base.favourite = success.result.favourite;
+      // _base.sports = success.result.sport;
+      // _base.groceries = success.result.groceries;
+      // _base.totalcount = success.result.totalTap;
       loader.dismiss();
+    },function(err){
       console.log(err);
     })
   }

@@ -24,6 +24,7 @@ export class DashboardPage {
   searchPage='SearchPage';
   taptapPage='TaptapPage';
   helpPage='HelpPage';
+  morePage = 'MorePage';
   homePage=HomePage;
 
   public userId:any;

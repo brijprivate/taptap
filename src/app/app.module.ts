@@ -19,6 +19,7 @@ import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
@@ -63,7 +64,8 @@ import { Deeplinks } from '@ionic-native/deeplinks';
     Camera,
     BackgroundGeolocation,
     NativeGeocoder,
-    Deeplinks
+    Deeplinks,
+    SocialSharing
   ]
 })
 export class AppModule {}

@@ -19,6 +19,7 @@ export class SharedserviceProvider {
   // public medicines:any=[];
   private isModal = new BehaviorSubject<boolean>(false);
   private networkStatus=new BehaviorSubject<string>('');
+  private linkid=new BehaviorSubject<string>('');
   private location=new BehaviorSubject<object>({});
   // isModalOpen = this.isModal.asObservable();
 
@@ -60,6 +61,12 @@ export class SharedserviceProvider {
   }
   getlocation(){
     return this.location.asObservable();
+   }
+   setlinkid(stat){
+    this.linkid.next(stat);
+  }
+  getlinkid(){
+    return this.linkid.asObservable();
    }
 
 

@@ -155,6 +155,7 @@ export class RecordmilagePage {
       showtoast.present();
       return;
     }
+    
     let loader = this.loading.create({
       content:"Please wait..."
     });
@@ -185,6 +186,8 @@ export class RecordmilagePage {
 
     startBackgroundTrack()
     {
+      this.backgroundGeolocation.start();
+      
       let _base= this;
       if(this.isnetwork == "Offline")
       {
@@ -223,6 +226,18 @@ export class RecordmilagePage {
         showtoast.present();
         return;
       }
+      else if(!this.currentPosition)
+      {
+        let showtoast = this.toast.create({
+          message: "Please make sure your location service is turned on",
+          duration: 60000,
+          position: "bottom",
+          showCloseButton: true,
+          closeButtonText: "Ok"
+        })
+        showtoast.present();
+        // return;
+      }
       
       if(this.running) return;
     if (this.timeBegan === null) {
@@ -235,7 +250,8 @@ export class RecordmilagePage {
     }
     this.started = setInterval(this.clockRunning.bind(this), 10);
     this.running = true;
-    this.backgroundGeolocation.start();
+    // this.backgroundGeolocation.start();
+    this.loop();
     }
     reset() {
       this.running = false;
@@ -279,43 +295,60 @@ export class RecordmilagePage {
   //stop tracking .....
   stopBackgroundTrack(){
 
-    let loader = this.loading.create({
-      content:"Please wait..."
+    // let loader = this.loading.create({
+    //   content:"Please wait..."
+    // });
+    // loader.present();
+    // this.backgroundGeolocation.getCurrentLocation().then((location:BackgroundGeolocationResponse)=>{
+    //   console.log("location on stop--------->>>>>>",location);
+    //   this.nativeGeocoder.reverseGeocode(location.latitude,location.longitude)
+    //   .then((result: NativeGeocoderReverseResult[]) =>{
+    //     console.log("reverse geocode end location----------------->>>>>>>",result)
+    //     console.log(JSON.stringify(result[0]));
+    //     this.endLocation = result[0];
+    //     this.sharedservice.locations(location);
+
+    // this.backgroundGeolocation.stop();
+    this.navCtrl.push('SavemilagePage',
+    {
+      endtime:this.time,
+      nfcid:this.tapData,
+      recordtype:this.record,
+      distance:this.totaldis,
+      startlocation:this.currentPosition,
+      endLocation:this.endLocation,
+      cords:this.locations
     });
-    loader.present();
-  
-    this.backgroundGeolocation.getCurrentLocation().then((location:BackgroundGeolocationResponse)=>{
-      console.log("location on stop--------->>>>>>",location);
-      this.nativeGeocoder.reverseGeocode(location.latitude,location.longitude)
-      .then((result: NativeGeocoderReverseResult[]) =>{
-        console.log("reverse geocode end location----------------->>>>>>>",result)
-        console.log(JSON.stringify(result[0]));
-        this.endLocation = result[0];
-      });
-        this.sharedservice.locations(location);
-    })
-    
-      this.loop();
-      loader.dismiss();
-      this.backgroundGeolocation.stop();
-      if(this.currentPosition.latitude == this.endLocation.latitude)
-      {
-        alert("Oops it seems yor are in same position");
-        return;
-      }
-      else {
-        this.navCtrl.push('SavemilagePage',
-        {
-          endtime:this.time,
-          nfcid:this.tapData,
-          recordtype:this.record,
-          distance:this.totaldis,
-          startlocation:this.currentPosition,
-          endLocation:this.endLocation,
-          cords:this.locations
-        });
-      }
-      
+
+        // let TIME_IN_MS = 2000;
+        // let _base=this;
+        // let hideFooterTimeout = setTimeout( () => {
+        //   console.log("timeout----------------");
+          // loader.dismiss();
+         
+        //   _base.loop();
+        // }, TIME_IN_MS);
+        // if(this.endLocation){
+        //   loader.dismiss();
+        //   console.log("if statement-----------");
+        //   // this.loop();
+        // }
+      // });
+    // })
+
+    // if(this.currentPosition.latitude == this.endLocation.latitude)
+    // {
+    //   alert("Oops it seems yor are in same position");
+    //   return;
+    // }
+    // else {
+
+     
+      // this.backgroundGeolocation.stop();
+     
+     
+    // }
+
   }
 
 
@@ -340,12 +373,18 @@ public loop(){
     loa1=this.locations[i].longitude;
     loa2=this.locations[i+1].longitude;
     
-    var x=this.distance(laa1,loa1,laa2,loa2,'K')
+    var x=this.distance(laa1,loa1,laa2,loa2,'K');
     
     this.totaldis=parseInt( (this.totaldis+x).toFixed(2));
+    
     console.log('total distance',this.totaldis);
+    // if(this.totaldis){
+      console.log("in loooooopppppppppp----------->>>>>>>");
+     
+    // }
     
   }
+ 
 
 }
 //calculation function....

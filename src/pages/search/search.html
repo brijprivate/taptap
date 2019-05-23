@@ -33,7 +33,7 @@
         </button>
       </li> -->
       <li>
-        <ion-slides slidesPerView="5" #slides>
+        <ion-slides slidesPerView="5" #slides1>
 
           <ion-slide>
             <p class="count">January</p>
@@ -183,24 +183,23 @@
       </div>
       <!-- *ngIf="ifmerchant ==true" -->
       <!-- for merchant -->
-      <div class="scroll">
+      <!-- <div class="scroll">
         <div style="padding:0 1em;" *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
           <ion-item>
             <ion-icon name="apps" class="merchantIcon"></ion-icon>
-            <!-- {{item.fashionId.storeId.name}} -->
+            {{item.purpose}}
             <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
           </ion-item>
-          <!-- <hr> -->
         </div>
-      </div>
+      </div> -->
       <!-- for merchant -->
 
     </ion-slide>
 
   <ion-slide>
       <!-- for month -->
-      <div class="scroll" *ngIf="ifmonth ==true">
+      <div class="scroll">
         <div  style="padding:0 1em;" *ngFor="let item of tapItems">
           <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
           <ion-item >

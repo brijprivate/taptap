@@ -13,15 +13,7 @@
 <ion-content>
 
 
-  <div class="head">
-    <div class="mdl">
-      <ion-icon name="calendar" ></ion-icon>
-
-      <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-      <p>Mark As Favourite</p>
-    
-    </div>
-  </div>
+ 
   <!-- <div class="landscape"> -->
   <!-- <img src="../../assets/images/Logo_after.png" alt="">
     <button type="button" class="close" aria-label="Close">
@@ -37,23 +29,30 @@
 
   <!-- event start -->
   <div class="showcontent" *ngIf = "eventdata.eventId">
+      <div class="head">
+          <div class="mdl">
+            <ion-icon name="calendar" ></ion-icon>
+            <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+            <p>{{eventdata.purpose}}</p>
+          </div>
+        </div>
       <div class="imgss">
           <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
           <ion-slides>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <!-- <ion-slide>
                   <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
                 </ion-slide> -->
           </ion-slides>
         </div>
-      <ion-icon name="heart-outline"  item-right></ion-icon>
-      <!-- <ion-icon name="heart"  item-right></ion-icon> -->
+      <ion-icon name="heart-outline"  *ngIf="eventdata.is_favourite ==false" item-right (click)="fav(eventdata,eventdata.eventId._id)"></ion-icon>
+      <ion-icon name="heart"  item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
     <div class="cont">
       <p class="header">
         <ion-icon name="calendar"></ion-icon>
@@ -100,28 +99,48 @@
         </ion-row>
       </ion-grid>
     </div>
+    <ion-grid class="saveGrid">
+      <ion-row>
+        <ion-col col-6>
+          <button class="share" outline>
+            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+          </button> </ion-col>
+        <ion-col col-6>
+          <button class="share" outline (click)="socialshare(eventdata,eventdata.eventId._id)">
+            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+          </button> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
  <!-- event end -->
 
   <!-- contact start -->
   <div class="showcontent" *ngIf = "eventdata.contactId">
+      <div class="head">
+          <div class="mdl">
+            <ion-icon name="calendar" ></ion-icon>
+            <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+            <p>{{eventdata.purpose}}</p>
+          </div>
+        </div>
       <div class="imgss">
           <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
           <ion-slides>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <!-- <ion-slide>
                   <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
                 </ion-slide> -->
           </ion-slides>
         </div>
-        <ion-icon name="heart-outline"  item-right></ion-icon>
-        <!-- <ion-icon name="heart"  item-right></ion-icon> -->
+        <ion-icon name="heart-outline"  *ngIf="eventdata.is_favourite==false" item-right (click)="fav(eventdata,eventdata.contactId._id)"></ion-icon>
+        <ion-icon name="heart"  item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
     <div class="cont">
       <p class="header">
         <ion-icon name="calendar"></ion-icon>
@@ -159,29 +178,49 @@
       </p>
       <p class="data">{{eventdata.contactId.link}}</p>
     </div>
+    <ion-grid class="saveGrid">
+      <ion-row>
+        <ion-col col-6>
+          <button class="share" outline>
+            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+          </button> </ion-col>
+        <ion-col col-6>
+          <button class="share" outline (click)="socialshare(eventdata,eventdata.contactId._id)">
+            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+          </button> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
  <!-- contact end -->
 
 
   <!-- sports start -->
   <div class="showcontent" *ngIf = "eventdata.sportId">
+      <div class="head">
+          <div class="mdl">
+            <ion-icon name="calendar" ></ion-icon>
+            <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+            <p>{{eventdata.purpose}}</p>
+          </div>
+        </div>
       <div class="imgss">
           <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
           <ion-slides>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <!-- <ion-slide>
                   <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
                 </ion-slide> -->
           </ion-slides>
         </div>
-        <ion-icon name="heart-outline"  item-right></ion-icon>
-        <!-- <ion-icon name="heart"  item-right></ion-icon> -->
+        <ion-icon name="heart-outline"  *ngIf="eventdata.is_favourite==false" item-right (click)="fav(eventdata,eventdata.sportId._id)"></ion-icon>
+      <ion-icon name="heart"  item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
       <div class="cont">
           <p class="header">
             <ion-icon name="calendar"></ion-icon>
@@ -211,29 +250,49 @@
       </p>
       <p class="data">{{eventdata.sportId.webLink}}</p>
     </div>
+    <ion-grid class="saveGrid">
+      <ion-row>
+        <ion-col col-6>
+          <button class="share" outline>
+            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+          </button> </ion-col>
+        <ion-col col-6>
+          <button class="share" outline (click)="socialshare(eventdata,eventdata.sportId._id)">
+            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+          </button> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
  <!-- sports end -->
 
   <!-- general start -->
   <div class="showcontent" *ngIf = "eventdata.generalId">
+      <div class="head">
+          <div class="mdl">
+            <ion-icon name="calendar" ></ion-icon>
+            <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+            <p>{{eventdata.purpose}}</p>
+          </div>
+        </div>
      
       <div class="imgss">
           <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
           <ion-slides>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <!-- <ion-slide>
                   <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
                 </ion-slide> -->
           </ion-slides>
         </div>
-        <ion-icon name="heart-outline"  item-right></ion-icon>
-        <!-- <ion-icon name="heart"  item-right></ion-icon> -->
+        <ion-icon name="heart-outline"  *ngIf="eventdata.is_favourite==false" item-right (click)="fav(eventdata,eventdata.generalId._id)"></ion-icon>
+      <ion-icon name="heart"  item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
     <div class="cont">
       <p class="header">
         <ion-icon name="paper"></ion-icon>
@@ -249,20 +308,40 @@
       </p>
       <p class="data">{{eventdata.generalId.weblink}}</p>
     </div>
+    <ion-grid class="saveGrid">
+      <ion-row>
+        <ion-col col-6>
+          <button class="share" outline>
+            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+          </button> </ion-col>
+        <ion-col col-6>
+          <button class="share" outline (click)="socialshare(eventdata,eventdata.generalId._id)">
+            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+          </button> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
  <!-- general end -->
 
   <!-- Groceries start -->
   <div class="showcontent" *ngIf = "eventdata.groceryId">
+      <div class="head">
+          <div class="mdl">
+            <ion-icon name="calendar" ></ion-icon>
+            <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+            <p>{{eventdata.purpose}}</p>
+          </div>
+        </div>
       <div class="imgss">
           <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
           <ion-slides>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <!-- <ion-slide>
                   <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
@@ -270,8 +349,8 @@
           </ion-slides>
         </div>
    
-        <ion-icon name="heart-outline"  item-right></ion-icon>
-        <!-- <ion-icon name="heart"  item-right></ion-icon> -->
+        <ion-icon name="heart-outline"  *ngIf="eventdata.is_favourite==false" item-right (click)="fav(eventdata,eventdata.groceryId._id)"></ion-icon>
+      <ion-icon name="heart"  item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
       <div class="cont">
         <p class="header">
           <ion-icon name="paper"></ion-icon>
@@ -304,29 +383,49 @@
         <p class="data">{{eventdata.groceryId.price}}</p>
       </div>
 
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline>
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.groceryId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+            </button> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
    <!-- Groceries end -->
 
 
    <!-- Fashion start -->
   <div class="showcontent" *ngIf = "eventdata.fashionId">
+      <div class="head">
+          <div class="mdl">
+            <ion-icon name="calendar" ></ion-icon>
+            <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+            <p>{{eventdata.purpose}}</p>
+          </div>
+        </div>
       <div class="imgss">
           <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
           <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
           <ion-slides>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <ion-slide>
-              <img src="../../assets/images/a.jpeg">
+              <img src="assets/images/logo_before.png">
             </ion-slide>
             <!-- <ion-slide>
                   <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
                 </ion-slide> -->
           </ion-slides>
         </div>
-        <ion-icon name="heart-outline"  item-right></ion-icon>
-        <!-- <ion-icon name="heart"  item-right></ion-icon> -->
+        <ion-icon name="heart-outline"  item-right *ngIf="eventdata.is_favourite==false" (click)="fav(eventdata,eventdata.fashionId._id)"></ion-icon>
+        <ion-icon name="heart"  item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
    
       <div class="cont">
         <p class="header">
@@ -367,23 +466,106 @@
           </p>
           <p class="data">{{eventdata.fashionId.weblink}}</p>
         </div>
+
+        <ion-grid class="saveGrid">
+          <ion-row>
+            <ion-col col-6>
+              <button class="share" outline>
+                <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+              </button> </ion-col>
+            <ion-col col-6>
+              <button class="share" outline (click)="socialshare(eventdata,eventdata.fashionId._id)">
+                <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+              </button> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
     </div>
    <!-- Fashion end -->
 
-  <ion-grid class="saveGrid">
-    <ion-row>
+    <!-- buisness start -->
+  <div class="showcontent" *ngIf = "eventdata.businessId">
+      <div class="head">
+          <div class="mdl">
+            <ion-icon name="calendar" ></ion-icon>
+            <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+            <p>{{eventdata.purpose}}</p>
+          </div>
+        </div>
+    <div class="imgss">
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+        <ion-slides>
+          <ion-slide>
+            <img src="assets/images/logo_before.png">
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/images/logo_before.png">
+          </ion-slide>
+          <!-- <ion-slide>
+                <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
+              </ion-slide> -->
+        </ion-slides>
+      </div>
+      <ion-icon name="heart-outline"  item-right *ngIf="eventdata.is_favourite==false" (click)="fav(eventdata,eventdata.businessId._id)"></ion-icon>
+      <ion-icon name="heart"  item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+ 
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Project
+      </p>
+      <p class="data">{{eventdata.businessId.name}}</p>
+    </div>
 
-      <ion-col col-6>
-        <button class="share" outline>
-          <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
-        </button> </ion-col>
-      <ion-col col-6>
-        <button class="share" outline>
-          <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
-        </button> </ion-col>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="paper"></ion-icon>
+        Contact No
+      </p>
+      <p class="data">{{eventdata.businessId.telephoneNumber}}</p>
+    </div>
+
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="pin"></ion-icon>
+        Location
+      </p>
+      <p class="data"> {{eventdata.businessId.address}}</p>
+    </div>
+
+    <div class="cont">
+        <p class="header">
+          <ion-icon name="paper"></ion-icon>
+          Website
+        </p>
+        <p class="data">{{eventdata.businessId.webLink}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="paper"></ion-icon>
+          Email
+        </p>
+        <p class="data">{{eventdata.businessId.email}}</p>
+      </div>
 
 
-    </ion-row>
-  </ion-grid>
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline>
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.businessId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+            </button> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
+ <!-- Buisness end -->
+
+ 
 
 </ion-content>

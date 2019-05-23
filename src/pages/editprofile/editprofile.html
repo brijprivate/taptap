@@ -34,7 +34,20 @@
 <ion-content padding>
   <div class="landscape">
     <!-- <p class="name">{{imageId}}/</p> -->
-    <img src="{{imageId}}" class="">
+    <!-- <img  [src]="getTrustImg(imgsrc)"> -->
+    <ion-grid class="userimg-grid">
+      <ion-row>
+      <ion-col col-12 text-center no-padding>
+
+    <div *ngIf="!imageId" class="userimg-roundplaceholder" [ngStyle]="{'background':'#ffffff url(assets/images/avatar.png) no-repeat'}">
+
+    <div *ngIf="imageId" class="userimg-round" [ngStyle]="{'background-image': 'url(' + imageId + ')'}">
+
+    </div>
+    </div>
+      </ion-col>
+      </ion-row>
+      </ion-grid>
     <!-- editImg -->
     <ion-grid>
       <ion-row>
@@ -52,32 +65,42 @@
     <ion-item>
       <ion-label floating>Name</ion-label>
       <ion-icon name="person" item-left></ion-icon>
-      <ion-input type="text"> </ion-input>
+      <ion-input type="text" [(ngModel)]="profiledata.name"> </ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Email address</ion-label>
-      <ion-icon name="mail" item-left></ion-icon>
-      <ion-input type="text"> </ion-input>
+      <ion-icon name="mail" item-left ></ion-icon>
+      <ion-input type="text" [(ngModel)]="profiledata.email"> </ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label floating>Change Password</ion-label>
       <ion-icon name="lock" item-left></ion-icon>
       <ion-input type="password"> </ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item>
-      <ion-label floating>Company Name</ion-label>
+      <ion-label floating>Website</ion-label>
       <ion-icon name="home" item-left></ion-icon>
-      <ion-input type="text"> </ion-input>
+      <ion-input type="text" [(ngModel)]="profiledata.website"> </ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label floating>Phone</ion-label>
       <ion-icon name="call" item-left></ion-icon>
       <ion-input type="text"> </ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-label floating>Country</ion-label>
+      <ion-icon name="pin" item-left></ion-icon>
+      <ion-input type="text" [(ngModel)]="profiledata.country"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>City</ion-label>
+      <ion-icon name="pin" item-left></ion-icon>
+      <ion-input type="text" [(ngModel)]="profiledata.city"> </ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Address</ion-label>
       <ion-icon name="pin" item-left></ion-icon>
-      <ion-input type="text"> </ion-input>
+      <ion-input type="text" [(ngModel)]="profiledata.address"> </ion-input>
     </ion-item>
     <button ion-button class="save" (click)="uploadImage()">Save Changes</button>
   </ion-list>

@@ -115,4 +115,34 @@ export class NfctagProvider {
               });
           });
         }
+
+        //API call for update product ...
+        favUpdate(data) {
+          console.log('data in service',data);
+          let _base = this;
+          return new Promise(function (resolve, reject) {
+            console.log(_base.apiUrl + 'tapped/update',data)
+            _base.http.put(_base.apiUrl + 'tapped/update',data)
+              .then(function (success) {
+                resolve(success);
+              }, function (error) {
+                reject(error);
+              });
+          });
+        }
+         //API get product by id...
+     getproductbyide(data) {
+      console.log(data);
+     let _base = this;
+     return new Promise(function (resolve, reject) {
+       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+       _base.http.get(_base.apiUrl + 'product/productbyId?id='+data)
+         .then(function (success) {
+           resolve(success);
+         }, function (error) {
+           reject(error);
+         });
+     });
+   }
+  
 }

@@ -32,7 +32,7 @@
 </ion-header>
 
 <ion-content padding class="animated 800s zoomIn delay-1s">
-    <ion-item (click)="gotodevice()">
+    <ion-item (click)="gotodevice(device)" *ngFor="let device of devices">
         <ion-icon item-start>
           <img src="../../assets/images/pen.png" class="pen">
         </ion-icon>
@@ -46,9 +46,9 @@
             </g>
           </svg>
         </span>
-        Tap-Tap Pen
+        {{device.type}}
       </ion-item>
-      <hr class="margino">
+      <!-- <hr class="margino">
       <ion-item>
         <ion-icon item-start>
           <img src="../../assets/images/pen.png" class="pen">
@@ -113,5 +113,5 @@
             </svg>
           </span>
           Tesla Model S
-        </ion-item>
+        </ion-item> -->
 </ion-content>

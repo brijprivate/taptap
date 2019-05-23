@@ -116,4 +116,48 @@ page-editprofile {
         height: 70px;
         width: 70px;
     }
+    .dboard-userimg-div{
+        background: linear-gradient(to right, #a070f8 0%, #657cfc 100%);
+        width:100%;
+        // height:217px;
+        display: table;
+        position: relative;
+    }
+    .dboard-userimg-div .userimg-grid{
+        width:100%;
+        // display: block;
+        margin:0 auto;
+        left:0;
+        right:0;
+        padding: 0 20px;
+    }
+    .userimg-roundplaceholder{
+        width:90px;
+        height:90px;
+        border-radius: 50%;
+        background-position: center !important;
+        background-size: 50px 5px;
+        margin: 0 auto;
+        position: relative;
+        img{
+            width:100%;
+            height:100%;
+        }
+    }
+
+    .userimg-round{
+        width:90px;
+        height:90px;
+        border-radius: 50%;
+        // background: #ffffff url(../assets/images/user-shape.png);
+        background-repeat: space !important;
+        background-position: top !important;
+        background-size: cover !important;
+        overflow: hidden;
+        margin: 0 auto;
+        img{
+            width:100%;
+            height:100%;
+        }
+    }
 }

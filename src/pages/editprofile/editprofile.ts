@@ -5,6 +5,8 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
+import { DomSanitizer } from '@angular/platform-browser';
+import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 declare var cordova: any;
 
 /**
@@ -21,10 +23,14 @@ declare var cordova: any;
 })
 export class EditprofilePage {
 
+  private win: any = window;
   lastImage: any;
   public imageId: any;
   public data: any = [];
-  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450"
+  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+  public userId:any;
+  public profiledata=[];
+  profileImage: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -36,10 +42,21 @@ export class EditprofilePage {
     public platform: Platform,
     public loadingCtrl: LoadingController,
     private crop: Crop,
-    public actionSheetCtrl: ActionSheetController,) {
+    public actionSheetCtrl: ActionSheetController,
+    private DomSanitizer: DomSanitizer,
+    public loginsignupProvider:LoginsignupProvider
+    ) {
+
+      this.userId = localStorage.getItem("userId");
+      console.log(this.userId);
+      if(this.userId){
+        this.getprofiledata();
+      }
   }
 
   ionViewDidLoad() {
+    this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
+
     console.log('ionViewDidLoad EditprofilePage');
   }
 
@@ -87,7 +104,7 @@ export class EditprofilePage {
     var options =
       {
         sourceType: sourceType,
-        saveToPhotoAlbum: false,
+        saveToPhotoAlbum: true,
         correctOrientation: true
       };
 
@@ -156,11 +173,21 @@ export class EditprofilePage {
       console.log(namePath);
       console.log(currentName);
       this.lastImage = newFileName;
+      if (this.lastImage){
+        this.uploadImage();
+      }
+      // this.getTrustImg(this.lastImage);
     }, error => {
       this.presentToast('Error while storing file.');
     });
   }
 
+  getTrustImg(imgsrc){
+    let path = this.win.Ionic.WebView.convertFileSrc(imgsrc);
+console.log(path);
+return path;
+  }
+  
   // Always get the accurate path to your apps folder
   public pathForImage(img) {
     if (img === null) {
@@ -208,7 +235,7 @@ export class EditprofilePage {
         console.log("image upload trace.......");
         var temp: any;
         temp = data;
-        this.data.profileImage = JSON.parse(temp.response).upload._id;
+        this.profileImage = JSON.parse(temp.response).upload._id;
 
         loader.dismiss();
         this.presentToast('Image succesful uploaded.');
@@ -236,5 +263,25 @@ export class EditprofilePage {
     toast.present();
   }
 
+  //check permissions....
+  // checkpermissions(){
+  //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+  //     result => console.log('Has permission?',result.hasPermission),
+  //     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+  //   );
+  //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE).then(
+  //     result => console.log('Has permission?',result.hasPermission),
+  //   );
+  // }
 
+   //Get profile data...
+   getprofiledata(){
+    let _base = this;
+    this.loginsignupProvider.getProfile(this.userId).then(function(success:any){
+      console.log(success);
+        _base.profiledata = success.result;
+    },function(err){
+      console.log(err);
+    })
+  }
 }

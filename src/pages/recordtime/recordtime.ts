@@ -41,6 +41,8 @@ export class RecordtimePage {
   deviceVerify:boolean = false;
   public record:any;
 
+  public userId:any;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public nfc: NFC,
@@ -51,6 +53,7 @@ export class RecordtimePage {
     private toast: ToastController,
     public alert:AlertController,)
     {
+      this.userId = localStorage.getItem("userId");
        //Get Network status...
        this.sharedservice.getNetworkStat().subscribe((value)=>{
         console.log("network status------------------>>>>>>",value);
@@ -123,12 +126,18 @@ export class RecordtimePage {
       content:"Please wait..."
     });
     loader.present();
-    this.nfctagpro.verifyDevice(this.tapData).then(function(success:any){
+    let data = {
+      userid:this.userId,
+      nfcId:this.tapData
+    } 
+    this.nfctagpro.verifyDevice(data).then(function(success:any){
       console.log(success);
       loader.dismiss();
       _base.deviceVerify = true;
+      _base.presentAlert();
     },function(err){
       console.log(err);
+      loader.dismiss();
       alert("Your device is not paired");
     })
   }

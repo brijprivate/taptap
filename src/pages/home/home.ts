@@ -51,6 +51,7 @@ export class HomePage {
   ndefMsg:      string    = '';
   subscriptions: Array<Subscription> = new Array<Subscription>();
   public tapData:any;
+  devicecount: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -72,6 +73,7 @@ export class HomePage {
       this.getDashboarddata();
       this.getpresentdateCount();
       this. getAllTapItem();
+      this.getpairedDevice();
     }
 
      //Read tag ....
@@ -271,4 +273,22 @@ export class HomePage {
     console.log(item);
     this.navCtrl.push('TapdetailsPage',{itemdetails:item});
   }
+
+  //go to edit profile page ...
+  gotoedit(){
+    this.navCtrl.push('EditprofilePage');
+  }
+
+  //Get paired devices...
+ getpairedDevice(){
+  let _base  = this;
+  this.nfctagpro.getpairdevice(this.userId).then(function(success:any){
+    console.log("paired devices--------------?>>>>>>>>>");
+    console.log(success.result.length);
+    // _base.devices = success.result;
+    _base.devicecount = success.result.length;
+  },function(err){
+    console.log(err);
+  })
+}
 }

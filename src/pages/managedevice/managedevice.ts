@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
+import { NfctagProvider } from '../../providers/nfctag/nfctag';
 // import { ProfilePage } from '../profile/profile';
 
 /**
@@ -15,8 +16,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'managedevice.html',
 })
 export class ManagedevicePage {
+  userId: any;
+  public devices:any=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public nfctagProvider:NfctagProvider,
+    private toast: ToastController,
+    public alert:AlertController,
+    public loading:LoadingController,) 
+    {
+      this.userId = localStorage.getItem("userId");
+      if(this.userId){
+        this.getpairedDevice();
+      }
   }
   backProfile(){
     this.navCtrl.push('ProfilePage');
@@ -25,7 +38,26 @@ export class ManagedevicePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ManagedevicePage');
   }
-  gotodevice(){
-    this.navCtrl.push('DevicededetailPage')
+  gotodevice(device){
+    this.navCtrl.push('DevicededetailPage',{devicedetail:device})
   }
+
+  //get paired devices....
+  //Get paired devices...
+ getpairedDevice(){
+  let _base  = this;
+  let loader = this.loading.create({
+    content:"Please wait..."
+  });
+  loader.present();
+  this.nfctagProvider.getpairdevice(this.userId).then(function(success:any){
+    console.log("paired devices--------------?>>>>>>>>>");
+    console.log(success);
+    loader.dismiss();
+    _base.devices = success.result;
+
+  },function(err){
+    console.log(err);
+  })
+}
 }

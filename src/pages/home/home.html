@@ -37,12 +37,12 @@
 
         <ion-col col-3>
           <div class="img">
-            <img src="../../assets/images/modi.jpeg" class="animated 800s pulse delay-5s" alt="">
+            <img src="assets/images/avatar.png" class="animated 800s pulse delay-5s" alt="">
           </div>
         </ion-col>
         <ion-col col-9>
           <div class="profile">
-            <p class="name">{{userName}}</p>
+            <p class="name" (click)="gotoedit()">{{userName}}</p>
             <ion-grid>
               <ion-row>
 
@@ -64,7 +64,7 @@
 
                   <p class="sm">
                       <ion-icon ios="ios-pricetags" md="md-pricetags"></ion-icon>
-                    2</p>
+                    {{devicecount}}</p>
                   <p class="num">Devices</p>
                 </ion-col>
               </ion-row>

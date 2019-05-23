@@ -11,7 +11,7 @@
   
           <ion-col col-3>
             <div class="img">
-              <img src="../../assets/images/modi.jpeg" class="animated 800s pulse delay-5s" alt="">
+              <img src="assets/images/avatar.png" class="animated 800s pulse delay-5s" alt="">
             </div>
           </ion-col>
           <ion-col col-9>
@@ -29,7 +29,7 @@
   
                     <p class="sm">
                       <ion-icon name="star"></ion-icon>
-                1234
+                {{favourite}}
                     </p>
                     <p class="num">Favourite</p>
                   </ion-col>
@@ -38,7 +38,7 @@
   
                     <p class="sm">
                         <ion-icon ios="ios-pricetags" md="md-pricetags"></ion-icon>
-                      2</p>
+                      {{devicecount}}</p>
                     <p class="num">Devices</p>
                   </ion-col>
                 </ion-row>
@@ -52,9 +52,9 @@
     </div>
   <ion-card class="tapCard animated 800s zoomIn delay-3s">
     <ion-card-content>
-      <ion-item>
+      <ion-item *ngFor="let device of devices">
         <ion-icon item-start>
-          <img src="../../assets/images/pen.png" class="pen">
+          <img src="assets/images/pen.png" class="pen">
         </ion-icon>
         <span class="online">
           <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -66,7 +66,7 @@
             </g>
           </svg>
         </span>
-        Tap-Tap Pen
+        {{device.type}}
       </ion-item>
       <!-- <hr class="margino">
      
