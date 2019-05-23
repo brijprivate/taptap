@@ -130,24 +130,18 @@
         <p>{{eventdata.purpose}}</p>
       </div>
     </div>
-    <div class="imgss">
-      <!-- <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> -->
-      <!-- <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> -->
+    <!-- <div class="imgss">
       <ion-slides pager="true">
         <ion-slide>
           <img src="assets/images/logo_before.png">
         </ion-slide>
         <ion-slide>
-          <!-- <img src="assets/images/logo_before.png"> -->
           <button ion-button class="upload">
             <ion-icon name="camera"></ion-icon> Upload
           </button> 
         </ion-slide>
-        <!-- <ion-slide>
-                  <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
-                </ion-slide> -->
       </ion-slides>
-    </div>
+    </div> -->
     <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
       (click)="fav(eventdata,eventdata.contactId._id)"></ion-icon>
     <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
