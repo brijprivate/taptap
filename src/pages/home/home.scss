@@ -106,6 +106,9 @@ page-home {
     }
     .canvas {
         margin-top: 4vh;
+        div#container {
+            height: 40vh;
+        }
     }
     ion-slides.slides.slides-md.slides-0 {
         height: 76%;
