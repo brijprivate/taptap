@@ -1,13 +1,13 @@
 page-share {
     .head {
         height: 14vh;
-        background: #f8f8f8;
+        background: #6354cb;
         display: table;
         width: 100%;
         p{
             // margin-right: 11em;
-            font-size: 18px;
-            color: #222;
+            font-size: 18px !important;
+            color: #fff;
             display: inline-block;
             vertical-align: middle;
 
@@ -20,7 +20,7 @@ page-share {
              ion-icon.icon.icon-md.ion-md-menu{
                 margin-right: 7px;
                 font-size: 22px;
-                color: #222;
+                color: #fff;
                 vertical-align: middle;
                 float: right;
                 // margin-top:0 !important;
@@ -37,9 +37,11 @@ page-share {
     ion-icon.icon.icon-md.ion-md-share {
         font-size: 19px;
         margin-top: 0px;
+        float: right;
     }
     .content {
         padding: 2em;
+        background:transparent;
     img {
         // border-radius: 50%;
         height: 80px;
@@ -95,6 +97,10 @@ svg#review {
 .mdl i.fa.fa-chevron-left {
     margin-right: 10px;
     font-size: 18px;
+    color: #fff;
     vertical-align: middle;
+}
+.scroll-content {
+    padding: 0 !important;
 }
 }
