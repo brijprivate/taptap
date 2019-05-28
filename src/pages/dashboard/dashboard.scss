@@ -71,6 +71,9 @@ page-dashboard {
     //         width: 60px;
     //     }
     // }
+    .tabs-md .tabbar {
+        z-index: 999;
+    }
     a#tab-t0-2 {
         padding: 0;
     }
