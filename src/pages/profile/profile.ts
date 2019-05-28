@@ -4,7 +4,7 @@ import { Chart } from 'chart.js';
 import { PairdevicePage } from '../pairdevice/pairdevice';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
-
+declare var anychart;
 /**
  * Generated class for the ProfilePage page.
  *
@@ -50,37 +50,55 @@ export class ProfilePage {
         this.getprofiledata();
         this.getDashboarddata();
       }
+    
     }
   ionViewDidLoad() {
-    var _base = this;
-    setTimeout(function () {
-      _base.doughnutChart = new Chart(_base.doughnutCanvas.nativeElement, {
-
-        type: 'doughnut',
-        data: {
-          labels: ["Milage", "Time"],
-          datasets: [{
-
-            // label: '# of Votes',
-            data: [12, 19],
-            backgroundColor: [
-              '#a25757',
-              '#93ca79',
-            ],
-          }]
-        },
-        options: {
-          cutoutPercentage: 80,
-          legend: {
-              display: false,            
-          }
-        }
-      });
-
-    }, 1000);
+    this.chartfunction(0)
+   
   }
+chartfunction(s){
+  
+  anychart.onDocumentReady(function () {
+    var chart = anychart.pie([
+      
+      { x: "Business_Milage", Times_Recorded: 9 },
+      { x: "Personal_Milage ", Times_Recorded: 9 },
+      { x: " Business_Time", Times_Recorded: 9 },
+      { x: " Personal_Time", Times_Recorded: 9 },
 
+    ]);
 
+    chart.innerRadius("25%");
+
+    var label = anychart.standalones.label();
+
+    label.text("taptap");
+
+    label.width("100%");
+    label.height("100%");
+    label.adjustFontSize(true);
+    label.fontColor("#60727b");
+    label.hAlign("center");
+    label.vAlign("middle");
+    chart.legend(false);
+
+    
+
+    // set the label as the center content
+    chart.center().content(label);
+
+    // chart.title("Donut Chart: Label in the center");
+    chart.container("container1");
+    chart.draw();
+    if(s==1){
+      chart.dispose();
+    }
+  });
+}
+  ionViewDidLeave(){
+    this.chartfunction(1)
+
+  }
 
 
 
