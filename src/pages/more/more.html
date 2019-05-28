@@ -190,7 +190,7 @@
       </div>
     </ion-item>
 
-    <ion-item>
+    <ion-item (click)="goto('FeedPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="paper" item-left></ion-icon>
@@ -248,6 +248,15 @@
         <p class="cName">
           <ion-icon name="call" item-left></ion-icon>
           About
+        </p>
+        <!-- <p class="cNumber">+1 9876123412</p> -->
+      </div>
+    </ion-item>
+    <ion-item (click)="goto('BusinesslistPage')">
+      <div class="pContent">
+        <p class="cName">
+          <ion-icon name="briefcase" item-left></ion-icon>
+          Business
         </p>
         <!-- <p class="cNumber">+1 9876123412</p> -->
       </div>
