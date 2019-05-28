@@ -125,17 +125,20 @@ export class HomePage {
 
     anychart.onDocumentReady(function () {
       var chart = anychart.pie([
-        { x: "Cycling", value: 10 },
-        { x: "Swimming", value: 12 },
-        { x: "Run", value: 18 },
-        { x: "Hiking", value: 11 },
-        { x: "Alpinism", value: 9 }
+        { x: "Fashion", value: 10 },
+        { x: "General", value: 12 },
+        { x: "Event", value: 18 },
+        { x: "Contacts", value: 11 },
+        { x: "Business", value: 9 },
+        { x: "Sports", value: 9 },
+        { x: "Groceries", value: 9 },
+        { x: "Timer", value: 9 },
+        { x: "Milage", value: 9 }
       ]);
 
       chart.innerRadius("25%");
 
       var label = anychart.standalones.label();
-
 
       label.text("taptap");
 
@@ -146,6 +149,8 @@ export class HomePage {
       label.hAlign("center");
       label.vAlign("middle");
       chart.legend(false);
+
+      
 
       // set the label as the center content
       chart.center().content(label);
