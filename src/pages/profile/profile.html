@@ -11,8 +11,9 @@
   
           <ion-col col-3>
             <div class="img">
-              <img src="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt="">
-            </div>
+              <img  *ngIf = !profileImage src="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt="">
+              <img   *ngIf = profileImage src="{{profileImage}}" class="animated 800s pulse delay-0.5s" alt="">
+              </div>
           </ion-col>
           <ion-col col-9>
             <div class="profile">

@@ -17,6 +17,8 @@ export class HomePage {
     loop: true
   };
   public images: any;
+  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+
   @ViewChild('slider') slider: Slides;
   @ViewChild('slides') slides: Slides;
   page = 0;
@@ -52,6 +54,7 @@ export class HomePage {
   subscriptions: Array<Subscription> = new Array<Subscription>();
   public tapData: any;
   devicecount: any;
+  profileImage: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -207,6 +210,9 @@ export class HomePage {
       console.log(success);
       if (success) {
         _base.userName = success.result.name;
+        if(success.result.imageId){
+          _base.profileImage = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id
+        }
       }
     }, function (err) {
       console.log(err);
