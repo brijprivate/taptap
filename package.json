@@ -59,6 +59,7 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-plugin-x-socialsharing": "^5.4.4",
     "es6-promise-plugin": "^4.2.2",
+    "inquirer": "^6.3.1",
     "ionic-angular": "3.9.3",
     "ionic-plugin-deeplinks": "^1.0.19",
     "ionicons": "3.0.0",

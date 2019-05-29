@@ -28,6 +28,10 @@
 </ion-header> -->
 
 <ion-content>
+
+
+
+    
   <div class="main">
 
       <i class="fa fa-bell animated 800s wobble delay-0.5s" aria-hidden="true"></i><span>5</span>
@@ -96,7 +100,9 @@
   <ion-slides #slider class="animated 800s zoomIn delay-0.3s">
     <ion-slide>
       <div class="canvas">
-        <canvas #doughnutCanvas></canvas>
+        <!-- <canvas #doughnutCanvas></canvas> -->
+        <div id="container"></div>
+
         <div class="somedata">
           <p><span>Today {{todaysTap}}</span><span>Total {{totalcount}}</span></p>
         </div>
@@ -117,7 +123,7 @@
             </ion-col>
           </ion-row>
         </ion-grid> -->
-        <div class="arrowbutton">
+        <!-- <div class="arrowbutton">
 
           <ul class="list-inline sileUl">
             <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
@@ -167,7 +173,7 @@
               </button>
             </li>
           </ul>
-        </div>
+        </div> -->
         <!-- <ion-slide>
                         <ion-grid>
                           <ion-row>
@@ -235,7 +241,7 @@
       </div>
 
       <button class="btn" (click)="tapItem()">
-        <ion-icon name="add"></ion-icon>
+        <!-- <ion-icon name="add"></ion-icon> -->
         Tap new items
       </button>
     </ion-slide>
