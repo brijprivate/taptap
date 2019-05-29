@@ -25,7 +25,7 @@ declare var window;
 export class RecordmilagePage {
 
   //NFC read related ....
-  readingTag:   boolean   = true;
+  readingTag:   boolean   = false;
   writingTag:   boolean   = false;
   isWriting:    boolean   = false;
   ndefMsg:      string    = '';
@@ -66,6 +66,7 @@ export class RecordmilagePage {
     public alert:AlertController,) 
     {
       this.userId = localStorage.getItem("userId");
+      this.tapData = navParams.get("tapdata");
        //Get Network status...
        this.sharedservice.getNetworkStat().subscribe((value)=>{
         console.log("network status------------------>>>>>>",value);
@@ -114,7 +115,7 @@ export class RecordmilagePage {
          console.log("tag id", s);
          this.tapData = s.substring(0, s.length - 1);
          if(this.tapData){
-          this.verifytag();
+          // this.verifytag();
          }
          return s.substring(0, s.length - 1);
          
@@ -202,18 +203,18 @@ export class RecordmilagePage {
         return;
       }
   
-      else if(!this.tapData)
-      {
-        let showtoast = this.toast.create({
-          message: "Please approach your paired nfc device to verify",
-          duration: 60000,
-          position: "bottom",
-          showCloseButton: true,
-          closeButtonText: "Ok"
-        })
-        showtoast.present();
-        return;
-      }
+      // else if(!this.tapData)
+      // {
+      //   let showtoast = this.toast.create({
+      //     message: "Please approach your paired nfc device to verify",
+      //     duration: 60000,
+      //     position: "bottom",
+      //     showCloseButton: true,
+      //     closeButtonText: "Ok"
+      //   })
+      //   showtoast.present();
+      //   return;
+      // }
       else if(!this.record)
       {
         let showtoast = this.toast.create({

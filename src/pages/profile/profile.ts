@@ -91,10 +91,10 @@ export class ProfilePage {
     this.navCtrl.push('ManagedevicePage');
   }
   recordMilage() {
-    this.navCtrl.push('RecordmilagePage');
+    this.navCtrl.push('AnimatetapPage',{key:'milage'});
   }
   recordTime() {
-    this.navCtrl.push('RecordtimePage');
+    this.navCtrl.push('AnimatetapPage',{key:'time'});
   }
   editprofile() {
     this.navCtrl.push('EditprofilePage');

@@ -1,0 +1,148 @@
+page-animatetap {
+    .toolbar-background {
+        background: linear-gradient(to right, #7357cf, #6367be,#6961c4,#5d6fb5);
+      }
+      .bluePair {
+        background: linear-gradient(to right, #7357cf, #6367be,#6961c4,#5d6fb5);
+        text-align: center;
+        position: relative;
+        padding: 15em 0 0 0;
+        height: 100%;
+    }
+      svg#fingerTap {
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        background: #fff;
+        padding: 1em;
+        fill: #736ebd;
+        margin-top: 10px;
+    }
+    .scroll-content {
+        padding: 0px 0 0 0 !important;
+        margin-top: 0px !important;
+    }
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none !important;
+    }
+    // .toolbar-content.toolbar-content-md {
+    //     text-align: center;
+    //     padding: 9em 0 1em 0;
+    //     position: relative;
+    // }
+    a.help {
+        top: 1.2em;
+        right: 2em;
+        position: absolute;
+        color: #fff;
+        font-size: 15px;
+    }
+    ion-row.centerPlace.row {
+        text-align: center;
+    }
+    p.device {
+        color: #fff;
+        margin-top: 6em;
+        padding-bottom: 1.5em;
+        font-size: 15px;
+        font-weight: 600;
+        z-index: 999999;
+    }
+    button.pairbutton.disable-hover.button.button-md.button-default.button-default-md {
+        background-color: #5c67f8;
+        padding: 22px 45px;
+        text-transform:capitalize;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #fff;
+    }
+    ion-list.listView.list.list-md{
+        padding: 1em 1em 4em 1em;
+    }
+    .containers {
+        position: relative;
+        display: block;
+        width: 120px;
+        margin: 0px auto;
+        
+       &.delay1 {
+          animation: waves 2.5s linear;
+          animation-delay: 1s;
+        }
+        
+        & .delay2 {
+          animation: waves infinite linear 2s forwards,
+        }
+        
+        & .delay3 {
+          animation: waves infinite linear 2.3s forwards;
+        }
+        
+        & .delay4 {
+          animation: waves infinite linear 3.9s forwards;
+        }
+      }
+      
+      .svg-box {
+        position: relative;
+        z-index: 10;
+      }
+      
+      .svg-box:hover {
+        animation: bloop 1s linear;
+      }
+      
+      .circle {
+        display: block;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background: #0194c7;
+        margin: 10px;
+        transition: 5s ease;
+        position: absolute;
+        top: 0px
+      }
+     
+      @-webkit-keyframes waves {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        
+        100% {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes bloop {
+        0% {
+          transform: scale3d(1, 1, 1);
+        }
+      
+        30% {
+          transform: scale3d(1.25, 0.75, 1);
+        }
+      
+        40% {
+          transform: scale3d(0.75, 1.25, 1);
+        }
+      
+        50% {
+          transform: scale3d(1.15, 0.85, 1);
+        }
+      
+        65% {
+          transform: scale3d(.95, 1.05, 1);
+        }
+      
+        75% {
+          transform: scale3d(1.05, .95, 1);
+        }
+      
+        100% {
+          transform: scale3d(1, 1, 1);
+        }
+      }
+}
