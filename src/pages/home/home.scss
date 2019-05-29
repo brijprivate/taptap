@@ -312,14 +312,17 @@ page-home {
     // font-weight: 500;
 
     width: 78%;
-    background: #ffffff;
+    background: url(../../assets/images/taptap_plus.png);
     color: #222;
     padding: 1em 0;
-    border-radius: 3px;
+    background-size: 15px;
+    background-position: 27%;
+    background-repeat: no-repeat;
     margin-top: 1em;
     font-weight: 500;
     border: 1px solid #222;
     border-radius: 5px;
+    box-shadow: 0px 0px 7px 3px #0000002e;
   }
 
   button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
@@ -705,32 +708,32 @@ page-home {
 
   //Fashion
   #ac_path_v {
-    fill: #DA4567;
+    fill: #bd86b6;
   }
 
   //General
   #ac_path_w {
-    fill: #DA4567;
+    fill: #8769d7;
   }
 
   //Event
   #ac_path_x {
-    fill: #DA4567;
+    fill: #ef95c8;
   }
 
   //Contacts
   #ac_path_y {
-    fill: #DA4567;
+    fill: #80a09d;
   }
 
   //Business
   #ac_path_z {
-    fill: #DA4567;
+    fill: #8baeec;
   }
 
   //Sports
   #ac_path_10 {
-    fill: #DA4567;
+    fill: #d98136;
   }
 
   //Groceries
@@ -740,11 +743,11 @@ page-home {
 
   //Timer
   #ac_path_12 {
-    fill: #DA4567;
+    fill: #DA456790;
   }
 
   //Milage
   #ac_path_13 {
-    fill: #DA4567;
+    fill: #6354cb;
   }
 }

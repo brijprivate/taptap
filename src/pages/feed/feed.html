@@ -1,0 +1,117 @@
+<!--
+  Generated template for the FeedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>feed</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+</ion-content> -->
+<ion-content class="animated 800s zoomIn delay-0.1s">
+  <div class="head">
+    <div class="mdl">
+      <!-- <ion-icon name="arrow-round-back" (click)="back()"></ion-icon> -->
+      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+
+      <!-- <ion-icon name="paper" item-left></ion-icon> -->
+      <p >Feed</p>
+      <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
+    </div>
+  </div>
+  <!-- <div class="inputs">
+    <input type="text" name="search">
+    <img src="../../assets/images/filter.png" alt="">
+
+  </div> -->
+
+<!-- 
+  <div class="arrowbuttons">
+
+    <ul class="list-inline sileUl">
+      <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
+          <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li>
+        <ion-slides loop slidesPerView="3" #slides>
+
+          <ion-slide *ngFor="let feed of feeds">
+            <div class="card">
+              <img src={{feed.product.image}} alt="">
+              <p class="title">{{feed.product.name}}</p>
+              <p class="details"> {{feed.product.description}} </p> -->
+              <!-- | slice:0:5 -->
+              <!-- <div class="buttons">
+                <button>
+                  <ion-icon name="heart"></ion-icon>
+                </button>
+                <button>
+                  <ion-icon name="eye"></ion-icon><span>{{feed.favourite}}</span>
+                </button>
+              </div>
+            </div>
+          </ion-slide>
+
+
+        </ion-slides>
+      </li>
+      <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
+          <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+  </div> -->
+  <ion-card >
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/images/p4.png" class="titleImg">
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>November 5, 1955</p>
+      <ion-icon name="heart"></ion-icon>
+
+    </ion-item>
+  
+    <img src="assets/images/card.png" class="feedImg">
+  
+    <ion-card-content>
+      <p><strong>Title:</strong>&nbsp;Shirt</p>
+      <p><strong>Description:</strong>&nbsp;Lorem Ipsum is simple </p>
+      <p><strong>Category:</strong> &nbsp;Fashion</p>
+      <button ion-button icon-start clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div class="ft">12 Likes</div>
+      </button>
+    </ion-card-content>
+    <!-- <ion-row>
+
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="heart"></ion-icon>
+          <div class="faet">Favourite</div>
+        </button>
+      </ion-col>
+      <ion-col align-self-center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row> -->
+  
+  </ion-card>
+
+
+</ion-content>

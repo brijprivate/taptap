@@ -104,7 +104,10 @@ export class HomePage {
         err => {
         })
     );
+
+    
   }
+
   ionViewDidEnter() {
     if (this.todaysTap)
       console.log("view enter--------------->>>>>>>>>>>");
@@ -123,6 +126,11 @@ export class HomePage {
     }
 
 
+  
+  }
+
+
+  chartfunc(s){
     anychart.onDocumentReady(function () {
       var chart = anychart.pie([
         { x: "Fashion", value: 10 },
@@ -157,10 +165,21 @@ export class HomePage {
 
       // chart.title("Donut Chart: Label in the center");
       chart.container("container");
-      chart.draw();
+     
+      if(s==1){
+        console.log('leaveinggggggggggggggggggggggggggggggggg')
+
+        chart.dispose();
+      }
+      else{
+        chart.draw();
+      }
     });
   }
+  ionViewDidLeave(){
+    this.chartfunc(1)
 
+  }
   selectedTab(index) {
     this.slider.slideTo(index);
   }
@@ -177,7 +196,7 @@ export class HomePage {
     this.slides.slidePrev();
   }
   ionViewDidLoad() {
-    var _base = this;
+    this.chartfunc(0)
 
   }
 

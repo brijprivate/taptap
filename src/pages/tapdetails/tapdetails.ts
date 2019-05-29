@@ -124,6 +124,7 @@ export class TapdetailsPage {
     this.nfctagPro.favUpdate(updatedata).then(function(success:any){
       console.log(success);
       // loader.dismiss();
+      
     },function(err){
       console.log(err);
       // loader.dismiss();
