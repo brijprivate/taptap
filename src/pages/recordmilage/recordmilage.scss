@@ -106,7 +106,7 @@ color:#6b708d;
         color: #8b9594;
         font-size: 22px;
         font-weight: 500;
-        margin: 0 0 2em 0;
+        margin: 0 0 0.5em 0;
     }
     ion-grid.kmhr.grid {
         padding: 0;
@@ -149,4 +149,95 @@ color:#6b708d;
         border: 1px solid #222;
         border-radius: 4px;
     }
+
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 90px;
+        height: 34px;
+        transform: scale(0.8);
+        vertical-align: middle;
+      }
+      span.mile {
+        color: #8b9594;
+    }
+      .switch input {display:none;}
+      
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ca222290;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      
+      input:checked + .slider {
+        background-color: #5c67f8;
+      }
+      
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+      }
+      
+      input:checked + .slider:before {
+        -webkit-transform: translateX(55px);
+        -ms-transform: translateX(55px);
+        transform: translateX(55px);
+      }
+      
+      /*------ ADDED CSS ---------*/
+      .on
+      {
+        display: none;
+      }
+      
+      .on, .off
+      {
+        color: white;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+       
+        font-size: 13px;
+        font-family: Verdana, sans-serif;
+      }
+      
+      .on{
+        left: 45%;
+      }
+      .off{
+        left: 55%;
+      }
+      input:checked+ .slider .on
+      {display: block;}
+      
+      input:checked + .slider .off
+      {display: none;}
+      
+      /*--------- END --------*/
+      
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+      
+      .slider.round:before {
+        border-radius: 50%;}
 }

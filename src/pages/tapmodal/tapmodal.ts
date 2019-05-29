@@ -104,4 +104,8 @@ export class TapmodalPage {
       loader.dismiss();
     })
   }
+
+  gotovack(){
+    this.navCtrl.pop()
+  }
 }
