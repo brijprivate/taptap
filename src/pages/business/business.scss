@@ -92,7 +92,7 @@ page-business {
     margin-top: 0;
     font-weight: 400;
     font-size: 15px;
-    color: #83889e !important;
+    color: #83889e ;
   }
 
   ion-item.item.item-block.item-md.item-input.item-label-floating {
@@ -335,7 +335,7 @@ ion-icon.icon.icon-md.ion-md-lock {
     margin-left: 8px;
     font-size: 20px;
     margin-top: 1em;
-    margin-right: 12px;
+    margin-right: 2px;
 }
 ion-label.label.label-md {
     margin-bottom: 0;
@@ -345,5 +345,27 @@ ion-grid.radioBtn.grid {
 }
 ion-item.item.item-block.item-md.item-radio .item-inner {
     border-bottom: 0;
+}
+.businessField {
+    text-align: center;
+    margin-top: 13px;
+}
+ion-label.label.label-md {
+  // text-align: center;
+}
+.list-md .item-block .item-inner {
+  border-bottom: none;
+}
+ion-label.permission.label.label-md {
+  text-align: center;
+  font-weight: 500;
+  font-size: 17px;
+  color: #6a56cd;
+  font-style: italic;
+  margin-top: 1.3em;
+  margin-bottom: 1em;
+}
+.businessField p {
+  margin: 3px 0 10px 0;
 }
 }

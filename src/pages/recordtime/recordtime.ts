@@ -21,7 +21,7 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 export class RecordtimePage {
 
   //NFC read related ....
-  readingTag:   boolean   = true;
+  readingTag:   boolean   = false;
   writingTag:   boolean   = false;
   isWriting:    boolean   = false;
   ndefMsg:      string    = '';
@@ -54,6 +54,7 @@ export class RecordtimePage {
     public alert:AlertController,)
     {
       this.userId = localStorage.getItem("userId");
+      this.tapData = navParams.get("tapdata");
        //Get Network status...
        this.sharedservice.getNetworkStat().subscribe((value)=>{
         console.log("network status------------------>>>>>>",value);
@@ -79,7 +80,7 @@ export class RecordtimePage {
           console.log("tag id", s);
           this.tapData = s.substring(0, s.length - 1);
           if(this.tapData){
-            this.verifytag();
+            // this.verifytag();
           }
           return s.substring(0, s.length - 1);
           
@@ -167,18 +168,18 @@ export class RecordtimePage {
       return;
     }
 
-    else if(!this.tapData || this.deviceVerify ==false)
-    {
-      let showtoast = this.toast.create({
-        message: "Please approach your paired nfc device to verify",
-        duration: 60000,
-        position: "bottom",
-        showCloseButton: true,
-        closeButtonText: "Ok"
-      })
-      showtoast.present();
-      return;
-    }
+    // else if(!this.tapData || this.deviceVerify ==false)
+    // {
+    //   let showtoast = this.toast.create({
+    //     message: "Please approach your paired nfc device to verify",
+    //     duration: 60000,
+    //     position: "bottom",
+    //     showCloseButton: true,
+    //     closeButtonText: "Ok"
+    //   })
+    //   showtoast.present();
+    //   return;
+    // }
     else if(!this.record)
     {
       let showtoast = this.toast.create({
