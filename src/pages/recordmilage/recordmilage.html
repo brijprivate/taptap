@@ -43,14 +43,19 @@
 <p class="typerecord" *ngIf="checkp == true">{{currentPosition.locality}},{{currentPosition.thoroughfare}}</p>
 <p class="typea">Timer</p>
 <p class="typerecordtime">{{time}}</p>
-<p class="typea">Octometer</p>
+
 <ion-grid class="kmhr">
     <ion-row>
       <ion-col col-6>
+          <p class="typea">Octometer</p>
           <p class="typerecordtime"> {{totaldis}}km</p>
       </ion-col>
-      <ion-col col-6>
-         <p class="mile">Mile<ion-toggle checked="true"></ion-toggle><span class="km">Kms</span></p> 
+      <ion-col col-6>   
+          <p class="typea">Preference</p>
+
+         <!-- <p class="mile">Mile<ion-toggle checked="true"></ion-toggle><span class="km">Kms</span></p>  -->
+        <span class="mile">KM</span> <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"><!--ADDED HTML --><span class="on">MPH</span><span class="off">KPH</span><!--END--></div></label><span class="mile">MPH</span>
+
       </ion-col>
     </ion-row>
   </ion-grid>

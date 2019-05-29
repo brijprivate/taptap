@@ -106,7 +106,7 @@ export class LoginPage {
   //Facebook Login...
   fbLogin() {
     // Login with permissions
-    this.fb.login(['public_profile', 'user_photos', 'email', 'user_birthday'])
+    this.fb.login(['public_profile', 'email'])
       .then((res: FacebookLoginResponse) => {
         console.log("res==========>>>>>>", res);
 
@@ -123,8 +123,6 @@ export class LoginPage {
 
             // this.userdata = user;
             // Get the connected user details
-            var gender = user.gender;
-            var birthday = user.birthday;
             this.userName = user.name;
             this.email = user.email;
 
@@ -132,8 +130,6 @@ export class LoginPage {
               this.fblog();
             }
             console.log("=== USER INFOS ===");
-            console.log("Gender : " + gender);
-            console.log("Birthday : " + birthday);
             console.log("Name : " + this.userName);
             console.log("Email : " + this.email);
             // => Open user session and redirect to the next page

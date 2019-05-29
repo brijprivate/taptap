@@ -64,10 +64,10 @@ chartfunction(s){
   anychart.onDocumentReady(function () {
     var chart = anychart.pie([
       
-      { x: "Business_Milage", Times_Recorded: 9 },
-      { x: "Personal_Milage ", Times_Recorded: 9 },
-      { x: " Business_Time", Times_Recorded: 9 },
-      { x: " Personal_Time", Times_Recorded: 9 },
+      { x: "Business_Milage", value: 9 },
+      { x: "Personal_Milage ", value: 9 },
+      { x: " Business_Time", value: 9 },
+      { x: " Personal_Time", value: 9 },
 
     ]);
 
