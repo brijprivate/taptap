@@ -20,6 +20,7 @@ import { Crop } from '@ionic-native/crop';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
@@ -58,6 +59,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
     LoginsignupProvider,
     NfctagProvider,
     Facebook,
+    GooglePlus,
     Network,
     NFC,
     Ndef,

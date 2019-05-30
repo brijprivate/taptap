@@ -7,29 +7,10 @@
     </div>
   </div>
 
-    <div class="et" (click)="goPage()">
-      <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
-      <p class="lorem">GoCube Technology</p>
-      <p class="lorema">2 Greatfield Ct , Northampton</p>
-    </div>
-
-    <div class="et" (click)="goPage()">
-      <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
-      <p class="lorem">GoCube Technology</p>
-      <p class="lorema">2 Greatfield Ct , Northampton</p>
-    </div>
-
-    <div class="et" (click)="goPage()">
-      <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
-      <p class="lorem">GoCube Technology</p>
-      <p class="lorema">2 Greatfield Ct , Northampton</p>
-    </div>
-
-    <div class="et" (click)="goPage()">
-      <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
-      <p class="lorem">GoCube Technology</p>
-      <p class="lorema">2 Greatfield Ct , Northampton</p>
-    </div>
-
+  <div class="et" *ngFor="let business of businessList" (click)="goPage(business)">
+    <img class="imgStart" src={{business.imageId}} item-start />
+    <p class="lorem">{{business.name}}</p>
+    <p class="lorema">{{business.address}}</p>
+  </div>
 
 </ion-content>

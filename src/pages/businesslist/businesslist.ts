@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NfctagProvider } from '../../providers/nfctag/nfctag';
 
 /**
  * Generated class for the BusinesslistPage page.
@@ -15,13 +16,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BusinesslistPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public businessList: any = [];
+  public business: any = {};
+
+  constructor(public http: NfctagProvider, public navCtrl: NavController, public navParams: NavParams) {
+    this.getBusinesses();
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad BusinesslistPage');
   }
-  goPage(){
-    this.navCtrl.push('BusinessPage')
+  goPage(business:any) {
+    this.navCtrl.push('BusinessPage',business)
+  }
+
+  getBusinesses() {
+    let _base = this;
+    _base.http.getbusinesses(localStorage.getItem('userId'))
+      .then(function (success: any) {
+        _base.businessList = success.result.map((business) => {
+          console.log(business)
+          console.log(business.logo)
+          business.imageId = (business.logo) ? 'http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId=' + business.logo : '../../assets/images/Logo_after.png'
+          return business;
+        });
+      }, function (error) {
+        console.log(error)
+      });
   }
 }

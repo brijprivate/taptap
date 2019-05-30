@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
-// import { GooglePlus } from '@ionic-native/google-plus';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 /**
  * Generated class for the LoginPage page.
@@ -33,6 +33,7 @@ export class LoginPage {
     public fb: Facebook,
     private toast: ToastController,
     public sharedservice: SharedserviceProvider,
+    private googlePlus: GooglePlus
   ) {
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
@@ -162,6 +163,12 @@ export class LoginPage {
       console.log("facebook login ----------->>>>>>>>", success);
       loader.dismiss();
 
+      if (success) {
+        console.log(success.result._id);
+        localStorage.setItem("userId", success.result._id);
+        _base.navCtrl.setRoot('DashboardPage');
+      }
+
     }, function (err) {
       loader.dismiss();
       console.log("fb login error---------->>>>>>>", err);
@@ -171,22 +178,21 @@ export class LoginPage {
 
   //Google login....
   googlelogin() {
-    alert("coming soon");
-    // this.googlePlus.login({})
-    //   .then(res => {
-    //     console.log("google login responce==========>>>>>>>>");
-    //     console.log(res);
-    //     this.userName = res.displayName;
-    //     this.email = res.email;
-    //     // this.familyName = res.familyName;
-    //     // this.givenName = res.givenName;
-    //     // this.userId = res.userId;
-    //     // this.imageUrl = res.imageUrl;
+    this.googlePlus.login({})
+      .then(res => {
+        console.log("google login responce==========>>>>>>>>");
+        console.log(res);
+        this.userName = res.displayName;
+        this.email = res.email;
+        this.fb_id = res.userId;
 
-    //     // this.isLoggedIn = true;
-    //   })
-    //   .catch(err => console.log(err)
-    //   );
+        if (this.fb_id) {
+          this.fblog()
+        }
+        // this.isLoggedIn = true;
+      })
+      .catch(err => console.log(err)
+      );
   }
 
 

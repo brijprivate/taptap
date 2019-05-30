@@ -35,23 +35,17 @@
     <!-- <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> -->
     <ion-slides pager="true">
       <ion-slide>
-        <img src="../../assets/images/a.jpeg">
-      </ion-slide>
-      <ion-slide>
-        <button ion-button class="upload">
-          <ion-icon name="camera"></ion-icon> Upload
-        </button>
+        <img src={{business.imageId}}>
       </ion-slide>
     </ion-slides>
-    <input type="file" id="fileInput" style="display:none" (change)="selectFile($event)" />
   </div>
   <ion-list class="mobileSp">
     <!-- <p class="inputTitle">Name</p>   -->
     <div class="businessField">
-   <p>GoCube Technology</p>
-   <p>2 Greatfield Ct , Northampton , NN3 8UU , UK</p>
-   <p>info@gocubetech.com</p>
-   <p>+44 7930275782</p>
+   <p>{{business.name}}</p>
+   <p>{{business.address}}</p>
+   <p>{{business.email}}</p>
+   <p>{{business.website}}</p>
     </div>
   
  
@@ -60,11 +54,11 @@
       Permission</ion-label>
       <ion-item>
         <ion-label>Access to Time</ion-label>
-        <ion-toggle checked="false"></ion-toggle>
+        <ion-toggle [(ngModel)]="timer"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label>Access to Milage</ion-label>
-        <ion-toggle checked="true"></ion-toggle>
+        <ion-toggle [(ngModel)]="milage"></ion-toggle>
       </ion-item>
   
     <!-- <ion-grid radio-group class="radioBtn">
@@ -99,7 +93,7 @@
     <ion-grid class="saveGrid">
       <ion-row>
         <ion-col col-12>
-          <button ion-button class="save" (click)="createProduct()">Save</button>
+          <button ion-button class="save" (click)="savePermission()">Save</button>
         </ion-col>
 
         <!-- <ion-col col-3 (click)="addtofeed()" style="z-index:99999999900">
