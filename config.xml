@@ -130,5 +130,9 @@
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
     </plugin>
+    <plugin name="cordova-plugin-googleplus" spec="7.0.1">
+        <variable name="REVERSED_CLIENT_ID" value="599219149273-73fvpe7jvupth9q8uhf5jod22pbdrelp.apps.googleusercontent.com" />
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    </plugin>
     <engine name="android" spec="7.1.4" />
 </widget>
