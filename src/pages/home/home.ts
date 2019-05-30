@@ -299,4 +299,9 @@ export class HomePage {
       console.log(err);
     })
   }
+
+  //go to profiledetails page....
+  detail(){
+    this.navCtrl.push('ProfiledetailPage');
+  }
 }

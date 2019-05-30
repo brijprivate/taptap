@@ -148,4 +148,18 @@ export class LoginsignupProvider {
         });
     });
   }
+
+  // resetPassword
+  resetpassword(data) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.put(_base.apiUrl + 'user/resetPassword', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
 }

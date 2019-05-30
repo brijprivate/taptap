@@ -24,6 +24,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { Deeplinks } from '@ionic-native/deeplinks';
     BackgroundGeolocation,
     NativeGeocoder,
     Deeplinks,
-    SocialSharing
+    SocialSharing,
+    Contacts
   ]
 })
 export class AppModule {}

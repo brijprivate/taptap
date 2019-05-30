@@ -190,4 +190,8 @@ chartfunction(s){
       console.log(err);
     })
   }
+   //go to profiledetails page....
+   detail(){
+    this.navCtrl.push('ProfiledetailPage');
+  }
 }
