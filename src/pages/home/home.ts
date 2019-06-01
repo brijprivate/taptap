@@ -32,10 +32,10 @@ export class HomePage {
   public userId: any;
   public userName: any;
 
-  public fashion: "0";
-  public general: "0";
-  public sports: "0";
-  public contact: "0";
+  public fashion= 0;
+  public general=0;
+  public sports=0;
+  public contact=0;
   public event: "0";
   public groceries: "0";
   public buisness: "0";
@@ -72,41 +72,41 @@ export class HomePage {
     console.log(this.userId);
     if (this.userId) {
       this.getprofiledata();
-      this.getDashboarddata();
+      // this.getDashboarddata();
       this.getpresentdateCount();
       this.getAllTapItem();
       this.getpairedDevice();
     }
 
     //Read tag ....
-    this.subscriptions.push(this.nfc.addNdefListener()
-      .subscribe(data => {
-        if (this.readingTag) {
-          let tagid = data.tag.id;
-          // let parsedid = this.nfc.bytesToString(tagid);
-          let payload = data.tag.ndefMessage[0].payload;
-          let tagContent = this.nfc.bytesToString(payload).substring(3);
-          this.readingTag = true;
+    // this.subscriptions.push(this.nfc.addNdefListener()
+    //   .subscribe(data => {
+    //     if (this.readingTag) {
+    //       let tagid = data.tag.id;
+    //       // let parsedid = this.nfc.bytesToString(tagid);
+    //       let payload = data.tag.ndefMessage[0].payload;
+    //       let tagContent = this.nfc.bytesToString(payload).substring(3);
+    //       this.readingTag = true;
 
-          var s = '';
-          tagid.forEach(function (byte) {
-            s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
-          });
+    //       var s = '';
+    //       tagid.forEach(function (byte) {
+    //         s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
+    //       });
 
-          console.log("tag data", tagContent);
-          console.log("whole data", data.tag);
-          console.log("tag id", s);
-          this.tapData = s.substring(0, s.length - 1);
-          if (this.tapData) {
+    //       console.log("tag data", tagContent);
+    //       console.log("whole data", data.tag);
+    //       console.log("tag id", s);
+    //       this.tapData = s.substring(0, s.length - 1);
+    //       if (this.tapData) {
 
-          }
-          return s.substring(0, s.length - 1);
+    //       }
+    //       return s.substring(0, s.length - 1);
 
-        }
-      },
-        err => {
-        })
-    );
+    //     }
+    //   },
+    //     err => {
+    //     })
+    // );
 
     
   }
@@ -122,36 +122,30 @@ export class HomePage {
       this.getAllTapItem();
     }
     if (this.totalcount) {
-
-
       var _base = this;
-
     }
-
-
-  
   }
 
-
   chartfunc(s){
+    let _base = this;
     anychart.onDocumentReady(function () {
       var chart = anychart.pie([
-        { x: "Fashion", value: 10 },
-        { x: "General", value: 12 },
-        { x: "Event", value: 18 },
-        { x: "Contacts", value: 11 },
-        { x: "Business", value: 9 },
-        { x: "Sports", value: 9 },
-        { x: "Groceries", value: 9 },
-        { x: "Timer", value: 9 },
-        { x: "Milage", value: 9 }
+        { x: "Fashion", value:_base.fashion },
+        { x: "General", value:_base.general },
+        { x: "Event", value:_base.event },
+        { x: "Contacts", value:_base.contact },
+        { x: "Business", value:_base.buisness },
+        { x: "Sports", value:_base.sports },
+        { x: "Groceries", value:_base.groceries },
+        // { x: "Timer", value: 9 },
+        // { x: "Milage", value: 9 }
       ]);
 
       chart.innerRadius("25%");
 
       var label = anychart.standalones.label();
 
-      label.text("taptap");
+      label.text("TapTap");
 
       label.width("100%");
       label.height("100%");
@@ -180,7 +174,7 @@ export class HomePage {
     });
   }
   ionViewDidLeave(){
-    this.chartfunc(1)
+    this.chartfunc(1);
 
   }
   selectedTab(index) {
@@ -199,7 +193,7 @@ export class HomePage {
     this.slides.slidePrev();
   }
   ionViewDidLoad() {
-    this.chartfunc(0)
+    // this.chartfunc(0);
 
   }
 
@@ -245,6 +239,7 @@ export class HomePage {
       _base.sports = success.result.sport;
       _base.groceries = success.result.groceries;
       _base.totalcount = success.result.totalTap;
+      _base.chartfunc(0);
       loader.dismiss();
     }, function (err) {
       console.log(err);

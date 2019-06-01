@@ -116,6 +116,7 @@ chartfunction(s){
   }
   recordTime() {
     this.navCtrl.push('AnimatetapPage',{key:'time'});
+    // this.navCtrl.push('RecordtimePage');
   }
   editprofile() {
     this.navCtrl.push('EditprofilePage');
