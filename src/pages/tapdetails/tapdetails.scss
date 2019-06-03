@@ -21,7 +21,8 @@ page-tapdetails {
                 color: gray !important;
             }
         }   
-        ion-icon.icon.icon-md.ion-md-heart{
+        
+        ion-icon.icon.ion-heart{
             margin-right: 7px;
             font-size: 26px;
             color: #de1010;
@@ -29,13 +30,21 @@ page-tapdetails {
             margin-top: 15px;
             float:right;
         }
-        ion-icon.icon.icon-md {
+        ion-icon.icon {
             margin-right: 10px;
             font-size: 26px;
             color: #fff;
             vertical-align: middle;
             margin-left: 1em;
         }
+    }
+    ion-icon.icon.icon-ios.ion-ios-heart{
+        margin-right: 7px;
+        font-size: 26px;
+        color: #de1010;
+        vertical-align: middle;
+        margin-top: 15px;
+        float:right;  
     }
     ion-slide.swiper-slide {
         // width: 99px !important;
@@ -155,8 +164,9 @@ page-tapdetails {
         // margin-top: -2em;
         // box-shadow: -1px 3px 10px 0px #d6d6d68c;
         // position: relative;
-        height: 22vh;
+        // height: 22vh;
         width: 100%;
+        height: 26vh;
         margin: auto;
         background: rgba(70, 70, 70, 0.2);
         border-radius: 0;
@@ -164,14 +174,15 @@ page-tapdetails {
         -webkit-box-shadow: -1px 3px 10px 0px #d6d6d68c;
         box-shadow: -1px 3px 10px 0px #d6d6d68c;
         position: relative;
+        margin-bottom:2em;
         img{
-            width: auto;
-            height: 100%;
-            border-radius: 10px;
+            // width: auto;
+            // height: 100%;
         }
         .slide-zoom {
             height: 100%;
         }
+     
         .swiper-container{
             // border-radius: 50%;
         }
@@ -188,6 +199,9 @@ page-tapdetails {
             right: 0;
             color: #757171;
         }
+    }
+    .swiper-slide img {
+     height: 100% !important;
     }
     p.header {
         color: #7c8198;
@@ -214,7 +228,7 @@ page-tapdetails {
     }
     .time {
         background: #e6ecfe;
-        padding: 7px 5px;
+        padding: 13px 5px;
         border-radius: 4px;
         text-align: center;
     }
@@ -293,7 +307,7 @@ page-tapdetails {
         margin-top: 4em;
     }
     .eC {
-        padding: 0em 1em 0 1em;
+        padding: 1em 1em 0 1em;
     }
     .head.heada {
         margin-bottom: 2em;
