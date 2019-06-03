@@ -23,7 +23,9 @@ export class NotificationPage {
     // this.getnotifications();
 
   }
-
+  eventdetail(){
+    this.navCtrl.push('EventdetailPage');
+  }
   // getnotifications() {
   //   let _base = this;
   //   let loader = this.loading.create({
