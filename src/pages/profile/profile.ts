@@ -22,6 +22,9 @@ export class ProfilePage {
   @ViewChild('doughnutCanvas') doughnutCanvas;
   @ViewChild('lineCanvas') lineCanvas;
 
+  profileImage: string;
+  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+
   doughnutChart: any;
   barChart: any;
   lineChart: any;
@@ -113,6 +116,7 @@ chartfunction(s){
   }
   recordTime() {
     this.navCtrl.push('AnimatetapPage',{key:'time'});
+    // this.navCtrl.push('RecordtimePage');
   }
   editprofile() {
     this.navCtrl.push('EditprofilePage');
@@ -152,6 +156,9 @@ chartfunction(s){
       // loader.dismiss();
       if(success){
         _base.userName = success.result.name;
+        if(success.result.imageId){
+          _base.profileImage = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id
+        }
       }
     },function(err){
       // loader.dismiss();
@@ -183,5 +190,9 @@ chartfunction(s){
     },function(err){
       console.log(err);
     })
+  }
+   //go to profiledetails page....
+   detail(){
+    this.navCtrl.push('ProfiledetailPage');
   }
 }

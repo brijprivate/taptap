@@ -122,6 +122,11 @@ export class LoginPage {
           this.fb.api("/me?fields=name,gender,birthday,email", []).then((user) => {
             console.log("fb user data ============>>>>>>>>>>", user);
 
+            if (!user.email) {
+              alert("This account has no email associated")
+              return
+            }
+
             // this.userdata = user;
             // Get the connected user details
             this.userName = user.name;
@@ -163,7 +168,9 @@ export class LoginPage {
       console.log("facebook login ----------->>>>>>>>", success);
       loader.dismiss();
 
-      if (success) {
+      if (success.error) {
+        alert(success.message)
+      } else {
         console.log(success.result._id);
         localStorage.setItem("userId", success.result._id);
         _base.navCtrl.setRoot('DashboardPage');
@@ -171,6 +178,7 @@ export class LoginPage {
 
     }, function (err) {
       loader.dismiss();
+      alert("This email is already registered")
       console.log("fb login error---------->>>>>>>", err);
     })
   }

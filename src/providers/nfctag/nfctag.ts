@@ -171,4 +171,30 @@ export class NfctagProvider {
     });
   }
 
+  // rejectInvitstion() {
+  //   let _base = this;
+  //   return new Promise(function (resolve, reject) {
+  //     _base.http.put(_base.apiUrl + 'business/updateinvite', permission)
+  //       .then(function (success) {
+  //         resolve(success);
+  //       }, function (error) {
+  //         reject(error);
+  //       });
+  //   });
+  // }
+
+  //API get product by id...
+  getnotifications(userID: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'notifications/list?userId=' + userID)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
 }

@@ -17,6 +17,8 @@ export class HomePage {
     loop: true
   };
   public images: any;
+  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+
   @ViewChild('slider') slider: Slides;
   @ViewChild('slides') slides: Slides;
   page = 0;
@@ -30,10 +32,10 @@ export class HomePage {
   public userId: any;
   public userName: any;
 
-  public fashion: "0";
-  public general: "0";
-  public sports: "0";
-  public contact: "0";
+  public fashion= 0;
+  public general=0;
+  public sports=0;
+  public contact=0;
   public event: "0";
   public groceries: "0";
   public buisness: "0";
@@ -52,6 +54,7 @@ export class HomePage {
   subscriptions: Array<Subscription> = new Array<Subscription>();
   public tapData: any;
   devicecount: any;
+  profileImage: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -69,43 +72,44 @@ export class HomePage {
     console.log(this.userId);
     if (this.userId) {
       this.getprofiledata();
-      this.getDashboarddata();
+      // this.getDashboarddata();
       this.getpresentdateCount();
       this.getAllTapItem();
       this.getpairedDevice();
+      this.getnotifications();
     }
 
     //Read tag ....
-    this.subscriptions.push(this.nfc.addNdefListener()
-      .subscribe(data => {
-        if (this.readingTag) {
-          let tagid = data.tag.id;
-          // let parsedid = this.nfc.bytesToString(tagid);
-          let payload = data.tag.ndefMessage[0].payload;
-          let tagContent = this.nfc.bytesToString(payload).substring(3);
-          this.readingTag = true;
+    // this.subscriptions.push(this.nfc.addNdefListener()
+    //   .subscribe(data => {
+    //     if (this.readingTag) {
+    //       let tagid = data.tag.id;
+    //       // let parsedid = this.nfc.bytesToString(tagid);
+    //       let payload = data.tag.ndefMessage[0].payload;
+    //       let tagContent = this.nfc.bytesToString(payload).substring(3);
+    //       this.readingTag = true;
 
-          var s = '';
-          tagid.forEach(function (byte) {
-            s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
-          });
+    //       var s = '';
+    //       tagid.forEach(function (byte) {
+    //         s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
+    //       });
 
-          console.log("tag data", tagContent);
-          console.log("whole data", data.tag);
-          console.log("tag id", s);
-          this.tapData = s.substring(0, s.length - 1);
-          if (this.tapData) {
+    //       console.log("tag data", tagContent);
+    //       console.log("whole data", data.tag);
+    //       console.log("tag id", s);
+    //       this.tapData = s.substring(0, s.length - 1);
+    //       if (this.tapData) {
 
-          }
-          return s.substring(0, s.length - 1);
+    //       }
+    //       return s.substring(0, s.length - 1);
 
-        }
-      },
-        err => {
-        })
-    );
+    //     }
+    //   },
+    //     err => {
+    //     })
+    // );
 
-    
+
   }
 
   ionViewDidEnter() {
@@ -119,36 +123,30 @@ export class HomePage {
       this.getAllTapItem();
     }
     if (this.totalcount) {
-
-
       var _base = this;
-
     }
-
-
-  
   }
 
-
   chartfunc(s){
+    let _base = this;
     anychart.onDocumentReady(function () {
       var chart = anychart.pie([
-        { x: "Fashion", value: 10 },
-        { x: "General", value: 12 },
-        { x: "Event", value: 18 },
-        { x: "Contacts", value: 11 },
-        { x: "Business", value: 9 },
-        { x: "Sports", value: 9 },
-        { x: "Groceries", value: 9 },
-        { x: "Timer", value: 9 },
-        { x: "Milage", value: 9 }
+        { x: "Fashion", value:_base.fashion },
+        { x: "General", value:_base.general },
+        { x: "Event", value:_base.event },
+        { x: "Contacts", value:_base.contact },
+        { x: "Business", value:_base.buisness },
+        { x: "Sports", value:_base.sports },
+        { x: "Groceries", value:_base.groceries },
+        // { x: "Timer", value: 9 },
+        // { x: "Milage", value: 9 }
       ]);
 
       chart.innerRadius("25%");
 
       var label = anychart.standalones.label();
 
-      label.text("taptap");
+      label.text("TapTap");
 
       label.width("100%");
       label.height("100%");
@@ -158,26 +156,26 @@ export class HomePage {
       label.vAlign("middle");
       chart.legend(false);
 
-      
+
 
       // set the label as the center content
       chart.center().content(label);
 
       // chart.title("Donut Chart: Label in the center");
       chart.container("container");
-     
-      if(s==1){
+
+      if (s == 1) {
         console.log('leaveinggggggggggggggggggggggggggggggggg')
 
         chart.dispose();
       }
-      else{
+      else {
         chart.draw();
       }
     });
   }
   ionViewDidLeave(){
-    this.chartfunc(1)
+    this.chartfunc(1);
 
   }
   selectedTab(index) {
@@ -196,7 +194,7 @@ export class HomePage {
     this.slides.slidePrev();
   }
   ionViewDidLoad() {
-    this.chartfunc(0)
+    // this.chartfunc(0);
 
   }
 
@@ -207,6 +205,9 @@ export class HomePage {
       console.log(success);
       if (success) {
         _base.userName = success.result.name;
+        if(success.result.imageId){
+          _base.profileImage = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id
+        }
       }
     }, function (err) {
       console.log(err);
@@ -239,6 +240,7 @@ export class HomePage {
       _base.sports = success.result.sport;
       _base.groceries = success.result.groceries;
       _base.totalcount = success.result.totalTap;
+      _base.chartfunc(0);
       loader.dismiss();
     }, function (err) {
       console.log(err);
@@ -292,5 +294,20 @@ export class HomePage {
     }, function (err) {
       console.log(err);
     })
+  }
+
+  getnotifications() {
+    let _base = this;
+    _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
+      .then(function (success) {
+        console.log("Notifications", success)
+      }, function (error) {
+        console.log(error)
+      });
+  }
+
+  //go to profiledetails page....
+  detail(){
+    this.navCtrl.push('ProfiledetailPage');
   }
 }

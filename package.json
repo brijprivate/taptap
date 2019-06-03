@@ -23,6 +23,7 @@
     "@ionic-native/android-permissions": "^4.20.0",
     "@ionic-native/background-geolocation": "^4.20.0",
     "@ionic-native/camera": "^4.20.0",
+    "@ionic-native/contacts": "^4.20.0",
     "@ionic-native/core": "~4.18.0",
     "@ionic-native/crop": "^4.20.0",
     "@ionic-native/deeplinks": "^4.20.0",
@@ -44,6 +45,7 @@
     "cordova-android": "7.1.4",
     "cordova-plugin-android-permissions": "^1.0.0",
     "cordova-plugin-camera": "^4.0.3",
+    "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-crop": "^0.4.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-facebook4": "4.2.1",
@@ -132,6 +134,7 @@
         "FACEBOOK_HYBRID_APP_EVENTS": "false",
         "FACEBOOK_ANDROID_SDK_VERSION": "4.40.0"
       },
+      "cordova-plugin-contacts": {},
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "599219149273-73fvpe7jvupth9q8uhf5jod22pbdrelp.apps.googleusercontent.com",
         "PLAY_SERVICES_VERSION": "11.8.0"

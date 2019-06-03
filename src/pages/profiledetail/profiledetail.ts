@@ -22,4 +22,10 @@ export class ProfiledetailPage {
     console.log('ionViewDidLoad ProfiledetailPage');
   }
 
+  gotoedit(){
+    this.navCtrl.push('EditprofilePage');
+  }
+  changepass(){
+    this.navCtrl.push('ChangepasswordPage');
+  }
 }

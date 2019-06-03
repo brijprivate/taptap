@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController, AlertController, 
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
+import { Contacts, Contact, ContactField, ContactName, ContactOrganization, ContactAddress } from '@ionic-native/contacts';
 
 /**
  * Generated class for the TapdetailsPage page.
@@ -33,7 +34,8 @@ export class TapdetailsPage {
     public loading:LoadingController,
     public nfctagPro:NfctagProvider,
     private socialsharing:SocialSharing,
-    public sharedservice: SharedserviceProvider,)
+    public sharedservice: SharedserviceProvider,
+    private contacts: Contacts)
     {
       this.userId = localStorage.getItem("userId");
       this.eventdata = navParams.get("itemdetails");
@@ -139,5 +141,21 @@ export class TapdetailsPage {
     },function(err){
       console.log(err);
     })
+  }
+
+  savecontact(data){
+    var contact: Contact = this.contacts.create();
+    contact.name = new ContactName(null, null, data.name);
+      contact.phoneNumbers = [new ContactField('mobile',data.telephoneNumber)];
+      contact.organizations = [new ContactOrganization('company',data.company)];
+      contact.addresses = [new ContactAddress(null,data.company)];
+      contact.emails = [new ContactField('email',data.email)];
+      contact.urls = [new ContactField('website',data.link)];
+
+     contact.save().then((contact)=>{
+       alert("contact saved");
+     },(err)=>{
+       alert("contact not saved");
+     })
   }
 }
