@@ -23,6 +23,7 @@ export class DashboardPage {
   profilePage= 'ProfilePage';
   searchPage='SearchPage';
   taptapPage='TaptapPage';
+  // taptapPage='Favourite';
   helpPage='HelpPage';
   morePage = 'MorePage';
   homePage=HomePage;

@@ -26,11 +26,12 @@ export class EditprofilePage {
   private win: any = window;
   lastImage: any;
   public imageId: any;
-  public data: any = [];
+  public data = [];
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
   public userId:any;
   public profiledata=[];
   profileImage: string;
+  
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -51,6 +52,7 @@ export class EditprofilePage {
       console.log(this.userId);
       if(this.userId){
         this.getprofiledata();
+        
       }
   }
 
@@ -58,6 +60,17 @@ export class EditprofilePage {
     this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
 
     console.log('ionViewDidLoad EditprofilePage');
+  }
+
+  ionViewDidEnter(){
+    this.userId = localStorage.getItem("userId");
+    console.log(this.userId);
+    if(this.userId){
+      this.getprofiledata();
+    }
+    // console.log("get profile image------->>>>");
+    // this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
+
   }
 
 
@@ -235,7 +248,16 @@ return path;
         console.log("image upload trace.......");
         var temp: any;
         temp = data;
+        console.log(temp);
         this.profileImage = JSON.parse(temp.response).upload._id;
+        console.log("profile image"+this.profileImage);
+
+        if(this.profileImage){
+          this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
+          console.log(this.imageId);
+        }
+       
+        // console.log(temp.imageId._id);
 
         loader.dismiss();
         this.presentToast('Image succesful uploaded.');
@@ -280,6 +302,30 @@ return path;
     this.loginsignupProvider.getProfile(this.userId).then(function(success:any){
       console.log(success);
         _base.profiledata = success.result;
+        if(success.result.imageId){
+          _base.imageId = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id;
+        }
+    },function(err){
+      console.log(err);
+    })
+  }
+  updateProfile()
+  {
+    let _base = this;
+    // let data = {
+    //   name:_base.profiledata.name,
+    //   website:_base.profiledata.website,
+    //   city:_base.profiledata.city,
+    //   address:_base.profiledata.address,
+    //   zip:_base.profiledata.zip,
+    //   country:_base.profiledata.country,
+    //   imageId:_base.profileImage,
+    //   milage_prefrence:"mile"
+    // }
+    Object.assign(_base.profiledata,{imageId:_base.profileImage});
+    console.log(_base.profiledata);
+    this.loginsignupProvider.profileUpdate(_base.profiledata).then(function(success:any){
+      console.log(success);
     },function(err){
       console.log(err);
     })

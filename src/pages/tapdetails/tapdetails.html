@@ -176,6 +176,14 @@
     </div>
 
     <div class="cont">
+        <p class="header">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </p>
+        <p class="data">{{eventdata.contactId.email}}</p>
+      </div>
+
+    <div class="cont">
       <p class="header">
         <ion-icon name="attach"></ion-icon>
         Website
@@ -185,8 +193,8 @@
     <ion-grid class="saveGrid">
       <ion-row>
         <ion-col col-6>
-          <button class="share" outline>
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+          <button class="share" outline (click)="savecontact(eventdata.contactId)">
+            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
           </button> </ion-col>
         <ion-col col-6>
           <button class="share" outline (click)="socialshare(eventdata,eventdata.contactId._id)">

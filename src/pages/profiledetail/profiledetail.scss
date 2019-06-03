@@ -1,4 +1,40 @@
 page-profiledetail {
+
+    .head {
+        height: 14vh;
+        background: #6354cb;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 0 18px;
+        }   
+             ion-icon{
+            margin-right: 10px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            // margin-top: 12px;
+            // float:right;
+
+        }
+        ion-icon.icon.icon-md {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+    }
     .toolbar-background {
         background-color: #f3f2f7;
         height: 243px;
@@ -61,20 +97,27 @@ page-profiledetail {
         padding-left: 0;
     }
     .pContent {
-        margin-left: 3em;
+        // margin-left: 3em;
     }
     p.cName {
-        font-size: 12px;
-        color: rgba(84, 87, 98, 0.72);
+        font-size: 13px;
+        color: #000;
+        font-weight: 600;
+        margin-bottom: 5px;
     }
     ion-icon.icon.icon-md {
         margin-bottom: 3px;
         margin-right: 5px;
         font-size: 18px;
+        color: gray;;
     }
     p.cNumber {
         color: #525662;
-        font-size: 14px;
+        font-size: 12px;
+    }
+    p.cName ion-icon {
+        margin: 3px 0px 0px 12px !important;
+        font-size: 24px !important;
     }
     ion-icon.icon.icon-md.ion-md-copy.item-icon {
         float: right;
