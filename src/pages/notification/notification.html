@@ -34,13 +34,65 @@
 
   <div>
     <p class="datePadding">22 April 2019</p>
-  
-    <div class="et" >
-      <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
-      <p class="lorem">description</p>
-      <ion-icon  name="information-circle"
-        ></ion-icon>
+
+    <div class="et">
+      <ion-grid class="p0">
+        <ion-row>
+          <ion-col col-2>
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">description</p>
+            <p class="sub">this is for normal notification</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
+
+
+
+
+
+
+    <div class="et" (click)="eventdetail()">
+      <ion-grid class="p0">
+        <ion-row>
+          <ion-col col-2>
+
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">Event Name</p>
+            <p class="sub">june 23 at 10:00 PM </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+
+
+    <div class="et">
+      <ion-grid class="p0">
+        <ion-row>
+          <ion-col col-2>
+
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">Device name</p>
+            <p class="sub">Your device is tapped in 'Muchipara subham k pas ' at '10:00 PM' </p>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+
+
   </div>
 
   <!-- <div>

@@ -61,9 +61,15 @@ page-notification {
         box-shadow: none;
     }
     .et {
-        border-bottom: 1px solid #f8f8f8;
-        padding: 1em 0 2em 0;
+        border-bottom: 1px solid #fff;
+        padding: 0.3em;
         background: #fff;
+    }
+    p.sub {
+        margin-top: 0px;
+        color: #0000007d;
+        margin-bottom: 0;
+        font-size: 13px;
     }
     p.datePadding {
         text-align: center;
@@ -74,27 +80,26 @@ page-notification {
         padding: 4px 0;
     }
     img.imgStart {
-    //     height: 50px;
-    // width: 50px;
-    // vertical-align: middle;
-    // float: left;
-    // margin: 0 1em;
-    height: 55px;
-    width: 55px;
+    height: 41px;
+    width: 41px;
     vertical-align: middle;
     float: left;
-    margin: 0 1em;
+    margin: 5px 1.5em;
     border: 2px solid #4f4f4f;
     border-radius: 50%;
     padding: 2px;
     }
+    .p0{
+        padding: 0;
+    }
     p.lorem {
-        margin: 15px 0 2px;
+        margin: 0;
         overflow: inherit;
         font-size: 17px;
         line-height: normal;
         text-overflow: inherit;
         color: #212121;
+        margin-top: 2px;
     }
     .item-inner {
         border-bottom: 0px !important;
