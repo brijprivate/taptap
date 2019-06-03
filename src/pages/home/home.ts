@@ -73,6 +73,7 @@ export class HomePage {
       this.getpresentdateCount();
       this.getAllTapItem();
       this.getpairedDevice();
+      this.getnotifications();
     }
 
     //Read tag ....
@@ -105,7 +106,7 @@ export class HomePage {
         })
     );
 
-    
+
   }
 
   ionViewDidEnter() {
@@ -126,11 +127,11 @@ export class HomePage {
     }
 
 
-  
+
   }
 
 
-  chartfunc(s){
+  chartfunc(s) {
     anychart.onDocumentReady(function () {
       var chart = anychart.pie([
         { x: "Fashion", value: 10 },
@@ -158,25 +159,25 @@ export class HomePage {
       label.vAlign("middle");
       chart.legend(false);
 
-      
+
 
       // set the label as the center content
       chart.center().content(label);
 
       // chart.title("Donut Chart: Label in the center");
       chart.container("container");
-     
-      if(s==1){
+
+      if (s == 1) {
         console.log('leaveinggggggggggggggggggggggggggggggggg')
 
         chart.dispose();
       }
-      else{
+      else {
         chart.draw();
       }
     });
   }
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.chartfunc(1)
 
   }
@@ -293,4 +294,15 @@ export class HomePage {
       console.log(err);
     })
   }
+
+  getnotifications() {
+    let _base = this;
+    _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
+      .then(function (success) {
+        console.log("Notifications", success)
+      }, function (error) {
+        console.log(error)
+      });
+  }
+
 }
