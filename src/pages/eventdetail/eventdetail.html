@@ -59,22 +59,22 @@
           <ion-col col-6>
             <div class="time">
               <span>start</span>
-              <p class="header">{{product.sdate}}</p>
-              <p class="header">{{product.stime}}</p>
+              <p class="header">{{sdate}}</p>
+              <p class="header">{{stime}}</p>
             </div>
           </ion-col>
           <ion-col col-6>
             <div class="time">
               <span>End</span>
-              <p class="header">{{product.edate}}</p>
-              <p class="header">{{product.etime}}</p>
+              <p class="header">{{edate}}</p>
+              <p class="header">{{etime}}</p>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
-    <ion-grid class="saveGrid" *ngIf="type=='Business' && seen == false">
-      <ion-row>
+    <ion-grid class="saveGrid" *ngIf="type=='Business'">
+      <ion-row *ngIf="seen==false">
         <ion-col col-6>
           <button class="share" outline style="color:red;border-color: red;" (click)="acceptInvitation('declined')">
             <ion-icon name="thumbs-down"></ion-icon>&nbsp;&nbsp; Reject

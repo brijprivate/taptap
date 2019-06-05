@@ -25,6 +25,10 @@ export class EventdetailPage {
   public type: String = "";
   public seen: boolean;
   public notificationId = ""
+  sdate: string;
+  stime: any;
+  edate: string;
+  etime: any;
 
   constructor(public http: NfctagProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.product = this.navParams.data.productId
@@ -34,11 +38,11 @@ export class EventdetailPage {
 
     if (this.type == 'Event') {
       let s = new Date(this.product.startTime)
-      this.product.sdate = + s.getDate() + ' ' + this.monthNames[s.getMonth() + 1] + ', ' + s.getFullYear()
-      this.product.stime = this.product.startTime.split("T")[1].split("Z")[0]
+      this.sdate = + s.getDate() + ' ' + this.monthNames[s.getMonth() + 1] + ', ' + s.getFullYear()
+      this.stime = this.product.startTime.split("T")[1].split("Z")[0]
       let e = new Date(this.product.endTime)
-      this.product.edate = e.getDate() + ' ' + this.monthNames[s.getMonth() + 1] + ', ' + e.getFullYear()
-      this.product.etime = this.product.endTime.split("T")[1].split("Z")[0]
+      this.edate = e.getDate() + ' ' + this.monthNames[s.getMonth() + 1] + ', ' + e.getFullYear()
+      this.etime = this.product.endTime.split("T")[1].split("Z")[0]
       this.product.image = this.product.imageId
     } else {
       this.product.image = this.product.logo
@@ -55,7 +59,7 @@ export class EventdetailPage {
 
     let permission = {
       businessId: this.product._id._id,
-      userId: localStorage.getItem("userId"),
+      userUid: localStorage.getItem("uid"),
       status: status,
       permission: "all"
     }
@@ -75,6 +79,15 @@ export class EventdetailPage {
 
       })
 
+  }
+
+  viewNotification(notificationID: String) {
+    let _base = this;
+    _base.http.viewNotification(notificationID)
+      .then(function (sucess) {
+      }, function (error) {
+
+      })
   }
 
 }
