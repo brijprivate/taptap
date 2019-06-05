@@ -23,13 +23,13 @@ page-verifyotp {
     ion-grid.buttonGrid.grid {
         margin: 3em 0 9em 0;
     }
-    button.verifyCode.disable-hover.button.button-md.button-default.button-default-md {
+    button.verifyCode.disable-hover.button.button-md.button-default.button-default-md,button.verifyCode.disable-hover.button.button-ios.button-default.button-default-ios {
         background: #5c67f8;
         text-transform: capitalize;
         width: 100%;
         font-size: 13px;
     }
-    button.resend.disable-hover.button.button-md.button-outline.button-outline-md {
+    button.resend.disable-hover.button.button-md.button-outline.button-outline-md,button.resend.disable-hover.button.button-ios.button-outline.button-outline-ios {
         color: #8286a0;
         border: 1px solid #e1e1e1;
         text-transform: capitalize;

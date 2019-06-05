@@ -49,7 +49,7 @@ page-tapdetails {
     ion-slide.swiper-slide {
         // width: 99px !important;
     }
-    ion-datetime.datetime.datetime-md {
+    ion-datetime.datetime.datetime-md , ion-datetime.datetime.datetime-ios {
         color: #fff;
     }
     
@@ -58,7 +58,7 @@ page-tapdetails {
         font-size: 26px;
         color: #222;
     }
-    ion-icon.icon.icon-md.ion-md-time.item-icon {
+    ion-icon.icon.icon-md.ion-md-time.item-icon , ion-icon.icon.icon-ios.ion-ios-time.item-icon {
         font-size: 29px;
         margin: -11px 5px 0px -15px;
     }
@@ -81,7 +81,7 @@ page-tapdetails {
             width: 17vh;
         }
     }
-    ion-item ion-icon.icon.icon-md {
+    ion-item ion-icon.icon.icon-md , ion-item ion-icon.icon.icon-ios {
         padding: 0;
         margin-top: 25px;
         font-size: 23px;
@@ -93,7 +93,7 @@ page-tapdetails {
         font-weight: 500;
         margin: 10px 0 0px 29px;
     }
-    ion-list.mobileSp.list.list-md {
+    ion-list.mobileSp.list.list-md , ion-list.mobileSp.list.list-ios {
         padding: 1em 2em ;
     }
     .mobileSp ion-label {
@@ -104,7 +104,7 @@ page-tapdetails {
     }
 
     
-    button.save.disable-hover.button.button-md.button-default.button-default-md {
+    button.save.disable-hover.button.button-md.button-default.button-default-md , button.save.disable-hover.button.button-ios.button-default.button-default-ios {
         margin-left: 1em;
         box-shadow: none;
         height: 46px;
@@ -120,7 +120,7 @@ page-tapdetails {
         width: 20px;
         fill: #222;
     }
-    button.previous.disable-hover.button.button-md.button-default.button-default-md {
+    button.previous.disable-hover.button.button-md.button-default.button-default-md , button.previous.disable-hover.button.button-ios.button-default.button-default-ios {
         height: 46px;
         background: transparent;
         box-shadow: none;
@@ -129,17 +129,17 @@ page-tapdetails {
         color: #222;
     }
    
-    ion-icon.icon.icon-md.ion-md-create.item-icon {
+    ion-icon.icon.icon-md.ion-md-create.item-icon , ion-icon.icon.icon-ios.ion-ios-create.item-icon {
         font-size: 13px;
     }
     ion-grid.saveGrid.grid {
       text-align: center;
       margin: 1em 0;
     }
-    ion-icon.icon.icon-md.ion-md-close.item-icon {
+    ion-icon.icon.icon-md.ion-md-close.item-icon , ion-icon.icon.icon-ios.ion-ios-close.item-icon{
         font-size: 13px;
     }
-    button.upload.disable-hover.button.button-md.button-default.button-default-md {
+    button.upload.disable-hover.button.button-md.button-default.button-default-md , button.upload.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         color: #222;
         -webkit-box-shadow: none;
@@ -149,7 +149,7 @@ page-tapdetails {
         font-size: 13px;
         width: 86%;
     }
-    ion-icon.icon.icon-md.ion-md-camera {
+    ion-icon.icon.icon-md.ion-md-camera , ion-icon.icon.icon-ios.ion-ios-camera {
         margin-right: 10px;
         font-size: 26px;
       }
@@ -282,14 +282,14 @@ page-tapdetails {
       .swiper-pagination-bullet {
         background: #fff;
       }
-    ion-icon.icon.icon-md.ion-md-heart {
+    ion-icon.icon.icon-md.ion-md-heart , ion-icon.icon.icon-ios.ion-ios-heart {
         float: right;
         margin-right: 19px;
         color: red;
         font-size: 24px;
         margin-top: 0.7em;
     }
-    ion-icon.icon.icon-md.ion-md-heart-outline {
+    ion-icon.icon.icon-md.ion-md-heart-outline , ion-icon.icon.icon-ios.ion-ios-heart-outline {
         float: right;
         margin-right: 19px;
         color: red;

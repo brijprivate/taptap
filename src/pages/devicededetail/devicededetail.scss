@@ -42,13 +42,22 @@ page-devicededetail {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
     }
+    .header-ios::after, .tabs-ios[tabsPlacement="top"] > .tabbar::after, .footer-ios::before, .tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none !important;
+    }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #fff;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
         color: #fff;
     }
     .button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #fff;
     }
-    .toolbar-title.toolbar-title-md {
+    .button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+        color: #fff;
+    }
+    .toolbar-title.toolbar-title-md,.toolbar-title.toolbar-title-ios {
         color: #fff;
     }
     .cont {
@@ -85,6 +94,13 @@ page-devicededetail {
         box-shadow: none;
         background: transparent;
     }
+    button.managebutton.disable-hover.button.button-ios.button-default.button-default-ios {
+        position: absolute;
+        right: 0;
+        bottom: -11px;
+        box-shadow: none;
+        background: transparent;
+    }
     p.tapPen {
         color: #53565a;
         font-size: 13px;
@@ -94,14 +110,18 @@ page-devicededetail {
         color: #1f2127;
         font-size: 13px;
     }
+    ion-input.input.input-ios {
+        color: #1f2127;
+        font-size: 13px;
+    }
     ion-label {
         margin-left: 2px !important;
         font-size: 13px;
     }
-    input.text-input.text-input-md {
+    input.text-input.text-input-md,input.text-input.text-input-ios {
         margin-top: 3px;
     }
-    .tog ion-list.list.list-md {
+    .tog ion-list.list.list-md,.tog ion-list.list.list-ios {
         margin-bottom: 0;
     }
     ion-grid.saveGrid.grid {
@@ -110,7 +130,7 @@ page-devicededetail {
         padding-right: 2em;
         padding-left: 1em;
     }
-    button.previous.disable-hover.button.button-md.button-default.button-default-md {
+    button.previous.disable-hover.button.button-md.button-default.button-default-md ,button.previous.disable-hover.button.button-ios.button-default.button-default-ios {
         height: 46px;
         background: transparent;
         box-shadow: none;
@@ -124,6 +144,17 @@ page-devicededetail {
         fill: #b3adad;
     }
     button.saveButton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        color: #6255ca;
+        border: 1px solid #6255ca;
+        box-shadow: none;
+        border-radius: 5px;
+        width: 188px;
+        margin-left: 1em;
+        height: 46px;
+        text-transform: capitalize;
+    }
+    button.saveButton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         color: #6255ca;
         border: 1px solid #6255ca;

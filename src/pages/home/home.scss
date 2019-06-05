@@ -1,14 +1,18 @@
 page-home {
-  .toolbar-background.toolbar-background-md {
+  .toolbar-background.toolbar-background-md,.toolbar-background.toolbar-background-ios {
     background-color: #f3f2f7;
   }
 
-  .toolbar-content.toolbar-content-md {
+  .toolbar-content.toolbar-content-md,.toolbar-content.toolbar-content-ios {
     text-align: center;
     padding: 2em 0 1em 0;
   }
 
   .toolbar-md {
+    position: relative;
+    padding: 0px;
+  }
+  .toolbar-ios {
     position: relative;
     padding: 0px;
   }
@@ -21,6 +25,10 @@ page-home {
   }
 
   button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    background: transparent;
+    box-shadow: none;
+  }
+  button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
     background: transparent;
     box-shadow: none;
   }
@@ -98,7 +106,7 @@ page-home {
       color: #fff;
     }
 
-    ion-icon.icon.icon-md.ion-md-star {
+    ion-icon.icon.icon-md.ion-md-star,ion-icon.icon.icon-ios.ion-ios-star {
       font-size: 15px;
       margin: 0 2px;
     }
@@ -134,8 +142,11 @@ page-home {
   ion-slides.slides.slides-md.slides-0 {
     height: 76%;
   }
+  ion-slides.slides.slides-ios.slides-0 {
+    height: 76%;
+  }
 
-  ion-segment.typeRecord.segment.segment-md {
+  ion-segment.typeRecord.segment.segment-md,ion-segment.typeRecord.segment.segment-ios {
     border-left: 1px solid #e1e1e6;
     border-top: 1px solid #e1e1e6;
     border-bottom: 0;
@@ -157,6 +168,16 @@ page-home {
     opacity: 1;
     color: #9e67eb !important;
   }
+  .segment-ios .segment-button.activated,
+  .segment-ios .segment-button.segment-activated {
+    // border-bottom: 2px solid #624eb0;
+    border-width: 1px;
+    border-color: #624eb0;
+    border-style: solid;
+    border-radius: 4px;
+    opacity: 1;
+    color: #9e67eb !important;
+  }
 
   .segment-md .segment-button.activated,
   page-recordmilage .segment-md .segment-button.segment-activated {
@@ -166,8 +187,16 @@ page-home {
     color: #624eb0 !important;
     border-right: 1px solid #e1e1e6 !important;
   }
+  .segment-ios .segment-button.activated,
+  page-recordmilage .segment-ios .segment-button.segment-activated {
+    border-bottom: 2px solid #624eb0;
+    opacity: 1;
+    border-color: #624eb0;
+    color: #624eb0 !important;
+    border-right: 1px solid #e1e1e6 !important;
+  }
 
-  ion-segment.segment.segment-md {
+  ion-segment.segment.segment-md,ion-segment.segment.segment-ios {
     background: #fff;
     // box-shadow: 0 3px 14px 1px #f6f5fc;
   }
@@ -202,11 +231,11 @@ page-home {
     }
   }
 
-  input.text-input.text-input-md {
+  input.text-input.text-input-md,input.text-input.text-input-ios {
     padding: 5px;
   }
 
-  ion-item.item.item-block.item-md.item-input {
+  ion-item.item.item-block.item-md.item-input,ion-item.item.item-block.item-ios.item-input {
     padding: 0;
     width: 100%;
     background: #f8f8f8 !important;
@@ -215,7 +244,7 @@ page-home {
     border-radius: 23px;
   }
 
-  ion-item.item.item-block.item-md.item-input {
+  ion-item.item.item-block.item-md.item-input,ion-item.item.item-block.item-ios.item-input {
     padding: 0;
     width: 100%;
     background: #6354cb;
@@ -239,7 +268,7 @@ page-home {
     font-weight: 900;
   }
 
-  ion-icon.icon.icon-md.ion-md-add {
+  ion-icon.icon.icon-md.ion-md-add,ion-icon.icon.icon-ios.ion-ios-add {
     margin-right: 10px;
     font-weight: 600;
     vertical-align: text-bottom;
@@ -276,7 +305,7 @@ page-home {
     margin: 0.9em auto;
     width: 82%;
 
-    ion-segment.segment.segment-md {
+    ion-segment.segment.segment-md,ion-segment.segment.segment-ios {
       border: none !important;
     }
 
@@ -325,12 +354,12 @@ page-home {
     box-shadow: 0px 0px 7px 3px #0000002e;
   }
 
-  button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+  button.mybutton.disable-hover.button.button-md.button-default.button-default-md,button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
     background: transparent;
     box-shadow: none;
   }
 
-  button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
+  button.managebutton.disable-hover.button.button-md.button-default.button-default-md,button.managebutton.disable-hover.button.button-ios.button-default.button-default-ios {
     position: absolute;
     right: 0;
     bottom: -11px;
@@ -342,7 +371,11 @@ page-home {
     color: #fff;
   }
 
-  ion-icon.icon.icon-md.ion-md-search {
+  button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+    color: #fff;
+  }
+
+  ion-icon.icon.icon-md.ion-md-search,ion-icon.icon.icon-ios.ion-ios-search {
     font-size: 28px;
     color: #999;
   }
@@ -375,7 +408,7 @@ page-home {
     right: 6vw;
   }
 
-  ion-icon.merchantIcon.icon.icon-md.item-icon {
+  ion-icon.merchantIcon.icon.icon-md.item-icon,ion-icon.merchantIcon.icon.icon-ios.item-icon {
     margin: 0;
   }
 
@@ -383,17 +416,17 @@ page-home {
     border-bottom: 0 !important;
   }
 
-  ion-badge.badge.badge-md {
+  ion-badge.badge.badge-md,ion-badge.badge.badge-ios {
     background: transparent;
     color: #9a9da6;
     font-weight: 400;
   }
 
-  ion-label.label.label-md {
+  ion-label.label.label-md,ion-label.label.label-ios {
     font-size: 14px;
   }
 
-  ion-icon.merchantIcon.icon.icon-md.item-icon {
+  ion-icon.merchantIcon.icon.icon-md.item-icon,ion-icon.merchantIcon.icon.icon-ios.item-icon {
     margin: 0;
     color: #b0b0e0;
     vertical-align: bottom;
@@ -401,11 +434,11 @@ page-home {
     font-size: 17px;
   }
 
-  ion-icon.merchantIcon.icon.icon-md.ion-md-contact.item-icon {
+  ion-icon.merchantIcon.icon.icon-md.ion-md-contact.item-icon,ion-icon.merchantIcon.icon.icon-ios.ion-ios-contact.item-icon {
     color: #9f90c6;
   }
 
-  ion-icon.merchantIcon.icon.icon-md.ion-md-desktop.item-icon {
+  ion-icon.merchantIcon.icon.icon-md.ion-md-desktop.item-icon,ion-icon.merchantIcon.icon.icon-ios.ion-ios-desktop.item-icon {
     color: #a0c2be;
   }
 
@@ -417,7 +450,7 @@ page-home {
   //     background: #6354cb;
   //     padding: 0 2em;
   // }
-  ion-icon.filterIcon.icon.icon-md.ion-md-funnel {
+  ion-icon.filterIcon.icon.icon-md.ion-md-funnel,ion-icon.filterIcon.icon.icon-ios.ion-ios-funnel {
     color: #fff;
     float: left;
   }
@@ -426,13 +459,13 @@ page-home {
     text-align: right;
   }
 
-  ion-icon.merchantIcon.icon.icon-md.ion-md-search {
+  ion-icon.merchantIcon.icon.icon-md.ion-md-search,ion-icon.merchantIcon.icon.icon-ios.ion-ios-search {
     color: #fff;
     margin-right: 1em;
     font-size: 25px;
   }
 
-  ion-icon.merchantIcon.icon.icon-md.ion-md-more {
+  ion-icon.merchantIcon.icon.icon-md.ion-md-more,ion-icon.merchantIcon.icon.icon-ios.ion-ios-more {
     color: #fff;
     font-size: 26px;
   }
@@ -444,7 +477,7 @@ page-home {
     padding-left: 19px;
   }
 
-  button.btnNext.disable-hover.button.button-md.button-default.button-default-md.button-md-primary {
+  button.btnNext.disable-hover.button.button-md.button-default.button-default-md.button-md-primary,button.btnNext.disable-hover.button.button-ios.button-default.button-default-ios.button-ios-primary {
     position: absolute;
     top: 0;
     right: 0px;
@@ -457,7 +490,7 @@ page-home {
     padding-right: 5px;
   }
 
-  button.btnPrev.disable-hover.button.button-md.button-default.button-default-md.button-md-primary {
+  button.btnPrev.disable-hover.button.button-md.button-default.button-default-md.button-md-primary,button.btnPrev.disable-hover.button.button-ios.button-default.button-default-ios.button-ios-primary {
     position: absolute;
     top: 0;
     left: 0px;
@@ -547,7 +580,7 @@ page-home {
     font-weight: 600;
   }
 
-  ion-icon.icon.icon-md.ion-md-pricetags {
+  ion-icon.icon.icon-md.ion-md-pricetags,ion-icon.icon.icon-ios.ion-ios-pricetags {
     font-size: 15px;
     margin: 0 2px;
   }
@@ -557,7 +590,7 @@ page-home {
     margin-right: 1em;
   }
 
-  .segment-md-dark .segment-button {
+  .segment-md-dark .segment-button,.segment-ios-dark .segment-button {
     color: #6354cb;
     background: #f8f8f8;
   }
@@ -647,54 +680,54 @@ page-home {
   }
 
   // icon css
-  ion-icon.icon.icon-md.ion-md-paper {
+  ion-icon.icon.icon-md.ion-md-paper,ion-icon.icon.icon-ios.ion-ios-paper {
     color: #6354cb;
     font-size: 19px;
     vertical-align: middle;
     margin-bottom: 0;
   }
 
-  ion-icon.icon.icon-md.ion-md-contact {
+  ion-icon.icon.icon-md.ion-md-contact,ion-icon.icon.icon-ios.ion-ios-contact {
     color: #a0c2be;
     margin-right: 10px;
   }
 
-  ion-icon.icon.icon-md.ion-md-calendar {
+  ion-icon.icon.icon-md.ion-md-calendar,ion-icon.icon.icon-ios.ion-ios-calendar {
     color: #ef94c8;
     font-size: 19px;
     vertical-align: middle;
     margin-bottom: 0;
   }
 
-  ion-icon.icon.icon-md.ion-md-briefcase {
+  ion-icon.icon.icon-md.ion-md-briefcase,ion-icon.icon.icon-ios.ion-ios-briefcase {
     color: #8baeec;
     font-size: 19px;
     vertical-align: middle;
     margin-bottom: 0;
   }
 
-  ion-icon.icon.icon-md.ion-md-checkmark-circle {
+  ion-icon.icon.icon-md.ion-md-checkmark-circle,ion-icon.icon.icon-ios.ion-ios-checkmark-circle {
     color: #9acd329e;
     font-size: 19px;
     vertical-align: middle;
     margin-bottom: 0;
   }
 
-  ion-icon.icon.icon-md.ion-md-walk {
+  ion-icon.icon.icon-md.ion-md-walk,ion-icon.icon.icon-ios.ion-ios-walk {
     color: #d98136;
     font-size: 19px;
     vertical-align: middle;
     margin-bottom: 0;
   }
 
-  ion-icon.icon.icon-md.ion-md-cart {
+  ion-icon.icon.icon-md.ion-md-cart,ion-icon.icon.icon-ios.ion-ios-cart {
     color: #776eb7;
     font-size: 19px;
     vertical-align: middle;
     margin-bottom: 0;
   }
 
-  ion-icon.icon.icon-md.ion-md-bowtie {
+  ion-icon.icon.icon-md.ion-md-bowtie,ion-icon.icon.icon-ios.ion-ios-bowtie {
     color: #bd86b6;
     font-size: 19px;
     vertical-align: middle;
@@ -702,7 +735,7 @@ page-home {
   }
 
   // icon css
-  .item-md ion-icon[item-left]+.item-inner {
+  .item-md ion-icon[item-left]+.item-inner,.item-ios ion-icon[item-left]+.item-inner {
     margin-left: 0px;
   }
 

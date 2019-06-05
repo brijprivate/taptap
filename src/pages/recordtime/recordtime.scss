@@ -2,7 +2,7 @@ page-recordtime {
     .toolbar-background {
         background-color:#6354cb;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md , .toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0;
     }
@@ -18,7 +18,7 @@ page-recordtime {
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md , button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -43,7 +43,13 @@ page-recordtime {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
     }
+    .header-ios::after, .tabs-ios[tabsPlacement="top"] > .tabbar::after, .footer-ios::before, .tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none !important;
+    }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #6b708d;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
         color: #6b708d;
     }
     hr.margino {
@@ -56,7 +62,7 @@ page-recordtime {
         font-size: 15px;
         font-weight: 500;
     }
-    ion-segment.typeRecord.segment.segment-md {
+    ion-segment.typeRecord.segment.segment-md ,ion-segment.typeRecord.segment.segment-ios {
         border-left: 1px solid #e1e1e6;
         border-top: 1px solid #e1e1e6;
         border-bottom: 0;
@@ -66,20 +72,20 @@ page-recordtime {
         color: #919594 !important;
         border-right: 1px solid #a6a6a6;
     }
-    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated , .segment-ios .segment-button.activated, .segment-ios .segment-button.segment-activated {
         // border-bottom: 2px solid #624eb0;
         border: 1px solid #624eb0;
         opacity: 1;
         color: #624eb0 !important;
     }
-    .segment-md .segment-button.activated, page-recordmilage .segment-md .segment-button.segment-activated {
+    .segment-md .segment-button.activated, page-recordmilage .segment-md .segment-button.segment-activated ,.segment-ios .segment-button.activated, page-recordmilage .segment-ios .segment-button.segment-activated {
         border-bottom: 2px solid #624eb0;
         opacity: 1;
         border-color: #624eb0;
         color: #624eb0 !important;
         border-right: 1px solid #e1e1e6 !important;
     }
-    button.start.disable-hover.button.button-md.button-default.button-default-md {
+    button.start.disable-hover.button.button-md.button-default.button-default-md , button.start.disable-hover.button.button-ios.button-default.button-default-ios {
         background: #fff;
         color: #222;
         -webkit-box-shadow: none;
@@ -90,7 +96,7 @@ page-recordtime {
         border: 1px solid #222;
         border-radius: 4px;
     }
-    button.stop.disable-hover.button.button-md.button-default.button-default-md {
+    button.stop.disable-hover.button.button-md.button-default.button-default-md , button.stop.disable-hover.button.button-ios.button-default.button-default-ios {
         // background: #fadce2;
         // color: #ee9aad;
         // box-shadow: none;
@@ -107,7 +113,7 @@ page-recordtime {
         border: 1px solid #222;
         border-radius: 4px;
     }
-    .segment-md .segment-button {
+    .segment-md .segment-button , .segment-ios .segment-button {
         height: 4.8rem;
         line-height: 43px;
     }

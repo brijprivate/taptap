@@ -18,7 +18,7 @@ page-notification {
             display: table-cell;
             padding: 0 18px;
         }   
-             ion-icon.icon.icon-md.ion-md-menu{
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
             margin-right: 7px;
             font-size: 26px;
             color: #fff;
@@ -27,7 +27,7 @@ page-notification {
             float:right;
 
         }
-        ion-icon.icon.icon-md {
+        ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
             margin-right: 10px;
             font-size: 26px;
             color: #fff;
@@ -42,11 +42,11 @@ page-notification {
         background-color: #f3f2f7;
         height: 243px;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md,.toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0 1em 0;
     }
-    .toolbar-md {
+    .toolbar-md,.toolbar-ios {
         position: relative;
         padding: 0px;
     }
@@ -56,7 +56,7 @@ page-notification {
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md,button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -104,7 +104,7 @@ page-notification {
     .item-inner {
         border-bottom: 0px !important;
     }
-    ion-item.et.item.item-block.item-md {
+    ion-item.et.item.item-block.item-md,ion-item.et.item.item-block.item-ios {
         border-bottom: 1px solid #f3f3f3;
     }
     // .et:nth-child(even) {

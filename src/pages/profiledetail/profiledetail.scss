@@ -27,7 +27,7 @@ page-profiledetail {
             // float:right;
 
         }
-        ion-icon.icon.icon-md {
+        ion-icon.icon.icon-md ,ion-icon.icon.icon-ios {
             margin-right: 10px;
             font-size: 26px;
             color: #fff;
@@ -39,11 +39,11 @@ page-profiledetail {
         background-color: #f3f2f7;
         height: 243px;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md ,.toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0 1em 0;
     }
-    .toolbar-md {
+    .toolbar-md ,.toolbar-ios {
         position: relative;
         padding: 0px;
     }
@@ -54,6 +54,10 @@ page-profiledetail {
         color: #fff;
     }
     button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+        background: transparent;
+        box-shadow: none;
+    }
+    button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -76,6 +80,9 @@ page-profiledetail {
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #6b708d;
     }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+        color: #6b708d;
+    }
     .scroll-content {
         padding: 0 !important;
     }
@@ -93,7 +100,7 @@ page-profiledetail {
         background: #f3f2f7;
         padding: 1em 0 2em 3em;
     }
-    ion-item.item.item-block.item-md {
+    ion-item.item.item-block.item-md ,ion-item.item.item-block.item-ios {
         padding-left: 0;
     }
     .pContent {
@@ -105,7 +112,7 @@ page-profiledetail {
         font-weight: 600;
         margin-bottom: 5px;
     }
-    ion-icon.icon.icon-md {
+    ion-icon.icon.icon-md ,ion-icon.icon.icon-ios {
         margin-bottom: 3px;
         margin-right: 5px;
         font-size: 18px;
@@ -119,7 +126,7 @@ page-profiledetail {
         margin: 3px 0px 0px 12px !important;
         font-size: 24px !important;
     }
-    ion-icon.icon.icon-md.ion-md-copy.item-icon {
+    ion-icon.icon.icon-md.ion-md-copy.item-icon , ion-icon.icon.icon-ios.ion-ios-copy.item-icon {
         float: right;
     }
     button.aContact {
@@ -141,10 +148,10 @@ page-profiledetail {
         height: 42px;
         width: 130px;
     }
-    ion-icon.icon.icon-md.ion-md-share{
+    ion-icon.icon.icon-md.ion-md-share , ion-icon.icon.icon-ios.ion-ios-share{
         color: #8376f9;
     }
-    ion-icon.icon.icon-md.ion-md-person {
+    ion-icon.icon.icon-md.ion-md-person , ion-icon.icon.icon-ios.ion-ios-person {
         color: #8376f9;
     }
 }

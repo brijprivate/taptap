@@ -6,8 +6,12 @@ page-editprofile {
     .toolbar-content.toolbar-content-md {
         text-align: center;
         padding: 24px 0 19px 0;
+    } .toolbar-content.toolbar-content-ios {
+        text-align: center;
+        padding: 24px 0 19px 0;
     }
-    .toolbar-md {
+
+    .toolbar-md,.toolbar-ios {
         position: relative;
         padding: 0px;
     }
@@ -17,7 +21,7 @@ page-editprofile {
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md,button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -70,7 +74,7 @@ page-editprofile {
         text-align: center;
         padding-top: 1em;
     }
-    ion-item ion-icon.icon.icon-md {
+    ion-item ion-icon.icon.icon-md,ion-item ion-icon.icon.icon-ios {
         padding: 0;
         margin-top: 25px;
         font-size: 23px;
@@ -82,7 +86,7 @@ page-editprofile {
         font-weight: 500;
         margin: 10px 0 0px 29px;
     }
-    ion-list.mobileSp.list.list-md {
+    ion-list.mobileSp.list.list-md,ion-list.mobileSp.list.list-ios {
         padding: 1em 2em ;
     }
     .mobileSp ion-label {
@@ -92,10 +96,10 @@ page-editprofile {
         color: #83889e !important;
     }
 
-    ion-item.item.item-block.item-md.item-input.item-label-floating {
+    ion-item.item.item-block.item-md.item-input.item-label-floating,ion-item.item.item-block.item-ios.item-input.item-label-floating {
         padding-left: 0;
     }
-    button.save.disable-hover.button.button-md.button-default.button-default-md {
+    button.save.disable-hover.button.button-md.button-default.button-default-md,button.save.disable-hover.button.button-ios.button-default.button-default-ios {
         // margin-top: 2em;
         // width: 100%;
         // background: #6354cb;
