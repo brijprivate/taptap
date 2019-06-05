@@ -18,6 +18,7 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 export class ManagedevicePage {
   userId: any;
   public devices:any=[];
+  public deviceName:any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -39,7 +40,7 @@ export class ManagedevicePage {
     console.log('ionViewDidLoad ManagedevicePage');
   }
   gotodevice(device){
-    this.navCtrl.push('DevicededetailPage',{devicedetail:device})
+    this.navCtrl.push('DevicededetailPage',{devicedetail:device});
   }
 
   //get paired devices....
@@ -60,4 +61,59 @@ export class ManagedevicePage {
     console.log(err);
   })
 }
+
+presentPrompt(nfcid) {
+  let alert = this.alert.create({
+    title: 'Device',
+    inputs: [
+      {
+        
+        placeholder: 'Username'
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Save',
+        handler: data => {
+          console.log(data[0]);
+          this.deviceName = data[0];
+          if(this.deviceName){
+            this.changedevicename(nfcid);
+          }
+          
+        }
+      }
+    ]
+  });
+  alert.present();
+}
+
+  changedevicename(nfcid)
+  {
+    let _base = this;
+    let loader = this.loading.create({
+      content:"Please wait..."
+    });
+    loader.present();
+    let data = {
+      deviceId:nfcid,
+      device_title:_base.deviceName
+    }
+    console.log(data);
+    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+      loader.dismiss();
+      console.log(success);
+      _base.getpairedDevice();
+    },function(err){
+      console.log(err);
+      loader.dismiss();
+    })
+  }
 }

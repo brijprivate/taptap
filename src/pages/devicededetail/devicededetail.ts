@@ -15,18 +15,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DevicededetailPage {
 
-  public devicedetail:any;
+  public devicedetail:any=[];
+  public lostmessage:any;
+  public lost:boolean=false;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams) 
     {
       this.devicedetail = navParams.get("devicedetail");
       console.log(this.devicedetail);
+      console.log(this.lost);
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DevicededetailPage');
+  }
+
+  notify(){
+    console.log(this.lost);
   }
 
 }

@@ -162,4 +162,20 @@ export class LoginsignupProvider {
         });
     });
   }
+
+  //get list of milage...
+  //Get list of all tapped item....
+  getmilage(data) {
+    let _base = this;
+    let cdate = new Date().toISOString();
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'milage/usermilage?userId='+data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
 }

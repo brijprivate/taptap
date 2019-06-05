@@ -7,6 +7,7 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
+// import { Diagnostic } from '@ionic-native/diagnostic';
 declare var window;
 // import { SavemilagePage } from '../savemilage/savemilage';
 
@@ -63,8 +64,11 @@ export class RecordmilagePage {
     public ndef: Ndef,
     public nfctagpro:NfctagProvider,
     private toast: ToastController,
-    public alert:AlertController,) 
+    public alert:AlertController,
+    // private diagnostic: Diagnostic
+    ) 
     {
+      // this.getPermission();
       this.userId = localStorage.getItem("userId");
       this.tapData = navParams.get("tapdata");
        //Get Network status...
@@ -72,6 +76,7 @@ export class RecordmilagePage {
         console.log("network status------------------>>>>>>",value);
         this.isnetwork = value;
       });
+      // this.checkpermission();
     //  this.locations = [];
     //  this.startBackgroundTracking();
     this.sharedservice.getlocation().subscribe((value)=>{
@@ -97,33 +102,33 @@ export class RecordmilagePage {
     });
 
      //Read tag ....
-     this.subscriptions.push(this.nfc.addNdefListener()
-     .subscribe(data => {
-       if (this.readingTag) {
-         let tagid= data.tag.id;
-         // let parsedid = this.nfc.bytesToString(tagid);
-         let payload = data.tag.ndefMessage[0].payload;
-         let tagContent = this.nfc.bytesToString(payload).substring(3);
-         this.readingTag = true;
+    //  this.subscriptions.push(this.nfc.addNdefListener()
+    //  .subscribe(data => {
+    //    if (this.readingTag) {
+    //      let tagid= data.tag.id;
+    //      // let parsedid = this.nfc.bytesToString(tagid);
+    //      let payload = data.tag.ndefMessage[0].payload;
+    //      let tagContent = this.nfc.bytesToString(payload).substring(3);
+    //      this.readingTag = true;
 
-         var s = '';
-         tagid.forEach(function(byte) {
-           s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
-         });
-         console.log("tag data", tagContent);
-         console.log("whole data", data.tag);
-         console.log("tag id", s);
-         this.tapData = s.substring(0, s.length - 1);
-         if(this.tapData){
-          // this.verifytag();
-         }
-         return s.substring(0, s.length - 1);
+    //      var s = '';
+    //      tagid.forEach(function(byte) {
+    //        s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
+    //      });
+    //      console.log("tag data", tagContent);
+    //      console.log("whole data", data.tag);
+    //      console.log("tag id", s);
+    //      this.tapData = s.substring(0, s.length - 1);
+    //      if(this.tapData){
+    //       // this.verifytag();
+    //      }
+    //      return s.substring(0, s.length - 1);
          
-         } 
-       },
-       err => {
-       })
-     );
+    //      } 
+    //    },
+    //    err => {
+    //    })
+    //  );
 
    
      
@@ -131,59 +136,59 @@ export class RecordmilagePage {
     }
 
     //Verify user's NFC tag...
-  verifytag(){
-    let _base= this;
-    if(this.isnetwork == "Offline")
-    {
-      let showtoast = this.toast.create({
-        message: "Please check your internet connection and try again",
-        duration: 60000,
-        position: "bottom",
-        showCloseButton: true,
-        closeButtonText: "Ok"
-      })
-      showtoast.present();
-      return;
-    }
-    else if(!this.tapData){
-      let showtoast = this.toast.create({
-        message: "Please approach your nfc device to verify",
-        duration: 60000,
-        position: "bottom",
-        showCloseButton: true,
-        closeButtonText: "Ok"
-      })
-      showtoast.present();
-      return;
-    }
+  // verifytag(){
+  //   let _base= this;
+  //   if(this.isnetwork == "Offline")
+  //   {
+  //     let showtoast = this.toast.create({
+  //       message: "Please check your internet connection and try again",
+  //       duration: 60000,
+  //       position: "bottom",
+  //       showCloseButton: true,
+  //       closeButtonText: "Ok"
+  //     })
+  //     showtoast.present();
+  //     return;
+  //   }
+  //   else if(!this.tapData){
+  //     let showtoast = this.toast.create({
+  //       message: "Please approach your nfc device to verify",
+  //       duration: 60000,
+  //       position: "bottom",
+  //       showCloseButton: true,
+  //       closeButtonText: "Ok"
+  //     })
+  //     showtoast.present();
+  //     return;
+  //   }
     
-    let loader = this.loading.create({
-      content:"Please wait..."
-    });
-    loader.present();
-    let data = {
-      userid:this.userId,
-      nfcId:this.tapData
-    } 
-    this.nfctagpro.verifyDevice(data).then(function(success:any){
-      console.log(success);
-      loader.dismiss();
-      _base.deviceVerify = true;
-      _base.presentAlert();
-    },function(err){
-      console.log(err);
-      loader.dismiss();
-      alert("Your device is not paired");
-    })
-  }
-  presentAlert() {
-    let alert = this.alert.create({
-      title: 'Confirmation',
-      subTitle: 'Verified',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
+  //   let loader = this.loading.create({
+  //     content:"Please wait..."
+  //   });
+  //   loader.present();
+  //   let data = {
+  //     userid:this.userId,
+  //     nfcId:this.tapData
+  //   } 
+  //   this.nfctagpro.verifyDevice(data).then(function(success:any){
+  //     console.log(success);
+  //     loader.dismiss();
+  //     _base.deviceVerify = true;
+  //     _base.presentAlert();
+  //   },function(err){
+  //     console.log(err);
+  //     loader.dismiss();
+  //     alert("Your device is not paired");
+  //   })
+  // }
+  // presentAlert() {
+  //   let alert = this.alert.create({
+  //     title: 'Confirmation',
+  //     subTitle: 'Verified',
+  //     buttons: ['OK']
+  //   });
+  //   alert.present();
+  // }
 
     startBackgroundTrack()
     {
@@ -237,7 +242,7 @@ export class RecordmilagePage {
           closeButtonText: "Ok"
         })
         showtoast.present();
-        // return;
+        return;
       }
       
       if(this.running) return;
@@ -284,32 +289,16 @@ export class RecordmilagePage {
       this.zeroPrefix(min, 2) + ":" +
       this.zeroPrefix(sec, 2) + "." +
       this.zeroPrefix(ms, 2);
-    };
+    }
     ionViewDidLoad() {
       console.log('ionViewDidLoad RecordmilagePage');
-      // this.loop();
     }
-  startBackgroundTracking(){
-    window.app.backgroundGeolocation.start();
-  }
+  // startBackgroundTracking(){
+  //   window.app.backgroundGeolocation.start();
+  // }
 
   //stop tracking .....
   stopBackgroundTrack(){
-
-    // let loader = this.loading.create({
-    //   content:"Please wait..."
-    // });
-    // loader.present();
-    // this.backgroundGeolocation.getCurrentLocation().then((location:BackgroundGeolocationResponse)=>{
-    //   console.log("location on stop--------->>>>>>",location);
-    //   this.nativeGeocoder.reverseGeocode(location.latitude,location.longitude)
-    //   .then((result: NativeGeocoderReverseResult[]) =>{
-    //     console.log("reverse geocode end location----------------->>>>>>>",result)
-    //     console.log(JSON.stringify(result[0]));
-    //     this.endLocation = result[0];
-    //     this.sharedservice.locations(location);
-
-    // this.backgroundGeolocation.stop();
     this.navCtrl.push('SavemilagePage',
     {
       endtime:this.time,
@@ -412,24 +401,30 @@ public loop(){
 	}
 }
 
-
-//  GetDistanceFromLatLonInKm(lat1,  lon1,  lat2,  lon2)
-// {
-//   console.log(lat1,  lon1,  lat2,  lon2)
-//     var R = 6371;
-//     // Radius of the earth in km
-//     var dLat = this.deg2rad(lat2 - lat1);
-//     // deg2rad below
-//     var dLon = this.deg2rad(lon2 - lon1);
-//     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-//     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-//     var d = R * c;
-//     // Distance in km
-//     console.log('babuwa',d)
-//     return d;
+//check permission...
+// checkpermission(){
+//   console.log("permission");
+//   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.LOCATION).then(
+//     result => console.log('Has permission?',result.hasPermission),
+//     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.LOCATION)
+//   );
 // }
-//  deg2rad( deg)
-// {
-//     return deg * (Math.PI / 180);
+
+// getPermission() {
+//   this.diagnostic.getPermissionAuthorizationStatus(this.diagnostic.permission.ACCESS_COARSE_LOCATION).then((status) => {
+//     console.log(`AuthorizationStatus`);
+//     console.log(status);
+//     if (status != this.diagnostic.permissionStatus.GRANTED) {
+//       this.diagnostic.requestRuntimePermission(this.diagnostic.permission.ACCESS_COARSE_LOCATION).then((data) => {
+//         console.log(`getCameraAuthorizationStatus`);
+//         console.log(data);
+//       })
+//     } else {
+//       console.log("We have the permission");
+//     }
+//   }, (statusError) => {
+//     console.log(`statusError`);
+//     console.log(statusError);
+//   });
 // }
 }

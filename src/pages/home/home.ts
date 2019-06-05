@@ -46,6 +46,8 @@ export class HomePage {
 
   lineChart: any;
 
+  public chart;
+
   //NFC read related ....
   readingTag: boolean = false;
   writingTag: boolean = false;
@@ -76,42 +78,11 @@ export class HomePage {
       this.getpresentdateCount();
       this.getAllTapItem();
       this.getpairedDevice();
-    }
-
-    //Read tag ....
-    // this.subscriptions.push(this.nfc.addNdefListener()
-    //   .subscribe(data => {
-    //     if (this.readingTag) {
-    //       let tagid = data.tag.id;
-    //       // let parsedid = this.nfc.bytesToString(tagid);
-    //       let payload = data.tag.ndefMessage[0].payload;
-    //       let tagContent = this.nfc.bytesToString(payload).substring(3);
-    //       this.readingTag = true;
-
-    //       var s = '';
-    //       tagid.forEach(function (byte) {
-    //         s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
-    //       });
-
-    //       console.log("tag data", tagContent);
-    //       console.log("whole data", data.tag);
-    //       console.log("tag id", s);
-    //       this.tapData = s.substring(0, s.length - 1);
-    //       if (this.tapData) {
-
-    //       }
-    //       return s.substring(0, s.length - 1);
-
-    //     }
-    //   },
-    //     err => {
-    //     })
-    // );
-
-    
+    }  
   }
 
   ionViewDidEnter() {
+    // this.chart.dispose();
     if (this.todaysTap)
       console.log("view enter--------------->>>>>>>>>>>");
     this.userId = localStorage.getItem("userId");
@@ -126,10 +97,10 @@ export class HomePage {
     }
   }
 
-  chartfunc(s){
+  chartfunc(){
     let _base = this;
     anychart.onDocumentReady(function () {
-      var chart = anychart.pie([
+       _base.chart = anychart.pie([
         { x: "Fashion", value:_base.fashion },
         { x: "General", value:_base.general },
         { x: "Event", value:_base.event },
@@ -141,7 +112,7 @@ export class HomePage {
         // { x: "Milage", value: 9 }
       ]);
 
-      chart.innerRadius("25%");
+      _base.chart.innerRadius("25%");
 
       var label = anychart.standalones.label();
 
@@ -153,29 +124,22 @@ export class HomePage {
       label.fontColor("#60727b");
       label.hAlign("center");
       label.vAlign("middle");
-      chart.legend(false);
+      _base.chart.legend(false);
 
       
 
       // set the label as the center content
-      chart.center().content(label);
+      _base.chart.center().content(label);
 
       // chart.title("Donut Chart: Label in the center");
-      chart.container("container");
+      _base.chart.container("container");
+      _base.chart.draw();
      
-      if(s==1){
-        console.log('leaveinggggggggggggggggggggggggggggggggg')
-
-        chart.dispose();
-      }
-      else{
-        chart.draw();
-      }
     });
   }
   ionViewDidLeave(){
-    this.chartfunc(1);
-
+    this.chart.dispose();
+    // this.chartfunc(1);
   }
   selectedTab(index) {
     this.slider.slideTo(index);
@@ -239,7 +203,7 @@ export class HomePage {
       _base.sports = success.result.sport;
       _base.groceries = success.result.groceries;
       _base.totalcount = success.result.totalTap;
-      _base.chartfunc(0);
+      _base.chartfunc();
       loader.dismiss();
     }, function (err) {
       console.log(err);

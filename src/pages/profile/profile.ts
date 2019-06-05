@@ -33,6 +33,7 @@ export class ProfilePage {
   favourite:"0";
   public devices:any=[];
   devicecount: any;
+  public chart;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public nfctagProvider:NfctagProvider,
@@ -60,9 +61,9 @@ export class ProfilePage {
    
   }
 chartfunction(s){
-  
+  let _base = this;
   anychart.onDocumentReady(function () {
-    var chart = anychart.pie([
+    _base.chart = anychart.pie([
       
       { x: "Business_Milage", value: 9 },
       { x: "Personal_Milage ", value: 9 },
@@ -71,7 +72,7 @@ chartfunction(s){
 
     ]);
 
-    chart.innerRadius("25%");
+    _base.chart.innerRadius("25%");
 
     var label = anychart.standalones.label();
 
@@ -83,23 +84,21 @@ chartfunction(s){
     label.fontColor("#60727b");
     label.hAlign("center");
     label.vAlign("middle");
-    chart.legend(false);
+    _base.chart.legend(false);
 
     
 
     // set the label as the center content
-    chart.center().content(label);
+    _base.chart.center().content(label);
 
     // chart.title("Donut Chart: Label in the center");
-    chart.container("container1");
-    chart.draw();
-    if(s==1){
-      chart.dispose();
-    }
+    _base.chart.container("container1");
+    _base.chart.draw();
+   
   });
 }
   ionViewDidLeave(){
-    this.chartfunction(1)
+    this.chart.dispose();
 
   }
 
