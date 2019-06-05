@@ -13,7 +13,7 @@
 <ion-content class="animated 800s zoomIn delay-0.1s">
   <div class="head">
     <div class="mdl">
-   <p><span>
+      <p><span>
           <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
         </span> More</p>
     </div>
@@ -28,7 +28,7 @@
 
           <!-- <i class="fa fa-spinner animated "></i> -->
           Notifications
-          <span class="notify" style="float:right; margin-top: 14px;">{{5}}</span>
+          <span class="notify" style="float:right; margin-top: 14px;">{{notiCount}}</span>
         </p>
         <!-- <p class="cNumber">Montaki Cake</p> -->
       </div>
@@ -52,7 +52,7 @@
       </div>
     </ion-item>
 
-  
+
     <ion-item (click)="goto('HelpPage')">
       <div class="pContent">
         <p class="cName">
@@ -80,7 +80,7 @@
         <!-- <p class="cNumber">+1 9876123412</p> -->
       </div>
     </ion-item>
- 
+
     <div style="text-align:center;margin-top:3em;">
       <button class="sharea" outline (click)="Logout()">
         <ion-icon name="power"></ion-icon>&nbsp;&nbsp;Logout
