@@ -2,7 +2,7 @@ page-merchant {
     .toolbar-background {
         background-color: #6354cb;
       }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md,button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -11,10 +11,10 @@ page-merchant {
         width: 15px;
         fill: #fff;
     }
-    .toolbar-title.toolbar-title-md {
+    .toolbar-title.toolbar-title-md,.toolbar-title.toolbar-title-ios {
         color: #fff;
     }
-    button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.managebutton.disable-hover.button.button-md.button-default.button-default-md,button.managebutton.disable-hover.button.button-ios.button-default.button-default-ios {
         position: absolute;
         right: 0;
         bottom: -11px;
@@ -24,7 +24,10 @@ page-merchant {
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #76798a;
     }
-    ion-icon.icon.icon-md.ion-md-search {
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+        color: #76798a;
+    }
+    ion-icon.icon.icon-md.ion-md-search,ion-icon.icon.icon-ios.ion-ios-search {
         font-size: 28px;
         color: #5c6173;
     }
@@ -51,7 +54,7 @@ page-merchant {
         width: 84px;
         right: 6vw;
     }
-    ion-icon.merchantIcon.icon.icon-md.item-icon {
+    ion-icon.merchantIcon.icon.icon-md.item-icon,ion-icon.merchantIcon.icon.icon-ios.item-icon {
         margin: 0;
     }
     .scroll-content {
@@ -60,21 +63,21 @@ page-merchant {
     .item-inner {
         border-bottom: 0 !important;
     }
-    ion-badge.badge.badge-md {
+    ion-badge.badge.badge-md,ion-badge.badge.badge-ios {
         background: transparent;
         color: #9a9da6;
         font-weight: 400;
     }
-    ion-icon.merchantIcon.icon.icon-md.item-icon {
+    ion-icon.merchantIcon.icon.icon-md.item-icon,ion-icon.merchantIcon.icon.icon-ios.item-icon {
         margin: 0;
         color: #b0b0e0;
         vertical-align: bottom;
         padding-right: 6px;
     }
-    ion-icon.merchantIcon.icon.icon-md.ion-md-contact.item-icon {
+    ion-icon.merchantIcon.icon.icon-md.ion-md-contact.item-icon,ion-icon.merchantIcon.icon.icon-ios.ion-ios-contact.item-icon {
         color: #9f90c6;
     }
-    ion-icon.merchantIcon.icon.icon-md.ion-md-desktop.item-icon {
+    ion-icon.merchantIcon.icon.icon-md.ion-md-desktop.item-icon,ion-icon.merchantIcon.icon.icon-ios.ion-ios-desktop.item-icon {
         color: #a0c2be;
     }
     input {

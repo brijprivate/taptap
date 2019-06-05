@@ -25,6 +25,9 @@ page-animatetap {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
     }
+    .header-ios::after, .tabs-ios[tabsPlacement="top"] > .tabbar::after, .footer-ios::before, .tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+      background-image: none !important;
+  }
     // .toolbar-content.toolbar-content-md {
     //     text-align: center;
     //     padding: 9em 0 1em 0;
@@ -53,12 +56,23 @@ page-animatetap {
         padding: 22px 45px;
         text-transform:capitalize;
     }
+    button.pairbutton.disable-hover.button.button-ios.button-default.button-default-ios {
+      background-color: #5c67f8;
+      padding: 22px 45px;
+      text-transform:capitalize;
+  }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #fff;
     }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+      color: #fff;
+  }
     ion-list.listView.list.list-md{
         padding: 1em 1em 4em 1em;
     }
+    ion-list.listView.list.list-ios{
+      padding: 1em 1em 4em 1em;
+  }
     .containers {
         position: relative;
         display: block;

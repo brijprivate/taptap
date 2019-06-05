@@ -3,11 +3,11 @@ page-nfckey {
         background-color: #6354cb;
         height: 243px;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md,.toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0 1em 0;
     }
-    .toolbar-md {
+    .toolbar-md,.toolbar-ios {
         position: relative;
         padding: 0px;
     }
@@ -17,7 +17,7 @@ page-nfckey {
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md,button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -40,6 +40,9 @@ page-nfckey {
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #fff;
     }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+        color: #fff;
+    }
     .nfcKey {
         background: #6355cb;
         height: 155px;
@@ -52,7 +55,7 @@ page-nfckey {
         width: auto;
         margin: auto;
     }
-    ion-card.keyCard.card.card-md {
+    ion-card.keyCard.card.card-mdm,ion-card.keyCard.card.card-ios {
         margin-top: -7em;
         width: calc(100% - 51px);
         margin-left: auto;
@@ -67,7 +70,7 @@ page-nfckey {
         font-size: 17px;
         padding-top: 1em;
     } 
-    ion-icon.icon.icon-md.ion-md-key {
+    ion-icon.icon.icon-md.ion-md-key,ion-icon.icon.icon-ios.ion-ios-key {
         margin-right: 8px;
     }
     svg#nfc {
@@ -80,7 +83,7 @@ page-nfckey {
         width: 21px;
         vertical-align: middle;
     }
-    ion-card.nestech.card.card-md {
+    ion-card.nestech.card.card-md,ion-card.nestech.card.card-ios {
         background: #e6ecfe;
         text-align: center;
         box-shadow: none;
@@ -102,7 +105,7 @@ page-nfckey {
         font-size: 13px;
         font-weight: 500;
     }
-    button.pcode.disable-hover.button.button-md.button-outline.button-outline-md {
+    button.pcode.disable-hover.button.button-md.button-outline.button-outline-md,button.pcode.disable-hover.button.button-ios.button-outline.button-outline-ios {
         width: 100%;
         border: 1px solid #d9d9d9;
         color: #0e0f16;
@@ -114,7 +117,7 @@ page-nfckey {
     .buttonDiv {
         padding: 0 2em;
     }
-    button.pcodea.disable-hover.button.button-md.button-outline.button-outline-md {
+    button.pcodea.disable-hover.button.button-md.button-outline.button-outline-md,button.pcodea.disable-hover.button.button-ios.button-outline.button-outline-ios {
         width: 100%;
         border: 1px solid #89d9d8;
         color: #50c0bd;
@@ -123,15 +126,15 @@ page-nfckey {
         height: 42px;
         font-weight: 500;
     }
-    ion-icon.icon.icon-md.ion-md-share {
+    ion-icon.icon.icon-md.ion-md-share,ion-icon.icon.icon-ios.ion-ios-share {
         font-size: 16px;
         font-weight: 800;
     }
-    ion-icon.icon.icon-md.ion-md-add {
+    ion-icon.icon.icon-md.ion-md-add,ion-icon.icon.icon-ios.ion-ios-add {
         font-size: 16px;
         font-weight: 800;
     }
-    button.pcodec.disable-hover.button.button-md.button-outline.button-outline-md {
+    button.pcodec.disable-hover.button.button-md.button-outline.button-outline-md,button.pcodec.disable-hover.button.button-ios.button-outline.button-outline-ios {
         width: 100%;
         border: 1px solid #c6b4eb;
         color: #6355cb;

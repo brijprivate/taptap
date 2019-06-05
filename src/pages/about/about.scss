@@ -20,7 +20,7 @@ page-about {
                 color: gray !important;
             }
         }   
-             ion-icon.icon.icon-md.ion-md-menu{
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
             margin-right: 7px;
             font-size: 26px;
             color: #fff;
@@ -78,11 +78,11 @@ page-about {
         text-align: left;
         margin: 0 !important;
     }
-    ion-icon.icon.icon-md.ion-md-star {
+    ion-icon.icon.icon-md.ion-md-star,ion-icon.icon.icon-ios.ion-ios-star {
         color: #da8235;
         font-size: 18px;
     }
-    ion-icon.icon.icon-md.ion-md-star-outline {
+    ion-icon.icon.icon-md.ion-md-star-outline,ion-icon.icon.icon-ios.ion-ios-star-outline {
         color: #da8235;
         font-size: 18px;
     }
