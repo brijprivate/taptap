@@ -29,13 +29,15 @@ export class HomePage {
   doughnutChart: any;
   barChart: any;
 
+  public notiCount = 0;
+
   public userId: any;
   public userName: any;
 
-  public fashion= 0;
-  public general=0;
-  public sports=0;
-  public contact=0;
+  public fashion = 0;
+  public general = 0;
+  public sports = 0;
+  public contact = 0;
   public event: "0";
   public groceries: "0";
   public buisness: "0";
@@ -127,17 +129,17 @@ export class HomePage {
     }
   }
 
-  chartfunc(s){
+  chartfunc(s) {
     let _base = this;
     anychart.onDocumentReady(function () {
       var chart = anychart.pie([
-        { x: "Fashion", value:_base.fashion },
-        { x: "General", value:_base.general },
-        { x: "Event", value:_base.event },
-        { x: "Contacts", value:_base.contact },
-        { x: "Business", value:_base.buisness },
-        { x: "Sports", value:_base.sports },
-        { x: "Groceries", value:_base.groceries },
+        { x: "Fashion", value: _base.fashion },
+        { x: "General", value: _base.general },
+        { x: "Event", value: _base.event },
+        { x: "Contacts", value: _base.contact },
+        { x: "Business", value: _base.buisness },
+        { x: "Sports", value: _base.sports },
+        { x: "Groceries", value: _base.groceries },
         // { x: "Timer", value: 9 },
         // { x: "Milage", value: 9 }
       ]);
@@ -174,7 +176,7 @@ export class HomePage {
       }
     });
   }
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.chartfunc(1);
 
   }
@@ -205,8 +207,9 @@ export class HomePage {
       console.log(success);
       if (success) {
         _base.userName = success.result.name;
-        if(success.result.imageId){
-          _base.profileImage = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id
+        localStorage.setItem('uid', success.result.uid)
+        if (success.result.imageId) {
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
       }
     }, function (err) {
@@ -298,16 +301,26 @@ export class HomePage {
 
   getnotifications() {
     let _base = this;
+    _base.notiCount = 0;
     _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
-      .then(function (success) {
+      .then(function (success: any) {
         console.log("Notifications", success)
+        success.result.forEach(item => {
+          if (item.seen == false) {
+            _base.notiCount = _base.notiCount + 1
+          }
+        });
       }, function (error) {
         console.log(error)
       });
   }
 
+  notifications() {
+    this.navCtrl.push("NotificationPage")
+  }
+
   //go to profiledetails page....
-  detail(){
+  detail() {
     this.navCtrl.push('ProfiledetailPage');
   }
 }

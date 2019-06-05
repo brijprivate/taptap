@@ -197,4 +197,19 @@ export class NfctagProvider {
     });
   }
 
+  viewNotification(notificationId: String) {
+    let data = {
+      feedId: notificationId
+    }
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.put(_base.apiUrl + 'notifications/update', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
 }
