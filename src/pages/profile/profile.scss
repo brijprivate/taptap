@@ -48,7 +48,7 @@ page-profile {
             margin: 0;
             color: #fff;
         }
-        ion-icon.icon.icon-md.ion-md-star {
+        ion-icon.icon.icon-md.ion-md-star ,ion-icon.icon.icon-ios.ion-ios-star {
             font-size: 15px;
             margin: 0 2px;
         }
@@ -62,11 +62,11 @@ page-profile {
         // #6354cb;
         height: 243px;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md , .toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0 1em 0;
     }
-    .toolbar-md {
+    .toolbar-md , .toolbar-ios {
         position: relative;
         padding: 0px;
     }
@@ -76,7 +76,7 @@ page-profile {
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md , button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -85,7 +85,7 @@ page-profile {
         width: 15px;
         fill: #6b708d;
     }
-    ion-card.recordCard.m1.card.card-md {
+    ion-card.recordCard.m1.card.card-md , ion-card.recordCard.m1.card.card-ios {
         background: #fff;
         -webkit-box-shadow: none;
         box-shadow: none;
@@ -93,7 +93,7 @@ page-profile {
         box-shadow: 0 1px 11px -4px #5c67f8;
         border-radius: 4px;
     }
-    ion-card.recordCard.m2.card.card-md {
+    ion-card.recordCard.m2.card.card-md , ion-card.recordCard.m2.card.card-ios{
         background: #fff;
         -webkit-box-shadow: none;
         box-shadow: none;
@@ -121,7 +121,7 @@ page-profile {
         margin: 0;
     }
 
-  button.editProfile.disable-hover.button.button-md.button-default.button-default-md {
+  button.editProfile.disable-hover.button.button-md.button-default.button-default-md , button.editProfile.disable-hover.button.button-ios.button-default.button-default-ios{
         background: transparent;
         box-shadow: none;
         height: 38px;
@@ -151,14 +151,14 @@ page-profile {
         font-size: 12px;
         color: #707591 !important;
     }
-    button.newpair.disable-hover.button.button-md.button-outline.button-outline-md {
+    button.newpair.disable-hover.button.button-md.button-outline.button-outline-md , button.newpair.disable-hover.button.button-ios.button-outline.button-outline-ios {
         font-size: 12px;
         border-radius: 5px;
         text-transform: capitalize;
         color: #222;
         border: 1px solid #222;
     }
-    button.view.disable-hover.button.button-md.button-outline.button-outline-md {
+    button.view.disable-hover.button.button-md.button-outline.button-outline-md,button.view.disable-hover.button.button-ios.button-outline.button-outline-ios {
         font-size: 12px;
         border-radius: 5px;
         text-transform: capitalize;
@@ -166,11 +166,11 @@ page-profile {
         color: #222;
         border: 1px solid #222;
     }
-    ion-icon.icon.icon-md.ion-md-add {
+    ion-icon.icon.icon-md.ion-md-add , ion-icon.icon.icon-ios.ion-ios-add {
         margin-right: 7px;
         font-size: 19px;
     }
-    ion-card-content.card-content.card-content-md {
+    ion-card-content.card-content.card-content-md, ion-card-content.card-content.card-content-ios {
         
         border-radius: 5px;
         padding: 4px 13px 0 13px;
@@ -193,7 +193,7 @@ page-profile {
         fill: #e5e5e5;
     }
 
-    ion-card.tapCard.card.card-md .item-inner {
+    ion-card.tapCard.card.card-md .item-inner,ion-card.tapCard.card.card-ios .item-inner {
         margin: 0;
     }
     img.record {
@@ -218,14 +218,17 @@ page-profile {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none;
     }
-    ion-content.content.content-md {
+    .header-ios::after, .tabs-ios[tabsPlacement="top"] > .tabbar::after, .footer-ios::before, .tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none;
+    }
+    ion-content.content.content-md,ion-content.content.content-ios {
         margin-top: -3em;
         background: #fff;
     }
     .card-md{
     box-shadow:  0px 4px 18px 0px #0000001f;
     }
-    ion-card.recordCard.card.card-md {
+    ion-card.recordCard.card.card-md,ion-card.recordCard.card.card-ios {
         text-align: center;
         padding: 1em 0;
         margin-bottom: 1vh !important;
@@ -236,7 +239,7 @@ page-profile {
         margin-top: 1em;
         padding-top: 4em;
     }
-    ion-card.tapCard.card.card-md {
+    ion-card.tapCard.card.card-md,ion-card.tapCard.card.card-ios {
         // margin-top: -2em;
         width: calc(100% - 30px);
         margin-left: auto;
@@ -267,10 +270,10 @@ page-profile {
     .card-md {
         width: calc(100% - 15px);
     }
-    ion-card.recordCard.m1.card.card-md {
+    ion-card.recordCard.m1.card.card-md,ion-card.recordCard.m1.card.card-ios {
         margin: 0 11px;
     }
-    ion-card.recordCard.m2.card.card-md {
+    ion-card.recordCard.m2.card.card-md,ion-card.recordCard.m2.card.card-ios {
         margin: 0px 4px;
     }
     // canvas.chartjs-render-monitor {
@@ -377,7 +380,7 @@ page-profile {
         border-radius: 50%;
         font-weight: 600;
     }
-    ion-icon.icon.icon-md.ion-md-pricetags {
+    ion-icon.icon.icon-md.ion-md-pricetags,ion-icon.icon.icon-ios.ion-ios-pricetags {
         font-size: 15px;
         margin: 0 2px;
     }

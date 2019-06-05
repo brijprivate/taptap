@@ -17,7 +17,7 @@ page-share {
             display: table-cell;
             padding: 0 18px;
         }   
-             ion-icon.icon.icon-md.ion-md-menu{
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
                 margin-right: 7px;
                 font-size: 22px;
                 color: #fff;
@@ -34,7 +34,7 @@ page-share {
             margin-bottom: 0;
         }
     }
-    ion-icon.icon.icon-md.ion-md-share {
+    ion-icon.icon.icon-md.ion-md-share,ion-icon.icon.icon-ios.ion-ios-share {
         font-size: 19px;
         margin-top: 0px;
         float: right;
@@ -85,7 +85,7 @@ page-share {
     line-height: 18px;
     margin-top: 2em;
 }
-ion-icon.icon.icon-md.ion-md-menu {
+ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu {
     margin-top: 15px !important;
 }
 svg#review {

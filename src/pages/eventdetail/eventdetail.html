@@ -1,0 +1,97 @@
+<ion-content>
+
+
+
+
+
+  <!-- event start -->
+  <div class="showcontent">
+    <div class="head">
+      <div class="mdl">
+        <ion-icon name="calendar"></ion-icon>
+        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
+        <p>Invitation</p>
+      </div>
+    </div>
+    <div class="imgss">
+      <!-- <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> -->
+      <!-- <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> -->
+      <ion-slides pager="true">
+        <ion-slide>
+          <img
+            src="{{product.image?'http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+product.image:'assets/images/logo_before.png'}}">
+        </ion-slide>
+
+      </ion-slides>
+    </div>
+    <!-- <ion-icon name="heart-outline" item-right
+       ></ion-icon> -->
+    <!-- <ion-icon name="heart" item-right></ion-icon> -->
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="person"></ion-icon>
+        {{type}} Title
+      </p>
+      <p class="data">{{type=='Event'?product.event_title:product.name}}</p>
+    </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="text"></ion-icon>
+        {{type}} description
+      </p>
+      <p class="data">{{product.description?product.description:product.email}}</p>
+    </div>
+    <div class="cont">
+      <p class="header">
+        <ion-icon name="pin"></ion-icon>
+        Location
+      </p>
+      <p class="data">{{type=='Event'?product.location:product.address}}</p>
+    </div>
+    <div class="cont marginadj" *ngIf="type=='Event'">
+      <p class="header">
+        <ion-icon name="clock"></ion-icon>
+        Timings
+      </p>
+      <!-- <p class="data">Meeting, durgapur, 2019</p> -->
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <div class="time">
+              <span>start</span>
+              <p class="header">{{sdate}}</p>
+              <p class="header">{{stime}}</p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <div class="time">
+              <span>End</span>
+              <p class="header">{{edate}}</p>
+              <p class="header">{{etime}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-grid class="saveGrid" *ngIf="type=='Business'">
+      <ion-row *ngIf="seen==false">
+        <ion-col col-6>
+          <button class="share" outline style="color:red;border-color: red;" (click)="acceptInvitation('declined')">
+            <ion-icon name="thumbs-down"></ion-icon>&nbsp;&nbsp; Reject
+          </button> </ion-col>
+        <ion-col col-6>
+          <button class="share" outline (click)="acceptInvitation('confirmed')">
+            <ion-icon name="thumbs-up"></ion-icon>&nbsp;&nbsp; Accept
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- event end -->
+
+
+
+
+
+
+</ion-content>

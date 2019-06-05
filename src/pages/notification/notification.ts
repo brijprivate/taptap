@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NfctagProvider } from '../../providers/nfctag/nfctag';
 
 /**
  * Generated class for the NotificationPage page.
@@ -14,49 +15,53 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'notification.html',
 })
 export class NotificationPage {
+  notifications: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,) {
+  monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
+  constructor(public nfctagpro: NfctagProvider, public navCtrl: NavController, public navParams: NavParams, ) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad NotificationPage');
-    // this.getnotifications();
+    this.getnotifications();
 
   }
 
-  // getnotifications() {
-  //   let _base = this;
-  //   let loader = this.loading.create({
-  //     content: "Please wait..."
-  //   });
-  //   loader.present();
-  //   _base.store.getNotifications(localStorage.getItem('userId'))
-  //     .then(function (success: any) {
-  //       loader.dismiss();
-  //       _base.notifications = success.result;
-  //     }, function (error) {
-  //       console.log(error);
-  //       loader.dismiss();
-  //     });
-  // }
+  eventdetail(productId: String, type: String, notificationId: String, seen: Boolean) {
+    if (type == 'Business' || type == 'Event') {
+      this.navCtrl.push('EventdetailPage', { productId: productId, type: type, notificationId: notificationId, seen: seen });
+    }
+  }
 
+  getnotifications() {
+    let _base = this;
+    _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
+      .then(function (success: any) {
+        let lastcreateddate = "";
+        _base.notifications = success.result.map((item) => {
+          let createddate = item.createdDate.split("T")[0]
+          let obj: any = item;
+          if (lastcreateddate != createddate) {
+            lastcreateddate = createddate
+            let d = new Date(createddate)
+            obj.date = d.getDate() + ' ' + _base.monthNames[d.getMonth() + 1] + ', ' + d.getFullYear()
+          }
+          return obj
+        });
+      }, function (error) {
+        console.log(error);
+      });
+  }
 
-  // viewNotification(notificationId, seen) {
-  //   let _base = this;
-  //   if (seen) {
-  //     return;
-  //   }
-  //   let loader = this.loading.create({
-  //     content: "Please wait..."
-  //   });
-  //   loader.present();
-  //   _base.store.viewNotification(notificationId)
-  //     .then(function (success: any) {
-  //       loader.dismiss();
-  //       _base.getnotifications();
-  //     }, function (error) {
-  //       console.log(error);
-  //       loader.dismiss();
-  //     });
-  // }
+  viewNotification(notificationID: String) {
+    let _base = this;
+    _base.nfctagpro.viewNotification(notificationID)
+      .then(function (sucess) {
+        _base.getnotifications()
+      }, function (error) {
+
+      })
+  }
 }

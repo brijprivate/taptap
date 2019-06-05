@@ -29,13 +29,15 @@ export class HomePage {
   doughnutChart: any;
   barChart: any;
 
+  public notiCount = 0;
+
   public userId: any;
   public userName: any;
 
-  public fashion= 0;
-  public general=0;
-  public sports=0;
-  public contact=0;
+  public fashion = 0;
+  public general = 0;
+  public sports = 0;
+  public contact = 0;
   public event: "0";
   public groceries: "0";
   public buisness: "0";
@@ -78,7 +80,40 @@ export class HomePage {
       this.getpresentdateCount();
       this.getAllTapItem();
       this.getpairedDevice();
-    }  
+      this.getnotifications();
+    }
+
+    //Read tag ....
+    // this.subscriptions.push(this.nfc.addNdefListener()
+    //   .subscribe(data => {
+    //     if (this.readingTag) {
+    //       let tagid = data.tag.id;
+    //       // let parsedid = this.nfc.bytesToString(tagid);
+    //       let payload = data.tag.ndefMessage[0].payload;
+    //       let tagContent = this.nfc.bytesToString(payload).substring(3);
+    //       this.readingTag = true;
+
+    //       var s = '';
+    //       tagid.forEach(function (byte) {
+    //         s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
+    //       });
+
+    //       console.log("tag data", tagContent);
+    //       console.log("whole data", data.tag);
+    //       console.log("tag id", s);
+    //       this.tapData = s.substring(0, s.length - 1);
+    //       if (this.tapData) {
+
+    //       }
+    //       return s.substring(0, s.length - 1);
+
+    //     }
+    //   },
+    //     err => {
+    //     })
+    // );
+
+
   }
 
   ionViewDidEnter() {
@@ -126,7 +161,7 @@ export class HomePage {
       label.vAlign("middle");
       _base.chart.legend(false);
 
-      
+
 
       // set the label as the center content
       _base.chart.center().content(label);
@@ -168,8 +203,9 @@ export class HomePage {
       console.log(success);
       if (success) {
         _base.userName = success.result.name;
-        if(success.result.imageId){
-          _base.profileImage = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id
+        localStorage.setItem('uid', success.result.uid)
+        if (success.result.imageId) {
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
       }
     }, function (err) {
@@ -259,8 +295,28 @@ export class HomePage {
     })
   }
 
+  getnotifications() {
+    let _base = this;
+    _base.notiCount = 0;
+    _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
+      .then(function (success: any) {
+        console.log("Notifications", success)
+        success.result.forEach(item => {
+          if (item.seen == false) {
+            _base.notiCount = _base.notiCount + 1
+          }
+        });
+      }, function (error) {
+        console.log(error)
+      });
+  }
+
+  notifications() {
+    this.navCtrl.push("NotificationPage")
+  }
+
   //go to profiledetails page....
-  detail(){
+  detail() {
     this.navCtrl.push('ProfiledetailPage');
   }
 }

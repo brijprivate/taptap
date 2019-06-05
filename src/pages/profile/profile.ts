@@ -28,37 +28,38 @@ export class ProfilePage {
   doughnutChart: any;
   barChart: any;
   lineChart: any;
-  public userId:any;
-  public userName:any;
-  favourite:"0";
-  public devices:any=[];
+  public userId: any;
+  public userName: any;
+  favourite: "0";
+  public devices: any = [];
   devicecount: any;
   public chart;
+  notiCount: number = 0;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public nfctagProvider:NfctagProvider,
-    public loginsignupProvider:LoginsignupProvider,
-    public loading:LoadingController) 
-    {
-      this.userId = localStorage.getItem("userId");
-      if(this.userId){
-        this.getpairedDevice();
-        this.getprofiledata();
-      }
+    public nfctagProvider: NfctagProvider,
+    public loginsignupProvider: LoginsignupProvider,
+    public loading: LoadingController) {
+    this.userId = localStorage.getItem("userId");
+    if (this.userId) {
+      this.getpairedDevice();
+      this.getprofiledata();
+    }
+  }
+
+  ionViewDidEnter() {
+    this.userId = localStorage.getItem("userId");
+    if (this.userId) {
+      this.getpairedDevice();
+      this.getprofiledata();
+      this.getDashboarddata();
+      this.getnotifications();
     }
 
-    ionViewDidEnter(){
-      this.userId = localStorage.getItem("userId");
-      if(this.userId){
-        this.getpairedDevice();
-        this.getprofiledata();
-        this.getDashboarddata();
-      }
-    
-    }
+  }
   ionViewDidLoad() {
     this.chartfunction(0)
-   
+
   }
 chartfunction(s){
   let _base = this;
@@ -69,15 +70,13 @@ chartfunction(s){
       { x: "Personal_Milage ", value: 9 },
       { x: " Business_Time", value: 9 },
       { x: " Personal_Time", value: 9 },
+      ]);
 
-    ]);
+      _base.chart.innerRadius("25%");
 
-    _base.chart.innerRadius("25%");
+      var label = anychart.standalones.label();
 
-    var label = anychart.standalones.label();
-
-    label.text("taptap");
-
+      label.text("taptap");
     label.width("100%");
     label.height("100%");
     label.adjustFontSize(true);
@@ -85,8 +84,7 @@ chartfunction(s){
     label.hAlign("center");
     label.vAlign("middle");
     _base.chart.legend(false);
-
-    
+     
 
     // set the label as the center content
     _base.chart.center().content(label);
@@ -95,11 +93,11 @@ chartfunction(s){
     _base.chart.container("container1");
     _base.chart.draw();
    
+  
   });
 }
   ionViewDidLeave(){
     this.chart.dispose();
-
   }
 
 
@@ -111,10 +109,10 @@ chartfunction(s){
     this.navCtrl.push('ManagedevicePage');
   }
   recordMilage() {
-    this.navCtrl.push('AnimatetapPage',{key:'milage'});
+    this.navCtrl.push('AnimatetapPage', { key: 'milage' });
   }
   recordTime() {
-    this.navCtrl.push('AnimatetapPage',{key:'time'});
+    this.navCtrl.push('AnimatetapPage', { key: 'time' });
     // this.navCtrl.push('RecordtimePage');
   }
   editprofile() {
@@ -123,57 +121,56 @@ chartfunction(s){
   merchant() {
     this.navCtrl.push('MerchantPage');
   }
-  category(){
+  category() {
     this.navCtrl.push('CategoryPage');
-  }   
-  profileDetail(){
+  }
+  profileDetail() {
     this.navCtrl.push('ProfiledetailPage');
   }
-  
- //Get paired devices...
- getpairedDevice(){
-   let _base  = this;
-   this.nfctagProvider.getpairdevice(this.userId).then(function(success:any){
-     console.log("paired devices--------------?>>>>>>>>>");
-     console.log(success.result.length);
-     _base.devices = success.result;
-     _base.devicecount = success.result.length;
-   },function(err){
-     console.log(err);
-   })
- }
+
+  //Get paired devices...
+  getpairedDevice() {
+    let _base = this;
+    this.nfctagProvider.getpairdevice(this.userId).then(function (success: any) {
+      console.log("paired devices--------------?>>>>>>>>>");
+      console.log(success.result.length);
+      _base.devices = success.result;
+      _base.devicecount = success.result.length;
+    }, function (err) {
+      console.log(err);
+    })
+  }
 
   //Get profile data...
-  getprofiledata(){
+  getprofiledata() {
     let _base = this;
     // let loader = this.loading.create({
     //   content:"Please wait..."
     // });
     // loader.present();
-    this.loginsignupProvider.getProfile(this.userId).then(function(success:any){
+    this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
       console.log(success);
       // loader.dismiss();
-      if(success){
+      if (success) {
         _base.userName = success.result.name;
-        if(success.result.imageId){
-          _base.profileImage = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id
+        if (success.result.imageId) {
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
       }
-    },function(err){
+    }, function (err) {
       // loader.dismiss();
       console.log(err);
     })
   }
-  getDashboarddata()
-  {
+  getDashboarddata() {
     let _base = this;
     let loader = this.loading.create({
-      content:"Please wait..."
+      content: "Please wait..."
     });
     loader.present();
 
-    this.loginsignupProvider.getDashboard(this.userId).then(function(success:any){
-      console.log("dashboard data ---------->>>>>>"+ success);
+    this.loginsignupProvider.getDashboard(this.userId).then(function (success: any) {
+      console.log("dashboard data ---------->>>>>>" + success);
       console.log(success);
 
       // _base.fashion = success.result.fashion;
@@ -186,12 +183,28 @@ chartfunction(s){
       // _base.groceries = success.result.groceries;
       // _base.totalcount = success.result.totalTap;
       loader.dismiss();
-    },function(err){
+    }, function (err) {
       console.log(err);
     })
   }
-   //go to profiledetails page....
-   detail(){
+  //go to profiledetails page....
+  detail() {
     this.navCtrl.push('ProfiledetailPage');
+  }
+
+  getnotifications() {
+    let _base = this;
+    _base.notiCount = 0;
+    _base.nfctagProvider.getnotifications(localStorage.getItem('userId'))
+      .then(function (success: any) {
+        console.log("Notifications", success)
+        success.result.forEach(item => {
+          if (item.seen == false) {
+            _base.notiCount = _base.notiCount + 1
+          }
+        });
+      }, function (error) {
+        console.log(error)
+      });
   }
 }

@@ -1,10 +1,11 @@
 page-dashboard {
-    .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    .tabs-md .tab-button[aria-selected=true] .tab-button-icon , .tabs-ios .tab-button[aria-selected=true] .tab-button-icon{
         color: #6354cb !important;
     }
-    .tabs-md .tab-button[aria-selected=true] {
+    .tabs-md .tab-button[aria-selected=true],.tabs-ios .tab-button[aria-selected=true] {
         color: #6354cb !important;
     }
+   
    
     // ion-icon.tab-button-icon.icon.icon-md.ion-md-finger-print {
     //     background: #6355cb;
@@ -40,6 +41,19 @@ page-dashboard {
     }
     .tabs-md .tab-button[aria-selected=true] .tab-button-icon.icon.icon-md.ion-md-custom-chat {
         background: url(../../assets/images/logo_before.png) no-repeat;
+        background-size: contain;
+        height: 35px;
+        width: 35px;
+    }
+
+    ion-icon.tab-button-icon.icon.icon-ios.ion-ios-custom-chat{
+        background: url(../../assets/images/logo_before.png) no-repeat;
+        background-size: contain;
+        height: 35px;
+        width: 35px;
+    }
+    ion-icon.tab-button-icon.icon.icon-ios.ion-ios-custom-chat-outline{
+        background: url(../../assets/images/Logo_after.png) no-repeat;
         background-size: contain;
         height: 35px;
         width: 35px;

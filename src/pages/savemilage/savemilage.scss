@@ -2,7 +2,7 @@ page-savemilage {
     .toolbar-background {
         background-color: #6354cb;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md , .toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0;
     }
@@ -34,13 +34,19 @@ page-savemilage {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
     }
+    .header-ios::after, .tabs-ios[tabsPlacement="top"] > .tabbar::after, .footer-ios::before, .tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none !important;
+    }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #6b708d;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
         color: #6b708d;
     }
     .hrLt {
         padding: 0 1em;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md , button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios{
         background: transparent;
         box-shadow: none;
     }
@@ -49,7 +55,7 @@ page-savemilage {
         width: 15px;
         fill: #fff;
     }
-    .toolbar-title.toolbar-title-md {
+    .toolbar-title.toolbar-title-md , .toolbar-title.toolbar-title-ios {
         color: #393079;
         font-size: 24px;
         margin-top: 10px;
@@ -97,6 +103,9 @@ page-savemilage {
     input.text-input.text-input-md::placeholder{
         color:#000;
     }
+    input.text-input.text-input-ios::placeholder{
+        color:#000;
+    }
     p.typeo {
         color: #969a9b;
         font-size: 13px;
@@ -125,7 +134,7 @@ page-savemilage {
     .graph {
         padding: 10px 0;
     }
-    button.saveButton.disable-hover.button.button-md.button-default.button-default-md {
+    button.saveButton.disable-hover.button.button-md.button-default.button-default-md , button.saveButton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         color: #6255ca;
         border: 1px solid #6255ca;
@@ -142,7 +151,7 @@ page-savemilage {
     ion-grid.saveGrid.grid {
         margin-top: 2em;
     }
-    button.previous.disable-hover.button.button-md.button-default.button-default-md {
+    button.previous.disable-hover.button.button-md.button-default.button-default-md , button.previous.disable-hover.button.button-ios.button-default.button-default-ios{
         height: 46px;
         background: transparent;
         box-shadow: none;

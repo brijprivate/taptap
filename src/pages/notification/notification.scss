@@ -18,7 +18,7 @@ page-notification {
             display: table-cell;
             padding: 0 18px;
         }   
-             ion-icon.icon.icon-md.ion-md-menu{
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
             margin-right: 7px;
             font-size: 26px;
             color: #fff;
@@ -27,7 +27,7 @@ page-notification {
             float:right;
 
         }
-        ion-icon.icon.icon-md {
+        ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
             margin-right: 10px;
             font-size: 26px;
             color: #fff;
@@ -42,11 +42,11 @@ page-notification {
         background-color: #f3f2f7;
         height: 243px;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md,.toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0 1em 0;
     }
-    .toolbar-md {
+    .toolbar-md,.toolbar-ios {
         position: relative;
         padding: 0px;
     }
@@ -56,51 +56,119 @@ page-notification {
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md,button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
-    .et {
-        border-bottom: 1px solid #f8f8f8;
-        padding: 1em 0 2em 0;
-        background: #fff;
+
+    .mdl {
+      vertical-align: middle;
+      display: table-cell;
+      padding: 0 18px;
     }
-    p.datePadding {
-        text-align: center;
-        font-size: 10px;
-        color: gray;
-        background-color: #f3f0f0d1;
-        // background: red;
-        padding: 4px 0;
+
+    ion-icon.icon.icon-md.ion-md-menu {
+      margin-right: 7px;
+      font-size: 26px;
+      color: #fff;
+      vertical-align: middle;
+      margin-top: 12px;
+      float: right;
+
     }
-    img.imgStart {
-    //     height: 50px;
-    // width: 50px;
-    // vertical-align: middle;
-    // float: left;
-    // margin: 0 1em;
-    height: 55px;
-    width: 55px;
+
+    ion-icon.icon.icon-md {
+      margin-right: 10px;
+      font-size: 26px;
+      color: #fff;
+      vertical-align: middle;
+      margin-bottom: 0;
+    }
+  
+
+  .scroll-content {
+    padding: 0 !important;
+  }
+
+  .toolbar-background {
+    background-color: #f3f2f7;
+    height: 243px;
+  }
+
+  .toolbar-content.toolbar-content-md {
+    text-align: center;
+    padding: 2em 0 1em 0;
+  }
+
+  .toolbar-md {
+    position: relative;
+    padding: 0px;
+  }
+
+  a.helpimg {
+    top: 1em;
+    right: 0em;
+    position: absolute;
+    color: #fff;
+  }
+
+  button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .et {
+    border-bottom: 1px solid #fff;
+    padding: 0.3em;
+    background: #fff;
+  }
+
+  p.sub {
+    margin-top: 0px;
+    color: #0000007d;
+    margin-bottom: 0;
+    font-size: 13px;
+  }
+
+  p.datePadding {
+    text-align: center;
+    font-size: 10px;
+    color: gray;
+    background-color: #f3f0f0d1;
+    // background: red;
+    padding: 4px 0;
+  }
+
+  img.imgStart {
+    height: 41px;
+    width: 41px;
     vertical-align: middle;
     float: left;
-    margin: 0 1em;
+    margin: 5px 1.5em;
     border: 2px solid #4f4f4f;
     border-radius: 50%;
     padding: 2px;
     }
+    .p0{
+        padding: 0;
+    }
     p.lorem {
-        margin: 15px 0 2px;
+        margin: 0;
         overflow: inherit;
         font-size: 17px;
         line-height: normal;
         text-overflow: inherit;
         color: #212121;
+        margin-top: 2px;
     }
     .item-inner {
         border-bottom: 0px !important;
     }
-    ion-item.et.item.item-block.item-md {
+    ion-item.et.item.item-block.item-md,ion-item.et.item.item-block.item-ios {
         border-bottom: 1px solid #f3f3f3;
+    }
+    .seen {
+      opacity: 0.6;
     }
     // .et:nth-child(even) {
     //     background: rgb(240, 240, 240);

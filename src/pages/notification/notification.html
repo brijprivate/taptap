@@ -32,15 +32,98 @@
   </div> -->
 
 
-  <div>
-    <p class="datePadding">22 April 2019</p>
-  
-    <div class="et" >
-      <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
-      <p class="lorem">description</p>
-      <ion-icon  name="information-circle"
-        ></ion-icon>
+  <div *ngFor="let notification of notifications">
+    <p *ngIf="notification.date" class="datePadding">{{notification.date}}</p>
+
+    <!-- <div class="et">
+      <ion-grid class="p0">
+        <ion-row>
+          <ion-col col-2>
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">description</p>
+            <p class="sub">this is for normal notification</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div> -->
+
+
+
+
+
+
+    <div class="et">
+      <ion-grid *ngIf="notification.type=='invitation'" [ngClass]={p0:true,seen:notification.seen}
+        (click)="eventdetail(notification.product,notification.categoryId,notification._id,notification.seen)">
+        <ion-row>
+          <ion-col col-2>
+
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">{{notification.product.name?notification.product.name:notification.product.event_title}}
+              ({{notification.product.event_title?'Event':'Business'}})</p>
+            <p class="sub">
+              {{notification.product.address?notification.product.address:notification.product.location}},{{notification.product.event_title?notification.product.startTime.split("T")[0]:''}}
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid [ngClass]={p0:true,seen:notification.seen} *ngIf="notification.type=='lost'" (click)="viewNotification(notification._id)">
+        <ion-row>
+          <ion-col col-2>
+
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">{{notification.title}}</p>
+            <p class="sub">{{notification.description}}</p>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid [ngClass]={p0:true,seen:notification.seen} *ngIf="notification.type=='general'" (click)="viewNotification(notification._id)">
+        <ion-row>
+          <ion-col col-2>
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">{{notification.title}}</p>
+            <p class="sub">{{notification.description}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
     </div>
+
+
+
+    <!-- <div class="et">
+      <ion-grid class="p0">
+        <ion-row>
+          <ion-col col-2>
+
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">Device name</p>
+            <p class="sub">Your device is tapped in 'Muchipara subham k pas ' at '10:00 PM' </p>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div> -->
+
+
+
   </div>
 
   <!-- <div>
