@@ -7,6 +7,8 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
+
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var window;
 // import { SavemilagePage } from '../savemilage/savemilage';
@@ -53,6 +55,7 @@ export class RecordmilagePage {
   public currentPosition:any;
   public endLocation:any;
   public checkp:boolean=false;
+  islocation:boolean=false;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -65,18 +68,18 @@ export class RecordmilagePage {
     public nfctagpro:NfctagProvider,
     private toast: ToastController,
     public alert:AlertController,
+    private locationAccuracy: LocationAccuracy
     // private diagnostic: Diagnostic
     ) 
     {
-      // this.getPermission();
       this.userId = localStorage.getItem("userId");
       this.tapData = navParams.get("tapdata");
+
        //Get Network status...
        this.sharedservice.getNetworkStat().subscribe((value)=>{
         console.log("network status------------------>>>>>>",value);
         this.isnetwork = value;
       });
-      // this.checkpermission();
     //  this.locations = [];
     //  this.startBackgroundTracking();
     this.sharedservice.getlocation().subscribe((value)=>{
@@ -90,7 +93,6 @@ export class RecordmilagePage {
 
           this.nativeGeocoder.reverseGeocode(this.locations[0].latitude, this.locations[0].longitude)
           .then((result: NativeGeocoderReverseResult[]) =>{
-            this.checkp =true;
             console.log("reverse geocode ----------------->>>>>>>",result)
             console.log(JSON.stringify(result[0]));
             this.currentPosition = result[0];
@@ -99,96 +101,13 @@ export class RecordmilagePage {
         console.log("array of locations------------->>>>>>>>");
         console.log(this.locations);
       }
-    });
-
-     //Read tag ....
-    //  this.subscriptions.push(this.nfc.addNdefListener()
-    //  .subscribe(data => {
-    //    if (this.readingTag) {
-    //      let tagid= data.tag.id;
-    //      // let parsedid = this.nfc.bytesToString(tagid);
-    //      let payload = data.tag.ndefMessage[0].payload;
-    //      let tagContent = this.nfc.bytesToString(payload).substring(3);
-    //      this.readingTag = true;
-
-    //      var s = '';
-    //      tagid.forEach(function(byte) {
-    //        s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
-    //      });
-    //      console.log("tag data", tagContent);
-    //      console.log("whole data", data.tag);
-    //      console.log("tag id", s);
-    //      this.tapData = s.substring(0, s.length - 1);
-    //      if(this.tapData){
-    //       // this.verifytag();
-    //      }
-    //      return s.substring(0, s.length - 1);
-         
-    //      } 
-    //    },
-    //    err => {
-    //    })
-    //  );
-
-   
-     
-    // subLocality.thoroughfare
+    });     
     }
 
-    //Verify user's NFC tag...
-  // verifytag(){
-  //   let _base= this;
-  //   if(this.isnetwork == "Offline")
-  //   {
-  //     let showtoast = this.toast.create({
-  //       message: "Please check your internet connection and try again",
-  //       duration: 60000,
-  //       position: "bottom",
-  //       showCloseButton: true,
-  //       closeButtonText: "Ok"
-  //     })
-  //     showtoast.present();
-  //     return;
-  //   }
-  //   else if(!this.tapData){
-  //     let showtoast = this.toast.create({
-  //       message: "Please approach your nfc device to verify",
-  //       duration: 60000,
-  //       position: "bottom",
-  //       showCloseButton: true,
-  //       closeButtonText: "Ok"
-  //     })
-  //     showtoast.present();
-  //     return;
-  //   }
-    
-  //   let loader = this.loading.create({
-  //     content:"Please wait..."
-  //   });
-  //   loader.present();
-  //   let data = {
-  //     userid:this.userId,
-  //     nfcId:this.tapData
-  //   } 
-  //   this.nfctagpro.verifyDevice(data).then(function(success:any){
-  //     console.log(success);
-  //     loader.dismiss();
-  //     _base.deviceVerify = true;
-  //     _base.presentAlert();
-  //   },function(err){
-  //     console.log(err);
-  //     loader.dismiss();
-  //     alert("Your device is not paired");
-  //   })
-  // }
-  // presentAlert() {
-  //   let alert = this.alert.create({
-  //     title: 'Confirmation',
-  //     subTitle: 'Verified',
-  //     buttons: ['OK']
-  //   });
-  //   alert.present();
-  // }
+    ionViewDidLoad(){
+      this.enableLocation();
+    }
+
 
     startBackgroundTrack()
     {
@@ -207,19 +126,13 @@ export class RecordmilagePage {
         showtoast.present();
         return;
       }
+      else if(this.islocation == false)
+      {
+        
+        this.enableLocation();
+        return;
+      }
   
-      // else if(!this.tapData)
-      // {
-      //   let showtoast = this.toast.create({
-      //     message: "Please approach your paired nfc device to verify",
-      //     duration: 60000,
-      //     position: "bottom",
-      //     showCloseButton: true,
-      //     closeButtonText: "Ok"
-      //   })
-      //   showtoast.present();
-      //   return;
-      // }
       else if(!this.record)
       {
         let showtoast = this.toast.create({
@@ -232,31 +145,20 @@ export class RecordmilagePage {
         showtoast.present();
         return;
       }
-      else if(!this.currentPosition)
-      {
-        let showtoast = this.toast.create({
-          message: "Please make sure your location service is turned on",
-          duration: 60000,
-          position: "bottom",
-          showCloseButton: true,
-          closeButtonText: "Ok"
-        })
-        showtoast.present();
-        return;
-      }
       
-      if(this.running) return;
-    if (this.timeBegan === null) {
+      else if(this.running) return;
+
+      else if (this.timeBegan === null) {
         this.reset();
         this.timeBegan = new Date();
     }
-    if (this.timeStopped !== null) {
+    else if (this.timeStopped != null) {
       let newStoppedDuration:any = (+new Date() - this.timeStopped)
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
+
     this.started = setInterval(this.clockRunning.bind(this), 10);
     this.running = true;
-    // this.backgroundGeolocation.start();
     this.loop();
     }
     reset() {
@@ -290,12 +192,7 @@ export class RecordmilagePage {
       this.zeroPrefix(sec, 2) + "." +
       this.zeroPrefix(ms, 2);
     }
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad RecordmilagePage');
-    }
-  // startBackgroundTracking(){
-  //   window.app.backgroundGeolocation.start();
-  // }
+  
 
   //stop tracking .....
   stopBackgroundTrack(){
@@ -309,35 +206,6 @@ export class RecordmilagePage {
       endLocation:this.endLocation,
       cords:this.locations
     });
-
-        // let TIME_IN_MS = 2000;
-        // let _base=this;
-        // let hideFooterTimeout = setTimeout( () => {
-        //   console.log("timeout----------------");
-          // loader.dismiss();
-         
-        //   _base.loop();
-        // }, TIME_IN_MS);
-        // if(this.endLocation){
-        //   loader.dismiss();
-        //   console.log("if statement-----------");
-        //   // this.loop();
-        // }
-      // });
-    // })
-
-    // if(this.currentPosition.latitude == this.endLocation.latitude)
-    // {
-    //   alert("Oops it seems yor are in same position");
-    //   return;
-    // }
-    // else {
-
-     
-      // this.backgroundGeolocation.stop();
-     
-     
-    // }
 
   }
 
@@ -399,6 +267,23 @@ public loop(){
 		if (unit=="N") { dist = dist * 0.8684 }
 		return dist;
 	}
+}
+
+
+enableLocation()
+{
+this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+console.log("in condition");
+if(canRequest) {
+// the accuracy option will be ignored by iOS
+this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+() => this.islocation=true,
+
+error => alert('Error requesting location permissions'+JSON.stringify(error))
+);
+}
+
+});
 }
 
 //check permission...
