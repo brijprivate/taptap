@@ -112,4 +112,7 @@ export class MilagelistPage {
       this.pdfObj.download();
     }
   }
+  back() {
+    this.navCtrl.pop();
+  }
 }
