@@ -37,5 +37,7 @@ export class MilagelistPage {
       console.log(err);
     })
   }
-
+  back() {
+    this.navCtrl.pop();
+  }
 }
