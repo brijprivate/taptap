@@ -33,8 +33,9 @@ export class ProfilePage {
   favourite: "0";
   public devices: any = [];
   devicecount: any;
+  public chart;
   notiCount: number = 0;
-  constructor(public navCtrl: NavController,
+  constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
     public loginsignupProvider: LoginsignupProvider,
@@ -52,7 +53,7 @@ export class ProfilePage {
       this.getpairedDevice();
       this.getprofiledata();
       this.getDashboarddata();
-      this.getnotifications()
+      this.getnotifications();
     }
 
   }
@@ -60,48 +61,43 @@ export class ProfilePage {
     this.chartfunction(0)
 
   }
-  chartfunction(s) {
-
-    anychart.onDocumentReady(function () {
-      var chart = anychart.pie([
-
-        { x: "Business_Milage", value: 9 },
-        { x: "Personal_Milage ", value: 9 },
-        { x: " Business_Time", value: 9 },
-        { x: " Personal_Time", value: 9 },
-
+chartfunction(s){
+  let _base = this;
+  anychart.onDocumentReady(function () {
+    _base.chart = anychart.pie([
+      
+      { x: "Business_Milage", value: 9 },
+      { x: "Personal_Milage ", value: 9 },
+      { x: " Business_Time", value: 9 },
+      { x: " Personal_Time", value: 9 },
       ]);
 
-      chart.innerRadius("25%");
+      _base.chart.innerRadius("25%");
 
       var label = anychart.standalones.label();
 
       label.text("taptap");
+    label.width("100%");
+    label.height("100%");
+    label.adjustFontSize(true);
+    label.fontColor("#60727b");
+    label.hAlign("center");
+    label.vAlign("middle");
+    _base.chart.legend(false);
+     
 
-      label.width("100%");
-      label.height("100%");
-      label.adjustFontSize(true);
-      label.fontColor("#60727b");
-      label.hAlign("center");
-      label.vAlign("middle");
-      chart.legend(false);
+    // set the label as the center content
+    _base.chart.center().content(label);
 
-
-
-      // set the label as the center content
-      chart.center().content(label);
-
-      // chart.title("Donut Chart: Label in the center");
-      chart.container("container1");
-      chart.draw();
-      if (s == 1) {
-        chart.dispose();
-      }
-    });
-  }
-  ionViewDidLeave() {
-    this.chartfunction(1)
-
+    // chart.title("Donut Chart: Label in the center");
+    _base.chart.container("container1");
+    _base.chart.draw();
+   
+  
+  });
+}
+  ionViewDidLeave(){
+    this.chart.dispose();
   }
 
 

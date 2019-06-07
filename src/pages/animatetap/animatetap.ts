@@ -125,8 +125,12 @@ export class AnimatetapPage {
     this.nfctagProvider.verifyDevice(data).then(function(success:any){
       console.log(success);
       loader.dismiss();
-      _base.deviceVerify = true;
-      if(_base.keyvalue == 'milage'){
+      if(success.message == 'Device not found with user'){
+        alert("This is not a paired device");
+        return;
+      }
+      // _base.deviceVerify = true;
+      else if(_base.keyvalue == 'milage'){
         _base.navCtrl.pop();
         _base.navCtrl.push("RecordmilagePage",{tapdata:_base.tapData});
       }else if(_base.keyvalue == 'time'){

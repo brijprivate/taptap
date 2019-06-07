@@ -26,6 +26,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 // import { SaveTimePage } from '../pages/save-time/save-time';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+// import { Diagnostic } from '@ionic-native/diagnostic';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
     NativeGeocoder,
     Deeplinks,
     SocialSharing,
-    Contacts
+    Contacts,
+    // Diagnostic
   ]
 })
 export class AppModule {}

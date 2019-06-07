@@ -43,24 +43,15 @@
   </div>
   <div class="cont animated 800s zoomIn delay-0.1s">
     <div class="container">
-      <p class="tapPen">Tap-Tap Pen <span>Online</span> </p>
-      <ion-item>
-          <ion-label>Select type</ion-label>
+      <p class="tapPen">{{devicedetail.type}} <span>Online</span> </p>
   
-          <ion-select >
-            <ion-option value="item" >Add contact</ion-option> 
-            <ion-option value="item1" >Add Website</ion-option> 
-            <ion-option value="item2" >Add message</ion-option> 
-          </ion-select>
-        </ion-item>
-
       <ion-item>
-        <ion-label floating>Time title</ion-label>
-        <ion-input  value=" this is just a random text"></ion-input>
+        <ion-label floating>Device Name</ion-label>
+        <ion-input  value=" this is just a random text" [(ngModel)]="devicedetail.device_title"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Time description</ion-label>
-        <ion-input value=" this is just a random text"></ion-input>
+        <ion-label floating>Message</ion-label>
+        <ion-input value=" this is just a random text" [(ngModel)]="lostmessage"></ion-input>
       </ion-item>
       <div class="gap"></div>
       
@@ -69,7 +60,7 @@
         <ion-list>
             <ion-item>
               <ion-label style="color:#de4963;" >Lost or stolen</ion-label>
-              <ion-toggle [(ngModel)]="lost"></ion-toggle>
+              <ion-toggle [(ngModel)]="lost" (ionChange)="notify()"></ion-toggle>
             </ion-item>
           </ion-list>
     </div>

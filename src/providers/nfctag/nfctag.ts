@@ -212,4 +212,17 @@ export class NfctagProvider {
     });
   }
 
+  updateDeviceName(data) {
+   
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.put(_base.apiUrl + 'device/updateDeviceInfo', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
 }
