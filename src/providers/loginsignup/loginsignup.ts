@@ -1,4 +1,4 @@
-import { HttpHeaders,HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpProvider } from '../http/http';
 
@@ -10,21 +10,21 @@ import { HttpProvider } from '../http/http';
 */
 @Injectable()
 export class LoginsignupProvider {
-  public apiUrl:string="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/";
+  public apiUrl: string = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/";
   // public apiUrl:string="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/user/";
-  public proxyurl:string = "https://cors-anywhere.herokuapp.com/";
+  public proxyurl: string = "https://cors-anywhere.herokuapp.com/";
 
-  constructor(public http: HttpProvider,public httpOne:HttpClient) {
+  constructor(public http: HttpProvider, public httpOne: HttpClient) {
     console.log('Hello LogregProvider Provider');
   }
 
 
-   //API call for signup...
-   register(data) {
+  //API call for signup...
+  register(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.post(_base.apiUrl + 'user/sendcode',data)
+      _base.http.post(_base.apiUrl + 'user/sendcode', data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -33,12 +33,12 @@ export class LoginsignupProvider {
     });
   }
 
-   //API call for otp verification...
-   verifyotp(data) {
+  //API call for otp verification...
+  verifyotp(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.post(_base.apiUrl + 'user/registration',data)
+      _base.http.post(_base.apiUrl + 'user/registration', data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -47,12 +47,12 @@ export class LoginsignupProvider {
     });
   }
 
-   //API call for Login...
-   login(data) {
+  //API call for Login...
+  login(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.post(_base.apiUrl + 'user/login',data)
+      _base.http.post(_base.apiUrl + 'user/login', data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -61,12 +61,12 @@ export class LoginsignupProvider {
     });
   }
 
-   //API call for Facebook Login...
-   fblogin(data) {
+  //API call for Facebook Login...
+  fblogin(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.post(_base.apiUrl + 'user/socialRegistration',data)
+      _base.http.post(_base.apiUrl + 'user/socialRegistration', data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -76,12 +76,12 @@ export class LoginsignupProvider {
   }
 
   //Get profile...
-   
-   getProfile(data) {
+
+  getProfile(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'user/profile?id='+data)
+      _base.http.get(_base.apiUrl + 'user/profile?id=' + data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -94,7 +94,7 @@ export class LoginsignupProvider {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'user/userDashboard?userId='+data)
+      _base.http.get(_base.apiUrl + 'user/userDashboard?userId=' + data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -109,7 +109,7 @@ export class LoginsignupProvider {
     let cdate = new Date().toISOString();
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'tapped/userdate?userId='+data +'&' +'date='+cdate)
+      _base.http.get(_base.apiUrl + 'tapped/userdate?userId=' + data + '&' + 'date=' + cdate)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -118,13 +118,13 @@ export class LoginsignupProvider {
     });
   }
 
-   //Get list of all tapped item....
-   getTapAll(data) {
+  //Get list of all tapped item....
+  getTapAll(data) {
     let _base = this;
     let cdate = new Date().toISOString();
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'tapped/usertappedItems?userId='+data)
+      _base.http.get(_base.apiUrl + 'tapped/usertappedItems?userId=' + data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -133,14 +133,14 @@ export class LoginsignupProvider {
     });
   }
 
-   //API call for update product ...
-   profileUpdate(data) {
-    console.log('data in service',data);
+  //API call for update product ...
+  profileUpdate(data) {
+    console.log('data in service', data);
     let userId = localStorage.getItem("userId");
     let _base = this;
     return new Promise(function (resolve, reject) {
-      console.log(_base.apiUrl + 'user/updateprofile?id=',data)
-      _base.http.put(_base.apiUrl + 'user/updateprofile?id='+userId,data)
+      console.log(_base.apiUrl + 'user/updateprofile?id=', data)
+      _base.http.put(_base.apiUrl + 'user/updateprofile?id=' + userId, data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -170,7 +170,20 @@ export class LoginsignupProvider {
     let cdate = new Date().toISOString();
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'milage/usermilage?userId='+data)
+      _base.http.get(_base.apiUrl + 'milage/usermilage?userId=' + data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  getusermonthlytaps(userid: String, month: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'tapped/usermonthly?userId=' + userid + "&month=" + month)
         .then(function (success) {
           resolve(success);
         }, function (error) {
