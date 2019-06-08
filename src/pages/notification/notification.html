@@ -32,10 +32,10 @@
   </div> -->
 
 
-  <div>
-    <p class="datePadding">22 April 2019</p>
+  <div *ngFor="let notification of notifications">
+    <p *ngIf="notification.date" class="datePadding">{{notification.date}}</p>
 
-    <div class="et">
+    <!-- <div class="et">
       <ion-grid class="p0">
         <ion-row>
           <ion-col col-2>
@@ -47,15 +47,16 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-    </div>
+    </div> -->
 
 
 
 
 
 
-    <div class="et" (click)="eventdetail()">
-      <ion-grid class="p0">
+    <div class="et">
+      <ion-grid *ngIf="notification.type=='invitation'" [ngClass]={p0:true,seen:notification.seen}
+        (click)="eventdetail(notification.product,notification.categoryId,notification._id,notification.seen)">
         <ion-row>
           <ion-col col-2>
 
@@ -63,8 +64,38 @@
 
           </ion-col>
           <ion-col col-10 style="padding-left:1em">
-            <p class="lorem">Event Name</p>
-            <p class="sub">june 23 at 10:00 PM </p>
+            <p class="lorem">{{notification.product.name?notification.product.name:notification.product.event_title}}
+              ({{notification.product.event_title?'Event':'Business'}})</p>
+            <p class="sub">
+              {{notification.product.address?notification.product.address:notification.product.location}},{{notification.product.event_title?notification.product.startTime.split("T")[0]:''}}
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid [ngClass]={p0:true,seen:notification.seen} *ngIf="notification.type=='lost'" (click)="viewNotification(notification._id)">
+        <ion-row>
+          <ion-col col-2>
+
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">{{notification.title}}</p>
+            <p class="sub">{{notification.description}}</p>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid [ngClass]={p0:true,seen:notification.seen} *ngIf="notification.type=='general'" (click)="viewNotification(notification._id)">
+        <ion-row>
+          <ion-col col-2>
+            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+          </ion-col>
+          <ion-col col-10 style="padding-left:1em">
+            <p class="lorem">{{notification.title}}</p>
+            <p class="sub">{{notification.description}}</p>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -73,7 +104,7 @@
 
 
 
-    <div class="et">
+    <!-- <div class="et">
       <ion-grid class="p0">
         <ion-row>
           <ion-col col-2>
@@ -89,7 +120,7 @@
         </ion-row>
       </ion-grid>
 
-    </div>
+    </div> -->
 
 
 

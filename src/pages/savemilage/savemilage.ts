@@ -149,8 +149,8 @@ export class SavemilagePage {
       endTime:this.endtime,
       userId:this.userId,
       nfc_id:this.nfcid,
-      milage:this.distance,
-      cords:this.cords,
+      milage:this.totaldis,
+      cords:this.locations,
       startLocation:this.currentpos.locality+ this.currentpos.thoroughfare,
       endLocation:this.endLocation.locality+ this.endLocation.thoroughfare
     }

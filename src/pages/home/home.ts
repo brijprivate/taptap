@@ -29,13 +29,15 @@ export class HomePage {
   doughnutChart: any;
   barChart: any;
 
+  public notiCount = 0;
+
   public userId: any;
   public userName: any;
 
-  public fashion= 0;
-  public general=0;
-  public sports=0;
-  public contact=0;
+  public fashion = 0;
+  public general = 0;
+  public sports = 0;
+  public contact = 0;
   public event: "0";
   public groceries: "0";
   public buisness: "0";
@@ -45,6 +47,8 @@ export class HomePage {
   public tapItems: any;
 
   lineChart: any;
+
+  public chart;
 
   //NFC read related ....
   readingTag: boolean = false;
@@ -113,6 +117,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
+    // this.chart.dispose();
     if (this.todaysTap)
       console.log("view enter--------------->>>>>>>>>>>");
     this.userId = localStorage.getItem("userId");
@@ -127,10 +132,10 @@ export class HomePage {
     }
   }
 
-  chartfunc(s){
+  chartfunc(){
     let _base = this;
     anychart.onDocumentReady(function () {
-      var chart = anychart.pie([
+       _base.chart = anychart.pie([
         { x: "Fashion", value:_base.fashion },
         { x: "General", value:_base.general },
         { x: "Event", value:_base.event },
@@ -142,7 +147,7 @@ export class HomePage {
         // { x: "Milage", value: 9 }
       ]);
 
-      chart.innerRadius("25%");
+      _base.chart.innerRadius("25%");
 
       var label = anychart.standalones.label();
 
@@ -154,29 +159,22 @@ export class HomePage {
       label.fontColor("#60727b");
       label.hAlign("center");
       label.vAlign("middle");
-      chart.legend(false);
+      _base.chart.legend(false);
 
 
 
       // set the label as the center content
-      chart.center().content(label);
+      _base.chart.center().content(label);
 
       // chart.title("Donut Chart: Label in the center");
-      chart.container("container");
-
-      if (s == 1) {
-        console.log('leaveinggggggggggggggggggggggggggggggggg')
-
-        chart.dispose();
-      }
-      else {
-        chart.draw();
-      }
+      _base.chart.container("container");
+      _base.chart.draw();
+     
     });
   }
   ionViewDidLeave(){
-    this.chartfunc(1);
-
+    this.chart.dispose();
+    // this.chartfunc(1);
   }
   selectedTab(index) {
     this.slider.slideTo(index);
@@ -205,8 +203,9 @@ export class HomePage {
       console.log(success);
       if (success) {
         _base.userName = success.result.name;
-        if(success.result.imageId){
-          _base.profileImage = _base.API_URL+"/file/getImage?imageId="+success.result.imageId._id
+        localStorage.setItem('uid', success.result.uid)
+        if (success.result.imageId) {
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
       }
     }, function (err) {
@@ -240,7 +239,7 @@ export class HomePage {
       _base.sports = success.result.sport;
       _base.groceries = success.result.groceries;
       _base.totalcount = success.result.totalTap;
-      _base.chartfunc(0);
+      _base.chartfunc();
       loader.dismiss();
     }, function (err) {
       console.log(err);
@@ -298,16 +297,26 @@ export class HomePage {
 
   getnotifications() {
     let _base = this;
+    _base.notiCount = 0;
     _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
-      .then(function (success) {
+      .then(function (success: any) {
         console.log("Notifications", success)
+        success.result.forEach(item => {
+          if (item.seen == false) {
+            _base.notiCount = _base.notiCount + 1
+          }
+        });
       }, function (error) {
         console.log(error)
       });
   }
 
+  notifications() {
+    this.navCtrl.push("NotificationPage")
+  }
+
   //go to profiledetails page....
-  detail(){
+  detail() {
     this.navCtrl.push('ProfiledetailPage');
   }
 }

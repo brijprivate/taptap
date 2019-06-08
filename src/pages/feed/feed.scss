@@ -17,11 +17,11 @@ page-feed {
             vertical-align: middle;
             display: table-cell;
             padding: 0 14px;
-            ion-icon.icon.icon-md.ion-md-arrow-round-back {
+            ion-icon.icon.icon-md.ion-md-arrow-round-back,ion-icon.icon.icon-ios.ion-ios-arrow-round-back {
                 color: gray !important;
             }
         }   
-             ion-icon.icon.icon-md.ion-md-menu{
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
             margin-right: 7px;
             font-size: 26px;
             color: #222;
@@ -29,7 +29,7 @@ page-feed {
             margin-top: 12px;
             float:right;
         }
-        ion-icon.icon.icon-md {
+        ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
             margin-right: 10px;
             font-size: 26px;
             color: #222;
@@ -50,7 +50,7 @@ page-feed {
             margin: 0 0.5em 1em 0.5em;
             padding: 0;
         }
-        button.btnPrev.disable-hover.button.button-md.button-default.button-default-md.button-md-primary {
+        button.btnPrev.disable-hover.button.button-md.button-default.button-default-md.button-md-primary ,button.btnPrev.disable-hover.button.button-ios.button-default.button-default-ios.button-ios-primary{
             position: absolute;
             top: 35%;
             left: 0px;
@@ -62,7 +62,7 @@ page-feed {
             font-size: 18px;
             padding-left: 5px;
         }
-        button.btnNext.disable-hover.button.button-md.button-default.button-default-md.button-md-primary {
+        button.btnNext.disable-hover.button.button-md.button-default.button-default-md.button-md-primary , button.btnNext.disable-hover.button.button-ios.button-default.button-default-ios.button-ios-primary  {
             position: absolute;
             top: 35%;
             right: 0px;
@@ -99,7 +99,7 @@ page-feed {
             font-size: 12px;
             color: #00000099;
         }
-        ion-icon.icon.icon-md.ion-md-heart {
+        ion-icon.icon.icon-md.ion-md-heart,ion-icon.icon.icon-ios.ion-ios-heart {
             color: #de5443 !important;
             font-size: 25px;
             margin-right: 0;
@@ -107,7 +107,7 @@ page-feed {
             top: 12px;
             right: 12px;
         }
-        ion-icon.icon.icon-md.ion-md-eye {
+        ion-icon.icon.icon-md.ion-md-eye,ion-icon.icon.icon-ios.ion-ios-eye {
             color: gray;
             font-size: 19px;
         }
@@ -178,7 +178,7 @@ page-feed {
         width: 50px;
         border-radius: 50%;
     }
-    ion-icon.icon.icon-md.ion-md-thumbs-up {
+    ion-icon.icon.icon-md.ion-md-thumbs-up ,ion-icon.icon.icon-ios.ion-ios-thumbs-up{
         color: #775dd1;
         margin-right: 0;
     }
@@ -194,7 +194,7 @@ page-feed {
         color: #fff;
         vertical-align: middle;
     }
-    button.disable-hover.button.button-md.button-clear.button-clear-md.button-small.button-small-md {
+    button.disable-hover.button.button-md.button-clear.button-clear-md.button-small.button-small-md ,  button.disable-hover.button.button-ios.button-clear.button-clear-ios.button-small.button-small-ios{
         position: absolute;
         bottom: 10px;
         right: 0;

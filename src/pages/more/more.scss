@@ -18,7 +18,7 @@ page-more {
             display: table-cell;
             padding: 0 18px;
         }   
-             ion-icon.icon.icon-md.ion-md-menu{
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
             margin-right: 10px;
             font-size: 26px;
             color: #fff;
@@ -27,7 +27,7 @@ page-more {
             // float:right;
 
         }
-        ion-icon.icon.icon-md {
+        ion-icon.icon.icon-md ,ion-icon.icon.icon-ios{
             margin-right: 10px;
             font-size: 26px;
             color: #222;
@@ -48,13 +48,17 @@ page-more {
         position: relative;
         padding: 0px;
     }
+    .toolbar-ios {
+        position: relative;
+        padding: 0px;
+    }
     a.helpimg {
         top: 1em;
         right: 0em;
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md,button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -74,7 +78,7 @@ page-more {
         float: right;
         margin-right: 3em;
     }
-    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button,button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
         color: #6b708d;
     }
     .scroll-content {
@@ -101,7 +105,7 @@ page-more {
         height: 81px;
         line-height: 81px;
     }
-    ion-item.item.item-block.item-md {
+    ion-item.item.item-block.item-md ,ion-item.item.item-block.item-ios{
         padding-left: 0;
     }
     .pContent {
@@ -112,7 +116,7 @@ page-more {
         font-size: 15px;
         color: rgba(84, 87, 98, 0.72);
     }
-    ion-icon.icon.icon-md {
+    ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
         margin-bottom: 0px;
         margin-right: 5px;
         font-size: 20px;
@@ -122,7 +126,7 @@ page-more {
         color: #525662;
         font-size: 14px;
     }
-    ion-icon.icon.icon-md.ion-md-copy.item-icon {
+    ion-icon.icon.icon-md.ion-md-copy.item-icon ,ion-icon.icon.icon-ios.ion-ios-copy.item-icon{
         float: right;
     }
     button.aContact {
@@ -144,10 +148,10 @@ page-more {
         height: 42px;
         width: 130px;
     }
-    ion-icon.icon.icon-md.ion-md-share{
+    ion-icon.icon.icon-md.ion-md-share,ion-icon.icon.icon-ios.ion-ios-share{
         color: #8376f9;
     }
-    ion-icon.icon.icon-md.ion-md-person {
+    ion-icon.icon.icon-md.ion-md-person,ion-icon.icon.icon-ios.ion-ios-person {
         color: #8376f9;
     }
     svg#moreSvg {
@@ -157,26 +161,26 @@ page-more {
         margin-right: 8px;
     }
     // icon css
-    ion-icon.icon.icon-md.ion-md-notifications-outline.item-icon {
+    ion-icon.icon.icon-md.ion-md-notifications-outline.item-icon ,ion-icon.icon.icon-ios.ion-ios-notifications-outline.item-icon {
         color: #9679db;
     }
-    ion-icon.icon.icon-md.ion-md-paper.item-icon {
+    ion-icon.icon.icon-md.ion-md-paper.item-icon  ,  ion-icon.icon.icon-ios.ion-ios-paper.item-icon {
         color: #a0c2be;
     }
-    ion-icon.icon.icon-md.ion-md-home.item-icon {
+    ion-icon.icon.icon-md.ion-md-home.item-icon,ion-icon.icon.icon-ios.ion-ios-home.item-icon {
         color: #ef94c8;
     }
-    ion-icon.icon.icon-md.ion-md-help-circle.item-icon {
+    ion-icon.icon.icon-md.ion-md-help-circle.item-icon ,ion-icon.icon.icon-ios.ion-ios-help-circle.item-icon{
         color: #d98136;
     }
-    ion-icon.icon.icon-md.ion-md-call.item-icon {
+    ion-icon.icon.icon-md.ion-md-call.item-icon,ion-icon.icon.icon-ios.ion-ios-call.item-icon {
         color: rgba(77, 85, 170, 0.7);
     }
-    ion-icon.icon.icon-md.ion-md-cube.item-icon {
+    ion-icon.icon.icon-md.ion-md-cube.item-icon ,ion-icon.icon.icon-ios.ion-ios-cube.item-icon{
         color: #9acd329e;
     }
         // icon css
-        ion-icon.icon.icon-md.ion-md-power {
+        ion-icon.icon.icon-md.ion-md-power, ion-icon.icon.icon-ios.ion-ios-power {
             vertical-align: middle;
         }
 

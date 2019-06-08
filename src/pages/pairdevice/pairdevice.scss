@@ -3,7 +3,7 @@ page-pairdevice {
         // background: linear-gradient(to top, #7357cf, #6367be,#6961c4,#5d6fb5);
         background: #6354cb;
       }
-      ion-content.content.content-md {
+      ion-content.content.content-md,ion-content.content.content-ios {
         // background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
         background: #fff;
     }
@@ -29,6 +29,9 @@ page-pairdevice {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
     }
+    .header-ios::after, .tabs-ios[tabsPlacement="top"] > .tabbar::after, .footer-ios::before, .tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none !important;
+    }
     // .toolbar-content.toolbar-content-md {
     //     text-align: center;
     //     padding: 9em 0 1em 0;
@@ -49,7 +52,7 @@ page-pairdevice {
         margin-top: 2em;
         padding-bottom: 3em;
     }
-    button.pairbutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.pairbutton.disable-hover.button.button-md.button-default.button-default-md,button.pairbutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background-color: #fff;
         padding: 22px 45px;
         text-transform: capitalize;
@@ -60,10 +63,13 @@ page-pairdevice {
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         color: #fff;
     }
-    ion-list.listView.list.list-md{
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+        color: #fff;
+    }
+    ion-list.listView.list.list-md,ion-list.listView.list.list-ios{
         padding: 1em 1em 4em 1em;
     }
-    .list-md .item-input:last-child {
+    .list-md .item-input:last-child,.list-ios .item-input:last-child {
         background: transparent;
     }
    ion-label#lbl-15 {
@@ -73,11 +79,11 @@ page-pairdevice {
         color: #fff !important;
     }
 
-    ion-input.input.input-md {
+    ion-input.input.input-md,ion-input.input.input-ios {
         color: #222;
     }
    
-      .list-md .item-input.input-has-focus:last-child {
+      .list-md .item-input.input-has-focus:last-child,.list-ios .item-input.input-has-focus:last-child {
         border-bottom-color: #fff;
         box-shadow: none !important;
       }
@@ -110,7 +116,7 @@ page-pairdevice {
                 color: gray !important;
             }
         }   
-             ion-icon.icon.icon-md.ion-md-menu{
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
             margin-right: 7px;
             font-size: 26px;
             color: #222;
@@ -118,7 +124,7 @@ page-pairdevice {
             margin-top: 12px;
             float:right;
         }
-        ion-icon.icon.icon-md {
+        ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
             margin-right: 10px;
             font-size: 26px;
             color: #222;
@@ -133,7 +139,7 @@ page-pairdevice {
     ion-label {
         color: #6354cb !important;
     }
-    ion-item.item.item-block.item-md.item-input.item-label-floating :focus {
+    ion-item.item.item-block.item-md.item-input.item-label-floating :focus, ion-item.item.item-block.item-ios.item-input.item-label-floating :focus {
         border-bottom: 1px solid #9E9E9E !important;
         width: 72% !important;
         margin: auto !important;

@@ -38,17 +38,20 @@ export class TapdetailsPage {
     private contacts: Contacts)
     {
       this.userId = localStorage.getItem("userId");
-      this.eventdata = navParams.get("itemdetails");
+      
       console.log("item details----", this.eventdata);
 
       //shared service to get link data...
       this.sharedservice.getlinkid().subscribe((value)=>{
         console.log("network status------------------>>>>>>",value);
         this.linkId = value;
+        console.log("link id----------"+this.linkId);
       });
       if(this.linkId){
+        console.log("in condition");
         this.getById(this.linkId);
       }
+      this.eventdata = navParams.get("itemdetails");
 
       if(this.eventdata.eventId)
       {
@@ -135,9 +138,11 @@ export class TapdetailsPage {
 
   //get product by id....
   getById(linkId){
+    let _base =this;
     this.nfctagPro.getproductbyide(linkId).then(function(success:any){
       console.log("from link ----------->>>>>>>>>>");
       console.log(success);
+      _base.eventdata=success;
     },function(err){
       console.log(err);
     })

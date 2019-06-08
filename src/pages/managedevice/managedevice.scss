@@ -6,12 +6,16 @@ page-managedevice {
         background: transparent;
         box-shadow: none;
     }
+    button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
+        background: transparent;
+        box-shadow: none;
+    }
     svg#editButton {
         height: 15px;
         width: 15px;
         fill: #fff;
     }
-    .toolbar-title.toolbar-title-md {
+    .toolbar-title.toolbar-title-md,.toolbar-title.toolbar-title-ios {
         color: #fff;
     }
     button.managebutton.disable-hover.button.button-md.button-default.button-default-md {
@@ -21,10 +25,20 @@ page-managedevice {
         box-shadow: none;
         background: transparent;
     }
+    button.managebutton.disable-hover.button.button-ios.button-default.button-default-ios {
+        position: absolute;
+        right: 0;
+        bottom: -11px;
+        box-shadow: none;
+        background: transparent;
+    }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
       color:#76798a;
     }
-    ion-icon.icon.icon-md.ion-md-arrow-back {
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+        color:#76798a;
+      }
+    ion-icon.icon.icon-md.ion-md-arrow-back,ion-icon.icon.icon-ios.ion-ios-arrow-back {
         margin-right: 1em;
     }
     img.pen {
@@ -47,10 +61,10 @@ page-managedevice {
     hr.margino {
         margin: 0;
     }
-    ion-item.manageCard.item.item-block.item-md {
+    ion-item.manageCard.item.item-block.item-md,ion-item.manageCard.item.item-block.item-ios {
         padding: 0;
     }
-    .detail ion-card-header.card-header.card-header-md {
+    .detail ion-card-header.card-header.card-header-md,.detail ion-card-header.card-header.card-header-ios {
         padding-left: 8px;
     }
     p.manageContent {
@@ -59,30 +73,30 @@ page-managedevice {
         font-style: italic;
         font-weight: 400;
     }
-    ion-icon.icon.icon-md.ion-md-trash.item-icon {
+    ion-icon.icon.icon-md.ion-md-trash.item-icon,ion-icon.icon.icon-ios.ion-ios-trash.item-icon {
         color: #e6e4ec;
         font-size: 26px;
         margin-bottom: 31px;
     }
-    button.viewInfo.disable-hover.button.button-md.button-default.button-default-md {
+    button.viewInfo.disable-hover.button.button-md.button-default.button-default-md,button.viewInfo.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         color: #6452b5;
         text-transform: capitalize;
         box-shadow: none;
     }
-    button.viewInfonext.disable-hover.button.button-md.button-default.button-default-md{
+    button.viewInfonext.disable-hover.button.button-md.button-default.button-default-md,button.viewInfonext.disable-hover.button.button-ios.button-default.button-default-ios{
         background: transparent;
         color: #dc6871;
         text-transform: capitalize;
         box-shadow: none;
     }
-    ion-card.detail.card.card-md {
+    ion-card.detail.card.card-md,ion-card.detail.card.card-ios {
     box-shadow: 1px 1px 18px 1px #0000001f;
     }
-    .detail ion-card-content.card-content.card-content-md {
+    .detail ion-card-content.card-content.card-content-md,.detail ion-card-content.card-content.card-content-ios {
         padding-bottom: 0;
     }
-    ion-icon.plucircle.icon.icon-md {
+    ion-icon.plucircle.icon.icon-md,ion-icon.plucircle.icon.icon-ios {
         height: 34px;
         width: 34px;
         position: absolute;
@@ -97,7 +111,9 @@ page-managedevice {
     ion-navbar.toolbar.toolbar-md {
         position: relative;
     }
-
+    ion-navbar.toolbar.toolbar-ios {
+        position: relative;
+    }
 
     .dropbtn {
         background-color: transparent;
@@ -138,6 +154,9 @@ page-managedevice {
       .dropdown:hover .dropdown-content {display: block;}
       
     //   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    ion-item.item.item-block.item-ios.item-toggle {
+        background: #f1f1f1;
+    }
     ion-item.item.item-block.item-md.item-toggle {
         background: #f1f1f1;
     }

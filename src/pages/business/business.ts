@@ -84,7 +84,7 @@ export class BusinessPage {
 
     let permission = {
       businessId: this.business._id,
-      userId: localStorage.getItem("userId"),
+      userUid: localStorage.getItem("uid"),
       status: "confirmed",
       permission: this.permission
     }

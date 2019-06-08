@@ -4,11 +4,11 @@ page-category {
         background-color:#f3f2f7;
         height: 243px;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md,.toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0 1em 0;
     }
-    .toolbar-md {
+    .toolbar-md , .toolbar-ios {
         position: relative;
         padding: 0px;
     }
@@ -18,7 +18,7 @@ page-category {
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md, button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -39,6 +39,9 @@ page-category {
         margin-right: 3em;
     }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        color: #6b708d;
+    }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
         color: #6b708d;
     }
     .milageTitle {
@@ -65,7 +68,7 @@ page-category {
     .dashboardSection {
         padding: 1em 2em;
     }
-    button.save.disable-hover.button.button-md.button-default.button-default-md {
+    button.save.disable-hover.button.button-md.button-default.button-default-md,button.save.disable-hover.button.button-ios.button-default.button-default-ios {
         margin-top: 1em;
         width: 100%;
         background: #5c67f8;
@@ -98,16 +101,16 @@ page-category {
     span.numerm {
         color:#a5a6ad;
     }
-    ion-checkbox.checkbox.checkbox-md {
+    ion-checkbox.checkbox.checkbox-md,ion-checkbox.checkbox.checkbox-ios {
         float: right;
         margin-right: 1em;
     }
-    .checkbox-md .checkbox-checked {
+    .checkbox-md .checkbox-checked,.checkbox-ios .checkbox-checked {
         border-color: #90f1c3;
         background-color: #90f1c3;
         border-radius: 50%;
     }
-    .checkbox-md .checkbox-icon {
+    .checkbox-md .checkbox-icon,.checkbox-ios .checkbox-icon {
         border-radius: 50%;
     }
 hr.marginO {

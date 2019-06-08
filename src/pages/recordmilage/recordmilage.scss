@@ -2,7 +2,7 @@ page-recordmilage {
     .toolbar-background {
         background-color: #6354cb;
       }
-    .toolbar-content.toolbar-content-md {
+    .toolbar-content.toolbar-content-md , .toolbar-content.toolbar-content-ios {
         text-align: center;
         padding: 2em 0;
     }
@@ -22,9 +22,15 @@ page-recordmilage {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
     }
+    .header-ios::after, .tabs-ios[tabsPlacement="top"] > .tabbar::after, .footer-ios::before, .tabs-ios[tabsPlacement="bottom"] > .tabbar::before {
+        background-image: none !important;
+    }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
 color:#6b708d;
     }
+    button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button {
+        color:#6b708d;
+            }
     hr.margino {
         margin-right: 1em;
         margin-left: 1em;
@@ -41,7 +47,7 @@ color:#6b708d;
         position: absolute;
         color: #fff;
     }
-    button.mybutton.disable-hover.button.button-md.button-default.button-default-md {
+    button.mybutton.disable-hover.button.button-md.button-default.button-default-md , button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
         background: transparent;
         box-shadow: none;
     }
@@ -63,7 +69,7 @@ color:#6b708d;
         font-size: 13px;
         font-weight: 500;
     }
-    ion-segment.typeRecord.segment.segment-md {
+    ion-segment.typeRecord.segment.segment-md , ion-segment.typeRecord.segment.segment-ios {
         border-left: 1px solid #e1e1e6;
         border-top: 1px solid #e1e1e6;
         border-bottom: 0;
@@ -73,7 +79,7 @@ color:#6b708d;
         color: #6b7170 !important;
         border-right: 1px solid #a6a6a6;
     }
-    .segment-md .segment-button{
+    .segment-md .segment-button , .segment-ios .segment-button{
         height: 4.8rem;
         line-height: 43px;
     }
@@ -86,7 +92,23 @@ color:#6b708d;
         opacity: 1;
         color: #624eb0 !important;
     }
+    .segment-ios .segment-button.activated, .segment-ios .segment-button.segment-activated {
+        // border-bottom: 2px solid #624eb0;
+        border-width: 1px;
+        border-color: #624eb0;
+        border-style: solid;
+        border-radius: 4px;
+        opacity: 1;
+        color: #624eb0 !important;
+    }
     .segment-md .segment-button.activated, page-recordmilage .segment-md .segment-button.segment-activated {
+        border-bottom: 2px solid #624eb0;
+        opacity: 1;
+        border-color: #624eb0;
+        color: #624eb0 !important;
+        border-right: 1px solid #e1e1e6 !important;
+    }
+    .segment-ios .segment-button.activated, page-recordmilage .segment-ios .segment-button.segment-activated {
         border-bottom: 2px solid #624eb0;
         opacity: 1;
         border-color: #624eb0;
@@ -120,14 +142,14 @@ color:#6b708d;
         line-height: 28px;
         color: grey;
     }
-    ion-toggle.toggle.toggle-md.toggle-checked {
+    ion-toggle.toggle.toggle-md.toggle-checked ,ion-toggle.toggle.toggle-ios.toggle-checked {
         padding-top: 8px;
     }
     span.km {
         color: #8e8dea;
         font-weight: 500;
     }
-    button.start.disable-hover.button.button-md.button-default.button-default-md {
+    button.start.disable-hover.button.button-md.button-default.button-default-md , button.start.disable-hover.button.button-ios.button-default.button-default-ios {
         background: #fff;
         color: #222;
         -webkit-box-shadow: none;
@@ -138,7 +160,7 @@ color:#6b708d;
         border: 1px solid #222;
         border-radius: 4px;
     }
-    button.stop.disable-hover.button.button-md.button-default.button-default-md {
+    button.stop.disable-hover.button.button-md.button-default.button-default-md , button.stop.disable-hover.button.button-ios.button-default.button-default-ios{
         background: #fff;
         color: #222;
         -webkit-box-shadow: none;

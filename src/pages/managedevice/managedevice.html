@@ -48,7 +48,7 @@
               </g>
             </svg>
           </span>
-         <span (click)="gotodevice(device)">{{device.type}}</span> 
+         <span (click)="gotodevice(device)">{{device.device_title}}</span> 
   
         </ion-item>
 
@@ -57,13 +57,12 @@
             <!-- <p class="dropbtn">Dropdown</p> -->
             <i class="fa fa-ellipsis-v dropbtn"></i>
             <div class="dropdown-content">
-              <a >Set as Default</a>
-              <a >Edit Name</a>
-              <a >Manage</a>
+              <a (click)="presentPrompt(device._id)">Edit Name</a>
+              <a (click)="gotodevice(device)">Manage</a>
               <!-- <a >Lost or stolen <ion-checkbox></ion-checkbox> -->
                 <ion-item>
-                    <ion-label style="color:#de4963;" >Lost or stolen</ion-label>
-                    <ion-toggle [(ngModel)]="lost"></ion-toggle>
+                    <ion-label style="color:#de4963;" (click)="gotodevice(device)">Lost or stolen</ion-label>
+                    <!-- <ion-toggle [(ngModel)]="lost"></ion-toggle> -->
                   </ion-item>
              
               
