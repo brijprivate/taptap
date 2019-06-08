@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+import { SharedserviceProvider } from './../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the SearchPage page.
@@ -16,7 +17,7 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 })
 export class SearchPage {
   @ViewChild('slides') slider: Slides;
-  @ViewChild('slider1') slider1: Slides;
+  @ViewChild('slider') slider_tab: Slides;
 
 
   monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -27,11 +28,14 @@ export class SearchPage {
   public userId: any;
   public ifmerchant: boolean = false;
 
+  searchcount: any = 0;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loginsignupProvider: LoginsignupProvider,
     public loading: LoadingController,
     private toast: ToastController,
+    public sharedservice: SharedserviceProvider,
     public alert: AlertController, ) {
     this.userId = localStorage.getItem("userId");
 
@@ -50,13 +54,13 @@ export class SearchPage {
     console.log('ionViewDidLoad SearchPage');
   }
   selectedTab(index) {
-    this.slider.slideTo(index);
+    this.slider_tab.slideTo(index);
   }
   next() {
-    this.slider1.slideNext();
+    this.slider.slideNext();
   }
   prev() {
-    this.slider1.slidePrev();
+    this.slider.slidePrev();
   }
 
   //get all tap items....
@@ -101,6 +105,7 @@ export class SearchPage {
         Object.assign(obj, item)
         return obj
       });
+      _base.searchcount = _base.tapItems.length
       loader.dismiss();
       console.log("=============================", _base.tapItems);
     }, function (err) {
@@ -116,7 +121,9 @@ export class SearchPage {
   }
   //Go to details page ....
   gotodetails(item) {
-    // this.navCtrl.push('TapdetailsPage', { itemdetails: item });
+    console.log(item)
+    this.navCtrl.push('TapdetailsPage', item);
+    // this.navCtrl.push("TapdetailsPage");
   }
 
   getmonth(month: string) {
