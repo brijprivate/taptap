@@ -21,6 +21,7 @@ export class SignupPage {
   public name: any;
   public email: any;
   public password: any;
+  public confirmpassword: any;
   public isnetwork = "Online";
   userName: any;
   public fb_id: any;
@@ -82,6 +83,26 @@ export class SignupPage {
       })
       showtoast.present();
       return;
+    } else if (this.password != this.confirmpassword) {
+      let showtoast = this.toast.create({
+        message: "Passwords do not match",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
+    } else if (this.password.length <= 5) {
+      let showtoast = this.toast.create({
+        message: "Password length must be atleast 6",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
     }
     let loader = this.loading.create({
       content: "Please wait..."
@@ -98,7 +119,7 @@ export class SignupPage {
       console.log(success);
       loader.dismiss();
       if (success.error == true) {
-        alert("user already exxxxx");
+        alert("user already registered");
         return;
       }
 

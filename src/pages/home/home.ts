@@ -34,6 +34,7 @@ export class HomePage {
 
   public userId: any;
   public userName: any;
+  public uid: any = "";
 
   public fashion = 0;
   public general = 0;
@@ -75,7 +76,7 @@ export class HomePage {
      ) {
     let cdate = new Date().toISOString();
     console.log(cdate);
-    this.userId = localStorage.getItem("userId");
+    this.userId = localStorage.getItem("userId")
     console.log(this.userId);
     if (this.userId) {
       // this.getPermission();
@@ -136,17 +137,17 @@ export class HomePage {
     }
   }
 
-  chartfunc(){
+  chartfunc() {
     let _base = this;
     anychart.onDocumentReady(function () {
-       _base.chart = anychart.pie([
-        { x: "Fashion", value:_base.fashion },
-        { x: "General", value:_base.general },
-        { x: "Event", value:_base.event },
-        { x: "Contacts", value:_base.contact },
-        { x: "Business", value:_base.buisness },
-        { x: "Sports", value:_base.sports },
-        { x: "Groceries", value:_base.groceries },
+      _base.chart = anychart.pie([
+        { x: "Fashion", value: _base.fashion },
+        { x: "General", value: _base.general },
+        { x: "Event", value: _base.event },
+        { x: "Contacts", value: _base.contact },
+        { x: "Business", value: _base.buisness },
+        { x: "Sports", value: _base.sports },
+        { x: "Groceries", value: _base.groceries },
         // { x: "Timer", value: 9 },
         // { x: "Milage", value: 9 }
       ]);
@@ -173,10 +174,10 @@ export class HomePage {
       // chart.title("Donut Chart: Label in the center");
       _base.chart.container("container");
       _base.chart.draw();
-     
+
     });
   }
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.chart.dispose();
     // this.chartfunc(1);
   }
@@ -208,6 +209,7 @@ export class HomePage {
       if (success) {
         _base.userName = success.result.name;
         localStorage.setItem('uid', success.result.uid)
+        _base.uid = success.result.uid
         if (success.result.imageId) {
           _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
