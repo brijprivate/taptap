@@ -68,10 +68,10 @@ export class MyApp {
         _base.loginservice.getProduct(match.$args.category, match.$args.id)
           .then(function (success: any) {
             if (success.error) {
-              _base.platform.exitApp()
+              _base.platform.exitApp();
             }
             let item = success.result;
-            this.navCtrl.setRoot('TapdetailsPage', item);
+            _base.navCtrl.setRoot('TapdetailsPage', item);
           }, function (error) {
             _base.platform.exitApp()
           });
@@ -86,15 +86,15 @@ export class MyApp {
 
     // });
 
-    // if (
-    //   localStorage.getItem("userId") != undefined &&
-    //   localStorage.getItem("userId").length != 0
-    // ) {
-    //   this.rootPage = "DashboardPage";
-    // } else {
-    //   localStorage.setItem("userId", "");
-    //   this.rootPage = 'LoginPage';
-    // }
+    if (
+      localStorage.getItem("userId") != undefined &&
+      localStorage.getItem("userId").length != 0
+    ) {
+      this.rootPage = "DashboardPage";
+    } else {
+      localStorage.setItem("userId", "");
+      this.rootPage = 'LoginPage';
+    }
   }
 
   /**check network status - online/offline */
