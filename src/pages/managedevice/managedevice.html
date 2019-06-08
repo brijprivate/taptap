@@ -58,11 +58,14 @@
             <i class="fa fa-ellipsis-v dropbtn"></i>
             <div class="dropdown-content">
               <a (click)="presentPrompt(device._id)">Edit Name</a>
+
               <a (click)="gotodevice(device)">Manage</a>
+              <a (click)="delete(device._id)">Delete</a>
+
               <!-- <a >Lost or stolen <ion-checkbox></ion-checkbox> -->
                 <ion-item>
                     <ion-label style="color:#de4963;" (click)="gotodevice(device)">Lost or stolen</ion-label>
-                    <!-- <ion-toggle [(ngModel)]="lost"></ion-toggle> -->
+                    <ion-toggle [(ngModel)]="lost"></ion-toggle>
                   </ion-item>
              
               

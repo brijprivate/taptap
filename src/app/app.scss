@@ -31,3 +31,15 @@ ion-loading {
   .anychart-credits {
     display: none;
 }
+button.share:active {
+  background: #6354cb;
+  color: #fff;
+}
+button:active {
+  background: #6354cb;
+  color: #fff;
+}
+button:focus.span {
+  background: #6354cb;
+  color: #fff;
+}
