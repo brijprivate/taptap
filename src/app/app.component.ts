@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform, ToastController, NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, App, ToastController, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,7 +20,11 @@ import { Deeplinks } from '@ionic-native/deeplinks';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild('nav') navCtrl: NavController;
+
+
   rootPage: string = '';
+  params: any = {}
   public disconnectSubscription: any;
   public connectSubscription: any;
   public networkStatus: String = "";
@@ -34,7 +38,7 @@ export class MyApp {
     private toast: ToastController,
     private deeplinks: Deeplinks,
     private loginservice: LoginsignupProvider,
-    public navCtrl: NavController,
+    public app: App,
     private backgroundGeolocation: BackgroundGeolocation) {
     let _base = this;
     // platform.ready().then(() => {
@@ -67,7 +71,7 @@ export class MyApp {
               _base.platform.exitApp()
             }
             let item = success.result;
-            _base.navCtrl.setRoot('TapdetailsPage', item);
+            this.navCtrl.setRoot('TapdetailsPage', item);
           }, function (error) {
             _base.platform.exitApp()
           });
@@ -82,15 +86,15 @@ export class MyApp {
 
     // });
 
-    if (
-      localStorage.getItem("userId") != undefined &&
-      localStorage.getItem("userId").length != 0
-    ) {
-      this.rootPage = "DashboardPage";
-    } else {
-      localStorage.setItem("userId", "");
-      this.rootPage = 'LoginPage';
-    }
+    // if (
+    //   localStorage.getItem("userId") != undefined &&
+    //   localStorage.getItem("userId").length != 0
+    // ) {
+    //   this.rootPage = "DashboardPage";
+    // } else {
+    //   localStorage.setItem("userId", "");
+    //   this.rootPage = 'LoginPage';
+    // }
   }
 
   /**check network status - online/offline */
