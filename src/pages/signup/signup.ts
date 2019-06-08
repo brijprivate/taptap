@@ -93,6 +93,16 @@ export class SignupPage {
       })
       showtoast.present();
       return;
+    } else if (this.password.length <= 5) {
+      let showtoast = this.toast.create({
+        message: "Password length must be atleast 6",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
     }
     let loader = this.loading.create({
       content: "Please wait..."

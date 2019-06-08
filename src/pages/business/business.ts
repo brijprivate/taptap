@@ -24,18 +24,20 @@ export class BusinessPage {
 
   constructor(public http: NfctagProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.business = this.navParams.data;
-    console.log(this.business)
+    console.log(typeof this.business.user)
     this.permission = this.getPermission(this.business.user)
+    console.log(this.permission)
     if (this.permission == 'all') {
       this.milage = true;
       this.timer = true
     } else if (this.permission == 'timer') {
       this.milage = false;
       this.timer = true
-    } else {
+    } else if (this.permission == 'milage') {
       this.milage = true;
       this.timer = false
     }
+    console.log(this.milage, this.timer)
   }
 
   back() {
@@ -46,12 +48,10 @@ export class BusinessPage {
   }
 
   getPermission(users: any) {
-    for (let i = 0; i <= users.length - 1; i++) {
-      let user = users[i]
-      if (user.userId == localStorage.getItem('userId')) {
-        return user.permission;
-      }
-    }
+    console.log(users)
+    let permission = "";
+        permission = users.permission;
+        return permission;
   }
 
   savePermission() {
@@ -98,5 +98,5 @@ export class BusinessPage {
       })
 
   }
-
+  userId
 }
