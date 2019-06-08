@@ -191,4 +191,49 @@ export class LoginsignupProvider {
         });
     });
   }
+
+
+  getProduct(category: String, productID: String) {
+    let _base = this;
+
+    console.log(category)
+
+    let route = "";
+
+    switch (category) {
+      case 'Business':
+        route = 'business';
+        break;
+      case 'Contacts':
+        route = 'contact';
+        break;
+      case 'Sports':
+        route = 'sports';
+        break;
+      case 'Fashion':
+        route = 'fashion';
+        break;
+      case 'General':
+        route = 'general';
+        break;
+      case 'Event':
+        route = 'events';
+        break;
+      case 'Groceries':
+        route = 'groceries';
+        break;
+      default:
+      // code block
+    }
+
+    return new Promise(function (resolve, reject) {
+      _base.http.get(_base.apiUrl + route + '/get' + route + 'byId?id=' + productID)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
 }
