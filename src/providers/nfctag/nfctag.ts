@@ -213,10 +213,23 @@ export class NfctagProvider {
   }
 
   updateDeviceName(data) {
-   
+
     let _base = this;
     return new Promise(function (resolve, reject) {
       _base.http.put(_base.apiUrl + 'device/updateDeviceInfo', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  getusermonthlytaps(userid: String, month: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'tapped/usermonthly?userId=' + userid + "&month=" + month)
         .then(function (success) {
           resolve(success);
         }, function (error) {
