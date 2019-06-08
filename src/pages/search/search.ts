@@ -133,7 +133,7 @@ export class SearchPage {
 
     setTimeout(function () {
       (<HTMLButtonElement>document.getElementById("category")).click()
-    }, 3000);
+    }, 5000);
 
     let year = this.year;
     let date = new Date(month + '/' + '15/' + this.year)
