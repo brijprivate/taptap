@@ -61,9 +61,9 @@ export class TapdetailsPage {
     // }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TapdetailsPage');
-  }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad TapdetailsPage');
+  // }
 
   //mark as favourite api.....
   fav(item, id) {

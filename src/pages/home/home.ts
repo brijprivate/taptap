@@ -6,6 +6,7 @@ import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Subscription } from 'rxjs/Rx';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
+// import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
 @Component({
   selector: 'page-home',
@@ -70,12 +71,15 @@ export class HomePage {
     public nfctagpro: NfctagProvider,
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
-    public alert: AlertController, ) {
+    public alert: AlertController,
+    // private diagnostic: Diagnostic
+     ) {
     let cdate = new Date().toISOString();
     console.log(cdate);
     this.userId = localStorage.getItem("userId")
     console.log(this.userId);
     if (this.userId) {
+      // this.getPermission();
       this.getprofiledata();
       // this.getDashboarddata();
       this.getpresentdateCount();
@@ -320,5 +324,23 @@ export class HomePage {
   //go to profiledetails page....
   detail() {
     this.navCtrl.push('ProfiledetailPage');
+  }
+
+  getPermission() {
+  //   this.diagnostic.getPermissionAuthorizationStatus(this.diagnostic.permission.ACCESS_FINE_LOCATION).then((status) => {
+  //     console.log(`AuthorizationStatus`);
+  //     console.log(status);
+  //     if (status != this.diagnostic.permissionStatus.GRANTED) {
+  //       this.diagnostic.requestRuntimePermission(this.diagnostic.permission.ACCESS_FINE_LOCATION).then((data) => {
+  //         console.log(`getCameraAuthorizationStatus`);
+  //         console.log(data);
+  //       })
+  //     } else {
+  //       console.log("We have the permission");
+  //     }
+  //   }, (statusError) => {
+  //     console.log(`statusError`);
+  //     console.log(statusError);
+  //   });
   }
 }

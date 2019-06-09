@@ -70,7 +70,7 @@ export class MyApp {
         _base.loginservice.getProduct(match.$args.category, match.$args.id)
           .then(function (success: any) {
             if (success.error) {
-              _base.platform.exitApp()
+              _base.platform.exitApp();
             }
             let item = success.result;
 
