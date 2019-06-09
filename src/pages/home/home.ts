@@ -276,7 +276,7 @@ export class HomePage {
   //go to detail page ...
   gotoDetails(item) {
     console.log(item);
-    this.navCtrl.push('TapdetailsPage', { itemdetails: item });
+    this.navCtrl.push('TapdetailsPage', item);
   }
 
   //go to edit profile page ...
