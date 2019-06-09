@@ -275,7 +275,7 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    console.log(item);
+    console.log("=====================",item);
     this.navCtrl.push('TapdetailsPage', item);
   }
 

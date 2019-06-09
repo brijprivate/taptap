@@ -19,21 +19,14 @@ import { Contacts, Contact, ContactField, ContactName, ContactOrganization, Cont
 })
 export class TapdetailsPage {
 
-<<<<<<< HEAD
   public eventdata: any = [];
-=======
-  public eventdata: any = {};
->>>>>>> c6f846b9b8932497842db0eb0d53eaeefd7660ee
   public thisMonth: any;
   public userId: any;
   public uRLlink = "https://taptapshare.000webhostapp.com/?category=";
   public link: any;
   isfav: boolean = false;
   public linkId: any;
-<<<<<<< HEAD
   xx: any;
-=======
->>>>>>> c6f846b9b8932497842db0eb0d53eaeefd7660ee
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -45,21 +38,10 @@ export class TapdetailsPage {
     public sharedservice: SharedserviceProvider,
     private contacts: Contacts) {
     this.userId = localStorage.getItem("userId");
-<<<<<<< HEAD
 
     console.log("item details----", this.eventdata);
 
-    //shared service to get link data...
-    this.sharedservice.getlinkid().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
-      this.linkId = value;
-      console.log("link id----------" + this.linkId);
-    });
-    if (this.linkId) {
-      console.log("in condition");
-      this.getById(this.linkId);
-    }
-    this.eventdata = navParams.get("itemdetails");
+    this.eventdata = navParams.data;
 
     if (this.eventdata.eventId) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -68,24 +50,15 @@ export class TapdetailsPage {
     }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TapdetailsPage');
-  }
   ionViewDidEnter() {
-    this.eventdata = this.navParams.get("itemdetails");
-    console.log("item details----", this.eventdata);
-=======
+    // this.eventdata = this.navParams.get("itemdetails");
+    // console.log("item details----", this.eventdata);
 
-    this.eventdata = this.navParams.data;
-
-    console.log(this.eventdata)
->>>>>>> c6f846b9b8932497842db0eb0d53eaeefd7660ee
-
-    if (this.eventdata.eventId) {
-      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      this.thisMonth = monthNames[(new Date()).getMonth()];
-      console.log(this.thisMonth);
-    }
+    // if (this.eventdata.eventId) {
+    //   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //   this.thisMonth = monthNames[(new Date()).getMonth()];
+    //   console.log(this.thisMonth);
+    // }
   }
 
   ionViewDidLoad() {
