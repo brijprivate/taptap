@@ -15,6 +15,7 @@ import {
 import { platformBrowser } from '@angular/platform-browser';
 declare var window;
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { generate } from 'rxjs/observable/generate';
 
 @Component({
   templateUrl: 'app.html'
@@ -64,6 +65,7 @@ export class MyApp {
       console.log(match.$args.id);
 
       if (match.$args.id != '' || match.$args.category != null) {
+        console.log("========================================")
         // this.rootPage = "TapdetailsPage";
         _base.loginservice.getProduct(match.$args.category, match.$args.id)
           .then(function (success: any) {
@@ -71,8 +73,51 @@ export class MyApp {
               _base.platform.exitApp()
             }
             let item = success.result;
-            this.navCtrl.setRoot('TapdetailsPage', item);
+
+            let object = {}
+
+            switch (match.$args.category) {
+              case 'Business':
+                object = {
+                  businessId: item
+                }
+                break;
+              case 'Contacts':
+                object = {
+                  contactId: item
+                }
+                break;
+              case 'Sports':
+                object = {
+                  sportId: item
+                }
+                break;
+              case 'Fashion':
+                object = {
+                  fashionId: item
+                }
+                break;
+              case 'General':
+                object = {
+                  generalId: item
+                }
+                break;
+              case 'Event':
+                object = {
+                  eventId: item
+                }
+                break;
+              case 'Groceries':
+                object = {
+                  groceryId: item
+                }
+                break;
+              default:
+            }
+
+            _base.navCtrl.setRoot('TapdetailsPage', object);
           }, function (error) {
+            alert("This link is expired")
             _base.platform.exitApp()
           });
       }
@@ -86,15 +131,15 @@ export class MyApp {
 
     // });
 
-    // if (
-    //   localStorage.getItem("userId") != undefined &&
-    //   localStorage.getItem("userId").length != 0
-    // ) {
-    //   this.rootPage = "DashboardPage";
-    // } else {
-    //   localStorage.setItem("userId", "");
-    //   this.rootPage = 'LoginPage';
-    // }
+    if (
+      localStorage.getItem("userId") != undefined &&
+      localStorage.getItem("userId").length != 0
+    ) {
+      this.rootPage = "DashboardPage";
+    } else {
+      localStorage.setItem("userId", "");
+      this.rootPage = 'LoginPage';
+    }
   }
 
   /**check network status - online/offline */
