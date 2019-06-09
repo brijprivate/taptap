@@ -250,7 +250,7 @@ page-tapdetails {
         padding: 0 3px;
         font-size: 12px;
     }
-    .time:after {
+    .time::after {
         content: "";
         background: #fff;
         height: 11px;
@@ -260,7 +260,7 @@ page-tapdetails {
         top:48%;
         left: -1px;
     }
-    .time:before {
+    .time::before {
         content: "";
         background: #fff;
         height: 11px;
@@ -442,7 +442,7 @@ page-tapdetails {
         position: relative;
 
     }
-    .blue .pen:after {
+    .blue .pen::after {
         content: '';
         position: absolute;
         left: 0;
