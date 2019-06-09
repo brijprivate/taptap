@@ -73,7 +73,7 @@ export class HomePage {
     private toast: ToastController,
     public alert: AlertController,
     // private diagnostic: Diagnostic
-     ) {
+  ) {
     let cdate = new Date().toISOString();
     console.log(cdate);
     this.userId = localStorage.getItem("userId")
@@ -279,8 +279,8 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    console.log(item);
-    this.navCtrl.push('TapdetailsPage', { itemdetails: item });
+    console.log("=====================", item);
+    this.navCtrl.push('TapdetailsPage', item);
   }
 
   //go to edit profile page ...
@@ -327,20 +327,20 @@ export class HomePage {
   }
 
   getPermission() {
-  //   this.diagnostic.getPermissionAuthorizationStatus(this.diagnostic.permission.ACCESS_FINE_LOCATION).then((status) => {
-  //     console.log(`AuthorizationStatus`);
-  //     console.log(status);
-  //     if (status != this.diagnostic.permissionStatus.GRANTED) {
-  //       this.diagnostic.requestRuntimePermission(this.diagnostic.permission.ACCESS_FINE_LOCATION).then((data) => {
-  //         console.log(`getCameraAuthorizationStatus`);
-  //         console.log(data);
-  //       })
-  //     } else {
-  //       console.log("We have the permission");
-  //     }
-  //   }, (statusError) => {
-  //     console.log(`statusError`);
-  //     console.log(statusError);
-  //   });
+    //   this.diagnostic.getPermissionAuthorizationStatus(this.diagnostic.permission.ACCESS_FINE_LOCATION).then((status) => {
+    //     console.log(`AuthorizationStatus`);
+    //     console.log(status);
+    //     if (status != this.diagnostic.permissionStatus.GRANTED) {
+    //       this.diagnostic.requestRuntimePermission(this.diagnostic.permission.ACCESS_FINE_LOCATION).then((data) => {
+    //         console.log(`getCameraAuthorizationStatus`);
+    //         console.log(data);
+    //       })
+    //     } else {
+    //       console.log("We have the permission");
+    //     }
+    //   }, (statusError) => {
+    //     console.log(`statusError`);
+    //     console.log(statusError);
+    //   });
   }
 }

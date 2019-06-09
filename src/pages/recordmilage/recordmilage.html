@@ -6,28 +6,28 @@
 -->
 <ion-header>
   <ion-navbar>
-      <a class="helpimg">
-          <button ion-button class="mybutton">
-            <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-              x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
-              <g>
-                <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
-                <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
-                <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
-              </g>
-            </svg>
-          </button>
-        </a>
+    <a class="helpimg">
+      <button ion-button class="mybutton">
+        <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+          <g>
+            <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
+            <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
+            <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
+          </g>
+        </svg>
+      </button>
+    </a>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div class="milageTitle">
-      <img src="../../assets/images/fast.png" class="record">
-      <p>Record Milage</p>
+    <img src="../../assets/images/fast.png" class="record">
+    <p>Record Milage</p>
   </div>
-<p class="type">Record type</p>
-<div padding>
+  <p class="type">Record type</p>
+  <div padding>
     <ion-segment [(ngModel)]="record" class="typeRecord">
       <ion-segment-button value="Personal">
         Personal
@@ -37,34 +37,39 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-<hr class="margino">
-<div class="recordContent">
-<p class="typea">Start Location</p>
-<p class="typerecord" *ngIf="checkp == true">{{currentPosition.locality}},{{currentPosition.thoroughfare}}</p>
-<p class="typea">Timer</p>
-<p class="typerecordtime">{{time}}</p>
+  <hr class="margino">
+  <div class="recordContent">
+    <p class="typea">Start Location</p>
+    <p class="typerecord" *ngIf="checkp == true">{{currentPosition.locality}},{{currentPosition.thoroughfare}}</p>
+    <p class="typea">Timer</p>
+    <p class="typerecordtime">{{stime}}</p>
 
-<ion-grid class="kmhr">
-    <ion-row>
-      <ion-col col-6>
+    <ion-grid class="kmhr">
+      <ion-row>
+        <ion-col col-6>
           <p class="typea">Octometer</p>
-          <p class="typerecordtime"> {{totaldis}}km</p>
-      </ion-col>
-      <ion-col col-6>   
+          <p class="typerecordtime"> {{sdistance}}km</p>
+        </ion-col>
+        <ion-col col-6>
           <p class="typea">Preference</p>
 
-         <!-- <p class="mile">Mile<ion-toggle checked="true"></ion-toggle><span class="km">Kms</span></p>  -->
-        <span class="mile">KM</span> <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"><!--ADDED HTML --><span class="on">MPH</span><span class="off">KPH</span><!--END--></div></label><span class="mile">MPH</span>
+          <!-- <p class="mile">Mile<ion-toggle checked="true"></ion-toggle><span class="km">Kms</span></p>  -->
+          <span class="mile">KM</span> <label class="switch"><input type="checkbox" id="togBtn">
+            <div class="slider round">
+              <!--ADDED HTML --><span class="on">MPH</span><span class="off">KPH</span>
+              <!--END-->
+            </div>
+          </label><span class="mile">MPH</span>
 
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
       <ion-row>
         <ion-col col-6><button ion-button class="start" (click)="startBackgroundTrack()">Start</button></ion-col>
         <ion-col col-6><button ion-button class="stop" (click)="stopBackgroundTrack()">Stop</button></ion-col>
       </ion-row>
     </ion-grid>
-</div>
+  </div>
 
 </ion-content>

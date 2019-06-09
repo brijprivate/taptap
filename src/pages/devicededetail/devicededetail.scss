@@ -118,6 +118,9 @@ page-devicededetail {
         margin-left: 2px !important;
         font-size: 13px;
     }
+    .item-inner {
+        margin-left: 1em;
+    }
     input.text-input.text-input-md,input.text-input.text-input-ios {
         margin-top: 3px;
     }
@@ -164,5 +167,11 @@ page-devicededetail {
         margin-left: 1em;
         height: 46px;
         text-transform: capitalize;
+    }
+    i.fa {
+        color: #222;
+        position: absolute;
+        left: 0px;
+        font-size: 20px;
     }
 }
