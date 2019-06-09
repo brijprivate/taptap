@@ -27,6 +27,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 // import { Diagnostic } from '@ionic-native/diagnostic';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
     SharedserviceProvider,
     HttpProvider,
     SplashScreen,
+    LocationAccuracy,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginsignupProvider,
     NfctagProvider,
@@ -66,6 +69,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
     Ndef,
     Crop,
     Camera,
+    File,
     BackgroundGeolocation,
     NativeGeocoder,
     Deeplinks,

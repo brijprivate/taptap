@@ -43,3 +43,15 @@ button:focus.span {
   background: #6354cb;
   color: #fff;
 }
+
+.loading-md .loading-wrapper {
+  opacity: 0 !important;
+}
+
+ion-loading {
+  opacity: 0.2 !important;
+}
+
+.ion-backdrop {
+  opacity: 0.2 !important;
+}

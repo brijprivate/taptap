@@ -199,35 +199,43 @@ export class LoginsignupProvider {
     console.log(category)
 
     let route = "";
+    let prefix = "";
 
     switch (category) {
       case 'Business':
         route = 'business';
+        prefix = 'business';
         break;
       case 'Contacts':
         route = 'contact';
+        prefix = 'contact';
         break;
       case 'Sports':
         route = 'sports';
+        prefix = 'sport';
         break;
       case 'Fashion':
         route = 'fashion';
+        prefix = 'fashion';
         break;
       case 'General':
         route = 'general';
+        prefix = 'general';
         break;
       case 'Event':
         route = 'events';
+        prefix = 'event';
         break;
       case 'Groceries':
         route = 'groceries';
+        prefix = 'groceries';
         break;
       default:
       // code block
     }
 
     return new Promise(function (resolve, reject) {
-      _base.http.get(_base.apiUrl + route + '/get' + route + 'byId?id=' + productID)
+      _base.http.get(_base.apiUrl + route + '/get' + prefix + 'ById?id=' + productID)
         .then(function (success) {
           resolve(success);
         }, function (error) {

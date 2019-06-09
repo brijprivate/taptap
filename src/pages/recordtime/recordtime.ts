@@ -21,79 +21,84 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 export class RecordtimePage {
 
   //NFC read related ....
-  readingTag:   boolean   = false;
-  writingTag:   boolean   = false;
-  isWriting:    boolean   = false;
-  ndefMsg:      string    = '';
+  readingTag: boolean = false;
+  writingTag: boolean = false;
+  isWriting: boolean = false;
+  ndefMsg: string = '';
   subscriptions: Array<Subscription> = new Array<Subscription>();
 
   //Timer related...
   public timeBegan = null
-  public timeStopped:any = null
-  public stoppedDuration:any = 0
+  public timeStopped: any = null
+  public stoppedDuration: any = 0
   public started = null
   public running = false
   public blankTime = "00:00.00"
   public time = "00:00:00"
+  public showTime = ""
+  public showtimesub;
+  public tapData: any;
+  public isnetwork = "Online";
+  deviceVerify: boolean = false;
+  public record: any;
 
-  public tapData:any;
-  public isnetwork= "Online";
-  deviceVerify:boolean = false;
-  public record:any;
+  public userId: any;
 
-  public userId:any;
-
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfc: NFC,
     public ndef: Ndef,
-    public loading:LoadingController,
-    public nfctagpro:NfctagProvider,
+    public loading: LoadingController,
+    public nfctagpro: NfctagProvider,
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
-    public alert:AlertController,)
-    {
-      this.userId = localStorage.getItem("userId");
-      this.tapData = navParams.get("tapdata");
-       //Get Network status...
-       this.sharedservice.getNetworkStat().subscribe((value)=>{
-        console.log("network status------------------>>>>>>",value);
-        this.isnetwork = value;
-      });
+    public alert: AlertController, ) {
+    this.userId = localStorage.getItem("userId");
+    this.tapData = navParams.get("tapdata");
+    //Get Network status...
+    this.sharedservice.getNetworkStat().subscribe((value) => {
+      console.log("network status------------------>>>>>>", value);
+      this.isnetwork = value;
+    });
 
-      //Read tag ....
-      // this.subscriptions.push(this.nfc.addNdefListener()
-      // .subscribe(data => {
-      //   if (this.readingTag) {
-      //     let tagid= data.tag.id;
-      //     // let parsedid = this.nfc.bytesToString(tagid);
-      //     let payload = data.tag.ndefMessage[0].payload;
-      //     let tagContent = this.nfc.bytesToString(payload).substring(3);
-      //     this.readingTag = true;
+    //Read tag ....
+    // this.subscriptions.push(this.nfc.addNdefListener()
+    // .subscribe(data => {
+    //   if (this.readingTag) {
+    //     let tagid= data.tag.id;
+    //     // let parsedid = this.nfc.bytesToString(tagid);
+    //     let payload = data.tag.ndefMessage[0].payload;
+    //     let tagContent = this.nfc.bytesToString(payload).substring(3);
+    //     this.readingTag = true;
 
-      //     var s = '';
-      //     tagid.forEach(function(byte) {
-      //       s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
-      //     });
-      //     console.log("tag data", tagContent);
-      //     console.log("whole data", data.tag);
-      //     console.log("tag id", s);
-      //     this.tapData = s.substring(0, s.length - 1);
-      //     if(this.tapData){
-      //     }
-      //     return s.substring(0, s.length - 1);
-          
-      //     } 
-      //   },
-      //   err => {
-      //   })
-      // );
-    }
-  saveTime(){
+    //     var s = '';
+    //     tagid.forEach(function(byte) {
+    //       s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
+    //     });
+    //     console.log("tag data", tagContent);
+    //     console.log("whole data", data.tag);
+    //     console.log("tag id", s);
+    //     this.tapData = s.substring(0, s.length - 1);
+    //     if(this.tapData){
+    //     }
+    //     return s.substring(0, s.length - 1);
+
+    //     } 
+    //   },
+    //   err => {
+    //   })
+    // );
+  }
+  saveTime() {
     this.navCtrl.push('SaveTimePage');
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RecordtimePage');
+    let _base = this
+    let count = 0;
+    _base.showtimesub = setInterval(function () {
+      _base.showTime = _base.time;
+    }, 1000);
   }
 
   //Verify user's NFC tag...
@@ -153,9 +158,8 @@ export class RecordtimePage {
   //Start record time...
 
   start() {
-    let _base= this;
-    if(this.isnetwork == "Offline")
-    {
+    let _base = this;
+    if (this.isnetwork == "Offline") {
       let showtoast = this.toast.create({
         message: "Please check your internet connection and try again",
         duration: 60000,
@@ -167,8 +171,7 @@ export class RecordtimePage {
       return;
     }
 
-    else if(!this.record)
-    {
+    else if (!this.record) {
       let showtoast = this.toast.create({
         message: "Please select one record type before start",
         duration: 60000,
@@ -180,16 +183,16 @@ export class RecordtimePage {
       return;
     }
 
-    if(this.running) return;
+    if (this.running) return;
     if (this.timeBegan === null) {
-        this.reset();
-        this.timeBegan = new Date();
+      this.reset();
+      this.timeBegan = new Date();
     }
     if (this.timeStopped !== null) {
-      let newStoppedDuration:any = (+new Date() - this.timeStopped)
+      let newStoppedDuration: any = (+new Date() - this.timeStopped)
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
-    this.started = setInterval(this.clockRunning.bind(this), 10);
+    this.started = setInterval(this.clockRunning.bind(this), 100);
     this.running = true;
   }
 
@@ -204,31 +207,30 @@ export class RecordtimePage {
 
   zeroPrefix(num, digit) {
     let zero = '';
-    for(let i = 0; i < digit; i++) {
+    for (let i = 0; i < digit; i++) {
       zero += '0';
     }
     return (zero + num).slice(-digit);
   }
 
-  clockRunning()
-  {
-    let currentTime:any = new Date()
-    let timeElapsed:any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
+  clockRunning() {
+    let currentTime: any = new Date()
+    let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
     let hour = timeElapsed.getUTCHours()
     let min = timeElapsed.getUTCMinutes()
     let sec = timeElapsed.getUTCSeconds()
     let ms = timeElapsed.getUTCMilliseconds();
-  this.time =
-    this.zeroPrefix(hour, 2) + ":" +
-    this.zeroPrefix(min, 2) + ":" +
-    this.zeroPrefix(sec, 2) + "." +
-    this.zeroPrefix(ms, 2);
+    this.time =
+      this.zeroPrefix(hour, 2) + ":" +
+      this.zeroPrefix(min, 2) + ":" +
+      this.zeroPrefix(sec, 2)
+
+    console.log(this.time)
   };
 
   //Stop clock...
-  stop() 
-  {
-    if(!this.time || !this.tapData || !this.record){
+  stop() {
+    if (!this.time || !this.tapData || !this.record) {
       let showtoast = this.toast.create({
         message: "Please start ",
         duration: 60000,
@@ -243,10 +245,10 @@ export class RecordtimePage {
     this.timeStopped = new Date();
     clearInterval(this.started);
     console.log(this.time);
-    this.navCtrl.push('SaveTimePage',{
-      endtime:this.time,
-      nfcid:this.tapData,
-      recordtype:this.record
+    this.navCtrl.push('SaveTimePage', {
+      endtime: this.time,
+      nfcid: this.tapData,
+      recordtype: this.record
     })
   }
 }

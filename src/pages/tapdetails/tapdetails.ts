@@ -41,17 +41,7 @@ export class TapdetailsPage {
 
     console.log("item details----", this.eventdata);
 
-    //shared service to get link data...
-    this.sharedservice.getlinkid().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
-      this.linkId = value;
-      console.log("link id----------" + this.linkId);
-    });
-    if (this.linkId) {
-      console.log("in condition");
-      this.getById(this.linkId);
-    }
-    this.eventdata = navParams.get("itemdetails");
+    this.eventdata = navParams.data;
 
     if (this.eventdata.eventId) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -59,10 +49,8 @@ export class TapdetailsPage {
       console.log(this.thisMonth);
     }
   }
+  
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TapdetailsPage');
-  }
   ionViewDidEnter() {
     this.eventdata = this.navParams.get("itemdetails");
     console.log("item details----", this.eventdata);
@@ -73,6 +61,20 @@ export class TapdetailsPage {
       console.log(this.thisMonth);
     }
   }
+
+    // this.eventdata = this.navParams.get("itemdetails");
+    // console.log("item details----", this.eventdata);
+
+    // if (this.eventdata.eventId) {
+    //   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //   this.thisMonth = monthNames[(new Date()).getMonth()];
+    //   console.log(this.thisMonth);
+    // }
+  // }
+
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad TapdetailsPage');
+  // }
 
   //mark as favourite api.....
   fav(item, id) {
