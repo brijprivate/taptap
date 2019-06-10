@@ -179,11 +179,11 @@ export class LoginsignupProvider {
     });
   }
 
-  getusermonthlytaps(userid: String, month: String) {
+  getusermonthlytaps(userid: String, month: String, str: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'tapped/usermonthly?userId=' + userid + "&month=" + month)
+      _base.http.get(_base.apiUrl + 'tapped/searchtaps?userId=' + userid + "&date=" + month + "&string=" + str)
         .then(function (success) {
           resolve(success);
         }, function (error) {
