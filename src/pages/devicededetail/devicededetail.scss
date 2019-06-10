@@ -38,6 +38,7 @@ page-devicededetail {
     }
     .scroll-content {
         padding: 0 !important;
+        overflow: hidden;
     }
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
@@ -64,6 +65,8 @@ page-devicededetail {
         margin-top: 8vh;
         text-align: center;
         font-size: 18px;
+        height: 56vh;
+        overflow-y: scroll;
     }
     .cont p span {
         background: #c5efed;
@@ -104,7 +107,7 @@ page-devicededetail {
     p.tapPen {
         color: #53565a;
         font-size: 13px;
-        margin-bottom: 4em;
+        margin-bottom: 1em;
     }
     ion-input.input.input-md {
         color: #1f2127;

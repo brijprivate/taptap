@@ -138,11 +138,6 @@ export class TaptapPage {
       this.load = true
     }
 
-
-    setTimeout(function () {
-      (<HTMLButtonElement>document.getElementById("category")).click()
-    }, 5000);
-
     let year = this.year;
     this.merchant()
   }

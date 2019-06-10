@@ -22,261 +22,97 @@
 
 
   <!-- event start -->
-  <div class="showcontent" *ngIf="eventdata.eventId">
-    <div class="head">
-      <div class="mdl">
-        <ion-icon name="calendar"></ion-icon>
-        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <p>{{eventdata.purpose}}</p>
-      </div>
-    </div>
-    <div class="imgss event">
-      <!-- <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> -->
-      <!-- <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> -->
-      <ion-slides pager id="myImg">
-        <ion-slide>
+  <div *ngIf="eventdata.eventId">
 
-          <img src="assets/images/event.jpeg" (click)="showfull('assets/images/event.jpeg')">
-        </ion-slide>
-        <ion-slide>
 
-          <img src="assets/images/man.jpeg" (click)="showfull('assets/images/man.jpeg')">
+    <div class="showcontent">
+      <div class="head">
 
-        </ion-slide>
-        <ion-slide>
+        <div class="mdl">
+          <!-- <ion-icon name="calendar"></ion-icon> -->
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
 
-          <img src="assets/images/fashion.jpg" (click)="showfull('assets/images/fashion.jpg')">
+          <p>{{eventdata.purpose}}</p>
+          <div class="iconss">
 
-        </ion-slide>
-        <!-- <ion-slide>
-                  <button ion-button class="upload"><ion-icon name="camera"></ion-icon> Upload</button>
-                </ion-slide> -->
-      </ion-slides>
-    </div>
-    <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite ==false" item-right
-      (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
-    <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-      (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="person"></ion-icon>
-        Event Title
-      </p>
-      <p class="data">{{eventdata.eventId.event_title}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="text"></ion-icon>
-        Event description
-      </p>
-      <p class="data">{{eventdata.eventId.description}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="pin"></ion-icon>
-        Location
-      </p>
-      <p class="data"> {{eventdata.eventId.location}}</p>
-    </div>
-    <div class="cont marginadj">
-      <p class="header">
-        <ion-icon name="clock"></ion-icon>
-        Timings
-      </p>
-      <!-- <p class="data">Meeting, durgapur, 2019</p> -->
-      <ion-grid>
-        <ion-row>
-          <ion-col col-6>
-            <div class="time">
-              <span>start</span>
-              <p class="header">{{eventdata.eventId.startTime | date:'dd'}}th {{thisMonth}}
-                {{eventdata.eventId.startTime | date:'yyyy'}}</p>
-              <p class="header">{{eventdata.eventId.startTime | date:'HH:mm'}}</p>
-            </div>
-          </ion-col>
-          <ion-col col-6>
-            <div class="time">
-              <span>End</span>
-              <p class="header">{{eventdata.eventId.endTime | date:'dd'}}th {{thisMonth}}
-                {{eventdata.eventId.endTime | date:'yyyy'}}</p>
-              <p class="header">{{eventdata.eventId.endTime | date:'HH:mm'}}</p>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <ion-grid class="saveGrid">
-      <ion-row>
-        <ion-col col-6>
-          <button class="share" outline>
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
-          </button> </ion-col>
-        <ion-col col-6>
-          <button class="share" outline (click)="socialshare(eventdata,eventdata.eventId._id)">
-            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <!-- event end -->
-
-  <!-- contact start -->
-  <div class="showcontent" *ngIf="eventdata.contactId">
-    <div class="head heada" style="margin-bottom:0">
-      <div class="mdl">
-        <div class="icons">
-          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
-          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true" (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite ==false" item-right
+              (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+              (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
+          </div>
         </div>
-        <ion-icon name="person"></ion-icon>
-        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <p>{{eventdata.purpose}}</p>
+      </div>
+      <div class="imgss event">
+
+        <ion-slides pager loop id="myImg">
+          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/event.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/man.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/man.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/fashion.jpg')">
+            <div class="ss"></div>
+            <img src="assets/images/fashion.jpg">
+
+          </ion-slide>
+
+        </ion-slides>
       </div>
 
     </div>
-
-    <div class="blue">
-
-      <div class="pen">
-
-        <img src="assets/images/man.jpeg" (click)="showfull('assets/images/man.jpeg')">
-      </div>
-    </div>
+    <div class="coin">
 
 
-    <div class="cont" style="    margin-top: 8vh;    ">
-      <p class="header">
-        <ion-icon name="barcode"></ion-icon>
-        Full Name
-      </p>
-      <p class="data">{{eventdata.contactId.name}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="home"></ion-icon>
-        Company Name
-      </p>
-      <p class="data">{{eventdata.contactId.company}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="call"></ion-icon>
-        Telephone No
-      </p>
-      <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="call"></ion-icon>
-        Mobile No
-      </p>
-      <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
-    </div>
-
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="mail"></ion-icon>
-        Email
-      </p>
-      <p class="data">{{eventdata.contactId.email}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="pin"></ion-icon>
-        Address
-      </p>
-      <p class="data"> {{eventdata.contactId.address}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="attach"></ion-icon>
-        Website
-      </p>
-      <p class="data">{{eventdata.contactId.link}}</p>
-    </div>
-    <ion-grid class="saveGrid">
-      <ion-row>
-        <ion-col col-6>
-          <button class="share" outline (click)="savecontact(eventdata.contactId)">
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
-          </button> </ion-col>
-        <ion-col col-6>
-          <button class="share" outline (click)="socialshare(eventdata,eventdata.contactId._id)">
-            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <!-- contact end -->
-
-
-  <!-- sports start -->
-  <div class="showcontent" *ngIf="eventdata.sportId">
-    <div class="head heada" style="margin-bottom:0">
-      <div class="mdl">
-        <div class="icons">
-          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)"></ion-icon>
-          <ion-icon name="heart" (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
-        </div>
-        <ion-icon name="person"></ion-icon>
-        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <p>{{eventdata.purpose}}</p>
-      </div>
-
-    </div>
-
-    <div class="blue">
-
-      <div class="pen">
-
-        <img src="assets/images/man.jpeg" (click)="showfull('assets/images/man.jpeg')">
-      </div>
-    </div>
-    <!-- <div class="imgss">
-      <ion-slides >
-        <ion-slide>
-          <img src="assets/images/fashion.jpg">
-        </ion-slide>
-      
-      </ion-slides>
-    </div> -->
-
-    <div class="eC">
-      <div class="cont" style="margin-top: 8vh">
-        <p class="header">
-          <ion-icon name="walk"></ion-icon>
-          Sport Name
-        </p>
-        <p class="data">{{eventdata.sportId.sport_name}}</p>
-      </div>
       <div class="cont">
         <p class="header">
-          <ion-icon name="home"></ion-icon>
-          Club Name
+          <ion-icon name="person"></ion-icon>
+          Event Title
         </p>
-        <p class="data">{{eventdata.sportId.club_name}}</p>
+        <p class="data">{{eventdata.eventId.event_title}}</p>
       </div>
       <div class="cont">
         <p class="header">
           <ion-icon name="text"></ion-icon>
-          Description
+          Event description
         </p>
-        <p class="data">{{eventdata.sportId.company}}</p>
+        <p class="data">{{eventdata.eventId.description}}</p>
       </div>
-
       <div class="cont">
         <p class="header">
-          <ion-icon name="attach"></ion-icon>
-          Website
+          <ion-icon name="pin"></ion-icon>
+          Location
         </p>
-        <p class="data">{{eventdata.sportId.webLink}}</p>
+        <p class="data"> {{eventdata.eventId.location}}</p>
+      </div>
+      <div class="cont marginadj">
+        <p class="header">
+          <ion-icon name="clock"></ion-icon>
+          Timings
+        </p>
+        <!-- <p class="data">Meeting, durgapur, 2019</p> -->
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <div class="time">
+                <span>start</span>
+                <p class="header">{{eventdata.eventId.startTime | date:'dd'}}th {{thisMonth}}
+                  {{eventdata.eventId.startTime | date:'yyyy'}}</p>
+                <p class="header">{{eventdata.eventId.startTime | date:'HH:mm'}}</p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <div class="time">
+                <span>End</span>
+                <p class="header">{{eventdata.eventId.endTime | date:'dd'}}th {{thisMonth}}
+                  {{eventdata.eventId.endTime | date:'yyyy'}}</p>
+                <p class="header">{{eventdata.eventId.endTime | date:'HH:mm'}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
       <ion-grid class="saveGrid">
         <ion-row>
@@ -285,326 +121,579 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
             </button> </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialshare(eventdata,eventdata.sportId._id)">
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.eventId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <!-- event end -->
+
+
+
+
+  <!-- contact start -->
+
+  <div *ngIf="eventdata.contactId">
+
+
+    <div class="showcontent">
+      <div class="head">
+
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>{{eventdata.purpose}}</p>
+          <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+
+          </div>
+        </div>
+      </div>
+      <div class="imgss event">
+
+        <ion-slides pager loop id="myImg">
+          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/event.jpeg">
+          </ion-slide>
+         
+
+        </ion-slides>
+      </div>
+
+    </div>
+    <div class="coin">
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="barcode"></ion-icon>
+          Full Name
+        </p>
+        <p class="data">{{eventdata.contactId.name}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="home"></ion-icon>
+          Company Name
+        </p>
+        <p class="data">{{eventdata.contactId.company}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="call"></ion-icon>
+          Telephone No
+        </p>
+        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="call"></ion-icon>
+          Mobile No
+        </p>
+        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+      </div>
+
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </p>
+        <p class="data">{{eventdata.contactId.email}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="pin"></ion-icon>
+          Address
+        </p>
+        <p class="data"> {{eventdata.contactId.address}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="attach"></ion-icon>
+          Website
+        </p>
+        <p class="data">{{eventdata.contactId.link}}</p>
+      </div>
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline (click)="savecontact(eventdata.contactId)">
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.contactId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
+  </div>
+  <!-- contact end -->
 
+
+  <!-- sports start -->
+
+  <div *ngIf="eventdata.sportId">
+
+
+    <div class="showcontent">
+      <div class="head">
+
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>{{eventdata.purpose}}</p>
+          <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)" item-right
+              *ngIf="eventdata.is_favourite==true"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div class="imgss event">
+
+        <ion-slides pager loop id="myImg">
+          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/event.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/man.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/man.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/fashion.jpg')">
+            <div class="ss"></div>
+            <img src="assets/images/fashion.jpg">
+
+          </ion-slide>
+
+        </ion-slides>
+      </div>
+
+    </div>
+    <div class="coin">
+
+
+      <div class="eC">
+        <div class="cont">
+          <p class="header">
+            <ion-icon name="walk"></ion-icon>
+            Sport Name
+          </p>
+          <p class="data">{{eventdata.sportId.sport_name}}</p>
+        </div>
+        <div class="cont">
+          <p class="header">
+            <ion-icon name="home"></ion-icon>
+            Club Name
+          </p>
+          <p class="data">{{eventdata.sportId.club_name}}</p>
+        </div>
+        <div class="cont">
+          <p class="header">
+            <ion-icon name="text"></ion-icon>
+            Description
+          </p>
+          <p class="data">{{eventdata.sportId.company}}</p>
+        </div>
+
+        <div class="cont">
+          <p class="header">
+            <ion-icon name="attach"></ion-icon>
+            Website
+          </p>
+          <p class="data">{{eventdata.sportId.webLink}}</p>
+        </div>
+        <ion-grid class="saveGrid">
+          <ion-row>
+            <ion-col col-6>
+              <button class="share" outline>
+                <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+              </button> </ion-col>
+            <ion-col col-6>
+              <button class="share" outline (click)="socialshare(eventdata,eventdata.sportId._id)">
+                <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </div>
   </div>
   <!-- sports end -->
 
   <!-- general start -->
-  <div class="showcontent" *ngIf="eventdata.generalId">
-    <div class="head heada" style="margin-bottom:0">
-      <div class="mdl">
-        <div class="icons">
-          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)"></ion-icon>
-          <ion-icon name="heart" (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+  <div *ngIf="eventdata.generalId">
+
+
+    <div class="showcontent">
+      <div class="head">
+
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>{{eventdata.purpose}}</p>
+          <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)" item-right
+              *ngIf="eventdata.is_favourite==true"></ion-icon>
+          </div>
         </div>
-        <ion-icon name="person"></ion-icon>
-        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <p>{{eventdata.purpose}}</p>
+      </div>
+      <div class="imgss event">
+
+        <ion-slides pager loop id="myImg">
+          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/event.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/man.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/man.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/fashion.jpg')">
+            <div class="ss"></div>
+            <img src="assets/images/fashion.jpg">
+
+          </ion-slide>
+
+        </ion-slides>
       </div>
 
     </div>
+    <div class="coin">
 
-    <div class="blue">
 
-      <div class="pen">
-
-        <img src="assets/images/man.jpeg" (click)="showfull('assets/images/man.jpeg')">
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="text"></ion-icon>
+          Description
+        </p>
+        <p class="data">{{eventdata.generalId.description}}</p>
       </div>
-    </div>
 
-    <!-- <div class="imgss">
-      <ion-slides >
-        <ion-slide>
-          <img src="assets/images/fashion.jpg">
-        </ion-slide>
-      
-      </ion-slides>
-    </div> -->
-    <div class="cont" style="margin-top: 8vh">
-      <p class="header">
-        <ion-icon name="text"></ion-icon>
-        Description
-      </p>
-      <p class="data">{{eventdata.generalId.description}}</p>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="attach"></ion-icon>
+          Website
+        </p>
+        <p class="data">{{eventdata.generalId.weblink}}</p>
+      </div>
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline>
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.generalId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="attach"></ion-icon>
-        Website
-      </p>
-      <p class="data">{{eventdata.generalId.weblink}}</p>
-    </div>
-    <ion-grid class="saveGrid">
-      <ion-row>
-        <ion-col col-6>
-          <button class="share" outline>
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
-          </button> </ion-col>
-        <ion-col col-6>
-          <button class="share" outline (click)="socialshare(eventdata,eventdata.generalId._id)">
-            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </div>
   <!-- general end -->
 
   <!-- Groceries start -->
-  <div class="showcontent" *ngIf="eventdata.groceryId">
-    <div class="head heada" style="margin-bottom:0">
-      <div class="mdl">
-        <div class="icons">
-          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)"></ion-icon>
-          <ion-icon name="heart" (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+
+
+  <div *ngIf="eventdata.groceryId">
+
+
+    <div class="showcontent">
+      <div class="head">
+
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>{{eventdata.purpose}}</p>
+          <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)" item-right
+              *ngIf="eventdata.is_favourite==true"></ion-icon>
+          </div>
         </div>
-        <ion-icon name="person"></ion-icon>
-        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <p>{{eventdata.purpose}}</p>
+      </div>
+      <div class="imgss event">
+
+        <ion-slides pager loop id="myImg">
+          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/event.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/man.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/man.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/fashion.jpg')">
+            <div class="ss"></div>
+            <img src="assets/images/fashion.jpg">
+
+          </ion-slide>
+
+        </ion-slides>
       </div>
 
     </div>
+    <div class="coin">
 
-    <div class="blue">
 
-      <div class="pen">
-
-        <img src="assets/images/man.jpeg" (click)="showfull('assets/images/man.jpeg')">
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="cart"></ion-icon>
+          Product Name
+        </p>
+        <p class="data">{{eventdata.groceryId.product_name}}</p>
       </div>
+
+      <div class="cont" style="margin-top: 8vh">
+        <p class="header">
+          <ion-icon name="text"></ion-icon>
+          Description
+        </p>
+        <p class="data">{{eventdata.groceryId.description}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="square"></ion-icon>
+          Quantity
+        </p>
+        <p class="data">{{eventdata.groceryId.quantity}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="pricetags"></ion-icon>
+          Price
+        </p>
+        <p class="data">{{eventdata.groceryId.price}}</p>
+      </div>
+
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline>
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.groceryId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
-
-    <div class="imgss">
-
-      <!-- <ion-slides >
-        <ion-slide>
-          <img src="assets/images/fashion.jpg">
-        </ion-slide>
-     
-      </ion-slides> -->
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="cart"></ion-icon>
-        Product Name
-      </p>
-      <p class="data">{{eventdata.groceryId.product_name}}</p>
-    </div>
-
-    <div class="cont" style="margin-top: 8vh">
-      <p class="header">
-        <ion-icon name="text"></ion-icon>
-        Description
-      </p>
-      <p class="data">{{eventdata.groceryId.description}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="square"></ion-icon>
-        Quantity
-      </p>
-      <p class="data">{{eventdata.groceryId.quantity}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="pricetags"></ion-icon>
-        Price
-      </p>
-      <p class="data">{{eventdata.groceryId.price}}</p>
-    </div>
-
-    <ion-grid class="saveGrid">
-      <ion-row>
-        <ion-col col-6>
-          <button class="share" outline>
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
-          </button> </ion-col>
-        <ion-col col-6>
-          <button class="share" outline (click)="socialshare(eventdata,eventdata.groceryId._id)">
-            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </div>
   <!-- Groceries end -->
 
 
   <!-- Fashion start -->
-  <div class="showcontent" *ngIf="eventdata.fashionId">
 
+  <div *ngIf="eventdata.fashionId">
+    <div class="showcontent">
+      <div class="head">
 
-    <div class="head heada" style="margin-bottom:0">
-      <div class="mdl">
-        <div class="icons">
-          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)"></ion-icon>
-          <ion-icon name="heart" (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>{{eventdata.purpose}}</p>
+          <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)" item-right
+              *ngIf="eventdata.is_favourite==true"></ion-icon>
+          </div>
         </div>
-        <ion-icon name="person"></ion-icon>
-        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <p>{{eventdata.purpose}}</p>
+      </div>
+      <div class="imgss event">
+
+        <ion-slides pager loop id="myImg">
+          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/event.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/man.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/man.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/fashion.jpg')">
+            <div class="ss"></div>
+            <img src="assets/images/fashion.jpg">
+
+          </ion-slide>
+
+        </ion-slides>
       </div>
 
     </div>
+    <div class="coin">
 
-    <div class="blue">
 
-      <div class="pen">
-
-        <img src="assets/images/man.jpeg" (click)="showfull('assets/images/man.jpeg')">
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="bowtie"></ion-icon>
+          Product
+        </p>
+        <p class="data">{{eventdata.fashionId.name}}</p>
       </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="text"></ion-icon>
+          Description
+        </p>
+        <p class="data">{{eventdata.fashionId.description}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="square"></ion-icon>
+          Size
+        </p>
+        <p class="data">{{eventdata.fashionId.size}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="pricetags"></ion-icon>
+          Price
+        </p>
+        <p class="data">{{eventdata.fashionId.price}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="attach"></ion-icon>
+          Website
+        </p>
+        <p class="data">{{eventdata.fashionId.weblink}}</p>
+      </div>
+
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline>
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.fashionId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
-
-
-
-
-    <div class="cont" style="margin-top:8vh">
-      <p class="header">
-        <ion-icon name="bowtie"></ion-icon>
-        Product
-      </p>
-      <p class="data">{{eventdata.fashionId.name}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="text"></ion-icon>
-        Description
-      </p>
-      <p class="data">{{eventdata.fashionId.description}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="square"></ion-icon>
-        Size
-      </p>
-      <p class="data">{{eventdata.fashionId.size}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="pricetags"></ion-icon>
-        Price
-      </p>
-      <p class="data">{{eventdata.fashionId.price}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="attach"></ion-icon>
-        Website
-      </p>
-      <p class="data">{{eventdata.fashionId.weblink}}</p>
-    </div>
-
-    <ion-grid class="saveGrid">
-      <ion-row>
-        <ion-col col-6>
-          <button class="share" outline>
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
-          </button> </ion-col>
-        <ion-col col-6>
-          <button class="share" outline (click)="socialshare(eventdata,eventdata.fashionId._id)">
-            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </div>
   <!-- Fashion end -->
 
   <!-- buisness start -->
-  <div class="showcontent" *ngIf="eventdata.businessId">
-    <div class="head heada" style="margin-bottom:0">
-      <div class="mdl">
-        <div class="icons">
-          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
-          <ion-icon name="heart" (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+  <div *ngIf="eventdata.businessId">
+
+
+    <div class="showcontent">
+      <div class="head">
+
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>{{eventdata.purpose}}</p>
+          <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)" item-right
+              *ngIf="eventdata.is_favourite==true"></ion-icon>
+          </div>
         </div>
-        <ion-icon name="person"></ion-icon>
-        <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <p>{{eventdata.purpose}}</p>
+      </div>
+      <div class="imgss event">
+
+        <ion-slides pager loop id="myImg">
+          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/event.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/man.jpeg')">
+            <div class="ss"></div>
+            <img src="assets/images/man.jpeg">
+          </ion-slide>
+          <ion-slide (click)="showfull('assets/images/fashion.jpg')">
+            <div class="ss"></div>
+            <img src="assets/images/fashion.jpg">
+
+          </ion-slide>
+
+        </ion-slides>
       </div>
 
     </div>
+    <div class="coin">
 
-    <div class="blue">
 
-      <div class="pen">
-
-        <img src="assets/images/man.jpeg" (click)="showfull('assets/images/man.jpeg')">
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="briefcase"></ion-icon>
+          Project
+        </p>
+        <p class="data">{{eventdata.businessId.name}}</p>
       </div>
-    </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="person"></ion-icon>
+          Contact No
+        </p>
+        <p class="data">{{eventdata.businessId.telephoneNumber}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="pin"></ion-icon>
+          Location
+        </p>
+        <p class="data"> {{eventdata.businessId.address}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="attach"></ion-icon>
+          Website
+        </p>
+        <p class="data">{{eventdata.businessId.webLink}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </p>
+        <p class="data">{{eventdata.businessId.email}}</p>
+      </div>
 
 
-    <div class="cont" style="margin-top:8vh">
-      <p class="header">
-        <ion-icon name="briefcase"></ion-icon>
-        Project
-      </p>
-      <p class="data">{{eventdata.businessId.name}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="person"></ion-icon>
-        Contact No
-      </p>
-      <p class="data">{{eventdata.businessId.telephoneNumber}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="pin"></ion-icon>
-        Location
-      </p>
-      <p class="data"> {{eventdata.businessId.address}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="attach"></ion-icon>
-        Website
-      </p>
-      <p class="data">{{eventdata.businessId.webLink}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="mail"></ion-icon>
-        Email
-      </p>
-      <p class="data">{{eventdata.businessId.email}}</p>
-    </div>
-
-
-    <ion-grid class="saveGrid">
-      <ion-row>
-        <!-- <ion-col col-6>
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <!-- <ion-col col-6>
           <button class="share" outline>
             <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
           </button> </ion-col> -->
-        <ion-col col-6>
-          <button class="share" outline (click)="socialshare(eventdata,eventdata.businessId._id)">
-            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          <ion-col col-12>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.businessId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
   <!-- Buisness end -->
 

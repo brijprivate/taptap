@@ -169,6 +169,7 @@ export class TapdetailsPage {
 
 
   showfull(src) {
+    console.log(src)
     var modal = document.getElementById("myModal");
     var img = document.getElementById("myImg");
 
@@ -181,5 +182,8 @@ export class TapdetailsPage {
   close() {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
+  }
+  back(){
+    this.navCtrl.pop();
   }
 }
