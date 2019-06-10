@@ -244,8 +244,8 @@ export class NfctagProvider {
     // return this.http.put(this.apiUrl+'device/removeOwner?nfc_id=', nfcid);
     let _base = this;
     return new Promise(function (resolve, reject) {
-      console.log(_base.apiUrl + 'device/removeOwner?nfc_id=',nfcid)
-      _base.http.put(_base.apiUrl + 'device/removeOwner?nfc_id=',nfcid)
+      console.log(_base.apiUrl + 'device/removeOwner?nfc_id='+nfcid)
+      _base.http.put(_base.apiUrl + 'device/removeOwner?nfc_id='+nfcid,{})
         .then(function (success) {
           resolve(success);
         }, function (error) {
