@@ -54,8 +54,9 @@
       </ion-slides>
     </div>
     <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite ==false" item-right
-      (click)="fav(eventdata,eventdata.eventId._id)"></ion-icon>
-    <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+      (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
+    <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+      (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
     <div class="cont">
       <p class="header">
         <ion-icon name="person"></ion-icon>
@@ -126,8 +127,8 @@
       <div class="mdl">
         <div class="icons">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="fav(eventdata,eventdata.contactId._id)"></ion-icon>
-          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+            (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true" (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
         </div>
         <ion-icon name="person"></ion-icon>
         <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
@@ -221,8 +222,8 @@
       <div class="mdl">
         <div class="icons">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="fav(eventdata,eventdata.sportId._id)"></ion-icon>
-          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+            (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
         </div>
         <ion-icon name="person"></ion-icon>
         <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
@@ -301,8 +302,8 @@
       <div class="mdl">
         <div class="icons">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="fav(eventdata,eventdata.generalId._id)"></ion-icon>
-          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+            (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
         </div>
         <ion-icon name="person"></ion-icon>
         <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
@@ -364,8 +365,8 @@
       <div class="mdl">
         <div class="icons">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="fav(eventdata,eventdata.groceryId._id)"></ion-icon>
-          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+            (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
         </div>
         <ion-icon name="person"></ion-icon>
         <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
@@ -449,8 +450,8 @@
       <div class="mdl">
         <div class="icons">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="fav(eventdata,eventdata.fashionId._id)"></ion-icon>
-          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+            (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
         </div>
         <ion-icon name="person"></ion-icon>
         <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
@@ -532,8 +533,8 @@
       <div class="mdl">
         <div class="icons">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="fav(eventdata,eventdata.businessId._id)"></ion-icon>
-          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
+            (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)" item-right *ngIf="eventdata.is_favourite==true"></ion-icon>
         </div>
         <ion-icon name="person"></ion-icon>
         <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
@@ -593,10 +594,10 @@
 
     <ion-grid class="saveGrid">
       <ion-row>
-        <ion-col col-6>
+        <!-- <ion-col col-6>
           <button class="share" outline>
             <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
-          </button> </ion-col>
+          </button> </ion-col> -->
         <ion-col col-6>
           <button class="share" outline (click)="socialshare(eventdata,eventdata.businessId._id)">
             <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share

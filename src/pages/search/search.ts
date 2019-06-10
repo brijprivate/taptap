@@ -149,7 +149,8 @@ export class SearchPage {
   }
 
   markactive(month: string) {
-    let isactive = (<HTMLElement>document.getElementById(month)).className.includes('active')
+    let isactive = (<HTMLElement>document.getElementById(month)).classList.contains("active")
+    console.log("active",isactive)
     for (let i = 1; i <= 12; i++) {
       let element = <HTMLElement>document.getElementById(i.toString())
       console.log(element)

@@ -49,19 +49,9 @@ export class TapdetailsPage {
       console.log(this.thisMonth);
     }
   }
-  
+
 
   ionViewDidEnter() {
-    this.eventdata = this.navParams.get("itemdetails");
-    console.log("item details----", this.eventdata);
-
-    if (this.eventdata.eventId) {
-      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      this.thisMonth = monthNames[(new Date()).getMonth()];
-      console.log(this.thisMonth);
-    }
-  }
-
     // this.eventdata = this.navParams.get("itemdetails");
     // console.log("item details----", this.eventdata);
 
@@ -70,6 +60,16 @@ export class TapdetailsPage {
     //   this.thisMonth = monthNames[(new Date()).getMonth()];
     //   console.log(this.thisMonth);
     // }
+  }
+
+  // this.eventdata = this.navParams.get("itemdetails");
+  // console.log("item details----", this.eventdata);
+
+  // if (this.eventdata.eventId) {
+  //   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  //   this.thisMonth = monthNames[(new Date()).getMonth()];
+  //   console.log(this.thisMonth);
+  // }
   // }
 
   // ionViewDidLoad() {
@@ -93,7 +93,6 @@ export class TapdetailsPage {
     this.nfctagPro.createFav(favdata).then(function (success: any) {
       console.log(success);
       loader.dismiss();
-      _base.updateProduct(item);
       _base.isfav = true;
     }, function (err) {
       console.log(err);
@@ -113,20 +112,26 @@ export class TapdetailsPage {
     })
   }
   //update product....
-  updateProduct(favdata) {
+  updateProduct(favdata, fav: Boolean) {
+    console.log(favdata)
     // let loader = this.loading.create({
     //   content:"Please wait..."
     // });
     // loader.present();
     console.log("calling update");
+    let _base = this;
     let updatedata = {
-      tappId: favdata._id,
-      is_favourite: true
+      tappId: this.eventdata._id,
+      is_favourite: !this.eventdata.is_favourite
     }
     console.log(updatedata);
     this.nfctagPro.favUpdate(updatedata).then(function (success: any) {
       console.log(success);
       // loader.dismiss();
+      if (!_base.eventdata.is_favourite == true) {
+        _base.fav(_base.eventdata, favdata)
+      }
+      _base.eventdata = success.result
 
     }, function (err) {
       console.log(err);
