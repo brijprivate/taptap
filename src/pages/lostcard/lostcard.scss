@@ -69,7 +69,7 @@ page-lostcard {
         font-size: 15px;
         margin-bottom: 2px;
     }
-    .milageList ion-list.list.list-md {
+    .milageList ion-list.list.list-md ,.milageList ion-list.list.list-ios {
         margin: 0;
     }
     .milageList {
@@ -77,13 +77,13 @@ page-lostcard {
             color: #6354cb;
         }
 
-button.disable-hover.item-button.button.button-md.button-clear.button-clear-md {
+button.disable-hover.item-button.button.button-md.button-clear.button-clear-md,button.disable-hover.item-button.button.button-ios.button-clear.button-clear-ios {
     height: 30px;
     width: 30px;
 
 }
     }
-    ion-icon.icon.icon-md.ion-md-call {
+    ion-icon.icon.icon-md.ion-md-call,ion-icon.icon.icon-ios.ion-ios-call {
         color: #8bc34a;
     }
 }
