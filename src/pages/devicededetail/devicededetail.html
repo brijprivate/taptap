@@ -54,7 +54,7 @@
           <i class="fa fa-envelope-o" aria-hidden="true" item-left></i>
 
         <ion-label floating>Message</ion-label>
-        <ion-input  [(ngModel)]="lostmessage"></ion-input>
+        <ion-input  [(ngModel)]="message"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -62,13 +62,13 @@
 
         <ion-label floating>Full Name</ion-label>
 
-        <ion-input value="brij" ></ion-input>
+        <ion-input value="brij" [(ngModel)]="devicedetail.contact_info.name" ></ion-input>
       </ion-item>
       <ion-item>
           <i class="fa fa-briefcase" aria-hidden="true" item-left></i>
 
         <ion-label floating>Company Name</ion-label>
-        <ion-input value="gocube" ></ion-input>
+        <ion-input value="gocube" [(ngModel)]="devicedetail.contact_info.company_name"></ion-input>
       </ion-item>
       <ion-item>
           <i class="fa fa-phone" aria-hidden="true" item-left></i>

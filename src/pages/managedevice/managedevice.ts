@@ -19,6 +19,8 @@ export class ManagedevicePage {
   userId: any;
   public devices:any=[];
   public deviceName:any;
+  public lost:boolean=false;
+  public islost:boolean=true;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -142,19 +144,26 @@ presentPrompt(nfcid) {
   }
 
   deleteDevice(nfcid){
-    // console.log(nfcid)
-    // let _base = this;
-    // this.nfctagProvider.deletedevice(nfcid).subscribe(data=>{
-    //   console.log(data);
-    // },
-    // err=>{
-    //   console.log(err);
-    // })
     var _base=this;
     this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
       _base.getpairedDevice();
     },function(err){
       alert("unable to delete device please try again");
+    })
+  }
+
+  //mark as lost...
+  notify(id){
+    let _base = this;
+    let data = {
+      deviceId:id,
+      is_lost:this.lost
+    }
+    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+      console.log(success);
+      _base.getpairedDevice();
+    },function(err){
+      console.log(err);
     })
   }
 }
