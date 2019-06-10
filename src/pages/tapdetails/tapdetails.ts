@@ -52,8 +52,8 @@ export class TapdetailsPage {
   
 
   ionViewDidEnter() {
-    this.eventdata = this.navParams.get("itemdetails");
-    console.log("item details----", this.eventdata);
+    // this.eventdata = this.navParams.get("itemdetails");
+    // console.log("item details----", this.eventdata);
 
     if (this.eventdata.eventId) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
