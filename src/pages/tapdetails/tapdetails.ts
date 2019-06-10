@@ -49,8 +49,19 @@ export class TapdetailsPage {
       console.log(this.thisMonth);
     }
   }
+  
 
   ionViewDidEnter() {
+    this.eventdata = this.navParams.get("itemdetails");
+    console.log("item details----", this.eventdata);
+
+    if (this.eventdata.eventId) {
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      this.thisMonth = monthNames[(new Date()).getMonth()];
+      console.log(this.thisMonth);
+    }
+  }
+
     // this.eventdata = this.navParams.get("itemdetails");
     // console.log("item details----", this.eventdata);
 
@@ -59,7 +70,7 @@ export class TapdetailsPage {
     //   this.thisMonth = monthNames[(new Date()).getMonth()];
     //   console.log(this.thisMonth);
     // }
-  }
+  // }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad TapdetailsPage');

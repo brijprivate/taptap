@@ -250,7 +250,7 @@ page-tapdetails {
         padding: 0 3px;
         font-size: 12px;
     }
-    .time:after {
+    .time::after {
         content: "";
         background: #fff;
         height: 11px;
@@ -260,7 +260,7 @@ page-tapdetails {
         top:48%;
         left: -1px;
     }
-    .time:before {
+    .time::before {
         content: "";
         background: #fff;
         height: 11px;
@@ -419,8 +419,8 @@ page-tapdetails {
 
     //   for contact img
     .pen {
-        height: 13vh;
-        width: 13vh;
+        height: 15vh;
+        width: 15vh;
         position: absolute;
         background: #fff;
         border-radius: 50%;
@@ -436,13 +436,13 @@ page-tapdetails {
         }
     }
     .blue {
-        height: 5vh;
+        height: 7vh;
         background: #6354cb;
         margin-top: -1px;
         position: relative;
 
     }
-    .blue .pen:after {
+    .blue .pen::after {
         content: '';
         position: absolute;
         left: 0;
