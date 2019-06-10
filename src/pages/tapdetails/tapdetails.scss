@@ -246,7 +246,7 @@ page-tapdetails {
         float: right;
         margin-right: 19px;
         color: red;
-        font-size: 24px;
+        font-size: 24px !important;
         margin-top: 0.7em;
     }
     .cont {
@@ -490,4 +490,13 @@ page-tapdetails {
         border-radius: 50%;
         z-index: -9;
     }   
+
+    i.fa.fa-angle-left {
+        font-size: 24px;
+        vertical-align: middle;
+        color: #fff;
+        font-weight: 600;
+        margin-right: 8px;
+        margin-bottom: 2px;
+    }
 }

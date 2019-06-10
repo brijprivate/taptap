@@ -178,4 +178,7 @@ export class TapdetailsPage {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
   }
+  back(){
+    this.navCtrl.pop();
+  }
 }
