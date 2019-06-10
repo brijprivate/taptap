@@ -1,0 +1,89 @@
+page-lostcard {
+    .head {
+        height: 14vh;
+        background: #6354cb;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 0 18px;
+        }   
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
+            margin-right: 10px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            // margin-top: 12px;
+            // float:right;
+
+        }
+        ion-icon.icon.icon-md ,ion-icon.icon.icon-ios{
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+    .mdl i.fa.fa-chevron-left {
+        margin-right: 10px;
+        font-size: 18px;
+        color: #fff;
+        vertical-align: middle;
+    }
+    .milageList {
+        padding: 3em 2em 0 2em;
+        text-align: center;
+    }
+    ion-icon.icon.icon-md.ion-md-navigate.item-icon ,ion-icon.icon.icon-ios.ion-ios-navigate.item-icon {
+        color: #cf96a0;
+    }
+    .milageList ion-icon {
+        color: #6354cb;
+        font-size: 22px;
+    }
+    .milageList ion-item p {
+        // font-style: italic;
+    }
+    svg#queot {
+        // fill: ;
+        height: 50px;
+        width: 50px;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .milageList p {
+        margin: 0;
+        font-size: 15px;
+        margin-bottom: 2px;
+    }
+    .milageList ion-list.list.list-md {
+        margin: 0;
+    }
+    .milageList {
+        h2 {
+            color: #6354cb;
+        }
+
+button.disable-hover.item-button.button.button-md.button-clear.button-clear-md {
+    height: 30px;
+    width: 30px;
+
+}
+    }
+    ion-icon.icon.icon-md.ion-md-call {
+        color: #8bc34a;
+    }
+}
