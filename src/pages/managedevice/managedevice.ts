@@ -116,4 +116,45 @@ presentPrompt(nfcid) {
       loader.dismiss();
     })
   }
+
+
+  delete(nfcid) {
+    let alert = this.alert.create({
+      title: 'Are you sure want to delete',
+     
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: data => {
+              this.deleteDevice(nfcid);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  deleteDevice(nfcid){
+    // console.log(nfcid)
+    // let _base = this;
+    // this.nfctagProvider.deletedevice(nfcid).subscribe(data=>{
+    //   console.log(data);
+    // },
+    // err=>{
+    //   console.log(err);
+    // })
+    var _base=this;
+    this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
+      _base.getpairedDevice();
+    },function(err){
+      alert("unable to delete device please try again");
+    })
+  }
 }

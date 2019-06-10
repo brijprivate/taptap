@@ -23,10 +23,13 @@ export class SearchPage {
   monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   monthName = "";
   year: String = "2019";
+  load: boolean = false;
 
   public tapItems: any;
   public userId: any;
   public ifmerchant: boolean = false;
+  public date: String = "";
+  public str: String = "";
 
   searchcount: any = 0;
 
@@ -42,12 +45,12 @@ export class SearchPage {
   }
 
   ionViewDidEnter() {
-    console.log("wowowowowoowowowowowowoow");
+    // console.log("wowowowowoowowowowowowoow");
+    this.load == false;
     if (this.userId) {
       // this.getAllTapItem();
       this.getmonth(null)
     }
-
   }
 
   ionViewDidLoad() {
@@ -68,27 +71,22 @@ export class SearchPage {
     let _base = this;
     let date = new Date()
     let dateString = date.toISOString()
-    this.loginsignupProvider.getusermonthlytaps(this.userId, dateString).then(function (success: any) {
-      console.log("All Tapped data ,..........>>>>>");
-      // console.log(success.result.length);
-      _base.tapItems = success.result;
-      console.log(_base.tapItems);
-    }, function (err) {
-      console.log(err);
-    })
+    // this.loginsignupProvider.getusermonthlytaps(this.userId, dateString).then(function (success: any) {
+    //   console.log("All Tapped data ,..........>>>>>");
+    //   // console.log(success.result.length);
+    //   _base.tapItems = success.result;
+    //   console.log(_base.tapItems);
+    // }, function (err) {
+    //   console.log(err);
+    // })
   }
 
   //for merchant...
-  merchant(dateString: String) {
+  merchant() {
 
     let _base = this;
-    let loader = this.loading.create({
-      content: "Please wait..."
-    });
-    loader.present();
     this.ifmerchant = true;
-    // loader.dismiss();
-    this.loginsignupProvider.getusermonthlytaps(this.userId, dateString).then(function (success: any) {
+    this.loginsignupProvider.getusermonthlytaps(this.userId, this.date, this.str).then(function (success: any) {
       console.log("All Tapped data merchant,..........>>>>>");
       // console.log(success.result.length);
 
@@ -106,10 +104,8 @@ export class SearchPage {
         return obj
       });
       _base.searchcount = _base.tapItems.length
-      loader.dismiss();
       console.log("=============================", _base.tapItems);
     }, function (err) {
-      loader.dismiss();
       console.log(err);
     })
   }
@@ -136,26 +132,39 @@ export class SearchPage {
     _base.monthName = _base.monthNames[parseInt(month) - 1]
 
     _base.markactive(month)
-    _base.slide(parseInt(month))
+
+    if (this.load == false) {
+      _base.slide(parseInt(month))
+      this.load = true
+    }
+
 
     setTimeout(function () {
       (<HTMLButtonElement>document.getElementById("category")).click()
     }, 5000);
 
     let year = this.year;
-    let date = new Date(month + '/' + '15/' + this.year)
-    let isoDate = date.toISOString();
-    this.merchant(isoDate)
+    this.merchant()
   }
 
   markactive(month: string) {
+    let isactive = (<HTMLElement>document.getElementById(month)).classList.contains("active")
+    console.log("active",isactive)
     for (let i = 1; i <= 12; i++) {
       let element = <HTMLElement>document.getElementById(i.toString())
       console.log(element)
       element.className = element.className.replace(" active", "");
       if (i == 12) {
         let activeelement = <HTMLElement>document.getElementById(month)
-        activeelement.className = activeelement.className + " active"
+        if (!isactive) {
+          let date = new Date(month + '/' + '15/' + this.year)
+          let isoDate = date.toISOString();
+          this.date = isoDate
+          activeelement.className = activeelement.className + " active"
+        } else {
+          console.log("here")
+          this.date = ""
+        }
       }
     }
   }

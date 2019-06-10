@@ -17,7 +17,7 @@
       <p class="animated 800s lightSpeedIn delay-0.2s">Search</p>
       <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
       <form id="demo-2" class="animated 800s fadeInRight delay-0.2s">
-        <input type="search" placeholder="Search">
+        <input type="search" name="search" [(ngModel)]="str" (keyup)="merchant()" placeholder="Search">
       </form>
     </div>
   </div>
@@ -201,7 +201,7 @@
       <div class="scroll">
         <div style="padding:0 1em;" *ngFor="let item of tapItems">
           <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-          <ion-item>
+          <ion-item (click)="gotodetails(item)">
             <ion-icon name="apps" class="merchantIcon"></ion-icon>
             {{item.storeId.name}}
             <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>

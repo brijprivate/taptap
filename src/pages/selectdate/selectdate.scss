@@ -1,3 +1,68 @@
 page-selectdate {
+    .head {
+        height: 14vh;
+        background: #6354cb;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
 
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 0 18px;
+        }   
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
+            margin-right: 10px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            // margin-top: 12px;
+            // float:right;
+
+        }
+        ion-icon.icon.icon-md ,ion-icon.icon.icon-ios{
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+    }
+    .scroll-content {
+        padding: 0 !important;
+    }
+
+    .dates {
+        position: fixed;
+        top: 34%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 99;
+        width: 100%;
+    }
+    .btn {
+        text-align: center;
+    }
+    .btn button {
+        text-align: center;
+        margin: 2em auto;
+        width: 64%;
+        height: 40px;
+        background: #fff;
+        border: 1px solid #222;
+        color: #222;
+        border-radius: 4px;
+    }
+    .btn button:active{
+       background: #6354cb;
+       color: #fff;
+    }
 }

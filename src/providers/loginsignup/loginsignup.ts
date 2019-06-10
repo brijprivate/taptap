@@ -163,6 +163,20 @@ export class LoginsignupProvider {
     });
   }
 
+  // resetPassword
+  favourite(data) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.put(_base.apiUrl + 'tapped/update', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
   //get list of milage...
   //Get list of all tapped item....
   getmilage(data) {
@@ -179,11 +193,24 @@ export class LoginsignupProvider {
     });
   }
 
-  getusermonthlytaps(userid: String, month: String) {
+  getusermonthlytaps(userid: String, month: String, str: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'tapped/usermonthly?userId=' + userid + "&month=" + month)
+      _base.http.get(_base.apiUrl + 'tapped/searchtaps?userId=' + userid + "&date=" + month + "&string=" + str)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  searchfavourite(userid: String, month: String, str: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'tapped/searchfavourites?userId=' + userid + "&date=" + month + "&string=" + str)
         .then(function (success) {
           resolve(success);
         }, function (error) {

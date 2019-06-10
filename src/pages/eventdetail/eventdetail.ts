@@ -53,6 +53,16 @@ export class EventdetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventdetailPage');
+    let _base = this;
+
+    if (_base.type == 'Event')
+      _base.http.viewNotification(_base.notificationId)
+        .then(function (sucess) {
+          // alert("permission updated")
+          _base.navCtrl.pop()
+        }, function (error) {
+
+        })
   }
 
   acceptInvitation(status: String) {
