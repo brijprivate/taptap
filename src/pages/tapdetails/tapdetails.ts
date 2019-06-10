@@ -52,8 +52,8 @@ export class TapdetailsPage {
   
 
   ionViewDidEnter() {
-    this.eventdata = this.navParams.get("itemdetails");
-    console.log("item details----", this.eventdata);
+    // this.eventdata = this.navParams.get("itemdetails");
+    // console.log("item details----", this.eventdata);
 
     if (this.eventdata.eventId) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -164,6 +164,7 @@ export class TapdetailsPage {
 
 
   showfull(src) {
+    console.log(src)
     var modal = document.getElementById("myModal");
     var img = document.getElementById("myImg");
 
