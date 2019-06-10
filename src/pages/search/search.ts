@@ -45,13 +45,12 @@ export class SearchPage {
   }
 
   ionViewDidEnter() {
-    console.log("wowowowowoowowowowowowoow");
+    // console.log("wowowowowoowowowowowowoow");
     this.load == false;
     if (this.userId) {
       // this.getAllTapItem();
       this.getmonth(null)
     }
-
   }
 
   ionViewDidLoad() {
