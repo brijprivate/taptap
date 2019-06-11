@@ -19,9 +19,6 @@
       </button> -->
     </ion-title>
   </ion-navbar>
-</ion-header>
-
-<ion-content padding>
   <div class="blue">
     <div class="pen animated 800s pulse delay-0.1s">
       <svg version="1.1" id="pen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -42,127 +39,134 @@
   </div>
   <p class="tapPen">{{devicedetail.type}} <span>Online</span> </p>
 
-  <div class="cont animated 800s zoomIn delay-0.1s">
-    <div class="container">
+</ion-header>
 
-    
+<ion-content padding>
 
-      <ion-item>
-          <i class="fa fa-user" aria-hidden="true" item-left></i>
-
-        <ion-label floating>Full Name</ion-label>
-
-        <ion-input value="brij" ></ion-input>
-      </ion-item>
-      <ion-item>
-          <i class="fa fa-briefcase" aria-hidden="true" item-left></i>
-
-        <ion-label floating>Company Name</ion-label>
-        <ion-input value="gocube" ></ion-input>
-      </ion-item>
-      <ion-item>
-          <i class="fa fa-phone" aria-hidden="true" item-left></i>
-
-        <ion-label floating>Telephone No</ion-label>
-        <ion-input value="874895592"></ion-input>
-      </ion-item>
-      <ion-item>
-          <i class="fa fa-mobile" aria-hidden="true" item-left></i>
-
-        <ion-label floating>Mobile No</ion-label>
-        <ion-input value="22656874"></ion-input>
-      </ion-item>
-      <ion-item>
-          <i class="fa fa-envelope-o" aria-hidden="true" item-left></i>
-
-        <ion-label floating>Email</ion-label>
-        <ion-input value="brijbcet@gmail.com"></ion-input>
-      </ion-item>
-      <ion-item>
-          <i class="fa fa-map-marker" aria-hidden="true" item-left></i>
-
-        <ion-label floating>Address</ion-label>
-        <ion-input value="Muchipara dgr"></ion-input>
-      </ion-item>
-      <ion-item>
-          <i class="fa fa-globe" aria-hidden="true" item-left></i>
-
-        <ion-label floating>Website</ion-label>
-        <ion-input value="gocubetech.com"></ion-input>
-      </ion-item>
-   
-
-      <div class="gap"></div>
-
-    </div>
-    <div class="tog">
-      <ion-list>
+  <div class="conts">
+    <div class="cont animated 800s zoomIn delay-0.1s">
+      <div class="container">
+  
+      
+  
         <ion-item>
-          <ion-label style="color:#de4963;">Lost or stolen</ion-label>
-          <ion-toggle [(ngModel)]="lost" (ionChange)="notify()"></ion-toggle>
+            <i class="fa fa-user" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Full Name</ion-label>
+  
+          <ion-input value="brij" ></ion-input>
         </ion-item>
-      </ion-list>
+        <ion-item>
+            <i class="fa fa-briefcase" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Company Name</ion-label>
+          <ion-input value="gocube" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <i class="fa fa-phone" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Telephone No</ion-label>
+          <ion-input value="874895592"></ion-input>
+        </ion-item>
+        <ion-item>
+            <i class="fa fa-mobile" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Mobile No</ion-label>
+          <ion-input value="22656874"></ion-input>
+        </ion-item>
+        <ion-item>
+            <i class="fa fa-envelope-o" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Email</ion-label>
+          <ion-input value="brijbcet@gmail.com"></ion-input>
+        </ion-item>
+        <ion-item>
+            <i class="fa fa-map-marker" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Address</ion-label>
+          <ion-input value="Muchipara dgr"></ion-input>
+        </ion-item>
+        <ion-item>
+            <i class="fa fa-globe" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Website</ion-label>
+          <ion-input value="gocubetech.com"></ion-input>
+        </ion-item>
+     
+  
+        <div class="gap"></div>
+  
+      </div>
+      <div class="tog">
+        <ion-list>
+          <ion-item>
+            <ion-label style="color:#de4963;">Lost or stolen</ion-label>
+            <ion-toggle [(ngModel)]="lost" (ionChange)="notify()"></ion-toggle>
+          </ion-item>
+        </ion-list>
+      </div>
+  
+      <!-- <div class="container">
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input value="brij" [readonly]=true></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Phine</ion-label>
+        <ion-input value="7998989748" [readonly]=true></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input value="abcd@gmail.com" [readonly]=true></ion-input>
+      </ion-item>
+    </div> -->
     </div>
-
-    <!-- <div class="container">
-    <ion-item>
-      <ion-label floating>Name</ion-label>
-      <ion-input value="brij" [readonly]=true></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Phine</ion-label>
-      <ion-input value="7998989748" [readonly]=true></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input value="abcd@gmail.com" [readonly]=true></ion-input>
-    </ion-item>
-  </div> -->
-  </div>
-  <ion-grid class="saveGrid">
-    <ion-row>
-      <ion-col col-2><button ion-button class="previous">
-          <svg version="1.1" id="arropre" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background:new 0 0 477.175 477.175;"
-            xml:space="preserve">
-            <g>
-              <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
-           c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" />
-            </g>
-          </svg> </button></ion-col>
-      <ion-col col-8><button ion-button class="saveButton">Save</button></ion-col>
-      <ion-col col-2><button ion-button class="previous">
-          <svg version="1.1" id="arropre" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" width="729.837px" height="729.838px" viewBox="0 0 729.837 729.838"
-            style="enable-background:new 0 0 729.837 729.838;" xml:space="preserve">
-            <g>
+    <ion-grid class="saveGrid">
+      <ion-row>
+        <ion-col col-2><button ion-button class="previous">
+            <svg version="1.1" id="arropre" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background:new 0 0 477.175 477.175;"
+              xml:space="preserve">
+              <g>
+                <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+             c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" />
+              </g>
+            </svg> </button></ion-col>
+        <ion-col col-8><button ion-button class="saveButton">Save</button></ion-col>
+        <ion-col col-2><button ion-button class="previous">
+            <svg version="1.1" id="arropre" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px" y="0px" width="729.837px" height="729.838px" viewBox="0 0 729.837 729.838"
+              style="enable-background:new 0 0 729.837 729.838;" xml:space="preserve">
               <g>
                 <g>
-                  <path d="M589.193,222.04c0-6.296,5.106-11.404,11.402-11.404S612,215.767,612,222.04v437.476c0,19.314-7.936,36.896-20.67,49.653
-				c-12.733,12.734-30.339,20.669-49.653,20.669H188.162c-19.315,0-36.943-7.935-49.654-20.669
-				c-12.734-12.734-20.669-30.313-20.669-49.653V222.04c0-6.296,5.108-11.404,11.403-11.404c6.296,0,11.404,5.131,11.404,11.404
-				v437.476c0,13.02,5.37,24.922,13.97,33.521c8.6,8.601,20.503,13.993,33.522,13.993h353.517c13.019,0,24.896-5.394,33.498-13.993
-				c8.624-8.624,13.992-20.503,13.992-33.498V222.04H589.193z" />
-                  <path d="M279.866,630.056c0,6.296-5.108,11.403-11.404,11.403s-11.404-5.107-11.404-11.403v-405.07
-				c0-6.296,5.108-11.404,11.404-11.404s11.404,5.108,11.404,11.404V630.056z" />
-                  <path d="M376.323,630.056c0,6.296-5.107,11.403-11.403,11.403s-11.404-5.107-11.404-11.403v-405.07
-				c0-6.296,5.108-11.404,11.404-11.404s11.403,5.108,11.403,11.404V630.056z" />
-                  <path d="M472.803,630.056c0,6.296-5.106,11.403-11.402,11.403c-6.297,0-11.404-5.107-11.404-11.403v-405.07
-				c0-6.296,5.107-11.404,11.404-11.404c6.296,0,11.402,5.108,11.402,11.404V630.056L472.803,630.056z" />
-                  <path d="M273.214,70.323c0,6.296-5.108,11.404-11.404,11.404c-6.295,0-11.403-5.108-11.403-11.404
-				c0-19.363,7.911-36.943,20.646-49.677C283.787,7.911,301.368,0,320.73,0h88.379c19.339,0,36.92,7.935,49.652,20.669
-				c12.734,12.734,20.67,30.362,20.67,49.654c0,6.296-5.107,11.404-11.403,11.404s-11.403-5.108-11.403-11.404
-				c0-13.019-5.369-24.922-13.97-33.522c-8.602-8.601-20.503-13.994-33.522-13.994h-88.378c-13.043,0-24.922,5.369-33.546,13.97
-				C278.583,45.401,273.214,57.28,273.214,70.323z" />
-                  <path d="M99.782,103.108h530.273c11.189,0,21.405,4.585,28.818,11.998l0.047,0.048c7.413,7.412,11.998,17.628,11.998,28.818
-				v29.46c0,6.295-5.108,11.403-11.404,11.403h-0.309H70.323c-6.296,0-11.404-5.108-11.404-11.403v-0.285v-29.175
-				c0-11.166,4.585-21.406,11.998-28.818l0.048-0.048C78.377,107.694,88.616,103.108,99.782,103.108L99.782,103.108z
-				 M630.056,125.916H99.782c-4.965,0-9.503,2.02-12.734,5.274L87,131.238c-3.255,3.23-5.274,7.745-5.274,12.734v18.056h566.361
-				v-18.056c0-4.965-2.02-9.503-5.273-12.734l-0.049-0.048C639.536,127.936,635.021,125.916,630.056,125.916z" />
+                  <g>
+                    <path d="M589.193,222.04c0-6.296,5.106-11.404,11.402-11.404S612,215.767,612,222.04v437.476c0,19.314-7.936,36.896-20.67,49.653
+          c-12.733,12.734-30.339,20.669-49.653,20.669H188.162c-19.315,0-36.943-7.935-49.654-20.669
+          c-12.734-12.734-20.669-30.313-20.669-49.653V222.04c0-6.296,5.108-11.404,11.403-11.404c6.296,0,11.404,5.131,11.404,11.404
+          v437.476c0,13.02,5.37,24.922,13.97,33.521c8.6,8.601,20.503,13.993,33.522,13.993h353.517c13.019,0,24.896-5.394,33.498-13.993
+          c8.624-8.624,13.992-20.503,13.992-33.498V222.04H589.193z" />
+                    <path d="M279.866,630.056c0,6.296-5.108,11.403-11.404,11.403s-11.404-5.107-11.404-11.403v-405.07
+          c0-6.296,5.108-11.404,11.404-11.404s11.404,5.108,11.404,11.404V630.056z" />
+                    <path d="M376.323,630.056c0,6.296-5.107,11.403-11.403,11.403s-11.404-5.107-11.404-11.403v-405.07
+          c0-6.296,5.108-11.404,11.404-11.404s11.403,5.108,11.403,11.404V630.056z" />
+                    <path d="M472.803,630.056c0,6.296-5.106,11.403-11.402,11.403c-6.297,0-11.404-5.107-11.404-11.403v-405.07
+          c0-6.296,5.107-11.404,11.404-11.404c6.296,0,11.402,5.108,11.402,11.404V630.056L472.803,630.056z" />
+                    <path d="M273.214,70.323c0,6.296-5.108,11.404-11.404,11.404c-6.295,0-11.403-5.108-11.403-11.404
+          c0-19.363,7.911-36.943,20.646-49.677C283.787,7.911,301.368,0,320.73,0h88.379c19.339,0,36.92,7.935,49.652,20.669
+          c12.734,12.734,20.67,30.362,20.67,49.654c0,6.296-5.107,11.404-11.403,11.404s-11.403-5.108-11.403-11.404
+          c0-13.019-5.369-24.922-13.97-33.522c-8.602-8.601-20.503-13.994-33.522-13.994h-88.378c-13.043,0-24.922,5.369-33.546,13.97
+          C278.583,45.401,273.214,57.28,273.214,70.323z" />
+                    <path d="M99.782,103.108h530.273c11.189,0,21.405,4.585,28.818,11.998l0.047,0.048c7.413,7.412,11.998,17.628,11.998,28.818
+          v29.46c0,6.295-5.108,11.403-11.404,11.403h-0.309H70.323c-6.296,0-11.404-5.108-11.404-11.403v-0.285v-29.175
+          c0-11.166,4.585-21.406,11.998-28.818l0.048-0.048C78.377,107.694,88.616,103.108,99.782,103.108L99.782,103.108z
+           M630.056,125.916H99.782c-4.965,0-9.503,2.02-12.734,5.274L87,131.238c-3.255,3.23-5.274,7.745-5.274,12.734v18.056h566.361
+          v-18.056c0-4.965-2.02-9.503-5.273-12.734l-0.049-0.048C639.536,127.936,635.021,125.916,630.056,125.916z" />
+                  </g>
                 </g>
               </g>
-            </g>
-          </svg> </button></ion-col>
-    </ion-row>
-  </ion-grid>
+            </svg> </button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
 </ion-content>
