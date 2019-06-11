@@ -6,6 +6,7 @@ import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Subscription } from 'rxjs/Rx';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
+import { isBlank } from 'ionic-angular/umd/util/util';
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
 @Component({
@@ -35,6 +36,8 @@ export class HomePage {
   public userId: any;
   public userName: any;
   public uid: any = "";
+  public blankmsg:String;
+  public isblanck:boolean=false;
 
   public fashion = 0;
   public general = 0;
@@ -140,23 +143,41 @@ export class HomePage {
   chartfunc() {
     let _base = this;
     anychart.onDocumentReady(function () {
-      _base.chart = anychart.pie([
-        { x: "Fashion", value: _base.fashion },
-        { x: "General", value: _base.general },
-        { x: "Event", value: _base.event },
-        { x: "Contacts", value: _base.contact },
-        { x: "Business", value: _base.buisness },
-        { x: "Sports", value: _base.sports },
-        { x: "Groceries", value: _base.groceries },
-        // { x: "Timer", value: 9 },
-        // { x: "Milage", value: 9 }
-      ]);
 
-      _base.chart.innerRadius("25%");
+      if(_base.isblanck==true){
+        _base.chart = anychart.pie([
+          ['nodata', 115200],
+        ]);
+      }
+      else{
+        _base.chart = anychart.pie([
+          { x: "Fashion", value: _base.fashion },
+          { x: "General", value: _base.general },
+          { x: "Event", value: _base.event },
+          { x: "Contacts", value: _base.contact },
+          { x: "Business", value: _base.buisness },
+          { x: "Sports", value: _base.sports },
+          { x: "Groceries", value: _base.groceries },       
+        ]);
+      }
+      
 
       var label = anychart.standalones.label();
 
-      label.text("TapTap");
+     
+      if(_base.isblanck==true){
+        _base.chart.innerRadius("75%");
+        label.text("No Tap Data");
+
+
+      }
+      else{
+        _base.chart.innerRadius("25%");
+        label.text("taptap");
+
+      }
+      
+
 
       label.width("100%");
       label.height("100%");
@@ -271,6 +292,10 @@ export class HomePage {
       console.log("All Tapped data ,..........>>>>>");
       // console.log(success.result.length);
       _base.tapItems = success.result;
+      if(success.result.length == 0){
+        _base.isblanck =true;
+        _base.blankmsg = "There Is No Tap Yet";
+      }
       console.log(_base.tapItems);
     }, function (err) {
       console.log(err);

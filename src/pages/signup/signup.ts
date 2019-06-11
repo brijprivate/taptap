@@ -119,7 +119,7 @@ export class SignupPage {
       console.log(success);
       loader.dismiss();
       if (success.error == true) {
-        alert("user already registered");
+        alert("user already registered with that email");
         return;
       }
 
