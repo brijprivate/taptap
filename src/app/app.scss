@@ -32,16 +32,19 @@ ion-loading {
     display: none;
 }
 button.share:active {
-  background: #6354cb;
+  background: #6454cb7a;
   color: #fff;
+  border: 1px solid #b39be6;
 }
 button:active {
-  background: #6354cb;
+  background: #6454cb7a;
   color: #fff;
+  border: 1px solid #b39be6;
 }
 button:focus.span {
-  background: #6354cb;
+  background: #6454cb7a;
   color: #fff;
+  border: 1px solid #b39be6;
 }
 
 .loading-md .loading-wrapper {
