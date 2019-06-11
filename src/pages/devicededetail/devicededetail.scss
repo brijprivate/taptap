@@ -62,20 +62,13 @@ page-devicededetail {
         color: #fff;
     }
     .cont {
-        margin-top: 8vh;
+        margin-top: 3vh;
         text-align: center;
         font-size: 18px;
         height: 56vh;
         overflow-y: scroll;
     }
-    .cont p span {
-        background: #c5efed;
-        margin: 0 7px;
-        padding: 4px 7px 4px 7px;
-        color: #4a9d50;
-        font-size: 12px;
-        border-radius: 4px;
-    }
+    
     .container {
         margin: 0 2em;
     }
@@ -107,7 +100,16 @@ page-devicededetail {
     p.tapPen {
         color: #53565a;
         font-size: 13px;
-        margin-bottom: 1em;
+        text-align: center;
+        margin-top: 4em;
+        span {
+            background: #c5efed;
+            margin: 0 7px;
+            padding: 4px 7px 4px 7px;
+            color: #4a9d50;
+            font-size: 12px;
+            border-radius: 4px;
+        }
     }
     ion-input.input.input-md {
         color: #1f2127;
