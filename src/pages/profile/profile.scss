@@ -402,5 +402,7 @@ page-profile {
     path#ac_path_29{
         fill: red;
     }
-    
+    button.disable-hover.button.button-md.button-outline.button-outline-md:active {
+        color: #fff;
+    }
 }

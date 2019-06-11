@@ -32,7 +32,10 @@ page-home {
     background: transparent;
     box-shadow: none;
   }
-
+  .btn:active {
+    color: #fff;
+    background: #6454cb7a;
+}
   svg#editButton {
     height: 15px;
     width: 15px;

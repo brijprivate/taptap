@@ -38,7 +38,7 @@ page-devicededetail {
     }
     .scroll-content {
         padding: 0 !important;
-        overflow: hidden;
+        // overflow: hidden;
     }
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
@@ -133,8 +133,8 @@ page-devicededetail {
         margin-bottom: 0;
     }
     ion-grid.saveGrid.grid {
-        margin-top: 1em;
-        margin-bottom: 4em;
+        // margin-top: 1em;
+        // margin-bottom: 4em;
         padding-right: 2em;
         padding-left: 1em;
     }
