@@ -4,7 +4,7 @@ page-lostcard {
         background: #6354cb;
         display: table;
         width: 100%;
-        padding: 0 3em;
+        padding: 0 1em;
         p{
             // margin-right: 11em;
             font-size: 18px;
@@ -30,7 +30,7 @@ page-lostcard {
         ion-icon.icon.icon-md ,ion-icon.icon.icon-ios{
             margin-right: 10px;
             font-size: 26px;
-            color: #222;
+            color: #fff;
             vertical-align: middle;
             margin-bottom: 0;
         }
@@ -162,7 +162,7 @@ page-lostcard {
     // }
     p.tapPen {
         color: #e7422e;
-        font-size: 18px;
+        font-size: 15px;
         margin: 1em 0 0 0;
     }
     svg#phone {
@@ -197,7 +197,8 @@ page-lostcard {
     ion-icon.icon.icon-md.ion-md-call,ion-icon.icon.icon-ios.ion-ios-call {
         margin-right: 10px;
         // color: #6354cb;
-        color: #b78ac4;
+        // color: #b78ac4;
+        color: #8BC34A;
         font-size: 20px;
     }
     svg#person {
@@ -207,11 +208,22 @@ page-lostcard {
         vertical-align: middle;
         margin-right: 10px;
     }
+    ion-icon.icon.icon-md.ion-md-contact {
+        color: #107ac482;
+        vertical-align: sub;
+        margin-right: 10px;
+        font-size: 24px;
+    }
     ion-icon.icon.icon-md.ion-md-mail-open ,ion-icon.icon.icon-ios.ion-ios-mail-open {
         margin-right: 10px;
         // color: #6354cb;
         color:#e38a2dc7;
         font-size: 20px;
+    }
+    ion-icon.icon.icon-md.ion-md-mail {
+        margin-right: 10px;
+        font-size: 20px;
+        color: #e38a2dc7;
     }
     svg#mail {
         height: 22px;
@@ -308,11 +320,16 @@ page-lostcard {
     }
     .circle {
         // background: #63ce60;
-        background: rgba(99, 84, 203, 0.69);
+        // background: rgba(99, 84, 203, 0.69);
+        background: rgb(139, 194, 74);
         border-radius: 50%;
         height: 50px;
         width: 50px;
         margin: auto;
+        box-shadow: 0 1px 11px 5px #f1eded;
+    }
+    .circle.circlemail {
+        background: #e9a24c;
     }
     .circle ion-icon.icon.icon-md.ion-md-call ,.circle ion-icon.icon.icon-ios.ion-ios-call {
         color: #fff;
@@ -326,5 +343,30 @@ page-lostcard {
     }
     button.aotn {
         background: transparent;
+    }
+    button.dismiss {
+        text-align: center;
+        margin: 1em auto;
+        width: 64%;
+        height: 40px;
+        background: #fff;
+        border: 1px solid #222;
+        color: #222;
+        border-radius: 4px;
+        margin-top: 2em;
+        box-shadow: 0 1px 11px 5px #f1eded;
+    }
+    button.dismiss:hover{
+        background: #6454cb7a;
+        color: #fff;
+        border: 1px solid #b39be6;
+    }
+  
+    svg#item {
+        height: 21px;
+        width: 21px;
+        margin-right: 10px;
+        fill: #fff;
+        vertical-align: top;
     }
 }
