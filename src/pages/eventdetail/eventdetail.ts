@@ -59,7 +59,7 @@ export class EventdetailPage {
       _base.http.viewNotification(_base.notificationId)
         .then(function (sucess) {
           // alert("permission updated")
-          _base.navCtrl.pop()
+          // _base.navCtrl.pop()
         }, function (error) {
 
         })
