@@ -1,18 +1,23 @@
 <!--
-  Generated template for the LostcardPage page.
+  Generated template for the DevicededetailPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<!--
-  Generated template for the MilagelistPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
+<!-- <ion-header no-border>
   <ion-navbar>
-    <ion-title>milagelist</ion-title>
+    <ion-title class="animated 800s fadeInLeft delay-0.1s">Lost Card
+      <button ion-button class="managebutton">
+        <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+          <g>
+            <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
+            <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
+            <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
+          </g>
+        </svg>
+      </button>
+    </ion-title>
   </ion-navbar>
 </ion-header> -->
 
@@ -20,61 +25,106 @@
   <div class="head">
     <div class="mdl">
       <p><span>
-        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
-        </span>Lost Card</p>
+          <!-- <ion-icon ios="ios-search" md="md-search"></ion-icon> -->
+          <svg id="item" height="512pt" viewBox="0 -39 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m492 78.667969h-137.09375v-58.667969c0-11.046875-8.953125-20-20-20h-157.574219c-11.046875 0-20 8.953125-20 20v58.667969h-137.332031c-11.046875 0-20 8.953125-20 20v314.667969c0 11.042968 8.953125 20 20 20h472c11.046875 0 20-8.957032 20-20v-314.667969c0-11.046875-8.953125-20-20-20zm-294.667969-38.667969h117.574219v38.667969h-117.574219zm274.667969 353.335938h-432v-274.667969h432zm-146.933594-189.125c.929688 24.539062-11.371094 47.941406-32.105468 61.082031-10.621094 6.730469-16.960938 17.898437-16.960938 29.875v.167969c0 11.042968-8.953125 20-20 20s-20-8.957032-20-20v-.167969c0-25.753907 13.289062-49.554688 35.550781-63.660157 8.878907-5.628906 13.941407-15.265624 13.542969-25.78125-.570312-15.09375-12.84375-27.367187-27.9375-27.9375-16.601562-.632812-30.273438 12.582032-30.273438 29.09375 0 11.046876-8.953124 20-20 20-11.042968 0-20-8.953124-20-20 0-38.847656 32.152344-70.570312 71.792969-69.066406 35.863281 1.363282 65.027344 30.527344 66.390625 66.394532zm-44.066406 144.789062c0 13.808594-11.191406 25-25 25s-25-11.191406-25-25 11.191406-25 25-25 25 11.191406 25 25zm0 0"/></svg>
+          <!-- <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i> -->
+        </span>Lost Item</p>
     </div>
 
   </div>
+  <div class="blue">
+    <div class="pen animated 800s pulse delay-0.1s">
+      <!-- <svg version="1.1" id="pen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+        y="0px" viewBox="0 0 314.021 314.021" style="enable-background:new 0 0 314.021 314.021;" xml:space="preserve">
+        <g>
+          <path style="fill:#6354cb;" d="M278.214,72.465c5.015,5.009,5.015,13.124,0,18.134L88.358,264.551l-26.613,24.383L24.345,251.53
+		l24.383-26.613L202.953,56.589l-5.755-5.76l-72.796,72.802c-2.502,2.502-6.565,2.502-9.067,0l-0.995-0.995
+		c-2.502-2.502-2.502-6.565,0-9.067L214.783,13.136c2.507-2.502,6.565-2.502,9.072,0l0.995,0.99c2.502,2.502,2.502,6.565,0,9.067
+		l-14.044,14.044l5.156,5.162l6.723-7.332c5.004-5.009,13.119-5.009,18.134,0L278.214,72.465z M0,306.987l6.309,6.32l51.046-21.86
+		l-35.506-35.506L0,306.987z M272.024,0.713l21.087,21.087L278.116,6.805l-28.207,28.202l30.127,30.127l28.207-28.207l5.765,5.765
+		C314.008,42.697,315.933,4.88,272.024,0.713z" />
+        </g>
 
-    <div class="milageList" >
-        <svg version="1.1" id="queot" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 496.158 496.158" style="enable-background:new 0 0 496.158 496.158;" xml:space="preserve">
-     <path style="fill:red;" d="M496.158,248.085c0-137.022-111.069-248.082-248.075-248.082C111.07,0.003,0,111.063,0,248.085
-       c0,137.001,111.07,248.07,248.083,248.07C385.089,496.155,496.158,385.086,496.158,248.085z"/>
-     <path style="fill:#FFFFFF;" d="M138.216,173.592c0-13.915,4.467-28.015,13.403-42.297c8.933-14.282,21.973-26.11,39.111-35.486
-       c17.139-9.373,37.134-14.062,59.985-14.062c21.238,0,39.99,3.921,56.25,11.755c16.26,7.838,28.818,18.495,37.683,31.97
-       c8.861,13.479,13.293,28.125,13.293,43.945c0,12.452-2.527,23.367-7.581,32.739c-5.054,9.376-11.062,17.469-18.018,24.279
-       c-6.959,6.812-19.446,18.275-37.463,34.388c-4.981,4.542-8.975,8.535-11.975,11.976c-3.004,3.443-5.239,6.592-6.702,9.447
-       c-1.466,2.857-2.603,5.713-3.406,8.57c-0.807,2.855-2.015,7.875-3.625,15.051c-2.784,15.236-11.501,22.852-26.147,22.852
-       c-7.618,0-14.028-2.489-19.226-7.471c-5.201-4.979-7.8-12.377-7.8-22.192c0-12.305,1.902-22.962,5.713-31.97
-       c3.808-9.01,8.861-16.92,15.161-23.73c6.296-6.812,14.794-14.904,25.488-24.28c9.373-8.202,16.15-14.392,20.325-18.567
-       c4.175-4.175,7.69-8.823,10.547-13.953c2.856-5.126,4.285-10.691,4.285-16.699c0-11.718-4.36-21.605-13.074-29.663
-       c-8.717-8.054-19.961-12.085-33.728-12.085c-16.116,0-27.981,4.065-35.596,12.195c-7.618,8.13-14.062,20.105-19.336,35.925
-       c-4.981,16.555-14.43,24.829-28.345,24.829c-8.206,0-15.127-2.891-20.764-8.679C141.035,186.593,138.216,180.331,138.216,173.592z
-        M245.442,414.412c-8.937,0-16.737-2.895-23.401-8.68c-6.667-5.784-9.998-13.877-9.998-24.279c0-9.229,3.22-16.991,9.668-23.291
-       c6.444-6.297,14.354-9.448,23.73-9.448c9.229,0,16.991,3.151,23.291,9.448c6.296,6.3,9.448,14.062,9.448,23.291
-       c0,10.255-3.296,18.312-9.888,24.17C261.7,411.481,254.084,414.412,245.442,414.412z"/>
-     </svg>
- <p>This Device is lost,</p><p style="margin-bottom: 2em;">Please Contact at....</p>
- <ion-list>
-  <ion-item>
-    <h2>Name</h2>
-    <p>Brij </p>
-    <!-- <button ion-button clear item-end><ion-icon ios="ios-person" md="md-person"></ion-icon></button> -->
-  </ion-item>
-</ion-list>
- <ion-list>
-  <ion-item>   
-    <h2>Phone</h2>
-    <p>+44 7930275782</p>
-    <button ion-button clear item-end><ion-icon ios="ios-call" md="md-call"></ion-icon></button>
-  </ion-item>
-</ion-list>
 
-<ion-list>
-  <ion-item>
-   
-    <h2>Email</h2>
-    <p>info@gocubetech.com</p>
-    <button ion-button clear item-end><ion-icon ios="ios-mail-open" md="md-mail-open"></ion-icon></button>
-  </ion-item>
-</ion-list>
-
+      </svg> -->
+      <svg version="1.1" id="pen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+        y="0px" viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
+        <path style="fill:#E50027;" d="M501.449,368.914L320.566,66.207C306.751,43.384,282.728,29.569,256,29.569
+	s-50.752,13.815-64.567,36.638L10.55,368.914c-13.812,23.725-14.113,51.954-0.599,75.678c13.513,23.723,37.836,37.838,65.165,37.838
+	h361.766c27.329,0,51.653-14.115,65.165-37.838C515.563,420.868,515.262,392.639,501.449,368.914z" />
+        <path style="fill:#C1001F;" d="M502.049,444.592c-13.513,23.723-37.836,37.838-65.165,37.838H256V29.57
+	c26.727,0,50.752,13.815,64.567,36.638L501.45,368.915C515.262,392.639,515.563,420.868,502.049,444.592z" />
+        <path style="fill:#FD003A;" d="M75.109,452.4c-16.628,0-30.851-8.27-39.063-22.669c-8.211-14.414-8.065-31.087,0.469-45.72
+	L217.23,81.549c8.27-13.666,22.816-21.951,38.769-21.951s30.5,8.284,38.887,22.157l180.745,302.49
+	c8.388,14.4,8.534,31.072,0.322,45.485c-8.211,14.4-22.435,22.669-39.063,22.669H75.109V452.4z" />
+        <path style="fill:#E50027;" d="M436.891,452.4c16.628,0,30.851-8.27,39.063-22.669c8.211-14.414,8.065-31.087-0.322-45.485
+	L294.886,81.754c-8.388-13.871-22.933-22.157-38.887-22.157V452.4H436.891z" />
+        <path style="fill:#E1E4FB;" d="M286.03,152.095v120.122c0,16.517-13.514,30.03-30.03,30.03s-30.031-13.514-30.031-30.03V152.095
+	c0-16.517,13.514-30.031,30.031-30.031S286.03,135.578,286.03,152.095z" />
+        <path style="fill:#C5C9F7;" d="M286.03,152.095v120.122c0,16.517-13.514,30.03-30.03,30.03V122.064
+	C272.516,122.064,286.03,135.578,286.03,152.095z" />
+        <path style="fill:#E1E4FB;" d="M256,332.278c-24.926,0-45.046,20.119-45.046,45.046c0,24.924,20.119,45.046,45.046,45.046
+	s45.046-20.121,45.046-45.046C301.046,352.398,280.925,332.278,256,332.278z" />
+        <path style="fill:#C5C9F7;" d="M301.046,377.323c0,24.924-20.119,45.046-45.046,45.046v-90.091
+	C280.925,332.278,301.046,352.398,301.046,377.323z" />
+      </svg>
 
     </div>
+  </div>
+  <div class="cont animated 800s zoomIn delay-0.1s">
+    <div class="container">
+      <p class="tapPen">THIS DEVICE IS LOST OR STOLEN !!!</p>
+      <p class="tapPea">Please Contact</p>
+
+
+      <div class="lostDevice">
+        <!-- <h4>We are ready to help You..!</h4> -->
+        <p>
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>        
+          Gocube Tech
+        </p>
+        <p>
+          <ion-icon ios="ios-call" md="md-call"></ion-icon>        
+          +44 7930275782
+        </p>
+        <p>
+          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>  
+          info@gocubetech.com
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="contact">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 class="">
+              <button class="aotn">
+            <div class="circle">
+                <ion-icon ios="ios-call" md="md-call"></ion-icon>
+            </div>
+          </button>
+            <p>Call</p>
+          </ion-col>
+          <ion-col col-6 class="">
+              <button class="aotn">
+              <div class="circle circlemail">
+            <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+            </div>
+          </button>
+            <p>Mail</p>
+          </ion-col>
+        </ion-row>
  
+        <ion-row>
+            <ion-col  class="">
+              <button class="dismiss" (click)="back()">Dismiss</button>
+            </ion-col>
+          </ion-row>
 
-   
-  
+
+      </ion-grid>
+    </div>
+
 </ion-content>
-

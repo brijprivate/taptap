@@ -177,6 +177,7 @@ export class LoginsignupProvider {
     });
   }
 
+
   //get list of milage...
   //Get list of all tapped item....
   getmilage(data) {

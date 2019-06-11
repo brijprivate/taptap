@@ -17,7 +17,7 @@
 
       <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
       <p>Business</p>
-      <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
+      <ion-icon ios="ios-trash" md="md-trash" (click)="deleteBusiness()"></ion-icon>
     </div>
   </div>
   <!-- <div class="landscape"> -->
@@ -42,25 +42,25 @@
   <ion-list class="mobileSp">
     <!-- <p class="inputTitle">Name</p>   -->
     <div class="businessField">
-   <p>{{business.name}}</p>
-   <p>{{business.address}}</p>
-   <p>{{business.email}}</p>
-   <p>{{business.website}}</p>
+      <p>{{business.name}}</p>
+      <p>{{business.address}}</p>
+      <p>{{business.email}}</p>
+      <p>{{business.website}}</p>
     </div>
-  
- 
+
+
     <ion-label class="permission">
       <!-- <ion-icon name="lock" item-left></ion-icon> -->
       Permission</ion-label>
-      <ion-item>
-        <ion-label>Access to Time</ion-label>
-        <ion-toggle [(ngModel)]="timer"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Access to Milage</ion-label>
-        <ion-toggle [(ngModel)]="milage"></ion-toggle>
-      </ion-item>
-  
+    <ion-item>
+      <ion-label>Access to Time</ion-label>
+      <ion-toggle [(ngModel)]="timer"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Access to Milage</ion-label>
+      <ion-toggle [(ngModel)]="milage"></ion-toggle>
+    </ion-item>
+
     <!-- <ion-grid radio-group class="radioBtn">
       <ion-row>
         <ion-col col-4>

@@ -50,8 +50,8 @@ export class BusinessPage {
   getPermission(users: any) {
     console.log(users)
     let permission = "";
-        permission = users.permission;
-        return permission;
+    permission = users.permission;
+    return permission;
   }
 
   savePermission() {
@@ -98,5 +98,18 @@ export class BusinessPage {
       })
 
   }
-  userId
+
+  deleteBusiness() {
+    let _base = this;
+    let data = {
+      businessId: _base.business._id,
+      userUid: localStorage.getItem('uid')
+    }
+    _base.http.removebusiness(data)
+      .then(function (success) {
+        _base.navCtrl.pop()
+      }, function (error) {
+
+      });
+  }
 }

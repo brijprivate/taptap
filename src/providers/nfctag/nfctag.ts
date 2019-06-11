@@ -240,12 +240,26 @@ export class NfctagProvider {
 
 
   deletedevice(nfcid) {
-    
+
     // return this.http.put(this.apiUrl+'device/removeOwner?nfc_id=', nfcid);
     let _base = this;
     return new Promise(function (resolve, reject) {
-      console.log(_base.apiUrl + 'device/removeOwner?nfc_id='+nfcid)
-      _base.http.put(_base.apiUrl + 'device/removeOwner?nfc_id='+nfcid,{})
+      console.log(_base.apiUrl + 'device/removeOwner?nfc_id=' + nfcid)
+      _base.http.put(_base.apiUrl + 'device/removeOwner?nfc_id=' + nfcid, {})
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // resetPassword
+  removebusiness(data) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.put(_base.apiUrl + 'business/removebusiness', data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
