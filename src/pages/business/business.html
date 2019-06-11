@@ -17,7 +17,6 @@
 
       <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
       <p>Business</p>
-      <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
     </div>
   </div>
   <!-- <div class="landscape"> -->
@@ -42,25 +41,25 @@
   <ion-list class="mobileSp">
     <!-- <p class="inputTitle">Name</p>   -->
     <div class="businessField">
-   <p>{{business.name}}</p>
-   <p>{{business.address}}</p>
-   <p>{{business.email}}</p>
-   <p>{{business.website}}</p>
+      <p>{{business.name}}</p>
+      <p>{{business.address}}</p>
+      <p>{{business.email}}</p>
+      <p>{{business.website}}</p>
     </div>
-  
- 
+
+
     <ion-label class="permission">
       <!-- <ion-icon name="lock" item-left></ion-icon> -->
       Permission</ion-label>
-      <ion-item>
-        <ion-label>Access to Time</ion-label>
-        <ion-toggle [(ngModel)]="timer"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Access to Milage</ion-label>
-        <ion-toggle [(ngModel)]="milage"></ion-toggle>
-      </ion-item>
-  
+    <ion-item>
+      <ion-label>Access to Time</ion-label>
+      <ion-toggle [(ngModel)]="timer"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Access to Milage</ion-label>
+      <ion-toggle [(ngModel)]="milage"></ion-toggle>
+    </ion-item>
+
     <!-- <ion-grid radio-group class="radioBtn">
       <ion-row>
         <ion-col col-4>
@@ -92,15 +91,17 @@
 
     <ion-grid class="saveGrid">
       <ion-row>
-        <ion-col col-12>
+        <ion-col col-9>
           <button ion-button class="save" (click)="savePermission()">Save</button>
         </ion-col>
 
-        <!-- <ion-col col-3 (click)="addtofeed()" style="z-index:99999999900">
+        <ion-col col-3 (click)="deleteBusiness()" style="z-index:99999999900">
           <button ion-button class="save">
-            <ion-icon name="share-alt"></ion-icon>
+            <ion-icon ios="ios-trash" md="md-trash" ></ion-icon>
           </button>
-        </ion-col> -->
+        </ion-col>
+
+
 
       </ion-row>
     </ion-grid>

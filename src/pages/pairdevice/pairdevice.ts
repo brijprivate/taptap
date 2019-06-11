@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Rx';
 import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
@@ -31,6 +31,7 @@ export class PairdevicePage {
   subscriptions: Array<Subscription> = new Array<Subscription>();
 
   constructor(public navCtrl: NavController,
+    public alert:AlertController,
     public navParams: NavParams,
     public nfc: NFC,
     public ndef: Ndef,
@@ -62,6 +63,9 @@ export class PairdevicePage {
           console.log("whole data", data.tag);
           console.log("tag id", s);
           this.tapData = s.substring(0, s.length - 1);
+          if(this.tapData){
+            this.presentPrompt()
+          }
           return s.substring(0, s.length - 1);
 
         }
@@ -135,4 +139,40 @@ export class PairdevicePage {
     })
   }
 
+
+  gotovack(){
+    this.navCtrl.pop()
+  }
+
+
+
+  presentPrompt() {
+    let alert = this.alert.create({
+      title: 'Provide Pairing Code',
+      inputs: [
+        {
+          
+          placeholder: 'Pairing code'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log(data[0]);
+            this.paircode=data[0]
+            this.pairDevice();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 }

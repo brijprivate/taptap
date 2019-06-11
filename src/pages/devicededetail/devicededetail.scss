@@ -38,7 +38,7 @@ page-devicededetail {
     }
     .scroll-content {
         padding: 0 !important;
-        overflow: hidden;
+        // overflow: hidden;
     }
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
@@ -62,20 +62,13 @@ page-devicededetail {
         color: #fff;
     }
     .cont {
-        margin-top: 8vh;
+        margin-top: 3vh;
         text-align: center;
         font-size: 18px;
         height: 56vh;
         overflow-y: scroll;
     }
-    .cont p span {
-        background: #c5efed;
-        margin: 0 7px;
-        padding: 4px 7px 4px 7px;
-        color: #4a9d50;
-        font-size: 12px;
-        border-radius: 4px;
-    }
+    
     .container {
         margin: 0 2em;
     }
@@ -107,7 +100,16 @@ page-devicededetail {
     p.tapPen {
         color: #53565a;
         font-size: 13px;
-        margin-bottom: 1em;
+        text-align: center;
+        margin-top: 4em;
+        span {
+            background: #c5efed;
+            margin: 0 7px;
+            padding: 4px 7px 4px 7px;
+            color: #4a9d50;
+            font-size: 12px;
+            border-radius: 4px;
+        }
     }
     ion-input.input.input-md {
         color: #1f2127;
@@ -131,8 +133,8 @@ page-devicededetail {
         margin-bottom: 0;
     }
     ion-grid.saveGrid.grid {
-        margin-top: 1em;
-        margin-bottom: 4em;
+        // margin-top: 1em;
+        // margin-bottom: 4em;
         padding-right: 2em;
         padding-left: 1em;
     }
@@ -176,5 +178,10 @@ page-devicededetail {
         position: absolute;
         left: 0px;
         font-size: 20px;
+    }
+    button.saveButton:hover{
+        background: #6454cb7a !important;
+        color: #fff !important;
+        border: 1px solid #b39be6 !important;
     }
 }

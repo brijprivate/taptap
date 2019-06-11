@@ -7,7 +7,7 @@
 <ion-header no-border>
   <ion-navbar>
     <ion-title class="animated 800s fadeInLeft delay-0.1s">Device details
-      <button ion-button class="managebutton">
+      <!-- <button ion-button class="managebutton">
         <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
           x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
           <g>
@@ -16,7 +16,7 @@
             <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
           </g>
         </svg>
-      </button>
+      </button> -->
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -40,9 +40,10 @@
 
     </div>
   </div>
+  <p class="tapPen">{{devicedetail.type}} <span>Online</span> </p>
+
   <div class="cont animated 800s zoomIn delay-0.1s">
     <div class="container">
-      <p class="tapPen">{{devicedetail.type}} <span>Online</span> </p>
 
       <ion-item>
           <i class="fa fa-address-book" aria-hidden="true" item-left></i>
