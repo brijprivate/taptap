@@ -21,6 +21,7 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
@@ -70,6 +71,7 @@ import { File } from '@ionic-native/file';
     Crop,
     Camera,
     File,
+    AndroidPermissions,
     BackgroundGeolocation,
     NativeGeocoder,
     Deeplinks,
