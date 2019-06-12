@@ -1,0 +1,193 @@
+page-alertpage {
+    .head {
+        height: 14vh;
+        background: #6354cb;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px !important;
+            color: #fff !important;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 14px;
+            ion-icon.icon.icon-md.ion-md-arrow-round-back {
+                color: gray !important;
+            }
+        }   
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
+            margin-right: 7px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            // margin-top: 12px;
+            float:right;
+        }
+        ion-icon.icon.icon-md {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+        }
+    }
+    .mdl i.fa.fa-chevron-left {
+        margin-right: 10px;
+        font-size: 18px;
+        color: #fff;
+        vertical-align: middle;
+        margin-left: 1em;
+    }
+    .svgAnimated {
+        text-align: center;
+        padding-top: 5em;
+    }
+    .svgAnimated h2 {
+        margin-top: 30px;
+        font-size: 19px;
+    }
+    h2.device {
+        margin: 0 !important;
+        color: #797373;
+        font-size: 18px !important;
+    }
+// animated svg
+
+.cross-icon {
+  width: 80px;
+  height: 80px;
+  border: 4px solid #c0392b;
+  background:#c0392b;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  margin: 25px auto;
+  padding: 0;
+  position: relative;
+  box-sizing: content-box;
+  /* The icons are not animated in IE. */
+}
+.cross-icon.cross-delete .cross-x-mark {
+  position: relative;
+  display: block;
+}
+.cross-icon.cross-delete .cross-delete-line {
+  position: absolute;
+  height: 5px;
+  width: 47px;
+  background-color: #ffffff;
+  display: block;
+  top: 37px;
+  border-radius: 2px;
+}
+.cross-icon.cross-delete .cross-delete-line.cross-delete-left {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 17px;
+}
+.cross-icon.cross-delete .cross-delete-line.cross-delete-right {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: 16px;
+}
+.cross-icon.cross-delete .cross-delete-line.cross-delete-left {
+  -ms-transform: rotate(45deg) \9;
+}
+.cross-icon.cross-delete .cross-delete-line.cross-delete-right {
+  -ms-transform: rotate(-45deg) \9;
+}
+
+@-webkit-keyframes animateDeleteIcon {
+  0% {
+    transform: rotateX(100deg);
+    -webkit-transform: rotateX(100deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+@keyframes animateDeleteIcon {
+  0% {
+    transform: rotateX(100deg);
+    -webkit-transform: rotateX(100deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+.animateDeleteIcon {
+  -webkit-animation: animateDeleteIcon 0.5s;
+  animation: animateDeleteIcon 0.5s;
+}
+
+@-webkit-keyframes animateXMark {
+  0% {
+    transform: scale(0.4);
+    -webkit-transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.4);
+    -webkit-transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    margin-top: -6px;
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animateXMark {
+  0% {
+    transform: scale(0.4);
+    -webkit-transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.4);
+    -webkit-transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    margin-top: -6px;
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+.animateXMark {
+  -webkit-animation: animateXMark 0.5s;
+  animation: animateXMark 0.5s;
+}
+
+   // animated svg   
+      .scroll-content {
+        padding: 0 !important;
+    } 
+}
