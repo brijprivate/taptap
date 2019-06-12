@@ -6,6 +6,8 @@
 -->
 <ion-header>
   <ion-navbar>
+      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+
     <a class="helpimg">
       <button ion-button class="mybutton">
         <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -31,10 +33,10 @@
   <p class="type">Record type</p>
   <div padding>
     <ion-segment [(ngModel)]="record" class="typeRecord">
-      <ion-segment-button value="Personal">
+      <ion-segment-button value="personal">
         Personal
       </ion-segment-button>
-      <ion-segment-button value="Business">
+      <ion-segment-button value="business">
         Business
       </ion-segment-button>
     </ion-segment>

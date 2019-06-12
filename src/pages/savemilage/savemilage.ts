@@ -141,7 +141,7 @@ export class SavemilagePage {
     });
     loader.present();
     let timedata = {
-      recordtype:this.recordtype,
+      recordType:this.recordtype,
       date:this.presentDate,
       title:this.title,
       description:this.description,
@@ -233,5 +233,7 @@ public loop(){
 		return dist;
   }
 }
-
+back(){
+  this.navCtrl.pop()
+}
 }

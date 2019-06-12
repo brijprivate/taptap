@@ -68,7 +68,17 @@ page-devicededetail {
         // height: 56vh;
         // overflow-y: scroll;
     }
-    
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        display: none;
+    }
+    i.fa.fa-chevron-left{
+        float: left;
+        z-index: 999;
+        margin-left: 3px;
+    }
+    .toolbar-title.toolbar-title-md {
+        margin-left: 16px;
+    }
     .container {
         margin: 0 2em;
     }

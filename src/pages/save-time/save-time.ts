@@ -96,7 +96,7 @@ export class SaveTimePage {
     });
     loader.present();
     let timedata = {
-      recordtype:this.recordtype,
+      recordType:this.recordtype,
       date:this.presentDate,
       title:this.title,
       description:this.description,
@@ -105,6 +105,7 @@ export class SaveTimePage {
       userId:this.userId,
       nfc_id:this.nfcid
     }
+    console.log(timedata);
     this.nfctagPro.recordTime(timedata).then(function(success:any){
       console.log(success);
       loader.dismiss();
@@ -123,5 +124,8 @@ export class SaveTimePage {
       buttons: ['OK']
     });
     alert.present();
+  }
+  back(){
+    this.navCtrl.pop()
   }
 }

@@ -5,68 +5,78 @@
   Ionic pages and navigation.
 -->
 <ion-header no-border>
-  <ion-navbar>
-    <ion-title class="animated 800s fadeInLeft delay-0.1s">Device details
-      <!-- <button ion-button class="managebutton">
-        <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+    <ion-navbar>
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+
+      <ion-title class="animated 800s fadeInLeft delay-0.1s">Device details
+        <button ion-button class="managebutton">
+          <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+            <g>
+              <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
+              <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
+              <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
+            </g>
+          </svg>
+        </button>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <div class="blue">
+      <div class="pen animated 800s pulse delay-0.1s">
+        <svg version="1.1" id="pen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+          y="0px" viewBox="0 0 314.021 314.021" style="enable-background:new 0 0 314.021 314.021;" xml:space="preserve">
           <g>
-            <path d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z" />
-            <path d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z" />
-            <path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z" />
+            <path style="fill:#6354cb;" d="M278.214,72.465c5.015,5.009,5.015,13.124,0,18.134L88.358,264.551l-26.613,24.383L24.345,251.53
+      l24.383-26.613L202.953,56.589l-5.755-5.76l-72.796,72.802c-2.502,2.502-6.565,2.502-9.067,0l-0.995-0.995
+      c-2.502-2.502-2.502-6.565,0-9.067L214.783,13.136c2.507-2.502,6.565-2.502,9.072,0l0.995,0.99c2.502,2.502,2.502,6.565,0,9.067
+      l-14.044,14.044l5.156,5.162l6.723-7.332c5.004-5.009,13.119-5.009,18.134,0L278.214,72.465z M0,306.987l6.309,6.32l51.046-21.86
+      l-35.506-35.506L0,306.987z M272.024,0.713l21.087,21.087L278.116,6.805l-28.207,28.202l30.127,30.127l28.207-28.207l5.765,5.765
+      C314.008,42.697,315.933,4.88,272.024,0.713z" />
           </g>
+  
+  
         </svg>
-      </button> -->
-    </ion-title>
-  </ion-navbar>
-  <div class="blue">
-    <div class="pen animated 800s pulse delay-0.1s">
-      <svg version="1.1" id="pen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-        y="0px" viewBox="0 0 314.021 314.021" style="enable-background:new 0 0 314.021 314.021;" xml:space="preserve">
-        <g>
-          <path style="fill:#6354cb;" d="M278.214,72.465c5.015,5.009,5.015,13.124,0,18.134L88.358,264.551l-26.613,24.383L24.345,251.53
-		l24.383-26.613L202.953,56.589l-5.755-5.76l-72.796,72.802c-2.502,2.502-6.565,2.502-9.067,0l-0.995-0.995
-		c-2.502-2.502-2.502-6.565,0-9.067L214.783,13.136c2.507-2.502,6.565-2.502,9.072,0l0.995,0.99c2.502,2.502,2.502,6.565,0,9.067
-		l-14.044,14.044l5.156,5.162l6.723-7.332c5.004-5.009,13.119-5.009,18.134,0L278.214,72.465z M0,306.987l6.309,6.32l51.046-21.86
-		l-35.506-35.506L0,306.987z M272.024,0.713l21.087,21.087L278.116,6.805l-28.207,28.202l30.127,30.127l28.207-28.207l5.765,5.765
-		C314.008,42.697,315.933,4.88,272.024,0.713z" />
-        </g>
-
-
-      </svg>
-
+  
+      </div>
     </div>
-  </div>
-  <p class="tapPen">{{devicedetail.type}} <span>Online</span> </p>
-
-</ion-header>
-
-<ion-content padding>
-
-  <div class="conts">
     <div class="cont animated 800s zoomIn delay-0.1s">
       <div class="container">
+        <p class="tapPen">{{devicedetail.type}} <span>Online</span> </p>
   
-      
+        <ion-item>
+            <i class="fa fa-address-book" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Device Name</ion-label>
+          <ion-input [(ngModel)]="devicedetail.device_title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <i class="fa fa-envelope-o" aria-hidden="true" item-left></i>
+  
+          <ion-label floating>Message</ion-label>
+          <ion-input  [(ngModel)]="devicedetail.message"></ion-input>
+        </ion-item>
   
         <ion-item>
             <i class="fa fa-user" aria-hidden="true" item-left></i>
   
           <ion-label floating>Full Name</ion-label>
   
-          <ion-input value="brij" ></ion-input>
+          <ion-input value="brij" [(ngModel)]="devicedetail.contact_info.name" ></ion-input>
         </ion-item>
         <ion-item>
             <i class="fa fa-briefcase" aria-hidden="true" item-left></i>
   
           <ion-label floating>Company Name</ion-label>
-          <ion-input value="gocube" ></ion-input>
+          <ion-input value="gocube" [(ngModel)]="devicedetail.contact_info.company_name"></ion-input>
         </ion-item>
         <ion-item>
             <i class="fa fa-phone" aria-hidden="true" item-left></i>
   
           <ion-label floating>Telephone No</ion-label>
-          <ion-input value="874895592"></ion-input>
+          <ion-input value="874895592" [(ngModel)]="devicedetail.contact_info.company_name"></ion-input>
         </ion-item>
         <ion-item>
             <i class="fa fa-mobile" aria-hidden="true" item-left></i>
@@ -167,6 +177,4 @@
             </svg> </button></ion-col>
       </ion-row>
     </ion-grid>
-  </div>
-
-</ion-content>
+  </ion-content>

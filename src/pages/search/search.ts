@@ -30,6 +30,7 @@ export class SearchPage {
   public ifmerchant: boolean = false;
   public date: String = "";
   public str: String = "";
+  public isdata:boolean=false;
 
   searchcount: any = 0;
 
@@ -105,6 +106,11 @@ export class SearchPage {
       });
       _base.searchcount = _base.tapItems.length
       console.log("=============================", _base.tapItems);
+      if(_base.tapItems.length == 0){
+        _base.isdata=true;
+      }else{
+        _base.isdata=false;
+      }
     }, function (err) {
       console.log(err);
     })

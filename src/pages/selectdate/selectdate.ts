@@ -21,5 +21,7 @@ export class SelectdatePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectdatePage');
   }
-
+  back(){
+    this.navCtrl.pop()
+  }
 }

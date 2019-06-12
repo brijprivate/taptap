@@ -76,6 +76,7 @@ export class RecordmilagePage {
     private locationAccuracy: LocationAccuracy
     // private diagnostic: Diagnostic
   ) {
+    this.enableLocation();
     this.userId = localStorage.getItem("userId");
     this.tapData = navParams.get("tapdata");
 
@@ -117,8 +118,6 @@ export class RecordmilagePage {
 
   ionViewDidLoad() {
     this.enableLocation();
-
-
     // to display on screen only
     let _base = this;
     setInterval(function () {
@@ -326,4 +325,8 @@ export class RecordmilagePage {
   //     console.log(statusError);
   //   });
   // }
+
+  back(){
+    this.navCtrl.pop()
+  }
 }

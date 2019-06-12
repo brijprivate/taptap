@@ -19,6 +19,8 @@ export class ManagedevicePage {
   userId: any;
   public devices:any=[];
   public deviceName:any;
+  public lost:boolean=false;
+  public islost:boolean=true;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -28,13 +30,20 @@ export class ManagedevicePage {
     public loading:LoadingController,) 
     {
       this.userId = localStorage.getItem("userId");
-      if(this.userId){
-        this.getpairedDevice();
-      }
+      // if(this.userId){
+      //   this.getpairedDevice();
+      // }
   }
   backProfile(){
     this.navCtrl.push('ProfilePage');
 
+  }
+  ionViewDidEnter(){
+    console.log("did enter------>>>>");
+    this.userId = localStorage.getItem("userId");
+    if(this.userId){
+      this.getpairedDevice();
+    }
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ManagedevicePage');
@@ -68,7 +77,7 @@ presentPrompt(nfcid) {
     inputs: [
       {
         
-        placeholder: 'Username'
+        placeholder: 'Device Name'
       },
     ],
     buttons: [
@@ -119,42 +128,56 @@ presentPrompt(nfcid) {
 
 
   delete(nfcid) {
-    let alert = this.alert.create({
-      title: 'Are you sure want to delete',
+    this.navCtrl.push('AnimatetapPage',{key:"delete"})
+    // let alert = this.alert.create({
+    //   title: 'Are you sure want to delete',
      
-      buttons: [
-        {
-          text: 'No',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Yes',
-          handler: data => {
-              this.deleteDevice(nfcid);
-          }
-        }
-      ]
-    });
-    alert.present();
+    //   buttons: [
+    //     {
+    //       text: 'No',
+    //       role: 'cancel',
+    //       handler: data => {
+    //         console.log('Cancel clicked');
+    //       }
+    //     },
+    //     {
+    //       text: 'Yes',
+    //       handler: data => {
+    //           this.deleteDevice(nfcid);
+    //       }
+    //     }
+    //   ]
+    // });
+    // alert.present();
   }
 
   deleteDevice(nfcid){
-    // console.log(nfcid)
-    // let _base = this;
-    // this.nfctagProvider.deletedevice(nfcid).subscribe(data=>{
-    //   console.log(data);
-    // },
-    // err=>{
-    //   console.log(err);
+    this.navCtrl.push('AnimatetapPage',{key:"delete"})
+    // var _base=this;
+    // this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
+    //   _base.getpairedDevice();
+    // },function(err){
+    //   alert("unable to delete device please try again");
     // })
-    var _base=this;
-    this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
+  }
+
+  //mark as lost...
+  notify(id){
+    let _base = this;
+    let data = {
+      deviceId:id,
+      is_lost:this.lost
+    }
+    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+      console.log(success);
       _base.getpairedDevice();
     },function(err){
-      alert("unable to delete device please try again");
+      console.log(err);
     })
+  }
+
+
+  back(){
+    this.navCtrl.pop();
   }
 }

@@ -100,6 +100,21 @@ export class LoginPage {
       }
     }, function (err) {
       loader.dismiss();
+      let temp:any;
+      temp = err.responce;
+      console.log(temp);
+      // if(err._body.message == 'User does not exist'){
+        let showtoast = _base.toast.create({
+          message: "Please provide valid credentials",
+          duration: 60000,
+          position: "bottom",
+          showCloseButton: true,
+          closeButtonText: "Ok"
+        })
+        showtoast.present();
+        return;
+      // }
+      
 
     })
   }

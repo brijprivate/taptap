@@ -35,5 +35,7 @@ export class DevicededetailPage {
   notify(){
     console.log(this.lost);
   }
-
+  back(){
+    this.navCtrl.pop();
+  }
 }

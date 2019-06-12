@@ -54,6 +54,8 @@ export class ProfilePage {
       this.getprofiledata();
       this.getDashboarddata();
       this.getnotifications();
+      this. getmilage();
+      this.gettime();
     }
 
   }
@@ -206,5 +208,33 @@ chartfunction(s){
       }, function (error) {
         console.log(error)
       });
+  }
+
+  //get time data....
+  getmilage(){
+    let _base = this;
+    let i=0;
+    this.nfctagProvider.getmilage(this.userId).then(function(success:any){
+      console.log(success);
+      for(i=0;i<success.result.length;i++){
+        console.log(success.result[i].nfc_id);
+      }
+    },function(err){
+      console.log(err);
+    })
+  }
+
+  //get time data...
+  gettime(){
+    let _base = this;
+    let i=0;
+    this.nfctagProvider.gettime(this.userId).then(function(success:any){
+      console.log(success);
+      // for(i=0;i<success.result.length;i++){
+      //   console.log(success.result[i].nfc_id);
+      // }
+    },function(err){
+      console.log(err);
+    })
   }
 }

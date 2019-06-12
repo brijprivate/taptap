@@ -155,6 +155,9 @@ export class RecordtimePage {
   //   alert.present();
   // }
 
+  ionViewDidEnter(){
+    console.log("didenter=----------------->>>>>>>");
+  }
   //Start record time...
 
   start() {
@@ -250,5 +253,8 @@ export class RecordtimePage {
       nfcid: this.tapData,
       recordtype: this.record
     })
+  }
+  back(){
+    this.navCtrl.pop()
   }
 }
