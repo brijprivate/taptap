@@ -233,5 +233,7 @@ public loop(){
 		return dist;
   }
 }
-
+back(){
+  this.navCtrl.pop()
+}
 }

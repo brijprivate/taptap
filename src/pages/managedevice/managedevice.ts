@@ -175,4 +175,9 @@ presentPrompt(nfcid) {
       console.log(err);
     })
   }
+
+
+  back(){
+    this.navCtrl.pop();
+  }
 }

@@ -325,4 +325,8 @@ export class RecordmilagePage {
   //     console.log(statusError);
   //   });
   // }
+
+  back(){
+    this.navCtrl.pop()
+  }
 }

@@ -127,4 +127,11 @@ page-recordtime {
     .recordContent.recorCa {
         margin-top: 6em;
     }
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+        display: none;
+    }
+    i.fa.fa-chevron-left{
+        float: left;
+        margin-left: 3px
+    }
 }
