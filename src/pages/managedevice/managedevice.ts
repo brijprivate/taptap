@@ -30,13 +30,20 @@ export class ManagedevicePage {
     public loading:LoadingController,) 
     {
       this.userId = localStorage.getItem("userId");
-      if(this.userId){
-        this.getpairedDevice();
-      }
+      // if(this.userId){
+      //   this.getpairedDevice();
+      // }
   }
   backProfile(){
     this.navCtrl.push('ProfilePage');
 
+  }
+  ionViewDidEnter(){
+    console.log("did enter------>>>>");
+    this.userId = localStorage.getItem("userId");
+    if(this.userId){
+      this.getpairedDevice();
+    }
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ManagedevicePage');
@@ -70,7 +77,7 @@ presentPrompt(nfcid) {
     inputs: [
       {
         
-        placeholder: 'Username'
+        placeholder: 'Device Name'
       },
     ],
     buttons: [
@@ -121,35 +128,37 @@ presentPrompt(nfcid) {
 
 
   delete(nfcid) {
-    let alert = this.alert.create({
-      title: 'Are you sure want to delete',
+    this.navCtrl.push('AnimatetapPage',{key:"delete"})
+    // let alert = this.alert.create({
+    //   title: 'Are you sure want to delete',
      
-      buttons: [
-        {
-          text: 'No',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Yes',
-          handler: data => {
-              this.deleteDevice(nfcid);
-          }
-        }
-      ]
-    });
-    alert.present();
+    //   buttons: [
+    //     {
+    //       text: 'No',
+    //       role: 'cancel',
+    //       handler: data => {
+    //         console.log('Cancel clicked');
+    //       }
+    //     },
+    //     {
+    //       text: 'Yes',
+    //       handler: data => {
+    //           this.deleteDevice(nfcid);
+    //       }
+    //     }
+    //   ]
+    // });
+    // alert.present();
   }
 
   deleteDevice(nfcid){
-    var _base=this;
-    this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
-      _base.getpairedDevice();
-    },function(err){
-      alert("unable to delete device please try again");
-    })
+    this.navCtrl.push('AnimatetapPage',{key:"delete"})
+    // var _base=this;
+    // this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
+    //   _base.getpairedDevice();
+    // },function(err){
+    //   alert("unable to delete device please try again");
+    // })
   }
 
   //mark as lost...

@@ -155,6 +155,9 @@ export class RecordtimePage {
   //   alert.present();
   // }
 
+  ionViewDidEnter(){
+    console.log("didenter=----------------->>>>>>>");
+  }
   //Start record time...
 
   start() {

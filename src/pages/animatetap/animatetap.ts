@@ -127,6 +127,7 @@ export class AnimatetapPage {
       loader.dismiss();
       if(success.message == 'Device not found with user'){
         alert("This is not a paired device");
+        _base.readingTag = true;
         return;
       }
       // _base.deviceVerify = true;
@@ -136,12 +137,15 @@ export class AnimatetapPage {
       }else if(_base.keyvalue == 'time'){
         _base.navCtrl.pop();
         _base.navCtrl.push("RecordtimePage",{tapdata:_base.tapData});
+      }else if(_base.keyvalue == 'delete'){
+        _base.delete(_base.tapData);
       }
       // _base.presentAlert();
     },function(err){
       console.log(err);
       loader.dismiss();
       alert("Your device is not paired");
+      _base.readingTag = true;
     })
   }
   presentAlert() {
@@ -151,5 +155,41 @@ export class AnimatetapPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  delete(nfcid) {
+    let alert = this.alert.create({
+      title: 'Are you sure want to delete',
+     
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+            this.navCtrl.pop();
+          }
+        },
+        {
+          text: 'Yes',
+          handler: data => {
+              this.deleteDevice(nfcid);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  deleteDevice(nfcid){
+    // this.navCtrl.push('AnimatetapPage',{key:"delete"})
+    var _base=this;
+    this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
+      // _base.getpairedDevice();
+      // _base.navCtrl.setRoot('ManagedevicePage');
+      _base.navCtrl.pop();
+    },function(err){
+      alert("unable to delete device please try again");
+    })
   }
 }

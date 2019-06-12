@@ -108,6 +108,8 @@ export class SearchPage {
       console.log("=============================", _base.tapItems);
       if(_base.tapItems.length == 0){
         _base.isdata=true;
+      }else{
+        _base.isdata=false;
       }
     }, function (err) {
       console.log(err);

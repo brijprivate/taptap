@@ -98,9 +98,11 @@ export class LoginPage {
         localStorage.setItem("userId", success.user._id);
         _base.navCtrl.setRoot('DashboardPage');
       }
-    }, function (err:any) {
+    }, function (err) {
       loader.dismiss();
-      console.log(err);
+      let temp:any;
+      temp = err.responce;
+      console.log(temp);
       // if(err._body.message == 'User does not exist'){
         let showtoast = _base.toast.create({
           message: "Please provide valid credentials",

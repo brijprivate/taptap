@@ -147,20 +147,9 @@
     
       <p class="nohis">no search history</p>
   </div>
-  <div *ngIf="isdata==false">
+  <!-- <div > -->
     <ion-slides #slider>
       <ion-slide>
-  
-        <!-- <div class="secondseg">
-                <ion-segment [(ngModel)]="record" class="typeRecord">
-                  <ion-segment-button value="Personal" (click)="category()">
-                    Category
-                  </ion-segment-button>
-                  <ion-segment-button value="Business" (click)="merchant()">
-                    Merchants
-                  </ion-segment-button>
-                </ion-segment>
-              </div> -->
   
         <div class="scroll">
   
@@ -185,19 +174,6 @@
   
           </div>
         </div>
-        <!-- *ngIf="ifmerchant ==true" -->
-        <!-- for merchant -->
-        <!-- <div class="scroll">
-          <div style="padding:0 1em;" *ngFor="let item of tapItems">
-            <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
-            <ion-item>
-              <ion-icon name="apps" class="merchantIcon"></ion-icon>
-              {{item.purpose}}
-              <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
-            </ion-item>
-          </div>
-        </div> -->
-        <!-- for merchant -->
   
       </ion-slide>
   
@@ -219,7 +195,7 @@
       </ion-slide>
   
     </ion-slides>
-  </div>
+  <!-- </div> -->
 
 
 

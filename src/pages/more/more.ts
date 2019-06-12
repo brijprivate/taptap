@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 
 /**
@@ -21,7 +21,8 @@ export class MorePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagpro: NfctagProvider,
-    private app: App) {
+    private app: App,
+    public alert:AlertController,) {
   }
 
   ionViewDidEnter() {
@@ -30,8 +31,29 @@ export class MorePage {
   }
 
   Logout() {
-    localStorage.clear();
-    this.app.getRootNav().setRoot("LoginPage");
+
+    let alert = this.alert.create({
+      title: 'Are you sure want to logout',
+     
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: data => {
+            localStorage.clear();
+            this.app.getRootNav().setRoot("LoginPage");
+          }
+        }
+      ]
+    });
+    alert.present();
+   
   }
   goto(x) {
     this.navCtrl.push(x)
