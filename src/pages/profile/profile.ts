@@ -35,6 +35,14 @@ export class ProfilePage {
   devicecount: any;
   public chart;
   notiCount: number = 0;
+  uid: any;
+  public tpmilage=0;
+  public tbmilage=0;
+  public tptime=0;
+  public tbtime=0;
+  showtimesub: number;
+  pretime: boolean=false;
+  premilage: boolean=false;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
@@ -42,36 +50,48 @@ export class ProfilePage {
     public loading: LoadingController) {
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
-      this.getpairedDevice();
-      this.getprofiledata();
+      // this.getpairedDevice();
+      // this.getprofiledata();
     }
   }
 
   ionViewDidEnter() {
+    let _base = this;
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
+      // this.gettime();
       this.getpairedDevice();
       this.getprofiledata();
       this.getDashboarddata();
       this.getnotifications();
       this. getmilage();
       this.gettime();
+      // this.chartfunction();
+      // let putgraph = setTimeout(()=>{
+      //   _base.chartfunction();
+      // },5000)
     }
 
   }
   ionViewDidLoad() {
-    this.chartfunction(0)
-
+    // this.chartfunction()
+    let _base = this;
+   
   }
-chartfunction(s){
+chartfunction(){
+  console.log('in the chart')
   let _base = this;
   anychart.onDocumentReady(function () {
     _base.chart = anychart.pie([
       
-      { x: "Business_Milage", value: 9 },
-      { x: "Personal_Milage ", value: 9 },
-      { x: " Business_Time", value: 9 },
-      { x: " Personal_Time", value: 9 },
+      { x: "Business_Milage", value: _base.tbmilage },
+      { x: "Personal_Milage ", value: _base.tpmilage },
+      { x: "Business_Time", value: _base.tbtime },
+      { x: "Personal_Time", value: _base.tptime },
+      // { x: "Business_Milage", value:0.3 },
+      // { x: "Personal_Milage ", value: 0.2},
+      // { x: "Business_Time", value: 0.6 },
+      // { x: "Personal_Time", value:0.4 },
       ]);
 
       _base.chart.innerRadius("25%");
@@ -155,6 +175,7 @@ chartfunction(s){
       // loader.dismiss();
       if (success) {
         _base.userName = success.result.name;
+        _base.uid = success.result.uid;
         if (success.result.imageId) {
           _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
@@ -175,15 +196,7 @@ chartfunction(s){
       console.log("dashboard data ---------->>>>>>" + success);
       console.log(success);
 
-      // _base.fashion = success.result.fashion;
-      // _base.buisness = success.result.buisness;
-      // _base.contact = success.result.contact;
-      // _base.event = success.result.event;
-      // _base.general = success.result.general;
       _base.favourite = success.result.favourite;
-      // _base.sports = success.result.sport;
-      // _base.groceries = success.result.groceries;
-      // _base.totalcount = success.result.totalTap;
       loader.dismiss();
     }, function (err) {
       console.log(err);
@@ -216,13 +229,39 @@ chartfunction(s){
     let i=0;
     this.nfctagProvider.getmilage(this.userId).then(function(success:any){
       console.log(success);
-      for(i=0;i<success.result.length;i++){
-        console.log(success.result[i].nfc_id);
+      if(success.result.records.length != 0){
+        _base.tpmilage = success.total_personal;
+        _base.tbmilage = success.total_business;
+        // if(_base.tpmilage || _base.tbmilage){
+          // _base.chartfunction();
+          _base.premilage=true;
+
+          _base.callchart()
+        // }
       }
+    
     },function(err){
       console.log(err);
     })
   }
+
+callchart(){
+  var _base=this;
+
+  var x=setInterval(function(){
+    console.log('calling chart 00000000000000000000000');
+
+    if(_base.pretime && _base.premilage){
+      _base.chartfunction();
+  console.log('call chart llllllllllllllllllllllllllllllllllllllllllllllllll');
+  clearInterval(x);
+  _base.premilage=false;
+  _base.pretime=false;
+  
+}
+
+  },1000)
+}
 
   //get time data...
   gettime(){
@@ -230,9 +269,12 @@ chartfunction(s){
     let i=0;
     this.nfctagProvider.gettime(this.userId).then(function(success:any){
       console.log(success);
-      // for(i=0;i<success.result.length;i++){
-      //   console.log(success.result[i].nfc_id);
-      // }
+      if(success.result.records.length != 0){
+
+        _base.tptime = success.total_personal;
+        _base.tbtime = success.total_business;
+        _base.pretime=true;
+      }
     },function(err){
       console.log(err);
     })

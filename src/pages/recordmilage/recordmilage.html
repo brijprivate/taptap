@@ -66,8 +66,8 @@
     </ion-grid>
     <ion-grid>
       <ion-row>
-        <ion-col col-6><button ion-button class="start" (click)="startBackgroundTrack()">Start</button></ion-col>
-        <ion-col col-6><button ion-button class="stop" (click)="stopBackgroundTrack()">Stop</button></ion-col>
+        <ion-col col-6><button ion-button class="start" [ngClass]="{'selected': selected}" (click)="startBackgroundTrack()">Start</button></ion-col>
+        <ion-col col-6><button ion-button class="stop" [ngClass]="{'selected': !selected}" (click)="stopBackgroundTrack()">Stop</button></ion-col>
       </ion-row>
     </ion-grid>
   </div>

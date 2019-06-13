@@ -110,7 +110,7 @@ export class SaveTimePage {
       console.log(success);
       loader.dismiss();
      _base.presentAlert();
-     _base.navCtrl.push('ProfilePage');
+    //  _base.navCtrl.push('ProfilePage');
     },function(err){
       console.log(err);
       loader.dismiss();
@@ -119,9 +119,17 @@ export class SaveTimePage {
   }
   presentAlert() {
     let alert = this.alert.create({
-      title: 'Confirmation',
-      subTitle: 'Time Saved',
-      buttons: ['OK']
+      title: 'Time has been saved',
+     
+      buttons: [
+       
+        {
+          text: 'OK',
+          handler: data => {
+            this.navCtrl.setRoot('ProfilePage');
+          }
+        }
+      ]
     });
     alert.present();
   }

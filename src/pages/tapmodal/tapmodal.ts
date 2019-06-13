@@ -98,7 +98,12 @@ export class TapmodalPage {
       loader.dismiss();
       _base.readingTag = false;
       _base.viewCtrl.dismiss();
-      _base.navCtrl.push('TapdetailsPage',{itemdetails:success.result});
+      if(success.message == 'DEVICE LOST INFO'){
+        _base.navCtrl.setRoot('LostcardPage',{lostinfo:success.lostinfo});
+      }else{
+        _base.navCtrl.push('TapdetailsPage',{itemdetails:success.result});
+
+      }
     },function(err){
       console.log(err);
       loader.dismiss();

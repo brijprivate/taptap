@@ -61,6 +61,7 @@ export class RecordmilagePage {
   // to display on screen only
   sdistance: any;
   stime: any;
+  selected: boolean;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -129,6 +130,7 @@ export class RecordmilagePage {
 
 
   startBackgroundTrack() {
+    this.selected=true
     this.backgroundGeolocation.start();
 
     let _base = this;
@@ -210,6 +212,7 @@ export class RecordmilagePage {
 
   //stop tracking .....
   stopBackgroundTrack() {
+    this.selected=false;
     this.navCtrl.push('SavemilagePage',
       {
         endtime: this.time,
@@ -292,7 +295,7 @@ export class RecordmilagePage {
         this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
           () => this.islocation = true,
 
-          error => alert('Error requesting location permissions' + JSON.stringify(error))
+          error => console.log(error)
         );
       }
 

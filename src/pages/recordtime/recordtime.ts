@@ -43,6 +43,7 @@ export class RecordtimePage {
   public record: any;
 
   public userId: any;
+  selected: boolean;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -61,33 +62,7 @@ export class RecordtimePage {
       this.isnetwork = value;
     });
 
-    //Read tag ....
-    // this.subscriptions.push(this.nfc.addNdefListener()
-    // .subscribe(data => {
-    //   if (this.readingTag) {
-    //     let tagid= data.tag.id;
-    //     // let parsedid = this.nfc.bytesToString(tagid);
-    //     let payload = data.tag.ndefMessage[0].payload;
-    //     let tagContent = this.nfc.bytesToString(payload).substring(3);
-    //     this.readingTag = true;
-
-    //     var s = '';
-    //     tagid.forEach(function(byte) {
-    //       s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
-    //     });
-    //     console.log("tag data", tagContent);
-    //     console.log("whole data", data.tag);
-    //     console.log("tag id", s);
-    //     this.tapData = s.substring(0, s.length - 1);
-    //     if(this.tapData){
-    //     }
-    //     return s.substring(0, s.length - 1);
-
-    //     } 
-    //   },
-    //   err => {
-    //   })
-    // );
+   
   }
   saveTime() {
     this.navCtrl.push('SaveTimePage');
@@ -101,59 +76,7 @@ export class RecordtimePage {
     }, 1000);
   }
 
-  //Verify user's NFC tag...
-  // verifytag(){
-  //   let _base= this;
-  //   if(this.isnetwork == "Offline")
-  //   {
-  //     let showtoast = this.toast.create({
-  //       message: "Please check your internet connection and try again",
-  //       duration: 60000,
-  //       position: "bottom",
-  //       showCloseButton: true,
-  //       closeButtonText: "Ok"
-  //     })
-  //     showtoast.present();
-  //     return;
-  //   }
-  //   else if(!this.tapData){
-  //     let showtoast = this.toast.create({
-  //       message: "Please approach your nfc device to verify",
-  //       duration: 60000,
-  //       position: "bottom",
-  //       showCloseButton: true,
-  //       closeButtonText: "Ok"
-  //     })
-  //     showtoast.present();
-  //     return;
-  //   }
-  //   let loader = this.loading.create({
-  //     content:"Please wait..."
-  //   });
-  //   loader.present();
-  //   let data = {
-  //     userid:this.userId,
-  //     nfcId:this.tapData
-  //   } 
-  //   this.nfctagpro.verifyDevice(data).then(function(success:any){
-  //     console.log(success);
-  //     loader.dismiss();
-  //     _base.deviceVerify = true;
-  //     _base.presentAlert();
-  //   },function(err){
-  //     console.log(err);
-  //     loader.dismiss();
-  //     alert("Your device is not paired");
-  //   })
-  // }
-  // presentAlert() {
-  //   let alert = this.alert.create({
-  //     title: 'Confirmation',
-  //     subTitle: 'Verified',
-  //     buttons: ['OK']
-  //   });
-  //   alert.present();
-  // }
+  
 
   ionViewDidEnter(){
     console.log("didenter=----------------->>>>>>>");
@@ -161,7 +84,9 @@ export class RecordtimePage {
   //Start record time...
 
   start() {
+    this.selected=true;
     let _base = this;
+
     if (this.isnetwork == "Offline") {
       let showtoast = this.toast.create({
         message: "Please check your internet connection and try again",
@@ -233,6 +158,7 @@ export class RecordtimePage {
 
   //Stop clock...
   stop() {
+    this.selected=false;
     if (!this.time || !this.tapData || !this.record) {
       let showtoast = this.toast.create({
         message: "Please start ",

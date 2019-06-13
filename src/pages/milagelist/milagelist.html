@@ -22,19 +22,21 @@
 
     <div class="milageList" *ngFor = "let list of milagelist">
         <ion-card >  
-            <ion-card-content>
+            <ion-card-content (click)="createPdf()">
                 <div >
                   <p><strong>Title:</strong>{{list.title}}</p>
                   <p><strong>Start Location:</strong>{{list.startLocation}}</p>
                   <p><strong>End Location:</strong>{{list.endLocation}}</p>
                   <p><strong>Milage:</strong>{{list.milage}}</p>
                   </div>
+
+                  <button (click)="downloadPdf()">download</button>
             </ion-card-content>
           
           </ion-card>
     </div>
  
-
+<!-- <img src="../../assets/images/logo_before.png" alt=""> -->
 <!-- 
   <ion-list>
     <div *ngFor = "let list of milagelist">

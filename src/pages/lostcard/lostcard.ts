@@ -14,8 +14,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'lostcard.html',
 })
 export class LostcardPage {
+  public lostinformation:any=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) 
+  {
+    this.lostinformation = navParams.get("lostinfo");
+    console.log(this.lostinformation);
   }
   back() {
     this.navCtrl.pop();

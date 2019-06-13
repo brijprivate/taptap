@@ -91,37 +91,6 @@ export class HomePage {
       this.getnotifications();
     }
 
-    //Read tag ....
-    // this.subscriptions.push(this.nfc.addNdefListener()
-    //   .subscribe(data => {
-    //     if (this.readingTag) {
-    //       let tagid = data.tag.id;
-    //       // let parsedid = this.nfc.bytesToString(tagid);
-    //       let payload = data.tag.ndefMessage[0].payload;
-    //       let tagContent = this.nfc.bytesToString(payload).substring(3);
-    //       this.readingTag = true;
-
-    //       var s = '';
-    //       tagid.forEach(function (byte) {
-    //         s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
-    //       });
-
-    //       console.log("tag data", tagContent);
-    //       console.log("whole data", data.tag);
-    //       console.log("tag id", s);
-    //       this.tapData = s.substring(0, s.length - 1);
-    //       if (this.tapData) {
-
-    //       }
-    //       return s.substring(0, s.length - 1);
-
-    //     }
-    //   },
-    //     err => {
-    //     })
-    // );
-
-
   }
 
   ionViewDidEnter() {
@@ -177,8 +146,6 @@ export class HomePage {
 
       }
       
-
-
       label.width("100%");
       label.height("100%");
       label.adjustFontSize(true);
@@ -186,8 +153,6 @@ export class HomePage {
       label.hAlign("center");
       label.vAlign("middle");
       _base.chart.legend(false);
-
-
 
       // set the label as the center content
       _base.chart.center().content(label);

@@ -66,9 +66,8 @@
                 <ion-item>
                     <ion-label style="color:#de4963;" (click)="gotodevice(device)">Lost or stolen</ion-label>
                     <ion-toggle [(ngModel)]="lost" *ngIf="device.is_lost==false" (ionChange)="notify(device._id)"></ion-toggle>
-                    <ion-toggle [(ngModel)]="islost" *ngIf="device.is_lost==true" (ionChange)="notify(device._id)"></ion-toggle>
+                    <ion-toggle [(ngModel)]="islost" *ngIf="device.is_lost==true" (ionChange)="notifyy(device._id)"></ion-toggle>
                   </ion-item>
-             
             </div>
           </div>
   </div>

@@ -129,26 +129,7 @@ presentPrompt(nfcid) {
 
   delete(nfcid) {
     this.navCtrl.push('AnimatetapPage',{key:"delete"})
-    // let alert = this.alert.create({
-    //   title: 'Are you sure want to delete',
-     
-    //   buttons: [
-    //     {
-    //       text: 'No',
-    //       role: 'cancel',
-    //       handler: data => {
-    //         console.log('Cancel clicked');
-    //       }
-    //     },
-    //     {
-    //       text: 'Yes',
-    //       handler: data => {
-    //           this.deleteDevice(nfcid);
-    //       }
-    //     }
-    //   ]
-    // });
-    // alert.present();
+   
   }
 
   deleteDevice(nfcid){
@@ -168,6 +149,22 @@ presentPrompt(nfcid) {
       deviceId:id,
       is_lost:this.lost
     }
+    console.log(this.lost);
+    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+      console.log(success);
+      _base.getpairedDevice();
+    },function(err){
+      console.log(err);
+    })
+  }
+
+  notifyy(id){
+    let _base = this;
+    let data = {
+      deviceId:id,
+      is_lost:this.islost
+    }
+    console.log(this.islost);
     this.nfctagProvider.updateDeviceName(data).then(function(success:any){
       console.log(success);
       _base.getpairedDevice();
