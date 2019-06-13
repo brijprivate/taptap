@@ -50,4 +50,7 @@ export class SelectdatePage {
     this.edate = new Date().toISOString();
     console.log(this.edate);
   }
+  back(){
+    this.navCtrl.pop()
+  }
 }

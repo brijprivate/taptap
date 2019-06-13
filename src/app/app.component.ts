@@ -16,6 +16,7 @@ import { platformBrowser } from '@angular/platform-browser';
 declare var window;
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { generate } from 'rxjs/observable/generate';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,6 +36,7 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private network: Network,
+    private androidPermissions: AndroidPermissions,
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
     private deeplinks: Deeplinks,
@@ -175,7 +177,21 @@ export class MyApp {
   }
 
   initializeApp() {
+    let _base = this
     this.platform.ready().then(() => {
+
+      _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS).then(
+        function (result) {
+          console.log('Has permission?', result.hasPermission)
+          if (!result.hasPermission) {
+            _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS)
+          }
+        },
+        function (err) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS)
+        });
+
+
 
       console.log("initialized------------------------>>>>>>>>>>>>>>");
       const config: BackgroundGeolocationConfig = {

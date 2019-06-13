@@ -92,4 +92,7 @@ export class DevicededetailPage {
       console.log(err);
     })
   }
+  back(){
+    this.navCtrl.pop();
+  }
 }

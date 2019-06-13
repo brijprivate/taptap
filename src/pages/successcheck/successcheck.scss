@@ -1,0 +1,111 @@
+page-successcheck {
+    .head {
+        height: 14vh;
+        background: #6354cb;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px !important;
+            color: #fff !important;
+            display: inline-block;
+            vertical-align: middle;
+
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 14px;
+            ion-icon.icon.icon-md.ion-md-arrow-round-back {
+                color: gray !important;
+            }
+        }   
+             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
+            margin-right: 7px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            // margin-top: 12px;
+            float:right;
+        }
+        ion-icon.icon.icon-md {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #222;
+            vertical-align: middle;
+        }
+    }
+    .mdl i.fa.fa-chevron-left {
+        margin-right: 10px;
+        font-size: 18px;
+        color: #fff;
+        vertical-align: middle;
+        margin-left: 1em;
+    }
+    .svgAnimated {
+        text-align: center;
+        padding-top: 8em;
+    }
+    .svgAnimated h2 {
+        margin-top: 30px;
+        font-size: 19px;
+    }
+    h2.device {
+        margin: 0 !important;
+        color: #797373;
+        font-size: 18px !important;
+    }
+// animated svg
+      .checkmark {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: block;
+        margin: auto;
+        stroke-width: 2;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        box-shadow: inset 0px 0px 0px #7ac142;
+        animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+      }
+      
+      .checkmark__circle {
+        stroke-dasharray: 166;
+        stroke-dashoffset: 166;
+        stroke-width: 2;
+        stroke-miterlimit: 10;
+        stroke: #7ac142;
+        fill: none;
+        animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+      }
+      
+      .checkmark__check {
+        transform-origin: 50% 50%;
+        stroke-dasharray: 48;
+        stroke-dashoffset: 48;
+        animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+      }
+      
+      @keyframes stroke {
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes scale {
+        0%, 100% {
+          transform: none;
+        }
+        50% {
+          transform: scale3d(1.1, 1.1, 1);
+        }
+      }
+      @keyframes fill {
+        100% {
+          box-shadow: inset 0px 0px 0px 30px #7ac142;
+        }
+      }
+   // animated svg   
+      .scroll-content {
+        padding: 0 !important;
+    } 
+}

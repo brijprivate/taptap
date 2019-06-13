@@ -180,4 +180,7 @@ export class RecordtimePage {
       recordtype: this.record
     })
   }
+  back(){
+    this.navCtrl.pop()
+  }
 }

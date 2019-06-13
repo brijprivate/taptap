@@ -73,7 +73,8 @@
     "phonegap-nfc": "^1.0.3",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.29"
+    "zone.js": "0.8.29",
+    "cordova-plugin-android-permissions": "~1.0.0"
   },
   "devDependencies": {
     "@angular/cli": "^8.0.0",
@@ -143,7 +144,8 @@
       },
       "cordova-plugin-request-location-accuracy": {
         "PLAY_SERVICES_LOCATION_VERSION": "16.+"
-      }
+      },
+      "cordova-plugin-android-permissions": {}
     },
     "platforms": [
       "android"

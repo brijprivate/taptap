@@ -330,4 +330,7 @@ return path;
       console.log(err);
     })
   }
+  back(){
+    this.navCtrl.pop()
+  }
 }

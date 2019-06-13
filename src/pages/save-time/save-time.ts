@@ -133,4 +133,7 @@ export class SaveTimePage {
     });
     alert.present();
   }
+  back(){
+    this.navCtrl.pop()
+  }
 }
