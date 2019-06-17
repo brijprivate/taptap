@@ -31,7 +31,7 @@
   <p class="type">Record type</p>
   <div padding>
     <ion-segment [(ngModel)]="record" class="typeRecord">
-      <ion-segment-button value="personal">
+      <ion-segment-button value="personal" (ionSelect)="enableLocation()">
         Personal
       </ion-segment-button>
       <ion-segment-button value="business">
@@ -42,9 +42,15 @@
   <hr class="margino">
   <div class="recordContent">
     <p class="typea">Start Location</p>
-    <p class="typerecord" *ngIf="checkp == true">{{currentPosition.locality}},{{currentPosition.thoroughfare}}</p>
+    <p class="typerecord" *ngIf="checkp == true">
+      {{currentPosition.countryName}},
+        {{currentPosition.administrativeArea}},
+        {{currentPosition.subAdministrativeArea}},
+        {{currentPosition.locality}},
+        {{currentPosition.postalCode}},
+        {{currentPosition.thoroughfare}}</p>
     <p class="typea">Timer</p>
-    <p class="typerecordtime">{{stime}}</p>
+    <p class="typerecordtime">{{stime | date:'hh:mm:ss'}}</p>
 
     <ion-grid class="kmhr">
       <ion-row>

@@ -43,6 +43,7 @@ export class ProfilePage {
   showtimesub: number;
   pretime: boolean=false;
   premilage: boolean=false;
+  interval:any;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
@@ -81,7 +82,7 @@ export class ProfilePage {
 chartfunction(){
   console.log('in the chart')
   let _base = this;
-  anychart.onDocumentReady(function () {
+  // anychart.onDocumentReady(function () {
     _base.chart = anychart.pie([
       
       { x: "Business_Milage", value: _base.tbmilage },
@@ -113,10 +114,13 @@ chartfunction(){
 
     // chart.title("Donut Chart: Label in the center");
     _base.chart.container("container1");
-    _base.chart.draw();
+  
+      console.log('printing chart')
+   _base.chart.draw();
+
    
   
-  });
+  // });
 }
   ionViewDidLeave(){
     this.chart.dispose();
@@ -125,29 +129,47 @@ chartfunction(){
 
 
   pairDevice() {
+    this.chart.dispose();
+    clearInterval(this.interval);
     this.navCtrl.push('PairdevicePage');
+
   }
   manageDevice() {
+    this.chart.dispose();
+    clearInterval(this.interval);
     this.navCtrl.push('ManagedevicePage');
+
   }
   recordMilage() {
+    this.chart.dispose();
+    clearInterval(this.interval);
     this.navCtrl.push('AnimatetapPage', { key: 'milage' });
+
+
   }
   recordTime() {
+    this.chart.dispose();
+    clearInterval(this.interval);
     this.navCtrl.push('AnimatetapPage', { key: 'time' });
+   
+
     // this.navCtrl.push('RecordtimePage');
   }
   editprofile() {
     this.navCtrl.push('EditprofilePage');
+
   }
   merchant() {
     this.navCtrl.push('MerchantPage');
+
   }
   category() {
     this.navCtrl.push('CategoryPage');
+
   }
   profileDetail() {
     this.navCtrl.push('ProfiledetailPage');
+
   }
 
   //Get paired devices...
@@ -205,6 +227,7 @@ chartfunction(){
   //go to profiledetails page....
   detail() {
     this.navCtrl.push('ProfiledetailPage');
+
   }
 
   getnotifications() {
@@ -247,20 +270,23 @@ chartfunction(){
 
 callchart(){
   var _base=this;
-
-  var x=setInterval(function(){
-    console.log('calling chart 00000000000000000000000');
-
+  console.log('calling chart function');
+var x=0;
+  _base.interval=setInterval(function(){
+    x=x+1;
+    console.log(x,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     if(_base.pretime && _base.premilage){
+      clearInterval(_base.interval);
+
       _base.chartfunction();
-  console.log('call chart llllllllllllllllllllllllllllllllllllllllllllllllll');
-  clearInterval(x);
+
+  console.log('call chart llll');
   _base.premilage=false;
   _base.pretime=false;
   
 }
 
-  },1000)
+  },50)
 }
 
   //get time data...

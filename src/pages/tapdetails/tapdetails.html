@@ -520,9 +520,10 @@
       <div class="imgss event">
 
         <ion-slides pager loop id="myImg">
-          <ion-slide (click)="showfull('assets/images/event.jpeg')">
+          <ion-slide (click)="showfull(eventdata.fashionId.image)">
             <div class="ss"></div>
-            <img src="assets/images/event.jpeg">
+            <img *ngIf="!eventdata.fashionId.image" src="https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image-300x225.png">
+            <img *ngIf="eventdata.fashionId.image" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
           <ion-slide (click)="showfull('assets/images/man.jpeg')">
             <div class="ss"></div>

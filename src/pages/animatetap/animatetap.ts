@@ -132,10 +132,10 @@ export class AnimatetapPage {
       }
       // _base.deviceVerify = true;
       else if(_base.keyvalue == 'milage'){
-        _base.navCtrl.pop();
+        // _base.navCtrl.pop();
         _base.navCtrl.push("RecordmilagePage",{tapdata:_base.tapData});
       }else if(_base.keyvalue == 'time'){
-        _base.navCtrl.pop();
+        // _base.navCtrl.pop();
         _base.navCtrl.push("RecordtimePage",{tapdata:_base.tapData});
       }else if(_base.keyvalue == 'delete'){
         _base.delete(_base.tapData);
