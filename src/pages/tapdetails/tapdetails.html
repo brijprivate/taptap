@@ -44,7 +44,7 @@
       </div>
       <div class="imgss event">
 
-        <ion-slides pager loop id="myImg">
+        <ion-slides pager  id="myImg">
           <ion-slide (click)="showfull('assets/images/event.jpeg')">
             <div class="ss"></div>
             <img src="assets/images/event.jpeg">
@@ -261,7 +261,7 @@
       </div>
       <div class="imgss event">
 
-        <ion-slides pager loop id="myImg">
+        <ion-slides pager  id="myImg">
           <ion-slide (click)="showfull('assets/images/event.jpeg')">
             <div class="ss"></div>
             <img src="assets/images/event.jpeg">
@@ -352,7 +352,7 @@
       </div>
       <div class="imgss event">
 
-        <ion-slides pager loop id="myImg">
+        <ion-slides pager  id="myImg">
           <ion-slide (click)="showfull('assets/images/event.jpeg')">
             <div class="ss"></div>
             <img src="assets/images/event.jpeg">
@@ -428,7 +428,7 @@
       </div>
       <div class="imgss event">
 
-        <ion-slides pager loop id="myImg">
+        <ion-slides pager  id="myImg">
           <ion-slide (click)="showfull('assets/images/event.jpeg')">
             <div class="ss"></div>
             <img src="assets/images/event.jpeg">
@@ -515,25 +515,25 @@
             <ion-icon name="heart" (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)" item-right
               *ngIf="eventdata.is_favourite==true"></ion-icon>
           </div>
-        </div>
+        </div>  
       </div>
       <div class="imgss event">
 
-        <ion-slides pager loop id="myImg">
-          <ion-slide (click)="showfull(eventdata.fashionId.image)">
+        <ion-slides pager  id="myImg">
+          <ion-slide *ngIf="eventdata.fashionId.image"   >
             <div class="ss"></div>
-            <img *ngIf="!eventdata.fashionId.image" src="https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image-300x225.png">
-            <img *ngIf="eventdata.fashionId.image" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
+            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
-          <ion-slide (click)="showfull('assets/images/man.jpeg')">
-            <div class="ss"></div>
-            <img src="assets/images/man.jpeg">
-          </ion-slide>
-          <ion-slide (click)="showfull('assets/images/fashion.jpg')">
-            <div class="ss"></div>
-            <img src="assets/images/fashion.jpg">
 
-          </ion-slide>
+            <ion-slide *ngIf="!eventdata.fashionId.image" (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')"  >
+              <div class="ss"></div>
+                <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
+  
+            
+            </ion-slide>
+          
+         
+ 
 
         </ion-slides>
       </div>
@@ -619,7 +619,7 @@
       </div>
       <div class="imgss event">
 
-        <ion-slides pager loop id="myImg">
+        <ion-slides pager  id="myImg">
           <ion-slide (click)="showfull('assets/images/event.jpeg')">
             <div class="ss"></div>
             <img src="assets/images/event.jpeg">

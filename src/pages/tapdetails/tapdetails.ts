@@ -27,8 +27,6 @@ export class TapdetailsPage {
   isfav: boolean = false;
   public linkId: any;
   xx: any;
-  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
-
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -173,8 +171,7 @@ export class TapdetailsPage {
   showfull(src) {
     console.log(src)
     var modal = document.getElementById("myModal");
-    // var img = document.getElementById("myImg");
-    var img = this.API_URL+"/file/getImage?imageId="+src;
+    var img = document.getElementById("myImg");
 
     modal.style.display = "flex";
     this.xx = src;
