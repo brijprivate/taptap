@@ -34,8 +34,8 @@ export class RecordtimePage {
   public started = null
   public running = false
   public blankTime = "00:00.00"
-  public time = "00:00:00"
-  public showTime = ""
+  public time = new Date().getTime();
+  public showTime:any;
   public showtimesub;
   public tapData: any;
   public isnetwork = "Online";
@@ -45,6 +45,8 @@ export class RecordtimePage {
   public userId: any;
   selected: boolean;
 
+  startTime:any;
+  endTime:any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfc: NFC,
@@ -111,6 +113,7 @@ export class RecordtimePage {
       return;
     }
 
+    this.startTime = new Date().getTime();
     if (this.running) return;
     if (this.timeBegan === null) {
       this.reset();
@@ -130,34 +133,46 @@ export class RecordtimePage {
     this.stoppedDuration = 0;
     this.timeBegan = null;
     this.timeStopped = null;
-    this.time = this.blankTime;
+    // this.time = this.blankTime;
   }
 
-  zeroPrefix(num, digit) {
-    let zero = '';
-    for (let i = 0; i < digit; i++) {
-      zero += '0';
-    }
-    return (zero + num).slice(-digit);
-  }
+  // zeroPrefix(num, digit) {
+  //   let zero = '';
+  //   for (let i = 0; i < digit; i++) {
+  //     zero += '0';
+  //   }
+  //   return (zero + num).slice(-digit);
+  // }
 
   clockRunning() {
-    let currentTime: any = new Date()
-    let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
-    let hour = timeElapsed.getUTCHours()
-    let min = timeElapsed.getUTCMinutes()
-    let sec = timeElapsed.getUTCSeconds()
-    let ms = timeElapsed.getUTCMilliseconds();
-    this.time =
-      this.zeroPrefix(hour, 2) + ":" +
-      this.zeroPrefix(min, 2) + ":" +
-      this.zeroPrefix(sec, 2)
+    // let currentTime: any = new Date().getTime();
+    // let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
+    // let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
 
+    // console.log(currentTime);
+    // let hour = currentTime.getUTCHours()
+    // let min = currentTime.getUTCMinutes()
+    // let sec = currentTime.getUTCSeconds()
+    // let ms = currentTime.getUTCMilliseconds();
+
+    // let hour = currentTime.getTime()
+    // let min = currentTime.getUTCMinutes()
+    // let sec = currentTime.getUTCSeconds()
+    // let ms = currentTime.getUTCMilliseconds();
+
+    // this.time =
+      // this.zeroPrefix(hour, 2) + ":" +
+      // this.zeroPrefix(min, 2) + ":" +
+      // this.zeroPrefix(sec, 2)
+
+      this.time = new Date().getTime();
+      
     console.log(this.time)
   };
 
   //Stop clock...
   stop() {
+    this.endTime = new Date().getTime();
     this.selected=false;
     if (!this.time || !this.tapData || !this.record) {
       let showtoast = this.toast.create({
@@ -175,7 +190,8 @@ export class RecordtimePage {
     clearInterval(this.started);
     console.log(this.time);
     this.navCtrl.push('SaveTimePage', {
-      endtime: this.time,
+      endtime: this.endTime,
+      starttime:this.startTime,
       nfcid: this.tapData,
       recordtype: this.record
     })

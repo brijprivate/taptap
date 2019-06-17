@@ -24,6 +24,7 @@ export class SaveTimePage {
   public description:any;
   public isnetwork= "Online";
   public userId:any;
+  public startTime:any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -37,6 +38,7 @@ export class SaveTimePage {
       this.nfcid = this.navParams.get("nfcid");
       this.endtime = this.navParams.get("endtime");
       this.recordtype = this.navParams.get("recordtype");
+      this.startTime = this.navParams.get("starttime");
       console.log(this.endtime);
       this.presentDate = Date.now();
 
@@ -100,7 +102,7 @@ export class SaveTimePage {
       date:this.presentDate,
       title:this.title,
       description:this.description,
-      startTime:"00:00:00",
+      startTime:this.startTime,
       endTime:this.endtime,
       userId:this.userId,
       nfc_id:this.nfcid

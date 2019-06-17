@@ -18,7 +18,7 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
   templateUrl: 'pairdevice.html',
 })
 export class PairdevicePage {
-
+  page='pair'
   public userId: any;
   public paircode: any;
   public tapData: any;
@@ -64,7 +64,11 @@ export class PairdevicePage {
           console.log("tag id", s);
           this.tapData = s.substring(0, s.length - 1);
           if(this.tapData){
-            this.presentPrompt()
+            if(this.page=='pair'){
+              console.log(this.page)
+              this.presentPrompt()
+            }
+            
           }
           return s.substring(0, s.length - 1);
 
@@ -130,6 +134,7 @@ export class PairdevicePage {
       if (success.error) {
         alert(success.message)
       } else {
+        // _base.navCtrl.pop();
         _base.navCtrl.setRoot('ProfilePage');
       }
     }, function (err) {
@@ -147,6 +152,8 @@ export class PairdevicePage {
 
 
   presentPrompt() {
+    console.log('in promptwa 11111111111111111111111111111111111111');
+    console.warn('lol')
     let alert = this.alert.create({
       title: 'Provide Pairing Code',
       inputs: [

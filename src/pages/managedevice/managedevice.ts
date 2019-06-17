@@ -39,6 +39,8 @@ export class ManagedevicePage {
 
   }
   ionViewDidEnter(){
+    this. islost=true;
+
     console.log("did enter------>>>>");
     this.userId = localStorage.getItem("userId");
     if(this.userId){

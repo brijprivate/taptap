@@ -101,7 +101,9 @@ export class TapmodalPage {
       if(success.message == 'DEVICE LOST INFO'){
         _base.navCtrl.setRoot('LostcardPage',{lostinfo:success.lostinfo});
       }else{
-        _base.navCtrl.push('TapdetailsPage',{itemdetails:success.result});
+        // _base.navCtrl.push('TapdetailsPage',{itemdetails:success.result});
+        _base.navCtrl.push('TapdetailsPage',success.result);
+
 
       }
     },function(err){

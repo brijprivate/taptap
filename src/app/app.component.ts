@@ -17,6 +17,9 @@ declare var window;
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { generate } from 'rxjs/observable/generate';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
+
+declare let cordova: any;
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +45,8 @@ export class MyApp {
     private deeplinks: Deeplinks,
     private loginservice: LoginsignupProvider,
     public app: App,
-    private backgroundGeolocation: BackgroundGeolocation) {
+    private backgroundGeolocation: BackgroundGeolocation,
+    private locationAccuracy: LocationAccuracy) {
     let _base = this;
     // platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.
@@ -177,6 +181,8 @@ export class MyApp {
   }
 
   initializeApp() {
+
+
     let _base = this
     this.platform.ready().then(() => {
 
@@ -188,7 +194,8 @@ export class MyApp {
           }
         },
         function (err) {
-          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS)
+          _base.androidPermissions.requestPermissions([_base.androidPermissions.PERMISSION.READ_CONTACTS
+          ])
         });
 
 

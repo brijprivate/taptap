@@ -41,7 +41,7 @@ export class RecordmilagePage {
   public started = null
   public running = false
   public blankTime = "00:00.00"
-  public time = "00:00:00"
+  public time=new Date().getTime();
 
   public tapData: any;
   public isnetwork = "Online";
@@ -62,6 +62,8 @@ export class RecordmilagePage {
   sdistance: any;
   stime: any;
   selected: boolean;
+  startTime: number;
+  endTime: number;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -163,8 +165,8 @@ export class RecordmilagePage {
       return;
     }
 
-    else if (this.running) return;
-
+    this.startTime = new Date().getTime();
+    if (this.running) return;
     else if (this.timeBegan === null) {
       this.reset();
       this.timeBegan = new Date();
@@ -184,38 +186,41 @@ export class RecordmilagePage {
     this.stoppedDuration = 0;
     this.timeBegan = null;
     this.timeStopped = null;
-    this.time = this.blankTime;
+    // this.time = this.blankTime;
   }
 
-  zeroPrefix(num, digit) {
-    let zero = '';
-    for (let i = 0; i < digit; i++) {
-      zero += '0';
-    }
-    return (zero + num).slice(-digit);
-  }
+  // zeroPrefix(num, digit) {
+  //   let zero = '';
+  //   for (let i = 0; i < digit; i++) {
+  //     zero += '0';
+  //   }
+  //   return (zero + num).slice(-digit);
+  // }
 
   clockRunning() {
-    let currentTime: any = new Date()
-    let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
-    let hour = timeElapsed.getUTCHours()
-    let min = timeElapsed.getUTCMinutes()
-    let sec = timeElapsed.getUTCSeconds()
-    let ms = timeElapsed.getUTCMilliseconds();
-    this.time =
-      this.zeroPrefix(hour, 2) + ":" +
-      this.zeroPrefix(min, 2) + ":" +
-      this.zeroPrefix(sec, 2) + "." +
-      this.zeroPrefix(ms, 2);
+    let currentTime: any = new Date();
+    this.time = new Date().getTime();
+    // let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
+    // let hour = timeElapsed.getUTCHours()
+    // let min = timeElapsed.getUTCMinutes()
+    // let sec = timeElapsed.getUTCSeconds()
+    // let ms = timeElapsed.getUTCMilliseconds();
+    // this.time =
+    //   this.zeroPrefix(hour, 2) + ":" +
+    //   this.zeroPrefix(min, 2) + ":" +
+    //   this.zeroPrefix(sec, 2)
+      // this.zeroPrefix(ms, 2);
   }
 
 
   //stop tracking .....
   stopBackgroundTrack() {
+    this.endTime = new Date().getTime();
     this.selected=false;
     this.navCtrl.push('SavemilagePage',
       {
-        endtime: this.time,
+        endtime: this.endTime,
+        starttime:this.startTime,
         nfcid: this.tapData,
         recordtype: this.record,
         distance: this.totaldis,
@@ -295,7 +300,7 @@ export class RecordmilagePage {
         this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
           () => this.islocation = true,
 
-          error => console.log(error)
+          error => this.islocation = true
         );
       }
 

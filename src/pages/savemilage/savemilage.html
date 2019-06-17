@@ -58,7 +58,12 @@
             </g>
           </svg>
         </span>
-        {{currentpos.locality}},{{currentpos.thoroughfare}}
+        {{currentpos.countryName}},
+        {{currentpos.administrativeArea}},
+        {{currentpos.subAdministrativeArea}},
+        {{currentpos.locality}},
+        {{currentpos.postalCode}},
+        {{currentpos.thoroughfare}}
       </p>
       <p class="typeo">
         <span class="online">
@@ -72,18 +77,23 @@
             </g>
           </svg>
         </span>
-        {{endLocation.locality}},{{endLocation.thoroughfare}}
+        {{endLocation.countryName}},
+        {{endLocation.administrativeArea}},
+        {{endLocation.subAdministrativeArea}},
+        {{endLocation.locality}},
+        {{endLocation.postalCode}},
+        {{endLocation.thoroughfare}}
       </p>
     </div>
     <hr class="mTop">
     <ion-grid>
       <ion-row>
         <ion-col col-6>
-          <p class="typeRe">00:00:00</p>
+          <p class="typeRe">{{startTime | date:'hh:mm:ss'}}</p>
           <p class="typen">Start time</p>
         </ion-col>
         <ion-col col-6>
-          <p class="typeRe">{{endtime}}</p>
+          <p class="typeRe">{{endtime | date:'hh:mm:ss'}}</p>
           <p class="typen">End time</p>
         </ion-col>
       </ion-row>
