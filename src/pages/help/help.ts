@@ -15,11 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HelpPage {
   diseases = [
-    { title: "Type 1 Diabetes", description: "Type 1 diabetes is an autoimmune disease in which the body’s immune system attacks and destroys the beta cells in the pancreas that make insulin." },
-    { title: "Multiple Sclerosis", description: "Multiple sclerosis (MS) is an autoimmune disease in which the body's immune system mistakenly attacks myelin, the fatty substance that surrounds and protects the nerve fibers in the central nervous system." },
-    { title: "Crohn's & Colitis", description: "Crohn's disease and ulcerative colitis (UC), both also known as inflammatory bowel diseases (IBD), are autoimmune diseases in which the body's immune system attacks the intestines." },
-    { title: "Lupus", description: "Systemic lupus erythematosus (lupus) is a chronic, systemic autoimmune disease which can damage any part of the body, including the heart, joints, skin, lungs, blood vessels, liver, kidneys and nervous system." },
-    { title: "Rheumatoid Arthritis", description: "Rheumatoid arthritis (RA) is an autoimmune disease in which the body's immune system mistakenly begins to attack its own tissues, primarily the synovium, the membrane that lines the joints." }
+    { title: "What is TapTap?", description: "A mobile application that allows users to tap items with their NFC enabled devices to access information about products and services." },
+    { title: "What is NFC?", description: "Near field communication (NFC) is a short-distance wireless data transmission between two devices, like Bluetooth." },
+    { title: "How do I know if my phone is compatible with TapTap?", description: "Android: 4 out of 5 smart android phones are NFC enabled. Almost all android smart devices from 2011 are NFC enabled. Apple: iphone 7 and above running at least iOS 11 are NFC enabled. If in doubt, go to the play store or app store, search for TapTap and it will let users know whether the smart service is compactible." },
+    { title: "What is TapTap Device?", description: "This is a special NFC encoded device which is used to activate ‘Record Time’ and ‘Record Mileage’ in the TapTap app. It can also be used as a business contact card and even a form of identity in TapTap enabled shops. There are currently two TapTap devices available; TapTap gold Keyring and TapTap Card." },
+    { title: "What is TapTap Pairing Code?", description: "A TapTap device comes with a pairing code which is used to activate the TapTap device within the app. After the TapTap device is paired, it becomes a form of a passport which can authenticate users anywhere there is a TapTap admin. Example: Hotels, car parks, clubs, etc." }
   ];
   public shownGroup = null;
 
@@ -32,7 +32,8 @@ export class HelpPage {
   toggleGroup(group) {
     if (this.isGroupShown(group)) {
       this.shownGroup = null;
-    } else {
+    } 
+    else {
       this.shownGroup = group;
     }
   };
