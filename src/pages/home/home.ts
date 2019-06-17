@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild , Pipe, PipeTransform} from '@angular/core';
 import { NavController, Slides, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
@@ -54,6 +54,7 @@ export class HomePage {
   lineChart: any;
 
   public chart;
+  public time = new Date();
 
   //NFC read related ....
   readingTag: boolean = false;
@@ -77,6 +78,8 @@ export class HomePage {
     public alert: AlertController,
     // private diagnostic: Diagnostic
   ) {
+    var x = new Date().toTimeString().slice(0,8);
+    console.log(x);
     let cdate = new Date().toISOString();
     console.log(cdate);
     this.userId = localStorage.getItem("userId")

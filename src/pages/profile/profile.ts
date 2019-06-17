@@ -131,7 +131,7 @@ chartfunction(){
   pairDevice() {
     this.chart.dispose();
     clearInterval(this.interval);
-    this.navCtrl.push('PairdevicePage');
+    this.navCtrl.push('PairdevicePage',{x:'pair'});
 
   }
   manageDevice() {
@@ -151,7 +151,6 @@ chartfunction(){
     this.chart.dispose();
     clearInterval(this.interval);
     this.navCtrl.push('AnimatetapPage', { key: 'time' });
-   
 
     // this.navCtrl.push('RecordtimePage');
   }

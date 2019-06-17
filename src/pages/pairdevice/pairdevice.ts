@@ -18,12 +18,13 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
   templateUrl: 'pairdevice.html',
 })
 export class PairdevicePage {
-  page='pair'
+  page='';
   public userId: any;
   public paircode: any;
   public tapData: any;
   public isnetwork = "Online";
 
+  alertcs:any;
   readingTag: boolean = true;
   writingTag: boolean = false;
   isWriting: boolean = false;
@@ -45,6 +46,8 @@ export class PairdevicePage {
       this.isnetwork = value;
     });
 
+    this.page=this.navParams.get('x');
+    console.log(this.page)
     this.userId = localStorage.getItem("userId");
     this.subscriptions.push(this.nfc.addNdefListener()
       .subscribe(data => {
@@ -64,10 +67,8 @@ export class PairdevicePage {
           console.log("tag id", s);
           this.tapData = s.substring(0, s.length - 1);
           if(this.tapData){
-            if(this.page=='pair'){
-              console.log(this.page)
-              this.presentPrompt()
-            }
+            this.presentPrompt()
+            
             
           }
           return s.substring(0, s.length - 1);
@@ -118,7 +119,7 @@ export class PairdevicePage {
       showtoast.present();
       return;
     }
-
+    
     let loader = this.loading.create({
       content: "Please wait..."
     });
@@ -149,37 +150,44 @@ export class PairdevicePage {
     this.navCtrl.pop()
   }
 
-
+ionViewDidLeave(){
+this.alertcs.dismiss();
+}
 
   presentPrompt() {
-    console.log('in promptwa 11111111111111111111111111111111111111');
-    console.warn('lol')
-    let alert = this.alert.create({
-      title: 'Provide Pairing Code',
-      inputs: [
-        {
-          
-          placeholder: 'Pairing code'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            console.log(data[0]);
-            this.paircode=data[0]
-            this.pairDevice();
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
+   
+
+
+    // if(this.page=='page'){
+      console.log('in promptwa 11111111111111111111111111111111111111');
+      this.alertcs = this.alert.create({
+       title: 'Provide Pairing Code',
+       inputs: [
+         {
+           
+           placeholder: 'Pairing code'
+         },
+       ],
+       buttons: [
+         {
+           text: 'Cancel',
+           role: 'cancel',
+           handler: data => {
+             console.log('Cancel clicked');
+           }
+         },
+         {
+           text: 'Save',
+           handler: data => {
+             console.log(data[0]);
+             this.paircode=data[0]
+             this.pairDevice();
+           }
+         }
+       ]
+     });
+     this.alertcs.present();
+    }
+  //   this.page=''
+  // }
 }

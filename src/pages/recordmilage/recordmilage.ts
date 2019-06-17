@@ -62,8 +62,8 @@ export class RecordmilagePage {
   sdistance: any;
   stime: any;
   selected: boolean;
-  startTime: number;
-  endTime: number;
+  startTime: any;
+  endTime: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -165,7 +165,7 @@ export class RecordmilagePage {
       return;
     }
 
-    this.startTime = new Date().getTime();
+    this.startTime = new Date().toTimeString().slice(0,8);
     if (this.running) return;
     else if (this.timeBegan === null) {
       this.reset();
@@ -215,7 +215,7 @@ export class RecordmilagePage {
 
   //stop tracking .....
   stopBackgroundTrack() {
-    this.endTime = new Date().getTime();
+    this.endTime = new Date().toTimeString().slice(0,8);
     this.selected=false;
     this.navCtrl.push('SavemilagePage',
       {
