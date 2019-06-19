@@ -272,4 +272,29 @@ export class LoginsignupProvider {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+  // select  for pdf generation
+
+  selectdate(userid: String, url, sdate, edate) {
+    let _base = this;
+    console.log(_base.apiUrl + url + userid + '&startDate=' + sdate + '&endDate=' + edate);
+    return new Promise(function (resolve, reject) {
+      _base.http.get(_base.apiUrl + url + userid + '&startDate=' + sdate + '&endDate=' + edate)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
 }

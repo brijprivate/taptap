@@ -44,4 +44,18 @@ page-milagelist {
     ion-icon.icon.icon-md.ion-md-navigate.item-icon ,ion-icon.icon.icon-ios.ion-ios-navigate.item-icon {
         color: #cf96a0;
     }
+
+
+    .btn button {
+        border: 1px solid #222;
+        height: 40px;
+        width: 45%;
+        background: transparent;
+        border-radius: 5px;
+    }
+    
+    .btn {
+        text-align: center;
+        margin-top: 2em;
+    }
 }

@@ -157,6 +157,16 @@ ion-list.listView.list.list-md , ion-list.listView.list.list-ios {
       transform: scale3d(1, 1, 1);
     }
   }
-
+  i.fa.fa-chevron-left {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #fff;
+    vertical-align: middle;
+    padding: 5px;
+    position: absolute;
+    top: 6px;
+    left: 11px;
+    z-index: 999;
+}
 
 }

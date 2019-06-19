@@ -4,7 +4,7 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
- 
+
 import { File } from '@ionic-native/file';
 
 /**
@@ -20,56 +20,117 @@ import { File } from '@ionic-native/file';
   templateUrl: 'milagelist.html',
 })
 export class MilagelistPage {
-  public milagelist=[];
-  
+  public milagelist = [];
+
   letterObj = {
     to: 'Foster',
     from: 'Subham',
     text: 'This pdf make test'
   }
- 
-  pdfObj = null;
 
-  constructor(public navCtrl: NavController, 
+
+
+  pdfObj = null;
+  data: any;
+
+
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public loginsignpro:LoginsignupProvider,
-    private plt: Platform, 
-    private file: File)
-    {
-      this.getMilageList();
-    }
+    public loginsignpro: LoginsignupProvider,
+    private plt: Platform,
+    private file: File) {
+    this.getMilageList();
+    this.data = this.navParams.get('data');
+    console.log(this.data)
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MilagelistPage');
   }
 
-  getMilageList(){
+  getMilageList() {
     let _base = this;
-    this.loginsignpro.getmilage(localStorage.getItem("userId")).then(function(success:any){
+    this.loginsignpro.getmilage(localStorage.getItem("userId")).then(function (success: any) {
       console.log(success);
       _base.milagelist = success.result.records;
-    },function(err){
+    }, function (err) {
       console.log(err);
     })
-   
+
   }
 
+  buildTableBody(data, columns) {
+    var body = [];
+
+    body.push(columns);
+
+    data.forEach(function (row) {
+      var dataRow = [];
+
+      columns.forEach(function (column) {
+        dataRow.push(row[column]);
+      })
+
+      body.push(dataRow);
+    });
+
+    return body;
+  }
+
+  table(data, columns) {
+   
+    return {
+      layout: 'lightHorizontalLines',
+
+      table: {
+        headerRows: 1,
+        widths: ['*', '*', '*', '*'],
+        fontSize: 11,
+        body: this.buildTableBody(data, columns)
+      }
+    };
+  }
+formatdata(datee){
+  var today = datee;
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = 0 + dd;
+  }
+  if (mm < 10) {
+    mm = 0 + mm;
+  }
+  return   dd + '-' + mm + '-' + yyyy;
+
+
+}
+ 
   createPdf() {
+  
+    var title='';
+    var externalDataRetrievedFromServer = [];
+    if (this.data.data.business) {
+      externalDataRetrievedFromServer = this.data.data.business;
+      title='Business'
+    }
+    else  if(this.data.data.personal){
+      externalDataRetrievedFromServer = this.data.data.personal;
+      title="Personal"
+    }
+    else{
+      externalDataRetrievedFromServer = this.data.data;
+      title="Business & Personal"
+    }
+    console.log(externalDataRetrievedFromServer)
     var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth() + 1; 
 
-var yyyy = today.getFullYear();
-if (dd < 10) {
-  dd = 0 + dd;
-} 
-if (mm < 10) {
-  mm = 0 + mm;
-} 
- var todays = dd + '/' + mm + '/' + yyyy;
-
+    
 
     var docDefinition = {
+     
+      
       content: [
 
         {
@@ -77,35 +138,21 @@ if (mm < 10) {
           width: 35,
           height: 35
         },
-        { text: 'taptap', style: 'header' ,fontSize:13 },
+        { text: 'taptap', style: 'header', fontSize: 13 },
 
-        { text: todays, alignment: 'right', margin:[0,0,0,0],fontSize:13 },
+        { text: this.formatdata(today), alignment: 'right', margin: [0, 0, 0, 0], fontSize: 13 },
 
 
-        { text: 'Name', bold: true,fontSize:13 },
-         { text: 'Address 1',fontSize:11 },
-          { text: 'Address 2',fontSize:11 },
-           { text: 'QWERTY', fontSize:11},
-    
-        { text: todays+'-'+todays,style:'jj',fontSize: 13, margin: [10,10,10,10] },
+        { text: 'Brij', bold: true, fontSize: 13 },
+        { text: 'Durgapur', fontSize: 11 },
+        { text: 'India', fontSize: 11 },
+        { text: '713212', fontSize: 11 },
+        { text: 'UID: '+localStorage.getItem('uid'), bold: true, fontSize: 11,margin: [0, 5, 0, 0] },
+        { text:'Start Date:-'+this.data.date.start + ' & ' + 'End Date:-'+this.data.date.end, style: 'jj', fontSize: 11, margin: [0, 5, 0, 0],alignment: 'center'},
 
-        {
-          layout: 'lightHorizontalLines', // optional
-          table: {
-            // headers are automatically repeated if the table spans over multiple pages
-            // you can declare how many rows should be treated as headers
-            headerRows: 1,
-            widths: [ '*', 'auto', 100, '*' ],
-            fontSize: 13,
-            body: [
-              [ { text: 'S/n', bold: true },{ text: 'Address', bold: true },{ text: 'Name', bold: true },{ text: 'Status', bold: true } ],
-              [ '01', 'Value 2', 'Value 3', 'Value 4' ],
-              [ '1', 'Val 2', 'Val 3', 'Val 4' ],
-              [ '1', 'Val 2', 'Val 3', 'Val 4' ]
-    
-            ]
-          }
-        },
+        { text: title, bold: true, alignment: 'center',fontSize: 13,margin: [20, 10, 10, 10]},
+
+        this.table(externalDataRetrievedFromServer, ['title', 'recordType', 'endTime', 'startTime'] ),
         
       ],
       styles: {
@@ -118,13 +165,13 @@ if (mm < 10) {
           bold: true,
           margin: [0, 15, 0, 0]
         },
-        jj:{
+        jj: {
           fontSize: 14,
-          bold:true,
-          margin:[20,0 ,0 ,0]
+          bold: true,
+          margin: [20, 0, 0, 0]
         },
 
-        jjj:{
+        jjj: {
           fontSize: 14,
           'listStyle': 'none'
         },
@@ -138,12 +185,12 @@ if (mm < 10) {
     console.log("creating");
     this.pdfObj = pdfMake.createPdf(docDefinition);
   }
- 
+
   downloadPdf() {
     if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
- 
+
         // Save the PDF to the data Directory of our App
         this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
