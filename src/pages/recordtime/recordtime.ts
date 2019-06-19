@@ -34,7 +34,8 @@ export class RecordtimePage {
   public started = null
   public running = false
   public blankTime = "00:00.00"
-  public time = new Date().getTime();
+  // public time = new Date().getTime();
+  public time="00:00.00"
   public showTime:any;
   public showtimesub;
   public tapData: any;
@@ -135,39 +136,40 @@ export class RecordtimePage {
     this.stoppedDuration = 0;
     this.timeBegan = null;
     this.timeStopped = null;
-    // this.time = this.blankTime;
+    this.time = this.blankTime;
   }
 
-  // zeroPrefix(num, digit) {
-  //   let zero = '';
-  //   for (let i = 0; i < digit; i++) {
-  //     zero += '0';
-  //   }
-  //   return (zero + num).slice(-digit);
-  // }
+  zeroPrefix(num, digit) {
+    let zero = '';
+    for (let i = 0; i < digit; i++) {
+      zero += '0';
+    }
+    return (zero + num).slice(-digit);
+  }
 
   clockRunning() {
     // let currentTime: any = new Date().getTime();
+    let currentTime: any = new Date();
     // let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
-    // let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
+    let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
 
-    // console.log(currentTime);
-    // let hour = currentTime.getUTCHours()
-    // let min = currentTime.getUTCMinutes()
-    // let sec = currentTime.getUTCSeconds()
-    // let ms = currentTime.getUTCMilliseconds();
+    console.log(currentTime);
+    let hour = timeElapsed.getUTCHours()
+    let min = timeElapsed.getUTCMinutes()
+    let sec = timeElapsed.getUTCSeconds()
+    let ms = timeElapsed.getUTCMilliseconds();
 
     // let hour = currentTime.getTime()
     // let min = currentTime.getUTCMinutes()
     // let sec = currentTime.getUTCSeconds()
     // let ms = currentTime.getUTCMilliseconds();
 
-    // this.time =
-      // this.zeroPrefix(hour, 2) + ":" +
-      // this.zeroPrefix(min, 2) + ":" +
-      // this.zeroPrefix(sec, 2)
+    this.time =
+      this.zeroPrefix(hour, 2) + ":" +
+      this.zeroPrefix(min, 2) + ":" +
+      this.zeroPrefix(sec, 2)
 
-      this.time = new Date().getTime();
+      // this.time = new Date().getTime();
       
     console.log(this.time)
   };

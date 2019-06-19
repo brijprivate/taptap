@@ -41,7 +41,7 @@ export class RecordmilagePage {
   public started = null
   public running = false
   public blankTime = "00:00.00"
-  public time=new Date().getTime();
+  public time="00:00.00"
 
   public tapData: any;
   public isnetwork = "Online";
@@ -186,30 +186,30 @@ export class RecordmilagePage {
     this.stoppedDuration = 0;
     this.timeBegan = null;
     this.timeStopped = null;
-    // this.time = this.blankTime;
+    this.time = this.blankTime;
   }
 
-  // zeroPrefix(num, digit) {
-  //   let zero = '';
-  //   for (let i = 0; i < digit; i++) {
-  //     zero += '0';
-  //   }
-  //   return (zero + num).slice(-digit);
-  // }
+  zeroPrefix(num, digit) {
+    let zero = '';
+    for (let i = 0; i < digit; i++) {
+      zero += '0';
+    }
+    return (zero + num).slice(-digit);
+  }
 
   clockRunning() {
     let currentTime: any = new Date();
-    this.time = new Date().getTime();
-    // let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
-    // let hour = timeElapsed.getUTCHours()
-    // let min = timeElapsed.getUTCMinutes()
-    // let sec = timeElapsed.getUTCSeconds()
-    // let ms = timeElapsed.getUTCMilliseconds();
-    // this.time =
-    //   this.zeroPrefix(hour, 2) + ":" +
-    //   this.zeroPrefix(min, 2) + ":" +
-    //   this.zeroPrefix(sec, 2)
-      // this.zeroPrefix(ms, 2);
+    // this.time = new Date().getTime();
+    let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
+    let hour = timeElapsed.getUTCHours()
+    let min = timeElapsed.getUTCMinutes()
+    let sec = timeElapsed.getUTCSeconds()
+    let ms = timeElapsed.getUTCMilliseconds();
+    this.time =
+      this.zeroPrefix(hour, 2) + ":" +
+      this.zeroPrefix(min, 2) + ":" +
+      this.zeroPrefix(sec, 2)
+      this.zeroPrefix(ms, 2);
   }
 
 

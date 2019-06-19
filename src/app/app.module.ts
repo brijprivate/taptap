@@ -30,6 +30,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 // import { Diagnostic } from '@ionic-native/diagnostic';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { File } from '@ionic-native/file';
     Deeplinks,
     SocialSharing,
     Contacts,
+    FileOpener
     // Diagnostic
   ]
 })

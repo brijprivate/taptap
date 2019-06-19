@@ -139,4 +139,7 @@
         <variable name="PLAY_SERVICES_LOCATION_VERSION" value="16.+" />
     </plugin>
     <plugin name="cordova-plugin-android-permissions" spec="^1.0.0" />
+    <plugin name="cordova-plugin-file-opener2" spec="^2.2.0">
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+    </plugin>
 </widget>
