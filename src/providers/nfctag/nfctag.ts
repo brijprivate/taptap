@@ -295,4 +295,19 @@ export class NfctagProvider {
         });
     });
   }
+
+  //get count of milage and time....
+   //get milage...
+   getcount(userid: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'milage/totalCount?userId=' + userid)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
 }

@@ -27,6 +27,7 @@ export class TapdetailsPage {
   isfav: boolean = false;
   public linkId: any;
   xx: any;
+  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -152,6 +153,7 @@ export class TapdetailsPage {
   }
 
   savecontact(data) {
+    let _base  = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.name);
     contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
@@ -159,6 +161,7 @@ export class TapdetailsPage {
     contact.addresses = [new ContactAddress(null, data.company)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
+    contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.image)];
 
     contact.save().then((contact) => {
       alert("contact saved");

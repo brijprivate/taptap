@@ -49,7 +49,10 @@ export class ProfilePage {
     public nfctagProvider: NfctagProvider,
     public loginsignupProvider: LoginsignupProvider,
     public loading: LoadingController) {
+      var time  = new Date().toTimeString();
+      console.log(time);
     this.userId = localStorage.getItem("userId");
+    console.log(this.userId);
     if (this.userId) {
       // this.getpairedDevice();
       // this.getprofiledata();
@@ -68,6 +71,7 @@ export class ProfilePage {
       this. getmilage();
       this.gettime();
       // this.chartfunction();
+      this.getcount();
       // let putgraph = setTimeout(()=>{
       //   _base.chartfunction();
       // },5000)
@@ -89,10 +93,10 @@ chartfunction(){
       { x: "Personal_Milage ", value: _base.tpmilage },
       { x: "Business_Time", value: _base.tbtime },
       { x: "Personal_Time", value: _base.tptime },
-      // { x: "Business_Milage", value:0.3 },
-      // { x: "Personal_Milage ", value: 0.2},
-      // { x: "Business_Time", value: 0.6 },
-      // { x: "Personal_Time", value:0.4 },
+      // { x: "Business_Milage", value:0},
+      // { x: "Personal_Milage ", value: 0},
+      // { x: "Business_Time", value: 0 },
+      // { x: "Personal_Time", value:0 },
       ]);
 
       _base.chart.innerRadius("25%");
@@ -252,13 +256,13 @@ chartfunction(){
     this.nfctagProvider.getmilage(this.userId).then(function(success:any){
       console.log(success);
       if(success.result.records.length != 0){
-        _base.tpmilage = success.total_personal;
-        _base.tbmilage = success.total_business;
+        // _base.tpmilage = success.total_personal;
+        // _base.tbmilage = success.total_business;
         // if(_base.tpmilage || _base.tbmilage){
           // _base.chartfunction();
           _base.premilage=true;
 
-          _base.callchart()
+          // _base.callchart()
         // }
       }
     
@@ -300,6 +304,26 @@ var x=0;
         _base.tbtime = success.total_business;
         _base.pretime=true;
       }
+    },function(err){
+      console.log(err);
+    })
+  }
+
+   //get time data...
+   getcount(){
+    let _base = this;
+    let i=0;
+    this.nfctagProvider.getcount(this.userId).then(function(success:any){
+      console.log(success);
+     if(success){
+       _base.tbmilage=success.total_milage_business;
+       _base.tpmilage = success.total_milage_personal;
+       _base.tptime= success.total_time_personal;
+       _base.tbtime = success.total_time_business;
+       if(_base.tbmilage || _base.tpmilage || _base.tptime || _base.tbtime){
+         _base.chartfunction();
+       }
+     }
     },function(err){
       console.log(err);
     })
