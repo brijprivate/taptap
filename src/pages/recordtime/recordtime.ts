@@ -113,7 +113,9 @@ export class RecordtimePage {
       return;
     }
 
-    this.startTime = new Date().getTime();
+    // this.startTime = new Date().getTime();
+    this.startTime = new Date().toTimeString().slice(0,8);
+
     if (this.running) return;
     if (this.timeBegan === null) {
       this.reset();
@@ -172,7 +174,7 @@ export class RecordtimePage {
 
   //Stop clock...
   stop() {
-    this.endTime = new Date().getTime();
+    this.endTime = new Date().toTimeString().slice(0,8);
     this.selected=false;
     if (!this.time || !this.tapData || !this.record) {
       let showtoast = this.toast.create({

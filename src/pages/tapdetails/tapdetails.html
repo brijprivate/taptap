@@ -47,7 +47,6 @@
 
         <ion-slides pager  id="myImg">
           <ion-slide *ngIf="eventdata.eventId.image"   >
-            <div class="ss"></div>
             <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
 
@@ -161,20 +160,13 @@
           <div class="ss"></div>
 
         <ion-slides pager  id="myImg">
-          <ion-slide *ngIf="eventdata.contactId.image"   >
-            <div class="ss"></div>
-            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
+          <ion-slide *ngIf="eventdata.contactId.profile_pic"   >
+            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.contactId.profile_pic))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.contactId.profile_pic}}">
           </ion-slide>
 
-            <ion-slide *ngIf="!eventdata.contactId.image" (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')"  >
+            <ion-slide *ngIf="!eventdata.contactId.profile_pic" (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')"  >
                 <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
-  
-            
             </ion-slide>
-          
-         
- 
-
         </ion-slides>
       </div>
 
@@ -276,7 +268,6 @@
 
         <ion-slides pager  id="myImg">
           <ion-slide *ngIf="eventdata.sportId.image"   >
-            <div class="ss"></div>
             <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
 
@@ -367,7 +358,6 @@
 
         <ion-slides pager  id="myImg">
           <ion-slide *ngIf="eventdata.generalId.image"   >
-            <div class="ss"></div>
             <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
 
@@ -444,7 +434,6 @@
 
         <ion-slides pager  id="myImg">
           <ion-slide *ngIf="eventdata.groceryId.image"   >
-            <div class="ss"></div>
             <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
 
@@ -534,9 +523,9 @@
       <div class="imgss event">
           <div class="ss"></div>
 
+     
         <ion-slides pager  id="myImg">
           <ion-slide *ngIf="eventdata.fashionId.image"   >
-            <div class="ss"></div>
             <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
 
@@ -545,10 +534,6 @@
   
             
             </ion-slide>
-          
-         
- 
-
         </ion-slides>
       </div>
 
@@ -636,7 +621,6 @@
 
         <ion-slides pager  id="myImg">
           <ion-slide *ngIf="eventdata.businessId.image"   >
-            <div class="ss"></div>
             <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
           </ion-slide>
 
