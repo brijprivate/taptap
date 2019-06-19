@@ -192,4 +192,9 @@ export class AnimatetapPage {
       alert("unable to delete device please try again");
     })
   }
+  back(){
+    this.navCtrl.pop();
+  }
+
+
 }

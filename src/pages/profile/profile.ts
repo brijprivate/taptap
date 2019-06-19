@@ -44,6 +44,7 @@ export class ProfilePage {
   pretime: boolean=false;
   premilage: boolean=false;
   interval:any;
+  maindevice:any;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
@@ -182,6 +183,8 @@ chartfunction(){
       console.log("paired devices--------------?>>>>>>>>>");
       console.log(success.result.length);
       _base.devices = success.result;
+      _base.maindevice=success.result;
+      _base.maindevice=_base.maindevice[_base.maindevice.length-1].device_title;
       _base.devicecount = success.result.length;
     }, function (err) {
       console.log(err);
