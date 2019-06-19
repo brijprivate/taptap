@@ -52,7 +52,7 @@
   </div>
   <ion-card class="tapCard animated 800s zoomIn delay-0.3s">
     <ion-card-content>
-      <ion-item *ngFor="let device of devices">
+      <ion-item >
         <ion-icon item-start>
           <img src="assets/images/pen.png" class="pen">
         </ion-icon>
@@ -66,7 +66,7 @@
             </g>
           </svg>
         </span>
-        {{device.device_title}}
+        <!-- {{devices[devices.length-1].device_title}} -->{{maindevice}}
       </ion-item>
       <!-- <hr class="margino">
      
