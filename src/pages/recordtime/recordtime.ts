@@ -43,7 +43,6 @@ export class RecordtimePage {
   public record: any;
 
   public userId: any;
-  selected: boolean;
 
   startTime:any;
   endTime:any;
@@ -88,7 +87,6 @@ export class RecordtimePage {
 
   start() {
     this.active=!this.active;
-    this.selected=true;
     let _base = this;
 
     if (this.isnetwork == "Offline") {
@@ -178,7 +176,6 @@ export class RecordtimePage {
   stop() {
     this.active=!this.active;
     this.endTime = new Date().toTimeString().slice(0,8);
-    this.selected=false;
     if (!this.time || !this.tapData || !this.record) {
       let showtoast = this.toast.create({
         message: "Please start ",

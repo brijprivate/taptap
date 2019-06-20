@@ -63,7 +63,6 @@ export class RecordmilagePage {
   // to display on screen only
   sdistance: any;
   stime: any;
-  selected: boolean;
   startTime: any;
   endTime: any;
 
@@ -135,7 +134,6 @@ export class RecordmilagePage {
 
   startBackgroundTrack() {
     this.active=!this.active;
-    this.selected=true
     this.backgroundGeolocation.start();
 
     let _base = this;
@@ -220,7 +218,6 @@ export class RecordmilagePage {
   stopBackgroundTrack() {
     this.active=!this.active;
     this.endTime = new Date().toTimeString().slice(0,8);
-    this.selected=false;
     this.navCtrl.push('SavemilagePage',
       {
         endtime: this.endTime,
