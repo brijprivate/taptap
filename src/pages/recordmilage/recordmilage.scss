@@ -19,9 +19,7 @@ page-recordmilage {
     .scroll-content {
         padding: 0 !important;
     }
-    .selected{
-        color: #488aff !important;
-    }
+   
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
         background-image: none !important;
     }
@@ -153,24 +151,24 @@ color:#6b708d;
         font-weight: 500;
     }
     button.start.disable-hover.button.button-md.button-default.button-default-md , button.start.disable-hover.button.button-ios.button-default.button-default-ios {
-        background: #fff;
-        color: #222;
+        background: blue;
+        color: #fff;
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: capitalize;
-        width: 100%;
-        height: 50px;
+        width: 70%;
+        height: 40px;
         border: 1px solid #222;
         border-radius: 4px;
     }
     button.stop.disable-hover.button.button-md.button-default.button-default-md , button.stop.disable-hover.button.button-ios.button-default.button-default-ios{
-        background: #fff;
-        color: #222;
+        background: red;
+        color: #fff;
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: capitalize;
-        width: 100%;
-        height: 50px;
+        width: 70%;
+        height: 40px;
         border: 1px solid #222;
         border-radius: 4px;
     }

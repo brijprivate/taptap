@@ -60,7 +60,7 @@
             <i class="fa fa-ellipsis-v dropbtn"></i>
             <div class="dropdown-content">
               <a (click)="presentPrompt(device._id)">Edit Name</a>
-
+              <a (click)="setdefault(device._id)">Set as default</a>
               <a (click)="gotodevice(device)">Manage</a>
               <a (click)="delete(device.nfc_id)">Delete</a>
 

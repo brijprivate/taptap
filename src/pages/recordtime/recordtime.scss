@@ -86,29 +86,23 @@ page-recordtime {
         border-right: 1px solid #e1e1e6 !important;
     }
     button.start.disable-hover.button.button-md.button-default.button-default-md , button.start.disable-hover.button.button-ios.button-default.button-default-ios {
-        background: #fff;
-        color: #222;
+        background: blue;
+        color: #fff;
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: capitalize;
-        width: 100%;
-        height: 50px;
+        width: 70%;
+        height: 40px;
         border: 1px solid #222;
         border-radius: 4px;
     }
-    button.stop.disable-hover.button.button-md.button-default.button-default-md , button.stop.disable-hover.button.button-ios.button-default.button-default-ios {
-        // background: #fadce2;
-        // color: #ee9aad;
-        // box-shadow: none;
-        // text-transform: capitalize;
-        // width: 100%;
-        // height: 50px;
-        background: #fff;
-        color: #222;
+    button.stop.disable-hover.button.button-md.button-default.button-default-md , button.stop.disable-hover.button.button-ios.button-default.button-default-ios{
+        background: red;
+        color: #fff;
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: capitalize;
-        width: 100%;
+        width: 70%;
         height: 50px;
         border: 1px solid #222;
         border-radius: 4px;
@@ -127,12 +121,11 @@ page-recordtime {
     .recordContent.recorCa {
         margin-top: 6em;
     }
-    .selected{
-        color: #488aff !important;
+    
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         display: none;
     }
-}
+
     i.fa.fa-chevron-left{
         float: left;
         margin-left: 3px

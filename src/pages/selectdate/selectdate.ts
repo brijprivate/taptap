@@ -21,7 +21,7 @@ export class SelectdatePage {
   public sdate: String;
   public edate: String;
   userId: string;
-  data:any;
+  data: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginsignupProvider: LoginsignupProvider) {
     this.edate = new Date().toISOString();
     console.log(this.sdate);
@@ -58,19 +58,22 @@ export class SelectdatePage {
     this.navCtrl.pop()
   }
   submit() {
-    this.data={};
-    
-    if(this.selected==undefined) {
+    this.data = {};
+    if (this.edate == undefined || this.sdate == undefined) {
+      alert('please select time');
+      return;
+    }
+    if (this.selected == undefined) {
       alert('please select type');
       return;
     }
 
-    if (this.busi ==false && this.pers==false) {
-      alert('please select the '+this.selected+ 'Type');
+    if (this.busi == false && this.pers == false) {
+      alert('please select the ' + this.selected + 'Type');
       return
     }
     if (this.pers) {
-      console.log('personnal')
+      console.log('personal')
     }
 
     if (this.selected == 'time') {
@@ -83,19 +86,54 @@ export class SelectdatePage {
 
   }
   calltime(timeurl) {
+    this.data = [];
     let _base = this;
     _base.loginsignupProvider.selectdate(_base.userId, timeurl, _base.sdate, _base.edate).then(function (success: any) {
       if (success) {
+        console.log(success);
+        if (!success.result) {
 
-        if (_base.selected == 'time') {
-          if (success.Business.length != 0 && (_base.busi)) {            
-            Object.assign(_base.data,{business:success.Business})
+          if (_base.selected == 'time') {
+            if (success.Business.length != 0 && (_base.busi)) {
+              Object.assign(_base.data, { business: success.Business })
+            }
+            if (success.Personal.length != 0 && (_base.pers)) {
+              Object.assign(_base.data, { personal: success.Personal })
+            }
+            if(success.Business.length==0 && _base.busi){
+              alert('no data business type');
+              return;
+            }
+            else if(success.Personal.length==0 && _base.pers){
+              alert('no data in personal type');
+              return;
+            }
+            
+            
           }
-           if (success.Personal.length != 0 && (_base.pers)) {
-            Object.assign(_base.data,{personal:success.Personal})
+
+          if (_base.selected == 'milage') {
+            if (success.Business.length != 0 && (_base.busi)) {
+              Object.assign(_base.data, { business: success.Business })
+            }
+            if (success.personal.length != 0 && (_base.pers)) {
+              Object.assign(_base.data, { personal: success.personal })
+            }
+            if(success.Business.length==0 && _base.busi){
+              alert('no data business type');
+              return;
+            }
+            else if(success.personal.length==0 && _base.pers){
+              alert('no data in personal type');
+              return;
+            }
           }
-          
         }
+        else {
+          alert('no data found')
+          return;
+        }
+       
         _base.gotopage()
       }
     },
@@ -106,16 +144,21 @@ export class SelectdatePage {
 
 
 
-gotopage(){
-  if (this.busi ==true && this.pers==true) {
-    this.data=this.data.business.concat(this.data.personal);
+  gotopage() {
+
+    if (this.busi == true && this.pers == true) {
+      if (this.data.business && this.data.personal) {
+        this.data = this.data.business.concat(this.data.personal);
+      }
+    }
+    var data = {
+      type: this.selected,
+      date: { start: this.sdate, end: this.edate },
+      data: this.data
+    }
+    console.log(this.data);
+    this.navCtrl.push('MilagelistPage', { data: data })
+
   }
-  var data={
-    date:{start:this.sdate,end:this.edate},
-    data:this.data
-  }
-  console.log(this.data);
-  this.navCtrl.push('MilagelistPage',{data:data})
-}
 
 }

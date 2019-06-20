@@ -79,7 +79,7 @@ export class MilagelistPage {
   }
 
   table(data, columns) {
-   
+
     return {
       layout: 'lightHorizontalLines',
 
@@ -91,47 +91,53 @@ export class MilagelistPage {
       }
     };
   }
-formatdata(datee){
-  var today = datee;
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1;
+  formatdata(datee) {
+    var today = datee;
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
 
-  var yyyy = today.getFullYear();
-  if (dd < 10) {
-    dd = 0 + dd;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = 0 + dd;
+    }
+    if (mm < 10) {
+      mm = 0 + mm;
+    }
+    return dd + '-' + mm + '-' + yyyy;
+
+
   }
-  if (mm < 10) {
-    mm = 0 + mm;
-  }
-  return   dd + '-' + mm + '-' + yyyy;
 
-
-}
- 
   createPdf() {
-  
-    var title='';
+
+    var title = '';
     var externalDataRetrievedFromServer = [];
     if (this.data.data.business) {
       externalDataRetrievedFromServer = this.data.data.business;
-      title='Business'
+      title = 'Business'
     }
-    else  if(this.data.data.personal){
+    else if (this.data.data.personal) {
       externalDataRetrievedFromServer = this.data.data.personal;
-      title="Personal"
+      title = "Personal"
     }
-    else{
+    else {
       externalDataRetrievedFromServer = this.data.data;
-      title="Business & Personal"
+      title = "Business & Personal"
     }
     console.log(externalDataRetrievedFromServer)
     var today = new Date();
 
-    
-
+    var dynamicttile = [];
+    if (this.data.type == 'time') {
+      dynamicttile = ['title', 'recordType', 'startTime', 'endTime'];
+    }
+    else if (this.data.type == 'milage') {
+      dynamicttile = ['title', 'recordType', 'startLocation', 'endLocation'];
+    }
+    console.log(dynamicttile)
     var docDefinition = {
-     
-      
+
+
       content: [
 
         {
@@ -148,13 +154,13 @@ formatdata(datee){
         { text: 'Durgapur', fontSize: 11 },
         { text: 'India', fontSize: 11 },
         { text: '713212', fontSize: 11 },
-        { text: 'UID: '+localStorage.getItem('uid'), bold: true, fontSize: 11,margin: [0, 5, 0, 0] },
-        { text:'Start Date:-'+this.data.date.start + ' & ' + 'End Date:-'+this.data.date.end, style: 'jj', fontSize: 11, margin: [0, 5, 0, 0],alignment: 'center'},
+        { text: 'UID: ' + localStorage.getItem('uid'), bold: true, fontSize: 11, margin: [0, 5, 0, 0] },
+        { text: 'Start Date:-' + this.data.date.start + ' & ' + 'End Date:-' + this.data.date.end, style: 'jj', fontSize: 11, margin: [0, 5, 0, 0], alignment: 'center' },
 
-        { text: title, bold: true, alignment: 'center',fontSize: 13,margin: [20, 10, 10, 10]},
+        { text: title, bold: true, alignment: 'center', fontSize: 13, margin: [20, 10, 10, 10] },
 
-        this.table(externalDataRetrievedFromServer, ['title', 'recordType', 'endTime', 'startTime'] ),
-        
+        this.table(externalDataRetrievedFromServer, dynamicttile),
+
       ],
       styles: {
         header: {

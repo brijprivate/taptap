@@ -179,4 +179,30 @@ presentPrompt(nfcid) {
   back(){
     this.navCtrl.pop();
   }
+
+
+
+  setdefault(nfcid)
+  {
+    let _base = this;
+    let loader = this.loading.create({
+      content:"Please wait..."
+    });
+    loader.present();
+    let data = {
+      deviceId:nfcid,
+      is_active:true
+    }
+    console.log(data);
+    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+      loader.dismiss();
+      console.log(success);
+      _base.getpairedDevice();
+    },function(err){
+      console.log(err);
+      loader.dismiss();
+    })
+  }
+
+
 }
