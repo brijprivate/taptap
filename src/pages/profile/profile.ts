@@ -149,6 +149,8 @@ chartfunction(){
     this.chart.dispose();
     clearInterval(this.interval);
     this.navCtrl.push('AnimatetapPage', { key: 'milage' });
+    // this.navCtrl.push('RecordmilagePage');
+
 
 
   }
