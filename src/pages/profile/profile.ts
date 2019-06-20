@@ -36,22 +36,22 @@ export class ProfilePage {
   public chart;
   notiCount: number = 0;
   uid: any;
-  public tpmilage=0;
-  public tbmilage=0;
-  public tptime=0;
-  public tbtime=0;
+  public tpmilage = 0;
+  public tbmilage = 0;
+  public tptime = 0;
+  public tbtime = 0;
   showtimesub: number;
-  pretime: boolean=false;
-  premilage: boolean=false;
-  interval:any;
-  maindevice:any;
-  constructor(public navCtrl: NavController, 
+  pretime: boolean = false;
+  premilage: boolean = false;
+  interval: any;
+  maindevice: any;
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
     public loginsignupProvider: LoginsignupProvider,
     public loading: LoadingController) {
-      var time  = new Date().toTimeString();
-      console.log(time);
+    var time = new Date().toTimeString();
+    console.log(time);
     this.userId = localStorage.getItem("userId");
     console.log(this.userId);
     if (this.userId) {
@@ -69,7 +69,7 @@ export class ProfilePage {
       this.getprofiledata();
       this.getDashboarddata();
       this.getnotifications();
-      this. getmilage();
+      this.getmilage();
       this.gettime();
       // this.chartfunction();
       this.getcount();
@@ -82,14 +82,14 @@ export class ProfilePage {
   ionViewDidLoad() {
     // this.chartfunction()
     let _base = this;
-   
+
   }
-chartfunction(){
-  console.log('in the chart')
-  let _base = this;
-  // anychart.onDocumentReady(function () {
+  chartfunction() {
+    console.log('in the chart')
+    let _base = this;
+    // anychart.onDocumentReady(function () {
     _base.chart = anychart.pie([
-      
+
       { x: "Business_Milage", value: _base.tbmilage },
       { x: "Personal_Milage ", value: _base.tpmilage },
       { x: "Business_Time", value: _base.tbtime },
@@ -98,13 +98,13 @@ chartfunction(){
       // { x: "Personal_Milage ", value: 0},
       // { x: "Business_Time", value: 0 },
       // { x: "Personal_Time", value:0 },
-      ]);
+    ]);
 
-      _base.chart.innerRadius("25%");
+    _base.chart.innerRadius("25%");
 
-      var label = anychart.standalones.label();
+    var label = anychart.standalones.label();
 
-      label.text("taptap");
+    label.text("taptap");
     label.width("100%");
     label.height("100%");
     label.adjustFontSize(true);
@@ -112,22 +112,22 @@ chartfunction(){
     label.hAlign("center");
     label.vAlign("middle");
     _base.chart.legend(false);
-     
+
 
     // set the label as the center content
     _base.chart.center().content(label);
 
     // chart.title("Donut Chart: Label in the center");
     _base.chart.container("container1");
-  
-      console.log('printing chart')
-   _base.chart.draw();
 
-   
-  
-  // });
-}
-  ionViewDidLeave(){
+    console.log('printing chart')
+    _base.chart.draw();
+
+
+
+    // });
+  }
+  ionViewDidLeave() {
     this.chart.dispose();
   }
 
@@ -136,7 +136,7 @@ chartfunction(){
   pairDevice() {
     this.chart.dispose();
     clearInterval(this.interval);
-    this.navCtrl.push('PairdevicePage',{x:'pair'});
+    this.navCtrl.push('PairdevicePage', { x: 'pair' });
 
   }
   manageDevice() {
@@ -181,10 +181,18 @@ chartfunction(){
     let _base = this;
     this.nfctagProvider.getpairdevice(this.userId).then(function (success: any) {
       console.log("paired devices--------------?>>>>>>>>>");
-      console.log(success.result.length);
+      console.log(success.result);
+
       _base.devices = success.result;
-      _base.maindevice=success.result;
-      _base.maindevice=_base.maindevice[_base.maindevice.length-1].device_title;
+      var i = 0;
+      for (i = 0; i <= success.result.length; i++) {
+        if (success.result[i].is_active) {
+          _base.maindevice = success.result[i].device_title;
+          break;
+        }
+      }
+      console.log(_base.maindevice);
+      // _base.maindevice=_base.maindevice[_base.maindevice.length-1].device_title;
       _base.devicecount = success.result.length;
     }, function (err) {
       console.log(err);
@@ -253,81 +261,81 @@ chartfunction(){
   }
 
   //get time data....
-  getmilage(){
+  getmilage() {
     let _base = this;
-    let i=0;
-    this.nfctagProvider.getmilage(this.userId).then(function(success:any){
+    let i = 0;
+    this.nfctagProvider.getmilage(this.userId).then(function (success: any) {
       console.log(success);
-      if(success.result.records.length != 0){
+      if (success.result.records.length != 0) {
         // _base.tpmilage = success.total_personal;
         // _base.tbmilage = success.total_business;
         // if(_base.tpmilage || _base.tbmilage){
-          // _base.chartfunction();
-          _base.premilage=true;
+        // _base.chartfunction();
+        _base.premilage = true;
 
-          // _base.callchart()
+        // _base.callchart()
         // }
       }
-    
-    },function(err){
+
+    }, function (err) {
       console.log(err);
     })
   }
 
-callchart(){
-  var _base=this;
-  console.log('calling chart function');
-var x=0;
-  _base.interval=setInterval(function(){
-    x=x+1;
-    console.log(x,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    if(_base.pretime && _base.premilage){
-      clearInterval(_base.interval);
+  callchart() {
+    var _base = this;
+    console.log('calling chart function');
+    var x = 0;
+    _base.interval = setInterval(function () {
+      x = x + 1;
+      console.log(x, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+      if (_base.pretime && _base.premilage) {
+        clearInterval(_base.interval);
 
-      _base.chartfunction();
+        _base.chartfunction();
 
-  console.log('call chart llll');
-  _base.premilage=false;
-  _base.pretime=false;
-  
-}
+        console.log('call chart llll');
+        _base.premilage = false;
+        _base.pretime = false;
 
-  },50)
-}
+      }
+
+    }, 50)
+  }
 
   //get time data...
-  gettime(){
+  gettime() {
     let _base = this;
-    let i=0;
-    this.nfctagProvider.gettime(this.userId).then(function(success:any){
+    let i = 0;
+    this.nfctagProvider.gettime(this.userId).then(function (success: any) {
       console.log(success);
-      if(success.result.records.length != 0){
+      if (success.result.records.length != 0) {
 
         _base.tptime = success.total_personal;
         _base.tbtime = success.total_business;
-        _base.pretime=true;
+        _base.pretime = true;
       }
-    },function(err){
+    }, function (err) {
       console.log(err);
     })
   }
 
-   //get time data...
-   getcount(){
+  //get time data...
+  getcount() {
     let _base = this;
-    let i=0;
-    this.nfctagProvider.getcount(this.userId).then(function(success:any){
+    let i = 0;
+    this.nfctagProvider.getcount(this.userId).then(function (success: any) {
       console.log(success);
-     if(success){
-       _base.tbmilage=success.total_milage_business;
-       _base.tpmilage = success.total_milage_personal;
-       _base.tptime= success.total_time_personal;
-       _base.tbtime = success.total_time_business;
-       if(_base.tbmilage || _base.tpmilage || _base.tptime || _base.tbtime){
-         _base.chartfunction();
-       }
-     }
-    },function(err){
+      if (success) {
+        _base.tbmilage = success.total_milage_business;
+        _base.tpmilage = success.total_milage_personal;
+        _base.tptime = success.total_time_personal;
+        _base.tbtime = success.total_time_business;
+        if (_base.tbmilage || _base.tpmilage || _base.tptime || _base.tbtime) {
+          _base.chartfunction();
+        }
+      }
+    }, function (err) {
       console.log(err);
     })
   }

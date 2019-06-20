@@ -47,6 +47,7 @@ export class RecordtimePage {
 
   startTime:any;
   endTime:any;
+  active:boolean=false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfc: NFC,
@@ -86,6 +87,7 @@ export class RecordtimePage {
   //Start record time...
 
   start() {
+    this.active=!this.active;
     this.selected=true;
     let _base = this;
 
@@ -174,6 +176,7 @@ export class RecordtimePage {
 
   //Stop clock...
   stop() {
+    this.active=!this.active;
     this.endTime = new Date().toTimeString().slice(0,8);
     this.selected=false;
     if (!this.time || !this.tapData || !this.record) {

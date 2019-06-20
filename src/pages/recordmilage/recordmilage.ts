@@ -32,6 +32,8 @@ export class RecordmilagePage {
   writingTag: boolean = false;
   isWriting: boolean = false;
   ndefMsg: string = '';
+  active:boolean=false;
+
   subscriptions: Array<Subscription> = new Array<Subscription>();
 
   //Timer related...
@@ -132,6 +134,7 @@ export class RecordmilagePage {
 
 
   startBackgroundTrack() {
+    this.active=!this.active;
     this.selected=true
     this.backgroundGeolocation.start();
 
@@ -215,6 +218,7 @@ export class RecordmilagePage {
 
   //stop tracking .....
   stopBackgroundTrack() {
+    this.active=!this.active;
     this.endTime = new Date().toTimeString().slice(0,8);
     this.selected=false;
     this.navCtrl.push('SavemilagePage',
