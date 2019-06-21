@@ -57,12 +57,22 @@ export class SelectdatePage {
   back() {
     this.navCtrl.pop()
   }
+  
   submit() {
     this.data = {};
     if (this.edate == undefined || this.sdate == undefined) {
       alert('please select time');
       return;
     }
+
+    if (this.edate < this.sdate) {
+      alert('End date is smaller than Start date');
+      return;
+    }
+    else{
+      console.log('ok you can go');
+    } 
+    
     if (this.selected == undefined) {
       alert('please select type');
       return;
@@ -100,16 +110,16 @@ export class SelectdatePage {
             if (success.Personal.length != 0 && (_base.pers)) {
               Object.assign(_base.data, { personal: success.Personal })
             }
-            if(success.Business.length==0 && _base.busi){
+            if (success.Business.length == 0 && _base.busi && !_base.pers) {
               alert('no data business type');
               return;
             }
-            else if(success.Personal.length==0 && _base.pers){
+            else if (success.Personal.length == 0 && _base.pers && !_base.busi) {
               alert('no data in personal type');
               return;
             }
-            
-            
+
+
           }
 
           if (_base.selected == 'milage') {
@@ -119,11 +129,11 @@ export class SelectdatePage {
             if (success.personal.length != 0 && (_base.pers)) {
               Object.assign(_base.data, { personal: success.personal })
             }
-            if(success.Business.length==0 && _base.busi){
+            if (success.Business.length == 0 && _base.busi && !_base.pers) {
               alert('no data business type');
               return;
             }
-            else if(success.personal.length==0 && _base.pers){
+            else if (success.personal.length == 0 && _base.pers && !_base.busi) {
               alert('no data in personal type');
               return;
             }
@@ -133,7 +143,7 @@ export class SelectdatePage {
           alert('no data found')
           return;
         }
-       
+
         _base.gotopage()
       }
     },

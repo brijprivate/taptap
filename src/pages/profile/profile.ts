@@ -185,7 +185,7 @@ export class ProfilePage {
 
       _base.devices = success.result;
       var i = 0;
-      for (i = 0; i <= success.result.length; i++) {
+      for (i = 0; i < success.result.length; i++) {
         if (success.result[i].is_active) {
           _base.maindevice = success.result[i].device_title;
           break;
