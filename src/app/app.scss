@@ -103,7 +103,7 @@ i.fa.fa-chevron-left {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: gray;
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -160,4 +160,9 @@ i.fa.fa-chevron-left {
   
   .slider.round:before {
     border-radius: 50%;}
+    button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+      display: none !important;
+  }
+
+
 }
