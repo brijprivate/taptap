@@ -65,7 +65,7 @@ export class RecordmilagePage {
   stime: any;
   startTime: any;
   endTime: any;
-
+  value:any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private backgroundGeolocation: BackgroundGeolocation,
@@ -98,7 +98,8 @@ export class RecordmilagePage {
         return;
       } else {
         this.locations.push(value);
-        console.log("start location------------->>>>>>>", this.locations[0]);
+        this.loop(value);
+        console.log("updated location------------->>>>>>>", value);
 
         let loader = this.loading.create({
           content: "Please wait..."
@@ -128,7 +129,6 @@ export class RecordmilagePage {
       _base.sdistance = _base.totaldis;
       _base.stime = _base.time;
     }, 500);
-
   }
 
 
@@ -179,7 +179,7 @@ export class RecordmilagePage {
 
     this.started = setInterval(this.clockRunning.bind(this), 100);
     this.running = true;
-    this.loop();
+    // this.loop();
   }
   reset() {
     this.running = false;
@@ -236,41 +236,85 @@ export class RecordmilagePage {
 
 
   //calculate distance locations loop....
-  public loop() {
-    let i = 0;
+  public loop(value) {
 
-    var laa1 = 0
-    var laa2 = 0
-    var loa1 = 0
-    var loa2 = 0
+    // var loca=[{
+    //   latitude: 23.69001,
+    //   longitude: 86.922403,
+    // },{
+    //   latitude: 23.510462,
+    //   longitude: 87.342106,
+    // },{
+    //   latitude: 23.512262,
+    //   longitude: 87.338405,
+    // },{
+    //   latitude: 23.514485,
+    //   longitude: 87.334950,
+    // },{
+    //   latitude: 23.516758,
+    //   longitude: 87.330852,
+    // },{
+    //   latitude: 23.520909,
+    //   longitude: 87.323277,
+    // }]
 
-    for (i = 0; i < this.locations.length; i++) {
-      console.log("first location------->>>>", i[0]);
-      if (i == this.locations.length - 1) {
-        return;
-      }
-      laa1 = this.locations[i].latitude;
-      laa2 = this.locations[i + 1].latitude;
-      loa1 = this.locations[i].longitude;
-      loa2 = this.locations[i + 1].longitude;
+    // console.log(this.value,value,'oooooooooooooooooooooooooooooooooooo  ')
+    // let i = 0;
 
-      var x = this.distance(laa1, loa1, laa2, loa2, 'K');
+    // var laa1 = 0
+    // var laa2 = 0
+    // var loa1 = 0
+    // var loa2 = 0
 
-      this.totaldis = parseInt((this.totaldis + x).toFixed(2));
-
-      console.log('total distance', this.totaldis);
-      // if(this.totaldis){
-      console.log("in loooooopppppppppp----------->>>>>>>");
-
-      // }
-
+    //   var _base=this;
+    // var u=0;
+    // var xx=setInterval(function(){
+    //   if(u==5){
+    //     clearTimeout(xx)
+    //   }
+    //      laa1 = loca[u].latitude;
+    //   laa2 = (loca[u + 1].latitude);
+    //   loa1 = (loca[u].longitude);
+    //   loa2 = (loca[u + 1].longitude);
+    //   var x = _base.distance(laa1, loa1, laa2, loa2, 'K');
+    //   console.log(x)
+    //   _base.totaldis = _base.totaldis+x
+    //   console.log(_base.totaldis)
+    //   u=u+1;
+      
+    //    }, 2000);
+    if(this.locations.length==1){
+      this.value=this.locations[0];
     }
+    var x = this.distance(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K');
+      this.value=value;
+      this.totaldis = (this.totaldis + x);
+      console.log('total distance-------------------->>>>>>>>',this.totaldis)
+
+    // for (i = 0; i < this.locations.length; i++) {
+    //   console.log("first location------->>>>", i[0]);
+    //   if (i == this.locations.length - 1) {
+    //     return;
+    //   }
+    //   laa1 = this.locations[i].latitude;
+    //   laa2 = (this.locations[i + 1].latitude);
+    //   loa1 = (this.locations[i].longitude);
+    //   loa2 = (this.locations[i + 1].longitude);
+
+      
+      // var x = this.distance(laa1, loa1, laa2, loa2, 'K');
+    //   console.log(x,this.totaldis+"------------------------------------------>>>>>>>>>")
+    //   this.totaldis = parseInt((this.totaldis + x).toFixed(2));
+
+    //   console.log('total distance', this.totaldis);
+      
+
+    // }
 
 
   }
   //calculation function....
   distance(lat1, lon1, lat2, lon2, unit) {
-
     if ((lat1 == lat2) && (lon1 == lon2)) {
       return 0;
     }
