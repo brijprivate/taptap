@@ -248,5 +248,17 @@ page-feed {
     .scroll-content {
         padding: 0 !important;
     }
-
+    p.datePadding {
+        // text-align: center;
+        // font-size: 10px;
+        // color: gray;
+        // background-color: #f3f0f0d1;
+        // padding: 4px 0;
+        text-align: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+    background-color: #f3f0f0d1;
+    padding: 4px 0;
+      }
 }
