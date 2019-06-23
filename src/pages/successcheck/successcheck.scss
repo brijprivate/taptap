@@ -20,14 +20,7 @@ page-successcheck {
                 color: gray !important;
             }
         }   
-             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
-            margin-right: 7px;
-            font-size: 26px;
-            color: #fff;
-            vertical-align: middle;
-            // margin-top: 12px;
-            float:right;
-        }
+  
         ion-icon.icon.icon-md {
             margin-right: 10px;
             font-size: 26px;
@@ -35,13 +28,13 @@ page-successcheck {
             vertical-align: middle;
         }
     }
-    .mdl i.fa.fa-chevron-left {
-        margin-right: 10px;
-        font-size: 18px;
-        color: #fff;
-        vertical-align: middle;
-        margin-left: 1em;
-    }
+    // .mdl i.fa.fa-chevron-left {
+    //     margin-right: 10px;
+    //     font-size: 18px;
+    //     color: #fff;
+    //     vertical-align: middle;
+    //     margin-left: 1em;
+    // }
     .svgAnimated {
         text-align: center;
         padding-top: 8em;

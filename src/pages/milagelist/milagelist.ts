@@ -144,7 +144,7 @@ export class MilagelistPage {
           width: 35,
           height: 35
         },
-        { text: 'taptap', style: 'header', fontSize: 13 },
+        { text: 'TapTap', style: 'header', fontSize: 13 },
 
         { text: this.formatdata(today), alignment: 'right', margin: [0, 0, 0, 0], fontSize: 13 },
 

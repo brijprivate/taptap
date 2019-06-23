@@ -86,7 +86,6 @@ export class RecordtimePage {
   //Start record time...
 
   start() {
-    this.active=!this.active;
     let _base = this;
 
     if (this.isnetwork == "Offline") {
@@ -125,8 +124,11 @@ export class RecordtimePage {
       let newStoppedDuration: any = (+new Date() - this.timeStopped)
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
+    this.active=!this.active;
+
     this.started = setInterval(this.clockRunning.bind(this), 100);
     this.running = true;
+
   }
 
   reset() {
@@ -174,7 +176,7 @@ export class RecordtimePage {
 
   //Stop clock...
   stop() {
-    this.active=!this.active;
+    
     this.endTime = new Date().toTimeString().slice(0,8);
     if (!this.time || !this.tapData || !this.record) {
       let showtoast = this.toast.create({
@@ -197,6 +199,7 @@ export class RecordtimePage {
       nfcid: this.tapData,
       recordtype: this.record
     })
+    this.active=!this.active;
   }
   back(){
     this.navCtrl.pop()

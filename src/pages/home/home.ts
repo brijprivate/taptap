@@ -145,7 +145,7 @@ export class HomePage {
       }
       else{
         _base.chart.innerRadius("25%");
-        label.text("taptap");
+        label.text("TapTap");
 
       }
       

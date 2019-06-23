@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ProfiledetailPage page.
+ * Generated class for the ActionlistPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,24 +10,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-profiledetail',
-  templateUrl: 'profiledetail.html',
+  selector: 'page-actionlist',
+  templateUrl: 'actionlist.html',
 })
-export class ProfiledetailPage {
+export class ActionlistPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfiledetailPage');
-  }
-
-  gotoedit(){
-    this.navCtrl.push('EditprofilePage');
+    console.log('ionViewDidLoad ActionlistPage');
   }
   changepass(){
-    // this.navCtrl.push('ChangepasswordPage');
-    this.navCtrl.push('ActionlistPage')
+    this.navCtrl.push('ChangepasswordPage');
   }
   back() {
     this.navCtrl.pop();

@@ -100,4 +100,7 @@ export class EventdetailPage {
       })
   }
 
+  back() {
+    this.navCtrl.pop();
+  }
 }
