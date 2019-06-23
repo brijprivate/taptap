@@ -165,11 +165,12 @@ page-editprofile {
         }
     }
 
+    button.save.disable-hover.button.button-md.button-default.button-default-md {
+        font-size: 20px;
+        padding: 22px 0;
+    }
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         display: none;
     }
-    i.fa.fa-chevron-left{
-        float: left;
-        margin-left: 3px
-    }
+  
 }

@@ -9,13 +9,22 @@ page-recordmilage {
     .milageTitle {
         text-align: center;
         background: #6354cb;
+        padding: 1em 0;
     }
     .milageTitle p {
-        color:#fff;
-        font-size: 25px;
-        margin-top: 10px;
-        padding-bottom: 45px;
+        color: #fff;
+        font-size: 19px;
+        margin-top: 3px;
+        padding-bottom: 11px;
     }
+    .record {
+        height: 40px;
+        width:40px;
+        text-align: center;
+        margin: 0 auto;
+        fill:#fff;
+        margin-top: 1em;
+        }
     .scroll-content {
         padding: 0 !important;
     }
@@ -36,12 +45,7 @@ color:#6b708d;
         margin-right: 1em;
         margin-left: 1em;
     }
-    img.record {
-        height: 60px;
-        width: 60px;
-        text-align: center;
-        margin: 0 auto;
-    }
+    
     a.helpimg {
         top: 1em;
         right: 0em;
@@ -150,30 +154,31 @@ color:#6b708d;
         color: #8e8dea;
         font-weight: 500;
     }
-    button.start.disable-hover.button.button-md.button-default.button-default-md , button.start.disable-hover.button.button-ios.button-default.button-default-ios {
-        background: blue;
-        color: #fff;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        text-transform: capitalize;
-        width: 70%;
-        height: 40px;
-        border: 1px solid #222;
-        border-radius: 4px;
+   
+    .start{
+        height: 90px;
+        width: 90px;
+        margin: 0 auto;
+        background: transparent;
+        border-radius: 50%;
+        border: 4px solid green;
+        font-size: 17px;
+        color: green;
+        font-weight: 600;
+        margin-top: 13px;
     }
-    button.stop.disable-hover.button.button-md.button-default.button-default-md , button.stop.disable-hover.button.button-ios.button-default.button-default-ios{
-        background: red;
-        color: #fff;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        text-transform: capitalize;
-        width: 70%;
-        height: 40px;
-        border: 1px solid #222;
-        border-radius: 4px;
+    .stop{
+        height: 90px;
+        width: 90px;
+        margin: 0 auto;
+        background: transparent;
+        border-radius: 50%;
+        border: 4px solid red;
+        font-size: 17px;
+        color: red;
+        font-weight: 600;
+        margin-top: 13px;
     }
-
-
     .switch {
         position: relative;
         display: inline-block;
@@ -194,7 +199,7 @@ color:#6b708d;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ca222290;
+        background-color: #ca2222 !important;
         -webkit-transition: .4s;
         transition: .4s;
       }
@@ -206,13 +211,13 @@ color:#6b708d;
         width: 26px;
         left: 4px;
         bottom: 4px;
-        background-color: gray;
+        background-color: #fff;
         -webkit-transition: .4s;
         transition: .4s;
       }
       
       input:checked + .slider {
-        background-color: #5c67f8;
+        background-color: green !important;
       }
       
       input:focus + .slider {
@@ -266,8 +271,7 @@ color:#6b708d;
         button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
             display: none !important; 
         }
-        i.fa.fa-chevron-left{
-            float: left;
-            margin-left: 3px
+        i.fa.fa-chevron-left {
+            position: absolute;
         }
 }

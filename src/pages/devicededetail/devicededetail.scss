@@ -72,10 +72,7 @@ page-devicededetail {
         display: none;
     }
     i.fa.fa-chevron-left{
-        float: left;
-        z-index: 999;
-        margin-left: 3px;
-    }
+   
     .toolbar-title.toolbar-title-md {
         margin-left: 16px;
     }
@@ -194,4 +191,13 @@ page-devicededetail {
         color: #fff !important;
         border: 1px solid #b39be6 !important;
     }
+}
+i.fa.fa-chevron-left {
+    position: absolute;
+    left: 0;
+    top: 14px;
+}
+ion-title {
+    margin-left: 1.5em;
+}
 }

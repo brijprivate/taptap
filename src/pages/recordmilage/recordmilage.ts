@@ -133,7 +133,6 @@ export class RecordmilagePage {
 
 
   startBackgroundTrack() {
-    this.active=!this.active;
     this.backgroundGeolocation.start();
 
     let _base = this;
@@ -176,7 +175,7 @@ export class RecordmilagePage {
       let newStoppedDuration: any = (+new Date() - this.timeStopped)
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
-
+    this.active=!this.active;
     this.started = setInterval(this.clockRunning.bind(this), 100);
     this.running = true;
     // this.loop();
@@ -216,7 +215,6 @@ export class RecordmilagePage {
 
   //stop tracking .....
   stopBackgroundTrack() {
-    this.active=!this.active;
     this.endTime = new Date().toTimeString().slice(0,8);
     this.navCtrl.push('SavemilagePage',
       {
@@ -229,6 +227,7 @@ export class RecordmilagePage {
         endLocation: this.endLocation,
         cords: this.locations
       });
+      this.active=!this.active;
 
   }
 

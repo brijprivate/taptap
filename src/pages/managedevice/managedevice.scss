@@ -163,7 +163,12 @@ page-managedevice {
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         display: none;
     }
-    i.fa.fa-chevron-left{
-        float: left;
+    i.fa.fa-chevron-left {
+        position: absolute;
+        left: 0;
+        top: 14px;
+    }
+    ion-title {
+        margin-left: 1.5em;
     }
 }

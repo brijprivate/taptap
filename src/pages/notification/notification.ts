@@ -64,4 +64,7 @@ export class NotificationPage {
 
       })
   }
+  back(){
+    this.navCtrl.pop()
+  }
 }
