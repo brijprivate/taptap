@@ -65,14 +65,15 @@
   <div class="recordContent">
     <p class="typea">Start Location</p>
     <p class="typerecord" *ngIf="checkp == true">
+        {{currentPosition.thoroughfare}},
+        {{currentPosition.locality}},
+        {{currentPosition.subAdministrativeArea}},
+        {{currentPosition.administrativeArea}},
       {{currentPosition.countryName}},
-      {{currentPosition.administrativeArea}},
-      {{currentPosition.subAdministrativeArea}},
-      {{currentPosition.locality}},
-      {{currentPosition.postalCode}},
-      {{currentPosition.thoroughfare}}</p>
+      {{currentPosition.postalCode}}
+     </p>
     <p class="typea">Timer</p>
-    <p class="typerecordtime">{{stime | date:'hh:mm:ss'}}</p>
+    <p class="typerecordtime">{{stime}}</p>
 
     <ion-grid class="kmhr">
       <ion-row>

@@ -4,7 +4,7 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
+import { FileOpener } from '@ionic-native/file-opener';
 import { File } from '@ionic-native/file';
 
 /**
@@ -38,7 +38,8 @@ export class MilagelistPage {
     public navParams: NavParams,
     public loginsignpro: LoginsignupProvider,
     private plt: Platform,
-    private file: File) {
+    private file: File,
+    private fileOpener: FileOpener) {
     this.getMilageList();
     this.data = this.navParams.get('data');
     console.log(this.data)
@@ -200,7 +201,8 @@ export class MilagelistPage {
         // Save the PDF to the data Directory of our App
         this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
-          // this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+          this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+          console.log("open");
         })
       });
     } else {

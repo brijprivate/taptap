@@ -70,10 +70,10 @@ export class SavemilagePage {
       if (Object.keys(value).length == 0 || value == null) {
         return;
       } else {
-        this.locations.push(value);
+        // this.locations.push(value);
         console.log("array of locations------------->>>>>>>>");
         console.log(this.locations);
-        this.loop();
+        // this.loop();
       }
     });
 
@@ -93,6 +93,7 @@ export class SavemilagePage {
             console.log("reverse geocode end location----------------->>>>>>>", result)
             console.log(JSON.stringify(result[0]));
             _base.endLocation = result[0];
+           
 
           });
       });
@@ -100,7 +101,10 @@ export class SavemilagePage {
       if (_base.endLocation.length != 0) {
         console.log('clearedddddddddddddddddddddd');
         _base.sharedservice.locations(location);
+        _base.locations.push(_base.endLocation);
+        _base.loop();
         _base.backgroundGeolocation.stop();
+       
         clearInterval(x);
       }
     }, 500)
@@ -211,7 +215,7 @@ export class SavemilagePage {
 
       var x = this.distance(laa1, loa1, laa2, loa2, 'K');
 
-      this.totaldis = parseInt((this.totaldis + x).toFixed(2));
+      this.totaldis = (this.totaldis + x);
 
       console.log('total distance', this.totaldis);
       // if(this.totaldis){
