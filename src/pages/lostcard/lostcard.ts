@@ -27,5 +27,12 @@ export class LostcardPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LostcardPage');
   }
-
+  //call 
+  callNumber(number){
+    window.open("tel:"+number);
+  }
+  // email....
+  emailto(email){
+    window.open("mailto:"+email);
+  }
 }

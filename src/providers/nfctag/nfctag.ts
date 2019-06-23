@@ -310,4 +310,18 @@ export class NfctagProvider {
         });
     });
   }
+
+  //get image....
+  getimage(userid) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'file/getImage?imageId=' + userid)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
 }

@@ -81,15 +81,15 @@
         <!-- <h4>We are ready to help You..!</h4> -->
         <p>
           <ion-icon ios="ios-contact" md="md-contact"></ion-icon>        
-          Gocube Tech
+          {{lostinformation.name}}
         </p>
         <p>
           <ion-icon ios="ios-call" md="md-call"></ion-icon>        
-          +44 7930275782
+          {{lostinformation.mobileNumber}}
         </p>
         <p>
           <ion-icon ios="ios-mail" md="md-mail"></ion-icon>  
-          info@gocubetech.com
+          {{lostinformation.email}}
         </p>
 
       </div>
@@ -100,7 +100,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-6 class="">
-              <button class="aotn">
+              <button class="aotn" (click)="callNumber(lostinformation.mobileNumber)">
             <div class="circle">
                 <ion-icon ios="ios-call" md="md-call"></ion-icon>
             </div>
@@ -108,7 +108,7 @@
             <p>Call</p>
           </ion-col>
           <ion-col col-6 class="">
-              <button class="aotn">
+              <button class="aotn" (click)="emailto(lostinformation.email)">
               <div class="circle circlemail">
             <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
             </div>

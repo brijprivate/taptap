@@ -161,7 +161,9 @@ export class TapdetailsPage {
     contact.addresses = [new ContactAddress(null, data.company)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
-    contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.image)];
+    contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.profile_pic)];
+    // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
+
 
     contact.save().then((contact) => {
       alert("contact saved");
@@ -171,6 +173,17 @@ export class TapdetailsPage {
   }
 
 
+  getimage(data){
+//     console.log(data.profile_pic);
+// this.nfctagPro.getimage(data.profile_pic).then(function(success:any){
+//   console.log(success);
+
+// },function(err){
+//   console.log(err);
+// })
+var image = this.API_URL+"/file/getImage?imageId="+data.profile_pic;
+console.log(image);
+  }
   showfull(src) {
     console.log(src)
     var modal = document.getElementById("myModal");

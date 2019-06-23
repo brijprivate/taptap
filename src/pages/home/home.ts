@@ -272,8 +272,14 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    console.log("=====================", item);
+    if(item.purpose=="lost"){
+      this.navCtrl.push('LostcardPage',{lostinfo:item.deviceInfo.contact_info});
+      console.log(item);
+    }else{
+      console.log("=====================", item);
     this.navCtrl.push('TapdetailsPage', item);
+    }
+    
   }
 
   //go to edit profile page ...
