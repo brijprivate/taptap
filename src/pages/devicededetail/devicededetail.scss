@@ -71,7 +71,7 @@ page-devicededetail {
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         display: none;
     }
-    i.fa.fa-chevron-left{
+   
    
     .toolbar-title.toolbar-title-md {
         margin-left: 16px;
@@ -191,7 +191,7 @@ page-devicededetail {
         color: #fff !important;
         border: 1px solid #b39be6 !important;
     }
-}
+
 i.fa.fa-chevron-left {
     position: absolute;
     left: 0;
@@ -207,6 +207,7 @@ i.fa.fa-camera.abs {
     margin: 0 auto;
     font-size: 18px;
     color: #e2a575;
+    text-align: right;
 }
 .pen img {
     height: 100%;
