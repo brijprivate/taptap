@@ -100,7 +100,13 @@ export class TapmodalPage {
       _base.viewCtrl.dismiss();
       if(success.message == 'DEVICE LOST INFO'){
         _base.navCtrl.setRoot('LostcardPage',{lostinfo:success.lostinfo});
-      }else{
+      }
+      else if(success.message == "DEVICE INFO "){
+        console.log("deviceinfo--------------->>>>");
+        _base.navCtrl.push('DevicededetailPage',{devicedetail:success.lostinfo});
+      }
+      else if(success.message == 'Item Tapped Successfull'){
+        console.log("detail page------->>>>");
         // _base.navCtrl.push('TapdetailsPage',{itemdetails:success.result});
         _base.navCtrl.push('TapdetailsPage',success.result);
 
