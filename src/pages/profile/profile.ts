@@ -360,7 +360,7 @@ console.log(_base.showchart)
   presentPrompt() {
     let alert = this.alert.create({
       title: 'Total Personal Time='+this.totalPtime,
-      subTitle:'Total Buisness Time='+ this.totalBtime,
+      subTitle:'Total Business Time='+ this.totalBtime,
       cssClass: 'alertDanger',
 
       
@@ -387,7 +387,7 @@ console.log(_base.showchart)
   presentPromptt(){
     let alert = this.alert.create({
       title: 'Total Personal milage='+this.totalPmilage,
-      subTitle:'Total Buisness milage='+ this.totalBmilage,
+      subTitle:'Total Business milage='+ this.totalBmilage,
       cssClass: 'alertDanger1',
 
       
