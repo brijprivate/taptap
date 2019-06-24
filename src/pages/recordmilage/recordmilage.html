@@ -79,14 +79,14 @@
       <ion-row>
         <ion-col col-6>
           <p class="typea">Octometer</p>
-          <p class="typerecordtime"> {{sdistance}}km</p>
+          <p class="typerecordtime"> {{sdistance }}{{unit}}</p>
         </ion-col>
         <ion-col col-6>
           <div class="tog">
             <p class="typea">Preference</p>
 
             <!-- <p class="mile">Mile<ion-toggle checked="true"></ion-toggle><span class="km">Kms</span></p>  -->
-            <span class="mile">KM</span> <label class="switch"><input type="checkbox" id="togBtn">
+            <span class="mile">KM</span> <label class="switch"><input type="checkbox" id="togBtn" (change)="change($event)">
               <div class="slider round">
                 <!--ADDED HTML --><span class="on">MPH</span><span class="off">KPH</span>
                 <!--END-->

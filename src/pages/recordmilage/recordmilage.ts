@@ -26,7 +26,8 @@ declare var window;
   templateUrl: 'recordmilage.html',
 })
 export class RecordmilagePage {
-
+  unit='KM';
+  multiplier=1;
   //NFC read related ....
   readingTag: boolean = false;
   writingTag: boolean = false;
@@ -58,6 +59,7 @@ export class RecordmilagePage {
   public endLocation: any;
   public checkp: boolean = false;
   islocation: boolean = false;
+  
 
 
   // to display on screen only
@@ -127,6 +129,7 @@ export class RecordmilagePage {
     let _base = this;
     setInterval(function () {
       _base.sdistance = _base.totaldis;
+      _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
       _base.stime = _base.time;
     }, 500);
   }
@@ -225,7 +228,8 @@ export class RecordmilagePage {
         distance: this.totaldis,
         startlocation: this.currentPosition,
         endLocation: this.endLocation,
-        cords: this.locations
+        cords: this.locations,
+        unit:this.unit
       });
       this.active=!this.active;
 
@@ -350,33 +354,21 @@ export class RecordmilagePage {
 
     });
   }
-
-  //check permission...
-  // checkpermission(){
-  //   console.log("permission");
-  //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.LOCATION).then(
-  //     result => console.log('Has permission?',result.hasPermission),
-  //     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.LOCATION)
-  //   );
-  // }
-
-  // getPermission() {
-  //   this.diagnostic.getPermissionAuthorizationStatus(this.diagnostic.permission.ACCESS_COARSE_LOCATION).then((status) => {
-  //     console.log(`AuthorizationStatus`);
-  //     console.log(status);
-  //     if (status != this.diagnostic.permissionStatus.GRANTED) {
-  //       this.diagnostic.requestRuntimePermission(this.diagnostic.permission.ACCESS_COARSE_LOCATION).then((data) => {
-  //         console.log(`getCameraAuthorizationStatus`);
-  //         console.log(data);
-  //       })
-  //     } else {
-  //       console.log("We have the permission");
-  //     }
-  //   }, (statusError) => {
-  //     console.log(`statusError`);
-  //     console.log(statusError);
-  //   });
-  // }
+  change(event){
+    console.log(event.target.checked);
+    if(event.target.checked){
+      this.unit='MPH';
+      this.multiplier=0.621371;
+    }
+    else if(!event.target.checked){
+  
+      this.unit='KM';
+      this.multiplier=1;
+    }
+ 
+  }
+ 
+ 
 
   back(){
     this.navCtrl.pop()

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { PairdevicePage } from '../pairdevice/pairdevice';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
@@ -45,11 +45,16 @@ export class ProfilePage {
   premilage: boolean = false;
   interval: any;
   maindevice: any;
+  totalPtime=0;
+  totalBtime=0;
+  totalPmilage=0;
+  totalBmilage=0;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
     public loginsignupProvider: LoginsignupProvider,
-    public loading: LoadingController) {
+    public loading: LoadingController,
+    public alert: AlertController,) {
     var time = new Date().toTimeString();
     console.log(time);
     this.userId = localStorage.getItem("userId");
@@ -148,8 +153,8 @@ export class ProfilePage {
   recordMilage() {
     this.chart.dispose();
     clearInterval(this.interval);
-    this.navCtrl.push('AnimatetapPage', { key: 'milage' });
-    // this.navCtrl.push('RecordmilagePage');
+    // this.navCtrl.push('AnimatetapPage', { key: 'milage' });
+    this.navCtrl.push('RecordmilagePage');
 
 
 
@@ -273,6 +278,8 @@ export class ProfilePage {
         // _base.tbmilage = success.total_business;
         // if(_base.tpmilage || _base.tbmilage){
         // _base.chartfunction();
+        _base.totalPmilage = success.result.personal;
+        _base.totalBmilage = success.result.business;
         _base.premilage = true;
 
         // _base.callchart()
@@ -312,7 +319,8 @@ export class ProfilePage {
     this.nfctagProvider.gettime(this.userId).then(function (success: any) {
       console.log(success);
       if (success.result.records.length != 0) {
-
+        _base.totalPtime = success.result.personal;
+        _base.totalBtime = success.result.business;
         _base.tptime = success.total_personal;
         _base.tbtime = success.total_business;
         _base.pretime = true;
@@ -340,5 +348,58 @@ export class ProfilePage {
     }, function (err) {
       console.log(err);
     })
+  }
+
+  presentPrompt() {
+    let alert = this.alert.create({
+      title: 'Total Time(Personal)='+this.totalPtime,
+      subTitle:'Total Time(Buisness)='+ this.totalBtime,
+      
+      
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        // {
+        //   text: 'OK',
+        //   handler: data => {
+        //     // console.log(data[0]);
+        //     alert.dismiss();
+            
+        //   }
+        // }
+      ]
+    });
+    alert.present();
+  }
+  presentPromptt(){
+    let alert = this.alert.create({
+      title: 'Total milage(Personal)='+this.totalPmilage,
+      subTitle:'Total milage(Buisness)='+ this.totalBmilage,
+      
+      
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        // {
+        //   text: 'OK',
+        //   handler: data => {
+        //     // console.log(data[0]);
+        //     alert.dismiss();
+            
+        //   }
+        // }
+      ]
+    });
+    alert.present();
   }
 }

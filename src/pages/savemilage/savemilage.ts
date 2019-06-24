@@ -35,6 +35,9 @@ export class SavemilagePage {
   public endLocation: any = [];
   public totaldis = 0;
   startTime: any;
+  public unit:any;
+  public showdistance:any;
+  public multiplier=1;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -52,6 +55,8 @@ export class SavemilagePage {
     // this.distance = this.navParams.get("distance");
     this.currentpos = this.navParams.get("startlocation");
     this.startTime = this.navParams.get("starttime");
+    this.unit = this.navParams.get("unit");
+    console.log(this.unit);
     // this.endPos = this.navParams.get("endLocation");
     // this.cords = this.navParams.get("cords");
     console.log(this.endtime);
@@ -216,6 +221,12 @@ export class SavemilagePage {
       var x = this.distance(laa1, loa1, laa2, loa2, 'K');
 
       this.totaldis = (this.totaldis + x);
+      if(this.unit=="MPH"){
+        this.multiplier=0.621371;
+        this.showdistance=(this.totaldis*this.multiplier).toFixed(2)
+      }else{
+        this.showdistance=this.totaldis.toFixed(2);
+      }
 
       console.log('total distance', this.totaldis);
       // if(this.totaldis){
