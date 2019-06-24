@@ -353,7 +353,7 @@ export class ProfilePage {
   presentPrompt() {
     let alert = this.alert.create({
       title: 'Total Personal Time='+this.totalPtime,
-      subTitle:'Total Buisness Time='+ this.totalBtime,
+      subTitle:'Total Business Time='+ this.totalBtime,
       cssClass: 'alertDanger',
 
       
@@ -380,7 +380,7 @@ export class ProfilePage {
   presentPromptt(){
     let alert = this.alert.create({
       title: 'Total Personal milage='+this.totalPmilage,
-      subTitle:'Total Buisness milage='+ this.totalBmilage,
+      subTitle:'Total Business milage='+ this.totalBmilage,
       cssClass: 'alertDanger1',
 
       
