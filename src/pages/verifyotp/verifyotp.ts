@@ -16,49 +16,54 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 })
 export class VerifyotpPage {
 
-  public otp:any;
-  public userEmail:any;
+  public otp: any;
+  public userEmail: any;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public signupprovider:LoginsignupProvider,
-    public loading:LoadingController,
-    public alert:AlertController) {
-      this.userEmail = this.navParams.get("useremail");
+    public signupprovider: LoginsignupProvider,
+    public loading: LoadingController,
+    public alert: AlertController) {
+    this.userEmail = this.navParams.get("useremail");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VerifyotpPage');
   }
 
-  otpVerification()
-  {
-    if(this.otp)
-    {
+  otpVerification() {
+    if (this.otp) {
       let loader = this.loading.create({
-        content:"Please wait..."
+        content: "Please wait..."
       });
       loader.present();
       let _base = this;
       let otpdata = {
-        email:this.userEmail,
-        code:this.otp
+        email: this.userEmail,
+        code: this.otp
       }
-      this.signupprovider.verifyotp(otpdata).then(function(success:any){
+      this.signupprovider.verifyotp(otpdata).then(function (success: any) {
         loader.dismiss();
         console.log(success);
-        if(success){
-          localStorage.setItem("userId",success.result._id);
+        if (success) {
+          localStorage.setItem("userId", success.result._id);
           _base.navCtrl.setRoot('DashboardPage');
         }
-      },function(err){
+      }, function (err) {
         loader.dismiss();
         alert("Incorrect OTP")
         console.log(err);
       })
-    }else
-    {
+    } else {
       alert("Please Provide OTP to Continue");
     }
   }
+  // keyUpChecker(ev) {
+    
+  //   if (this.otp.length >4) {
+  //     console.log(this.otp)
+  //     this.otp.slice(0,-1);
+  //   }
+  
+  // }
 }
