@@ -49,6 +49,7 @@ export class ProfilePage {
   totalBtime=0;
   totalPmilage=0;
   totalBmilage=0;
+  showchart=false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
@@ -300,13 +301,12 @@ export class ProfilePage {
       console.log(x, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
       if (_base.pretime && _base.premilage) {
         clearInterval(_base.interval);
-
-        _base.chartfunction();
+        
 
         console.log('call chart llll');
         _base.premilage = false;
         _base.pretime = false;
-
+        console.log(_base.showchart+'ddddddddddddddddddddddddddddddddddd')
       }
 
     }, 50)
@@ -342,8 +342,15 @@ export class ProfilePage {
         _base.tptime = success.total_time_personal;
         _base.tbtime = success.total_time_business;
         if (_base.tbmilage || _base.tpmilage || _base.tptime || _base.tbtime) {
+          _base.showchart=true;
           _base.chartfunction();
         }
+      else{
+        _base.showchart=false;
+      }
+console.log(_base.showchart)
+
+
       }
     }, function (err) {
       console.log(err);
