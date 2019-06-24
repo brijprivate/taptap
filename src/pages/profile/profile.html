@@ -88,10 +88,10 @@
 
   <div class="canvas animated 800s zoomIn delay-0.2s">
     <!-- <canvas #doughnutCanvas></canvas> -->
-    <div class="circle">
+    <div class="circle" *ngIf="!showchart">
       No Tap Data
     </div>
-    <!-- <div id="container1"></div> -->
+    <div *ngIf="showchart" id="container1"></div>
 
     <div class="somedata">
       <p><span (click)="presentPrompt()">Total Time(P/B)</span><span (click)="presentPromptt()">Total Mileage(P/B)</span></p>
