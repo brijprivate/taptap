@@ -35,8 +35,7 @@
         </ion-row>
       </ion-grid>
     </div>
-    <p class="aboutContent" class="">We are the best in NFC application. Our Motto is to enhance the lifestyle , not only you and me but all.
-      Our product is TapTap which can be installed from play store. Visit our nearby store for more info.
+    <p class="aboutContent" class="">A mobile application that allows users to tap items with their NFC enabled devices to access information about products and services.
     </p>
     <div class="">
 
@@ -45,23 +44,26 @@
     </h3>
     <p>
         Future Business Centre, Kings Hedges Road,<br> Cambridge, England, CB4 2HY</p>
-    <p>Email.:info@gocubetech.com</p>
+    <p>Email.:taptap@gocubetech.com</p>
     <p>
       Web:www.gocubetech.com </p>
     </div>
     <div class="contact">
       <ion-grid>
         <ion-row>
-          <ion-col class="">
-            <ion-icon ios="ios-call" md="md-call"></ion-icon>
-            <p>Call</p>
+          <ion-col class="" (click)="emailto('taptap@gocubetech.com')">
+            <!-- <ion-icon ios="ios-call" md="md-call"></ion-icon> -->
+            <ion-icon ios="ios-mail" md="md-mail" ></ion-icon>
+
+            <p>Email</p>
           </ion-col>
-          <ion-col class="">
+          <!-- <ion-col class="">
             <ion-icon ios="ios-map" md="md-map"></ion-icon>
             <p>Directions</p>
-          </ion-col>
-          <ion-col class="">
-            <ion-icon ios="ios-globe" md="md-globe"></ion-icon>
+          </ion-col> -->
+          <ion-col class="" (click)="website('www.gocubetech.com')">
+              
+            <ion-icon ios="ios-globe" md="md-globe" > </ion-icon>
             <p>Website</p>
           </ion-col>
         </ion-row>

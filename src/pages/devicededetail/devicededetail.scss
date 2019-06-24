@@ -13,7 +13,7 @@ page-devicededetail {
             top: 30%;
             background: #fff;
             border-radius: 50%;
-            padding: 2em;
+            padding: 1em;
             left: 0;
             right: 0;
             margin: auto;
@@ -199,5 +199,18 @@ i.fa.fa-chevron-left {
 }
 ion-title {
     margin-left: 1.5em;
+}
+i.fa.fa-camera.abs {
+    position: absolute;
+    right: 0;
+    top: 58%;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #e2a575;
+}
+.pen img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
 }
 }
