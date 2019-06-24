@@ -60,8 +60,6 @@ export class RecordmilagePage {
   public checkp: boolean = false;
   islocation: boolean = false;
   
-
-
   // to display on screen only
   sdistance: any;
   stime: any;
@@ -93,15 +91,18 @@ export class RecordmilagePage {
     });
     //  this.locations = [];
     //  this.startBackgroundTracking();
-    this.sharedservice.getlocation().subscribe((value) => {
+    this.sharedservice.getlocation().subscribe((value:any) => {
       console.log("shared location------------>>>>>>>>>>.");
       console.log(value);
       if (Object.keys(value).length == 0 || value == null) {
         return;
       } else {
         this.locations.push(value);
-        this.loop(value);
-        console.log("updated location------------->>>>>>>", value);
+        if(value.latitude && value.longitude){
+          this.loop(value);
+          console.log("updated location------------->>>>>>>", value);
+        }
+
 
         let loader = this.loading.create({
           content: "Please wait..."
@@ -127,11 +128,21 @@ export class RecordmilagePage {
     this.enableLocation();
     // to display on screen only
     let _base = this;
-    setInterval(function () {
-      _base.sdistance = _base.totaldis;
-      _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
-      _base.stime = _base.time;
-    }, 500);
+    _base.sdistance = _base.totaldis;
+    _base.stime = _base.time;
+    // setInterval(function () {
+    //   console.log("interval location",_base.locations);
+    //   // if(_base.locations.length >= 2){
+    //     // _base.loop(_base.locations);
+    //     _base.sdistance = _base.totaldis;
+    //     _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
+    //     _base.stime = _base.time;
+    //   // }
+    //   // }
+    //   // _base.sdistance = _base.totaldis;
+    //   // _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
+    //   // _base.stime = _base.time;
+    // }, 500);
   }
 
 
@@ -232,7 +243,7 @@ export class RecordmilagePage {
         unit:this.unit
       });
       this.active=!this.active;
-
+console.log(this.totaldis);
   }
 
 
@@ -289,10 +300,12 @@ export class RecordmilagePage {
     if(this.locations.length==1){
       this.value=this.locations[0];
     }
+    console.log(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K')
     var x = this.distance(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K');
       this.value=value;
       this.totaldis = (this.totaldis + x);
       console.log('total distance-------------------->>>>>>>>',this.totaldis)
+      this.sdistance=(this.sdistance*this.multiplier).toFixed(2);
 
     // for (i = 0; i < this.locations.length; i++) {
     //   console.log("first location------->>>>", i[0]);

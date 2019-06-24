@@ -27,8 +27,9 @@
     <div class="blue">
       <div class="pen animated 800s pulse delay-0.1s">
 
-        <img src="../../assets/images/event.jpeg" alt="">
-        <i class="fa fa-camera abs"  aria-hidden="true"></i>
+        <img *ngIf="!imageId" src="../../assets/images/logo_before.png" alt="">
+        <img *ngIf="imageId" src="{{imageId}}" alt="">
+        <i class="fa fa-camera abs"  aria-hidden="true" (click)="presentActionSheet()"></i>
 
       </div>
     </div>

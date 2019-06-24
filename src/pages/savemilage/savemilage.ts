@@ -227,7 +227,7 @@ export class SavemilagePage {
       }else{
         this.showdistance=this.totaldis.toFixed(2);
       }
-
+      console.log("show distance-----", this.showdistance);
       console.log('total distance', this.totaldis);
       // if(this.totaldis){
       console.log("in loooooopppppppppp----------->>>>>>>");

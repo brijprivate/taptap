@@ -31,6 +31,8 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { FileOpener } from '@ionic-native/file-opener';
     Deeplinks,
     SocialSharing,
     Contacts,
-    FileOpener
+    FileOpener,
+    FileTransfer,
+    FilePath
     // Diagnostic
   ]
 })
