@@ -45,16 +45,17 @@ export class ProfilePage {
   premilage: boolean = false;
   interval: any;
   maindevice: any;
-  totalPtime=0;
-  totalBtime=0;
-  totalPmilage=0;
-  totalBmilage=0;
+  totalPtime = 0;
+  totalBtime = 0;
+  totalPmilage = 0;
+  totalBmilage = 0;
+  showchart = true;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
     public loginsignupProvider: LoginsignupProvider,
     public loading: LoadingController,
-    public alert: AlertController,) {
+    public alert: AlertController, ) {
     var time = new Date().toTimeString();
     console.log(time);
     this.userId = localStorage.getItem("userId");
@@ -133,26 +134,33 @@ export class ProfilePage {
     // });
   }
   ionViewDidLeave() {
-    this.chart.dispose();
+    if (this.showchart) {
+      this.chart.dispose();
+    }
   }
 
 
 
   pairDevice() {
-    this.chart.dispose();
+    if (this.showchart) {
+      this.chart.dispose();
+    }
     clearInterval(this.interval);
     this.navCtrl.push('PairdevicePage', { x: 'pair' });
 
   }
   manageDevice() {
-    this.chart.dispose();
-    clearInterval(this.interval);
+    if (this.showchart) {
+      this.chart.dispose();
+    }
+     clearInterval(this.interval);
     this.navCtrl.push('ManagedevicePage');
 
   }
   recordMilage() {
-    this.chart.dispose();
-    clearInterval(this.interval);
+    if (this.showchart) {
+      this.chart.dispose();
+    } clearInterval(this.interval);
     // this.navCtrl.push('AnimatetapPage', { key: 'milage' });
     this.navCtrl.push('RecordmilagePage');
 
@@ -160,8 +168,9 @@ export class ProfilePage {
 
   }
   recordTime() {
-    this.chart.dispose();
-    clearInterval(this.interval);
+    if (this.showchart) {
+      this.chart.dispose();
+    } clearInterval(this.interval);
     this.navCtrl.push('AnimatetapPage', { key: 'time' });
 
     // this.navCtrl.push('RecordtimePage');
@@ -301,12 +310,11 @@ export class ProfilePage {
       if (_base.pretime && _base.premilage) {
         clearInterval(_base.interval);
 
-        _base.chartfunction();
 
         console.log('call chart llll');
         _base.premilage = false;
         _base.pretime = false;
-
+        console.log(_base.showchart + 'ddddddddddddddddddddddddddddddddddd')
       }
 
     }, 50)
@@ -341,9 +349,17 @@ export class ProfilePage {
         _base.tpmilage = success.total_milage_personal;
         _base.tptime = success.total_time_personal;
         _base.tbtime = success.total_time_business;
-        if (_base.tbmilage || _base.tpmilage || _base.tptime || _base.tbtime) {
+        if (_base.tbmilage == 0 && _base.tpmilage == 0 && _base.tptime == 0 && _base.tbtime == 0) {
+          _base.showchart = false;
+
+        }
+        else {
+          _base.showchart = true;
           _base.chartfunction();
         }
+        console.log(_base.showchart)
+
+
       }
     }, function (err) {
       console.log(err);
@@ -352,11 +368,11 @@ export class ProfilePage {
 
   presentPrompt() {
     let alert = this.alert.create({
-      title: 'Total Personal Time='+this.totalPtime,
-      subTitle:'Total Buisness Time='+ this.totalBtime,
+      title: 'Total Personal Time=' + this.totalPtime,
+      subTitle: 'Total Business Time=' + this.totalBtime,
       cssClass: 'alertDanger',
 
-      
+
       buttons: [
         {
           text: 'OK',
@@ -370,20 +386,20 @@ export class ProfilePage {
         //   handler: data => {
         //     // console.log(data[0]);
         //     alert.dismiss();
-            
+
         //   }
         // }
       ]
     });
     alert.present();
   }
-  presentPromptt(){
+  presentPromptt() {
     let alert = this.alert.create({
-      title: 'Total Personal milage='+this.totalPmilage,
-      subTitle:'Total Buisness milage='+ this.totalBmilage,
+      title: 'Total Personal milage=' + this.totalPmilage,
+      subTitle: 'Total Business milage=' + this.totalBmilage,
       cssClass: 'alertDanger1',
 
-      
+
       buttons: [
         {
           text: 'OK',
@@ -397,7 +413,7 @@ export class ProfilePage {
         //   handler: data => {
         //     // console.log(data[0]);
         //     alert.dismiss();
-            
+
         //   }
         // }
       ]

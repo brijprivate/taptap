@@ -19,7 +19,7 @@ export class SelectdatePage {
   busi = false;
   pers = false;
   public sdate: String;
-  public edate: String;
+  public edate: any;
   userId: string;
   data: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginsignupProvider: LoginsignupProvider) {
@@ -52,7 +52,8 @@ export class SelectdatePage {
   }
   enddate() {
     // this.edate = new Date().toISOString();
-    console.log(this.edate);
+    console.log(this.edate)
+    console.log(this.edate.slice(0,-16));
   }
   back() {
     this.navCtrl.pop()

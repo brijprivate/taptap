@@ -1,4 +1,4 @@
-import { Component, ViewChild , Pipe, PipeTransform} from '@angular/core';
+import { Component, ViewChild, Pipe, PipeTransform } from '@angular/core';
 import { NavController, Slides, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
@@ -36,8 +36,8 @@ export class HomePage {
   public userId: any;
   public userName: any;
   public uid: any = "";
-  public blankmsg:String;
-  public isblanck:boolean=false;
+  public blankmsg: String;
+  public isblanck: boolean = false;
 
   public fashion = 0;
   public general = 0;
@@ -78,7 +78,7 @@ export class HomePage {
     public alert: AlertController,
     // private diagnostic: Diagnostic
   ) {
-    var x = new Date().toTimeString().slice(0,8);
+    var x = new Date().toTimeString().slice(0, 8);
     console.log(x);
     let cdate = new Date().toISOString();
     console.log(cdate);
@@ -116,12 +116,7 @@ export class HomePage {
     let _base = this;
     anychart.onDocumentReady(function () {
 
-      if(_base.isblanck==true){
-        _base.chart = anychart.pie([
-          ['nodata', 115200],
-        ]);
-      }
-      else{
+     
         _base.chart = anychart.pie([
           { x: "Fashion", value: _base.fashion },
           { x: "General", value: _base.general },
@@ -129,26 +124,27 @@ export class HomePage {
           { x: "Contacts", value: _base.contact },
           { x: "Business", value: _base.buisness },
           { x: "Sports", value: _base.sports },
-          { x: "Groceries", value: _base.groceries },       
+          { x: "Groceries", value: _base.groceries },
         ]);
-      }
       
+
 
       var label = anychart.standalones.label();
 
-     
-      if(_base.isblanck==true){
-        _base.chart.innerRadius("75%");
-        label.text("No Tap Data");
+
+      // if(_base.isblanck==true){
+      //   _base.chart.innerRadius("75%");
+      //   label.text("No Tap Data");
 
 
-      }
-      else{
-        _base.chart.innerRadius("25%");
-        label.text("TapTap");
+      // }
+      // else{
+      //   _base.chart.innerRadius("25%");
+      //   label.text("TapTap");
 
-      }
-      
+      // }
+      _base.chart.innerRadius("25%");
+      label.text("TapTap");
       label.width("100%");
       label.height("100%");
       label.adjustFontSize(true);
@@ -260,8 +256,8 @@ export class HomePage {
       console.log("All Tapped data ,..........>>>>>");
       // console.log(success.result.length);
       _base.tapItems = success.result;
-      if(success.result.length == 0){
-        _base.isblanck =true;
+      if (success.result.length == 0) {
+        _base.isblanck = true;
         _base.blankmsg = "There Is No Tap Yet";
       }
       console.log(_base.tapItems);
@@ -272,14 +268,14 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    if(item.purpose=="lost"){
-      this.navCtrl.push('LostcardPage',{lostinfo:item.deviceInfo.contact_info});
+    if (item.purpose == "lost") {
+      this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
       console.log(item);
-    }else{
+    } else {
       console.log("=====================", item);
-    this.navCtrl.push('TapdetailsPage', item);
+      this.navCtrl.push('TapdetailsPage', item);
     }
-    
+
   }
 
   //go to edit profile page ...
