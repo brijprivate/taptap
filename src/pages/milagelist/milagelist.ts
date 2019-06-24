@@ -40,14 +40,17 @@ export class MilagelistPage {
     private plt: Platform,
     private file: File,
     private fileOpener: FileOpener) {
-    this.getMilageList();
+    
     this.data = this.navParams.get('data');
     console.log(this.data)
+    if(this.data){
+      this.getMilageList();
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MilagelistPage');
-    this.getprofiledata()
+    // this.getprofiledata()
   }
 
   getprofiledata() {
@@ -56,6 +59,7 @@ export class MilagelistPage {
       console.log(success);
       if (success) {
         _base.address = success.result;
+        _base.createPdf(); 
 
       }
     }, function (err) {
@@ -68,6 +72,10 @@ export class MilagelistPage {
     this.loginsignpro.getmilage(localStorage.getItem("userId")).then(function (success: any) {
       console.log(success);
       _base.milagelist = success.result.records;
+      if(_base.milagelist){
+        _base.getprofiledata()
+
+      }
     }, function (err) {
       console.log(err);
     })
@@ -212,6 +220,9 @@ export class MilagelistPage {
     }
     console.log("creating");
     this.pdfObj = pdfMake.createPdf(docDefinition);
+    if(this.pdfObj){
+      this. downloadPdf();
+    }
   }
 
   downloadPdf() {
