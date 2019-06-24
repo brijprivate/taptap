@@ -22,16 +22,13 @@ import { File } from '@ionic-native/file';
 export class MilagelistPage {
   public milagelist = [];
   address:any;
-  letterObj = {
-    to: 'Foster',
-    from: 'Subham',
-    text: 'This pdf make test'
-  }
+
 
 
 
   pdfObj = null;
   data: any;
+  show: boolean=true;
 
 
   constructor(public navCtrl: NavController,
@@ -52,6 +49,7 @@ export class MilagelistPage {
     console.log('ionViewDidLoad MilagelistPage');
     // this.getprofiledata()
   }
+
 
   getprofiledata() {
     let _base = this;
@@ -222,6 +220,8 @@ export class MilagelistPage {
     this.pdfObj = pdfMake.createPdf(docDefinition);
     if(this.pdfObj){
       this. downloadPdf();
+      this.show=false;
+
     }
   }
 
@@ -231,9 +231,9 @@ export class MilagelistPage {
         var blob = new Blob([buffer], { type: 'application/pdf' });
 
         // Save the PDF to the data Directory of our App
-        this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
+        this.file.writeFile(this.file.dataDirectory, 'taptapstatement.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
-          this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+          this.fileOpener.open(this.file.dataDirectory + 'taptapstatement.pdf', 'application/pdf');
           console.log("open");
         })
       });

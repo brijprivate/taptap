@@ -79,15 +79,15 @@
 
       <div class="lostDevice">
         <!-- <h4>We are ready to help You..!</h4> -->
-        <p>
+        <p *ngIf="lostinformation.name">
           <ion-icon ios="ios-contact" md="md-contact"></ion-icon>        
           {{lostinformation.name}}
         </p>
-        <p>
+        <p *ngIf="lostinformation.mobileNumber">
           <ion-icon ios="ios-call" md="md-call"></ion-icon>        
           {{lostinformation.mobileNumber}}
         </p>
-        <p>
+        <p *ngIf="lostinformation.email">
           <ion-icon ios="ios-mail" md="md-mail"></ion-icon>  
           {{lostinformation.email}}
         </p>
