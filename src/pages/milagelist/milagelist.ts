@@ -21,7 +21,7 @@ import { File } from '@ionic-native/file';
 })
 export class MilagelistPage {
   public milagelist = [];
-
+  address:any;
   letterObj = {
     to: 'Foster',
     from: 'Subham',
@@ -47,6 +47,20 @@ export class MilagelistPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MilagelistPage');
+    this.getprofiledata()
+  }
+
+  getprofiledata() {
+    let _base = this;
+    this.loginsignpro.getProfile(localStorage.getItem("userId")).then(function (success: any) {
+      console.log(success);
+      if (success) {
+        _base.address = success.result;
+
+      }
+    }, function (err) {
+      console.log(err);
+    })
   }
 
   getMilageList() {
@@ -69,7 +83,7 @@ export class MilagelistPage {
       var dataRow = [];
 
       columns.forEach(function (column) {
-        dataRow.push(row[column]);
+        dataRow.push(row[column.text]);
       })
 
       body.push(dataRow);
@@ -81,7 +95,7 @@ export class MilagelistPage {
   table(data, columns) {
 
     return {
-      layout: 'lightHorizontalLines',
+      // layout: 'lightHorizontalLines',
 
       table: {
         headerRows: 1,
@@ -111,6 +125,7 @@ export class MilagelistPage {
   createPdf() {
 
     var title = '';
+    // this.data.date.end=this.data.date.end
     var externalDataRetrievedFromServer = [];
     if (this.data.data.business) {
       externalDataRetrievedFromServer = this.data.data.business;
@@ -129,12 +144,13 @@ export class MilagelistPage {
 
     var dynamicttile = [];
     if (this.data.type == 'time') {
-      dynamicttile = ['title', 'recordType', 'startTime', 'endTime'];
+      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true },{ text: 'startTime', bold: true },{ text: 'endTime', bold: true }];
     }
     else if (this.data.type == 'milage') {
-      dynamicttile = ['title', 'recordType', 'startLocation', 'endLocation'];
+      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true },{ text: 'startLocation', bold: true },{ text: 'endLocation', bold: true }];
+
     }
-    console.log(dynamicttile)
+    
     var docDefinition = {
 
 
@@ -150,16 +166,21 @@ export class MilagelistPage {
         { text: this.formatdata(today), alignment: 'right', margin: [0, 0, 0, 0], fontSize: 13 },
 
 
-        { text: 'Brij', bold: true, fontSize: 13 },
-        { text: 'Durgapur', fontSize: 11 },
-        { text: 'India', fontSize: 11 },
-        { text: '713212', fontSize: 11 },
+        { text: this.address.name, bold: true, fontSize: 13 },
+        { text: this.address.address, fontSize: 11 },
+      
         { text: 'UID: ' + localStorage.getItem('uid'), bold: true, fontSize: 11, margin: [0, 5, 0, 0] },
         { text: 'Start Date:-' + this.data.date.start + ' & ' + 'End Date:-' + this.data.date.end, style: 'jj', fontSize: 11, margin: [0, 5, 0, 0], alignment: 'center' },
 
         { text: title, bold: true, alignment: 'center', fontSize: 13, margin: [20, 10, 10, 10] },
 
         this.table(externalDataRetrievedFromServer, dynamicttile),
+        { text: "Gocube Technology Limited", bold: true, fontSize: 13 ,margin:[0 ,30 ,0 ,0]},
+        { text: "Company No: 111444", bold: true, fontSize: 13 },
+        { text: "Future Business Centre, Kings Hedges Road,",  fontSize: 12 },
+        { text: "Cambridge, England, CB4 2HY",  fontSize: 12 },
+
+        
 
       ],
       styles: {
