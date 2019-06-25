@@ -34,7 +34,7 @@
   <div class="milageTitle">
     <img src="../../assets/images/fast.png" class="record">
     <p class="milr">Record Mileage </p>
-    <p class="dist">{{showdistance}} {{unit}} </p>
+    <p class="dist">{{showdistance}} {{unit}} in {{duration}}min </p>
   </div>
   <div class="hrLt">
     <ion-grid>
@@ -107,11 +107,11 @@
     <ion-list>
       <p class="title">Mileage  title</p>
       <ion-item>
-        <ion-input type="text" value="Time is money" [(ngModel)]="title"></ion-input>
+        <ion-input type="text"  [(ngModel)]="title"></ion-input>
       </ion-item>
       <p class="title">Mileage  description</p>
       <ion-item>
-        <ion-input type="text" value="Trying to travel at speed of light" [(ngModel)]="description"></ion-input>
+        <ion-input type="text"  [(ngModel)]="description"></ion-input>
       </ion-item>
     </ion-list>
     <ion-grid class="saveGrid">

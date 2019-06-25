@@ -8,6 +8,8 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
+
 
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var window;
@@ -59,13 +61,17 @@ export class RecordmilagePage {
   public endLocation: any;
   public checkp: boolean = false;
   islocation: boolean = false;
+  interval;
   
   // to display on screen only
   sdistance: any;
   stime: any;
   startTime: any;
+  sduration:any;
+  eduration:any;
   endTime: any;
   value:any;
+  totalduration: any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private backgroundGeolocation: BackgroundGeolocation,
@@ -77,7 +83,8 @@ export class RecordmilagePage {
     public nfctagpro: NfctagProvider,
     private toast: ToastController,
     public alert: AlertController,
-    private locationAccuracy: LocationAccuracy
+    private locationAccuracy: LocationAccuracy,
+    public locationTracker: LocationTrackerProvider
     // private diagnostic: Diagnostic
   ) {
     this.enableLocation();
@@ -128,26 +135,27 @@ export class RecordmilagePage {
     this.enableLocation();
     // to display on screen only
     let _base = this;
-    _base.sdistance = _base.totaldis;
-    _base.stime = _base.time;
-    // setInterval(function () {
-    //   console.log("interval location",_base.locations);
-    //   // if(_base.locations.length >= 2){
-    //     // _base.loop(_base.locations);
-    //     _base.sdistance = _base.totaldis;
-    //     _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
-    //     _base.stime = _base.time;
-    //   // }
-    //   // }
-    //   // _base.sdistance = _base.totaldis;
-    //   // _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
-    //   // _base.stime = _base.time;
-    // }, 500);
+    // _base.sdistance = _base.totaldis;
+    // _base.stime = _base.time;
+    _base.interval = setInterval(function () {
+      // console.log("interval location",_base.locations);
+      // if(_base.locations.length >= 2){
+        // _base.loop(_base.locations);
+        _base.sdistance = _base.totaldis;
+        _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
+        _base.stime = _base.time;
+      // }
+      // }
+      // _base.sdistance = _base.totaldis;
+      // _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
+      // _base.stime = _base.time;
+    }, 500);
   }
 
 
   startBackgroundTrack() {
-    this.backgroundGeolocation.start();
+    // this.backgroundGeolocation.start();
+    this.locationTracker.startTracking();
 
     let _base = this;
     if (this.isnetwork == "Offline") {
@@ -180,6 +188,7 @@ export class RecordmilagePage {
     }
 
     this.startTime = new Date().toTimeString().slice(0,8);
+    this.sduration = new Date().getTime();
     if (this.running) return;
     else if (this.timeBegan === null) {
       this.reset();
@@ -229,7 +238,11 @@ export class RecordmilagePage {
 
   //stop tracking .....
   stopBackgroundTrack() {
+    clearInterval(this.interval);
     this.endTime = new Date().toTimeString().slice(0,8);
+    this.eduration =  new Date().getTime();
+    this.totalduration =( ((this.eduration)-(this.sduration))/60000).toFixed(2);
+    console.log("ddddddd--------", this.totalduration);
     this.navCtrl.push('SavemilagePage',
       {
         endtime: this.endTime,
@@ -240,7 +253,8 @@ export class RecordmilagePage {
         startlocation: this.currentPosition,
         endLocation: this.endLocation,
         cords: this.locations,
-        unit:this.unit
+        unit:this.unit,
+        tduration:this.totalduration
       });
       this.active=!this.active;
 console.log(this.totaldis);

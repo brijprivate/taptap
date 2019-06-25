@@ -201,38 +201,30 @@ export class MyApp {
 
 
       console.log("initialized------------------------>>>>>>>>>>>>>>");
-      const config: BackgroundGeolocationConfig = {
-        desiredAccuracy: 10,
-        stationaryRadius: 20,
-        distanceFilter: 30,
-        debug: true, //  enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false, // enable this to clear background location settings when the app terminates
-        fastestInterval:500
-      };
+      // const config: BackgroundGeolocationConfig = {
+      //   desiredAccuracy: 10,
+      //   stationaryRadius: 20,
+      //   distanceFilter: 30,
+      //   debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+      //   stopOnTerminate: false, // enable this to clear background location settings when the app terminates
+      //   fastestInterval:500
+      // };
 
-      this.backgroundGeolocation.configure(config)
-        .then(() => {
+      // this.backgroundGeolocation.configure(config)
+      //   .then(() => {
 
-          console.log(location);
-          this.backgroundGeolocation.on(BackgroundGeolocationEvents.location)
-            .subscribe((location: BackgroundGeolocationResponse) => {
-              var locationstr = localStorage.getItem("location");
-              // console.log(locationstr);
-              console.log("original locationn-------------->>>>>>>>>>>>>");
-              console.log(location);
-              // if(locationstr == null){
-              this.arr.push(location);
-              this.sharedservice.locations(location);
-              // console.log(location);
-              // }
-              // else{
-              //   var locationarr = (locationstr);
-              //   this.arr = locationstr;
-              // }
-              // localStorage.setItem("location",this.arr);
-            })
-        })
-      window.app = this;
+      //     console.log(location);
+      //     this.backgroundGeolocation.on(BackgroundGeolocationEvents.location)
+      //       .subscribe((location: BackgroundGeolocationResponse) => {
+      //         var locationstr = localStorage.getItem("location");
+      //         console.log("original locationn-------------->>>>>>>>>>>>>");
+      //         console.log(location);
+      //         this.arr.push(location);
+      //         this.sharedservice.locations(location);
+              
+      //       })
+      //   })
+      // window.app = this;
     });
 
   }

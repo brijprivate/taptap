@@ -56,6 +56,7 @@ export class HomePage {
   public chart;
   public time = new Date();
 
+  
   //NFC read related ....
   readingTag: boolean = false;
   writingTag: boolean = false;
