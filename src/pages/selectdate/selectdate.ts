@@ -119,7 +119,10 @@ export class SelectdatePage {
               alert('no data in personal type');
               return;
             }
-
+            else if (success.Personal.length == 0 && success.Business.length == 0) {
+              alert('no data in Selected type');
+              return;
+            }
 
           }
 
@@ -136,6 +139,10 @@ export class SelectdatePage {
             }
             else if (success.personal.length == 0 && _base.pers && !_base.busi) {
               alert('no data in personal type');
+              return;
+            }
+            else if (success.personal.length == 0 && success.Business.length == 0) {
+              alert('no data in Selected type');
               return;
             }
           }

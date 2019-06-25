@@ -21,14 +21,14 @@ import { File } from '@ionic-native/file';
 })
 export class MilagelistPage {
   public milagelist = [];
-  address:any;
+  address: any;
 
 
 
 
   pdfObj = null;
   data: any;
-  show: boolean=true;
+  show: boolean = true;
 
 
   constructor(public navCtrl: NavController,
@@ -37,10 +37,10 @@ export class MilagelistPage {
     private plt: Platform,
     private file: File,
     private fileOpener: FileOpener) {
-    
+
     this.data = this.navParams.get('data');
     console.log(this.data)
-    if(this.data){
+    if (this.data) {
       this.getMilageList();
     }
   }
@@ -57,7 +57,7 @@ export class MilagelistPage {
       console.log(success);
       if (success) {
         _base.address = success.result;
-        _base.createPdf(); 
+        _base.createPdf();
 
       }
     }, function (err) {
@@ -70,7 +70,7 @@ export class MilagelistPage {
     this.loginsignpro.getmilage(localStorage.getItem("userId")).then(function (success: any) {
       console.log(success);
       _base.milagelist = success.result.records;
-      if(_base.milagelist){
+      if (_base.milagelist) {
         _base.getprofiledata()
 
       }
@@ -105,7 +105,7 @@ export class MilagelistPage {
 
       table: {
         headerRows: 1,
-        widths: ['*', '*', '*', '*'],
+        widths: ['*', '*', '*', '*', '*'],
         fontSize: 11,
         body: this.buildTableBody(data, columns)
       }
@@ -128,6 +128,21 @@ export class MilagelistPage {
 
   }
 
+  addtimes(start, end) {
+    console.log(start,end)
+    var a = start.split(":");
+    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    var b = end.split(":");
+    var seconds2 = (+b[0]) * 60 * 60 + (+b[1]) * 60 + (+b[2]);
+
+    var date = new Date(1970, 0, 1);
+    date.setSeconds(seconds + seconds2);
+
+    var c = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+    console.log(c);
+    return c;
+  }
+
   createPdf() {
 
     var title = '';
@@ -145,18 +160,30 @@ export class MilagelistPage {
       externalDataRetrievedFromServer = this.data.data;
       title = "Business & Personal"
     }
-    console.log(externalDataRetrievedFromServer)
+    console.log(externalDataRetrievedFromServer);
+    var total='00:00:00'
+
+
+    for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
+      // total = total + externalDataRetrievedFromServer[i].duration
+      console.log(i)
+      total=this.addtimes(total,externalDataRetrievedFromServer[i].duration);
+      console.log(total)
+    }
+    
+
+
     var today = new Date();
 
     var dynamicttile = [];
     if (this.data.type == 'time') {
-      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true },{ text: 'startTime', bold: true },{ text: 'endTime', bold: true }];
+      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true }, { text: 'startTime', bold: true }, { text: 'endTime', bold: true }, { text: 'duration', bold: true }];
     }
     else if (this.data.type == 'milage') {
-      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true },{ text: 'startLocation', bold: true },{ text: 'endLocation', bold: true }];
+      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true }, { text: 'startLocation', bold: true }, { text: 'endLocation', bold: true }, { text: 'duration', bold: true }];
 
     }
-    
+
     var docDefinition = {
 
 
@@ -174,19 +201,21 @@ export class MilagelistPage {
 
         { text: this.address.name, bold: true, fontSize: 13 },
         { text: this.address.address, fontSize: 11 },
-      
+
         { text: 'UID: ' + localStorage.getItem('uid'), bold: true, fontSize: 11, margin: [0, 5, 0, 0] },
         { text: 'Start Date:-' + this.data.date.start + ' & ' + 'End Date:-' + this.data.date.end, style: 'jj', fontSize: 11, margin: [0, 5, 0, 0], alignment: 'center' },
 
         { text: title, bold: true, alignment: 'center', fontSize: 13, margin: [20, 10, 10, 10] },
 
         this.table(externalDataRetrievedFromServer, dynamicttile),
-        { text: "Gocube Technology Limited", bold: true, fontSize: 13 ,margin:[0 ,30 ,0 ,0]},
-        { text: "Company No: 111444", bold: true, fontSize: 13 },
-        { text: "Future Business Centre, Kings Hedges Road,",  fontSize: 12 },
-        { text: "Cambridge, England, CB4 2HY",  fontSize: 12 },
+        { text: "Total: "+total, bold: true, alignment: 'right',fontSize: 13, margin: [0, 5, 50, 0] },
 
-        
+        { text: "Gocube Technology Limited", bold: true, fontSize: 13, margin: [0, 30, 0, 0] },
+        { text: "Company No: 111444", bold: true, fontSize: 13 },
+        { text: "Future Business Centre, Kings Hedges Road,", fontSize: 12 },
+        { text: "Cambridge, England, CB4 2HY", fontSize: 12 },
+
+
 
       ],
       styles: {
@@ -218,9 +247,9 @@ export class MilagelistPage {
     }
     console.log("creating");
     this.pdfObj = pdfMake.createPdf(docDefinition);
-    if(this.pdfObj){
-      this. downloadPdf();
-      this.show=false;
+    if (this.pdfObj) {
+      this.downloadPdf();
+      this.show = false;
 
     }
   }
