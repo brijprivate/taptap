@@ -11,14 +11,14 @@
 </ion-header> -->
 
 <ion-content class="animated 800s zoomIn delay-0.1s">
-  <div class="head">
+  <!-- <div class="head">
     <div class="mdl">
       <p><span>
           <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
         </span>Mileage  List</p>
     </div>
 
-  </div>
+  </div> -->
   <!-- <p>
     Business
   </p>
@@ -59,15 +59,18 @@
       </ion-card>
     </div>
   </div> -->
-  <div class="btn">
+  <!-- <div class="btn">
     <button ion-buttton (click)="createPdf()"> Create (1)</button>
 
     <button ion-buttton (click)="downloadPdf()"> Dowanload (2)</button>
   
-  </div>
+  </div> -->
   
+<div class="div" *ngIf="show">
+  <img src="../../assets/images/6.gif" alt="">
+  <p>please wait...</p>
+</div>
 
-  <!-- <img src="../../assets/images/logo_before.png" alt=""> -->
   <!-- 
   <ion-list>
     <div *ngFor = "let list of milagelist">
