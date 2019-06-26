@@ -216,6 +216,17 @@ export class MyApp {
           ])
         });
 
+      _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+        function (result) {
+          console.log('Has permission?', result.hasPermission)
+          if (!result.hasPermission) {
+            _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+          }
+        },
+        function (err) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        });
+
 
 
       console.log("initialized------------------------>>>>>>>>>>>>>>");

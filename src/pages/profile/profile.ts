@@ -395,8 +395,8 @@ export class ProfilePage {
   }
   presentPromptt() {
     let alert = this.alert.create({
-      title: 'Total Personal milage=' + this.totalPmilage,
-      subTitle: 'Total Business milage=' + this.totalBmilage,
+      title: 'Total Personal mileage=' + this.totalPmilage,
+      subTitle: 'Total Business mileage=' + this.totalBmilage,
       cssClass: 'alertDanger1',
 
 

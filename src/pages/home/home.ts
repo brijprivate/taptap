@@ -7,6 +7,8 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Subscription } from 'rxjs/Rx';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { isBlank } from 'ionic-angular/umd/util/util';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
 @Component({
@@ -73,6 +75,7 @@ export class HomePage {
     public loginsignupProvider: LoginsignupProvider,
     public nfc: NFC,
     public ndef: Ndef,
+    private androidPermissions: AndroidPermissions,
     public loading: LoadingController,
     public nfctagpro: NfctagProvider,
     public sharedservice: SharedserviceProvider,
@@ -209,8 +212,21 @@ export class HomePage {
 
   //Tap on product....
   tapItem() {
+    let _base = this;
     this.readingTag = true;
-    this.navCtrl.push('TapmodalPage');
+
+    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      function (result) {
+        console.log('Has permission?', result.hasPermission)
+        if (!result.hasPermission) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        } else {
+          _base.navCtrl.push('TapmodalPage');
+        }
+      },
+      function (err) {
+        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+      });
   }
 
   getDashboarddata() {

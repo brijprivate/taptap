@@ -74,6 +74,7 @@
     "ionic-angular": "3.9.3",
     "ionic-plugin-deeplinks": "^1.0.19",
     "ionicons": "3.0.0",
+    "moment": "^2.24.0",
     "pdfmake": "^0.1.56",
     "phonegap-nfc": "^1.0.3",
     "rxjs": "5.5.11",

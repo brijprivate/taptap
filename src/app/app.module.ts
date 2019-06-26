@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -34,7 +35,6 @@ import { FileOpener } from '@ionic-native/file-opener';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
-import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 
 @NgModule({
@@ -43,22 +43,22 @@ import { Geolocation, Geoposition } from '@ionic-native/geolocation';
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
-    
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom ',tabsHideOnSubPages: true}),
+    IonicModule.forRoot(MyApp, { tabsPlacement: 'bottom ', tabsHideOnSubPages: true }),
     HttpModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],
-    
-  entryComponents: [  
+
+  entryComponents: [
     MyApp,
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
-   
+
   ],
   providers: [
     StatusBar,
@@ -66,7 +66,7 @@ import { Geolocation, Geoposition } from '@ionic-native/geolocation';
     HttpProvider,
     SplashScreen,
     LocationAccuracy,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginsignupProvider,
     NfctagProvider,
     Facebook,
@@ -79,6 +79,7 @@ import { Geolocation, Geoposition } from '@ionic-native/geolocation';
     File,
     AndroidPermissions,
     BackgroundGeolocation,
+    Geolocation,
     NativeGeocoder,
     Deeplinks,
     SocialSharing,
@@ -91,4 +92,4 @@ import { Geolocation, Geoposition } from '@ionic-native/geolocation';
     // Diagnostic
   ]
 })
-export class AppModule {}
+export class AppModule { }
