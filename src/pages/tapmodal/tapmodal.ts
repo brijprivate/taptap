@@ -75,6 +75,9 @@ export class TapmodalPage {
     console.log("view enter-------->>>>");
     this.readingTag = true;
   }
+  ionViewDidLeave(){
+    this.readingTag = false;
+  }
   closeModal() {
     this.viewCtrl.dismiss();
     // this.navCtrl.setRoot('HomePage');
@@ -103,7 +106,8 @@ export class TapmodalPage {
       }
       else if(success.message == "DEVICE INFO "){
         console.log("deviceinfo--------------->>>>");
-        _base.navCtrl.push('DevicededetailPage',{devicedetail:success.lostinfo});
+        _base.navCtrl.push('TapdetailsPage',{devicedetail:success.lostinfo,
+        key:'device'});
       }
       else if(success.message == 'Item Tapped Successfull'){
         console.log("detail page------->>>>");

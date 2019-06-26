@@ -186,10 +186,15 @@ export class SavemilagePage {
       endTime: this.endtime,
       userId: this.userId,
       nfc_id: this.nfcid,
-      milage: this.totaldis,
+      milage: this.totaldis.toFixed(2),
       cords: this.locations,
-      startLocation: this.currentpos.locality + this.currentpos.thoroughfare,
-      endLocation: this.endLocation.locality + this.endLocation.thoroughfare
+      startLocation:  this.currentpos.thoroughfare+','+this.currentpos.locality +','+
+      this.currentpos.subAdministrativeArea+','+this.currentpos.administrativeArea+','+
+      this.currentpos.countryName+','+this.currentpos.postalCode,
+      
+      endLocation:  this.endLocation.thoroughfare+','+this.endLocation.locality +','+
+      this.endLocation.subAdministrativeArea+','+this.endLocation.administrativeArea+','+
+      this.endLocation.countryName+','+this.endLocation.postalCode,
     }
     console.log("milage data -------------------->>>>", timedata);
     console.log(timedata);

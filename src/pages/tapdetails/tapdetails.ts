@@ -20,6 +20,8 @@ import { Contacts, Contact, ContactField, ContactName, ContactOrganization, Cont
 export class TapdetailsPage {
 
   public eventdata: any = [];
+  public deviceData:any = [];
+  public fromDevice:any;
   public thisMonth: any;
   public userId: any;
   public uRLlink = "https://taptapshare.000webhostapp.com/?category=";
@@ -40,9 +42,12 @@ export class TapdetailsPage {
     private contacts: Contacts) {
     this.userId = localStorage.getItem("userId");
 
-    console.log("item details----", this.eventdata);
-
+    // console.log("item details----", this.eventdata);
+    this.deviceData = this.navParams.get("devicedetail");
+    this.fromDevice = this.navParams.get("key");
+    console.log("device data=----------------",this.deviceData)
     this.eventdata = navParams.data;
+    
 
     if (this.eventdata.eventId) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -53,6 +58,7 @@ export class TapdetailsPage {
 
 
   ionViewDidEnter() {
+    
     // this.eventdata = this.navParams.get("itemdetails");
     // console.log("item details----", this.eventdata);
 
@@ -112,6 +118,17 @@ export class TapdetailsPage {
 
     })
   }
+
+  //social share of device....
+  socialsharedevice(data) {
+    console.log(data);
+    this.link = this.uRLlink + 'contactcard' + '&' + 'id=' + data
+    this.socialsharing.share(this.link).then(() => {
+
+    }).catch(() => {
+
+    })
+  }
   //update product....
   updateProduct(favdata, fav: Boolean) {
     console.log(favdata)
@@ -162,6 +179,25 @@ export class TapdetailsPage {
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
     contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.profile_pic)];
+    // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
+
+
+    contact.save().then((contact) => {
+      alert("contact saved");
+    }, (err) => {
+      alert("contact not saved");
+    })
+  }
+
+  savedevicecontact(data) {
+    let _base  = this;
+    var contact: Contact = this.contacts.create();
+    contact.name = new ContactName(null, null, data.contact_info.name);
+    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.mobileNumber)];
+    contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
+    contact.emails = [new ContactField('email', data.contact_info.email)];
+    contact.urls = [new ContactField('website', data.contact_info.website)];
+    contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.imageId._id)];
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
 

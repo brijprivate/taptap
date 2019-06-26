@@ -139,8 +139,6 @@
   <!-- contact start -->
 
   <div *ngIf="eventdata.contactId">
-
-
     <div class="showcontent">
       <div class="head">
 
@@ -698,5 +696,109 @@
   <!-- Buisness end -->
 
 
+   <!-- device start -->
+
+   <div *ngIf="fromDevice == 'device'">
+    <div class="showcontent">
+      <div class="head">
+
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>{{deviceData.type}}</p>
+          <!-- <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+
+          </div> -->
+        </div>
+      </div>
+      <div class="imgss event">
+          <div class="ss"></div>
+
+        <ion-slides pager  id="myImg">
+          <ion-slide *ngIf="deviceData.imageId" >
+            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(deviceData.imageId._id))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{deviceData.imageId._id}}">
+          </ion-slide>
+
+            <ion-slide *ngIf="!deviceData.imageId" (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')"  >
+                <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
+            </ion-slide>
+        </ion-slides>
+      </div>
+
+    </div>
+    <div class="coin">
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="barcode"></ion-icon>
+          Full Name
+        </p>
+        <p class="data">{{deviceData.contact_info.name}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="home"></ion-icon>
+          Company Name
+        </p>
+        <p class="data">{{deviceData.contact_info.company_name}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="call"></ion-icon>
+          Telephone No
+        </p>
+        <p class="data">{{deviceData.contact_info.phoneNumber}}</p>
+      </div>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="call"></ion-icon>
+          Mobile No
+        </p>
+        <p class="data">{{deviceData.contact_info.mobileNumber}}</p>
+      </div>
+
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </p>
+        <p class="data">{{deviceData.contact_info.email}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="mail"></ion-icon>
+          Message
+        </p>
+        <p class="data"> {{deviceData.message}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="attach"></ion-icon>
+          Website
+        </p>
+        <p class="data">{{deviceData.contact_info.website}}</p>
+      </div>
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline (click)="savedevicecontact(deviceData)">
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialsharedevice(deviceData.nfc_id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <!-- device end -->
 
 </ion-content>

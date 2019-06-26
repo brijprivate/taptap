@@ -43,6 +43,7 @@ export class HomePage {
   public general = 0;
   public sports = 0;
   public contact = 0;
+  public lost=0;
   public event: "0";
   public groceries: "0";
   public buisness: "0";
@@ -126,6 +127,7 @@ export class HomePage {
           { x: "Business", value: _base.buisness },
           { x: "Sports", value: _base.sports },
           { x: "Groceries", value: _base.groceries },
+          { x: "Lost", value: _base.lost },
         ]);
       
 
@@ -230,6 +232,7 @@ export class HomePage {
       _base.favourite = success.result.favourite;
       _base.sports = success.result.sport;
       _base.groceries = success.result.groceries;
+      _base.lost = success.result.lost;
       _base.totalcount = success.result.totalTap;
       _base.chartfunc();
       loader.dismiss();

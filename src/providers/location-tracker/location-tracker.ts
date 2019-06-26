@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { BackgroundGeolocation, BackgroundGeolocationEvents } from '@ionic-native/background-geolocation';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import 'rxjs/add/operator/filter';
 import { Subscription } from 'rxjs/Rx';
@@ -39,26 +39,32 @@ export class LocationTrackerProvider {
       stationaryRadius: 20,
       distanceFilter: 10, 
       debug: false,
-      interval: 3000 
+      // interval: 3000 
     };
 
-    this.backgroundGeolocation.configure(config).then((location) => {
+    // this.backgroundGeolocation.configure(config).then((location) => {
+    //   console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
+    //   // Run update inside of Angular's zone
+    //   this.zone.run(() => {
+    //     this.lat = location.latitude;
+    //     this.lng = location.longitude;
+    //     // console.log("lat long b-----",this.lat,this.lng);
+    //   });
+    // }, (err) => {
+    //   console.log(err);
+    // });
 
-      console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
 
+    this.backgroundGeolocation.on(BackgroundGeolocationEvents['location']).subscribe((location) => { 
       // Run update inside of Angular's zone
-      this.zone.run(() => {
+      // this.zone.run(() => {
         this.lat = location.latitude;
         this.lng = location.longitude;
         // console.log("lat long b-----",this.lat,this.lng);
-      });
-
-    }, (err) => {
-
-      console.log(err);
-
-    });
-
+      // });
+  },(err)=>{
+    console.log(err);
+  });
     // Turn ON the background-geolocation system.
     this.backgroundGeolocation.start();
 
@@ -66,16 +72,17 @@ export class LocationTrackerProvider {
     // Foreground Tracking
 
   let options = {
-    frequency: 1000, 
+    frequency: 10000, 
     enableHighAccuracy: true
   };
 
-  this.watch = this.geolocation.watchPosition(options).filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
+  this.watch = this.geolocation.watchPosition(options).
+  filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
 
     // console.log(position);
 
     // Run update inside of Angular's zone
-    this.zone.run(() => {
+    // this.zone.run(() => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
       var fetchedlocation = {
@@ -85,7 +92,7 @@ export class LocationTrackerProvider {
       this.arr.push(fetchedlocation);
       this.sharedservice.locations(fetchedlocation);
       // console.log("position inside zone -------->>>>>pro", fetchedlocation);
-    });
+    // });
 
   });
   }
