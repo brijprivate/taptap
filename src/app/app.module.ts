@@ -35,7 +35,6 @@ import { FileOpener } from '@ionic-native/file-opener';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
-import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 
 @NgModule({
