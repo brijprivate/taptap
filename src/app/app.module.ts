@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -37,22 +38,22 @@ import { File } from '@ionic-native/file';
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
-    
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom ',tabsHideOnSubPages: true}),
+    IonicModule.forRoot(MyApp, { tabsPlacement: 'bottom ', tabsHideOnSubPages: true }),
     HttpModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],
-    
-  entryComponents: [  
+
+  entryComponents: [
     MyApp,
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
-   
+
   ],
   providers: [
     StatusBar,
@@ -60,7 +61,7 @@ import { File } from '@ionic-native/file';
     HttpProvider,
     SplashScreen,
     LocationAccuracy,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginsignupProvider,
     NfctagProvider,
     Facebook,
@@ -73,6 +74,7 @@ import { File } from '@ionic-native/file';
     File,
     AndroidPermissions,
     BackgroundGeolocation,
+    Geolocation,
     NativeGeocoder,
     Deeplinks,
     SocialSharing,
@@ -80,4 +82,4 @@ import { File } from '@ionic-native/file';
     // Diagnostic
   ]
 })
-export class AppModule {}
+export class AppModule { }

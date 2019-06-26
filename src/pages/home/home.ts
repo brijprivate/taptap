@@ -7,6 +7,8 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Subscription } from 'rxjs/Rx';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { isBlank } from 'ionic-angular/umd/util/util';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
 @Component({
@@ -36,8 +38,8 @@ export class HomePage {
   public userId: any;
   public userName: any;
   public uid: any = "";
-  public blankmsg:String;
-  public isblanck:boolean=false;
+  public blankmsg: String;
+  public isblanck: boolean = false;
 
   public fashion = 0;
   public general = 0;
@@ -70,6 +72,7 @@ export class HomePage {
     public loginsignupProvider: LoginsignupProvider,
     public nfc: NFC,
     public ndef: Ndef,
+    private androidPermissions: AndroidPermissions,
     public loading: LoadingController,
     public nfctagpro: NfctagProvider,
     public sharedservice: SharedserviceProvider,
@@ -144,12 +147,12 @@ export class HomePage {
     let _base = this;
     anychart.onDocumentReady(function () {
 
-      if(_base.isblanck==true){
+      if (_base.isblanck == true) {
         _base.chart = anychart.pie([
           ['nodata', 115200],
         ]);
       }
-      else{
+      else {
         _base.chart = anychart.pie([
           { x: "Fashion", value: _base.fashion },
           { x: "General", value: _base.general },
@@ -157,26 +160,26 @@ export class HomePage {
           { x: "Contacts", value: _base.contact },
           { x: "Business", value: _base.buisness },
           { x: "Sports", value: _base.sports },
-          { x: "Groceries", value: _base.groceries },       
+          { x: "Groceries", value: _base.groceries },
         ]);
       }
-      
+
 
       var label = anychart.standalones.label();
 
-     
-      if(_base.isblanck==true){
+
+      if (_base.isblanck == true) {
         _base.chart.innerRadius("75%");
         label.text("No Tap Data");
 
 
       }
-      else{
+      else {
         _base.chart.innerRadius("25%");
         label.text("taptap");
 
       }
-      
+
 
 
       label.width("100%");
@@ -242,8 +245,21 @@ export class HomePage {
 
   //Tap on product....
   tapItem() {
+    let _base = this;
     this.readingTag = true;
-    this.navCtrl.push('TapmodalPage');
+
+    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      function (result) {
+        console.log('Has permission?', result.hasPermission)
+        if (!result.hasPermission) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        } else {
+          _base.navCtrl.push('TapmodalPage');
+        }
+      },
+      function (err) {
+        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+      });
   }
 
   getDashboarddata() {
@@ -292,8 +308,8 @@ export class HomePage {
       console.log("All Tapped data ,..........>>>>>");
       // console.log(success.result.length);
       _base.tapItems = success.result;
-      if(success.result.length == 0){
-        _base.isblanck =true;
+      if (success.result.length == 0) {
+        _base.isblanck = true;
         _base.blankmsg = "There Is No Tap Yet";
       }
       console.log(_base.tapItems);
