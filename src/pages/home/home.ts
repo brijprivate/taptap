@@ -127,7 +127,7 @@ export class HomePage {
           { x: "Business", value: _base.buisness },
           { x: "Sports", value: _base.sports },
           { x: "Groceries", value: _base.groceries },
-          { x: "Lost", value: _base.lost },
+          { x: "Lost", value: _base.lost }
         ]);
       
 

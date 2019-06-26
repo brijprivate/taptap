@@ -95,6 +95,7 @@ export class TapmodalPage {
       nfc_id:this.tapData,
       location:'',
       purpose:''
+      
     }
     this.nfctagProvider.createTap(data).then(function(success:any){
       console.log(success);
