@@ -17,6 +17,10 @@ declare var window;
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { generate } from 'rxjs/observable/generate';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
+import { NfctagProvider } from '../providers/nfctag/nfctag';
+
+declare let cordova: any;
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +46,9 @@ export class MyApp {
     private deeplinks: Deeplinks,
     private loginservice: LoginsignupProvider,
     public app: App,
-    private backgroundGeolocation: BackgroundGeolocation) {
+    private backgroundGeolocation: BackgroundGeolocation,
+    private locationAccuracy: LocationAccuracy,
+    public nfctagProvider:NfctagProvider) {
     let _base = this;
     // platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.
@@ -69,6 +75,21 @@ export class MyApp {
       if (match.$args.id != '' || match.$args.category != null) {
         console.log("========================================")
         // this.rootPage = "TapdetailsPage";
+        if(match.$args.category=="contactcard"){
+          let data = {
+            userId:localStorage.getItem("userId"),
+            nfc_id:match.$args.id,
+            location:'',
+            purpose:''
+          }
+          _base.nfctagProvider.createTap(data).then(function(success:any){
+            _base.navCtrl.setRoot('TapdetailsPage',{devicedetail:success.lostinfo,
+              key:'device'})
+          },function(err){
+            alert("Link is expired");
+            _base.platform.exitApp();
+          })
+        }else{
         _base.loginservice.getProduct(match.$args.category, match.$args.id)
           .then(function (success: any) {
             if (success.error) {
@@ -122,6 +143,7 @@ export class MyApp {
             alert("This link is expired")
             _base.platform.exitApp()
           });
+        }
       }
 
       // alert(match.$args.category+"-"+match.$args.id)
@@ -177,6 +199,8 @@ export class MyApp {
   }
 
   initializeApp() {
+
+
     let _base = this
     this.platform.ready().then(() => {
 
@@ -188,7 +212,8 @@ export class MyApp {
           }
         },
         function (err) {
-          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS)
+          _base.androidPermissions.requestPermissions([_base.androidPermissions.PERMISSION.READ_CONTACTS
+          ])
         });
 
       _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
@@ -205,37 +230,6 @@ export class MyApp {
 
 
       console.log("initialized------------------------>>>>>>>>>>>>>>");
-      const config: BackgroundGeolocationConfig = {
-        desiredAccuracy: 10,
-        stationaryRadius: 20,
-        distanceFilter: 30,
-        debug: false, //  enable this hear sounds for background-geolocation life-cycle.
-        stopOnTerminate: false, // enable this to clear background location settings when the app terminates
-      };
-
-      this.backgroundGeolocation.configure(config)
-        .then(() => {
-
-          console.log(location);
-          this.backgroundGeolocation.on(BackgroundGeolocationEvents.location)
-            .subscribe((location: BackgroundGeolocationResponse) => {
-              var locationstr = localStorage.getItem("location");
-              // console.log(locationstr);
-              console.log("original locationn-------------->>>>>>>>>>>>>");
-              console.log(location);
-              // if(locationstr == null){
-              this.arr.push(location);
-              this.sharedservice.locations(location);
-              // console.log(location);
-              // }
-              // else{
-              //   var locationarr = (locationstr);
-              //   this.arr = locationstr;
-              // }
-              // localStorage.setItem("location",this.arr);
-            })
-        })
-      window.app = this;
     });
 
   }

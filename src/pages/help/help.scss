@@ -20,14 +20,7 @@ page-help {
                 color: gray !important;
             }
         }   
-             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
-            margin-right: 10px;
-            font-size: 26px;
-            color: #fff;
-            vertical-align: middle;
-            margin-top: 12px;
-            float:right;
-        }
+ 
         ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
             margin-right: 10px;
             font-size: 26px;
@@ -72,4 +65,10 @@ page-help {
     .scroll-content {
         padding: 0 !important;
     }
+
+    .content .share button {
+        height: 44px;
+        font-size: 18px;
+    }
+
 }

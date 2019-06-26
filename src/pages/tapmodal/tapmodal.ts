@@ -85,6 +85,9 @@ export class TapmodalPage {
       console.log('Error getting location', error);
     })
   }
+  ionViewDidLeave(){
+    this.readingTag = false;
+  }
   closeModal() {
     this.viewCtrl.dismiss();
     // this.navCtrl.setRoot('HomePage');
@@ -109,8 +112,22 @@ export class TapmodalPage {
       loader.dismiss();
       _base.readingTag = false;
       _base.viewCtrl.dismiss();
-      _base.navCtrl.push('TapdetailsPage', { itemdetails: success.result });
-    }, function (err) {
+      if(success.message == 'DEVICE LOST INFO'){
+        _base.navCtrl.setRoot('LostcardPage',{lostinfo:success.lostinfo});
+      }
+      else if(success.message == "DEVICE INFO "){
+        console.log("deviceinfo--------------->>>>");
+        _base.navCtrl.push('TapdetailsPage',{devicedetail:success.lostinfo,
+        key:'device'});
+      }
+      else if(success.message == 'Item Tapped Successfull'){
+        console.log("detail page------->>>>");
+        // _base.navCtrl.push('TapdetailsPage',{itemdetails:success.result});
+        _base.navCtrl.push('TapdetailsPage',success.result);
+
+
+      }
+    },function(err){
       console.log(err);
       loader.dismiss();
     })

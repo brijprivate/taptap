@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Pipe, PipeTransform } from '@angular/core';
 import { NavController, Slides, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
@@ -45,6 +45,7 @@ export class HomePage {
   public general = 0;
   public sports = 0;
   public contact = 0;
+  public lost=0;
   public event: "0";
   public groceries: "0";
   public buisness: "0";
@@ -56,7 +57,9 @@ export class HomePage {
   lineChart: any;
 
   public chart;
+  public time = new Date();
 
+  
   //NFC read related ....
   readingTag: boolean = false;
   writingTag: boolean = false;
@@ -80,6 +83,8 @@ export class HomePage {
     public alert: AlertController,
     // private diagnostic: Diagnostic
   ) {
+    var x = new Date().toTimeString().slice(0, 8);
+    console.log(x);
     let cdate = new Date().toISOString();
     console.log(cdate);
     this.userId = localStorage.getItem("userId")
@@ -93,37 +98,6 @@ export class HomePage {
       this.getpairedDevice();
       this.getnotifications();
     }
-
-    //Read tag ....
-    // this.subscriptions.push(this.nfc.addNdefListener()
-    //   .subscribe(data => {
-    //     if (this.readingTag) {
-    //       let tagid = data.tag.id;
-    //       // let parsedid = this.nfc.bytesToString(tagid);
-    //       let payload = data.tag.ndefMessage[0].payload;
-    //       let tagContent = this.nfc.bytesToString(payload).substring(3);
-    //       this.readingTag = true;
-
-    //       var s = '';
-    //       tagid.forEach(function (byte) {
-    //         s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
-    //       });
-
-    //       console.log("tag data", tagContent);
-    //       console.log("whole data", data.tag);
-    //       console.log("tag id", s);
-    //       this.tapData = s.substring(0, s.length - 1);
-    //       if (this.tapData) {
-
-    //       }
-    //       return s.substring(0, s.length - 1);
-
-    //     }
-    //   },
-    //     err => {
-    //     })
-    // );
-
 
   }
 
@@ -147,12 +121,7 @@ export class HomePage {
     let _base = this;
     anychart.onDocumentReady(function () {
 
-      if (_base.isblanck == true) {
-        _base.chart = anychart.pie([
-          ['nodata', 115200],
-        ]);
-      }
-      else {
+     
         _base.chart = anychart.pie([
           { x: "Fashion", value: _base.fashion },
           { x: "General", value: _base.general },
@@ -161,27 +130,27 @@ export class HomePage {
           { x: "Business", value: _base.buisness },
           { x: "Sports", value: _base.sports },
           { x: "Groceries", value: _base.groceries },
+          { x: "Lost", value: _base.lost },
         ]);
-      }
+      
 
 
       var label = anychart.standalones.label();
 
 
-      if (_base.isblanck == true) {
-        _base.chart.innerRadius("75%");
-        label.text("No Tap Data");
+      // if(_base.isblanck==true){
+      //   _base.chart.innerRadius("75%");
+      //   label.text("No Tap Data");
 
 
-      }
-      else {
-        _base.chart.innerRadius("25%");
-        label.text("taptap");
+      // }
+      // else{
+      //   _base.chart.innerRadius("25%");
+      //   label.text("TapTap");
 
-      }
-
-
-
+      // }
+      _base.chart.innerRadius("25%");
+      label.text("TapTap");
       label.width("100%");
       label.height("100%");
       label.adjustFontSize(true);
@@ -189,8 +158,6 @@ export class HomePage {
       label.hAlign("center");
       label.vAlign("middle");
       _base.chart.legend(false);
-
-
 
       // set the label as the center content
       _base.chart.center().content(label);
@@ -281,6 +248,7 @@ export class HomePage {
       _base.favourite = success.result.favourite;
       _base.sports = success.result.sport;
       _base.groceries = success.result.groceries;
+      _base.lost = success.result.lost;
       _base.totalcount = success.result.totalTap;
       _base.chartfunc();
       loader.dismiss();
@@ -320,8 +288,14 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    console.log("=====================", item);
-    this.navCtrl.push('TapdetailsPage', item);
+    if (item.purpose == "lost") {
+      this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
+      console.log(item);
+    } else {
+      console.log("=====================", item);
+      this.navCtrl.push('TapdetailsPage', item);
+    }
+
   }
 
   //go to edit profile page ...

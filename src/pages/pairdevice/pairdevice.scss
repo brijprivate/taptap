@@ -105,14 +105,7 @@ page-pairdevice {
 //                 color: gray !important;
 //             }
 //         }   
-//              ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
-//             margin-right: 7px;
-//             font-size: 26px;
-//             color: #222;
-//             vertical-align: middle;
-//             margin-top: 12px;
-//             float:right;
-//         }
+
 //         ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
 //             margin-right: 10px;
 //             font-size: 26px;
@@ -293,6 +286,10 @@ ion-list.listView.list.list-md , ion-list.listView.list.list-ios {
       transform: scale3d(1, 1, 1);
     }
   }
-
+  i.fa.fa-chevron-left {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+}
 
 }

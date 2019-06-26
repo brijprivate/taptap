@@ -39,6 +39,8 @@ export class ManagedevicePage {
 
   }
   ionViewDidEnter(){
+    this. islost=true;
+
     console.log("did enter------>>>>");
     this.userId = localStorage.getItem("userId");
     if(this.userId){
@@ -129,26 +131,7 @@ presentPrompt(nfcid) {
 
   delete(nfcid) {
     this.navCtrl.push('AnimatetapPage',{key:"delete"})
-    // let alert = this.alert.create({
-    //   title: 'Are you sure want to delete',
-     
-    //   buttons: [
-    //     {
-    //       text: 'No',
-    //       role: 'cancel',
-    //       handler: data => {
-    //         console.log('Cancel clicked');
-    //       }
-    //     },
-    //     {
-    //       text: 'Yes',
-    //       handler: data => {
-    //           this.deleteDevice(nfcid);
-    //       }
-    //     }
-    //   ]
-    // });
-    // alert.present();
+   
   }
 
   deleteDevice(nfcid){
@@ -168,6 +151,22 @@ presentPrompt(nfcid) {
       deviceId:id,
       is_lost:this.lost
     }
+    console.log(this.lost);
+    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+      console.log(success);
+      _base.getpairedDevice();
+    },function(err){
+      console.log(err);
+    })
+  }
+
+  notifyy(id){
+    let _base = this;
+    let data = {
+      deviceId:id,
+      is_lost:this.islost
+    }
+    console.log(this.islost);
     this.nfctagProvider.updateDeviceName(data).then(function(success:any){
       console.log(success);
       _base.getpairedDevice();
@@ -180,4 +179,30 @@ presentPrompt(nfcid) {
   back(){
     this.navCtrl.pop();
   }
+
+
+
+  setdefault(nfcid)
+  {
+    let _base = this;
+    let loader = this.loading.create({
+      content:"Please wait..."
+    });
+    loader.present();
+    let data = {
+      deviceId:nfcid,
+      is_active:true
+    }
+    console.log(data);
+    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+      loader.dismiss();
+      console.log(success);
+      _base.getpairedDevice();
+    },function(err){
+      console.log(err);
+      loader.dismiss();
+    })
+  }
+
+
 }

@@ -49,4 +49,29 @@ page-verifyotp {
         font-size: 13px;
         font-weight: 500;
     }
+    #partitioned {
+        padding-left: 6px;
+        letter-spacing: 42px;
+        border: 0;
+        background-image: linear-gradient(to left, #9E9E9E 70%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 50px 2px;
+        background-repeat: repeat-x;
+        background-position-x: 35px;
+        width: 220px;
+        min-width: 220px;
+        font-size: 21px;
+        
+      }
+      #divInner{
+        left: 0;
+        position: sticky;
+      }
+      
+      #divOuter{
+        width: 200px;
+        overflow: hidden;
+        text-align: center;
+        margin: 0 auto;
+      }
 }

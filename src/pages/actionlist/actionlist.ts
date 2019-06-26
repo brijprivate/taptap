@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the MerchantPage page.
+ * Generated class for the ActionlistPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-merchant',
-  templateUrl: 'merchant.html',
+  selector: 'page-actionlist',
+  templateUrl: 'actionlist.html',
 })
-export class MerchantPage {
+export class ActionlistPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MerchantPage');
+    console.log('ionViewDidLoad ActionlistPage');
   }
-
+  changepass(){
+    this.navCtrl.push('ChangepasswordPage');
+  }
+  back() {
+    this.navCtrl.pop();
+  }
 }

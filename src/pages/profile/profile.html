@@ -21,7 +21,7 @@
 
                 <ion-col col-4>
 
-                  <p class="sm"> {{userId}}</p>
+                  <p class="sm"> {{uid}}</p>
                   <p class="num">UID</p>
                 </ion-col>
                 <ion-col col-4>
@@ -52,7 +52,7 @@
   </div>
   <ion-card class="tapCard animated 800s zoomIn delay-0.3s">
     <ion-card-content>
-      <ion-item *ngFor="let device of devices">
+      <ion-item *ngIf="maindevice">
         <ion-icon item-start>
           <img src="assets/images/pen.png" class="pen">
         </ion-icon>
@@ -66,7 +66,7 @@
             </g>
           </svg>
         </span>
-        {{device.device_title}}
+        <!-- {{devices[devices.length-1].device_title}}-->{{maindevice}} 
       </ion-item>
       <!-- <hr class="margino">
      
@@ -88,10 +88,13 @@
 
   <div class="canvas animated 800s zoomIn delay-0.2s">
     <!-- <canvas #doughnutCanvas></canvas> -->
-    <div id="container1"></div>
+    <div class="circle" *ngIf="!showchart">
+      No Tap Data
+    </div>
+    <div *ngIf="showchart" id="container1"></div>
 
     <div class="somedata">
-      <p><span>Time 30</span><span>Milage 3.7k</span></p>
+      <p><span (click)="presentPrompt()">Total Time(P/B)</span><span (click)="presentPromptt()">Total Mileage(P/B)</span></p>
     </div>
   </div>
 
@@ -210,7 +213,7 @@
               </g>
             </svg>
 
-            <p class="recordContent">Record Milage</p>
+            <p class="recordContent">Record Mileage </p>
           </ion-card-content>
         </ion-card>
       </ion-col>

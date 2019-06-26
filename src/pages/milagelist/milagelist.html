@@ -11,31 +11,67 @@
 </ion-header> -->
 
 <ion-content class="animated 800s zoomIn delay-0.1s">
-  <div class="head">
+  <!-- <div class="head">
     <div class="mdl">
       <p><span>
-        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
-        </span>Milage List</p>
+          <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+        </span>Mileage  List</p>
     </div>
 
+  </div> -->
+  <!-- <p>
+    Business
+  </p>
+  <div *ngIf="data.business">
+    <div class="milageList" *ngFor="let list of data.business">
+      <ion-card>
+        <ion-card-content (click)="createPdf()">
+          <div>
+            <p><strong>Title:</strong>{{list.title}}</p>
+            <p><strong>Start Time:</strong>{{list.startTime}}</p>
+            <p><strong>End Time:</strong>{{list.endTime}}</p>
+            <p><strong>description:</strong>{{list.description}}</p>
+          </div>
+
+          <button (click)="downloadPdf()">download</button>
+        </ion-card-content>
+
+      </ion-card>
+    </div>
   </div>
 
-    <div class="milageList" *ngFor = "let list of milagelist">
-        <ion-card >  
-            <ion-card-content>
-                <div >
-                  <p><strong>Title:</strong>{{list.title}}</p>
-                  <p><strong>Start Location:</strong>{{list.startLocation}}</p>
-                  <p><strong>End Location:</strong>{{list.endLocation}}</p>
-                  <p><strong>Milage:</strong>{{list.milage}}</p>
-                  </div>
-            </ion-card-content>
-          
-          </ion-card>
-    </div>
- 
 
-<!-- 
+  <p>personal</p>
+  <div *ngIf="data.personal">
+    <div class="milageList" *ngFor="let list of data.personal">
+      <ion-card>
+        <ion-card-content (click)="createPdf()">
+          <div>
+            <p><strong>Title:</strong>{{list.title}}</p>
+            <p><strong>Start Time:</strong>{{list.startTime}}</p>
+            <p><strong>End Time:</strong>{{list.endTime}}</p>
+            <p><strong>description:</strong>{{list.description}}</p>
+          </div>
+
+          <button (click)="downloadPdf()">download</button>
+        </ion-card-content>
+
+      </ion-card>
+    </div>
+  </div> -->
+  <!-- <div class="btn">
+    <button ion-buttton (click)="createPdf()"> Create (1)</button>
+
+    <button ion-buttton (click)="downloadPdf()"> Dowanload (2)</button>
+  
+  </div> -->
+  
+<div class="div" *ngIf="show">
+  <img src="../../assets/images/6.gif" alt="">
+  <p>please wait...</p>
+</div>
+
+  <!-- 
   <ion-list>
     <div *ngFor = "let list of milagelist">
         <ion-item>
@@ -53,5 +89,5 @@
     </ion-item>
   </div>
   </ion-list> -->
-  
+
 </ion-content>

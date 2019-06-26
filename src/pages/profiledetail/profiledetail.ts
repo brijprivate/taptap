@@ -26,6 +26,10 @@ export class ProfiledetailPage {
     this.navCtrl.push('EditprofilePage');
   }
   changepass(){
-    this.navCtrl.push('ChangepasswordPage');
+    // this.navCtrl.push('ChangepasswordPage');
+    this.navCtrl.push('ActionlistPage')
+  }
+  back() {
+    this.navCtrl.pop();
   }
 }

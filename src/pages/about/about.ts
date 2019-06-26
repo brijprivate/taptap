@@ -24,4 +24,10 @@ export class AboutPage {
   back() {
     this.navCtrl.pop();
   }
+  emailto(email){
+    window.open("mailto:"+email);
+  }
+  website(url){
+    window.open(url,"_system")
+  }
 }

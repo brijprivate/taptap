@@ -1,24 +1,23 @@
-
-
 <ion-content>
 
   <div class="main">
 
-      <i (click)="notifications()" class="fa fa-bell animated 800s wobble delay-0.5s" aria-hidden="true"></i><span>{{notiCount}}</span>
+    <i (click)="notifications()" class="fa fa-bell animated 800s wobble delay-0.5s"
+      aria-hidden="true"></i><span>{{notiCount}}</span>
 
     <ion-grid class="p0">
       <ion-row>
 
         <ion-col col-3>
           <div class="img" (click)="detail()">
-            <img  *ngIf = !profileImage src="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt="">
-            <img   *ngIf = profileImage src="{{profileImage}}" class="animated 800s pulse delay-0.5s" alt="">
+            <img *ngIf=!profileImage src="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt="">
+            <img *ngIf=profileImage src="{{profileImage}}" class="animated 800s pulse delay-0.5s" alt="">
 
           </div>
         </ion-col>
         <ion-col col-9>
           <div class="profile">
-            <p class="name" >{{userName}}</p>
+            <p class="name">{{userName}}</p>
             <ion-grid>
               <ion-row>
 
@@ -36,11 +35,12 @@
                   <p class="num">Favourite</p>
                 </ion-col>
                 <ion-col col-4>
-           
+
 
                   <p class="sm">
-                      <ion-icon ios="ios-pricetags" md="md-pricetags"></ion-icon>
-                    {{devicecount}}</p>
+                    <ion-icon ios="ios-pricetags" md="md-pricetags"></ion-icon>
+                    {{devicecount}}
+                  </p>
                   <p class="num">Devices</p>
                 </ion-col>
               </ion-row>
@@ -73,13 +73,16 @@
     <ion-slide>
       <div class="canvas">
         <!-- <canvas #doughnutCanvas></canvas> -->
-                <div id="container"></div>
+        <div class="circle" *ngIf="isblanck">
+          No Tap Data
+        </div>
+        <div  *ngIf="!isblanck" id="container"></div>
 
 
         <div class="somedata">
           <p><span>Today {{todaysTap}}</span><span>Total {{totalcount}}</span></p>
         </div>
-       
+
       </div>
 
       <button class="btn" (click)="tapItem()">
@@ -89,53 +92,54 @@
     </ion-slide>
 
 
- 
+
 
     <ion-slide>
 
-        <div  *ngIf="isblanck==true">
-    
-            <p class="nohis">No tap history</p>
+      <div *ngIf="isblanck==true">
+
+        <p class="nohis">No tap history</p>
+      </div>
+
+      <div *ngIf="isblanck==false">
+
+
+        <div class="filter">
+          <ion-item>
+            <ion-input type="text" placeholder="Search"></ion-input>
+            <ion-icon item-end name="search"></ion-icon>
+          </ion-item>
         </div>
 
-<div *ngIf="isblanck==false">
 
+        <div class="scroll animated 800s zoomIn delay-0.3s">
 
-      <div class="filter">
-        <ion-item>
-          <ion-input type="text" placeholder="Search"></ion-input>
-          <ion-icon item-end name="search"></ion-icon>
-        </ion-item>
-        </div>
-       
-     
-      <div class="scroll animated 800s zoomIn delay-0.3s" >
-         
           <div *ngFor="let item of tapItems">
-        <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
-        
-        <ion-item (click)="gotoDetails(item)">
-          <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
+            <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
 
-          <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
+            <ion-item (click)="gotoDetails(item)">
+              <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
+
+              <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
               <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
               <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
               <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
-              <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left *ngIf='item.purpose=="Verification"'></ion-icon>
+              <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left
+                *ngIf='item.purpose=="Verification"'></ion-icon>
               <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
               <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
 
-            <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+              <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
 
-          {{item.purpose}}
-          <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
-        </ion-item>
-       
+              {{item.purpose}}
+              <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+            </ion-item>
+
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
     </ion-slide>
- 
+
 
   </ion-slides>
 

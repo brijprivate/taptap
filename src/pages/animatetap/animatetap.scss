@@ -167,5 +167,15 @@ ion-list.listView.list.list-ios{
     }
   }
 
-
+  i.fa.fa-chevron-left {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #fff;
+    vertical-align: middle;
+    padding: 5px;
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 999;
+}
 }

@@ -13,7 +13,7 @@ page-devicededetail {
             top: 30%;
             background: #fff;
             border-radius: 50%;
-            padding: 2em;
+            padding: 1em;
             left: 0;
             right: 0;
             margin: auto;
@@ -71,11 +71,8 @@ page-devicededetail {
     button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
         display: none;
     }
-    i.fa.fa-chevron-left{
-        float: left;
-        z-index: 999;
-        margin-left: 3px;
-    }
+   
+   
     .toolbar-title.toolbar-title-md {
         margin-left: 16px;
     }
@@ -194,4 +191,27 @@ page-devicededetail {
         color: #fff !important;
         border: 1px solid #b39be6 !important;
     }
+
+i.fa.fa-chevron-left {
+    position: absolute;
+    left: 0;
+    top: 14px;
+}
+ion-title {
+    margin-left: 1.5em;
+}
+i.fa.fa-camera.abs {
+    position: absolute;
+    right: 0;
+    top: 58%;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #e2a575;
+    text-align: right;
+}
+.pen img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
 }

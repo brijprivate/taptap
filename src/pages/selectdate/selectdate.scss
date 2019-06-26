@@ -17,15 +17,7 @@ page-selectdate {
             display: table-cell;
             padding: 0 18px;
         }   
-             ion-icon.icon.icon-md.ion-md-menu,ion-icon.icon.icon-ios.ion-ios-menu{
-            margin-right: 10px;
-            font-size: 26px;
-            color: #fff;
-            vertical-align: middle;
-            // margin-top: 12px;
-            // float:right;
 
-        }
         ion-icon.icon.icon-md ,ion-icon.icon.icon-ios{
             margin-right: 10px;
             font-size: 26px;
@@ -39,14 +31,9 @@ page-selectdate {
     }
 
     .dates {
-        position: fixed;
-        top: 34%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        z-index: 99;
-        width: 100%;
+        
+        margin:1em  auto;
+        
     }
     .btn {
         text-align: center;
@@ -65,4 +52,66 @@ page-selectdate {
        background: #6354cb;
        color: #fff;
     }
+    .nopadd{
+        padding: 0 !important;
+    }
+    .custompadd{
+        // padding: 0 5px 5px 5px;
+        padding: 4em 1em 1em 1em;
+    }
+    .card-md {
+        width: calc(100% - 15px);
+    }
+    .card-content-md{
+        padding: 0; 
+    }
+    ion-card.recordCard.m1.card.card-md,ion-card.recordCard.m1.card.card-ios {
+        margin: 0 11px;
+    }
+    ion-card.recordCard.m2.card.card-md,ion-card.recordCard.m2.card.card-ios {
+        margin: 0px 4px;
+    }
+    ion-card.recordCard.m1.card.card-md , ion-card.recordCard.m1.card.card-ios {
+        background: #fff;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        // border: 1px solid #222;
+        box-shadow: 0 1px 11px -4px #5c67f8;
+        border-radius: 4px;
+    }
+    ion-card.recordCard.m2.card.card-md , ion-card.recordCard.m2.card.card-ios{
+        background: #fff;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        // border: 1px solid #222;
+        box-shadow: 0 1px 11px -4px #5c67f8;
+        border-radius: 4px;
+        svg{
+            fill:#a25757
+        }
+    }
+    .card-md{
+        box-shadow:  0px 4px 18px 0px #0000001f;
+        }
+        ion-card.recordCard.card.card-md,ion-card.recordCard.card.card-ios {
+            text-align: center;
+            padding: 1em 0;
+            margin-bottom: 1vh !important;
+        }
+        ion-grid.custompadd.grid svg {
+            height: 27px;
+            width: 27px;
+            fill: #93ca78;
+        }
+
+
+        .selec{
+            background: blue !important;
+            .recordContent{
+                color: #fff;
+            }
+            svg{
+                fill:#fff !important;
+            }
+        }
 }
