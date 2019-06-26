@@ -6,6 +6,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { FileOpener } from '@ionic-native/file-opener';
 import { File } from '@ionic-native/file';
+import * as moment from 'moment';
 
 /**
  * Generated class for the MilagelistPage page.
@@ -89,7 +90,7 @@ export class MilagelistPage {
       var dataRow = [];
 
       columns.forEach(function (column) {
-        dataRow.push(row[column.text]);
+        dataRow.push(row[column.key]);
       })
 
       body.push(dataRow);
@@ -99,17 +100,29 @@ export class MilagelistPage {
   }
 
   table(data, columns) {
+    if (this.data.type == 'milage') {
+      return {
 
-    return {
-      // layout: 'lightHorizontalLines',
+        table: {
+          headerRows: 1,
 
-      table: {
-        headerRows: 1,
-        widths: ['*', '*', '*', '*', '*'],
-        fontSize: 11,
-        body: this.buildTableBody(data, columns)
-      }
-    };
+          widths: ['10%', '9%', '9%', '10%', '15%', '15%', '15%', '8%','8%'],
+          body: this.buildTableBody(data, columns)
+        }
+      };
+    }
+    else {
+      return {
+
+        table: {
+          headerRows: 1,
+          widths: ['14.28%', '14.28%','14.28%','14.28%','14.28%','14.28%','14.28%',],
+          fontSize: 11,
+          body: this.buildTableBody(data, columns)
+        }
+      };
+    }
+
   }
   formatdata(datee) {
     var today = datee;
@@ -118,18 +131,17 @@ export class MilagelistPage {
 
     var yyyy = today.getFullYear();
     if (dd < 10) {
-      dd = 0 + dd;
+      dd = '0' + dd;
     }
     if (mm < 10) {
-      mm = 0 + mm;
+      mm = '0' + mm;
     }
+
     return dd + '-' + mm + '-' + yyyy;
-
-
   }
 
   addtimes(start, end) {
-    console.log(start,end)
+    console.log(start, end)
     var a = start.split(":");
     var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
     var b = end.split(":");
@@ -161,31 +173,84 @@ export class MilagelistPage {
       title = "Business & Personal"
     }
     console.log(externalDataRetrievedFromServer);
-    var total='00:00:00'
+    var total = '00:00:00'
 
 
     for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
       // total = total + externalDataRetrievedFromServer[i].duration
       console.log(i)
-      total=this.addtimes(total,externalDataRetrievedFromServer[i].duration);
+      total = this.addtimes(total, externalDataRetrievedFromServer[i].duration);
       console.log(total)
     }
-    
+
 
 
     var today = new Date();
-
+    var totalmilage = 0;
     var dynamicttile = [];
     if (this.data.type == 'time') {
-      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true }, { text: 'startTime', bold: true }, { text: 'endTime', bold: true }, { text: 'duration', bold: true }];
+      dynamicttile = [{ text: 'Date', key:'createdDate', bold: true }, { text: 'Type',key: 'recordType', bold: true },{ text: 'Title',key: 'title', bold: true }, {text: 'Description', key: 'description', bold: true }, { text: 'From',key: 'startTime', bold: true }, {text: 'To', key: 'endTime', bold: true }, { text: 'Duration',key: 'duration', bold: true }];
+
+      for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
+        console.log(i)
+        externalDataRetrievedFromServer[i].createdDate = moment(externalDataRetrievedFromServer[i].createdDate).format('DD-MM-YYYY');
+      }
     }
     else if (this.data.type == 'milage') {
-      dynamicttile = [{ text: 'title', bold: true }, { text: 'recordType', bold: true }, { text: 'startLocation', bold: true }, { text: 'endLocation', bold: true }, { text: 'duration', bold: true }];
+      dynamicttile = [{text:'Date', key: 'createdDate', bold: true, },{text:'Time',  key: 'startTime', bold: true, }, {text:'Type',  key: 'recordType', bold: true ,}, { text:'Title', key: 'title', bold: true ,}, {text:'Description',  key: 'description', bold: true, }, { text:'From', key: 'startLocation', bold: true, }, { text:'To', key: 'endLocation', bold: true ,}, { text:'Duration', key: 'duration', bold: true ,}, { text:'Mileage', key: 'milage', bold: true, }];
+      for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
+        console.log(i)
+        externalDataRetrievedFromServer[i].milage = parseFloat(externalDataRetrievedFromServer[i].milage).toFixed(2);
+        externalDataRetrievedFromServer[i].createdDate = moment(externalDataRetrievedFromServer[i].createdDate).format('DD-MM-YYYY');
 
+        console.log(externalDataRetrievedFromServer[i].milage)
+
+        totalmilage = totalmilage + parseFloat(parseFloat(externalDataRetrievedFromServer[i].milage).toFixed(2))
+
+
+
+      }
     }
+    var xx = 18;
+    var smilage = '     ' + totalmilage + 'km';
+    if (this.data.type == 'time') {
+      smilage = '';
+      xx = 52
+    }
+
+    this.data.date.end = moment(this.data.date.end).format('DD-MM-YYYY');
+    this.data.date.start = moment(this.data.date.start).format('DD-MM-YYYY');
 
     var docDefinition = {
 
+
+      pageOrientation: 'landscape',
+
+      pageMargins: [45, 25, 45, 60],
+      footer: [{
+        table: {
+          widths: [757],
+          headerRows: 1,
+          body: [[{ text: "", border: [false, true, false, false] }]]
+        },
+        layout: {
+          hLineWidth: function (i, node) {
+            return 6;
+          }
+        },
+        margin: [40, 15, 0, 0]
+      },
+      { text: "Gocube Technology Limited | Company No: 111444", bold: true, fontSize: 13,alignment: "center", margin: [40, 0, 40, 0], },
+
+      { text: "Future Business Centre, Kings Hedges Road,Cambridge, England, CB4 2HY", fontSize: 12,alignment: "center", margin: [40, 0, 0, 0] },
+
+      {
+        text: "",
+        margin: [10, 20, 40, 0],
+        alignment: "right",
+        style: "smallText",
+        bold: true
+      }],
 
       content: [
 
@@ -201,19 +266,21 @@ export class MilagelistPage {
 
         { text: this.address.name, bold: true, fontSize: 13 },
         { text: this.address.address, fontSize: 11 },
+        { text: this.address.city, fontSize: 11 },
+        { text: this.address.country, fontSize: 11 },
 
         { text: 'UID: ' + localStorage.getItem('uid'), bold: true, fontSize: 11, margin: [0, 5, 0, 0] },
-        { text: 'Start Date:-' + this.data.date.start + ' & ' + 'End Date:-' + this.data.date.end, style: 'jj', fontSize: 11, margin: [0, 5, 0, 0], alignment: 'center' },
+        { text: 'From:-' + this.data.date.start + '   ' + 'To:-' + this.data.date.end, style: 'jj', fontSize: 11, margin: [0, 5, 0, 0], alignment: 'center' },
 
         { text: title, bold: true, alignment: 'center', fontSize: 13, margin: [20, 10, 10, 10] },
 
         this.table(externalDataRetrievedFromServer, dynamicttile),
-        { text: "Total: "+total, bold: true, alignment: 'right',fontSize: 13, margin: [0, 5, 50, 0] },
+        { text: "Total :      " + total + smilage, bold: true, alignment: 'right', fontSize: 13, margin: [0, 5, xx, 0] },
 
-        { text: "Gocube Technology Limited", bold: true, fontSize: 13, margin: [0, 30, 0, 0] },
-        { text: "Company No: 111444", bold: true, fontSize: 13 },
-        { text: "Future Business Centre, Kings Hedges Road,", fontSize: 12 },
-        { text: "Cambridge, England, CB4 2HY", fontSize: 12 },
+
+
+
+
 
 
 
@@ -238,12 +305,14 @@ export class MilagelistPage {
           fontSize: 14,
           'listStyle': 'none'
         },
+       
         story: {
           italic: true,
           alignment: 'center',
           width: '50%',
         }
       }
+
     }
     console.log("creating");
     this.pdfObj = pdfMake.createPdf(docDefinition);
