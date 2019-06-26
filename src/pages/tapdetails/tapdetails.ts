@@ -197,6 +197,7 @@ export class TapdetailsPage {
     contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
+    // contact.addresses = new ContactAddress[{'locality': data.contact_info.website)}];
     contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.imageId._id)];
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 

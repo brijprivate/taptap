@@ -46,12 +46,12 @@ export class HomePage {
   public sports = 0;
   public contact = 0;
   public lost=0;
-  public event: "0";
-  public groceries: "0";
-  public buisness: "0";
-  public favourite: "0";
-  public totalcount: "0";
-  public todaysTap: "0";
+  public event: 0;
+  public groceries: 0;
+  public buisness: 0;
+  public favourite: 0;
+  public totalcount: 0;
+  public todaysTap: 0;
   public tapItems: any;
 
   lineChart: any;
@@ -291,7 +291,10 @@ export class HomePage {
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
       console.log(item);
-    } else {
+    }else if(item.purpose == "Contact_info"){
+      // this.createTap(item);
+    }
+     else {
       console.log("=====================", item);
       this.navCtrl.push('TapdetailsPage', item);
     }
@@ -358,4 +361,6 @@ export class HomePage {
     //     console.log(statusError);
     //   });
   }
+
+ 
 }

@@ -180,17 +180,17 @@ export class RecordtimePage {
   stop() {
     
     this.endTime = new Date().toTimeString().slice(0,8);
-    if (!this.time || !this.tapData || !this.record) {
-      let showtoast = this.toast.create({
-        message: "Please start ",
-        duration: 60000,
-        position: "bottom",
-        showCloseButton: true,
-        closeButtonText: "Ok"
-      })
-      showtoast.present();
-      return;
-    }
+    // if (!this.time || !this.tapData || !this.record) {
+    //   let showtoast = this.toast.create({
+    //     message: "Please start ",
+    //     duration: 60000,
+    //     position: "bottom",
+    //     showCloseButton: true,
+    //     closeButtonText: "Ok"
+    //   })
+    //   showtoast.present();
+    //   return;
+    // }
     this.running = false;
     this.timeStopped = new Date();
     clearInterval(this.started);
@@ -199,7 +199,8 @@ export class RecordtimePage {
       endtime: this.endTime,
       starttime:this.startTime,
       nfcid: this.tapData,
-      recordtype: this.record
+      recordtype: this.record,
+      duration:this.time
     })
     this.active=!this.active;
   }
