@@ -161,8 +161,8 @@ export class ProfilePage {
     if (this.showchart) {
       this.chart.dispose();
     } clearInterval(this.interval);
-    // this.navCtrl.push('AnimatetapPage', { key: 'milage' });
-    this.navCtrl.push('RecordmilagePage');
+    this.navCtrl.push('AnimatetapPage', { key: 'milage' });
+    // this.navCtrl.push('RecordmilagePage');
 
 
 
