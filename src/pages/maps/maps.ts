@@ -48,8 +48,8 @@ export class MapsPage {
   loadMap() {
     let _base = this
     this.map = new google.maps.Map(document.getElementById('map'), {
-      // center: { lat: _base.cords.latitude, lng: _base.cords.longitudeZ },
-      center: { lat: -34.397, lng: 150.644 },
+      center: { lat: _base.cords.latitude, lng: _base.cords.longitude },
+      // center: { lat: -34.397, lng: 150.644 },
       disableDefaultUI: true,
       zoom: 17
     });
