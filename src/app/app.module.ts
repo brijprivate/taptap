@@ -89,7 +89,6 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
     FileTransfer,
     FilePath,
     LocationTrackerProvider,
-    Geolocation,
     LaunchNavigator
     // Diagnostic
   ]
