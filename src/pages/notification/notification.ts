@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
-
 /**
  * Generated class for the NotificationPage page.
  *
@@ -55,16 +54,21 @@ export class NotificationPage {
       });
   }
 
-  viewNotification(notificationID: String) {
+  viewNotification(notificationID: String, geo) {
+    console.log(notificationID, geo)
     let _base = this;
     _base.nfctagpro.viewNotification(notificationID)
       .then(function (sucess) {
+        if (geo) {
+          _base.navCtrl.push('MapsPage', geo)
+        }
         _base.getnotifications()
+
       }, function (error) {
 
       })
   }
-  back(){
+  back() {
     this.navCtrl.pop()
   }
 }
