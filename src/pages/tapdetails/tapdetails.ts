@@ -30,6 +30,7 @@ export class TapdetailsPage {
   public linkId: any;
   xx: any;
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+  keyy:any
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -45,7 +46,8 @@ export class TapdetailsPage {
     // console.log("item details----", this.eventdata);
     this.deviceData = this.navParams.get("devicedetail");
     this.fromDevice = this.navParams.get("key");
-    console.log("device data=----------------",this.deviceData);
+    this.keyy = this.navParams.get("keyy");
+    console.log("device data=----------------",this.keyy);
     this.eventdata = navParams.data;
     
 
