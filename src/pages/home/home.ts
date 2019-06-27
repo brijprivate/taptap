@@ -7,6 +7,8 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Subscription } from 'rxjs/Rx';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { isBlank } from 'ionic-angular/umd/util/util';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
 @Component({
@@ -43,12 +45,13 @@ export class HomePage {
   public general = 0;
   public sports = 0;
   public contact = 0;
-  public event: "0";
-  public groceries: "0";
-  public buisness: "0";
-  public favourite: "0";
-  public totalcount: "0";
-  public todaysTap: "0";
+  public lost=0;
+  public event: 0;
+  public groceries: 0;
+  public buisness: 0;
+  public favourite: 0;
+  public totalcount: 0;
+  public todaysTap: 0;
   public tapItems: any;
 
   lineChart: any;
@@ -56,6 +59,7 @@ export class HomePage {
   public chart;
   public time = new Date();
 
+  
   //NFC read related ....
   readingTag: boolean = false;
   writingTag: boolean = false;
@@ -71,6 +75,7 @@ export class HomePage {
     public loginsignupProvider: LoginsignupProvider,
     public nfc: NFC,
     public ndef: Ndef,
+    private androidPermissions: AndroidPermissions,
     public loading: LoadingController,
     public nfctagpro: NfctagProvider,
     public sharedservice: SharedserviceProvider,
@@ -125,6 +130,7 @@ export class HomePage {
           { x: "Business", value: _base.buisness },
           { x: "Sports", value: _base.sports },
           { x: "Groceries", value: _base.groceries },
+          { x: "Lost", value: _base.lost }
         ]);
       
 
@@ -206,8 +212,21 @@ export class HomePage {
 
   //Tap on product....
   tapItem() {
+    let _base = this;
     this.readingTag = true;
-    this.navCtrl.push('TapmodalPage');
+
+    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      function (result) {
+        console.log('Has permission?', result.hasPermission)
+        if (!result.hasPermission) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        } else {
+          _base.navCtrl.push('TapmodalPage');
+        }
+      },
+      function (err) {
+        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+      });
   }
 
   getDashboarddata() {
@@ -229,6 +248,7 @@ export class HomePage {
       _base.favourite = success.result.favourite;
       _base.sports = success.result.sport;
       _base.groceries = success.result.groceries;
+      _base.lost = success.result.lost;
       _base.totalcount = success.result.totalTap;
       _base.chartfunc();
       loader.dismiss();
@@ -271,7 +291,10 @@ export class HomePage {
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
       console.log(item);
-    } else {
+    }else if(item.purpose == "Contact_info"){
+      // this.createTap(item);
+    }
+     else {
       console.log("=====================", item);
       this.navCtrl.push('TapdetailsPage', item);
     }
@@ -338,4 +361,6 @@ export class HomePage {
     //     console.log(statusError);
     //   });
   }
+
+ 
 }

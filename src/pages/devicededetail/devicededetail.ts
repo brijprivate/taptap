@@ -70,11 +70,12 @@ export class DevicededetailPage {
     let ddata = {
       deviceId:this.devicedetail._id,
       device_title:this.devicedetail.device_title,
-      message:this.devicedetail.message,
+      
       imageId:this.profileImage,
       contact_info:{
         email:this.devicedetail.contact_info.email,
         name:this.devicedetail.contact_info.name,
+        address:this.devicedetail.address,
         phoneNumber:this.devicedetail.contact_info.phoneNumber,
         mobileNumber:this.devicedetail.contact_info.mobileNumber,
         company_name:this.devicedetail.contact_info.company_name,

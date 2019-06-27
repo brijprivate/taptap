@@ -6,11 +6,13 @@ page-savemilage {
         text-align: center;
         padding: 2em 0;
     }
-    img.record {
-        height: 60px;
-        width: 60px;
+    .record {
+        height: 40px;
+        width: 40px;
         text-align: center;
         margin: 0 auto;
+        fill: #fff;
+        margin-top: 1em;
     }
     a.helpimg {
         top: 1em;
@@ -21,6 +23,7 @@ page-savemilage {
     .milageTitle {
         text-align: center;
         background: #6354cb;
+        padding: 1em 0;
     }
     p.milr {
         color: #fff;;

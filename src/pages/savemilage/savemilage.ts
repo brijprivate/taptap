@@ -4,6 +4,7 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 import { BackgroundGeolocation, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
+import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
 
 /**
  * Generated class for the SavemilagePage page.
@@ -38,6 +39,8 @@ export class SavemilagePage {
   public unit:any;
   public showdistance:any;
   public multiplier=1;
+  finalLocationarray:any=[];
+  duration:any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -47,7 +50,9 @@ export class SavemilagePage {
     public alert: AlertController,
     public loading: LoadingController,
     private nativeGeocoder: NativeGeocoder,
-    private backgroundGeolocation: BackgroundGeolocation, ) {
+    private backgroundGeolocation: BackgroundGeolocation,
+    public locationTracker: LocationTrackerProvider
+    ) {
     this.userId = localStorage.getItem("userId");
     this.nfcid = this.navParams.get("nfcid");
     this.endtime = this.navParams.get("endtime");
@@ -56,10 +61,13 @@ export class SavemilagePage {
     this.currentpos = this.navParams.get("startlocation");
     this.startTime = this.navParams.get("starttime");
     this.unit = this.navParams.get("unit");
-    console.log(this.unit);
+    this.finalLocationarray = this.navParams.get("cords");
+    console.log(this.finalLocationarray);
     // this.endPos = this.navParams.get("endLocation");
     // this.cords = this.navParams.get("cords");
     console.log(this.endtime);
+    this.duration = this.navParams.get("tduration");
+    console.log("duration----------->>>>>>>>",this.duration);
     this.presentDate = Date.now();
 
     //Get Network status...
@@ -105,12 +113,19 @@ export class SavemilagePage {
       console.log('in the interval')
       if (_base.endLocation.length != 0) {
         console.log('clearedddddddddddddddddddddd');
-        _base.sharedservice.locations(location);
-        _base.locations.push(_base.endLocation);
-        _base.loop();
-        _base.backgroundGeolocation.stop();
-       
         clearInterval(x);
+        var fetchedlocation = {
+          latitude:_base.endLocation.latitude,
+          longitude:_base.endLocation.longitude
+        }
+        _base.finalLocationarray.push(fetchedlocation);
+        _base.locationTracker.stopTracking();
+        // _base.sharedservice.locations(fetchedlocation);
+        _base.loop();
+        // _base.backgroundGeolocation.stop();
+      
+
+       
       }
     }, 500)
   }
@@ -171,10 +186,15 @@ export class SavemilagePage {
       endTime: this.endtime,
       userId: this.userId,
       nfc_id: this.nfcid,
-      milage: this.totaldis,
+      milage: this.totaldis.toFixed(2),
       cords: this.locations,
-      startLocation: this.currentpos.locality + this.currentpos.thoroughfare,
-      endLocation: this.endLocation.locality + this.endLocation.thoroughfare
+      startLocation:  this.currentpos.thoroughfare+','+this.currentpos.locality +','+
+      this.currentpos.subAdministrativeArea+','+this.currentpos.administrativeArea+','+
+      this.currentpos.countryName+','+this.currentpos.postalCode,
+      
+      endLocation:  this.endLocation.thoroughfare+','+this.endLocation.locality +','+
+      this.endLocation.subAdministrativeArea+','+this.endLocation.administrativeArea+','+
+      this.endLocation.countryName+','+this.endLocation.postalCode,
     }
     console.log("milage data -------------------->>>>", timedata);
     console.log(timedata);
@@ -182,25 +202,25 @@ export class SavemilagePage {
       console.log(success);
       loader.dismiss();
       _base.presentAlert();
-      _base.navCtrl.push('ProfilePage');
-
+      // _base.navCtrl.push('ProfilePage');
     }, function (err) {
       console.log(err);
       loader.dismiss();
 
     })
   }
-  presentAlert() {
-    let alert = this.alert.create({
-      title: 'Confirmation',
-      subTitle: 'Milage Saved',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
+  // presentAlert() {
+  //   let alert = this.alert.create({
+  //     title: 'Confirmation',
+  //     subTitle: 'Milage Saved',
+  //     buttons: ['OK']
+  //   });
+  //   alert.present();
+  // }
 
   //calculate distance locations loop....
-  public loop() {
+  public loop() 
+  {
     let i = 0;
 
     var laa1 = 0
@@ -208,22 +228,22 @@ export class SavemilagePage {
     var loa1 = 0
     var loa2 = 0
 
-    for (i = 0; i < this.locations.length; i++) {
+    for (i = 0; i < this.finalLocationarray.length; i++) {
       console.log("first location------->>>>", i[0]);
       if (i == this.locations.length - 1) {
         return;
       }
-      laa1 = this.locations[i].latitude;
-      laa2 = this.locations[i + 1].latitude;
-      loa1 = this.locations[i].longitude;
-      loa2 = this.locations[i + 1].longitude;
+      laa1 = this.finalLocationarray[i].latitude;
+      laa2 = this.finalLocationarray[i + 1].latitude;
+      loa1 = this.finalLocationarray[i].longitude;
+      loa2 = this.finalLocationarray[i + 1].longitude;
 
       var x = this.distance(laa1, loa1, laa2, loa2, 'K');
 
       this.totaldis = (this.totaldis + x);
       if(this.unit=="MPH"){
         this.multiplier=0.621371;
-        this.showdistance=(this.totaldis*this.multiplier).toFixed(2)
+        this.showdistance=(this.totaldis*this.multiplier).toFixed(2);
       }else{
         this.showdistance=this.totaldis.toFixed(2);
       }
@@ -235,8 +255,6 @@ export class SavemilagePage {
       // }
 
     }
-
-
   }
   //calculation function....
   distance(lat1, lon1, lat2, lon2, unit) {
@@ -263,5 +281,22 @@ export class SavemilagePage {
   }
   back() {
     this.navCtrl.pop()
+  }
+
+  presentAlert() {
+    let alert = this.alert.create({
+      title: 'Mileage has been saved',
+     
+      buttons: [
+       
+        {
+          text: 'OK',
+          handler: data => {
+            this.navCtrl.setRoot('ProfilePage');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

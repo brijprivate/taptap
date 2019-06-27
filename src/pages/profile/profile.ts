@@ -161,8 +161,8 @@ export class ProfilePage {
     if (this.showchart) {
       this.chart.dispose();
     } clearInterval(this.interval);
-    // this.navCtrl.push('AnimatetapPage', { key: 'milage' });
-    this.navCtrl.push('RecordmilagePage');
+    this.navCtrl.push('AnimatetapPage', { key: 'milage' });
+    // this.navCtrl.push('RecordmilagePage');
 
 
 
@@ -395,8 +395,8 @@ export class ProfilePage {
   }
   presentPromptt() {
     let alert = this.alert.create({
-      title: 'Total Personal milage=' + this.totalPmilage,
-      subTitle: 'Total Business milage=' + this.totalBmilage,
+      title: 'Total Personal mileage=' + this.totalPmilage,
+      subTitle: 'Total Business mileage=' + this.totalBmilage,
       cssClass: 'alertDanger1',
 
 

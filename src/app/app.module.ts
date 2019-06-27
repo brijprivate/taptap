@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Geolocation } from '@ionic-native/geolocation';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -33,6 +35,8 @@ import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
+import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
+
 
 @NgModule({
   declarations: [
@@ -40,22 +44,22 @@ import { FilePath } from '@ionic-native/file-path';
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
-    
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{tabsPlacement: 'bottom ',tabsHideOnSubPages: true}),
+    IonicModule.forRoot(MyApp, { tabsPlacement: 'bottom ', tabsHideOnSubPages: true }),
     HttpModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],
-    
-  entryComponents: [  
+
+  entryComponents: [
     MyApp,
     HomePage,
     // SavemilagePage,
     // SaveTimePage,
-   
+
   ],
   providers: [
     StatusBar,
@@ -63,7 +67,7 @@ import { FilePath } from '@ionic-native/file-path';
     HttpProvider,
     SplashScreen,
     LocationAccuracy,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginsignupProvider,
     NfctagProvider,
     Facebook,
@@ -76,14 +80,18 @@ import { FilePath } from '@ionic-native/file-path';
     File,
     AndroidPermissions,
     BackgroundGeolocation,
+    Geolocation,
     NativeGeocoder,
     Deeplinks,
     SocialSharing,
     Contacts,
     FileOpener,
     FileTransfer,
-    FilePath
+    FilePath,
+    LocationTrackerProvider,
+    Geolocation,
+    LaunchNavigator
     // Diagnostic
   ]
 })
-export class AppModule {}
+export class AppModule { }

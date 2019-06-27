@@ -3,8 +3,9 @@ page-save-time {
         background-color: #6354cb;
       }
     .milageTitle {
-        text-align: center;
-        background: #6354cb;
+    text-align: center;
+    background: #6354cb;
+    padding: 1em 0;
     }
     p.milr {
         color: #fff;
@@ -37,11 +38,13 @@ page-save-time {
         text-align: center;
         padding: 2em 0;
     }
-    img.record {
-        height: 60px;
-        width: 60px;
+    .record {
+        height: 40px;
+        width: 40px;
         text-align: center;
         margin: 0 auto;
+        fill: #fff;
+        margin-top: 1em;
     }
     a.helpimg {
         top: 1em;
@@ -159,7 +162,7 @@ page-save-time {
         color: #9e9e9e;
     }
     p.dist {
-        color: #6a57cd;
+        color: #fff;
         font-size: 19px;
         font-weight: 500;
         margin: 7px 0 9px 0;
