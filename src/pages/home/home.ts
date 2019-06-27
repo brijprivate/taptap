@@ -287,6 +287,10 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
+    if(item=='Verification'){
+      this.navCtrl.push('TapdetailsPage');
+
+    }
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
       console.log(item);

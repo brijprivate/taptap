@@ -113,7 +113,18 @@
 
 
         <div class="scroll animated 800s zoomIn delay-0.3s">
+          <div >
+            <p class="day">dummy data</p>
 
+            <ion-item (click)="gotoDetails('Verification')">
+
+              <ion-icon ios="ios-bowtie" md="md-bowtie" item-left ></ion-icon>
+              
+              Varification
+              <ion-badge item-end>10:00 Am GMT</ion-badge>
+            </ion-item>
+
+          </div>
           <div *ngFor="let item of tapItems">
             <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
 

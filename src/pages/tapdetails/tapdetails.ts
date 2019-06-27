@@ -239,4 +239,10 @@ console.log(image);
   back(){
     this.navCtrl.pop();
   }
+
+
+
+  website(){
+    window.open('www.google.com',"_system")
+  }
 }
