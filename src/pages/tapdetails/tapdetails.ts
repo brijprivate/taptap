@@ -45,7 +45,7 @@ export class TapdetailsPage {
     // console.log("item details----", this.eventdata);
     this.deviceData = this.navParams.get("devicedetail");
     this.fromDevice = this.navParams.get("key");
-    console.log("device data=----------------",this.deviceData)
+    console.log("device data=----------------",this.deviceData);
     this.eventdata = navParams.data;
     
 
