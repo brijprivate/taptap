@@ -1,6 +1,6 @@
 page-maps {
   #map {
-    height: 70%;
+    height: 66%;
   }
 
   .stop {
@@ -15,4 +15,91 @@ page-maps {
     font-weight: 600;
     margin-top: 13px;
   }
+  .scroll-content {
+    padding: 0 !important;
+}
+.head {
+  height: 12vh;
+  background: #6354cb;
+  display: table;
+  width: 100%;
+  p{
+      // margin-right: 11em;
+      font-size: 18px !important;
+      color: #fff !important;
+      display: inline-block;
+      vertical-align: middle;
+
+  }
+  .mdl{
+      vertical-align: middle;
+      display: table-cell;
+      padding: 14px;
+      ion-icon.icon.icon-md.ion-md-arrow-round-back {
+          color: gray !important;
+      }
+  }   
+  
+  ion-icon.icon.icon-md {
+      margin-right: 10px;
+      font-size: 26px;
+      color: #222;
+      vertical-align: middle;
+  }
+}
+.locationInfo{
+  padding: 7px 0 7px 6px;
+  h1 {
+    font-size: 16px;
+    margin: 0;
+}
+h1.tap {
+  color: #6354cb;
+  margin-bottom: 4px;
+}
+h1.thoroughfare {
+  font-size: 14px !important;
+}
+p {
+  margin: 0;
+}
+}
+
+.locationInfoa{
+  padding: 7px 0 7px 6px;
+  text-align: center;
+
+  img {
+    height: 100%;
+    width: 65%;
+    margin-top: 1em;
+  }
+  p {
+    margin: 0;
+    color: #211e1e;
+    font-size: 12px;
+}
+}
+button.navigate {
+  color: #fff;
+  background: #6354cb;
+  height: 29px;
+  width: 82px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 800;
+}
+button.dBtat {
+  position: absolute;
+  bottom: 6em;
+  right: 2em;
+  background: #6354cb;
+  color: #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+button.dBtat img {
+  width: 23px;
+}
 }
