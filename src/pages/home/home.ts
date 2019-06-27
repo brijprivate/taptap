@@ -289,7 +289,7 @@ export class HomePage {
   gotoDetails(item) {
     if(item=='Verification'){
       this.navCtrl.push('TapdetailsPage',{keyy:'verification'});
-
+      return;
     }
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
