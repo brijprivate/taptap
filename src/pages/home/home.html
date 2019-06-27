@@ -120,7 +120,7 @@
             <ion-item (click)="gotoDetails(item)">
               <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
 
-              <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'>fdgdgdgdg</ion-icon>
+              <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
               <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
               <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
               <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
@@ -140,7 +140,7 @@
 
               <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>          
                   <span *ngIf="item.purpose=='lost'">Lost Or Stolen</span>
-                  <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo.device_title}}</span>
+                  <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>
 
               <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
             </ion-item>
