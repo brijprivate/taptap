@@ -18,12 +18,12 @@
           <p class="animated 800s lightSpeedIn delay-0.2s">Favourite</p>
           <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
           <form id="demo-2" class="animated 800s fadeInRight delay-0.2s">
-            <input type="search" name="search" [(ngModel)]="str" (keyup)="merchant()" placeholder="Search">
+            <input type="search" name="search" [(ngModel)]="str" (keyup)="merchant()"  (focus)=focus() (blur)=blur() placeholder="Search">
           </form>
         </div>
       </div>
   
-  
+      <div [style.display]="keyboards? 'none':'block'">
     <div class="arrowbutton">
   
       <ul class="list-inline sileUl">
@@ -149,7 +149,7 @@
         <p class="nohis">No Favourite history</p>
     </div>
   
-    
+      </div>
     <ion-slides #slider>
       <ion-slide>
         

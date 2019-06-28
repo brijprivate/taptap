@@ -57,6 +57,7 @@ page-home {
 
   .scroll-content {
     padding: 0 !important;
+    overflow: hidden !important;
   }
 
   .main {
@@ -156,10 +157,12 @@ page-home {
     margin-bottom:2em;
 }
   ion-slides.slides.slides-md.slides-0 {
-    height: 76%;
+    // height:calc(100% - 212.59px)
+    height: 100%;;
   }
   ion-slides.slides.slides-ios.slides-0 {
-    height: 76%;
+    // height: calc(100% - 212.59px)
+    height: 100%;
   }
 
   ion-segment.typeRecord.segment.segment-md,ion-segment.typeRecord.segment.segment-ios {
@@ -310,13 +313,18 @@ page-home {
   }
 
   .scroll {
-    height: 58vh;
+    height: 63%;
     overflow-y: scroll;
     position: absolute;
     left: 0;
     right: 0;
   }
 
+  @media screen and  (max-height : 640px) {
+    .scroll {
+      height: 58%;
+    }
+  }
   .secondseg {
     margin: 0.9em auto;
     width: 82%;

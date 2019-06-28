@@ -629,7 +629,7 @@ page-taptap {
     }
   
     #demo-2 input[type=search]:focus {
-      width:286px;
+      width:76%;
       padding-left: 32px;
       color: #000;
       background-color: #fff;
@@ -643,9 +643,11 @@ page-taptap {
     #demo-2 input::-webkit-input-placeholder {
       color: transparent;
     }
-  
     form#demo-2 {
-      float: right;
+      position: absolute;
+      top: 17px;
+      right: 12px;
+      width: 100%;
     }
   
     // search

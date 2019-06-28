@@ -635,7 +635,7 @@ page-search {
 
   #demo-2 input[type=search]:focus {
     // width: 130px;
-    width:286px;
+    width:76%;
     padding-left: 32px;
     color: #000;
     background-color: #fff;
@@ -651,7 +651,10 @@ page-search {
   }
 
   form#demo-2 {
-    float: right;
+    position: absolute;
+    top: 17px;
+    right: 12px;
+    width: 100%;
   }
 
   // search
