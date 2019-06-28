@@ -36,6 +36,7 @@ import { FileOpener } from '@ionic-native/file-opener';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
+import { Keyboard } from '@ionic-native/keyboard';
 
 
 @NgModule({
@@ -48,7 +49,11 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, { tabsPlacement: 'bottom ', tabsHideOnSubPages: true }),
+    IonicModule.forRoot(MyApp, {
+      tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
+      scrollAssist: true,
+      autoFocusAssist: false
+    }),
     HttpModule,
     HttpClientModule
   ],
@@ -89,7 +94,8 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
     FileTransfer,
     FilePath,
     LocationTrackerProvider,
-    LaunchNavigator
+    LaunchNavigator,
+    Keyboard
     // Diagnostic
   ]
 })
