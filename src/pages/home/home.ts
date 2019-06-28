@@ -69,6 +69,7 @@ export class HomePage {
   public tapData: any;
   devicecount: any;
   profileImage: string;
+  keyboards: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -100,6 +101,15 @@ export class HomePage {
     }
 
   }
+
+
+  blur() {
+    this.keyboards = false;
+  }
+  focus() {
+    this.keyboards = true;
+  }
+
 
   ionViewDidEnter() {
     // this.chart.dispose();

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SharedserviceProvider } from './../../providers/sharedservice/sharedservice';
+import { Keyboard } from '@ionic-native/keyboard';
 
 /**
  * Generated class for the SearchPage page.
@@ -30,21 +31,31 @@ export class SearchPage {
   public ifmerchant: boolean = false;
   public date: String = "";
   public str: String = "";
-  public isdata:boolean=false;
+  public isdata: boolean = false;
 
   searchcount: any = 0;
-
+  keyboards: boolean = false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loginsignupProvider: LoginsignupProvider,
     public loading: LoadingController,
     private toast: ToastController,
     public sharedservice: SharedserviceProvider,
+    private keyboard: Keyboard,
     public alert: AlertController, ) {
     this.userId = localStorage.getItem("userId");
 
-  }
+    this.keyboard.onKeyboardShow().subscribe(() => {
+      console.log("onKeyboardShow");
+    });
 
+  }
+  blur() {
+    this.keyboards = false;
+  }
+  focus() {
+    this.keyboards = true;
+  }
   ionViewDidEnter() {
     // console.log("wowowowowoowowowowowowoow");
     this.load == false;
@@ -106,10 +117,10 @@ export class SearchPage {
       });
       _base.searchcount = _base.tapItems.length
       console.log("=============================", _base.tapItems);
-      if(_base.tapItems.length == 0){
-        _base.isdata=true;
-      }else{
-        _base.isdata=false;
+      if (_base.tapItems.length == 0) {
+        _base.isdata = true;
+      } else {
+        _base.isdata = false;
       }
     }, function (err) {
       console.log(err);
@@ -126,11 +137,11 @@ export class SearchPage {
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
       console.log(item);
-    }else if(item.purpose == "Contact_info"){
+    } else if (item.purpose == "Contact_info") {
       // this.createTap(item);
-      this.navCtrl.push('TapdetailsPage',{devicedetail:item.deviceInfo,key:'device'});
+      this.navCtrl.push('TapdetailsPage', { devicedetail: item.deviceInfo, key: 'device' });
     }
-     else {
+    else {
       console.log("=====================", item);
       this.navCtrl.push('TapdetailsPage', item);
     }
@@ -163,7 +174,7 @@ export class SearchPage {
 
   markactive(month: string) {
     let isactive = (<HTMLElement>document.getElementById(month)).classList.contains("active")
-    console.log("active",isactive)
+    console.log("active", isactive)
     for (let i = 1; i <= 12; i++) {
       let element = <HTMLElement>document.getElementById(i.toString())
       console.log(element)
@@ -188,5 +199,6 @@ export class SearchPage {
       this.slider.slideNext();
     }
   }
+
 
 }

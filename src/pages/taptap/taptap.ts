@@ -32,6 +32,7 @@ export class TaptapPage {
   public isdata:boolean=false;
 
   searchcount: any = 0;
+  keyboards: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -120,6 +121,13 @@ export class TaptapPage {
   category() {
     this.ifmerchant = false;
 
+  }
+
+  blur() {
+    this.keyboards = false;
+  }
+  focus() {
+    this.keyboards = true;
   }
   //Go to details page ....
   gotodetails(item) {

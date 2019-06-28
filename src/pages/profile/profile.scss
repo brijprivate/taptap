@@ -244,7 +244,7 @@ page-profile {
         width: calc(100% - 30px);
         margin-left: auto;
         margin-right: auto;
-        margin-top: 1em;
+        // margin-top: 1em;
     }
     .scroll-content {
         padding: 0 !important;
@@ -309,19 +309,20 @@ page-profile {
     .somedata p span {
         background: #e7e4fe;
         font-size: 11px;
-        margin: 0 2em;
+        // margin: 0 2em;
         padding: 5px 21px;
         font-weight: 500;
         color: #6254ca;
         border-radius: 3px;
     }
     .somedata p {
-        margin-bottom: 28px !important;
+        margin-bottom: 17px !important;
+        margin-top: 0px;
     }
     .somedata p span {
         background: #e7e4fe;
         font-size: 11px;
-        margin: 0 2em;
+        // margin: 0 2em;
         padding: 5px 21px;
         font-weight: 500;
         color: #6254ca;
@@ -406,11 +407,11 @@ page-profile {
         color: #fff;
     }
     div#container1 {
-        height: 33vh;
+        height: 28vh;
     }
     .circle {
-        height: calc(33vh - 24px);
-        width: calc(33vh - 24px);
+        height: calc(28vh - 24px);
+        width: calc(28vh - 24px);
         border: 24px solid #64b5f6;
         border-radius: 50%;
         margin: auto;
@@ -422,4 +423,35 @@ page-profile {
         margin:2em auto;
       
     }
+    // iphone5e
+    @media screen and (min-height : 320px) and (max-height : 568px) {
+        button.newpair {
+            font-size: 11px !important;
+            height: 30px;
+        }
+        button.view{
+            font-size: 11px !important;
+            height: 30px;
+        }
+        .somedata p {
+            margin-bottom: 11px !important;
+        }
+        .main {
+            margin-top: 35px;
+        }
+        .main .img {
+            height: 64px;
+            width: 64px;
+            margin: auto;
+            margin-bottom: 8px;
+        }
+        .item-md ion-icon[item-left], .item-md ion-icon[item-right], .item-md ion-icon[item-start], .item-md ion-icon[item-end] {
+            margin-left: 0;
+            margin-top: 0px;
+        }
+        p.recordContent {
+            font-size: 12px;
+        }
+    }
+
 }

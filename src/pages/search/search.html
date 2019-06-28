@@ -17,77 +17,78 @@
       <p class="animated 800s lightSpeedIn delay-0.2s">Search</p>
       <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
       <form id="demo-2" class="animated 800s fadeInRight delay-0.2s">
-        <input type="search" name="search" [(ngModel)]="str" (keyup)="merchant()" placeholder="Search">
+        <input type="search" name="search" [(ngModel)]="str" (keyup)="merchant()" (focus)=focus() (blur)=blur()
+          placeholder="Search">
       </form>
     </div>
   </div>
 
+  <div [style.display]="keyboards? 'none':'block'">
+    <div class="arrowbutton">
 
-  <div class="arrowbutton">
-
-    <ul class="list-inline sileUl">
-      <!-- <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
+      <ul class="list-inline sileUl">
+        <!-- <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
           <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
         </button>
       </li> -->
-      <li>
-        <ion-slides slidesPerView="3" #slides>
+        <li>
+          <ion-slides slidesPerView="3" #slides>
 
-          <ion-slide id="1" (click)="getmonth(1)">
-            <p class="count">January</p>
+            <ion-slide id="1" (click)="getmonth(1)">
+              <p class="count">January</p>
 
-          </ion-slide>
-          <ion-slide id="2" (click)="getmonth(2)">
-            <p class="count ">February</p>
+            </ion-slide>
+            <ion-slide id="2" (click)="getmonth(2)">
+              <p class="count ">February</p>
 
-          </ion-slide>
-          <ion-slide id="3" class="" (click)="getmonth(3)">
-            <p class="count">March</p>
+            </ion-slide>
+            <ion-slide id="3" class="" (click)="getmonth(3)">
+              <p class="count">March</p>
 
-          </ion-slide>
-          <ion-slide id="4" (click)="getmonth(4)">
-            <p class="count">April</p>
+            </ion-slide>
+            <ion-slide id="4" (click)="getmonth(4)">
+              <p class="count">April</p>
 
-          </ion-slide>
-          <ion-slide id="5" (click)="getmonth(5)">
-            <p class="count">May</p>
-          </ion-slide>
-          <ion-slide id="6" (click)="getmonth(6)">
-            <p class="count">June</p>
-          </ion-slide>
-          <ion-slide id="7" (click)="getmonth(7)">
-            <p class="count">July</p>
+            </ion-slide>
+            <ion-slide id="5" (click)="getmonth(5)">
+              <p class="count">May</p>
+            </ion-slide>
+            <ion-slide id="6" (click)="getmonth(6)">
+              <p class="count">June</p>
+            </ion-slide>
+            <ion-slide id="7" (click)="getmonth(7)">
+              <p class="count">July</p>
 
-          </ion-slide>
-          <ion-slide id="8" (click)="getmonth(8)">
-            <p class="count">August</p>
+            </ion-slide>
+            <ion-slide id="8" (click)="getmonth(8)">
+              <p class="count">August</p>
 
-          </ion-slide>
-          <ion-slide id="9" (click)="getmonth(9)">
-            <p class="count">September</p>
+            </ion-slide>
+            <ion-slide id="9" (click)="getmonth(9)">
+              <p class="count">September</p>
 
-          </ion-slide>
-          <ion-slide id="10" (click)="getmonth(10)">
-            <p class="count">October</p>
+            </ion-slide>
+            <ion-slide id="10" (click)="getmonth(10)">
+              <p class="count">October</p>
 
-          </ion-slide>
-          <ion-slide id="11" (click)="getmonth(11)">
-            <p class="count">November</p>
+            </ion-slide>
+            <ion-slide id="11" (click)="getmonth(11)">
+              <p class="count">November</p>
 
-          </ion-slide>
-          <ion-slide id="12" (click)="getmonth(12)">
-            <p class="count">December</p>
+            </ion-slide>
+            <ion-slide id="12" (click)="getmonth(12)">
+              <p class="count">December</p>
 
-          </ion-slide>
-        </ion-slides>
-      </li>
-      <!-- <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
+            </ion-slide>
+          </ion-slides>
+        </li>
+        <!-- <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
           <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
         </button>
       </li> -->
-    </ul>
-  </div>
-  <!-- <div class="main">
+      </ul>
+    </div>
+    <!-- <div class="main">
         <ion-grid>
           <ion-row>
     
@@ -125,85 +126,87 @@
         </ion-grid>
     
       </div> -->
-  <div class="paddi">
-    <p><strong>{{searchcount}}</strong> searches in {{monthName+' '+year}}</p>
+    <div class="paddi">
+      <p><strong>{{searchcount}}</strong> searches in {{monthName+' '+year}}</p>
 
-    <!-- <ion-toolbar> -->
-    <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="camera" (click)="selectedTab(1)">
-        <!-- <ion-icon name="camera"></ion-icon> -->
-        Merchant
-      </ion-segment-button>
-      <ion-segment-button id="category" value="bookmark" (click)="selectedTab(0)">
-        <!-- <ion-icon name="bookmark"></ion-icon> -->
-        Category
-      </ion-segment-button>
+      <!-- <ion-toolbar> -->
+      <ion-segment [(ngModel)]="page" color="dark">
+        <ion-segment-button value="camera" (click)="selectedTab(1)">
+          <!-- <ion-icon name="camera"></ion-icon> -->
+          Merchant
+        </ion-segment-button>
+        <ion-segment-button id="category" value="bookmark" (click)="selectedTab(0)">
+          <!-- <ion-icon name="bookmark"></ion-icon> -->
+          Category
+        </ion-segment-button>
 
-    </ion-segment>
-    <!-- </ion-toolbar> -->
-  </div>
+      </ion-segment>
+      <!-- </ion-toolbar> -->
+    </div>
 
-  <div  *ngIf="isdata==true">
-    
+    <div *ngIf="isdata==true">
+
       <p class="nohis">no search history</p>
+    </div>
   </div>
   <!-- <div > -->
-    <ion-slides #slider>
-      <ion-slide>
-  
-        <div class="scroll">
-  
-          <div style="padding:0 1em;" class="animated 800s zoomIn delay-0.2s" *ngFor="let item of tapItems">
-            <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-            <ion-item (click)="gotodetails(item)">
-              <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
-              <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
-              <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
-              <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
-              <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
-              <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left
-                *ngIf='item.purpose=="Verification"'></ion-icon>
-              <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
-              <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
-  
-              <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
-              <ion-icon ios="ios-warning" md="md-warning" item-left *ngIf='item.purpose=="lost"'></ion-icon>
+  <ion-slides #slider>
+    <ion-slide>
 
-              <ion-icon ios="ios-contact" md="md-contact" item-left *ngIf='item.purpose=="Contact_info"'></ion-icon>
+      <div class="scroll">
+
+        <div style="padding:0 1em;" class="animated 800s zoomIn delay-0.2s" *ngFor="let item of tapItems">
+          <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
+          <ion-item (click)="gotodetails(item)">
+            <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
+            <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
+            <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
+            <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
+            <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
+            <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left
+              *ngIf='item.purpose=="Verification"'></ion-icon>
+            <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
+            <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
+
+            <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+            <ion-icon ios="ios-warning" md="md-warning" item-left *ngIf='item.purpose=="lost"'></ion-icon>
+
+            <ion-icon ios="ios-contact" md="md-contact" item-left *ngIf='item.purpose=="Contact_info"'></ion-icon>
 
 
 
-              <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+            <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
 
-              <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>          
-                  <span *ngIf="item.purpose=='lost'">Lost Or Stolen</span>
-                  <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>              <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
-            </ion-item>
-            <!-- <hr> -->
-  
-          </div>
+            <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>
+            <span *ngIf="item.purpose=='lost'">Lost Or Stolen</span>
+            <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>
+            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+          </ion-item>
+          <!-- <hr> -->
+
         </div>
-  
-      </ion-slide>
-  
-      <ion-slide>
-        <!-- for month -->
-        <div class="scroll">
-          <div style="padding:0 1em;" *ngFor="let item of tapItems">
-            <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-            <ion-item (click)="gotodetails(item)">
-              <ion-icon name="apps" class="merchantIcon"></ion-icon>
-              {{item.storeId.name}}
-              <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
-            </ion-item>
-            <!-- <hr> -->
-          </div>
+      </div>
+
+    </ion-slide>
+
+    <ion-slide>
+      <!-- for month -->
+      <div class="scroll">
+        <div style="padding:0 1em;" *ngFor="let item of tapItems">
+          <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
+          <ion-item (click)="gotodetails(item)">
+            <ion-icon name="apps" class="merchantIcon"></ion-icon>
+            {{item.storeId.name}}
+            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+          </ion-item>
+          <!-- <hr> -->
         </div>
-        <!-- for month -->
-  
-      </ion-slide>
-  
-    </ion-slides>
+      </div>
+      <!-- for month -->
+
+    </ion-slide>
+
+  </ion-slides>
   <!-- </div> -->
 
 
