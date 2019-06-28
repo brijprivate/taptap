@@ -123,9 +123,17 @@ export class SearchPage {
   }
   //Go to details page ....
   gotodetails(item) {
-    console.log(item)
-    this.navCtrl.push('TapdetailsPage', item);
-    // this.navCtrl.push("TapdetailsPage");
+    if (item.purpose == "lost") {
+      this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
+      console.log(item);
+    }else if(item.purpose == "Contact_info"){
+      // this.createTap(item);
+      this.navCtrl.push('TapdetailsPage',{devicedetail:item.deviceInfo,key:'device'});
+    }
+     else {
+      console.log("=====================", item);
+      this.navCtrl.push('TapdetailsPage', item);
+    }
   }
 
   getmonth(month: string) {

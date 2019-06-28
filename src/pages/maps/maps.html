@@ -21,19 +21,19 @@
     <ion-row>
       <ion-col col-8>
         <div class="locationInfo">
-            <h1 class="tap">You Item has been tapped at : </h1>
-          <h1 class="thoroughfare">{{location.thoroughfare}}Future Business Centre </h1>
-          <p>{{location.locality}}Kings Hedges Road</p>
-          <p>{{location.subAdministrativeArea}}Orchard Park</p>
-          <p>{{location.administrativeArea}}AdministrativeArea</p>
-          <p>{{location.countryName}}England,{{location.postalCode}}CB4 2HY</p>
+          <h1 class="tap">You Item has been tapped at : </h1>
+          <h1 class="thoroughfare">{{location.thoroughfare}} </h1>
+          <p>{{location.locality}}</p>
+          <p>{{location.subAdministrativeArea}}</p>
+          <p>{{location.administrativeArea}}</p>
+          <p>{{location.countryName}},{{location.postalCode}}</p>
           <p></p>
         </div>
       </ion-col>
       <ion-col col-4>
         <div class="locationInfoa">
-       <img src="../../assets/images/direction.png">
-       <button (click)="navigate()" class="navigate">Navigate</button>
+          <img src="../../assets/images/direction.png">
+          <button (click)="navigate()" class="navigate">Navigate</button>
         </div>
       </ion-col>
     </ion-row>
@@ -52,7 +52,7 @@
   <!-- <button class="stop" (click)="navigate()">
     Navigate
   </button> -->
-    <button class="dBtat" (click)="navigate()">
+  <button class="dBtat" (click)="navigate()">
     <img src="../../assets/images/directionpic.png">Go
   </button>
 </ion-content>

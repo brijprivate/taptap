@@ -91,10 +91,10 @@ export class HomePage {
     console.log(this.userId);
     if (this.userId) {
       // this.getPermission();
-      this.getprofiledata();
+      // this.getprofiledata();
       // this.getDashboarddata();
-      this.getpresentdateCount();
-      this.getAllTapItem();
+      // this.getpresentdateCount();
+      // this.getAllTapItem();
       this.getpairedDevice();
       this.getnotifications();
     }
@@ -103,7 +103,6 @@ export class HomePage {
 
   ionViewDidEnter() {
     // this.chart.dispose();
-    if (this.todaysTap)
       console.log("view enter--------------->>>>>>>>>>>");
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
@@ -289,14 +288,15 @@ export class HomePage {
   //go to detail page ...
   gotoDetails(item) {
     if(item=='Verification'){
-      this.navCtrl.push('TapdetailsPage');
-
+      this.navCtrl.push('TapdetailsPage',{keyy:'verification'});
+      return;
     }
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
       console.log(item);
     }else if(item.purpose == "Contact_info"){
       // this.createTap(item);
+      this.navCtrl.push('TapdetailsPage',{devicedetail:item.deviceInfo,key:'device'});
     }
      else {
       console.log("=====================", item);
