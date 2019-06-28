@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SharedserviceProvider } from './../../providers/sharedservice/sharedservice';
+import { Keyboard } from '@ionic-native/keyboard';
 
 /**
  * Generated class for the SearchPage page.
@@ -40,9 +41,9 @@ export class SearchPage {
     public loading: LoadingController,
     private toast: ToastController,
     public sharedservice: SharedserviceProvider,
+    private keyboard: Keyboard,
     public alert: AlertController, ) {
     this.userId = localStorage.getItem("userId");
-
   }
 
   ionViewDidEnter() {
