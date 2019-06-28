@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, Platform, ActionSheetController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Platform, ActionSheetController, LoadingController, AlertController } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
@@ -43,7 +43,8 @@ export class DevicededetailPage {
     public platform: Platform,
     public loadingCtrl: LoadingController,
     private crop: Crop,
-    public actionSheetCtrl: ActionSheetController,) 
+    public actionSheetCtrl: ActionSheetController,
+    public alert:AlertController) 
     {
       this.devicedetail = navParams.get("devicedetail");
       console.log(this.devicedetail);
@@ -85,6 +86,7 @@ export class DevicededetailPage {
     console.log(ddata);
     this.nfctagProvider.updateDeviceName(ddata).then(function(success){
       console.log(success);
+      _base.presentAlert();
     },function(err){
       console.log(err);
     })
@@ -327,5 +329,20 @@ export class DevicededetailPage {
     });
 
     toast.present();
+  }
+
+  presentAlert() {
+    let alert = this.alert.create({
+      title: 'Data has been saved',
+     
+      buttons: [
+        {
+          text: 'OK',
+          handler: data => {
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

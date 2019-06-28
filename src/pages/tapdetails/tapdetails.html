@@ -46,11 +46,11 @@
           <div class="ss"></div>
 
         <ion-slides pager  id="myImg">
-          <ion-slide *ngIf="eventdata.eventId.image"   >
-            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
+          <ion-slide *ngIf="eventdata.eventId.imageId"   >
+            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.eventId.imageId._id))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.eventId.imageId._id}}">
           </ion-slide>
 
-            <ion-slide *ngIf="!eventdata.eventId.image" (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')"  >
+            <ion-slide *ngIf="!eventdata.eventId.imageId" (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')"  >
                 <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
   
             
@@ -356,7 +356,7 @@
 
         <ion-slides pager  id="myImg">
           <ion-slide *ngIf="eventdata.generalId.image"   >
-            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
+            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.generalId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.generalId.image}}">
           </ion-slide>
 
             <ion-slide *ngIf="!eventdata.generalId.image" (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')"  >
@@ -832,8 +832,10 @@
         <ion-slides pager  id="myImg">
         
 
-            <ion-slide  (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')"  >
-                <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
+            <ion-slide  (click)="showfull('../../assets/images/product.png')"  >
+                <!-- <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg"> -->
+                <img src="../../assets/images/product.png">
+
             </ion-slide>
         </ion-slides>
       </div>
