@@ -620,6 +620,8 @@ page-taptap {
       color: transparent;
       cursor: pointer;
       margin-top: 9px;
+      position: absolute;
+    right: -1px;
     }
   
     #demo-2 input[type=search]:hover {
@@ -627,7 +629,7 @@ page-taptap {
     }
   
     #demo-2 input[type=search]:focus {
-      width: 130px;
+      width:286px;
       padding-left: 32px;
       color: #000;
       background-color: #fff;
