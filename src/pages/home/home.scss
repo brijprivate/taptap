@@ -313,16 +313,23 @@ page-home {
   }
 
   .scroll {
-    height: 63%;
     overflow-y: scroll;
     position: absolute;
     left: 0;
     right: 0;
   }
-
+  .shown{
+    height:63%;
+  }
+  .nshown{
+    height:70%;
+  }
   @media screen and  (max-height : 640px) {
-    .scroll {
-      height: 58%;
+     .shown{
+      height:58%;
+    }
+    .nshown{
+      height:74%;
     }
   }
   .secondseg {
