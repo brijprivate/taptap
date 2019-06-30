@@ -286,9 +286,15 @@ export class NfctagProvider {
   //get milage...
   getfeeds(categoryId: String) {
     let _base = this;
+
+    let url = _base.apiUrl + 'feeds/allbycategory'
+    if (categoryId != null) {
+      url = url + '?categoryId=' + categoryId
+    }
+
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(_base.apiUrl + 'feeds/allbycategory?categoryId=' + categoryId)
+      _base.http.get(url)
         .then(function (success) {
           resolve(success);
         }, function (error) {

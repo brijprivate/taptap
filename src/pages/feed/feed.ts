@@ -39,8 +39,12 @@ export class FeedPage {
     _base.http.getcategories()
       .then(function (success: any) {
         console.log(success)
-        _base.categories = success.result
-        _base.searchfeeds(_base.categories[0]._id, _base.categories[0])
+        _base.categories = success.result.filter((item) => {
+          if (item.name == 'Fashion' || item.name == 'General' || item.name == 'Event') {
+            return item
+          }
+        })
+        _base.showall()
       }, function (error) {
         console.log(error)
       })
@@ -50,6 +54,34 @@ export class FeedPage {
     let _base = this
     _base.selected_category = category
     _base.http.getfeeds(categoryID)
+      .then(function (success: any) {
+        console.log(success)
+        let lastcreateddate = "";
+        _base.feeds = success.result.map((item) => {
+          let obj: any = {};
+          let createddate = item.createdDate.split("T")[0]
+          console.log(createddate, lastcreateddate)
+          if (lastcreateddate != createddate) {
+            console.log("here")
+            lastcreateddate = createddate
+            obj.date = createddate
+          }
+          obj.liked = (item.users) ? (item.users.indexOf(_base.user) == -1 ? false : true) : false
+          obj.time = _base.tConvert(item.createdDate.split("T")[1].split(":")[0] + ":" + item.createdDate.split("T")[1].split(":")[1])
+          Object.assign(obj, item)
+          return obj
+        });
+      }, function (error) {
+        console.log(error)
+      })
+  }
+
+  showall() {
+    let _base = this
+    _base.selected_category = {
+      name: 'All'
+    }
+    _base.http.getfeeds(null)
       .then(function (success: any) {
         console.log(success)
         let lastcreateddate = "";

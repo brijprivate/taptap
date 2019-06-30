@@ -75,6 +75,7 @@
       <div class="dropdown">
         Sort By <i class="fa fa-filter dropbtn"></i>
         <div class="dropdown-content">
+          <a click="showall()">All</a>
           <a *ngFor="let category of categories" (click)="searchfeeds(category._id,category)">{{category.name}}</a>
         </div>
       </div>
