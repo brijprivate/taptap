@@ -353,4 +353,30 @@ export class NfctagProvider {
         });
     });
   }
+
+  likefeed(feeddata) {
+
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.put(_base.apiUrl + 'feeds/like', feeddata)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  dislikefeed(feeddata) {
+
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.put(_base.apiUrl + 'feeds/unlike', feeddata)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
 }

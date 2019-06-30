@@ -84,7 +84,7 @@
 
   <div *ngFor="let feed of feeds">
     <p class="datePadding" *ngIf="feed.date">{{feed.date}}</p>
-    <ion-card *ngIf="feed.product" (click)="detailsPage(feed)">
+    <ion-card *ngIf="feed.product">
 
       <ion-item>
         <ion-avatar item-start>
@@ -95,28 +95,29 @@
         </ion-avatar>
         <h2>{{feed.adminId.name}}</h2>
         <p>{{feed.time}}</p>
-        <ion-icon name="heart"></ion-icon>
+        <ion-icon *ngIf="feed.liked" name="heart" (click)="dislike(feed._id)"></ion-icon>
+        <ion-icon name="heart-outline" *ngIf="!feed.liked" (click)="like(feed._id)"></ion-icon>
 
       </ion-item>
 
-      <img *ngIf="feed.categoryId.name == 'Fashion'"
+      <img *ngIf="feed.categoryId.name == 'Fashion'" (click)="detailsPage(feed)"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.image}}"
         class="feedImg">
 
-      <ion-card-content *ngIf="feed.categoryId.name == 'Fashion'">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Fashion'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
         <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
         <button ion-button icon-start clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div class="ft">12 Likes</div>
+          <div class="ft">{{(feed.users)?feed.users.length:0}} Likes</div>
         </button>
       </ion-card-content>
 
       <img *ngIf="feed.categoryId.name == 'General'"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.image}}"
-        class="feedImg">
-      <ion-card-content *ngIf="feed.categoryId.name == 'General'">
+        class="feedImg" (click)="detailsPage(feed)">
+      <ion-card-content *ngIf="feed.categoryId.name == 'General'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.weblink}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
         <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
@@ -126,10 +127,10 @@
         </button>
       </ion-card-content>
 
-      <img *ngIf="feed.categoryId.name == 'Contacts'"
+      <img *ngIf="feed.categoryId.name == 'Contacts'" (click)="detailsPage(feed)"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.profile_pic}}"
         class="feedImg">
-      <ion-card-content *ngIf="feed.categoryId.name == 'Contacts'">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Contacts'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.company}} </p>
         <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
@@ -139,10 +140,10 @@
         </button>
       </ion-card-content>
 
-      <img *ngIf="feed.categoryId.name == 'Event'"
+      <img *ngIf="feed.categoryId.name == 'Event'" (click)="detailsPage(feed)"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.imageId}}"
         class="feedImg">
-      <ion-card-content *ngIf="feed.categoryId.name == 'Event'">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Event'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.event_title}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
         <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
@@ -153,10 +154,10 @@
       </ion-card-content>
 
 
-      <img *ngIf="feed.categoryId.name == 'Groceries'"
+      <img *ngIf="feed.categoryId.name == 'Groceries'" (click)="detailsPage(feed)"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.imageId}}"
         class="feedImg">
-      <ion-card-content *ngIf="feed.categoryId.name == 'Groceries'">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Groceries'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.product_name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
         <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
@@ -166,10 +167,10 @@
         </button>
       </ion-card-content>
 
-      <img *ngIf="feed.categoryId.name == 'Sports'"
+      <img *ngIf="feed.categoryId.name == 'Sports'" (click)="detailsPage(feed)"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.imageId}}"
         class="feedImg">
-      <ion-card-content *ngIf="feed.categoryId.name == 'Sports'">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Sports'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.sport_name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
         <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
@@ -179,10 +180,10 @@
         </button>
       </ion-card-content>
 
-      <img *ngIf="feed.categoryId.name == 'Business'"
+      <img *ngIf="feed.categoryId.name == 'Business'" (click)="detailsPage(feed)"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.logo}}"
         class="feedImg">
-      <ion-card-content *ngIf="feed.categoryId.name == 'Business'">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Business'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.address}} </p>
         <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
@@ -192,10 +193,10 @@
         </button>
       </ion-card-content>
 
-      <img *ngIf="feed.categoryId.name == 'Verification'"
+      <img *ngIf="feed.categoryId.name == 'Verification'" (click)="detailsPage(feed)"
         src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.images[0]}}"
         class="feedImg">
-      <ion-card-content *ngIf="feed.categoryId.name == 'Verification'">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Verification'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.product}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.websitelink
         }} </p>
@@ -228,6 +229,11 @@
 
     </ion-card>
   </div>
+
+  <audio controls id="audio" style="display:none">
+    <source src="assets/audio/inquisitiveness.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
 
 </ion-content>

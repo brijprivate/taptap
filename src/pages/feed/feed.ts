@@ -20,6 +20,8 @@ export class FeedPage {
   feeds: any = []
   selected_category: any = {}
 
+  user: String = localStorage.getItem("userId")
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: NfctagProvider) {
   }
 
@@ -60,6 +62,7 @@ export class FeedPage {
             lastcreateddate = createddate
             obj.date = createddate
           }
+          obj.liked = (item.users) ? (item.users.indexOf(_base.user) == -1 ? false : true) : false
           obj.time = _base.tConvert(item.createdDate.split("T")[1].split(":")[0] + ":" + item.createdDate.split("T")[1].split(":")[1])
           Object.assign(obj, item)
           return obj
@@ -131,6 +134,40 @@ export class FeedPage {
     }
 
     this.navCtrl.push('TapdetailsPage', object);
+  }
+
+  like(feedID: String) {
+    let _base = this
+    let feeddata = {
+      feedsId: feedID,
+      userId: localStorage.getItem("userId")
+    }
+    this.play()
+    _base.http.likefeed(feeddata)
+      .then(function (success) {
+        _base.searchfeeds(_base.selected_category._id, _base.selected_category)
+      }, function (error) {
+
+      });
+  }
+
+  dislike(feedID: String) {
+    let _base = this
+    let feeddata = {
+      feedsId: feedID,
+      userId: localStorage.getItem("userId")
+    }
+    this.play()
+    _base.http.dislikefeed(feeddata)
+      .then(function (success) {
+        _base.searchfeeds(_base.selected_category._id, _base.selected_category)
+      }, function (error) {
+
+      });
+  }
+
+  play() {
+    (<HTMLAudioElement>document.getElementById("audio")).play()
   }
 
 }
