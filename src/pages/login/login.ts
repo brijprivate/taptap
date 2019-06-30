@@ -100,21 +100,21 @@ export class LoginPage {
       }
     }, function (err) {
       loader.dismiss();
-      let temp:any;
+      let temp: any;
       temp = err.responce;
       console.log(temp);
       // if(err._body.message == 'User does not exist'){
-        let showtoast = _base.toast.create({
-          message: "Please provide valid credentials",
-          duration: 60000,
-          position: "bottom",
-          showCloseButton: true,
-          closeButtonText: "Ok"
-        })
-        showtoast.present();
-        return;
+      let showtoast = _base.toast.create({
+        message: "Please provide valid credentials",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
       // }
-      
+
 
     })
   }
@@ -201,6 +201,7 @@ export class LoginPage {
 
   //Google login....
   googlelogin() {
+    console.log("Clicked on google login")
     this.googlePlus.login({})
       .then(res => {
         console.log("google login responce==========>>>>>>>>");
@@ -214,8 +215,9 @@ export class LoginPage {
         }
         // this.isLoggedIn = true;
       })
-      .catch(err => console.log(err)
-      );
+      .catch(err => {
+        console.log(err)
+      });
   }
 
 

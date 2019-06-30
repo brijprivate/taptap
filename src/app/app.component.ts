@@ -48,7 +48,7 @@ export class MyApp {
     public app: App,
     private backgroundGeolocation: BackgroundGeolocation,
     private locationAccuracy: LocationAccuracy,
-    public nfctagProvider:NfctagProvider) {
+    public nfctagProvider: NfctagProvider) {
     let _base = this;
     // platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.
@@ -75,74 +75,81 @@ export class MyApp {
       if (match.$args.id != '' || match.$args.category != null) {
         console.log("========================================")
         // this.rootPage = "TapdetailsPage";
-        if(match.$args.category=="contactcard"){
+        if (match.$args.category == "contactcard") {
           let data = {
-            userId:localStorage.getItem("userId"),
-            nfc_id:match.$args.id,
-            location:'',
-            purpose:''
+            userId: localStorage.getItem("userId"),
+            nfc_id: match.$args.id,
+            location: '',
+            purpose: ''
           }
-          _base.nfctagProvider.createTap(data).then(function(success:any){
-            _base.navCtrl.setRoot('TapdetailsPage',{devicedetail:success.lostinfo,
-              key:'device'})
-          },function(err){
+          _base.nfctagProvider.createTap(data).then(function (success: any) {
+            _base.navCtrl.setRoot('TapdetailsPage', {
+              devicedetail: success.lostinfo,
+              key: 'device'
+            })
+          }, function (err) {
             alert("Link is expired");
             _base.platform.exitApp();
           })
-        }else{
-        _base.loginservice.getProduct(match.$args.category, match.$args.id)
-          .then(function (success: any) {
-            if (success.error) {
-              _base.platform.exitApp();
-            }
-            let item = success.result;
+        } else {
+          _base.loginservice.getProduct(match.$args.category, match.$args.id)
+            .then(function (success: any) {
+              if (success.error) {
+                _base.platform.exitApp();
+              }
+              let item = success.result;
 
-            let object = {}
+              let object = {}
 
-            switch (match.$args.category) {
-              case 'Business':
-                object = {
-                  businessId: item
-                }
-                break;
-              case 'Contacts':
-                object = {
-                  contactId: item
-                }
-                break;
-              case 'Sports':
-                object = {
-                  sportId: item
-                }
-                break;
-              case 'Fashion':
-                object = {
-                  fashionId: item
-                }
-                break;
-              case 'General':
-                object = {
-                  generalId: item
-                }
-                break;
-              case 'Event':
-                object = {
-                  eventId: item
-                }
-                break;
-              case 'Groceries':
-                object = {
-                  groceryId: item
-                }
-                break;
-              default:
-            }
+              switch (match.$args.category) {
+                case 'Business':
+                  object = {
+                    businessId: item
+                  }
+                  break;
+                case 'Contacts':
+                  object = {
+                    contactId: item
+                  }
+                  break;
+                case 'Sports':
+                  object = {
+                    sportId: item
+                  }
+                  break;
+                case 'Fashion':
+                  object = {
+                    fashionId: item
+                  }
+                  break;
+                case 'General':
+                  object = {
+                    generalId: item
+                  }
+                  break;
+                case 'Event':
+                  object = {
+                    eventId: item
+                  }
+                  break;
+                case 'Groceries':
+                  object = {
+                    groceryId: item
+                  }
+                  break;
+                case 'Verification':
+                  object = {
+                    verificationId: item
+                  }
+                  break;
+                default:
+              }
 
-            _base.navCtrl.setRoot('TapdetailsPage', object);
-          }, function (error) {
-            alert("This link is expired")
-            _base.platform.exitApp()
-          });
+              _base.navCtrl.setRoot('TapdetailsPage', object);
+            }, function (error) {
+              alert("This link is expired")
+              _base.platform.exitApp()
+            });
         }
       }
 

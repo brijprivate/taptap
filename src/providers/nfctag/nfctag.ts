@@ -282,8 +282,43 @@ export class NfctagProvider {
     });
   }
 
-   //get milage...
-   gettime(userid: String) {
+
+  //get milage...
+  getfeeds(categoryId: String) {
+    let _base = this;
+
+    let url = _base.apiUrl + 'feeds/allbycategory'
+    if (categoryId != null) {
+      url = url + '?categoryId=' + categoryId
+    }
+
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(url)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  //get milage...
+  getcategories() {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'category/allcategory')
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  //get milage...
+  gettime(userid: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
@@ -297,8 +332,8 @@ export class NfctagProvider {
   }
 
   //get count of milage and time....
-   //get milage...
-   getcount(userid: String) {
+  //get milage...
+  getcount(userid: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
@@ -317,6 +352,32 @@ export class NfctagProvider {
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
       _base.http.get(_base.apiUrl + 'file/getImage?imageId=' + userid)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  likefeed(feeddata) {
+
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.put(_base.apiUrl + 'feeds/like', feeddata)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  dislikefeed(feeddata) {
+
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.put(_base.apiUrl + 'feeds/unlike', feeddata)
         .then(function (success) {
           resolve(success);
         }, function (error) {

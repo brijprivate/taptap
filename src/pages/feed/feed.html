@@ -20,7 +20,7 @@
       <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
 
       <!-- <ion-icon name="paper" item-left></ion-icon> -->
-      <p >Feeds</p>
+      <p>Feeds</p>
       <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
     </div>
   </div>
@@ -30,7 +30,7 @@
 
   </div> -->
 
-<!-- 
+  <!-- 
   <div class="arrowbuttons">
 
     <ul class="list-inline sileUl">
@@ -46,8 +46,8 @@
               <img src={{feed.product.image}} alt="">
               <p class="title">{{feed.product.name}}</p>
               <p class="details"> {{feed.product.description}} </p> -->
-              <!-- | slice:0:5 -->
-              <!-- <div class="buttons">
+  <!-- | slice:0:5 -->
+  <!-- <div class="buttons">
                 <button>
                   <ion-icon name="heart"></ion-icon>
                 </button>
@@ -68,67 +68,173 @@
     </ul>
   </div> -->
   <div class="at">
+    showing result for {{selected_category.name}} ({{feeds.length}})
 
- 
-  <div class="filter">
-    <div class="dropdown">
-     Sort By <i class="fa fa-filter dropbtn"></i>
-      <div class="dropdown-content">
-        <a>All</a>
-        <a>Fashion</a>
-        <a>General</a>
-        <a>Events</a>
+
+    <div class="filter">
+      <div class="dropdown">
+        Sort By <i class="fa fa-filter dropbtn"></i>
+        <div class="dropdown-content">
+          <a click="showall()">All</a>
+          <a *ngFor="let category of categories" (click)="searchfeeds(category._id,category)">{{category.name}}</a>
+        </div>
       </div>
     </div>
-  </div>
 
   </div>
-  <p class="datePadding">22Jun 2019</p>
-  <ion-card >
 
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/images/p4.png" class="titleImg">
-      </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>8:50 PM</p>
-      <ion-icon name="heart"></ion-icon>
+  <div *ngFor="let feed of feeds">
+    <p class="datePadding" *ngIf="feed.date">{{feed.date}}</p>
+    <ion-card *ngIf="feed.product">
 
-    </ion-item>
-  
-    <img src="assets/images/card.png" class="feedImg">
-  
-    <ion-card-content>
-      <p><strong>Title:</strong>&nbsp;Shirt</p>
-      <p><strong>Description:</strong>&nbsp;Lorem Ipsum is simple </p>
-      <p><strong>Category:</strong> &nbsp;Fashion</p>
-      <button ion-button icon-start clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div class="ft">12 Likes</div>
-      </button>
-    </ion-card-content>
-    <!-- <ion-row>
+      <ion-item>
+        <ion-avatar item-start>
+          <img *ngIf="!feed.adminId.imageId" src="assets/images/p4.png" class="titleImg">
+          <img *ngIf="feed.adminId.imageId"
+            src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.adminId.imageId._id}}"
+            class="titleImg" />
+        </ion-avatar>
+        <h2>{{feed.adminId.name}}</h2>
+        <p>{{feed.time}}</p>
+        <ion-icon *ngIf="feed.liked" name="heart" (click)="dislike(feed._id)"></ion-icon>
+        <ion-icon name="heart-outline" *ngIf="!feed.liked" (click)="like(feed._id)"></ion-icon>
 
-      <ion-col>
+      </ion-item>
+
+      <img *ngIf="feed.categoryId.name == 'Fashion'" (click)="detailsPage(feed)"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.image}}"
+        class="feedImg">
+
+      <ion-card-content *ngIf="feed.categoryId.name == 'Fashion'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">{{(feed.users)?feed.users.length:0}} Likes</div>
+        </button>
+      </ion-card-content>
+
+      <img *ngIf="feed.categoryId.name == 'General'"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.image}}"
+        class="feedImg" (click)="detailsPage(feed)">
+      <ion-card-content *ngIf="feed.categoryId.name == 'General'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.weblink}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
         <button ion-button icon-start clear small>
           <ion-icon name="thumbs-up"></ion-icon>
           <div class="ft">12 Likes</div>
         </button>
-      </ion-col>
-      <ion-col>
+      </ion-card-content>
+
+      <img *ngIf="feed.categoryId.name == 'Contacts'" (click)="detailsPage(feed)"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.profile_pic}}"
+        class="feedImg">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Contacts'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.company}} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
         <button ion-button icon-start clear small>
-          <ion-icon name="heart"></ion-icon>
-          <div class="faet">Favourite</div>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">12 Likes</div>
         </button>
-      </ion-col>
-      <ion-col align-self-center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
-      </ion-col>
-    </ion-row> -->
+      </ion-card-content>
+
+      <img *ngIf="feed.categoryId.name == 'Event'" (click)="detailsPage(feed)"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.imageId}}"
+        class="feedImg">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Event'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.event_title}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">12 Likes</div>
+        </button>
+      </ion-card-content>
+
+
+      <img *ngIf="feed.categoryId.name == 'Groceries'" (click)="detailsPage(feed)"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.imageId}}"
+        class="feedImg">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Groceries'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.product_name}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">12 Likes</div>
+        </button>
+      </ion-card-content>
+
+      <img *ngIf="feed.categoryId.name == 'Sports'" (click)="detailsPage(feed)"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.imageId}}"
+        class="feedImg">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Sports'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.sport_name}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">12 Likes</div>
+        </button>
+      </ion-card-content>
+
+      <img *ngIf="feed.categoryId.name == 'Business'" (click)="detailsPage(feed)"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.logo}}"
+        class="feedImg">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Business'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.address}} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">12 Likes</div>
+        </button>
+      </ion-card-content>
+
+      <img *ngIf="feed.categoryId.name == 'Verification'" (click)="detailsPage(feed)"
+        src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{feed.product.images[0]}}"
+        class="feedImg">
+      <ion-card-content *ngIf="feed.categoryId.name == 'Verification'" (click)="detailsPage(feed)">
+        <p><strong>Title:</strong>&nbsp;{{feed.product.product}}</p>
+        <p><strong>Description:</strong>&nbsp;{{feed.product.websitelink
+        }} </p>
+        <p><strong>Category:</strong> &nbsp;{{feed.categoryId.name}}</p>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="ft">12 Likes</div>
+        </button>
+      </ion-card-content>
+      <!-- <ion-row>
   
-  </ion-card>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div class="ft">12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="heart"></ion-icon>
+            <div class="faet">Favourite</div>
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row> -->
+
+    </ion-card>
+  </div>
+
+  <audio controls id="audio" style="display:none">
+    <source src="assets/audio/inquisitiveness.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
 
 </ion-content>
