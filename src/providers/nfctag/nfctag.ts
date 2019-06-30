@@ -282,8 +282,37 @@ export class NfctagProvider {
     });
   }
 
-   //get milage...
-   gettime(userid: String) {
+
+  //get milage...
+  getfeeds(categoryId: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'feeds/allbycategory?categoryId=' + categoryId)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  //get milage...
+  getcategories() {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'category/allcategory')
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  //get milage...
+  gettime(userid: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
@@ -297,8 +326,8 @@ export class NfctagProvider {
   }
 
   //get count of milage and time....
-   //get milage...
-   getcount(userid: String) {
+  //get milage...
+  getcount(userid: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);

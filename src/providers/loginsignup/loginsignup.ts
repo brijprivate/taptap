@@ -258,6 +258,10 @@ export class LoginsignupProvider {
         route = 'groceries';
         prefix = 'groceries';
         break;
+      case 'Verification':
+        route = 'verification';
+        prefix = 'verification';
+        break;
       default:
       // code block
     }
@@ -271,14 +275,6 @@ export class LoginsignupProvider {
         });
     });
   }
-
-
-
-
-
-
-
-
 
 
 

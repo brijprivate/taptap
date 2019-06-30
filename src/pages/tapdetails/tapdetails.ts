@@ -20,8 +20,8 @@ import { Contacts, Contact, ContactField, ContactName, ContactOrganization, Cont
 export class TapdetailsPage {
 
   public eventdata: any = [];
-  public deviceData:any = [];
-  public fromDevice:any;
+  public deviceData: any = [];
+  public fromDevice: any;
   public thisMonth: any;
   public userId: any;
   public uRLlink = "https://taptapshare.000webhostapp.com/?category=";
@@ -30,7 +30,7 @@ export class TapdetailsPage {
   public linkId: any;
   xx: any;
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
-  keyy:any
+  keyy: any
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -47,9 +47,9 @@ export class TapdetailsPage {
     this.deviceData = this.navParams.get("devicedetail");
     this.fromDevice = this.navParams.get("key");
     this.keyy = this.navParams.get("keyy");
-    console.log("device data=----------------",this.keyy);
+    console.log("device data=----------------", this.keyy);
     this.eventdata = navParams.data;
-    
+
 
     if (this.eventdata.eventId) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -60,7 +60,7 @@ export class TapdetailsPage {
 
 
   ionViewDidEnter() {
-    
+
     // this.eventdata = this.navParams.get("itemdetails");
     // console.log("item details----", this.eventdata);
 
@@ -172,7 +172,7 @@ export class TapdetailsPage {
   }
 
   savecontact(data) {
-    let _base  = this;
+    let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.name);
     contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
@@ -180,7 +180,7 @@ export class TapdetailsPage {
     contact.addresses = [new ContactAddress(null, data.company)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
-    contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.profile_pic)];
+    contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic)];
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
 
@@ -192,7 +192,7 @@ export class TapdetailsPage {
   }
 
   savedevicecontact(data) {
-    let _base  = this;
+    let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.contact_info.name);
     contact.phoneNumbers = [new ContactField('mobile', data.contact_info.mobileNumber)];
@@ -200,7 +200,7 @@ export class TapdetailsPage {
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
     // contact.addresses = new ContactAddress[{'locality': data.contact_info.website)}];
-    contact.photos = [new ContactField('photo', _base.API_URL+"/file/getImage?imageId="+data.imageId._id)];
+    contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
 
@@ -212,16 +212,16 @@ export class TapdetailsPage {
   }
 
 
-  getimage(data){
-//     console.log(data.profile_pic);
-// this.nfctagPro.getimage(data.profile_pic).then(function(success:any){
-//   console.log(success);
+  getimage(data) {
+    //     console.log(data.profile_pic);
+    // this.nfctagPro.getimage(data.profile_pic).then(function(success:any){
+    //   console.log(success);
 
-// },function(err){
-//   console.log(err);
-// })
-var image = this.API_URL+"/file/getImage?imageId="+data.profile_pic;
-console.log(image);
+    // },function(err){
+    //   console.log(err);
+    // })
+    var image = this.API_URL + "/file/getImage?imageId=" + data.profile_pic;
+    console.log(image);
   }
   showfull(src) {
     console.log(src)
@@ -238,13 +238,13 @@ console.log(image);
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
   }
-  back(){
+  back() {
     this.navCtrl.pop();
   }
 
 
 
-  website(){
-    window.open('www.google.com',"_system")
+  website(url) {
+    window.open(url, "_system")
   }
 }
