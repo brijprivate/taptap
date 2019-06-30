@@ -102,7 +102,6 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-network-information": {},
       "phonegap-nfc": {},
       "cordova-plugin-file-transfer": {},
@@ -166,7 +165,8 @@
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "GOOGLE_API_KEY_FOR_ANDROID": "AIzaSyCAUo5wLQ1660_fFrymXUmCgPLaTwdXUgY",
         "OKHTTP_VERSION": "3.+"
-      }
+      },
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "android"

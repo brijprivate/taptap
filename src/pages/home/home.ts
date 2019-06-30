@@ -93,13 +93,16 @@ export class HomePage {
     if (this.userId) {
       // this.getPermission();
       // this.getprofiledata();
-      // this.getDashboarddata();
+      this.getDashboarddata();
       // this.getpresentdateCount();
       // this.getAllTapItem();
       this.getpairedDevice();
       this.getnotifications();
     }
 
+  }
+  ionViewWillLeave(){
+    this.chart.dispose();
   }
 
 
@@ -117,7 +120,7 @@ export class HomePage {
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
       this.getprofiledata();
-      this.getDashboarddata();
+     
       this.getpresentdateCount();
       this.getAllTapItem();
     }

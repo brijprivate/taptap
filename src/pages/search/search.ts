@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SharedserviceProvider } from './../../providers/sharedservice/sharedservice';
-import { Keyboard } from '@ionic-native/keyboard';
+// import { Keyboard } from '@ionic-native/keyboard';
 
 /**
  * Generated class for the SearchPage page.
@@ -41,13 +41,13 @@ export class SearchPage {
     public loading: LoadingController,
     private toast: ToastController,
     public sharedservice: SharedserviceProvider,
-    private keyboard: Keyboard,
+    // private keyboard: Keyboard,
     public alert: AlertController, ) {
     this.userId = localStorage.getItem("userId");
 
-    this.keyboard.onKeyboardShow().subscribe(() => {
-      console.log("onKeyboardShow");
-    });
+    // this.keyboard.onKeyboardShow().subscribe(() => {
+    //   console.log("onKeyboardShow");
+    // });
 
   }
   blur() {
