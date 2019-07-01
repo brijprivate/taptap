@@ -82,7 +82,7 @@ export class DevicededetailPage {
       contact_info: {
         email: this.devicedetail.contact_info.email,
         name: this.devicedetail.contact_info.name,
-        address: this.devicedetail.address,
+        address: this.devicedetail.contact_info.address,
         phoneNumber: this.devicedetail.contact_info.phoneNumber,
         mobileNumber: this.devicedetail.contact_info.mobileNumber,
         company_name: this.devicedetail.contact_info.company_name,
