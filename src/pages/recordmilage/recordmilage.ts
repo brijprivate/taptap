@@ -28,14 +28,14 @@ declare var window;
   templateUrl: 'recordmilage.html',
 })
 export class RecordmilagePage {
-  unit='KM';
-  multiplier=1;
+  unit = 'KM';
+  multiplier = 1;
   //NFC read related ....
   readingTag: boolean = false;
   writingTag: boolean = false;
   isWriting: boolean = false;
   ndefMsg: string = '';
-  active:boolean=false;
+  active: boolean = false;
 
   subscriptions: Array<Subscription> = new Array<Subscription>();
 
@@ -46,7 +46,7 @@ export class RecordmilagePage {
   public started = null
   public running = false
   public blankTime = "00:00.00"
-  public time="00:00.00"
+  public time = "00:00.00"
 
   public tapData: any;
   public isnetwork = "Online";
@@ -57,20 +57,20 @@ export class RecordmilagePage {
   public locations: any = [];
   public chkloc: boolean = false;
   public totaldis = 0;
-  public currentPosition: any;
+  public currentPosition: any = "";
   public endLocation: any;
   public checkp: boolean = false;
   islocation: boolean = false;
   interval;
-  
+
   // to display on screen only
   sdistance: any;
   stime: any;
   startTime: any;
-  sduration:any;
-  eduration:any;
+  sduration: any;
+  eduration: any;
   endTime: any;
-  value:any;
+  value: any;
   totalduration: any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -98,32 +98,32 @@ export class RecordmilagePage {
     });
     //  this.locations = [];
     //  this.startBackgroundTracking();
-    this.sharedservice.getlocation().subscribe((value:any) => {
+    this.sharedservice.getlocation().subscribe((value: any) => {
       console.log("shared location------------>>>>>>>>>>.");
       console.log(value);
       if (Object.keys(value).length == 0 || value == null) {
         return;
       } else {
         this.locations.push(value);
-        if(value.latitude && value.longitude){
+        if (value.latitude && value.longitude) {
           this.loop(value);
           console.log("updated location------------->>>>>>>", value);
         }
 
-
-        let loader = this.loading.create({
-          content: "Please wait..."
-        });
-        loader.present();
-
-        this.nativeGeocoder.reverseGeocode(this.locations[0].latitude, this.locations[0].longitude)
-          .then((result: NativeGeocoderReverseResult[]) => {
-            console.log("reverse geocode ----------------->>>>>>>", result)
-            console.log(JSON.stringify(result[0]));
-            this.currentPosition = result[0];
-            this.checkp = true;
-            loader.dismiss();
+        if (this.currentPosition == "") {
+          let loader = this.loading.create({
+            content: "Please wait..."
           });
+          loader.present();
+          this.nativeGeocoder.reverseGeocode(this.locations[0].latitude, this.locations[0].longitude)
+            .then((result: NativeGeocoderReverseResult[]) => {
+              console.log("reverse geocode ----------------->>>>>>>", result)
+              console.log(JSON.stringify(result[0]));
+              this.currentPosition = result[0];
+              this.checkp = true;
+              loader.dismiss();
+            });
+        }
 
         console.log("array of locations------------->>>>>>>>");
         console.log(this.locations);
@@ -140,10 +140,15 @@ export class RecordmilagePage {
     _base.interval = setInterval(function () {
       // console.log("interval location",_base.locations);
       // if(_base.locations.length >= 2){
-        // _base.loop(_base.locations);
-        _base.sdistance = _base.totaldis;
-        _base.sdistance=(_base.sdistance*_base.multiplier).toFixed(2);
-        _base.stime = _base.time;
+      // _base.loop(_base.locations);
+      _base.sdistance = _base.totaldis;
+      _base.sdistance = (_base.sdistance * _base.multiplier).toFixed(2);
+      _base.stime = _base.time;
+
+      if (_base.active) {
+        _base.clockRunning()
+
+      }
       // }
       // }
       // _base.sdistance = _base.totaldis;
@@ -155,7 +160,6 @@ export class RecordmilagePage {
 
   startBackgroundTrack() {
     // this.backgroundGeolocation.start();
-    this.locationTracker.startTracking();
 
     let _base = this;
     if (this.isnetwork == "Offline") {
@@ -187,29 +191,35 @@ export class RecordmilagePage {
       return;
     }
 
-    this.startTime = new Date().toTimeString().slice(0,8);
+    this.locationTracker.startTracking();
+
+    this.startTime = new Date().toTimeString().slice(0, 8);
     this.sduration = new Date().getTime();
     if (this.running) return;
     else if (this.timeBegan === null) {
-      this.reset();
       this.timeBegan = new Date();
     }
     else if (this.timeStopped != null) {
       let newStoppedDuration: any = (+new Date() - this.timeStopped)
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
-    this.active=!this.active;
-    this.started = setInterval(this.clockRunning.bind(this), 100);
+    this.active = !this.active;
+    // this.started = setInterval(this.clockRunning.bind(this), 100);
     this.running = true;
     // this.loop();
   }
   reset() {
     this.running = false;
-    clearInterval(this.started);
-    this.stoppedDuration = 0;
+    clearInterval(this.interval);
+    this.stoppedDuration = null;
     this.timeBegan = null;
     this.timeStopped = null;
     this.time = this.blankTime;
+    this.stime = this.blankTime
+  }
+
+  ionViewDidLeave() {
+    this.reset()
   }
 
   zeroPrefix(num, digit) {
@@ -223,7 +233,7 @@ export class RecordmilagePage {
   clockRunning() {
     let currentTime: any = new Date();
     // this.time = new Date().getTime();
-    let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
+    let timeElapsed: any = new Date(currentTime - this.timeBegan)
     let hour = timeElapsed.getUTCHours()
     let min = timeElapsed.getUTCMinutes()
     let sec = timeElapsed.getUTCSeconds()
@@ -232,32 +242,33 @@ export class RecordmilagePage {
       this.zeroPrefix(hour, 2) + ":" +
       this.zeroPrefix(min, 2) + ":" +
       this.zeroPrefix(sec, 2)
-      // this.zeroPrefix(ms, 2);
+    // this.zeroPrefix(ms, 2);
   }
 
 
   //stop tracking .....
   stopBackgroundTrack() {
     clearInterval(this.interval);
-    this.endTime = new Date().toTimeString().slice(0,8);
-    this.eduration =  new Date().getTime();
-    this.totalduration =( ((this.eduration)-(this.sduration))/60000).toFixed(2);
+    this.endTime = new Date().toTimeString().slice(0, 8);
+    this.eduration = new Date().getTime();
+    this.totalduration = (((this.eduration) - (this.sduration)) / 60000).toFixed(2);
     console.log("ddddddd--------", this.totalduration);
     this.navCtrl.push('SavemilagePage',
       {
         endtime: this.endTime,
-        starttime:this.startTime,
+        starttime: this.startTime,
         nfcid: this.tapData,
         recordtype: this.record,
         distance: this.totaldis,
         startlocation: this.currentPosition,
         endLocation: this.endLocation,
         cords: this.locations,
-        unit:this.unit,
-        tduration:this.totalduration
+        unit: this.unit,
+        tduration: this.totalduration
       });
-      this.active=!this.active;
-console.log(this.totaldis);
+    this.active = !this.active;
+    console.log(this.totaldis);
+    this.reset()
   }
 
 
@@ -309,18 +320,18 @@ console.log(this.totaldis);
     //   _base.totaldis = _base.totaldis+x
     //   console.log(_base.totaldis)
     //   u=u+1;
-      
+
     //    }, 2000);
-    if(this.locations.length==1){
-      this.value=this.locations[0];
+    if (this.locations.length == 1) {
+      this.value = this.locations[0];
       return;
     }
     console.log(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K')
     var x = this.distance(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K');
-      this.value=value;
-      this.totaldis = (this.totaldis + x);
-      console.log('total distance-------------------->>>>>>>>',this.totaldis)
-      // this.sdistance=(this.sdistance*this.multiplier).toFixed(2);
+    this.value = value;
+    this.totaldis = (this.totaldis + x);
+    console.log('total distance-------------------->>>>>>>>', this.totaldis)
+    // this.sdistance=(this.sdistance*this.multiplier).toFixed(2);
 
     // for (i = 0; i < this.locations.length; i++) {
     //   console.log("first location------->>>>", i[0]);
@@ -332,13 +343,13 @@ console.log(this.totaldis);
     //   loa1 = (this.locations[i].longitude);
     //   loa2 = (this.locations[i + 1].longitude);
 
-      
-      // var x = this.distance(laa1, loa1, laa2, loa2, 'K');
+
+    // var x = this.distance(laa1, loa1, laa2, loa2, 'K');
     //   console.log(x,this.totaldis+"------------------------------------------>>>>>>>>>")
     //   this.totaldis = parseInt((this.totaldis + x).toFixed(2));
 
     //   console.log('total distance', this.totaldis);
-      
+
 
     // }
 
@@ -382,23 +393,23 @@ console.log(this.totaldis);
 
     });
   }
-  change(event){
+  change(event) {
     console.log(event.target.checked);
-    if(event.target.checked){
-      this.unit='MPH';
-      this.multiplier=0.621371;
+    if (event.target.checked) {
+      this.unit = 'MPH';
+      this.multiplier = 0.621371;
     }
-    else if(!event.target.checked){
-  
-      this.unit='KM';
-      this.multiplier=1;
-    }
- 
-  }
- 
- 
+    else if (!event.target.checked) {
 
-  back(){
+      this.unit = 'KM';
+      this.multiplier = 1;
+    }
+
+  }
+
+
+
+  back() {
     this.navCtrl.pop()
   }
 }
