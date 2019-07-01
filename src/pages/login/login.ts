@@ -202,6 +202,12 @@ export class LoginPage {
   //Google login....
   googlelogin() {
     console.log("Clicked on google login")
+    this.googlePlus.getSigningCertificateFingerprint()
+      .then(function (success) {
+        console.log(success)
+      }, function (error) {
+        console.log(error)
+      });
     this.googlePlus.login({})
       .then(res => {
         console.log("google login responce==========>>>>>>>>");
