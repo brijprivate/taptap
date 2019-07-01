@@ -30,7 +30,7 @@ export class TaptapPage {
   public date: String = "";
   public str: String = "";
   public isdata:boolean=false;
-
+  page=''
   searchcount: any = 0;
   keyboards: boolean = false;
 
@@ -52,13 +52,19 @@ export class TaptapPage {
       // this.getAllTapItem();
       this.getmonth(null)
     }
-
+    this.page='category'
   }
-
+  slideChanged() {
+    console.log(this.page)
+   this.page=(this.page =='category') ? "marchent":"category";
+   console.log(this.page)
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
   selectedTab(index) {
+    this.page=(this.page =='category') ? "marchent":"category";
+
     this.slider_tab.slideTo(index);
   }
   next() {

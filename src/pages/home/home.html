@@ -58,12 +58,12 @@
   <div class="paddi animated 800s zoomIn delay-0.3s">
 
     <!-- <ion-toolbar> -->
-    <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="camera" (click)="selectedTab(0)">
+    <ion-segment [(ngModel)]="slideselected" color="dark">
+      <ion-segment-button value="home" (click)="selectedTab(0)">
         <!-- <ion-icon name="camera"></ion-icon> -->
         Tap chart
       </ion-segment-button>
-      <ion-segment-button value="bookmark" (click)="selectedTab(1)">
+      <ion-segment-button value="history" (click)="selectedTab(1)">
         <!-- <ion-icon name="bookmark"></ion-icon> -->
         tap history
       </ion-segment-button>
@@ -72,7 +72,7 @@
     <!-- </ion-toolbar> -->
   </div>
   </div>
-  <ion-slides #slider class="animated 800s zoomIn delay-0.3s"  >
+  <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="animated 800s zoomIn delay-0.3s"  >
     <ion-slide>
       <div class="canvas">
         <!-- <canvas #doughnutCanvas></canvas> -->
