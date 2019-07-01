@@ -335,7 +335,7 @@ export class DevicededetailPage {
 
     modal.onDidDismiss(data => {
       if (Object.keys(data).length != 0) {
-        _base.devicedetail.address = data.location;
+        _base.devicedetail.contact_info.address = data.location;
       } else {
         console.log("no data");
       }
