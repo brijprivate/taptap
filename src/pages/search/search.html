@@ -131,7 +131,7 @@
 
       <!-- <ion-toolbar> -->
       <ion-segment [(ngModel)]="page" color="dark">
-       
+
         <ion-segment-button id="category" value="category" (click)="selectedTab(0)">
           Category
         </ion-segment-button>
@@ -147,44 +147,48 @@
       <p class="nohis">no search history</p>
     </div>
   </div>
+
+
   <!-- <div > -->
   <ion-slides #slider (ionSlideDidChange)="slideChanged()">
     <ion-slide>
+      <div class="top">
+        <div class="section">
+          <div class="scroll">
 
-      <div class="scroll">
+            <div style="padding:0 1em;" class="animated 800s zoomIn delay-0.2s" *ngFor="let item of tapItems">
+              <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
+              <ion-item (click)="gotodetails(item)">
+                <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
+                <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
+                <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
+                <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
+                <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
+                <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left
+                  *ngIf='item.purpose=="Verification"'></ion-icon>
+                <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
+                <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
 
-        <div style="padding:0 1em;" class="animated 800s zoomIn delay-0.2s" *ngFor="let item of tapItems">
-          <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-          <ion-item (click)="gotodetails(item)">
-            <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
-            <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
-            <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
-            <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='item.purpose=="Event"'></ion-icon>
-            <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='item.purpose=="Business"'></ion-icon>
-            <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left
-              *ngIf='item.purpose=="Verification"'></ion-icon>
-            <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='item.purpose=="Sports"'></ion-icon>
-            <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
+                <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+                <ion-icon ios="ios-warning" md="md-warning" item-left *ngIf='item.purpose=="lost"'></ion-icon>
 
-            <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
-            <ion-icon ios="ios-warning" md="md-warning" item-left *ngIf='item.purpose=="lost"'></ion-icon>
-
-            <ion-icon ios="ios-contact" md="md-contact" item-left *ngIf='item.purpose=="Contact_info"'></ion-icon>
+                <ion-icon ios="ios-contact" md="md-contact" item-left *ngIf='item.purpose=="Contact_info"'></ion-icon>
 
 
 
-            <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+                <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
 
-            <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>
-            <span *ngIf="item.purpose=='lost'">Lost Or Stolen</span>
-            <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>
-            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
-          </ion-item>
-          <!-- <hr> -->
+                <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>
+                <span *ngIf="item.purpose=='lost'">Lost Or Stolen</span>
+                <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>
+                <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+              </ion-item>
+              <!-- <hr> -->
 
+            </div>
+          </div>
         </div>
       </div>
-
     </ion-slide>
 
     <ion-slide>
@@ -206,9 +210,6 @@
 
   </ion-slides>
   <!-- </div> -->
-
-
-
 
 
 </ion-content>

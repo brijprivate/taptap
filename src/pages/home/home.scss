@@ -313,10 +313,12 @@ page-home {
   }
 
   .scroll {
-    overflow-y: scroll;
-    position: absolute;
-    left: 0;
-    right: 0;
+    background: white;
+    flex-grow: 1;
+    overflow: auto;
+    min-height: 0;
+    margin-bottom: 31vh;
+
   }
   .shown{
     height:63%;
@@ -325,13 +327,14 @@ page-home {
     height:70%;
   }
   @media screen and  (max-height : 640px) {
-     .shown{
-      height:58%;
-    }
-    .nshown{
-      height:74%;
-    }
+    .scroll {
+      background: white;
+      flex-grow: 1;
+      overflow: auto;
+      min-height: 0;
+      margin-bottom: 35vh;
   }
+}
   .secondseg {
     margin: 0.9em auto;
     width: 82%;
@@ -821,5 +824,28 @@ page-home {
 
   .segment-ios-dark .segment-button.segment-activated {
     background-color: transparent;
+}
+.top{
+  // background: #3F51B5;
+
+  /* give the outermost container a predefined size */
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+}
+.section {
+  
+  flex-grow: 1;
+  
+  display: flex;
+  flex-direction: column;
+  
+  /* for Firefox */
+  min-height: 0;
 }
 }
