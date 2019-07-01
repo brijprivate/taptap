@@ -313,13 +313,14 @@ console.log(this.totaldis);
     //    }, 2000);
     if(this.locations.length==1){
       this.value=this.locations[0];
+      return;
     }
     console.log(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K')
     var x = this.distance(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K');
       this.value=value;
       this.totaldis = (this.totaldis + x);
       console.log('total distance-------------------->>>>>>>>',this.totaldis)
-      this.sdistance=(this.sdistance*this.multiplier).toFixed(2);
+      // this.sdistance=(this.sdistance*this.multiplier).toFixed(2);
 
     // for (i = 0; i < this.locations.length; i++) {
     //   console.log("first location------->>>>", i[0]);

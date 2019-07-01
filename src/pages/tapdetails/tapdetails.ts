@@ -4,7 +4,7 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { Contacts, Contact, ContactField, ContactName, ContactOrganization, ContactAddress } from '@ionic-native/contacts';
-
+import * as moment from 'moment'
 /**
  * Generated class for the TapdetailsPage page.
  *
@@ -30,8 +30,9 @@ export class TapdetailsPage {
   public linkId: any;
   xx: any;
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
-  keyy: any
-
+  keyy:any;
+  public st:any;
+public et:any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
@@ -52,10 +53,21 @@ export class TapdetailsPage {
 
 
     if (this.eventdata.eventId) {
+      console.log(this.eventdata.eventId.startTime,this.eventdata.eventId.endTime)
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      this.thisMonth = monthNames[(new Date()).getMonth()];
+      this.thisMonth = monthNames[(new Date()).getMonth()+1];
       console.log(this.thisMonth);
+       this.st = moment(this.eventdata.eventId.startTime).utc().format('MMMM Do YYYY h mm ss a');
+       
+       this.st=this.st.split(' ')
+  
+       this.et = moment(this.eventdata.eventId.endTime).utc().format('MMMM Do YYYY h mm ss a');
+       
+       this.et=this.et.split(' ')
     }
+
+
+
   }
 
 

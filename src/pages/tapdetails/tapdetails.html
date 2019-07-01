@@ -45,23 +45,16 @@
       <div class="imgss event">
         <div class="ss"></div>
 
-        <ion-slides pager id="myImg">
-          <ion-slide *ngIf="eventdata.eventId.image">
-            <img
-              (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
+        <ion-slides pager  id="myImg">
+          <ion-slide *ngIf="eventdata.eventId.imageId"   >
+            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.eventId.imageId._id))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.eventId.imageId._id}}">
           </ion-slide>
 
-          <ion-slide *ngIf="!eventdata.eventId.image"
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
-            <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
-
-
-          </ion-slide>
-
-
-
-
+            <ion-slide *ngIf="!eventdata.eventId.imageId" (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')"  >
+                <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
+  
+            
+            </ion-slide>
         </ion-slides>
       </div>
 
@@ -101,17 +94,19 @@
             <ion-col col-6>
               <div class="time">
                 <span>start</span>
-                <p class="header">{{eventdata.eventId.startTime | date:'dd'}}th {{thisMonth}}
-                  {{eventdata.eventId.startTime | date:'yyyy'}}</p>
-                <p class="header">{{eventdata.eventId.startTime | date:'HH:mm'}}</p>
+                <p class="header">{{st[1]}} {{st[0]}} {{st[2]}}
+                 </p>
+                <p class="header">{{st[3]}}:{{st[4]}}</p>
+
+                
               </div>
             </ion-col>
             <ion-col col-6>
               <div class="time">
                 <span>End</span>
-                <p class="header">{{eventdata.eventId.endTime | date:'dd'}}th {{thisMonth}}
-                  {{eventdata.eventId.endTime | date:'yyyy'}}</p>
-                <p class="header">{{eventdata.eventId.endTime | date:'HH:mm'}}</p>
+                <p class="header">{{et[1]}} {{et[0]}} {{et[2]}}
+                </p>
+               <p class="header">{{et[3]}}:{{et[4]}}</p>
               </div>
             </ion-col>
           </ion-row>
@@ -363,22 +358,15 @@
       <div class="imgss event">
         <div class="ss"></div>
 
-        <ion-slides pager id="myImg">
-          <ion-slide *ngIf="eventdata.generalId.image">
-            <img
-              (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.fashionId.image}}">
+        <ion-slides pager  id="myImg">
+          <ion-slide *ngIf="eventdata.generalId.image"   >
+            <img  (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.generalId.image))" src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.generalId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.generalId.image"
             (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
             <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
-
-
           </ion-slide>
-
-
-
 
         </ion-slides>
       </div>
@@ -860,9 +848,16 @@
           (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
           <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
         </ion-slide>
-      </ion-slides>
-    </div>
+      <!-- </ion-slides> -->
+    <!-- </div> -->
 
+            <ion-slide  (click)="showfull('../../assets/images/product.png')"  >
+                <!-- <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg"> -->
+                <img src="../../assets/images/product.png">
+
+            </ion-slide>
+        </ion-slides>
+      </div>
 
     <div class="coin">
       <p class="companyname">{{(eventdata.verificationId.storeId.companyId.name)}}</p>

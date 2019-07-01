@@ -77,11 +77,14 @@
     "inquirer": "^6.4.1",
     "ionic-angular": "3.9.3",
     "ionic-plugin-deeplinks": "^1.0.19",
+    "ionic2-super-tabs": "^5.2.0",
     "ionicons": "3.0.0",
     "moment": "^2.24.0",
     "pdfmake": "^0.1.56",
     "phonegap-nfc": "^1.0.3",
     "rxjs": "5.5.11",
+    "safe-buffer": "^5.1.2",
+    "safer-buffer": "^2.1.2",
     "sw-toolbox": "3.6.0",
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "5.0.4",
     "zone.js": "0.8.29"
@@ -101,7 +104,6 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-network-information": {},
       "phonegap-nfc": {},
       "cordova-plugin-file-transfer": {},
@@ -162,6 +164,7 @@
         "GOOGLE_API_KEY_FOR_ANDROID": "AIzaSyCAUo5wLQ1660_fFrymXUmCgPLaTwdXUgY",
         "OKHTTP_VERSION": "3.+"
       },
+      "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "599219149273-skq8j1olh0cn59bsdi8iuvmf7rhtcvfi.apps.googleusercontent.com",
         "PLAY_SERVICES_VERSION": "11.8.0"

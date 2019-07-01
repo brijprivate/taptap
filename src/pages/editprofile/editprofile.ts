@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, Platform, LoadingController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Platform, LoadingController, ActionSheetController, AlertController } from 'ionic-angular';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
@@ -45,7 +45,8 @@ export class EditprofilePage {
     private crop: Crop,
     public actionSheetCtrl: ActionSheetController,
     private DomSanitizer: DomSanitizer,
-    public loginsignupProvider:LoginsignupProvider
+    public loginsignupProvider:LoginsignupProvider,
+    public alert:AlertController
     ) {
 
       this.userId = localStorage.getItem("userId");
@@ -326,11 +327,26 @@ return path;
     console.log(_base.profiledata);
     this.loginsignupProvider.profileUpdate(_base.profiledata).then(function(success:any){
       console.log(success);
+      _base.presentAlert();
     },function(err){
       console.log(err);
     })
   }
   back(){
     this.navCtrl.pop()
+  }
+  presentAlert() {
+    let alert = this.alert.create({
+      title: 'Data has been saved',
+     
+      buttons: [
+        {
+          text: 'OK',
+          handler: data => {
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
