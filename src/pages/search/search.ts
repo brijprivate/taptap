@@ -32,7 +32,7 @@ export class SearchPage {
   public date: String = "";
   public str: String = "";
   public isdata: boolean = false;
-
+public page=''
   searchcount: any = 0;
   keyboards: boolean = false;
   constructor(public navCtrl: NavController,
@@ -45,9 +45,7 @@ export class SearchPage {
     public alert: AlertController, ) {
     this.userId = localStorage.getItem("userId");
 
-    this.keyboard.onKeyboardShow().subscribe(() => {
-      console.log("onKeyboardShow");
-    });
+   this.page='category';
 
   }
   blur() {
@@ -69,6 +67,14 @@ export class SearchPage {
     console.log('ionViewDidLoad SearchPage');
   }
   selectedTab(index) {
+    this.page=(this.page =='category') ? "marchent":"category";
+
+    // if(index==0){
+    //   this.page='category'
+    // }
+    // if(index==1){
+    //   this.page='marchent'
+    // }
     this.slider_tab.slideTo(index);
   }
   next() {
@@ -164,9 +170,9 @@ export class SearchPage {
     }
 
 
-    setTimeout(function () {
-      (<HTMLButtonElement>document.getElementById("category")).click()
-    }, 5000);
+    // setTimeout(function () {
+    //   (<HTMLButtonElement>document.getElementById("category")).click()
+    // }, 1000);
 
     let year = this.year;
     this.merchant()
@@ -199,6 +205,10 @@ export class SearchPage {
       this.slider.slideNext();
     }
   }
-
+  slideChanged() {
+    console.log(this.page)
+   this.page=(this.page =='category') ? "marchent":"category";
+   console.log(this.page)
+  }
 
 }

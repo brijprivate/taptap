@@ -131,15 +131,13 @@
 
       <!-- <ion-toolbar> -->
       <ion-segment [(ngModel)]="page" color="dark">
-        <ion-segment-button value="camera" (click)="selectedTab(1)">
-          <!-- <ion-icon name="camera"></ion-icon> -->
-          Merchant
-        </ion-segment-button>
-        <ion-segment-button id="category" value="bookmark" (click)="selectedTab(0)">
-          <!-- <ion-icon name="bookmark"></ion-icon> -->
+       
+        <ion-segment-button id="category" value="category" (click)="selectedTab(0)">
           Category
         </ion-segment-button>
-
+        <ion-segment-button value="marchent" (click)="selectedTab(1)">
+          Merchant
+        </ion-segment-button>
       </ion-segment>
       <!-- </ion-toolbar> -->
     </div>
@@ -150,7 +148,7 @@
     </div>
   </div>
   <!-- <div > -->
-  <ion-slides #slider>
+  <ion-slides #slider (ionSlideDidChange)="slideChanged()">
     <ion-slide>
 
       <div class="scroll">
@@ -196,7 +194,7 @@
           <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
           <ion-item (click)="gotodetails(item)">
             <ion-icon name="apps" class="merchantIcon"></ion-icon>
-            {{item.storeId.name}}
+            <!-- {{item.storeId.name}} -->dd
             <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
           </ion-item>
           <!-- <hr> -->

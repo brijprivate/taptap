@@ -82,6 +82,8 @@
     "pdfmake": "^0.1.56",
     "phonegap-nfc": "^1.0.3",
     "rxjs": "5.5.11",
+    "safe-buffer": "^5.1.2",
+    "safer-buffer": "^2.1.2",
     "sw-toolbox": "3.6.0",
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "5.0.4",
     "zone.js": "0.8.29"

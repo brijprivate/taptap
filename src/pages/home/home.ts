@@ -70,6 +70,7 @@ export class HomePage {
   devicecount: any;
   profileImage: string;
   keyboards: boolean = false;
+  slideselected: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -82,8 +83,11 @@ export class HomePage {
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
     public alert: AlertController,
+
     // private diagnostic: Diagnostic
   ) {
+    this.slideselected='home';
+
     var x = new Date().toTimeString().slice(0, 8);
     console.log(x);
     let cdate = new Date().toISOString();
@@ -182,6 +186,9 @@ export class HomePage {
     // this.chartfunc(1);
   }
   selectedTab(index) {
+  
+    this.slideselected=(this.slideselected =='home') ? "history":"home";
+
     this.slider.slideTo(index);
   }
   merchant() {
@@ -375,6 +382,8 @@ export class HomePage {
     //     console.log(statusError);
     //   });
   }
-
+  slideChanged() {
+    this.slideselected=(this.slideselected =='home') ? "history":"home";
+   }
  
 }
