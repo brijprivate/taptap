@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 /**
  * Generated class for the MorePage page.
@@ -22,7 +24,9 @@ export class MorePage {
     public navParams: NavParams,
     public nfctagpro: NfctagProvider,
     private app: App,
-    public alert:AlertController,) {
+    public fb: Facebook,
+    private googlePlus: GooglePlus,
+    public alert: AlertController, ) {
   }
 
   ionViewDidEnter() {
@@ -31,10 +35,11 @@ export class MorePage {
   }
 
   Logout() {
+    let _base = this
 
     let alert = this.alert.create({
       title: 'Are you sure want to logout',
-     
+
       buttons: [
         {
           text: 'No',
@@ -47,13 +52,15 @@ export class MorePage {
           text: 'Yes',
           handler: data => {
             localStorage.clear();
+            _base.googlePlus.logout()
+            _base.fb.logout()
             this.app.getRootNav().setRoot("LoginPage");
           }
         }
       ]
     });
     alert.present();
-   
+
   }
   goto(x) {
     this.navCtrl.push(x)
