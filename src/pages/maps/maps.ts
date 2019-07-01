@@ -53,6 +53,12 @@ export class MapsPage {
       disableDefaultUI: true,
       zoom: 17
     });
+
+    var marker = new google.maps.Marker({
+      position: { lat: _base.cords.latitude, lng: _base.cords.longitude },
+      map: _base.map,
+      title: 'Tapped here!'
+    });
   }
 
   navigate() {
