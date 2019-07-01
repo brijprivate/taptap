@@ -193,6 +193,8 @@
 
     <ion-slide>
       <!-- for month -->
+      <div class="top">
+          <div class="section">
       <div class="scroll">
         <div style="padding:0 1em;" *ngFor="let item of tapItems">
           <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
@@ -207,7 +209,9 @@
           <!-- <hr> -->
         </div>
       </div>
-      <!-- for month -->
+      </div>
+      </div>
+          <!-- for month -->
 
     </ion-slide>
 

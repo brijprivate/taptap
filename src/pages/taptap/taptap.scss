@@ -336,7 +336,9 @@ page-taptap {
       min-height: 0;
       margin-bottom: 50px;
     }
-  
+    .scroll div:last-child {
+      margin-bottom: 3em;
+  }
     ion-segment-button.segment-button {
       border: 1px solid #e0dafe !important;
       border-radius: 3px !important;
