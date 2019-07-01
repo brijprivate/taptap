@@ -6,7 +6,10 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
+import { Geolocation } from '@ionic-native/geolocation';
+
 declare var cordova: any;
+declare var google
 
 /**
  * Generated class for the DevicededetailPage page.
@@ -30,6 +33,7 @@ export class DevicededetailPage {
   public imageId: any;
   profileImage: string;
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+  
 
 
   constructor(public navCtrl: NavController,
@@ -45,12 +49,14 @@ export class DevicededetailPage {
     public loadingCtrl: LoadingController,
     private crop: Crop,
     public actionSheetCtrl: ActionSheetController,
-    public alert: AlertController) {
-    this.devicedetail = navParams.get("devicedetail");
-    console.log(this.devicedetail);
-    console.log(this.lost);
-    // this.message = this.devicedetail.message;
-
+    public alert:AlertController,
+    private GoogleAutocomplete: Geolocation,
+    ) 
+    {
+      this.devicedetail = navParams.get("devicedetail");
+      console.log(this.devicedetail);
+      console.log(this.lost);
+     
   }
 
   ionViewDidLoad() {
@@ -356,4 +362,55 @@ export class DevicededetailPage {
     });
     alert.present();
   }
+
+  // updateSearchResults(inp){
+
+  //   console.log("clicked0------------", inp);
+  //   if (this.devicedetail.address == '') {
+  //     this.autocompleteItems = [];
+  //     return;
+  //   }
+  //   this.googleAutocomplete.getPlacePredictions({ input: inp },
+  //   (predictions, status) => {
+  //     this.autocompleteItems = [];
+  //     this.zone.run(() => {
+  //       predictions.forEach((prediction) => {
+  //         this.autocompleteItems.push(prediction);
+  //         console.log(prediction);
+  //       });
+  //     });
+  //   });
+  // }
+
+   //To add the full address through autocomplete search
+  //  initmap() {
+
+  //   var defaultBounds = new google.maps.LatLngBounds
+  //     (
+  //     new google.maps.LatLng(-33.8902, 151.1759),
+  //     new google.maps.LatLng(-33.8474, 151.2631));
+
+  //   var input = (<HTMLInputElement>document.getElementById('pac-input'));
+
+
+  //   var options =
+  //     {
+  //       bounds: defaultBounds
+       
+  //     };
+  //   console.log("working");
+
+  //   let autocomplete = new google.maps.places.Autocomplete(input, options);
+  // }
+
+  // updatedetaill(){
+  //   let toast = this.toastCtrl.create({
+  //     message:'<ion-icon name="pin"></ion-icon>',
+      
+  //   });
+    // this.devicedetail.address = (<HTMLInputElement>document.getElementById('pac-input')).value;
+    // console.log(this.devicedetail.address);
+
+  // }
+
 }

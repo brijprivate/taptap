@@ -70,3 +70,23 @@ i.fa.fa-chevron-left {
   line-height: 42px !important;
 }
 
+.mycss .alert-wrapper .alert-head h2{
+  font-size: 16px;
+  text-align: center;
+  padding-top: 115px;
+}
+
+.mycss .alert-wrapper::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 56px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: url(../assets/images/checked.svg);
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 70px;
+
+  }
