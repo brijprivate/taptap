@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, Platform, ActionSheetController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, NavParams, ToastController, Platform, ActionSheetController, LoadingController } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
@@ -22,39 +22,39 @@ declare var cordova: any;
 })
 export class DevicededetailPage {
 
-  public devicedetail:any=[];
-  public lostmessage:any;
-  public lost:boolean=false;
-  islost:boolean=true;
+  public devicedetail: any = [];
+  public lostmessage: any;
+  public lost: boolean = false;
+  islost: boolean = true;
   lastImage: any;
   public imageId: any;
   profileImage: string;
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
 
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public nfctagProvider:NfctagProvider,
-    private camera: Camera, 
-    private transfer: FileTransfer, 
-    private file: File, 
+    public nfctagProvider: NfctagProvider,
+    private camera: Camera,
+    private transfer: FileTransfer,
+    private file: File,
     private filePath: FilePath,
     public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
     public platform: Platform,
     public loadingCtrl: LoadingController,
     private crop: Crop,
-    public actionSheetCtrl: ActionSheetController,) 
-    {
-      this.devicedetail = navParams.get("devicedetail");
-      console.log(this.devicedetail);
-      console.log(this.lost);
-      // this.message = this.devicedetail.message;
+    public actionSheetCtrl: ActionSheetController, ) {
+    this.devicedetail = navParams.get("devicedetail");
+    console.log(this.devicedetail);
+    console.log(this.lost);
+    // this.message = this.devicedetail.message;
 
   }
 
   ionViewDidLoad() {
-    if(this.devicedetail.imageId){
-      this.imageId = this.API_URL+"/file/getImage?imageId=" + this.devicedetail.imageId._id;//creating url for profile pic
+    if (this.devicedetail.imageId) {
+      this.imageId = this.API_URL + "/file/getImage?imageId=" + this.devicedetail.imageId._id;//creating url for profile pic
 
     }
 
@@ -65,69 +65,69 @@ export class DevicededetailPage {
   //   console.log(this.lost);
   // }
 
-  updatedetail(){
+  updatedetail() {
     let _base = this;
     let ddata = {
-      deviceId:this.devicedetail._id,
-      device_title:this.devicedetail.device_title,
-      
-      imageId:this.profileImage,
-      contact_info:{
-        email:this.devicedetail.contact_info.email,
-        name:this.devicedetail.contact_info.name,
-        address:this.devicedetail.address,
-        phoneNumber:this.devicedetail.contact_info.phoneNumber,
-        mobileNumber:this.devicedetail.contact_info.mobileNumber,
-        company_name:this.devicedetail.contact_info.company_name,
-        website:this.devicedetail.contact_info.website
+      deviceId: this.devicedetail._id,
+      device_title: this.devicedetail.device_title,
+
+      imageId: this.profileImage,
+      contact_info: {
+        email: this.devicedetail.contact_info.email,
+        name: this.devicedetail.contact_info.name,
+        address: this.devicedetail.address,
+        phoneNumber: this.devicedetail.contact_info.phoneNumber,
+        mobileNumber: this.devicedetail.contact_info.mobileNumber,
+        company_name: this.devicedetail.contact_info.company_name,
+        website: this.devicedetail.contact_info.website
       }
     }
     console.log(ddata);
-    this.nfctagProvider.updateDeviceName(ddata).then(function(success){
+    this.nfctagProvider.updateDeviceName(ddata).then(function (success) {
       console.log(success);
-    },function(err){
+    }, function (err) {
       console.log(err);
     })
   }
 
-   //mark as lost...
-   notify(id){
+  //mark as lost...
+  notify(id) {
     let _base = this;
     let data = {
-      deviceId:id,
-      is_lost:this.lost
+      deviceId: id,
+      is_lost: this.lost
     }
     console.log(this.lost);
-    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+    this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
       console.log(success);
       // _base.getpairedDevice();
-    },function(err){
+    }, function (err) {
       console.log(err);
     })
   }
-  notifyy(id){
+  notifyy(id) {
     let _base = this;
     let data = {
-      deviceId:id,
-      is_lost:this.islost
+      deviceId: id,
+      is_lost: this.islost
     }
     console.log(this.islost);
-    this.nfctagProvider.updateDeviceName(data).then(function(success:any){
+    this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
       console.log(success);
       // _base.getpairedDevice();
-    },function(err){
+    }, function (err) {
       console.log(err);
     })
   }
-  back(){
+  back() {
     this.navCtrl.pop();
   }
 
 
-   /**
-   * @desc Action sheet to select camera/gallery option to choose profile pic
-   *
-   */
+  /**
+  * @desc Action sheet to select camera/gallery option to choose profile pic
+  *
+  */
   public presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
@@ -154,64 +154,62 @@ export class DevicededetailPage {
     actionSheet.present();
   }
 
-   /**
-   * @desc capture data from device and set filepath
-   * @param sourceType
-   * @returns @string filepath in device
-   */
-  public takePicture(sourceType)
-  {
+  /**
+  * @desc capture data from device and set filepath
+  * @param sourceType
+  * @returns @string filepath in device
+  */
+  public takePicture(sourceType) {
     let _base = this;
 
     // Create options for the Camera Dialog
     var options =
-      {
-        sourceType: sourceType,
-        saveToPhotoAlbum: true,
-        correctOrientation: true
-      };
+    {
+      sourceType: sourceType,
+      saveToPhotoAlbum: true,
+      correctOrientation: true
+    };
 
-       // Get the data of an image...
+    // Get the data of an image...
     this.camera.getPicture(options).then((imagePath) => {
       console.log("imagePath trace.........." + imagePath);
 
       //Crop function to crop the image...
-      this.crop.crop(imagePath,{
+      this.crop.crop(imagePath, {
         quality: 100,
-        targetWidth:160,
-        targetHeight:160,
-        }).then(function(success:any){
-          console.log("here is the success image ..."+success);
-          imagePath=success;
-          console.log("check image path......"+imagePath);
-          _base.imageId = imagePath;
-          console.log("check image source type............");
-          console.log(sourceType);
+        targetWidth: 160,
+        targetHeight: 160,
+      }).then(function (success: any) {
+        console.log("here is the success image ..." + success);
+        imagePath = success;
+        console.log("check image path......" + imagePath);
+        _base.imageId = imagePath;
+        console.log("check image source type............");
+        console.log(sourceType);
 
-      // Speacial handleing for Android platform...
-      if (_base.platform.is('android') || sourceType == options.sourceType.PHOTOLIBRARY)
-      {
-        console.log("selected from library.......");
+        // Speacial handleing for Android platform...
+        if (_base.platform.is('android') || sourceType == options.sourceType.PHOTOLIBRARY) {
+          console.log("selected from library.......");
 
-        _base.filePath.resolveNativePath(imagePath)
-          .then(filePath => {
-            let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-            let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-            _base.copyFileToLocalDir(correctPath, currentName, _base.createFileName());
-          });
-      }
-      else {
-        var currentName =imagePath.substr(imagePath.lastIndexOf('/') + 1);
-        var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        _base.copyFileToLocalDir(correctPath, currentName, _base.createFileName());
-      }
+          _base.filePath.resolveNativePath(imagePath)
+            .then(filePath => {
+              let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+              let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+              _base.copyFileToLocalDir(correctPath, currentName, _base.createFileName());
+            });
+        }
+        else {
+          var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+          var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+          _base.copyFileToLocalDir(correctPath, currentName, _base.createFileName());
+        }
 
-    },
-      (err) => {
-        this.presentToast('Error while selecting image.');
-      });
+      },
+        (err) => {
+          this.presentToast('Error while selecting image.');
+        });
 
-    },function(error){
+    }, function (error) {
       return error;
     })
   }
@@ -236,7 +234,7 @@ export class DevicededetailPage {
       console.log(namePath);
       console.log(currentName);
       this.lastImage = newFileName;
-      if (this.lastImage){
+      if (this.lastImage) {
         this.uploadImage();
       }
       // this.getTrustImg(this.lastImage);
@@ -245,8 +243,8 @@ export class DevicededetailPage {
     });
   }
 
-   // Always get the accurate path to your apps folder
-   public pathForImage(img) {
+  // Always get the accurate path to your apps folder
+  public pathForImage(img) {
     if (img === null) {
       return '';
     }
@@ -255,17 +253,17 @@ export class DevicededetailPage {
     }
   }
 
-   /**
-   * @desc If image then upload and update other details
-   * otherwise only update
-   *
-   */
+  /**
+  * @desc If image then upload and update other details
+  * otherwise only update
+  *
+  */
   public uploadImage() {
 
     if (this.lastImage) {
       // Destination URL
       // var url = "https://memeapi.memeinfotech.com/file/fileUpload";
-      var url = this.API_URL+"/file/upload";
+      var url = this.API_URL + "/file/upload";
 
       // File for Upload
       var targetPath = this.pathForImage(this.lastImage);
@@ -294,13 +292,13 @@ export class DevicededetailPage {
         temp = data;
         console.log(temp);
         this.profileImage = JSON.parse(temp.response).upload._id;
-        console.log("profile image"+this.profileImage);
+        console.log("profile image" + this.profileImage);
 
-        if(this.profileImage){
-          this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
+        if (this.profileImage) {
+          this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
           console.log(this.imageId);
         }
-       
+
         // console.log(temp.imageId._id);
 
         loader.dismiss();
@@ -327,5 +325,19 @@ export class DevicededetailPage {
     });
 
     toast.present();
+  }
+
+  showautocomplete() {
+    let _base = this;
+    let modal = this.modalCtrl.create("AutocompletePage");
+
+    modal.onDidDismiss(data => {
+      if (Object.keys(data).length != 0) {
+        _base.devicedetail.address = data.location;
+      } else {
+        console.log("no data");
+      }
+    });
+    modal.present();
   }
 }
