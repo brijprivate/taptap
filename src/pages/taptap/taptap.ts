@@ -144,17 +144,18 @@ export class TaptapPage {
 
   getmonth(month: string) {
     let _base = this;
+    console.log(month)
     if (month == null) {
       let date = new Date()
-      month = (date.getMonth() + 1).toString()
+      month = (date.getMonth() + 1+20).toString()
     }
+    console.log(month)
+    _base.monthName = _base.monthNames[parseInt(month) - 21]
 
-    _base.monthName = _base.monthNames[parseInt(month) - 1]
-
-    _base.markactive(month)
+    _base.markactive((parseInt(month)).toString());
 
     if (this.load == false) {
-      _base.slide(parseInt(month))
+      _base.slide(parseInt(month)-20)
       this.load = true
     }
 
@@ -163,16 +164,19 @@ export class TaptapPage {
   }
 
   markactive(month: string) {
+   console.log(month)
     let isactive = (<HTMLElement>document.getElementById(month)).classList.contains("active")
     console.log("active", isactive)
-    for (let i = 1; i <= 12; i++) {
+    var  i=21;
+    for (i = 21; i <= 32; i++) {
       let element = <HTMLElement>document.getElementById(i.toString())
-      console.log(element)
+      // console.log(element)
       element.className = element.className.replace(" active", "");
-      if (i == 12) {
-        let activeelement = <HTMLElement>document.getElementById(month)
+      if (i ==32) {
+        let activeelement = <HTMLElement>document.getElementById(month);
+       
         if (!isactive) {
-          let date = new Date(month + '/' + '15/' + this.year)
+          let date = new Date((parseInt(month)-20).toString() + '/' + '15/' + this.year)
           let isoDate = date.toISOString();
           this.date = isoDate
           activeelement.className = activeelement.className + " active"
