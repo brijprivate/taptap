@@ -51,6 +51,8 @@ page-search {
 
   .scroll-content {
     padding: 0 !important;
+    overflow: hidden !important;
+
   }
 
   .main {
@@ -331,12 +333,11 @@ page-search {
   }
 
   .scroll {
-    background: #fff;
-    height: 56vh;
-    overflow-y: scroll;
-    position: absolute;
-    left: 0;
-    right: 0;
+    background: white;
+    flex-grow: 1;
+    overflow: auto;
+    min-height: 0;
+    margin-bottom: 50px;
   }
 
   ion-segment-button.segment-button {
@@ -763,5 +764,29 @@ page-search {
         color: #222 !important;
       }
     }
+  }
+
+  .top{
+    // background: #3F51B5;
+
+    /* give the outermost container a predefined size */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+  }
+  .section {
+    
+    flex-grow: 1;
+    
+    display: flex;
+    flex-direction: column;
+    
+    /* for Firefox */
+    min-height: 0;
   }
 }
