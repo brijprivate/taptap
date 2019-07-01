@@ -157,13 +157,22 @@ export class SignupPage {
           this.fb.api("/me?fields=name,gender,birthday,email", []).then((user) => {
             console.log("fb user data ============>>>>>>>>>>", user);
 
+            if (!user.email) {
+              alert("This account has no email associated")
+              return
+            }
+
             // this.userdata = user;
             // Get the connected user details
-            this.userName = user.name;
-            this.email = user.email;
 
-            if (this.fb_id) {
-              this.fblog();
+            let localVar = {
+              userName: user.name,
+              email: user.email,
+              fb_id: res.authResponse.userID
+            }
+
+            if (res.authResponse.userID) {
+              this.fblog(localVar);
             }
             console.log("=== USER INFOS ===");
             console.log("Name : " + this.userName);
@@ -182,23 +191,25 @@ export class SignupPage {
   }
 
   //Facebook login api call...
-  fblog() {
+  fblog(data) {
     let loader = this.loading.create({
       content: "Please wait..."
     });
     loader.present();
     let _base = this;
     let fbdata = {
-      name: this.userName,
-      email: this.email,
+      name: data.userName,
+      email: data.email,
       role: "user",
-      providerId: this.fb_id
+      providerId: data.fb_id
     }
     this.signupprovider.fblogin(fbdata).then(function (success: any) {
       console.log("facebook login ----------->>>>>>>>", success);
       loader.dismiss();
 
-      if (success) {
+      if (success.error) {
+        alert(success.message)
+      } else {
         console.log(success.result._id);
         localStorage.setItem("userId", success.result._id);
         _base.navCtrl.setRoot('DashboardPage');
@@ -206,6 +217,7 @@ export class SignupPage {
 
     }, function (err) {
       loader.dismiss();
+      alert("This email is already registered")
       console.log("fb login error---------->>>>>>>", err);
     })
   }
@@ -213,20 +225,31 @@ export class SignupPage {
 
   //Google login....
   googlelogin() {
+    console.log("Clicked on google login")
+    this.googlePlus.getSigningCertificateFingerprint()
+      .then(function (success) {
+        console.log(success)
+      }, function (error) {
+        console.log(error)
+      });
     this.googlePlus.login({})
       .then(res => {
         console.log("google login responce==========>>>>>>>>");
         console.log(res);
-        this.userName = res.displayName;
-        this.email = res.email;
-        this.fb_id = res.userId;
 
-        if (this.fb_id) {
-          this.fblog()
+        let localVar = {
+          userName: res.displayName,
+          email: res.email,
+          fb_id: res.userId
+        }
+
+        if (res.userId) {
+          this.fblog(localVar)
         }
         // this.isLoggedIn = true;
       })
-      .catch(err => console.log(err)
-      );
+      .catch(err => {
+        console.log(err)
+      });
   }
 }

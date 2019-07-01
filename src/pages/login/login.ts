@@ -144,11 +144,15 @@ export class LoginPage {
 
             // this.userdata = user;
             // Get the connected user details
-            this.userName = user.name;
-            this.email = user.email;
 
-            if (this.fb_id) {
-              this.fblog();
+            let localVar = {
+              userName: user.name,
+              email: user.email,
+              fb_id: res.authResponse.userID
+            }
+
+            if (res.authResponse.userID) {
+              this.fblog(localVar);
             }
             console.log("=== USER INFOS ===");
             console.log("Name : " + this.userName);
@@ -167,17 +171,17 @@ export class LoginPage {
   }
 
   //Facebook login api call...
-  fblog() {
+  fblog(data) {
     let loader = this.loading.create({
       content: "Please wait..."
     });
     loader.present();
     let _base = this;
     let fbdata = {
-      name: this.userName,
-      email: this.email,
+      name: data.userName,
+      email: data.email,
       role: "user",
-      providerId: this.fb_id
+      providerId: data.fb_id
     }
     this.signupprovider.fblogin(fbdata).then(function (success: any) {
       console.log("facebook login ----------->>>>>>>>", success);
@@ -212,12 +216,15 @@ export class LoginPage {
       .then(res => {
         console.log("google login responce==========>>>>>>>>");
         console.log(res);
-        this.userName = res.displayName;
-        this.email = res.email;
-        this.fb_id = res.userId;
 
-        if (this.fb_id) {
-          this.fblog()
+        let localVar = {
+          userName: res.displayName,
+          email: res.email,
+          fb_id: res.userId
+        }
+
+        if (res.userId) {
+          this.fblog(localVar)
         }
         // this.isLoggedIn = true;
       })
