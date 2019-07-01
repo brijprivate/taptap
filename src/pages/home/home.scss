@@ -848,4 +848,7 @@ page-home {
   /* for Firefox */
   min-height: 0;
 }
+.scroll div:last-child {
+  margin-bottom: 3em;
+}
 }
