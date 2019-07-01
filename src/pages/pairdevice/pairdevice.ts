@@ -152,7 +152,7 @@ export class PairdevicePage {
 
 ionViewDidLeave(){
   this.readingTag = false;
-this.alertcs.dismiss();
+// this.alertcs.dismiss();
 }
 
   presentPrompt() {

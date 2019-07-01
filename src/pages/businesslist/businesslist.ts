@@ -20,15 +20,19 @@ export class BusinesslistPage {
   public business: any = {};
 
   constructor(public http: NfctagProvider, public navCtrl: NavController, public navParams: NavParams) {
-    
+
   }
 
   ionViewDidEnter() {
     console.log('ionViewDidLoad BusinesslistPage');
     this.getBusinesses();
   }
-  goPage(business:any) {
-    this.navCtrl.push('BusinessPage',business)
+  goPage(business: any) {
+    this.navCtrl.push('BusinessPage', business)
+  }
+
+  back() {
+    this.navCtrl.pop()
   }
 
   getBusinesses() {

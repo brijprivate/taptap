@@ -94,6 +94,10 @@ export class ProfilePage {
     console.log('in the chart')
     let _base = this;
     // anychart.onDocumentReady(function () {
+
+    if (_base.chart) {
+      _base.chart.dispose()
+    }
     _base.chart = anychart.pie([
 
       { x: "Business_Milage", value: _base.tbmilage },
@@ -139,6 +143,10 @@ export class ProfilePage {
     }
   }
 
+  notifications() {
+    this.navCtrl.push("NotificationPage")
+  }
+
 
 
   pairDevice() {
@@ -153,7 +161,7 @@ export class ProfilePage {
     if (this.showchart) {
       this.chart.dispose();
     }
-     clearInterval(this.interval);
+    clearInterval(this.interval);
     this.navCtrl.push('ManagedevicePage');
 
   }

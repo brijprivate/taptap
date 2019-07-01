@@ -45,7 +45,7 @@ export class HomePage {
   public general = 0;
   public sports = 0;
   public contact = 0;
-  public lost=0;
+  public lost = 0;
   public event: 0;
   public groceries: 0;
   public buisness: 0;
@@ -59,7 +59,7 @@ export class HomePage {
   public chart;
   public time = new Date();
 
-  
+
   //NFC read related ....
   readingTag: boolean = false;
   writingTag: boolean = false;
@@ -86,7 +86,7 @@ export class HomePage {
 
     // private diagnostic: Diagnostic
   ) {
-    this.slideselected='home';
+    this.slideselected = 'home';
 
     var x = new Date().toTimeString().slice(0, 8);
     console.log(x);
@@ -97,15 +97,12 @@ export class HomePage {
     if (this.userId) {
       // this.getPermission();
       // this.getprofiledata();
-      this.getDashboarddata();
       // this.getpresentdateCount();
       // this.getAllTapItem();
-      this.getpairedDevice();
-      this.getnotifications();
     }
 
   }
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     this.chart.dispose();
   }
 
@@ -120,13 +117,15 @@ export class HomePage {
 
   ionViewDidEnter() {
     // this.chart.dispose();
-      console.log("view enter--------------->>>>>>>>>>>");
+    console.log("view enter--------------->>>>>>>>>>>");
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
       this.getprofiledata();
-     
+      this.getDashboarddata();
       this.getpresentdateCount();
       this.getAllTapItem();
+      this.getpairedDevice();
+      this.getnotifications();
     }
     if (this.totalcount) {
       var _base = this;
@@ -137,18 +136,22 @@ export class HomePage {
     let _base = this;
     anychart.onDocumentReady(function () {
 
-     
-        _base.chart = anychart.pie([
-          { x: "Fashion", value: _base.fashion },
-          { x: "General", value: _base.general },
-          { x: "Event", value: _base.event },
-          { x: "Contacts", value: _base.contact },
-          { x: "Business", value: _base.buisness },
-          { x: "Sports", value: _base.sports },
-          { x: "Groceries", value: _base.groceries },
-          { x: "Lost", value: _base.lost }
-        ]);
-      
+      if (_base.chart) {
+        _base.chart.dispose()
+      }
+
+
+      _base.chart = anychart.pie([
+        { x: "Fashion", value: _base.fashion },
+        { x: "General", value: _base.general },
+        { x: "Event", value: _base.event },
+        { x: "Contacts", value: _base.contact },
+        { x: "Business", value: _base.buisness },
+        { x: "Sports", value: _base.sports },
+        { x: "Groceries", value: _base.groceries },
+        { x: "Lost", value: _base.lost }
+      ]);
+
 
 
       var label = anychart.standalones.label();
@@ -189,10 +192,11 @@ export class HomePage {
     // this.chartfunc(1);
   }
   selectedTab(index) {
-  
-    this.slideselected=(this.slideselected =='home') ? "history":"home";
+
+    this.slideselected = (this.slideselected == 'home') ? "history" : "home";
 
     this.slider.slideTo(index);
+    this.getAllTapItem();
   }
   merchant() {
     // this.navCtrl.push('MerchantPage');
@@ -307,18 +311,18 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    if(item=='Verification'){
-      this.navCtrl.push('TapdetailsPage',{keyy:'verification'});
+    if (item == 'Verification') {
+      this.navCtrl.push('TapdetailsPage', { keyy: 'verification' });
       return;
     }
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
       console.log(item);
-    }else if(item.purpose == "Contact_info"){
+    } else if (item.purpose == "Contact_info") {
       // this.createTap(item);
-      this.navCtrl.push('TapdetailsPage',{devicedetail:item.deviceInfo,key:'device'});
+      this.navCtrl.push('TapdetailsPage', { devicedetail: item.deviceInfo, key: 'device' });
     }
-     else {
+    else {
       console.log("=====================", item);
       this.navCtrl.push('TapdetailsPage', item);
     }
@@ -386,7 +390,7 @@ export class HomePage {
     //   });
   }
   slideChanged() {
-    this.slideselected=(this.slideselected =='home') ? "history":"home";
-   }
- 
+    this.slideselected = (this.slideselected == 'home') ? "history" : "home";
+  }
+
 }
