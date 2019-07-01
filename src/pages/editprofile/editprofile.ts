@@ -336,9 +336,11 @@ return path;
     this.navCtrl.pop()
   }
   presentAlert() {
+
     let alert = this.alert.create({
       title: 'Data has been saved',
-     
+      // subTitle: 'Milage Saved',
+      cssClass:'mycss',
       buttons: [
         {
           text: 'OK',
