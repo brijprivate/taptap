@@ -93,6 +93,7 @@ export class DevicededetailPage {
     this.nfctagProvider.updateDeviceName(ddata).then(function (success) {
       console.log(success);
       _base.presentAlert();
+      _base.navCtrl.pop();
     }, function (err) {
       console.log(err);
     })
@@ -351,7 +352,7 @@ export class DevicededetailPage {
   presentAlert() {
     let alert = this.alert.create({
       title: 'Data has been saved',
-
+      cssClass:'mycss',
       buttons: [
         {
           text: 'OK',

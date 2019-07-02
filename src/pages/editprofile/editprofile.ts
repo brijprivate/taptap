@@ -329,6 +329,7 @@ return path;
     this.loginsignupProvider.profileUpdate(_base.profiledata).then(function(success:any){
       console.log(success);
       _base.presentAlert();
+      _base.navCtrl.pop();
     },function(err){
       console.log(err);
     })
