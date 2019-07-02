@@ -321,6 +321,8 @@ export class HomePage {
     } else if (item.purpose == "Contact_info") {
       // this.createTap(item);
       this.navCtrl.push('TapdetailsPage', { devicedetail: item.deviceInfo, key: 'device' });
+      // this.navCtrl.push('TapdetailsPage', { devicedetaill: item, key: 'devicee' });
+
     }
     else {
       console.log("=====================", item);
