@@ -598,8 +598,12 @@ page-home {
     font-size: 19px;
     z-index: 999;
     color: #fff;
-    right: 1em;
+    right: 0em;
     top: 23px;
+    padding: 0px;
+    width: 41px;
+    height: 31px;
+    vertical-align: middle;
   }
 
   .main span {

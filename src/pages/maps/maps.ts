@@ -112,5 +112,7 @@ export class MapsPage {
         error => console.log('Error launching navigator', error)
       );
   }
-
+back(){
+  this.navCtrl.pop()
+}
 }
