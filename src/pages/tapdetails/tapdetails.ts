@@ -30,9 +30,9 @@ export class TapdetailsPage {
   public linkId: any;
   xx: any;
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
-  keyy:any;
-  public st:any;
-public et:any;
+  keyy: any;
+  public st: any;
+  public et: any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
@@ -53,17 +53,17 @@ public et:any;
 
 
     if (this.eventdata.eventId) {
-      console.log(this.eventdata.eventId.startTime,this.eventdata.eventId.endTime)
+      console.log(this.eventdata.eventId.startTime, this.eventdata.eventId.endTime)
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      this.thisMonth = monthNames[(new Date()).getMonth()+1];
+      this.thisMonth = monthNames[(new Date()).getMonth() + 1];
       console.log(this.thisMonth);
-       this.st = moment(this.eventdata.eventId.startTime).utc().format('MMMM Do YYYY h mm ss a');
-       
-       this.st=this.st.split(' ')
-  
-       this.et = moment(this.eventdata.eventId.endTime).utc().format('MMMM Do YYYY h mm ss a');
-       
-       this.et=this.et.split(' ')
+      this.st = moment(this.eventdata.eventId.startTime).utc().format('MMMM Do YYYY h mm ss a');
+
+      this.st = this.st.split(' ')
+
+      this.et = moment(this.eventdata.eventId.endTime).utc().format('MMMM Do YYYY h mm ss a');
+
+      this.et = this.et.split(' ')
     }
 
 
@@ -211,7 +211,7 @@ public et:any;
     contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
-    contact.addresses = [new ContactAddress,'addresses', data.contact_info.address];
+    contact.addresses = [new ContactAddress(false, 'home', data.contact_info.address)]
     contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 

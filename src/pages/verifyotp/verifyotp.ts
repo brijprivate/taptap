@@ -17,14 +17,14 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 export class VerifyotpPage {
 
   public otp: any;
-  public userEmail: any;
+  public user: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public signupprovider: LoginsignupProvider,
     public loading: LoadingController,
     public alert: AlertController) {
-    this.userEmail = this.navParams.get("useremail");
+    this.user = this.navParams.data;
   }
 
   ionViewDidLoad() {
@@ -39,7 +39,7 @@ export class VerifyotpPage {
       loader.present();
       let _base = this;
       let otpdata = {
-        email: this.userEmail,
+        email: this.user.email,
         code: this.otp
       }
       this.signupprovider.verifyotp(otpdata).then(function (success: any) {
@@ -58,12 +58,36 @@ export class VerifyotpPage {
       alert("Please Provide OTP to Continue");
     }
   }
+
+
+  resendOTP() {
+    let _base = this
+    let loader = this.loading.create({
+      content: "Please wait..."
+    });
+    loader.present();
+    this.signupprovider.register(this.user).then(function (success: any) {
+      console.log(success);
+      loader.dismiss();
+      if (success.error == true) {
+        alert("user already registered with that email");
+        return;
+      }
+
+      alert("O.T.P sent successfully")
+
+    }, function (err) {
+      loader.dismiss();
+      alert("Somethig went wrong, Please try again");
+      console.log(err);
+    })
+  }
   // keyUpChecker(ev) {
-    
+
   //   if (this.otp.length >4) {
   //     console.log(this.otp)
   //     this.otp.slice(0,-1);
   //   }
-  
+
   // }
 }

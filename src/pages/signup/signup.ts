@@ -123,7 +123,7 @@ export class SignupPage {
         return;
       }
 
-      _base.navCtrl.setRoot('VerifyotpPage', { useremail: _base.email });
+      _base.navCtrl.setRoot('VerifyotpPage', signupdata);
     }, function (err) {
       loader.dismiss();
       alert("Somethig went wrong, Please try again");
@@ -138,6 +138,7 @@ export class SignupPage {
   login() {
     this.navCtrl.push('LoginPage')
   }
+
 
   //Facebook Login...
   fbLogin() {
@@ -191,6 +192,7 @@ export class SignupPage {
   }
 
   //Facebook login api call...
+  //Facebook login api call...
   fblog(data) {
     let loader = this.loading.create({
       content: "Please wait..."
@@ -200,8 +202,7 @@ export class SignupPage {
     let fbdata = {
       name: data.userName,
       email: data.email,
-      role: "user",
-      providerId: data.fb_id
+      role: "user"
     }
     this.signupprovider.fblogin(fbdata).then(function (success: any) {
       console.log("facebook login ----------->>>>>>>>", success);
@@ -210,6 +211,11 @@ export class SignupPage {
       if (success.error) {
         alert(success.message)
       } else {
+
+        if (success.message == 'password') {
+          _base.navCtrl.push('SetpasswordPage', fbdata)
+
+        }
         console.log(success.result._id);
         localStorage.setItem("userId", success.result._id);
         _base.navCtrl.setRoot('DashboardPage');
