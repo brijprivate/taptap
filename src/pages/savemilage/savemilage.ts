@@ -286,7 +286,7 @@ export class SavemilagePage {
   presentAlert() {
     let alert = this.alert.create({
       title: 'Mileage has been saved',
-     
+      cssClass:'mycss',
       buttons: [
        
         {

@@ -194,19 +194,22 @@
     <ion-slide>
       <!-- for month -->
       <div class="top">
-        <div class="section">
-          <div class="scroll">
-            <div style="padding:0 1em;" *ngFor="let item of tapItems">
-              <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-              <ion-item (click)="gotodetails(item)">
-                <ion-icon name="apps" class="merchantIcon"></ion-icon>
-                <!-- {{item.storeId.name}} -->dd
-                <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
-              </ion-item>
-              <!-- <hr> -->
-            </div>
-          </div>
+          <div class="section">
+      <div class="scroll">
+        <div style="padding:0 1em;" *ngFor="let item of tapItems">
+          <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
+          <ion-item (click)="gotodetails(item)">
+            <ion-icon name="apps" class="merchantIcon"></ion-icon>
+            {{item?.eventId?.event_title}} {{item?.fashionId?.name}} {{item?.businessId?.name}}
+            {{item?.sportId?.sport_name}}
+            <span *ngIf='item.purpose=="General"'>{{item.purpose}}</span>
+            <span *ngIf='item.purpose=="lost"'>{{item.purpose}}</span>
+            <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+          </ion-item>
+          <!-- <hr> -->
         </div>
+      </div>
+      </div>
       </div>
           <!-- for month -->
 

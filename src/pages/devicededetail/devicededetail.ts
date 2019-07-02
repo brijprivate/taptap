@@ -82,7 +82,7 @@ export class DevicededetailPage {
       contact_info: {
         email: this.devicedetail.contact_info.email,
         name: this.devicedetail.contact_info.name,
-        address: this.devicedetail.address,
+        address: this.devicedetail.contact_info.address,
         phoneNumber: this.devicedetail.contact_info.phoneNumber,
         mobileNumber: this.devicedetail.contact_info.mobileNumber,
         company_name: this.devicedetail.contact_info.company_name,
@@ -93,6 +93,7 @@ export class DevicededetailPage {
     this.nfctagProvider.updateDeviceName(ddata).then(function (success) {
       console.log(success);
       _base.presentAlert();
+      _base.navCtrl.pop();
     }, function (err) {
       console.log(err);
     })
@@ -351,7 +352,7 @@ export class DevicededetailPage {
   presentAlert() {
     let alert = this.alert.create({
       title: 'Data has been saved',
-
+      cssClass:'mycss',
       buttons: [
         {
           text: 'OK',

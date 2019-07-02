@@ -124,6 +124,7 @@ export class SaveTimePage {
   presentAlert() {
     let alert = this.alert.create({
       title: 'Time has been saved',
+      cssClass:'mycss',
      
       buttons: [
        
