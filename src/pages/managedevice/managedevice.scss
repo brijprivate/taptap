@@ -171,4 +171,14 @@ page-managedevice {
     ion-title {
         margin-left: 1.5em;
     }
+    button.defaultDevice {
+        font-size: 9px;
+        height: 16px;
+        width: 45px;
+        margin-left: 2em;
+        border-radius: 5px;
+        background: #887c7c63;
+        color: #040404;
+        font-weight: 400;
+    }
 }

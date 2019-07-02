@@ -42,6 +42,7 @@
             </svg>
           </span>
          <span (click)="gotodevice(device)">{{device.device_title}}</span> 
+         <button *ngIf="device.is_active" class="defaultDevice">Default</button>
   
         </ion-item>
 

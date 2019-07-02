@@ -65,6 +65,7 @@ export class ManagedevicePage {
   this.nfctagProvider.getpairdevice(this.userId).then(function(success:any){
     console.log("paired devices--------------?>>>>>>>>>");
     console.log(success);
+    
     loader.dismiss();
     _base.devices = success.result;
 

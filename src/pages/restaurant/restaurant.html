@@ -1,0 +1,88 @@
+<!--
+  Generated template for the RestaurantPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content class="animated 800s zoomIn delay-0.1s">
+  <div class="head">
+    <div class="mdl">
+      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+
+      <p>Restaurant</p>
+      <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
+    </div>
+  </div>
+
+  <!-- <div class="imgss">
+    
+    <ion-slides pager="true">
+      <ion-slide>
+          
+        <img src='../../assets/images/card.png'>
+      </ion-slide>
+      <ion-slide>
+        <button ion-button class="upload" (click)="openFileManager()">
+          <ion-icon name="camera"></ion-icon> Upload
+        </button>
+      </ion-slide>
+    </ion-slides>
+  </div> -->
+
+
+  <div id="myModal" class="modal">
+    <span (click)="close()" class="close">&times;</span>
+    <img class="modal-content" id="img01" [src]=xx>
+    <div id="caption"></div>
+  </div>
+
+  <div class="imgss event">
+    <div class="ss"></div>
+
+
+    <ion-slides pager id="myImg">
+
+
+      <ion-slide (click)="showfull(image)">
+        <img src='../../assets/images/Logo_after.png'>
+      </ion-slide>
+
+
+      <input type="file" id="fileInput" style="display: none" (change)="selectFile($event)" />
+
+    </ion-slides>
+  </div>
+
+
+
+  <ion-list class="mobileSp">
+
+
+    <div class="name">Novotel Hotel</div>
+
+    <div class="add">kolkata, Rajarhat<br>
+      west bangal, India
+    </div>
+
+    <div class="down">
+      <button><i class="fa fa-download" aria-hidden="true"></i>
+         Download Menu</button>
+    </div>
+
+  
+
+  </ion-list>
+  <div class="bott">
+    <ion-grid class="saveGrid" text-center nopadding>
+      <ion-row nopadding>
+        <ion-col col-6 nopadding>
+          <button ion-button class="save" (click)="createProduct()"> <i class="fa fa-map-marker" aria-hidden="true"></i>  location</button>
+        </ion-col>
+        <ion-col col-6 nopadding>
+          <button ion-button class="save" (click)="createProduct()"><i class="fa fa-share-alt" aria-hidden="true"></i>  share</button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
