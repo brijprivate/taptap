@@ -63,6 +63,11 @@ export class MorePage {
 
   }
   goto(x) {
+    if(x=='store'){
+      window.open('www.gocubetech.shop/taptap',"_system")
+
+      return;
+    }
     this.navCtrl.push(x)
   }
 

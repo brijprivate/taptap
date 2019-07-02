@@ -203,6 +203,8 @@ presentPrompt(nfcid) {
       loader.dismiss();
     })
   }
-
+  goto(url){
+    this.navCtrl.push('PairdevicePage', { x: 'pair' });
+  }
 
 }

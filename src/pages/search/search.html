@@ -179,7 +179,7 @@
                 <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
 
                 <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>
-                <span *ngIf="item.purpose=='lost'">Lost Or Stolen</span>
+                <span *ngIf="item.purpose=='lost'">Lost or Stolen</span>
                 <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>
                 <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
               </ion-item>

@@ -6,7 +6,7 @@
     <div class="main">
 
       <i (click)="notifications()" class="fa fa-bell animated 800s wobble delay-0.5s"
-        aria-hidden="true"></i><span>{{notiCount}}</span>
+        aria-hidden="true"></i><span (click)="notifications()">{{notiCount}}</span>
 
       <ion-grid class="p0">
         <ion-row>
@@ -155,7 +155,7 @@
                   </ion-icon>
 
                   <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>
-                  <span *ngIf="item.purpose=='lost'">Lost Or Stolen</span>
+                  <span *ngIf="item.purpose=='lost'">Lost or Stolen</span>
                   <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>
 
                   <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
