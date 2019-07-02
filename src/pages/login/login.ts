@@ -180,8 +180,7 @@ export class LoginPage {
     let fbdata = {
       name: data.userName,
       email: data.email,
-      role: "user",
-      providerId: data.fb_id
+      role: "user"
     }
     this.signupprovider.fblogin(fbdata).then(function (success: any) {
       console.log("facebook login ----------->>>>>>>>", success);
@@ -190,6 +189,11 @@ export class LoginPage {
       if (success.error) {
         alert(success.message)
       } else {
+
+        if (success.message == 'password') {
+          _base.navCtrl.push('SetpasswordPage', fbdata)
+
+        }
         console.log(success.result._id);
         localStorage.setItem("userId", success.result._id);
         _base.navCtrl.setRoot('DashboardPage');

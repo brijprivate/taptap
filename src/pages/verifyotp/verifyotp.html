@@ -10,31 +10,32 @@
   <div class="verifyContent">
     <img src="../../assets/images/touch.png" id="touch">
     <p class="verify">Verification</p>
-    <p class="subContent">Please enter the verification code we sent you to your email address</p>
+    <p class="subContent">Please enter the verification code we sent you to your email address {{user.email}}</p>
     <div class="input">
       <!-- <ion-input type="number" id="partitioned"  maxlength="4" [(ngModel)]="otp"></ion-input> -->
       <div id="divOuter">
         <div id="divInner">
-          <input id="partitioned" type="tel" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" [(ngModel)]="otp" />
+          <input id="partitioned" type="tel" pattern="/^-?\d+\.?\d*$/"
+            onKeyPress="if(this.value.length==5) return false;" [(ngModel)]="otp" />
         </div>
       </div>
 
 
     </div>
-   
+
 
     <ion-grid class="buttonGrid">
-        <ion-row>
-          <ion-col col-7>
-            <button ion-button class="verifyCode" (click)="otpVerification()">Verify code</button>
-          </ion-col>
-          <ion-col col-5>
-              <button ion-button class="resend" outline>Resend</button>
-            </ion-col>
-        </ion-row>
-      </ion-grid>
-      <div class="ftr">
-          <p>Having trouble with the verification ? <span>Get Support</span></p>
-        </div>
+      <ion-row>
+        <ion-col col-7>
+          <button ion-button class="verifyCode" (click)="otpVerification()">Verify code</button>
+        </ion-col>
+        <ion-col col-5>
+          <button ion-button class="resend" (click)="resendOTP()" outline>Resend</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="ftr">
+      <p>Having trouble with the verification ? <span>Get Support</span></p>
+    </div>
   </div>
 </ion-content>
