@@ -74,20 +74,22 @@ export class MyApp {
 
       if (match.$args.id != '' || match.$args.category != null) {
         console.log("========================================")
-        // this.rootPage = "TapdetailsPage";
-        if (match.$args.category == "contactcard") {
+        if (match.$args.category == "Contact_info") {
           let data = {
             userId: localStorage.getItem("userId"),
             nfc_id: match.$args.id,
             location: '',
-            purpose: ''
+            purpose: '',
+            geo:''
           }
           _base.nfctagProvider.createTap(data).then(function (success: any) {
+            console.log("suc------------",success)
             _base.navCtrl.setRoot('TapdetailsPage', {
               devicedetail: success.lostinfo,
               key: 'device'
             })
           }, function (err) {
+            console.log("err---------------->",err);
             alert("Link is expired");
             _base.platform.exitApp();
           })
