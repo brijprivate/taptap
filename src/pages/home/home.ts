@@ -53,6 +53,8 @@ export class HomePage {
   public totalcount: 0;
   public todaysTap: 0;
   public tapItems: any;
+  public allTapItems: any;
+  public str: String = "";
 
   lineChart: any;
 
@@ -299,6 +301,7 @@ export class HomePage {
       console.log("All Tapped data ,..........>>>>>");
       // console.log(success.result.length);
       _base.tapItems = success.result;
+      _base.allTapItems = success.result;
       if (success.result.length == 0) {
         _base.isblanck = true;
         _base.blankmsg = "There Is No Tap Yet";
@@ -307,6 +310,24 @@ export class HomePage {
     }, function (err) {
       console.log(err);
     })
+  }
+
+  search() {
+    let _base = this
+    if (_base.str == '') {
+      _base.tapItems = _base.allTapItems
+    } else {
+      _base.tapItems = _base.allTapItems.filter(item => {
+        let case_1 = item.purpose.toLowerCase().includes(_base.str.toLowerCase())
+        let case_2 = false;
+        if (item.deviceInfo.device_title) {
+          case_2 = (item.deviceInfo.device_title.toLowerCase().includes(_base.str.toLowerCase()))
+        }
+        if (case_1 || case_2) {
+          return item
+        }
+      })
+    }
   }
 
   //go to detail page ...
