@@ -21,7 +21,6 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="orientation" value="portrait" />
     <preference name="SplashScreenDelay" value="3000" />
-    <preference name="KeyboardResize" value="false" />
     <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>We use your location for full functionality of certain app features.</string>
