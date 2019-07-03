@@ -142,7 +142,7 @@ export class TapdetailsPage {
   //social share of device....
   socialsharedevice(data) {
     console.log(data);
-    this.link = this.uRLlink + 'contactcard' + '&' + 'id=' + data
+    this.link = this.uRLlink + 'Contact_info' + '&' + 'id=' + data.nfc_id;
     this.socialsharing.share(this.link).then(() => {
 
     }).catch(() => {
@@ -194,6 +194,7 @@ export class TapdetailsPage {
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.name);
     contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.mobileNumber)];
     contact.organizations = [new ContactOrganization('company', data.company)];
     contact.addresses = [new ContactAddress(null, data.company)];
     contact.emails = [new ContactField('email', data.email)];
