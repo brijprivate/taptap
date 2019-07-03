@@ -25,7 +25,7 @@ export class EditprofilePage {
 
   private win: any = window;
   lastImage: any;
-  public imageId: any;
+  public imageId='../../assets/images/avatar.png';
   public data = [];
   API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
   public userId:any;
@@ -58,7 +58,8 @@ export class EditprofilePage {
   }
 
   ionViewDidLoad() {
-    this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
+    //creating url for profile pic
+    // this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;
 
     console.log('ionViewDidLoad EditprofilePage');
   }
@@ -328,6 +329,7 @@ return path;
     this.loginsignupProvider.profileUpdate(_base.profiledata).then(function(success:any){
       console.log(success);
       _base.presentAlert();
+      _base.navCtrl.pop();
     },function(err){
       console.log(err);
     })

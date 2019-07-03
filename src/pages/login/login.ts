@@ -237,6 +237,10 @@ export class LoginPage {
       });
   }
 
+  forgotpassword() {
+    this.navCtrl.push('ForgotpasswordPage')
+  }
+
 
   signup() {
     this.navCtrl.push('SignupPage');

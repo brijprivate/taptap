@@ -647,7 +647,7 @@ page-taptap {
     }
     form#demo-2 {
       position: absolute;
-      top: 17px;
+      top: 1vh;
       right: 12px;
       width: 100%;
     }
@@ -750,7 +750,7 @@ page-taptap {
     }
   
     .active {
-      background-color: #fff;
+      background-color: #fff !important;
   
       // border-radius: 15px;
       .slide-zoom {

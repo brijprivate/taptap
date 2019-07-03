@@ -96,7 +96,7 @@
                 <span>start</span>
                 <p class="header">{{st[1]}} {{st[0]}} {{st[2]}}
                  </p>
-                <p class="header">{{st[3]}}:{{st[4]}}</p>
+                <p class="header">{{st[3]}}:{{st[4]}}  {{st[6]}}</p>
 
                 
               </div>
@@ -106,7 +106,7 @@
                 <span>End</span>
                 <p class="header">{{et[1]}} {{et[0]}} {{et[2]}}
                 </p>
-               <p class="header">{{et[3]}}:{{et[4]}}</p>
+               <p class="header">{{et[3]}}:{{et[4]}} {{et[6]}}</p>
               </div>
             </ion-col>
           </ion-row>
@@ -715,10 +715,10 @@
           <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
           <p>{{deviceData.type}}</p>
           <!-- <div class="iconss">
-            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart-outline" *ngIf="devicedetaill.is_favourite==false" item-right
+              (click)="updateProduct(devicedetaill.deviceInfo?._id,devicedetaill.is_favourite)"></ion-icon>
+            <ion-icon name="heart" item-right *ngIf="devicedetaill.is_favourite==true"
+              (click)="updateProduct(devicedetaill.deviceInfo?._id,devicedetaill.is_favourite)"></ion-icon>
 
           </div> -->
         </div>
@@ -803,7 +803,7 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
             </button> </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialsharedevice(deviceData.nfc_id)">
+            <button class="share" outline (click)="socialsharedevice(deviceData)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
           </ion-col>
@@ -844,16 +844,17 @@
       <ion-slides pager id="myImg">
 
 
-        <ion-slide
-          (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
-          <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
+        <ion-slide *ngIf = "eventdata.verificationId.images">
+          <img (click)="showfull('http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId='+(eventdata.verificationId.images[0]))"
+           src="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId={{eventdata.verificationId.images[0]}}">
         </ion-slide>
       <!-- </ion-slides> -->
     <!-- </div> -->
 
-            <ion-slide  (click)="showfull('../../assets/images/product.png')"  >
+            <ion-slide *ngIf = "!eventdata.verificationId.images"> 
+                <img (click)="showfull('../../assets/images/product.png')" 
+                 src="../../assets/images/product.png">
                 <!-- <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg"> -->
-                <img src="../../assets/images/product.png">
 
             </ion-slide>
         </ion-slides>
