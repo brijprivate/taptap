@@ -126,7 +126,7 @@ export class SignupPage {
       _base.navCtrl.setRoot('VerifyotpPage', signupdata);
     }, function (err) {
       loader.dismiss();
-      alert("Somethig went wrong, Please try again");
+      alert(JSON.parse(err._body).message);
       console.log(err);
     })
 
