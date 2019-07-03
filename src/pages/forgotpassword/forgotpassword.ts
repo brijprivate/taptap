@@ -103,5 +103,7 @@ export class ForgotpasswordPage {
         alert(JSON.parse(error._body).message)
       });
   }
-
+back(){
+  this.navCtrl.pop();
+}
 }
