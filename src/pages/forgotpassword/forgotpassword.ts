@@ -54,7 +54,6 @@ export class ForgotpasswordPage {
 
   verifycode() {
     let _base = this
-    _base.state = "password"
     _base.http.verifyUserOTP({ email: _base.email, code: _base.otp })
       .then(function (success: any) {
         if (success.error == false) {
@@ -63,6 +62,7 @@ export class ForgotpasswordPage {
           alert(success.message)
         }
       }, function (error) {
+        console.log(error)
         alert(JSON.parse(error._body).message)
       });
   }

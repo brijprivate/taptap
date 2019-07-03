@@ -66,7 +66,7 @@ export class LoginsignupProvider {
     let _base = this;
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.post(_base.apiUrl + 'user/otpVerification', data)
+      _base.http.put(_base.apiUrl + 'user/otpVerification', data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
