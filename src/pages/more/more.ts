@@ -64,7 +64,7 @@ export class MorePage {
   }
   goto(x) {
     if(x=='store'){
-      window.open('www.gocubetech.shop/taptap',"_system")
+      window.open('https://www.gocubetech.shop/taptap',"_system");
 
       return;
     }

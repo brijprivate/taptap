@@ -29,10 +29,11 @@ export class TapdetailsPage {
   isfav: boolean = false;
   public linkId: any;
   xx: any;
-  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+  API_URL = "https://api.taptap.org.uk";
   keyy: any;
   public st: any;
   public et: any;
+  devicedetaill:any
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
@@ -46,9 +47,13 @@ export class TapdetailsPage {
 
     // console.log("item details----", this.eventdata);
     this.deviceData = this.navParams.get("devicedetail");
+    // this.devicedetaill = this.navParams.get("devicedetaill");
     this.fromDevice = this.navParams.get("key");
+    // if(this.fromDevice=="devicee"){
+    //   this.deviceData = this.devicedetaill.deviceInfo;
+    // }
     this.keyy = this.navParams.get("keyy");
-    console.log("device data=----------------", this.keyy);
+    // console.log("device data=----------------", this.devicedetaill.deviceInfo._id);
     this.eventdata = navParams.data;
 
 
@@ -64,6 +69,7 @@ export class TapdetailsPage {
       this.et = moment(this.eventdata.eventId.endTime).utc().format('MMMM Do YYYY h mm ss a');
 
       this.et = this.et.split(' ')
+      console.log(this.et)
     }
 
 
@@ -136,7 +142,7 @@ export class TapdetailsPage {
   //social share of device....
   socialsharedevice(data) {
     console.log(data);
-    this.link = this.uRLlink + 'contactcard' + '&' + 'id=' + data
+    this.link = this.uRLlink + 'Contact_info' + '&' + 'id=' + data.nfc_id;
     this.socialsharing.share(this.link).then(() => {
 
     }).catch(() => {
@@ -188,11 +194,14 @@ export class TapdetailsPage {
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.name);
     contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.mobileNumber)];
     contact.organizations = [new ContactOrganization('company', data.company)];
     contact.addresses = [new ContactAddress(null, data.company)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
-    contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic)];
+    if(data.profile_pic){
+      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic)];
+    }
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
 
@@ -211,8 +220,10 @@ export class TapdetailsPage {
     contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
-    contact.addresses = [new ContactAddress(false, 'home', data.contact_info.address)]
-    contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
+    contact.addresses = [new ContactAddress(false, 'home', data.contact_info.address)];
+    if(data.imageId){
+      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
+    }
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
 

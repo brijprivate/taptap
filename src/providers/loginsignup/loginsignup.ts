@@ -10,8 +10,8 @@ import { HttpProvider } from '../http/http';
 */
 @Injectable()
 export class LoginsignupProvider {
-  public apiUrl: string = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/";
-  // public apiUrl:string="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/user/";
+  public apiUrl: string = "https://api.taptap.org.uk/";
+  // public apiUrl:string="https://api.taptap.org.uk/user/";
   public proxyurl: string = "https://cors-anywhere.herokuapp.com/";
 
   constructor(public http: HttpProvider, public httpOne: HttpClient) {
@@ -39,6 +39,34 @@ export class LoginsignupProvider {
     return new Promise(function (resolve, reject) {
       // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
       _base.http.post(_base.apiUrl + 'user/registration', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  //API call for otp verification...
+  forgotPassword(data) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.put(_base.apiUrl + 'user/forgotPassword', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  //API call for otp verification...
+  verifyUserOTP(data) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.put(_base.apiUrl + 'user/otpVerification', data)
         .then(function (success) {
           resolve(success);
         }, function (error) {
