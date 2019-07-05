@@ -29,7 +29,7 @@ export class TapdetailsPage {
   isfav: boolean = false;
   public linkId: any;
   xx: any;
-  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+  API_URL = "https://api.taptap.org.uk";
   keyy: any;
   public st: any;
   public et: any;
