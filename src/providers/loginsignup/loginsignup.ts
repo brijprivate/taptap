@@ -10,8 +10,8 @@ import { HttpProvider } from '../http/http';
 */
 @Injectable()
 export class LoginsignupProvider {
-  public apiUrl: string = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/";
-  // public apiUrl:string="http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/user/";
+  public apiUrl: string = "https://api.taptap.org.uk/";
+  // public apiUrl:string="https://api.taptap.org.uk/user/";
   public proxyurl: string = "https://cors-anywhere.herokuapp.com/";
 
   constructor(public http: HttpProvider, public httpOne: HttpClient) {

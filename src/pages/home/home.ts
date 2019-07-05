@@ -21,7 +21,7 @@ export class HomePage {
     loop: true
   };
   public images: any;
-  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+  API_URL = "https://api.taptap.org.uk";
 
   @ViewChild('slider') slider: Slides;
   @ViewChild('slides') slides: Slides;

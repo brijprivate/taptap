@@ -42,7 +42,7 @@ export class BusinesslistPage {
         _base.businessList = success.result.map((business) => {
           console.log(business)
           console.log(business.logo)
-          business.imageId = (business.logo) ? 'http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/file/getImage?imageId=' + business.logo : '../../assets/images/Logo_after.png'
+          business.imageId = (business.logo) ? 'https://api.taptap.org.uk/file/getImage?imageId=' + business.logo : '../../assets/images/Logo_after.png'
           return business;
         });
       }, function (error) {

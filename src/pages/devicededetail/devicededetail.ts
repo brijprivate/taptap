@@ -32,7 +32,7 @@ export class DevicededetailPage {
   lastImage: any;
   public imageId: any;
   profileImage: string;
-  API_URL = "http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450";
+  API_URL = "https://api.taptap.org.uk";
   
 
 
