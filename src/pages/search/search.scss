@@ -624,8 +624,8 @@ page-search {
 
   /* Demo 2 */
   #demo-2 input[type=search] {
-    width: 15px;
-    padding-left: 10px;
+    width: 0px;
+    padding-left: 30px;
     color: transparent;
     cursor: pointer;
     margin-top: 9px;
@@ -639,7 +639,7 @@ page-search {
 
   #demo-2 input[type=search]:focus {
     // width: 130px;
-    width: calc(100% - 12px - 32px);
+    width: calc(100% - 12px - 52px);
     // padding-left: 32px;
     color: #000;
     background-color: #fff;
@@ -656,7 +656,7 @@ page-search {
 
   form#demo-2 {
     position: absolute;
-    top: 1vh;
+    top: 2vh;
     right: 12px;
     width: 100%;
   }

@@ -4,6 +4,7 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 /**
  * Generated class for the LoginPage page.
@@ -244,5 +245,29 @@ export class LoginPage {
 
   signup() {
     this.navCtrl.push('SignupPage');
+  }
+
+  //check pattern...
+  checkpattern(email){
+    // console.log("aaaaaa");
+    let _base = this;
+    let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
+    let result = pattern.test(email);
+    if(!result){
+      console.log("miss");
+      let showtoast = _base.toast.create({
+        message: "Please provide valid email",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
+      
+    }else{
+      console.log("matched");
+    }
+    console.log(pattern)
   }
 }
