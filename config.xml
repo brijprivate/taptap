@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.gocube.taptapUser" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.gocube.taptapUser" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>TapTap</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -152,6 +152,7 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
     <plugin name="cordova-plugin-googleplus" spec="^7.0.2">
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+        <variable name="REVERSED_CLIENT_ID" value="599219149273-rqftt02t60t7745kmnuqs1glndjbf5k5.apps.googleusercontent.com" />
     </plugin>
     <engine name="android" spec="7.1.4" />
 </widget>

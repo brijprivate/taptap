@@ -258,4 +258,28 @@ export class SignupPage {
         console.log(err)
       });
   }
+
+  //check pattern...
+  checkpattern(email){
+    // console.log("aaaaaa");
+    let _base = this;
+    let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
+    let result = pattern.test(email);
+    if(!result){
+      console.log("miss");
+      let showtoast = _base.toast.create({
+        message: "Please provide valid email",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
+      
+    }else{
+      console.log("matched");
+    }
+    console.log(pattern)
+  }
 }
