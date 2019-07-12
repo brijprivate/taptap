@@ -107,7 +107,7 @@ export class LoginPage {
       // if(err._body.message == 'User does not exist'){
       let showtoast = _base.toast.create({
         message: "Please provide valid credentials",
-        duration: 60000,
+        duration: 6000,
         position: "bottom",
         showCloseButton: true,
         closeButtonText: "Ok"
@@ -257,7 +257,7 @@ export class LoginPage {
       console.log("miss");
       let showtoast = _base.toast.create({
         message: "Please provide valid email",
-        duration: 60000,
+        duration: 6000,
         position: "bottom",
         showCloseButton: true,
         closeButtonText: "Ok"
