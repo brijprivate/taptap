@@ -167,7 +167,7 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-googleplus": {
         "PLAY_SERVICES_VERSION": "11.8.0",
-        "REVERSED_CLIENT_ID":"599219149273-rqftt02t60t7745kmnuqs1glndjbf5k5.apps.googleusercontent.com"
+        "REVERSED_CLIENT_ID": "599219149273-rqftt02t60t7745kmnuqs1glndjbf5k5.apps.googleusercontent.com"
       }
     },
     "platforms": [
