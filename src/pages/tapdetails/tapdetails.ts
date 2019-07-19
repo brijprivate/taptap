@@ -217,6 +217,8 @@ export class TapdetailsPage {
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.contact_info.name);
     contact.phoneNumbers = [new ContactField('mobile', data.contact_info.mobileNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.telephoneNumber)];
+
     contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
