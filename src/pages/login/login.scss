@@ -30,9 +30,9 @@
             height: 40px;
         }
          svg {
-            height: 22px;
-            position: absolute;
-            left: 11px;
+            // height: 22px;
+            // position: absolute;
+            // left: 11px;
         }
         .item-md.item-input.input-has-focus .item-inner {
             box-shadow: none;
@@ -136,7 +136,23 @@
             width: 50px;
             margin-top: 1em;
         }
-    
+        .flexat {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+        }
+        svg#facebook {
+            height: 55px;
+            width: 40px;
+            margin-right: 10px;
+        }
+        svg#google{
+            height: 47px;
+            width: 21px;
+            margin-right: 10px;
+        }
     }
     
 
