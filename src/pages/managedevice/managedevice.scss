@@ -42,9 +42,15 @@ page-managedevice {
         margin-right: 1em;
     }
     img.pen {
-        height: 32px;
-        width: 32px;
+        width: 43px;
+        height: auto;
     }
+    img.keyring {
+        height: auto;
+        width: 34px;
+        margin-right: 10px;
+    }
+    
     svg#circle {
         height: 11px;
         width: 10px;
