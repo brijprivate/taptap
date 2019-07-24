@@ -34,50 +34,50 @@
       </div>
   <ion-slides slidesPerView="4" #slides>
 
-    <ion-slide id="1">
+    <ion-slide  (click)="goto('fashion')">
       <p class="category c1"><ion-icon ios="ios-bowtie" md="md-bowtie"></ion-icon></p>
       <p class="categoryContent">Fashion</p>
       
 
     </ion-slide>
-    <ion-slide id="1">
+    <ion-slide  (click)="goto('general')">
       <p class="category c2"><ion-icon ios="ios-paper" md="md-paper"></ion-icon></p>
       <p class="categoryContent">General</p>
 
 
     </ion-slide>
-    <ion-slide id="4" (click)="goto(event)">
+    <ion-slide  (click)="goto('event')" >
       <p class="category c3"><ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
       </p>
       <p class="categoryContent">Event</p>
 
     </ion-slide>
-    <ion-slide id="4">
+    <ion-slide  (click)="goto('business')">
       <p class="category c4"><ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>
       </p>
       <p class="categoryContent">Business</p>
 
     </ion-slide>
-    <ion-slide id="4">
+    <ion-slide  (click)="goto('sports')">
       <p class="category c5"><ion-icon ios="ios-walk" md="md-walk"></ion-icon>
       </p>
       <p class="categoryContent">Sports</p>
 
     </ion-slide>
 
-    <ion-slide id="3">
+    <ion-slide  (click)="goto('groceries')">
       <p class="category c6"><ion-icon ios="ios-cart" md="md-cart"></ion-icon>
       </p>
       <p class="categoryContent">Groceries</p>
 
 
     </ion-slide>
-    <ion-slide id="2">
+    <!-- <ion-slide id="2" (click)="goto('contact')">
       <p class="category c7"><ion-icon ios="ios-contact" md="md-contact" class="contact"></ion-icon></p>
       <p class="categoryContent">Contact</p>
 
 
-    </ion-slide>
+    </ion-slide> -->
 
   </ion-slides>
   
@@ -161,7 +161,7 @@
       <ion-row>
        
         <ion-col col-6>
-            <ion-card>
+            <ion-card (click)="goto('fashion')">
                 <img src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg"/>
                 <div class="card-title">23 Aug 2019</div>
                 <p class="card-subtitle">Fashion</p>
@@ -169,7 +169,7 @@
               </ion-card>
         </ion-col>
         <ion-col col-6>
-          <ion-card>
+          <ion-card (click)="goto('business')">
               <img src="http://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg"/>
               <div class="card-title">Today - 19:52</div>
               <p class="card-subtitle">Business</p>
@@ -180,7 +180,7 @@
       <ion-row>
       
         <ion-col col-6>
-            <ion-card>
+            <ion-card (click)="goto('sports')">
                 <img src="http://www.stage-preparation-bretagne.com/wp-content/uploads/2014/02/bandeau-evenementiel.jpg"/>
                 <div class="card-title">20 Sep 2019</div>
                 <p class="card-subtitle">Sports</p>
@@ -188,7 +188,7 @@
               </ion-card>
         </ion-col>
         <ion-col col-6>
-          <ion-card>
+          <ion-card (click)="goto('groceries')">
               <img src="https://cdn.skyhinews.com/wp-content/uploads/sites/9/2019/05/Shop-off-6-group-1024x630.jpg"/>
               <div class="card-title">Tomorrow - 17:52</div>
               <p class="card-subtitle">Groceries</p>
@@ -199,7 +199,7 @@
       <ion-row>
       
         <ion-col col-6>
-            <ion-card>
+            <ion-card (click)="goto('general')">
                 <img src="https://www.mch-group.com/-/media/mch-group/Images/Content/News/Blog/2017/2017-04/mch-group-live-marketing-aktivierung.jpg"/>
                 <div class="card-title">Today - 15:30</div>
                 <p class="card-subtitle">General</p>
@@ -207,7 +207,7 @@
               </ion-card>
         </ion-col>
         <ion-col col-6>
-          <ion-card>
+          <ion-card (click)="goto('event')">
               <img src="../../assets/images/e2.jpeg"/>
               <div class="card-title">Today - 15:30</div>
               <p class="card-subtitle">Event</p>
