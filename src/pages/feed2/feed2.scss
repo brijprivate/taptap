@@ -123,7 +123,7 @@ page-feed2 {
     ion-card img {
         display: block;
         width: 100%;
-        padding-bottom: 6px;
+        padding-top: 6px
     }
     ion-select.select {
         padding: 5px 9px 2px 10px;
@@ -136,5 +136,17 @@ page-feed2 {
     }
     img.mapImage {
         height: 31vh;
+    }
+    .register {
+        position: absolute;
+        top: 8%;
+        right: 1em;
+    }
+    .register button {
+        background: transparent;
+        height: 15px;
+        width: 30px;
+        color: #fff;
+        font-size: 27px;
     }
 }
