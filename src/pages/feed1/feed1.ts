@@ -25,4 +25,7 @@ export class Feed1Page {
   back() {
     this.navCtrl.pop();
   }
+  goto(x){
+    this.navCtrl.push(x)
+  }
 }
