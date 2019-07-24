@@ -86,7 +86,7 @@ p.categoryContent {
     margin-bottom: 4px;
 }
 .card-background-page .card-subtitle {
-  font-size: 26px;
+  font-size: 21pxa;
   position: absolute;
   bottom: 1em;
   color: #fff;
@@ -117,7 +117,7 @@ p.categoryContent {
     position: absolute;
         top: 8%;
         font-size: 16px;
-        width: 45%;
+        width: 79%;
         font-weight: 700;
         color: #222;
         background: #fff;
@@ -187,6 +187,9 @@ ion-card.adv-map.card.card-md {
 }
 .card-background-page img {
     margin: 0;
+}
+ion-card img {
+  height: 20vh;
 }
 ion-item.maplace {
     position: absolute;
