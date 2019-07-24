@@ -343,14 +343,16 @@ return path;
       title: 'Data has been saved',
       // subTitle: 'Milage Saved',
       cssClass:'mycss',
-      buttons: [
-        {
-          text: 'OK',
-          handler: data => {
-          }
-        }
-      ]
+      // buttons: [
+      //   {
+      //     text: 'OK',
+      //     handler: data => {
+      //     }
+      //   }
+      // ]
     });
     alert.present();
+    setTimeout(()=>alert.dismiss(),2000);
+
   }
 }
