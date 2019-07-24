@@ -196,7 +196,7 @@ export class TapdetailsPage {
     contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
     contact.phoneNumbers = [new ContactField('mobile', data.mobileNumber)];
     contact.organizations = [new ContactOrganization('company', data.company)];
-    contact.addresses = [new ContactAddress(null, data.company)];
+    contact.addresses = [new ContactAddress(false,"home", data.address)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
     if(data.profile_pic){
@@ -217,12 +217,12 @@ export class TapdetailsPage {
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.contact_info.name);
     contact.phoneNumbers = [new ContactField('mobile', data.contact_info.mobileNumber)];
-    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.telephoneNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.phoneNumber)];
 
     contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
-    contact.addresses = [new ContactAddress(false, 'home', data.contact_info.address)];
+    contact.addresses = [new ContactAddress(false,"home", data.contact_info.address)];
     if(data.imageId){
       contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
     }
@@ -230,7 +230,9 @@ export class TapdetailsPage {
 
 
     contact.save().then((contact) => {
+      console.log(contact);
       alert("contact saved");
+      
     }, (err) => {
       alert("contact not saved");
     })
