@@ -85,18 +85,33 @@ p.categoryContent {
     font-size: 18px;
 }
 .card-background-page .card-title {
+    // position: absolute;
+    // top: 38%;
+    // font-size: 16px;
+    // width: 91%;
+    // font-weight: 700;
+    // color: #222;
+    // background: #fff;
+    // margin: auto;
+    // left: 0;
+    // right: 0;
+    // padding: 2px;
+    // border-radius: 5px;
     position: absolute;
-    top: 38%;
-    font-size: 16px;
-    width: 91%;
-    font-weight: 700;
-    color: #222;
-    background: #fff;
-    margin: auto;
-    left: 0;
-    right: 0;
-    padding: 2px;
-    border-radius: 5px;
+        top: 8%;
+        font-size: 16px;
+        width: 45%;
+        font-weight: 700;
+        color: #222;
+        background: #fff;
+        margin: auto;
+        left: 1em;
+        padding: 3px;
+        border-radius: 5px;
+}
+ion-card.adv-map.card.card-md {
+    margin: 0;
+    width: 100%;
 }
 .cardtitle {
     position: absolute;
@@ -116,6 +131,7 @@ p.categoryContent {
     position: relative;
     text-align: center;
     width: 100%;
+    margin-bottom: 0;
 }
 .card-background-page .card-subtitle {
     font-size: 1em;
@@ -143,12 +159,16 @@ p.categoryContent {
     }
   }
 .card-background-page ion-col {
-    width: 50% ;
-    float: left;
-    margin-bottom: 4em;
+    // width: 50% ;
+    // float: left;
+    // margin-bottom: 4em;
 }
 .card-background-page {
-    padding-right: 1em;
+    padding-right: 1.4em;
+    width: 100%;
+}
+.card-background-page img {
+    margin: 0;
 }
 ion-item.maplace {
     position: absolute;
