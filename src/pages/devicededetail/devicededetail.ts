@@ -353,15 +353,17 @@ export class DevicededetailPage {
     let alert = this.alert.create({
       title: 'Data has been saved',
       cssClass:'mycss',
-      buttons: [
-        {
-          text: 'OK',
-          handler: data => {
-          }
-        }
-      ]
+      // buttons: [
+      //   {
+      //     text: 'OK',
+      //     handler: data => {
+      //     }
+      //   }
+      // ]
     });
     alert.present();
+    setTimeout(()=>alert.dismiss(),2000);
+
   }
 
   // updateSearchResults(inp){
