@@ -14,8 +14,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'feed2.html',
 })
 export class Feed2Page {
-
+  feed1data:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.feed1data=this.navParams.get('feed');
+    console.log(this.feed1data)
   }
 
   ionViewDidLoad() {

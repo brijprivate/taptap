@@ -26,6 +26,6 @@ export class Feed1Page {
     this.navCtrl.pop();
   }
   goto(x){
-    this.navCtrl.push(x)
+    this.navCtrl.push('Feed2Page',{feed:x})
   }
 }

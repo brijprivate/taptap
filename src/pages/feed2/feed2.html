@@ -18,22 +18,20 @@
                
               <ion-col col-4>
                   <ion-select placeholder="Date">
-                      <ion-option value="nes">NES</ion-option>
-                      <ion-option value="n64">Nintendo64</ion-option>
-                      <ion-option value="ps">PlayStation</ion-option>
-                      <ion-option value="genesis">Sega Genesis</ion-option>
-                      <ion-option value="saturn">Sega Saturn</ion-option>
-                      <ion-option value="snes">SNES</ion-option>
+                      <ion-option value="nes">1 day</ion-option>
+                      <ion-option value="n64">2 days</ion-option>
+                      <ion-option value="ps">3 days</ion-option>
+                      <ion-option value="genesis">4 days</ion-option>
+                      <ion-option value="saturn">5 days</ion-option>
                     </ion-select>
               </ion-col>
               <ion-col col-4>
                   <ion-select placeholder="Time">
-                      <ion-option value="nes">NES</ion-option>
-                      <ion-option value="n64">Nintendo64</ion-option>
-                      <ion-option value="ps">PlayStation</ion-option>
-                      <ion-option value="genesis">Sega Genesis</ion-option>
-                      <ion-option value="saturn">Sega Saturn</ion-option>
-                      <ion-option value="snes">SNES</ion-option>
+                      <ion-option value="nes">00:00</ion-option>
+                      <ion-option value="n64">06:00</ion-option>
+                      <ion-option value="ps">12:00</ion-option>
+                      <ion-option value="genesis">15:00</ion-option>
+                      <ion-option value="saturn">21:00</ion-option>
                     </ion-select>
               </ion-col>
             
@@ -59,9 +57,9 @@
         </div>
       
       </ion-card>
-      <ion-grid class="imageCard">
+      <ion-grid class="imageCard" >
           <div class="card-background-page">
-          <ion-row>
+          <ion-row *ngIf="feed1data=='fashion'">
            
             <ion-col>
                 <ion-card>
@@ -73,7 +71,7 @@
             </ion-col>
    
           </ion-row>
-          <ion-row>
+          <ion-row *ngIf="feed1data=='business'">
           
             <ion-col>
                 <ion-card>
@@ -85,7 +83,7 @@
             </ion-col>
          
           </ion-row>
-          <ion-row>
+          <ion-row *ngIf="feed1data=='sports'">
           
             <ion-col>
                 <ion-card>
@@ -97,7 +95,7 @@
             </ion-col>
          
           </ion-row>
-          <ion-row>
+          <ion-row *ngIf="feed1data=='groceries'">
           
             <ion-col>
                 <ion-card>
@@ -111,7 +109,7 @@
           </ion-row>
           <ion-row>
           
-            <ion-col>
+            <ion-col *ngIf="feed1data=='general'">
                 <ion-card>
                     <img src="https://www.mch-group.com/-/media/mch-group/Images/Content/News/Blog/2017/2017-04/mch-group-live-marketing-aktivierung.jpg"/>
                     <div class="card-title">Today - 15:30</div>
@@ -121,7 +119,7 @@
             </ion-col>
          
           </ion-row>
-          <ion-row>
+          <ion-row *ngIf="feed1data=='event'">
           
             <ion-col>
                 <ion-card>
