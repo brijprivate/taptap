@@ -85,6 +85,22 @@ p.categoryContent {
     font-size: 18px;
     margin-bottom: 4px;
 }
+.card-background-page .card-subtitle {
+  font-size: 26px;
+  position: absolute;
+  bottom: 1em;
+  color: #fff;
+  left: 1em;
+  font-weight: bold;
+}
+.card-background-page .card-subtitlea {
+  font-size: 14px;
+  position: absolute;
+  bottom: 1em;
+  color: #fff;
+  left: 1.8em;
+  font-weight: bold;
+}
 .card-background-page .card-title {
     // position: absolute;
     // top: 38%;
@@ -134,13 +150,13 @@ ion-card.adv-map.card.card-md {
     width: 100%;
     margin-bottom: 0;
 }
-.card-background-page .card-subtitle {
-    font-size: 1em;
-    position: absolute;
-    top: 52%;
-    width: 100%;
-    color: #fff;
-}
+// .card-background-page .card-subtitle {
+//     font-size: 1em;
+//     position: absolute;
+//     top: 52%;
+//     width: 100%;
+//     color: #fff;
+// }
 .filter input::placeholder {
     color: #999;
   }
@@ -167,6 +183,7 @@ ion-card.adv-map.card.card-md {
 .card-background-page {
     padding-right: 1.4em;
     width: 100%;
+    margin-bottom: 4em;
 }
 .card-background-page img {
     margin: 0;
