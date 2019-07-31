@@ -177,11 +177,15 @@ page-profile {
         line-height: 0px;
     }
     img.pen {
-        // height: 37px;
-        // width: 37px;
-        height: 25px;
-    width: 25px;
+        width: 29px;
+        height: auto;
     }
+    img.keyring {
+        height: auto;
+        width: 30px;
+    }
+    
+    
     svg#circle {
         height: 11px;
         width: 10px;
