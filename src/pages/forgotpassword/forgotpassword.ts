@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+import { ModalController } from 'ionic-angular';
+
 /**
  * Generated class for the ForgotpasswordPage page.
  *
@@ -15,16 +17,19 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 })
 export class ForgotpasswordPage {
 
-  public state: string = "email"
-  public email: String = ""
+  public state: string = "phone"
+  public contact: String = ""
   public otp: any
   public password: String = ""
   public confirmpassword: String = ""
+  public type: any = ""
+  public country_code: any = ""
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public http: LoginsignupProvider,
     public loading: LoadingController,
+    public modalCtrl: ModalController,
     private toast: ToastController,
     public alert: AlertController) {
   }
@@ -35,8 +40,8 @@ export class ForgotpasswordPage {
 
   sendcode() {
     let _base = this
-    if (_base.email.length != 0) {
-      _base.http.forgotPassword({ email: _base.email })
+    if (_base.contact.length != 0) {
+      _base.http.forgotPassword({ phoneNumber: '+' + _base.country_code + _base.contact })
         .then(function (success: any) {
           if (success.error == false) {
             _base.state = "otp"
@@ -49,13 +54,13 @@ export class ForgotpasswordPage {
           alert(JSON.parse(error._body).message)
         });
     } else {
-      alert("Please input your registered email")
+      alert("Please input your registered phone number")
     }
   }
 
   verifycode() {
     let _base = this
-    _base.http.verifyUserOTP({ email: _base.email, code: _base.otp })
+    _base.http.verifyUserOTP({ phoneNumber: '+' + _base.country_code + _base.contact, country_code: _base.country_code, code: _base.otp })
       .then(function (success: any) {
         if (success.error == false) {
           _base.state = "password"
@@ -91,10 +96,10 @@ export class ForgotpasswordPage {
 
 
     let _base = this
-    _base.http.resetpassword({ email: _base.email, password: _base.password })
+    _base.http.resetpassword({ phoneNumber: '+' + _base.country_code + _base.contact, country_code: _base.country_code, password: _base.password })
       .then(function (success: any) {
         if (success.error == false) {
-          _base.state = "email"
+          _base.state = "phone"
           alert("Password changed successfully")
           _base.navCtrl.pop()
         } else {
@@ -104,31 +109,56 @@ export class ForgotpasswordPage {
         alert(JSON.parse(error._body).message)
       });
   }
-back(){
-  this.navCtrl.pop();
-}
-
- //check pattern...
- checkpattern(email){
-  // console.log("aaaaaa");
-  let _base = this;
-  let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
-  let result = pattern.test(email);
-  if(!result){
-    console.log("miss");
-    let showtoast = _base.toast.create({
-      message: "Please provide valid email",
-      duration: 60000,
-      position: "bottom",
-      showCloseButton: true,
-      closeButtonText: "Ok"
-    })
-    showtoast.present();
-    return;
-    
-  }else{
-    console.log("matched");
+  back() {
+    this.navCtrl.pop();
   }
-  console.log(pattern)
-}
+
+  //check pattern...
+  checkpattern(email) {
+    // console.log("aaaaaa");
+    let _base = this;
+    let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
+    let result = pattern.test(email);
+    if (!result) {
+      console.log("miss");
+      let showtoast = _base.toast.create({
+        message: "Please provide valid email",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return;
+
+    } else {
+      console.log("matched");
+    }
+    console.log(pattern)
+  }
+
+  openSimCards() {
+    let _base = this
+    if (_base.type == 'other') {
+      return
+    }
+    const modal = _base.modalCtrl.create('SimcardsPage');
+    modal.present();
+
+    modal.onDidDismiss((data) => {
+      console.log("Data from modal page", data)
+      let length = Object.keys(data).length
+      if (length != 0) {
+        let card = data
+        if (!card.phoneNumber) {
+          _base.type = 'other'
+        }
+        if (card.countryCode == 'in') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+91", "") : null
+          _base.country_code = "91"
+        }
+      }
+    })
+  }
+
 }

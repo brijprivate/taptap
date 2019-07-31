@@ -11,12 +11,12 @@
 </ion-header> -->
 
 <ion-content padding text-center class="animated 800s zoomIn delay-0.1s">
-    <div class="flexat">
+  <div class="flexat">
 
-  <img src="assets/images/Logo_after.png" class="tapLogo">
-  <p class="head">Welcome </p>
-  <p class="sub">Please Login To Continue</p>
-  <div class="social">
+    <img src="assets/images/Logo_after.png" class="tapLogo">
+    <p class="head">Welcome </p>
+    <p class="sub">Please Login To Continue</p>
+    <!-- <div class="social">
 
 
     <ion-grid>
@@ -97,10 +97,10 @@
     <div class="hr">
       <span>or</span>
     </div>
-  </div>
+  </div> -->
 
-  <div class="inputs">
-    <!-- <ion-item>
+    <div class="inputs">
+      <!-- <ion-item>
       <ion-label floating>Name</ion-label>
       <ion-icon name="person" item-left></ion-icon>
 
@@ -108,30 +108,30 @@
 
     </ion-item> -->
 
-    <ion-item>
-      <ion-label floating>Email Address</ion-label>
-      <ion-icon name="mail" item-left></ion-icon>
+      <ion-item (click)="openSimCards()">
+        <ion-label floating>Phone Number</ion-label>
+        <ion-icon name="phone-portrait" item-left></ion-icon>
 
-      <ion-input type="text" [(ngModel)]="email" (blur)="checkpattern(email)"
-       pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"> 
-      </ion-input>
+        <ion-input type="text" [(ngModel)]="contact" disabled="{{type != 'other'}}">
+        </ion-input>
 
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-icon name="lock" item-left></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-icon name="lock" item-left></ion-icon>
 
-      <ion-input type="Password" [(ngModel)]="password"> </ion-input>
+        <ion-input type="Password" [(ngModel)]="password"> </ion-input>
 
-    </ion-item>
-    <button class="signUp" (click)="login()">Login</button>
+      </ion-item>
+      <button class="signUp" (click)="login()">Login</button>
 
-  </div>
-  <div class="ftr">
-    <p>New Here?<span (click)='signup()'>Sign Up</span></p>
-    <p>Forgot Password?<span (click)='forgotpassword()'>Click Here</span></p>
-    <p class="nmar">By creating your account you agree to our <br>
-      <span class="tnc nmar"><a href="https://drive.google.com/file/d/1oeRQ9__3mxwaigLnNhU9PFvyhXk7F-rK/view">Terms and Conditions</a></span></p>
-  </div>
+    </div>
+    <div class="ftr">
+      <p>New Here?<span (click)='signup()'>Sign Up</span></p>
+      <p>Forgot Password?<span (click)='forgotpassword()'>Click Here</span></p>
+      <p class="nmar">By creating your account you agree to our <br>
+        <span class="tnc nmar"><a href="https://drive.google.com/file/d/1oeRQ9__3mxwaigLnNhU9PFvyhXk7F-rK/view">Terms
+            and Conditions</a></span></p>
+    </div>
   </div>
 </ion-content>
