@@ -33,7 +33,7 @@ export class TapdetailsPage {
   keyy: any;
   public st: any;
   public et: any;
-  devicedetaill:any
+  devicedetaill: any
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
@@ -190,16 +190,19 @@ export class TapdetailsPage {
   }
 
   savecontact(data) {
+
+    console.log("Save contact called")
+
     let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.name);
     contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
     contact.phoneNumbers = [new ContactField('mobile', data.mobileNumber)];
     contact.organizations = [new ContactOrganization('company', data.company)];
-    contact.addresses = [new ContactAddress(null, data.company)];
+    contact.addresses = [new ContactAddress(null, 'home', data.address)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
-    if(data.profile_pic){
+    if (data.profile_pic) {
       contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic)];
     }
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
@@ -213,22 +216,27 @@ export class TapdetailsPage {
   }
 
   savedevicecontact(data) {
+
+    console.log(data)
+    console.log(data.contact_info.address)
+    console.log("Device contact called contact called")
+
     let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.contact_info.name);
     contact.phoneNumbers = [new ContactField('mobile', data.contact_info.mobileNumber)];
-    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.telephoneNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.phoneNumber)];
 
     contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
-    contact.addresses = [new ContactAddress(false, 'home', data.contact_info.address)];
-    if(data.imageId){
+    contact.addresses = [new ContactAddress(true, 'home', data.contact_info.address)];
+    if (data.imageId) {
       contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
     }
-    // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
 
+    console.log(contact)
     contact.save().then((contact) => {
       alert("contact saved");
     }, (err) => {

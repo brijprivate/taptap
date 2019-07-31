@@ -19,6 +19,7 @@ import { generate } from 'rxjs/observable/generate';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { NfctagProvider } from '../providers/nfctag/nfctag';
+import { NFC, Ndef } from '@ionic-native/nfc';
 
 declare let cordova: any;
 
@@ -45,6 +46,7 @@ export class MyApp {
     private toast: ToastController,
     private deeplinks: Deeplinks,
     private loginservice: LoginsignupProvider,
+    public nfc: NFC,
     public app: App,
     private backgroundGeolocation: BackgroundGeolocation,
     private locationAccuracy: LocationAccuracy,
@@ -80,16 +82,16 @@ export class MyApp {
             nfc_id: match.$args.id,
             location: '',
             purpose: '',
-            geo:''
+            geo: ''
           }
           _base.nfctagProvider.createTap(data).then(function (success: any) {
-            console.log("suc------------",success)
+            console.log("suc------------", success)
             _base.navCtrl.setRoot('TapdetailsPage', {
               devicedetail: success.lostinfo,
               key: 'device'
             })
           }, function (err) {
-            console.log("err---------------->",err);
+            console.log("err---------------->", err);
             alert("Link is expired");
             _base.platform.exitApp();
           })
@@ -171,7 +173,7 @@ export class MyApp {
       this.rootPage = "DashboardPage";
     } else {
       localStorage.setItem("userId", "");
-      this.rootPage = 'LoginPage';
+      this.rootPage = 'SignupPage';
     }
   }
 
@@ -234,6 +236,17 @@ export class MyApp {
         },
         function (err) {
           _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        });
+
+
+      // listen nfc tags
+      _base.nfc.addMimeTypeListener("text/json",
+        function (success) {
+          console.log(success)
+          alert("Success")
+        }, function (error) {
+          console.log(error)
+          alert("Error")
         });
 
 
