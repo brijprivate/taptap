@@ -34,6 +34,9 @@
                       <ion-option value="saturn">21:00</ion-option>
                     </ion-select>
               </ion-col>
+              <ion-col col-4>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </ion-col>
             
             </ion-row>
           </ion-grid>
@@ -63,21 +66,84 @@
            
             <ion-col>
                 <ion-card>
-                    <img src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg"/>
-                    <div class="card-title">23 Aug 2019</div>
-                    <div class="register">
-                      <button><i class="fa fa-share-alt" aria-hidden="true"></i>
-                      </button>
-                      <button><i class="fa fa-heart-o" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                    <p class="card-subtitle">Fashion</p>
-                    <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p>
+                    <ion-slides pager="true">
+                        <ion-slide>
+                            <img src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg"/>
+                            <div class="card-title">23 Aug 2019</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Fashion</p>
+                            <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p>
+                          </ion-slide>
+                        <ion-slide>
+                            <img src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg"/>
+                            <div class="card-title">23 Aug 2019</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Fashion</p>
+                            <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p>
+                          </ion-slide>
+                      </ion-slides>
                   </ion-card>
+                  <ion-row class="commentSection">
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <div class="pColor">12 Likes</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div class="pColor">4 Comments</div>
+                      </button>
+                    </ion-col>
+                    <ion-col align-self-center text-center>
+                      <ion-note>
+                  <ion-icon name="person-add"></ion-icon>
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item class="at">
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTepa">
+                      </span>
+                      <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                      <!-- <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button> -->
+                    </ion-item>
+                    <ion-item class="at">
+                        <span item-start>
+                          <img src="../../assets/images/man.jpeg" class="aTepa">
+                        </span>
+                        <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                        <!-- <button ion-button icon-start clear item-end>
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button> -->
+                      </ion-item>
+                  <ion-item>
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTep">
+                      </span>
+                      <span item-start><input type="text" placeholder="Add Comment...."></span>
+                      <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button>
+                    </ion-item>
+
             </ion-col>
    
           </ion-row>
-          <ion-row *ngIf="feed1data=='business'">
+
+
+
+
+          <!-- <ion-row *ngIf="feed1data=='business'">
           
             <ion-col>
                 <ion-card>
@@ -94,8 +160,94 @@
                   </ion-card>
             </ion-col>
          
+          </ion-row> -->
+
+          <ion-row *ngIf="feed1data=='business'">
+           
+            <ion-col>
+                <ion-card>
+                    <ion-slides pager="true">
+                        <ion-slide>
+                            <img src="http://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg"/>
+                            <div class="card-title">Today - 19:52</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Business</p>
+                            <p class="card-subtitlea">Think Different.</p>
+                          </ion-slide>
+                          <ion-slide>
+                            <img src="http://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg"/>
+                            <div class="card-title">Today - 19:52</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Business</p>
+                            <p class="card-subtitlea">Think Different.</p>
+                          </ion-slide>
+                      </ion-slides>
+                  </ion-card>
+                  <ion-row class="commentSection">
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <div class="pColor">12 Likes</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div class="pColor">4 Comments</div>
+                      </button>
+                    </ion-col>
+                    <ion-col align-self-center text-center>
+                      <ion-note>
+                  <ion-icon name="person-add"></ion-icon>
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item class="at">
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTepa">
+                      </span>
+                      <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                      <!-- <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button> -->
+                    </ion-item>
+                    <ion-item class="at">
+                        <span item-start>
+                          <img src="../../assets/images/man.jpeg" class="aTepa">
+                        </span>
+                        <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                        <!-- <button ion-button icon-start clear item-end>
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button> -->
+                      </ion-item>
+                  <ion-item>
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTep">
+                      </span>
+                      <span item-start><input type="text" placeholder="Add Comment...."></span>
+                      <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button>
+                    </ion-item>
+
+            </ion-col>
+   
           </ion-row>
-          <ion-row *ngIf="feed1data=='sports'">
+
+
+
+
+
+
+
+
+          <!-- <ion-row *ngIf="feed1data=='sports'">
           
             <ion-col>
                 <ion-card>
@@ -112,8 +264,93 @@
                   </ion-card>
             </ion-col>
          
+          </ion-row> -->
+
+          <ion-row *ngIf="feed1data=='sports'">
+           
+            <ion-col>
+                <ion-card>
+                    <ion-slides pager="true">
+                        <ion-slide>
+                            <img src="http://www.stage-preparation-bretagne.com/wp-content/uploads/2014/02/bandeau-evenementiel.jpg"/>
+                            <div class="card-title">20 Sep 2019</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Sports</p>
+                            <p class="card-subtitlea">Play like a Champion Today.</p>
+                          </ion-slide>
+                          <ion-slide>
+                            <img src="http://www.stage-preparation-bretagne.com/wp-content/uploads/2014/02/bandeau-evenementiel.jpg"/>
+                            <div class="card-title">20 Sep 2019</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Sports</p>
+                            <p class="card-subtitlea">Play like a Champion Today.</p>
+                          </ion-slide>
+                      </ion-slides>
+                  </ion-card>
+                  <ion-row class="commentSection">
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <div class="pColor">12 Likes</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div class="pColor">4 Comments</div>
+                      </button>
+                    </ion-col>
+                    <ion-col align-self-center text-center>
+                      <ion-note>
+                  <ion-icon name="person-add"></ion-icon>
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item class="at">
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTepa">
+                      </span>
+                      <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                    </ion-item>
+                    <ion-item class="at">
+                        <span item-start>
+                          <img src="../../assets/images/man.jpeg" class="aTepa">
+                        </span>
+                        <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                      </ion-item>
+                  <ion-item>
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTep">
+                      </span>
+                      <span item-start><input type="text" placeholder="Add Comment...."></span>
+                      <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button>
+                    </ion-item>
+
+            </ion-col>
+   
           </ion-row>
-          <ion-row *ngIf="feed1data=='groceries'">
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- <ion-row *ngIf="feed1data=='groceries'">
           
             <ion-col>
                 <ion-card>
@@ -130,8 +367,94 @@
                   </ion-card>
             </ion-col>
          
+          </ion-row> -->
+
+
+          <ion-row *ngIf="feed1data=='groceries'">
+           
+            <ion-col>
+                <ion-card>
+                    <ion-slides pager="true">
+                        <ion-slide>
+                            <img src="https://cdn.skyhinews.com/wp-content/uploads/sites/9/2019/05/Shop-off-6-group-1024x630.jpg"/>
+                            <div class="card-title">Tomorrow - 17:52</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Groceries</p>
+                            <p class="card-subtitlea">Freshness you can taste.</p>
+                          </ion-slide>
+                          <ion-slide>
+                            <img src="https://cdn.skyhinews.com/wp-content/uploads/sites/9/2019/05/Shop-off-6-group-1024x630.jpg"/>
+                            <div class="card-title">Tomorrow - 17:52</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Groceries</p>
+                            <p class="card-subtitlea">Freshness you can taste.</p>
+                          </ion-slide>
+                       
+                      </ion-slides>
+                  </ion-card>
+                  <ion-row class="commentSection">
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <div class="pColor">12 Likes</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div class="pColor">4 Comments</div>
+                      </button>
+                    </ion-col>
+                    <ion-col align-self-center text-center>
+                      <ion-note>
+                  <ion-icon name="person-add"></ion-icon>
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item class="at">
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTepa">
+                      </span>
+                      <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                    </ion-item>
+                    <ion-item class="at">
+                        <span item-start>
+                          <img src="../../assets/images/man.jpeg" class="aTepa">
+                        </span>
+                        <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                      </ion-item>
+                  <ion-item>
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTep">
+                      </span>
+                      <span item-start><input type="text" placeholder="Add Comment...."></span>
+                      <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button>
+                    </ion-item>
+
+            </ion-col>
+   
           </ion-row>
-          <ion-row>
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- <ion-row>
           
             <ion-col *ngIf="feed1data=='general'">
                 <ion-card>
@@ -148,8 +471,86 @@
                   </ion-card>
             </ion-col>
          
+          </ion-row> -->
+
+
+
+          <ion-row *ngIf="feed1data=='general'">
+           
+            <ion-col>
+                <ion-card>
+                    <ion-slides pager="true">
+                        <ion-slide>
+                            <img src="https://www.mch-group.com/-/media/mch-group/Images/Content/News/Blog/2017/2017-04/mch-group-live-marketing-aktivierung.jpg"/>
+                            <div class="card-title">Today - 15:30</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">General</p>
+                            <p class="card-subtitlea">Making More Possible</p>
+                          </ion-slide>
+                          <ion-slide>
+                            <img src="https://www.mch-group.com/-/media/mch-group/Images/Content/News/Blog/2017/2017-04/mch-group-live-marketing-aktivierung.jpg"/>
+                            <div class="card-title">Today - 15:30</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">General</p>
+                            <p class="card-subtitlea">Making More Possible</p>
+                          </ion-slide>
+                       
+                      </ion-slides>
+                  </ion-card>
+                  <ion-row class="commentSection">
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <div class="pColor">12 Likes</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div class="pColor">4 Comments</div>
+                      </button>
+                    </ion-col>
+                    <ion-col align-self-center text-center>
+                      <ion-note>
+                  <ion-icon name="person-add"></ion-icon>
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item class="at">
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTepa">
+                      </span>
+                      <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                    </ion-item>
+                    <ion-item class="at">
+                        <span item-start>
+                          <img src="../../assets/images/man.jpeg" class="aTepa">
+                        </span>
+                        <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                      </ion-item>
+                  <ion-item>
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTep">
+                      </span>
+                      <span item-start><input type="text" placeholder="Add Comment...."></span>
+                      <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button>
+                    </ion-item>
+
+            </ion-col>
+   
           </ion-row>
-          <ion-row *ngIf="feed1data=='event'">
+
+
+
+          <!-- <ion-row *ngIf="feed1data=='event'">
           
             <ion-col>
                 <ion-card>
@@ -166,7 +567,85 @@
                   </ion-card>
             </ion-col>
          
+          </ion-row> -->
+
+
+
+          <ion-row *ngIf="feed1data=='event'">
+           
+            <ion-col>
+                <ion-card>
+                    <ion-slides pager="true">
+                        <ion-slide>
+                            <img src="../../assets/images/e2.jpeg"/>
+                            <div class="card-title">Today - 15:30</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Event</p>
+                            <p class="card-subtitlea">Tomorrow happens here</p>
+                          </ion-slide>
+                          <ion-slide>
+                            <img src="../../assets/images/e2.jpeg"/>
+                            <div class="card-title">Today - 15:30</div>
+                            <div class="register">
+                              <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <p class="card-subtitle">Event</p>
+                            <p class="card-subtitlea">Tomorrow happens here</p>
+                          </ion-slide>
+                       
+                      </ion-slides>
+                  </ion-card>
+                  <ion-row class="commentSection">
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <div class="pColor">12 Likes</div>
+                      </button>
+                    </ion-col>
+                    <ion-col>
+                      <button ion-button icon-start clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div class="pColor">4 Comments</div>
+                      </button>
+                    </ion-col>
+                    <ion-col align-self-center text-center>
+                      <ion-note>
+                  <ion-icon name="person-add"></ion-icon>
+                      </ion-note>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item class="at">
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTepa">
+                      </span>
+                      <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                    </ion-item>
+                    <ion-item class="at">
+                        <span item-start>
+                          <img src="../../assets/images/man.jpeg" class="aTepa">
+                        </span>
+                        <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+                      </ion-item>
+                  <ion-item>
+                      <span item-start>
+                        <img src="../../assets/images/man.jpeg" class="aTep">
+                      </span>
+                      <span item-start><input type="text" placeholder="Add Comment...."></span>
+                      <button ion-button icon-start clear item-end>
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      </button>
+                    </ion-item>
+
+            </ion-col>
+   
           </ion-row>
+
+
+
         </div>
         </ion-grid>
 </ion-content>

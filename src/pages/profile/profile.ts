@@ -215,6 +215,7 @@ export class ProfilePage {
           break;
         }
       }
+      console.log(_base.devices);
       console.log(_base.maindevice);
       // _base.maindevice=_base.maindevice[_base.maindevice.length-1].device_title;
       _base.devicecount = success.result.length;
