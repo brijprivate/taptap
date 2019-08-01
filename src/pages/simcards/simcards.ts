@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Sim } from '@ionic-native/sim';
 
@@ -19,8 +19,11 @@ export class SimcardsPage {
   public cards: any = []
   public countryCode = ""
 
-  constructor(private sim: Sim, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
-    let _base = this
+  constructor(public renderer: Renderer,
+ private sim: Sim, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
+    let _base = this;
+    _base.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'my-popup', true);
+
     _base.loadSimCards()
   }
 
