@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { ModalController } from 'ionic-angular';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
+declare var SMSReceive: any;
 
 /**
  * Generated class for the ForgotpasswordPage page.
@@ -31,11 +34,14 @@ export class ForgotpasswordPage {
     public loading: LoadingController,
     public modalCtrl: ModalController,
     private toast: ToastController,
+    private androidPermissions: AndroidPermissions,
     public alert: AlertController) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad ForgotpasswordPage');
+    let _base = this
+
   }
 
   sendcode() {
@@ -45,7 +51,10 @@ export class ForgotpasswordPage {
         .then(function (success: any) {
           if (success.error == false) {
             _base.state = "otp"
-            alert("O.T.P Send successfully")
+            // alert("O.T.P Send successfully")
+            _base.start()
+
+
           } else {
             alert(success.message)
           }
@@ -159,6 +168,38 @@ export class ForgotpasswordPage {
         }
       }
     })
+  }
+
+
+  start() {
+    let _base = this
+    SMSReceive.startWatch(
+      () => {
+        console.log('watch started');
+        document.addEventListener('onSMSArrive', (e: any) => {
+          console.log('onSMSArrive()');
+          var IncomingSMS = e.data;
+          console.log(JSON.stringify(IncomingSMS));
+          if (IncomingSMS.body.includes("our OTP is")) {
+            let otp = IncomingSMS.body.split(".")[0].replace("Your OTP is", "").trim()
+            console.log(otp);
+            _base.stop();
+            (<HTMLInputElement>document.getElementById("partitioned")).value = otp;
+            _base.otp = otp;
+            (<HTMLButtonElement>document.getElementById("verify")).click();
+          }
+
+        });
+      },
+      () => { console.log('watch start failed') }
+    )
+  }
+
+  stop() {
+    SMSReceive.stopWatch(
+      () => { console.log('watch stopped') },
+      () => { console.log('watch stop failed') }
+    )
   }
 
 }

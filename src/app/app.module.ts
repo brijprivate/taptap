@@ -97,7 +97,7 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
     FilePath,
     LocationTrackerProvider,
     LaunchNavigator,
-    Sim,
+    Sim
     // Keyboard
     // Diagnostic
   ]
