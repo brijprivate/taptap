@@ -12,12 +12,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let card of cards" (click)="selectSimCard(card)">
-      <ion-icon name="card" item-start></ion-icon>
-      {{card.phoneNumber + '   ' +card.countryCode}}
-      <ion-icon name="play" item-end></ion-icon>
-    </ion-item>
 
 
 
@@ -64,8 +58,11 @@
       </g>
 
     </svg>
-    <p class="no">+91 789456123</p>
-    <p class="no">+98 654651988</p>
+    <div *ngFor="let card of cards" (click)="selectSimCard(card)">
+        <p class="no">   {{card.phoneNumber + '   ' +card.countryCode}}</p>
+        <p class="no">   {{card.phoneNumber + '   ' +card.countryCode}}</p>
+    </div>
+  
     <p style="font-size: 10px">
       My Sim card is not inside this phone
 
