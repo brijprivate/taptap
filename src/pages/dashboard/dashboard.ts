@@ -20,42 +20,42 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
   templateUrl: 'dashboard.html',
 })
 export class DashboardPage {
-  profilePage= 'ProfilePage';
-  searchPage='SearchPage';
-  taptapPage='TaptapPage';
+  profilePage = 'ProfilePage';
+  searchPage = 'SearchPage';
+  taptapPage = 'TaptapPage';
   // taptapPage='Favourite';
-  helpPage='HelpPage';
+  helpPage = 'HelpPage';
   morePage = 'MorePage';
-  homePage=HomePage;
+  homePage = HomePage;
 
-  public userId:any;
-  public userName:any;
+  public userId: any;
+  public userName: any;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public loginsignupProvider:LoginsignupProvider) 
-    {
-      this.userId = localStorage.getItem("userId");
-      if(this.userId){
-        this.getprofiledata();
-      }
+    public loginsignupProvider: LoginsignupProvider) {
+    this.userId = localStorage.getItem("userId");
+    if (this.userId) {
+      this.getprofiledata();
     }
+  }
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');
   }
 
-    //Get profile data...
-    getprofiledata(){
-      let _base = this;
-      this.loginsignupProvider.getProfile(this.userId).then(function(success:any){
-        console.log(success);
-        if(success){
-          _base.userName = success.result.name;
-        }
-      },function(err){
-        console.log(err);
-      })
-    }
+  //Get profile data...
+  getprofiledata() {
+    let _base = this;
+    this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
+      console.log(success);
+      if (success) {
+        _base.userName = success.result.name;
+
+      }
+    }, function (err) {
+      console.log(err);
+    })
+  }
 }

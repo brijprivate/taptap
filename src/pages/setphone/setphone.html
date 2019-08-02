@@ -16,7 +16,7 @@
 
       <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
 
-      <p>Forget Password</p>
+      <p>Set Phone Number</p>
     </div>
   </div>
   <!--- EMAIL -->
@@ -43,7 +43,7 @@
 
     </div>
     <ion-item (tap)="openSimCards()">
-      <ion-label floating>Registered Phone Number / EMAIL</ion-label>
+      <ion-label floating>Phone Number</ion-label>
       <ion-icon name="phone-portrait" item-left></ion-icon>
       <ion-input type="text" [(ngModel)]="contact">
       </ion-input>
@@ -83,28 +83,6 @@
     <div class="ftr">
       <p>Having trouble with the verification ? <span>Get Support</span></p>
     </div>
-  </div>
-
-  <!-- PASSWORD  -->
-
-  <div class="inputs" *ngIf="state == 'password'">
-
-    <ion-item>
-      <ion-label floating>New password</ion-label>
-      <ion-icon name="lock" item-left></ion-icon>
-
-      <ion-input type="text" [(ngModel)]="password"> </ion-input>
-
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Confirm password</ion-label>
-      <ion-icon name="lock" item-left></ion-icon>
-
-      <ion-input type="Password" [(ngModel)]="confirmpassword"></ion-input>
-
-    </ion-item>
-    <button class="signUp" (click)="setpassword()">Set Password</button>
-
   </div>
 
 </ion-content>

@@ -81,7 +81,7 @@
 
     </ion-item>
 
-    <ion-item (click)="openSimCards()">
+    <ion-item (tap)="openSimCards()">
       <ion-label floating>Phone Number</ion-label>
       <ion-icon name="phone-portrait" item-left></ion-icon>
       <ion-input type="text" [(ngModel)]="contact" disabled="{{type != 'other'}}">

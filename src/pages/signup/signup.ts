@@ -71,7 +71,7 @@ export class SignupPage {
     }
     else if (!this.contact) {
       let showtoast = this.toast.create({
-        message: "Please provide valid Email",
+        message: "Please provide valid Email or Phone number",
         duration: 60000,
         position: "bottom",
         showCloseButton: true,
@@ -111,6 +111,7 @@ export class SignupPage {
       showtoast.present();
       return;
     }
+
     let loader = this.loading.create({
       content: "Please wait..."
     });

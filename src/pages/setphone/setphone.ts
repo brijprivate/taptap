@@ -15,19 +15,18 @@ declare var SMSReceive: any;
 
 @IonicPage()
 @Component({
-  selector: 'page-forgotpassword',
-  templateUrl: 'forgotpassword.html',
+  selector: 'page-setphone',
+  templateUrl: 'setphone.html',
 })
-export class ForgotpasswordPage {
+export class SetphonePage {
 
   public state: string = "phone"
-  public contact: string = ""
+  public contact: String = ""
   public otp: any
   public password: String = ""
   public confirmpassword: String = ""
   public type: any = ""
   public country_code: any = "91"
-  public contact_type: any = ""
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -42,59 +41,17 @@ export class ForgotpasswordPage {
   ionViewDidEnter() {
     console.log('ionViewDidLoad ForgotpasswordPage');
     let _base = this
-
   }
 
   sendcode() {
     let _base = this
     if (_base.contact.length != 0) {
-
-      if (this.contact) {
-        console.log(parseInt(this.contact))
-        if (parseInt(this.contact)) {
-
-          if (parseInt(this.contact).toString().length != this.contact.length) {
-            console.log('Email')
-
-            let isValidEmail = this.checkpattern(this.contact)
-            if (!isValidEmail) {
-              return;
-            } else {
-              this.contact_type = "email"
-            }
-
-          } else {
-            console.log('phone')
-            this.contact_type = "phone"
-          }
-
-        } else {
-          console.log('email')
-          let isValidEmail = this.checkpattern(this.contact)
-          if (!isValidEmail) {
-            return;
-          } else {
-            this.contact_type = "email"
-          }
-        }
-      }
-
-      let logindata;
-      if (this.contact_type == 'phone') {
-        logindata = { phoneNumber: '+' + _base.country_code + _base.contact }
-      } else {
-        logindata = {
-          email: this.contact
-        }
-      }
-
-      _base.http.forgotPassword(logindata)
+      _base.http.register({ contact: _base.contact, country_code: _base.country_code })
         .then(function (success: any) {
           if (success.error == false) {
             _base.state = "otp"
             // alert("O.T.P Send successfully")
             _base.start()
-
 
           } else {
             alert(success.message)
@@ -110,21 +67,11 @@ export class ForgotpasswordPage {
 
   verifycode() {
     let _base = this
-
-    let logindata;
-    if (this.contact_type == 'phone') {
-      logindata = { phoneNumber: '+' + _base.country_code + _base.contact, code: _base.otp }
-    } else {
-      logindata = {
-        email: this.contact,
-        code: _base.otp
-      }
-    }
-
-    _base.http.verifyUserOTP(logindata)
+    _base.http.verifyUserOTP({ phoneNumber: '+' + _base.country_code + _base.contact, country_code: _base.country_code, code: _base.otp, userId: localStorage.getItem('userId') })
       .then(function (success: any) {
         if (success.error == false) {
-          _base.state = "password"
+          _base.presentAlert()
+          _base.back()
         } else {
           alert(success.message)
         }
@@ -139,37 +86,6 @@ export class ForgotpasswordPage {
     this.otp = null
   }
 
-  setpassword() {
-    if (this.password.trim() == "" || this.confirmpassword.trim() == "") {
-      alert("Please fill all the fields");
-      return;
-    }
-
-    if (this.password.trim().length <= 5) {
-      alert("password should be more that 5 letters");
-      return;
-    }
-
-    if (this.password.trim() != this.confirmpassword.trim()) {
-      alert("password s do not match");
-      return;
-    }
-
-
-    let _base = this
-    _base.http.resetpassword({ phoneNumber: '+' + _base.country_code + _base.contact, country_code: _base.country_code })
-      .then(function (success: any) {
-        if (success.error == false) {
-          _base.state = "phone"
-          alert("Password changed successfully")
-          _base.navCtrl.pop()
-        } else {
-          alert(success.message)
-        }
-      }, function (error) {
-        alert(JSON.parse(error._body).message)
-      });
-  }
   back() {
     this.navCtrl.pop();
   }
@@ -190,10 +106,12 @@ export class ForgotpasswordPage {
         closeButtonText: "Ok"
       })
       showtoast.present();
-      return false
+      return;
+
     } else {
-      return true
+      console.log("matched");
     }
+    console.log(pattern)
   }
 
   openSimCards() {
@@ -250,6 +168,25 @@ export class ForgotpasswordPage {
       () => { console.log('watch stopped') },
       () => { console.log('watch stop failed') }
     )
+  }
+
+  presentAlert() {
+
+    let alert = this.alert.create({
+      title: 'Your phone number has been set',
+      // subTitle: 'Milage Saved',
+      cssClass: 'mycss',
+      // buttons: [
+      //   {
+      //     text: 'OK',
+      //     handler: data => {
+      //     }
+      //   }
+      // ]
+    });
+    alert.present();
+    setTimeout(() => alert.dismiss(), 2000);
+
   }
 
 }

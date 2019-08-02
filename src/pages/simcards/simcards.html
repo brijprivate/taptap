@@ -15,7 +15,6 @@
 
 
 
-  </ion-list>
   <div class="flex">
     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
       y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -59,13 +58,11 @@
 
     </svg>
     <div *ngFor="let card of cards" (click)="selectSimCard(card)">
-        <p class="no">   {{card.phoneNumber + '   ' +card.countryCode}}</p>
-        <p class="no">   {{card.phoneNumber + '   ' +card.countryCode}}</p>
+      <p class="no"> {{card.phoneNumber + '   ' +card.countryCode}}</p>
     </div>
-  
+
     <p style="font-size: 10px">
       My Sim card is not inside this phone
-
     </p>
     <button (click)="dismiss()">Enter Manually</button>
   </div>

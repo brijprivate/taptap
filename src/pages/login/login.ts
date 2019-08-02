@@ -22,11 +22,12 @@ export class LoginPage {
 
   public contact: any;
   public password: any;
-  public country_code: any = "";
+  public country_code: any = "91";
   public type: any = ""
   userName: any;
   public fb_id: any;
   public isnetwork = "Online";
+  contact_type: string = "phone"
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -84,17 +85,60 @@ export class LoginPage {
       showtoast.present();
       return;
     }
+
+    if (this.contact) {
+      console.log(parseInt(this.contact))
+      if (parseInt(this.contact)) {
+
+        if (parseInt(this.contact).toString().length != this.contact.length) {
+          console.log('Email')
+
+          let isValidEmail = this.checkpattern(this.contact)
+          if (!isValidEmail) {
+            return;
+          } else {
+            this.contact_type = "email"
+          }
+
+        } else {
+          console.log('phone')
+          this.contact_type = "phone"
+        }
+
+      } else {
+        console.log('email')
+        let isValidEmail = this.checkpattern(this.contact)
+        if (!isValidEmail) {
+          return;
+        } else {
+          this.contact_type = "email"
+        }
+      }
+    }
+
     let _base = this;
     let loader = this.loading.create({
       content: "Please wait..."
     });
     loader.present();
-    let logindata = {
-      contact: this.contact,
-      country_code: this.country_code,
-      password: this.password,
-      role: 'user'
+
+    let logindata;
+    if (this.contact_type == 'phone') {
+      logindata = {
+        phoneNumber: "+" + this.country_code + this.contact,
+        // country_code: this.country_code,
+        password: this.password,
+        role: 'user'
+      }
+    } else {
+      logindata = {
+        email: this.contact,
+        // country_code: this.country_code,
+        password: this.password,
+        role: 'user'
+      }
     }
+
     this.signupprovider.login(logindata).then(function (success: any) {
       console.log(success);
       loader.dismiss();
@@ -162,4 +206,24 @@ export class LoginPage {
     this.navCtrl.push('SignupPage');
   }
 
+  checkpattern(email) {
+    // console.log("aaaaaa");
+    let _base = this;
+    let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
+    let result = pattern.test(email);
+    if (!result) {
+      console.log("miss");
+      let showtoast = _base.toast.create({
+        message: "Please provide valid email",
+        duration: 60000,
+        position: "bottom",
+        showCloseButton: true,
+        closeButtonText: "Ok"
+      })
+      showtoast.present();
+      return false
+    } else {
+      return true
+    }
+  }
 }
