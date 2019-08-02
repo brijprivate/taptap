@@ -15,56 +15,111 @@
 
 
 
- 
-  <div class="flex">
-    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-      y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-      <path style="fill:#303C42;" d="M444.875,109.792L338.167,3.125c-2-2-4.708-3.125-7.542-3.125H106.667C83.135,0,64,19.135,64,42.667
-       v426.667C64,492.865,83.135,512,106.667,512h298.667C428.865,512,448,492.865,448,469.333v-352
-       C448,114.5,446.875,111.792,444.875,109.792z" />
-      <path style="fill:#E6E6E6;" d="M426.667,469.333c0,11.76-9.573,21.333-21.333,21.333H106.667c-11.76,0-21.333-9.573-21.333-21.333
-       V42.667c0-11.76,9.573-21.333,21.333-21.333h219.542L426.667,121.75V469.333z" />
-      <path style="fill:#303C42;" d="M128,224v192c0,17.646,14.354,32,32,32h192c17.646,0,32-14.354,32-32V224c0-17.646-14.354-32-32-32
-       H160C142.354,192,128,206.354,128,224z" />
-      <g>
-        <path style="fill:#FFCA28;"
-          d="M160,213.333h42.667v53.333h-53.333V224C149.333,218.115,154.115,213.333,160,213.333z" />
-        <rect x="224" y="213.333" style="fill:#FFCA28;" width="64" height="53.333" />
-        <path style="fill:#FFCA28;"
-          d="M149.333,416v-42.667h53.333v53.333H160C154.115,426.667,149.333,421.885,149.333,416z" />
-        <rect x="224" y="373.333" style="fill:#FFCA28;" width="64" height="53.333" />
-        <path style="fill:#FFCA28;" d="M352,426.667h-42.667v-64c0-5.896-4.771-10.667-10.667-10.667H149.333v-64h213.333v128
-         C362.667,421.885,357.885,426.667,352,426.667z" />
-        <path style="fill:#FFCA28;"
-          d="M362.667,224v42.667h-53.333v-53.333H352C357.885,213.333,362.667,218.115,362.667,224z" />
-      </g>
-      <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-34.643" y1="631.4241" x2="-26.9964"
-        y2="623.7776" gradientTransform="matrix(21.3333 0 0 -21.3333 996.3334 13791.667)">
-        <stop offset="0" style="stop-color:#000000;stop-opacity:0.1" />
-        <stop offset="1" style="stop-color:#000000;stop-opacity:0" />
-      </linearGradient>
-      <path style="fill:url(#SVGID_1_);" d="M376.293,203.309l-0.021,0.079C381.022,208.973,384,216.111,384,224v192
-       c0,17.646-14.354,32-32,32H160c-8.168,0-15.549-3.168-21.21-8.221l50.888,50.888h215.655c11.76,0,21.333-9.573,21.333-21.333
-       V253.682L376.293,203.309z" />
-      <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-46.4383" y1="639.0639" x2="-23.6531"
-        y2="628.4359" gradientTransform="matrix(21.3333 0 0 -21.3333 996.3334 13791.667)">
-        <stop offset="0" style="stop-color:#FFFFFF;stop-opacity:0.2" />
-        <stop offset="1" style="stop-color:#FFFFFF;stop-opacity:0" />
-      </linearGradient>
-      <path style="fill:url(#SVGID_2_);" d="M444.875,109.792L338.167,3.125c-2-2-4.708-3.125-7.542-3.125H106.667
-       C83.135,0,64,19.135,64,42.667v426.667C64,492.865,83.135,512,106.667,512h298.667C428.865,512,448,492.865,448,469.333v-352
-       C448,114.5,446.875,111.792,444.875,109.792z" />
-      <g>
-      </g>
 
-    </svg>
+  <div class="flex">
+ 
     <div *ngFor="let card of cards" (click)="selectSimCard(card)">
-        <p class="no">   {{card.phoneNumber + '   ' +card.countryCode}}</p>
-        <p class="no">   {{card.phoneNumber + '   ' +card.countryCode}}</p>
+      <!-- <p class="no">   {{card.phoneNumber + '   ' +card.countryCode}}</p> -->
+      <p class="no"> 99 999</p>
+
     </div>
-  
-    <p style="font-size: 10px">
-      My Sim card is not inside this phone
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+            y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <path style="fill:#303C42;" d="M444.875,109.792L338.167,3.125c-2-2-4.708-3.125-7.542-3.125H106.667C83.135,0,64,19.135,64,42.667
+             v426.667C64,492.865,83.135,512,106.667,512h298.667C428.865,512,448,492.865,448,469.333v-352
+             C448,114.5,446.875,111.792,444.875,109.792z" />
+            <path style="fill:#E6E6E6;" d="M426.667,469.333c0,11.76-9.573,21.333-21.333,21.333H106.667c-11.76,0-21.333-9.573-21.333-21.333
+             V42.667c0-11.76,9.573-21.333,21.333-21.333h219.542L426.667,121.75V469.333z" />
+            <path style="fill:#303C42;" d="M128,224v192c0,17.646,14.354,32,32,32h192c17.646,0,32-14.354,32-32V224c0-17.646-14.354-32-32-32
+             H160C142.354,192,128,206.354,128,224z" />
+            <g>
+              <path style="fill:#FFCA28;"
+                d="M160,213.333h42.667v53.333h-53.333V224C149.333,218.115,154.115,213.333,160,213.333z" />
+              <rect x="224" y="213.333" style="fill:#FFCA28;" width="64" height="53.333" />
+              <path style="fill:#FFCA28;"
+                d="M149.333,416v-42.667h53.333v53.333H160C154.115,426.667,149.333,421.885,149.333,416z" />
+              <rect x="224" y="373.333" style="fill:#FFCA28;" width="64" height="53.333" />
+              <path style="fill:#FFCA28;" d="M352,426.667h-42.667v-64c0-5.896-4.771-10.667-10.667-10.667H149.333v-64h213.333v128
+               C362.667,421.885,357.885,426.667,352,426.667z" />
+              <path style="fill:#FFCA28;"
+                d="M362.667,224v42.667h-53.333v-53.333H352C357.885,213.333,362.667,218.115,362.667,224z" />
+            </g>
+            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-34.643" y1="631.4241" x2="-26.9964"
+              y2="623.7776" gradientTransform="matrix(21.3333 0 0 -21.3333 996.3334 13791.667)">
+              <stop offset="0" style="stop-color:#000000;stop-opacity:0.1" />
+              <stop offset="1" style="stop-color:#000000;stop-opacity:0" />
+            </linearGradient>
+            <path style="fill:url(#SVGID_1_);" d="M376.293,203.309l-0.021,0.079C381.022,208.973,384,216.111,384,224v192
+             c0,17.646-14.354,32-32,32H160c-8.168,0-15.549-3.168-21.21-8.221l50.888,50.888h215.655c11.76,0,21.333-9.573,21.333-21.333
+             V253.682L376.293,203.309z" />
+            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-46.4383" y1="639.0639" x2="-23.6531"
+              y2="628.4359" gradientTransform="matrix(21.3333 0 0 -21.3333 996.3334 13791.667)">
+              <stop offset="0" style="stop-color:#FFFFFF;stop-opacity:0.2" />
+              <stop offset="1" style="stop-color:#FFFFFF;stop-opacity:0" />
+            </linearGradient>
+            <path style="fill:url(#SVGID_2_);" d="M444.875,109.792L338.167,3.125c-2-2-4.708-3.125-7.542-3.125H106.667
+             C83.135,0,64,19.135,64,42.667v426.667C64,492.865,83.135,512,106.667,512h298.667C428.865,512,448,492.865,448,469.333v-352
+             C448,114.5,446.875,111.792,444.875,109.792z" />
+            <g>
+            </g>
+      
+          </svg>
+            <p class="care"> Airtel</p>
+            <p class="no"> +91 8787878787</p>
+        </ion-col>
+        <ion-col col-6>
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+            y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <path style="fill:#303C42;" d="M444.875,109.792L338.167,3.125c-2-2-4.708-3.125-7.542-3.125H106.667C83.135,0,64,19.135,64,42.667
+             v426.667C64,492.865,83.135,512,106.667,512h298.667C428.865,512,448,492.865,448,469.333v-352
+             C448,114.5,446.875,111.792,444.875,109.792z" />
+            <path style="fill:#E6E6E6;" d="M426.667,469.333c0,11.76-9.573,21.333-21.333,21.333H106.667c-11.76,0-21.333-9.573-21.333-21.333
+             V42.667c0-11.76,9.573-21.333,21.333-21.333h219.542L426.667,121.75V469.333z" />
+            <path style="fill:#303C42;" d="M128,224v192c0,17.646,14.354,32,32,32h192c17.646,0,32-14.354,32-32V224c0-17.646-14.354-32-32-32
+             H160C142.354,192,128,206.354,128,224z" />
+            <g>
+              <path style="fill:#FFCA28;"
+                d="M160,213.333h42.667v53.333h-53.333V224C149.333,218.115,154.115,213.333,160,213.333z" />
+              <rect x="224" y="213.333" style="fill:#FFCA28;" width="64" height="53.333" />
+              <path style="fill:#FFCA28;"
+                d="M149.333,416v-42.667h53.333v53.333H160C154.115,426.667,149.333,421.885,149.333,416z" />
+              <rect x="224" y="373.333" style="fill:#FFCA28;" width="64" height="53.333" />
+              <path style="fill:#FFCA28;" d="M352,426.667h-42.667v-64c0-5.896-4.771-10.667-10.667-10.667H149.333v-64h213.333v128
+               C362.667,421.885,357.885,426.667,352,426.667z" />
+              <path style="fill:#FFCA28;"
+                d="M362.667,224v42.667h-53.333v-53.333H352C357.885,213.333,362.667,218.115,362.667,224z" />
+            </g>
+            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-34.643" y1="631.4241" x2="-26.9964"
+              y2="623.7776" gradientTransform="matrix(21.3333 0 0 -21.3333 996.3334 13791.667)">
+              <stop offset="0" style="stop-color:#000000;stop-opacity:0.1" />
+              <stop offset="1" style="stop-color:#000000;stop-opacity:0" />
+            </linearGradient>
+            <path style="fill:url(#SVGID_1_);" d="M376.293,203.309l-0.021,0.079C381.022,208.973,384,216.111,384,224v192
+             c0,17.646-14.354,32-32,32H160c-8.168,0-15.549-3.168-21.21-8.221l50.888,50.888h215.655c11.76,0,21.333-9.573,21.333-21.333
+             V253.682L376.293,203.309z" />
+            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-46.4383" y1="639.0639" x2="-23.6531"
+              y2="628.4359" gradientTransform="matrix(21.3333 0 0 -21.3333 996.3334 13791.667)">
+              <stop offset="0" style="stop-color:#FFFFFF;stop-opacity:0.2" />
+              <stop offset="1" style="stop-color:#FFFFFF;stop-opacity:0" />
+            </linearGradient>
+            <path style="fill:url(#SVGID_2_);" d="M444.875,109.792L338.167,3.125c-2-2-4.708-3.125-7.542-3.125H106.667
+             C83.135,0,64,19.135,64,42.667v426.667C64,492.865,83.135,512,106.667,512h298.667C428.865,512,448,492.865,448,469.333v-352
+             C448,114.5,446.875,111.792,444.875,109.792z" />
+            <g>
+            </g>
+      
+          </svg>
+            <p class="care"> Jio</p>
+          <p class="no"> +91 8787878787</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p style="font-size: 10px; margin: 0">
+    or
 
     </p>
     <button (click)="dismiss()">Enter Manually</button>

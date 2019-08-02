@@ -26,6 +26,7 @@ page-simcards {
         text-align: center;
         margin: 0 auto;
         margin-bottom: 16px;
+        margin-top: 1.5em;
     }
     .flex button{
         width: 70%;
@@ -38,9 +39,13 @@ page-simcards {
     
     }
     .no{
-        border-bottom: 1px solid #b7aeae;
-        font-size: 18px;
-        margin: 4px;
-        padding: 4px 1em;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 9px;
+    
+    }
+    p.care {
+        text-align: center;
+        margin: 0;
     }
 }
