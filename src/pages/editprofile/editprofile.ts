@@ -325,16 +325,26 @@ export class EditprofilePage {
     //   milage_prefrence:"mile"
     // }
 
+    let profile;
     if (_base.initEmail != _base.profiledata.email) {
-      _base.OTPAlert()
+      profile = {
+        email: _base.profiledata.email
+      }
     } else {
-      _base.presentAlert();
-      _base.navCtrl.pop();
+
+      profile = {
+        address: _base.profiledata.address,
+        city: _base.profiledata.city,
+        country: _base.profiledata.country,
+        imageId: _base.profileImage,
+        name: _base.profiledata.name,
+        website: _base.profiledata.website
+      }
     }
 
     Object.assign(_base.profiledata, { imageId: _base.profileImage });
     console.log(_base.profiledata);
-    this.loginsignupProvider.profileUpdate(_base.profiledata).then(function (success: any) {
+    this.loginsignupProvider.profileUpdate(profile).then(function (success: any) {
       console.log(success);
 
       if (_base.initEmail != _base.profiledata.email) {

@@ -157,7 +157,19 @@ export class ForgotpasswordPage {
 
 
     let _base = this
-    _base.http.resetpassword({ phoneNumber: '+' + _base.country_code + _base.contact, country_code: _base.country_code })
+
+    let logindata;
+    if (this.contact_type == 'phone') {
+      logindata = { phoneNumber: '+' + _base.country_code + _base.contact, country_code: _base.country_code, password: _base.password }
+    } else {
+      logindata = {
+        email: _base.contact,
+        country_code: _base.country_code,
+        password: _base.password
+      }
+    }
+
+    _base.http.resetpassword(logindata)
       .then(function (success: any) {
         if (success.error == false) {
           _base.state = "phone"
