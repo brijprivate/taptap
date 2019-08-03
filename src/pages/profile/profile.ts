@@ -50,6 +50,7 @@ export class ProfilePage {
   totalPmilage = 0;
   totalBmilage = 0;
   showchart = true;
+  type: any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
@@ -212,9 +213,11 @@ export class ProfilePage {
       for (i = 0; i < success.result.length; i++) {
         if (success.result[i].is_active) {
           _base.maindevice = success.result[i].device_title;
+          _base.type=success.result[i].type
           break;
         }
       }
+      console.log(_base.devices);
       console.log(_base.maindevice);
       // _base.maindevice=_base.maindevice[_base.maindevice.length-1].device_title;
       _base.devicecount = success.result.length;

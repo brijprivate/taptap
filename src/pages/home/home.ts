@@ -232,6 +232,13 @@ export class HomePage {
         if (success.result.imageId) {
           _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
+
+        console.log(success.result)
+
+        if (!success.result.phoneNumber) {
+          _base.navCtrl.push("SetphonePage")
+        }
+
       }
     }, function (err) {
       _base.storage.get("username").then((name)=>{

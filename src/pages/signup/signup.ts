@@ -4,6 +4,8 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { ModalController } from 'ionic-angular';
+
 /**
  * Generated class for the SignupPage page.
  *
@@ -19,8 +21,10 @@ import { GooglePlus } from '@ionic-native/google-plus';
 export class SignupPage {
 
   public name: any;
-  public email: any;
+  public contact: any;
   public password: any;
+  public type: any = ""
+  country_code: any = ""
   public confirmpassword: any;
   public isnetwork = "Online";
   userName: any;
@@ -32,9 +36,12 @@ export class SignupPage {
     public loading: LoadingController,
     public alert: AlertController,
     private toast: ToastController,
-    public fb: Facebook,
-    private googlePlus: GooglePlus,
+    public modalCtrl: ModalController,
     public sharedservice: SharedserviceProvider, ) {
+
+    let _base = this
+
+
   }
 
   //Go to Verify page...
@@ -62,9 +69,9 @@ export class SignupPage {
       showtoast.present();
       return;
     }
-    else if (!this.email) {
+    else if (!this.contact) {
       let showtoast = this.toast.create({
-        message: "Please provide valid Email",
+        message: "Please provide valid Email or Phone number",
         duration: 60000,
         position: "bottom",
         showCloseButton: true,
@@ -104,6 +111,7 @@ export class SignupPage {
       showtoast.present();
       return;
     }
+
     let loader = this.loading.create({
       content: "Please wait..."
     });
@@ -111,18 +119,19 @@ export class SignupPage {
     let _base = this;
     let signupdata = {
       name: this.name,
-      email: this.email,
+      contact: this.contact,
       password: this.password,
+      country_code: this.country_code,
       role: "user"
     }
     this.signupprovider.register(signupdata).then(function (success: any) {
       console.log(success);
       loader.dismiss();
       if (success.error == true) {
-        alert("user already registered with that email");
+        alert("user already registered with that Phone Number");
         return;
       }
-
+      alert(success.user.code)
       _base.navCtrl.setRoot('VerifyotpPage', signupdata);
     }, function (err) {
       loader.dismiss();
@@ -134,138 +143,20 @@ export class SignupPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
+    // this.openSimCards()
   }
+
   login() {
     this.navCtrl.push('LoginPage')
   }
 
-
-  //Facebook Login...
-  fbLogin() {
-    // Login with permissions
-    this.fb.login(['public_profile', 'email'])
-      .then((res: FacebookLoginResponse) => {
-        console.log("res==========>>>>>>", res);
-
-        // The connection was successful
-        if (res.status == "connected") {
-
-          // Get user ID and Token
-          this.fb_id = res.authResponse.userID;
-          var fb_token = res.authResponse.accessToken;
-
-          // Get user infos from the API
-          this.fb.api("/me?fields=name,gender,birthday,email", []).then((user) => {
-            console.log("fb user data ============>>>>>>>>>>", user);
-
-            if (!user.email) {
-              alert("This account has no email associated")
-              return
-            }
-
-            // this.userdata = user;
-            // Get the connected user details
-
-            let localVar = {
-              userName: user.name,
-              email: user.email,
-              fb_id: res.authResponse.userID
-            }
-
-            if (res.authResponse.userID) {
-              this.fblog(localVar);
-            }
-            console.log("=== USER INFOS ===");
-            console.log("Name : " + this.userName);
-            console.log("Email : " + this.email);
-            // => Open user session and redirect to the next page
-          });
-        }
-        // An error occurred while loging-in
-        else {
-          console.log("An error occurred...");
-        }
-      })
-      .catch((e) => {
-        console.log('Error logging into Facebook', e);
-      });
-  }
-
-  //Facebook login api call...
-  //Facebook login api call...
-  fblog(data) {
-    let loader = this.loading.create({
-      content: "Please wait..."
-    });
-    loader.present();
-    let _base = this;
-    let fbdata = {
-      name: data.userName,
-      email: data.email,
-      role: "user"
-    }
-    this.signupprovider.fblogin(fbdata).then(function (success: any) {
-      console.log("facebook login ----------->>>>>>>>", success);
-      loader.dismiss();
-
-      if (success.error) {
-        alert(success.message)
-      } else {
-
-        if (success.message == 'password') {
-          _base.navCtrl.push('SetpasswordPage', fbdata)
-
-        }
-        console.log(success.result._id);
-        localStorage.setItem("userId", success.result._id);
-        _base.navCtrl.setRoot('DashboardPage');
-      }
-
-    }, function (err) {
-      loader.dismiss();
-      alert("This email is already registered")
-      console.log("fb login error---------->>>>>>>", err);
-    })
-  }
-
-
-  //Google login....
-  googlelogin() {
-    console.log("Clicked on google login")
-    this.googlePlus.getSigningCertificateFingerprint()
-      .then(function (success) {
-        console.log(success)
-      }, function (error) {
-        console.log(error)
-      });
-    this.googlePlus.login({})
-      .then(res => {
-        console.log("google login responce==========>>>>>>>>");
-        console.log(res);
-
-        let localVar = {
-          userName: res.displayName,
-          email: res.email,
-          fb_id: res.userId
-        }
-
-        if (res.userId) {
-          this.fblog(localVar)
-        }
-        // this.isLoggedIn = true;
-      })
-      .catch(err => {
-        console.log(err)
-      });
-  }
-
   //check pattern...
-  checkpattern(email){
+  checkpattern(email) {
     // console.log("aaaaaa");
     let _base = this;
     let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
     let result = pattern.test(email);
-    if(!result){
+    if (!result) {
       console.log("miss");
       let showtoast = _base.toast.create({
         message: "Please provide valid email",
@@ -276,10 +167,40 @@ export class SignupPage {
       })
       showtoast.present();
       return;
-      
-    }else{
+
+    } else {
       console.log("matched");
     }
     console.log(pattern)
   }
+
+
+  openSimCards() {
+    let _base = this
+
+    if (_base.type == 'other') {
+      return
+    }
+
+    const modal = _base.modalCtrl.create('SimcardsPage');
+    modal.present();
+
+    modal.onDidDismiss((data) => {
+      console.log("Data from modal page", data)
+      let length = Object.keys(data).length
+      if (length != 0) {
+        let card = data
+
+        if (!card.phoneNumber) {
+          _base.type = 'other'
+        }
+
+        if (card.countryCode == 'in') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+91", "") : null
+          _base.country_code = "91"
+        }
+      }
+    })
+  }
+
 }

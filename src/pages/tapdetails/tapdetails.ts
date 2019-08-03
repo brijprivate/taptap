@@ -33,7 +33,7 @@ export class TapdetailsPage {
   keyy: any;
   public st: any;
   public et: any;
-  devicedetaill:any
+  devicedetaill: any
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
@@ -190,6 +190,9 @@ export class TapdetailsPage {
   }
 
   savecontact(data) {
+
+    console.log("Save contact called")
+
     let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.name);
@@ -199,7 +202,7 @@ export class TapdetailsPage {
     contact.addresses = [new ContactAddress(false,"home", data.address)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
-    if(data.profile_pic){
+    if (data.profile_pic) {
       contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic)];
     }
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
@@ -213,6 +216,11 @@ export class TapdetailsPage {
   }
 
   savedevicecontact(data) {
+
+    console.log(data)
+    console.log(data.contact_info.address)
+    console.log("Device contact called contact called")
+
     let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.contact_info.name);
@@ -226,9 +234,9 @@ export class TapdetailsPage {
     if(data.imageId){
       contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
     }
-    // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
 
+    console.log(contact)
     contact.save().then((contact) => {
       console.log(contact);
       alert("contact saved");

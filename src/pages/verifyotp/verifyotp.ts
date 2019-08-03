@@ -39,7 +39,8 @@ export class VerifyotpPage {
       loader.present();
       let _base = this;
       let otpdata = {
-        email: this.user.email,
+        contact: this.user.contact,
+        country_code: this.user.country_code,
         code: this.otp
       }
       this.signupprovider.verifyotp(otpdata).then(function (success: any) {
@@ -70,7 +71,7 @@ export class VerifyotpPage {
       console.log(success);
       loader.dismiss();
       if (success.error == true) {
-        alert("user already registered with that email");
+        alert("user already registered with that phone number");
         return;
       }
 

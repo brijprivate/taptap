@@ -1,0 +1,271 @@
+page-setphone {
+    .head {
+        height: 12vh;
+        background: #6354cb;
+        display: table;
+        width: 100%;
+        p{
+            // margin-right: 11em;
+            font-size: 18px;
+            color: #fff;
+            display: inline-block;
+            vertical-align: middle;
+    
+        }
+        .mdl{
+            vertical-align: middle;
+            display: table-cell;
+            padding: 0 14px;
+            ion-icon.icon.icon-md.ion-md-arrow-round-back {
+                color: rgb(192, 185, 185) !important;
+            }
+        }   
+        ion-icon.icon.icon-md.ion-md-heart,ion-icon.icon.icon-ios.ion-ios-heart{
+            margin-right: 7px;
+            font-size: 26px;
+            color: #de1010;
+            vertical-align: middle;
+            margin-top: 15px;
+            float:right;
+        }
+        ion-icon.icon.icon-md,ion-icon.icon.icon-ios {
+            margin-right: 10px;
+            font-size: 26px;
+            color: #fff;
+            vertical-align: middle;
+            margin-left: 1em;
+        }
+    }
+    svg#ft {
+      height: 100px;
+      width: 100px;
+      fill: #6354cb;
+      margin-bottom: 2em;
+    
+    }
+      p.sub {
+        color: #9598ad;
+        margin: 5px 0 1.6em;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    
+      p.head {
+        font-size: 25px;
+        color: #303644ed;
+        margin: 13px 0 0 0;
+        text-shadow: 1px 0px 1px #3036448c;
+      }
+    
+      .social {
+        margin: 2em 0 0em 0;
+      }
+    
+      .social button {
+        text-align: center;
+        width: 99%;
+        background: #fff;
+        box-shadow: none;
+        border: 2px solid #eaeaea;
+        border-radius: 5px;
+        color: #4f525f;
+        position: relative;
+        text-transform: inherit;
+        margin: 5px 0;
+        height: 40px;
+      }
+    
+      
+    
+      .item-md.item-input.input-has-focus .item-inner,
+      .item-ios.item-input.input-has-focus .item-inner {
+        box-shadow: none;
+      }
+    
+      ion-label {
+        color: #666a88 !important;
+      }
+    
+      .hr {
+        position: relative;
+        width: 40%;
+        margin: 24px auto 5px;
+        border-bottom: 1px solid #a6a8b9;
+        height: 1px;
+      }
+    
+      .hr span {
+        position: absolute;
+        background: #fff;
+        padding: 0 15px;
+        top: -9px;
+        left: 33%;
+        color: #9497ab;
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+    
+      ion-item ion-icon.icon.icon-md {
+        padding: 0;
+        margin-top: 1.2em;
+        margin-right: -10px;
+        color: #989baf;
+      }
+    
+      .inputs ion-buttons.bar-buttons.bar-buttons-md,
+      .inputs ion-buttons.bar-buttons.bar-buttons-ios {
+        width: 90%;
+        background: #5c67f8;
+        margin: 1em;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 53px;
+        border-radius: 7px;
+      }
+    
+      .ftr {
+        text-align: center;
+        padding: 0 2em;
+      }
+    
+      .ftr p {
+        color: #989baf;
+        font-size: 14px;
+        margin: 0px 0 12px 0;
+      }
+    
+      .nmar {
+        margin: 0;
+      }
+    
+      .ftr p span {
+        color: #3a549e;
+        font-size: 16px;
+      }
+    
+      span.tnc {
+        // color: #323642 !important;
+        color: #b2b3c2 !important;
+        font-size: 13px !important;
+      }
+    
+      .inputs {
+        padding: 3em 2em;
+        text-align: center;
+      }
+    
+      .inputs ion-item.item.item-block.item-md.item-input.item-label-floating,
+      .inputs ion-item.item.item-block.item-ios.item-input.item-label-floating {
+        padding-left: 0;
+      }
+    
+      button.signUp {
+        background: #fff;
+        color: #222;
+        border-radius: 4px;
+        border: 1px solid #222;
+        line-height: 40px;
+        width: 85%;
+        margin: 1.5em 0;
+        font-size: 17px;
+      }
+    
+      #touch {
+        height: 60px;
+        width: 60px;
+      }
+    
+      .verifyContent {
+        text-align: center;
+        margin: 5em 0 0 0;
+      }
+    
+      p.verify {
+        font-size: 21px;
+        letter-spacing: 1px;
+        margin-top: 2em;
+        color: #4f515e;
+      }
+    
+      p.subContent {
+        color: #9699ad;
+        text-align: center;
+        padding: 0 3em;
+        font-size: 13px;
+        margin-bottom: 4em;
+      }
+    
+      ion-grid.buttonGrid.grid {
+        margin: 3em 0 9em 0;
+      }
+    
+      button.verifyCode.disable-hover.button.button-md.button-default.button-default-md,
+      button.verifyCode.disable-hover.button.button-ios.button-default.button-default-ios {
+        background: #5c67f8;
+        text-transform: capitalize;
+        width: 100%;
+        font-size: 13px;
+        height: 45px;
+      }
+    
+      button.resend.disable-hover.button.button-md.button-outline.button-outline-md,
+      button.resend.disable-hover.button.button-ios.button-outline.button-outline-ios {
+        color: #8286a0;
+        border: 1px solid #e1e1e1;
+        text-transform: capitalize;
+        width: 100%;
+        height: 45px;
+      }
+    
+      .ftr {
+        text-align: center;
+        padding: 0 2em;
+      }
+    
+      .ftr p {
+        color: #989baf;
+        font-size: 12px;
+        margin: 0px 0 12px 0;
+      }
+    
+      .ftr p span {
+        color: #9274da;
+        font-size: 13px;
+        font-weight: 500;
+      }
+    
+      #partitioned {
+        padding-left: 6px;
+        letter-spacing: 42px;
+        border: 0;
+        background-image: linear-gradient(to left, #9E9E9E 70%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 50px 2px;
+        background-repeat: repeat-x;
+        background-position-x: 35px;
+        width: 275px;
+        min-width: 275px;
+        font-size: 21px;
+    
+      }
+    
+      #divInner {
+        left: 0;
+        position: sticky;
+      }
+    
+      #divOuter {
+        width: 240px;
+        overflow: hidden;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .svg {
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        margin-top: 8vh;
+        margin-bottom: 3vh;
+    }
+}

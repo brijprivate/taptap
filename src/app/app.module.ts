@@ -24,6 +24,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { Sim } from '@ionic-native/sim';
 
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
@@ -50,7 +51,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, 
+    IonicModule.forRoot(MyApp,
       {
       tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
       scrollAssist: true,
@@ -98,6 +99,7 @@ import { IonicStorageModule } from '@ionic/storage';
     FilePath,
     LocationTrackerProvider,
     LaunchNavigator,
+    Sim
     // Keyboard
     // Diagnostic
   ]

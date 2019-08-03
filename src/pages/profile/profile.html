@@ -56,7 +56,9 @@
     <ion-card-content>
       <ion-item *ngIf="maindevice">
         <ion-icon item-start>
-          <img src="assets/images/pen.png" class="pen">
+          <img *ngIf='type =="card"' src="../../assets/images/TapTap Card.png" class="pen">
+          <img *ngIf='type =="Keyring"' src="../../assets/images/TapTap Keyring.png" class="keyring">
+
         </ion-icon>
         <span class="online">
           <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

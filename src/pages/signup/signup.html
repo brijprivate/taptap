@@ -81,13 +81,11 @@
 
     </ion-item>
 
-    <ion-item>
-      <ion-label floating>Email Address</ion-label>
-      <ion-icon name="mail" item-left></ion-icon>
-
-      <ion-input type="text" [(ngModel)]="email" (blur)="checkpattern(email)"
-      pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"> 
-    </ion-input>
+    <ion-item (tap)="openSimCards()">
+      <ion-label floating>Phone Number</ion-label>
+      <ion-icon name="phone-portrait" item-left></ion-icon>
+      <ion-input type="text" [(ngModel)]="contact" disabled="{{type != 'other'}}">
+      </ion-input>
 
     </ion-item>
     <ion-item>
@@ -109,7 +107,8 @@
   </div>
   <div class="ftr">
     <p>Already have account?&nbsp;<span (click)="login()">Login</span></p>
-    <p class="nmar">By creating your account you agree to our<br> 
-      <span class="tnc nmar"><a href="https://drive.google.com/file/d/1oeRQ9__3mxwaigLnNhU9PFvyhXk7F-rK/view">Terms and Conditions</a></span></p>
+    <p class="nmar">By creating your account you agree to our<br>
+      <span class="tnc nmar"><a href="https://drive.google.com/file/d/1oeRQ9__3mxwaigLnNhU9PFvyhXk7F-rK/view">Terms and
+          Conditions</a></span></p>
   </div>
 </ion-content>

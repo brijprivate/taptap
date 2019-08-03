@@ -1,0 +1,51 @@
+page-simcards {
+
+    ion-icon.icon.icon-md.ion-md-refresh {
+        float: right;
+    }
+    ion-icon.icon {
+        color: #423d3d;
+    }
+    .item-inner {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    ion-label.label.label-md {
+        font-size: 12px;
+    }
+    .flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // height: 68%;
+    }
+    .flex svg {
+        height: 50px;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 16px;
+        margin-top: 1.5em;
+    }
+    .flex button{
+        width: 70%;
+        background: #fff;
+        border: 1px solid #222;
+        color: #222;
+        border-radius: 5px;
+        padding: 0.5em;
+        margin-top: 9px;
+    
+    }
+    .no{
+        font-size: 12px;
+        text-align: center;
+        margin-top: 9px;
+    
+    }
+    p.care {
+        text-align: center;
+        margin: 0;
+    }
+}
