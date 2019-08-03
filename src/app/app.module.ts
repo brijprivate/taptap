@@ -37,6 +37,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 // import { Keyboard } from '@ionic-native/keyboard';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
       scrollAssist: true,
       autoFocusAssist: false
     }),
+    IonicStorageModule.forRoot(),
     HttpModule,
     HttpClientModule
   ],

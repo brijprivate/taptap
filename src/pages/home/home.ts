@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs/Rx';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { isBlank } from 'ionic-angular/umd/util/util';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { Storage } from '@ionic/storage';
 
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
@@ -55,6 +56,7 @@ export class HomePage {
   public tapItems: any;
   public allTapItems: any;
   public str: String = "";
+  public usrnm:any;
 
   lineChart: any;
 
@@ -85,7 +87,7 @@ export class HomePage {
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
     public alert: AlertController,
-
+    private storage: Storage
     // private diagnostic: Diagnostic
   ) {
     this.slideselected = 'home';
@@ -223,16 +225,28 @@ export class HomePage {
     this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
       console.log(success);
       if (success) {
-        _base.userName = success.result.name;
-        localStorage.setItem('uid', success.result.uid)
+        _base.userName = success.result.name
+        _base.storage.set("username",_base.userName);
+        localStorage.setItem('uid', success.result.uid);
         _base.uid = success.result.uid
         if (success.result.imageId) {
           _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
         }
       }
     }, function (err) {
+      _base.storage.get("username").then((name)=>{
+        _base.userName=name;
+        console.log(_base.userName);
+        console.log(name);
+      });
+    
+      // console.log(_base.userName);
       console.log(err);
     })
+    // _base.userName=_base.storage.get("username").then(value=>{
+    //   console.log(value);
+    // });
+    // console.log(_base.userName);
   }
 
   //Tap on product....
