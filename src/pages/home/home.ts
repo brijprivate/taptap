@@ -227,13 +227,16 @@ export class HomePage {
         localStorage.setItem('uid', success.result.uid)
         _base.uid = success.result.uid
         if (success.result.imageId) {
-          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id+"&select=thumbnail"
         }
 
         console.log(success.result)
 
         if (!success.result.phoneNumber) {
-          _base.navCtrl.push("SetphonePage")
+
+          setTimeout(function () {
+            _base.navCtrl.push("SetphonePage")
+          }, 2000)
         }
 
       }
@@ -263,10 +266,10 @@ export class HomePage {
 
   getDashboarddata() {
     let _base = this;
-    let loader = this.loading.create({
-      content: "Please wait..."
-    });
-    loader.present();
+    // let loader = this.loading.create({
+    //   content: "Please wait..."
+    // });
+    // loader.present();
 
     this.loginsignupProvider.getDashboard(this.userId).then(function (success: any) {
       console.log("dashboard data ---------->>>>>>" + success);
@@ -283,7 +286,7 @@ export class HomePage {
       _base.lost = success.result.lost;
       _base.totalcount = success.result.totalTap;
       _base.chartfunc();
-      loader.dismiss();
+      // loader.dismiss();
     }, function (err) {
       console.log(err);
     })

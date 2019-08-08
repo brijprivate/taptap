@@ -6,6 +6,7 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 import { GooglePlus } from '@ionic-native/google-plus';
 import { ModalController } from 'ionic-angular';
 
+declare var carrier;
 /**
  * Generated class for the LoginPage page.
  *
@@ -28,6 +29,7 @@ export class LoginPage {
   public fb_id: any;
   public isnetwork = "Online";
   contact_type: string = "phone"
+  countryCode: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -49,6 +51,7 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    this.getCountryCode()
   }
 
   login() {
@@ -189,9 +192,12 @@ export class LoginPage {
         if (!card.phoneNumber) {
           _base.type = 'other'
         }
-        if (card.countryCode == 'in') {
+        if (_base.countryCode == 'in') {
           _base.contact = card.phoneNumber ? card.phoneNumber.replace("+91", "") : null
           _base.country_code = "91"
+        } else if (_base.countryCode == 'gb') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+44", "") : null
+          _base.country_code = "44"
         }
       }
     })
@@ -226,4 +232,15 @@ export class LoginPage {
       return true
     }
   }
+
+  getCountryCode() {
+    let _base = this
+    carrier.getCountryCode(function (success) {
+      console.log("Success", success)
+      _base.countryCode = success
+    }, function (error) {
+      console.log("Error", error)
+    });
+  }
+
 }

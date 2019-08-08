@@ -305,6 +305,7 @@ export class EditprofilePage {
       console.log(success);
       _base.profiledata = success.result;
       if (success.result.imageId) {
+        // _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id+"&select=thumbnail";
         _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
       }
       _base.initEmail = success.result.email ? success.result.email : ''

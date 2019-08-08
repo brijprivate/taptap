@@ -5,7 +5,7 @@ import { ModalController } from 'ionic-angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 declare var SMSReceive: any;
-
+declare var carrier;
 /**
  * Generated class for the ForgotpasswordPage page.
  *
@@ -27,6 +27,7 @@ export class SetphonePage {
   public confirmpassword: String = ""
   public type: any = ""
   public country_code: any = "91"
+  countryCode: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,6 +42,7 @@ export class SetphonePage {
   ionViewDidEnter() {
     console.log('ionViewDidLoad ForgotpasswordPage');
     let _base = this
+    this.getCountryCode()
   }
 
   sendcode() {
@@ -130,9 +132,12 @@ export class SetphonePage {
         if (!card.phoneNumber) {
           _base.type = 'other'
         }
-        if (card.countryCode == 'in') {
+        if (_base.countryCode == 'in') {
           _base.contact = card.phoneNumber ? card.phoneNumber.replace("+91", "") : null
           _base.country_code = "91"
+        } else if (_base.countryCode == 'gb') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+44", "") : null
+          _base.country_code = "44"
         }
       }
     })
@@ -148,14 +153,14 @@ export class SetphonePage {
           console.log('onSMSArrive()');
           var IncomingSMS = e.data;
           console.log(JSON.stringify(IncomingSMS));
-          if (IncomingSMS.body.includes("our OTP is")) {
-            let otp = IncomingSMS.body.split(".")[0].replace("Your OTP is", "").trim()
-            console.log(otp);
-            _base.stop();
-            (<HTMLInputElement>document.getElementById("partitioned")).value = otp;
-            _base.otp = otp;
-            (<HTMLButtonElement>document.getElementById("verify")).click();
-          }
+          var string = IncomingSMS.body;
+          var numbers = string.match(/\d+/g).map(Number);
+          let otp = numbers[0]
+          console.log(otp);
+          _base.stop();
+          (<HTMLInputElement>document.getElementById("partitioned")).value = otp;
+          _base.otp = otp;
+          (<HTMLButtonElement>document.getElementById("verify")).click();
 
         });
       },
@@ -187,6 +192,16 @@ export class SetphonePage {
     alert.present();
     setTimeout(() => alert.dismiss(), 2000);
 
+  }
+
+  getCountryCode() {
+    let _base = this
+    carrier.getCountryCode(function (success) {
+      console.log("Success", success)
+      _base.countryCode = success
+    }, function (error) {
+      console.log("Error", error)
+    });
   }
 
 }
