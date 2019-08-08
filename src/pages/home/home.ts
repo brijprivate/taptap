@@ -227,7 +227,14 @@ export class HomePage {
         localStorage.setItem('uid', success.result.uid)
         _base.uid = success.result.uid
         if (success.result.imageId) {
-          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id+"&select=thumbnail"
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id + "&select=thumbnail"
+
+          // Sample usage
+          _base.imageExists(_base.profileImage, function (exists) {
+            if (!exists) {
+              _base.profileImage = "assets/images/avatar.png"
+            }
+          });
         }
 
         console.log(success.result)
@@ -243,6 +250,13 @@ export class HomePage {
     }, function (err) {
       console.log(err);
     })
+  }
+
+  imageExists(url, callback) {
+    var img = new Image();
+    img.onload = function () { callback(true); };
+    img.onerror = function () { callback(false); };
+    img.src = url;
   }
 
   //Tap on product....

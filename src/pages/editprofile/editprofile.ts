@@ -25,7 +25,7 @@ export class EditprofilePage {
 
   private win: any = window;
   lastImage: any;
-  public imageId = '../../assets/images/avatar.png';
+  public imageId = 'assets/images/avatar.png';
   public data = [];
   API_URL = "https://api.taptap.org.uk";
   public userId: any;
@@ -307,12 +307,25 @@ export class EditprofilePage {
       if (success.result.imageId) {
         // _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id+"&select=thumbnail";
         _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
+        _base.imageExists(_base.imageId, function (exists) {
+          if (!exists) {
+            _base.imageId = "assets/images/avatar.png"
+          }
+        });
       }
       _base.initEmail = success.result.email ? success.result.email : ''
     }, function (err) {
       console.log(err);
     })
   }
+
+  imageExists(url, callback) {
+    var img = new Image();
+    img.onload = function () { callback(true); };
+    img.onerror = function () { callback(false); };
+    img.src = url;
+  }
+
   updateProfile() {
     let _base = this;
     // let data = {
