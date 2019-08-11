@@ -9,6 +9,8 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 import { isBlank } from 'ionic-angular/umd/util/util';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Storage } from '@ionic/storage';
+import { ImageLoader } from 'ionic-image-loader';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
@@ -73,8 +75,10 @@ export class HomePage {
   public tapData: any;
   devicecount: any;
   profileImage: string;
+  base4img:any;
   keyboards: boolean = false;
   slideselected: string;
+  offline:boolean=false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -87,7 +91,8 @@ export class HomePage {
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
     public alert: AlertController,
-    private storage: Storage
+    private storage: Storage,
+    public imageLoader: ImageLoader
     // private diagnostic: Diagnostic
   ) {
     this.slideselected = 'home';
@@ -121,6 +126,7 @@ export class HomePage {
 
   ionViewDidEnter() {
     // this.chart.dispose();
+    this.offline = false;
     console.log("view enter--------------->>>>>>>>>>>");
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
@@ -153,7 +159,7 @@ export class HomePage {
         { x: "Business", value: _base.buisness },
         { x: "Sports", value: _base.sports },
         { x: "Groceries", value: _base.groceries },
-        { x: "Lost", value: _base.lost }
+        { x: "Lost", value: _base.lost }       
       ]);
 
 
@@ -193,6 +199,7 @@ export class HomePage {
   }
   ionViewDidLeave() {
     this.chart.dispose();
+    this.offline=false;
     // this.chartfunc(1);
   }
   selectedTab(index) {
@@ -215,7 +222,7 @@ export class HomePage {
     this.slides.slidePrev();
   }
   ionViewDidLoad() {
-    // this.chartfunc(0);
+    // this.chartfunc();
 
   }
 
@@ -228,9 +235,15 @@ export class HomePage {
         _base.userName = success.result.name
         _base.storage.set("username",_base.userName);
         localStorage.setItem('uid', success.result.uid);
+        _base.storage.set('uid', success.result.uid);
         _base.uid = success.result.uid
         if (success.result.imageId) {
-          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
+          _base.convertToDataURLviaCanvas(_base.profileImage, "image/jpeg").then(base64img=>{
+            console.log(base64img);
+            _base.base4img = base64img;
+             _base.storage.set('uimg',_base.base4img);
+          })
         }
 
         console.log(success.result)
@@ -241,10 +254,19 @@ export class HomePage {
 
       }
     }, function (err) {
+      _base.offline=true;
       _base.storage.get("username").then((name)=>{
         _base.userName=name;
         console.log(_base.userName);
         console.log(name);
+      });
+      _base.storage.get("uid").then((uid)=>{
+        _base.uid=uid;
+        console.log(_base.uid);
+      });
+      _base.storage.get("uimg").then((uimg)=>{
+        _base.base4img=uimg;
+        console.log(_base.base4img);
       });
     
       // console.log(_base.userName);
@@ -286,6 +308,7 @@ export class HomePage {
       console.log("dashboard data ---------->>>>>>" + success);
       console.log(success);
 
+      _base.storage.set('chartdata',success.result);
       _base.fashion = success.result.fashion;
       _base.buisness = success.result.buisness;
       _base.contact = success.result.contact;
@@ -296,9 +319,28 @@ export class HomePage {
       _base.groceries = success.result.groceries;
       _base.lost = success.result.lost;
       _base.totalcount = success.result.totalTap;
+      _base.storage.set("totalcount",success.result.totalTap)
       _base.chartfunc();
       loader.dismiss();
     }, function (err) {
+
+      _base.storage.get("chartdata").then((chartdata)=>{
+        // _base.totalcount=chartdata;
+        _base.fashion = chartdata.fashion;
+        _base.buisness = chartdata.buisness;
+        _base.contact = chartdata.contact;
+        _base.event = chartdata.event;
+        _base.general = chartdata.general;
+        _base.favourite = chartdata.favourite;
+        _base.sports = chartdata.sport;
+        _base.groceries = chartdata.groceries;
+        _base.lost = chartdata.lost;
+        _base.totalcount = chartdata.totalTap;
+        console.log(chartdata);
+        _base.chartfunc();
+      });
+      // _base.chartfunc();
+      loader.dismiss();
       console.log(err);
     })
   }
@@ -309,8 +351,13 @@ export class HomePage {
     this.loginsignupProvider.getTapPresentDate(this.userId).then(function (success: any) {
       console.log(success.result);
       _base.todaysTap = success.result.length;
+      _base.storage.set('todayscount',success.result.length)
 
     }, function (err) {
+      _base.storage.get("todayscount").then((tcount)=>{
+        _base.todaysTap=tcount;
+        console.log(_base.totalcount);
+      });
       console.log(err);
     })
   }
@@ -323,12 +370,17 @@ export class HomePage {
       // console.log(success.result.length);
       _base.tapItems = success.result;
       _base.allTapItems = success.result;
+      _base.storage.set('alltp',success.result.slice(0,10));
       if (success.result.length == 0) {
         _base.isblanck = true;
         _base.blankmsg = "There Is No Tap Yet";
       }
       console.log(_base.tapItems);
     }, function (err) {
+      _base.storage.get("alltp").then((tcount)=>{
+        _base.tapItems=tcount;
+        console.log(_base.tapItems);
+      });
       console.log(err);
     })
   }
@@ -386,7 +438,12 @@ export class HomePage {
       console.log(success.result.length);
       // _base.devices = success.result;
       _base.devicecount = success.result.length;
+      _base.storage.set('devices',success.result.length);
     }, function (err) {
+      _base.storage.get("devices").then((devices)=>{
+        _base.devicecount=devices;
+        console.log(_base.devicecount);
+      });
       console.log(err);
     })
   }
@@ -436,5 +493,24 @@ export class HomePage {
   slideChanged() {
     this.slideselected = (this.slideselected == 'home') ? "history" : "home";
   }
+
+  convertToDataURLviaCanvas(url, outputFormat){
+    return new Promise((resolve, reject) => {
+    let img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = () => {
+      let canvas = <HTMLCanvasElement> document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'),
+        dataURL;
+      canvas.height = img.height;
+      canvas.width = img.width;
+      ctx.drawImage(img, 0, 0);
+      dataURL = canvas.toDataURL(outputFormat);
+      resolve(dataURL);
+      canvas = null;
+    };
+    img.src = url;
+  });
+}
 
 }

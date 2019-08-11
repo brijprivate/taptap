@@ -61,7 +61,7 @@ export class MyApp {
     splashScreen.hide();
     this.arr = [];
     this.initializeApp();
-
+    this.checkNetworkStatus();
     // });
 
     this.deeplinks.route({
@@ -201,7 +201,7 @@ export class MyApp {
     this.toast
       .create({
         message: "No Internet Connection, Turn on data to access all features",
-        duration: 60000,
+        duration: 6000,
         position: "bottom",
         showCloseButton: true,
         closeButtonText: "Retry"

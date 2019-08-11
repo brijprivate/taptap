@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SharedserviceProvider } from './../../providers/sharedservice/sharedservice';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the TaptapPage page.
  *
@@ -40,7 +41,8 @@ export class TaptapPage {
     public loading: LoadingController,
     private toast: ToastController,
     public sharedservice: SharedserviceProvider,
-    public alert: AlertController, ) {
+    public alert: AlertController,
+    private storage: Storage, ) {
     this.userId = localStorage.getItem("userId");
 
   }
@@ -99,6 +101,7 @@ export class TaptapPage {
       // console.log(success.result.length);
 
       let lastcreateddate = "";
+      _base.storage.set("favtap",success.result.slice(0,10));
       _base.tapItems = success.result.map((item) => {
         let obj: any = {};
         let createddate = item.createdDate.split("T")[0]
@@ -119,6 +122,9 @@ export class TaptapPage {
         _base.isdata=false;
       }
     }, function (err) {
+      _base.storage.get("favtap").then((favta)=>{
+        _base.tapItems=favta;
+      })
       console.log(err);
     })
   }

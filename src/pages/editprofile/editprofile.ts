@@ -7,6 +7,8 @@ import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+import { Storage } from '@ionic/storage';
+
 declare var cordova: any;
 
 /**
@@ -48,7 +50,9 @@ export class EditprofilePage {
     public actionSheetCtrl: ActionSheetController,
     private DomSanitizer: DomSanitizer,
     public loginsignupProvider: LoginsignupProvider,
-    public alert: AlertController
+    public alert: AlertController,
+    private storage: Storage,
+
   ) {
 
     this.userId = localStorage.getItem("userId");
@@ -303,12 +307,17 @@ export class EditprofilePage {
     let _base = this;
     this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
       console.log(success);
+      _base.storage.set("prodata",success.result);
       _base.profiledata = success.result;
       if (success.result.imageId) {
         _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
       }
       _base.initEmail = success.result.email ? success.result.email : ''
     }, function (err) {
+      _base.storage.get("prodata").then((prodata)=>{
+        _base.profiledata=prodata;
+        console.log(_base.profiledata);
+      });
       console.log(err);
     })
   }
@@ -366,13 +375,7 @@ export class EditprofilePage {
       title: 'Data has been saved',
       // subTitle: 'Milage Saved',
       cssClass: 'mycss',
-      // buttons: [
-      //   {
-      //     text: 'OK',
-      //     handler: data => {
-      //     }
-      //   }
-      // ]
+     
     });
     alert.present();
     setTimeout(() => alert.dismiss(), 2000);

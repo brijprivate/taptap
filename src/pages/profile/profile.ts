@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { PairdevicePage } from '../pairdevice/pairdevice';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+import { Storage } from '@ionic/storage';
 declare var anychart;
 /**
  * Generated class for the ProfilePage page.
@@ -51,12 +52,15 @@ export class ProfilePage {
   totalBmilage = 0;
   showchart = true;
   type: any;
+  base4img: {};
+  offline:boolean=false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
     public loginsignupProvider: LoginsignupProvider,
     public loading: LoadingController,
-    public alert: AlertController, ) {
+    public alert: AlertController,
+    private storage: Storage ) {
     var time = new Date().toTimeString();
     console.log(time);
     this.userId = localStorage.getItem("userId");
@@ -68,6 +72,7 @@ export class ProfilePage {
   }
 
   ionViewDidEnter() {
+    this.offline=false;
     let _base = this;
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
@@ -139,6 +144,7 @@ export class ProfilePage {
     // });
   }
   ionViewDidLeave() {
+    this.offline=false;
     if (this.showchart) {
       this.chart.dispose();
     }
@@ -207,13 +213,14 @@ export class ProfilePage {
     this.nfctagProvider.getpairdevice(this.userId).then(function (success: any) {
       console.log("paired devices--------------?>>>>>>>>>");
       console.log(success.result);
-
+      
       _base.devices = success.result;
       var i = 0;
       for (i = 0; i < success.result.length; i++) {
         if (success.result[i].is_active) {
           _base.maindevice = success.result[i].device_title;
-          _base.type=success.result[i].type
+          _base.type=success.result[i].type;
+          _base.storage.set("devices",success.result[i].type);
           break;
         }
       }
@@ -221,7 +228,17 @@ export class ProfilePage {
       console.log(_base.maindevice);
       // _base.maindevice=_base.maindevice[_base.maindevice.length-1].device_title;
       _base.devicecount = success.result.length;
+      _base.storage.set("dcount",success.result.length);
+
     }, function (err) {
+      _base.storage.get("devices").then((devicess)=>{
+       _base.maindevice=devicess;
+       console.log(devicess)
+      });
+      _base.storage.get("dcount").then((dcount)=>{
+        _base.devicecount = dcount
+        console.log(dcount)
+       });
       console.log(err);
     })
   }
@@ -229,22 +246,33 @@ export class ProfilePage {
   //Get profile data...
   getprofiledata() {
     let _base = this;
-    // let loader = this.loading.create({
-    //   content:"Please wait..."
-    // });
-    // loader.present();
+  
     this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
       console.log(success);
-      // loader.dismiss();
       if (success) {
         _base.userName = success.result.name;
         _base.uid = success.result.uid;
+        _base.storage.set("prodata",success.result);
         if (success.result.imageId) {
-          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
+          _base.convertToDataURLviaCanvas(_base.profileImage, "image/jpeg").then(base64img=>{
+            console.log(base64img);
+            _base.base4img = base64img;
+             _base.storage.set('uimg',_base.base4img);
+          })
         }
       }
     }, function (err) {
       // loader.dismiss();
+      _base.offline=true;
+      _base.storage.get("prodata").then((profdata)=>{
+        _base.userName = profdata.name;
+        _base.uid = profdata.uid;
+      })
+      _base.storage.get("uimg").then((uimg)=>{
+        _base.base4img=uimg;
+        console.log(_base.base4img);
+      });
       console.log(err);
     })
   }
@@ -260,8 +288,13 @@ export class ProfilePage {
       console.log(success);
 
       _base.favourite = success.result.favourite;
+      _base.storage.set("fav",success.result.favourite);
       loader.dismiss();
     }, function (err) {
+      _base.storage.get("fav").then((favdata)=>{
+        _base.favourite = favdata;
+      })
+      loader.dismiss();
       console.log(err);
     })
   }
@@ -294,19 +327,18 @@ export class ProfilePage {
     this.nfctagProvider.getmilage(this.userId).then(function (success: any) {
       console.log(success);
       if (success.result.records.length != 0) {
-        // _base.tpmilage = success.total_personal;
-        // _base.tbmilage = success.total_business;
-        // if(_base.tpmilage || _base.tbmilage){
-        // _base.chartfunction();
         _base.totalPmilage = success.result.personal;
         _base.totalBmilage = success.result.business;
         _base.premilage = true;
-
-        // _base.callchart()
-        // }
+        _base.storage.set("milagedata",success.result);
       }
 
     }, function (err) {
+      _base.storage.get("milagedata").then((mdata)=>{
+        _base.totalPmilage = mdata.personal;
+        _base.totalBmilage = mdata.business;
+        _base.premilage = true;
+      })
       console.log(err);
     })
   }
@@ -343,8 +375,16 @@ export class ProfilePage {
         _base.tptime = success.total_personal;
         _base.tbtime = success.total_business;
         _base.pretime = true;
+        _base.storage.set("tdata",success);
       }
     }, function (err) {
+      _base.storage.get("tdata").then((tdata)=>{
+        _base.totalPtime = tdata.result.personal;
+        _base.totalBtime = tdata.result.business;
+        _base.tptime = tdata.total_personal;
+        _base.tbtime = tdata.total_business;
+        _base.pretime = true;
+      })
       console.log(err);
     })
   }
@@ -355,6 +395,7 @@ export class ProfilePage {
     let i = 0;
     this.nfctagProvider.getcount(this.userId).then(function (success: any) {
       console.log(success);
+      _base.storage.set("chdata",success);
       if (success) {
         _base.tbmilage = success.total_milage_business;
         _base.tpmilage = success.total_milage_personal;
@@ -369,10 +410,25 @@ export class ProfilePage {
           _base.chartfunction();
         }
         console.log(_base.showchart)
-
-
       }
     }, function (err) {
+      _base.storage.get("chdata").then((chdata)=>{
+        if (chdata) {
+          _base.tbmilage = chdata.total_milage_business;
+          _base.tpmilage = chdata.total_milage_personal;
+          _base.tptime = chdata.total_time_personal;
+          _base.tbtime = chdata.total_time_business;
+          if (_base.tbmilage == 0 && _base.tpmilage == 0 && _base.tptime == 0 && _base.tbtime == 0) {
+            _base.showchart = false;
+  
+          }
+          else {
+            _base.showchart = true;
+            _base.chartfunction();
+          }
+          console.log(_base.showchart)
+        }
+      })
       console.log(err);
     })
   }
@@ -431,4 +487,22 @@ export class ProfilePage {
     });
     alert.present();
   }
+  convertToDataURLviaCanvas(url, outputFormat){
+    return new Promise((resolve, reject) => {
+    let img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = () => {
+      let canvas = <HTMLCanvasElement> document.createElement('CANVAS'),
+        ctx = canvas.getContext('2d'),
+        dataURL;
+      canvas.height = img.height;
+      canvas.width = img.width;
+      ctx.drawImage(img, 0, 0);
+      dataURL = canvas.toDataURL(outputFormat);
+      resolve(dataURL);
+      canvas = null;
+    };
+    img.src = url;
+  });
+}
 }

@@ -39,6 +39,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 // import { Keyboard } from '@ionic-native/keyboard';
 import { IonicStorageModule } from '@ionic/storage';
+import { IonicImageLoader } from 'ionic-image-loader';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { IonicStorageModule } from '@ionic/storage';
       autoFocusAssist: false
     }),
     IonicStorageModule.forRoot(),
+    IonicImageLoader.forRoot(),
     HttpModule,
     HttpClientModule
   ],
