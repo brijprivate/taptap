@@ -255,11 +255,20 @@ export class ProfilePage {
         _base.storage.set("prodata",success.result);
         if (success.result.imageId) {
           _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
-          _base.convertToDataURLviaCanvas(_base.profileImage, "image/jpeg").then(base64img=>{
+          _base.convertToDataURLviaCanvas(_base.profileImage, "image/png").then(base64img=>{
             console.log(base64img);
             _base.base4img = base64img;
              _base.storage.set('uimg',_base.base4img);
           })
+        }
+        else{
+          _base.base4img = "assets/images/avatar.png";
+          _base.convertToDataURLviaCanvas(_base.base4img, "image/png").then(base64img=>{
+            console.log(base64img);
+            _base.base4img = base64img;
+             _base.storage.set('uimg',_base.base4img);
+          })
+          console.log("enterr else image =============")
         }
       }
     }, function (err) {

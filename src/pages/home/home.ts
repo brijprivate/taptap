@@ -239,17 +239,28 @@ export class HomePage {
         _base.uid = success.result.uid
         if (success.result.imageId) {
           _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
-          _base.convertToDataURLviaCanvas(_base.profileImage, "image/jpeg").then(base64img=>{
+          _base.convertToDataURLviaCanvas(_base.profileImage, "image/png").then(base64img=>{
             console.log(base64img);
             _base.base4img = base64img;
              _base.storage.set('uimg',_base.base4img);
           })
+        }else{
+          _base.base4img = "assets/images/avatar.png";
+          _base.convertToDataURLviaCanvas(_base.base4img, "image/png").then(base64img=>{
+            console.log(base64img);
+            _base.base4img = base64img;
+             _base.storage.set('uimg',_base.base4img);
+          })
+          console.log("enterr else image =============")
         }
 
         console.log(success.result)
 
         if (!success.result.phoneNumber) {
-          _base.navCtrl.push("SetphonePage")
+
+          setTimeout(function () {
+            _base.navCtrl.push("SetphonePage")
+          }, 2000)
         }
 
       }
@@ -276,6 +287,13 @@ export class HomePage {
     //   console.log(value);
     // });
     // console.log(_base.userName);
+  }
+
+  imageExists(url, callback) {
+    var img = new Image();
+    img.onload = function () { callback(true); };
+    img.onerror = function () { callback(false); };
+    img.src = url;
   }
 
   //Tap on product....
