@@ -38,6 +38,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 // import { Keyboard } from '@ionic-native/keyboard';
+import { IonicStorageModule } from '@ionic/storage';
+import { IonicImageLoader } from 'ionic-image-loader';
 
 
 @NgModule({
@@ -52,10 +54,12 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
     BrowserModule,
     IonicModule.forRoot(MyApp,
       {
-        tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
-        scrollAssist: true,
-        autoFocusAssist: false
-      }),
+      tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
+      scrollAssist: true,
+      autoFocusAssist: false
+    }),
+    IonicStorageModule.forRoot(),
+    IonicImageLoader.forRoot(),
     HttpModule,
     HttpClientModule
   ],

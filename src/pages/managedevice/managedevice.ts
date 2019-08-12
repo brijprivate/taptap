@@ -70,6 +70,7 @@ export class ManagedevicePage {
     _base.devices = success.result;
 
   },function(err){
+    loader.dismiss();
     console.log(err);
   })
 }

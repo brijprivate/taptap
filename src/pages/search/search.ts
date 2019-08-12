@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SharedserviceProvider } from './../../providers/sharedservice/sharedservice';
+import { Storage } from '@ionic/storage';
 // import { Keyboard } from '@ionic-native/keyboard';
 
 /**
@@ -42,7 +43,8 @@ public page=''
     private toast: ToastController,
     public sharedservice: SharedserviceProvider,
     // private keyboard: Keyboard,
-    public alert: AlertController, ) {
+    public alert: AlertController,
+    private storage: Storage, ) {
     this.userId = localStorage.getItem("userId");
 
    this.page='category';
@@ -112,6 +114,7 @@ public page=''
       // console.log(success.result.length);
 
       let lastcreateddate = "";
+      _base.storage.set("favtap",success.result.slice(0,10));
       _base.tapItems = success.result.map((item) => {
         let obj: any = {};
         let createddate = item.createdDate.split("T")[0]
@@ -132,6 +135,9 @@ public page=''
         _base.isdata = false;
       }
     }, function (err) {
+      _base.storage.get("favtap").then((favta)=>{
+        _base.tapItems=favta;
+      })
       console.log(err);
     })
   }

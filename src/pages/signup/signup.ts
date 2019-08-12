@@ -193,7 +193,9 @@ export class SignupPage {
         let card = data
 
         if (!card.phoneNumber) {
-          _base.type = 'other'
+          _base.type = 'other';
+          modal.dismiss();
+          alert("no sim card");
         }
 
         if (_base.countryCode == 'in') {
