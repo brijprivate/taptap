@@ -291,6 +291,10 @@ export class ForgotpasswordPage {
           _base.contact = card.phoneNumber ? card.phoneNumber.replace("+27", "") : null;
           _base.country_code = "27";
         }
+        else if (_base.countryCode == 'nl') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+31", "") : null;
+          _base.country_code = "31";
+        }
       }
     })
   }
