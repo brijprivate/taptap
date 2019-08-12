@@ -190,7 +190,18 @@ export class LoginPage {
       if (length != 0) {
         let card = data
         if (!card.phoneNumber) {
-          _base.type = 'other'
+          _base.type = 'other';
+          modal.dismiss();
+          // alert("no sim card");
+          let showtoast = this.toast.create({
+            message: "The phone number can not be assicible. Please enter the phone number manually",
+            duration: 5000,
+            position: "bottom",
+            showCloseButton: true,
+            closeButtonText: "Ok"
+          })
+          showtoast.present();
+
         }
 
         if (_base.countryCode == 'in') {
