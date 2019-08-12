@@ -231,6 +231,54 @@ export class ForgotpasswordPage {
         } else if (_base.countryCode == 'gb') {
           _base.contact = card.phoneNumber ? card.phoneNumber.replace("+44", "") : null
           _base.country_code = "44"
+        } else if (_base.countryCode == 'fr') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+33", "") : null;
+          _base.country_code = "33";
+        } else if (_base.countryCode == 'be') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+32", "") : null;
+          _base.country_code = "32";
+        } else if (_base.countryCode == 'fr') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+44", "") : null;
+          _base.country_code = "44";
+        } else if (_base.countryCode == 'es') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+34", "") : null;
+          _base.country_code = "34";
+        } else if (_base.countryCode == 'it') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+39", "") : null;
+          _base.country_code = "39";
+        }
+        else if (_base.countryCode == 'de') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+49", "") : null;
+          _base.country_code = "49";
+        }
+        else if (_base.countryCode == 'ch') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+41", "") : null;
+          _base.country_code = "41";
+        }
+        else if (_base.countryCode == 'se') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+46", "") : null;
+          _base.country_code = "46";
+        } else if (_base.countryCode == 'us') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+1", "") : null;
+          _base.country_code = "1";
+        } else if (_base.countryCode == 'ae') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+971", "") : null;
+          _base.country_code = "971";
+        } else if (_base.countryCode == 'tn') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+216", "") : null;
+          _base.country_code = "216";
+        } else if (_base.countryCode == 'om') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+968", "") : null;
+          _base.country_code = "968";
+        } else if (_base.countryCode == 'gh') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+233", "") : null;
+          _base.country_code = "233";
+        } else if (_base.countryCode == 'ng') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+234", "") : null;
+          _base.country_code = "234";
+        } else if (_base.countryCode == 'za') {
+          _base.contact = card.phoneNumber ? card.phoneNumber.replace("+27", "") : null;
+          _base.country_code = "27";
         }
       }
     })
