@@ -45,7 +45,7 @@ export class SimcardsPage {
             _base.cards = sim.cards.filter(function (sim) {
               console.log('outside')
               console.log('phone number', sim.phoneNumber)
-              if (sim.phoneNumber != null || sim.phoneNumber != '') {
+              if (sim.phoneNumber != null || sim.phoneNumber != '' || sim.phoneNumber != undefined) {
                 console.log('inside')
                 return sim
               }
