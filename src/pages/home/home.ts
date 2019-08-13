@@ -11,7 +11,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Storage } from '@ionic/storage';
 import { ImageLoader } from 'ionic-image-loader';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
-
+declare var Morris;
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
 @Component({
@@ -113,6 +113,7 @@ export class HomePage {
   }
   ionViewWillLeave() {
     this.chart.dispose();
+   
   }
 
 
@@ -125,6 +126,7 @@ export class HomePage {
 
 
   ionViewDidEnter() {
+   
     // this.chart.dispose();
     this.offline = false;
     console.log("view enter--------------->>>>>>>>>>>");
@@ -143,7 +145,24 @@ export class HomePage {
   }
 
   chartfunc() {
+
+
+    // setTimeout(() => {
+
+    //   Morris.Donut({
+    //     element: 'donut-example',
+    //     resize:true,
+    //     formatter:function (y, data) {console.log(y,data); return '$' + y } ,
+    //     data: [
+    //       {label: "Download Sales", value: 12},
+    //       {label: "In-Store Sales", value: 30},
+    //       {label: "Mail-Order Sales", value: 20}
+    //     ]
+    //   });
+    // }, 3000);
+
     let _base = this;
+
     anychart.onDocumentReady(function () {
 
       if (_base.chart) {
@@ -196,6 +215,7 @@ export class HomePage {
       _base.chart.draw();
 
     });
+
   }
   ionViewDidLeave() {
     this.chart.dispose();
