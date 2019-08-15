@@ -24,7 +24,7 @@ export class LoginPage {
   public contact: any;
   public password: any;
   public country_code: any = "91";
-  public type: any = ""
+  public type: any = "other"
   userName: any;
   public fb_id: any;
   public isnetwork = "Online";
@@ -264,6 +264,9 @@ export class LoginPage {
           _base.country_code = "31";
         }
 
+      } else {
+        _base.type = 'other';
+        modal.dismiss();
       }
     })
   }
