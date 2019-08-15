@@ -5,7 +5,9 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { ModalController } from 'ionic-angular';
+
 declare var carrier;
+
 /**
  * Generated class for the SignupPage page.
  *
@@ -23,7 +25,7 @@ export class SignupPage {
   public name: any;
   public contact: any;
   public password: any;
-  public type: any = ""
+  public type: any = "other"
   country_code: any = ""
   public confirmpassword: any;
   public isnetwork = "Online";
@@ -267,6 +269,9 @@ export class SignupPage {
           _base.country_code = "31";
         }
 
+      } else {
+        _base.type = 'other';
+        modal.dismiss();
       }
     })
   }

@@ -4,7 +4,7 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { ModalController } from 'ionic-angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
-declare var SMSReceive: any;
+// declare var SMSReceive: any;
 declare var carrier;
 /**
  * Generated class for the ForgotpasswordPage page.
@@ -25,7 +25,7 @@ export class ForgotpasswordPage {
   public otp: any
   public password: String = ""
   public confirmpassword: String = ""
-  public type: any = ""
+  public type: any = "other"
   public country_code: any = "91"
   public contact_type: any = ""
   countryCode: any;
@@ -295,6 +295,9 @@ export class ForgotpasswordPage {
           _base.contact = card.phoneNumber ? card.phoneNumber.replace("+31", "") : null;
           _base.country_code = "31";
         }
+      } else {
+        _base.type = 'other';
+        modal.dismiss();
       }
     })
   }
@@ -302,34 +305,34 @@ export class ForgotpasswordPage {
 
   start() {
     let _base = this
-    SMSReceive.startWatch(
-      () => {
-        console.log('watch started');
-        document.addEventListener('onSMSArrive', (e: any) => {
-          console.log('onSMSArrive()');
-          var IncomingSMS = e.data;
-          console.log(JSON.stringify(IncomingSMS));
+    // SMSReceive.startWatch(
+    //   () => {
+    //     console.log('watch started');
+    //     document.addEventListener('onSMSArrive', (e: any) => {
+    //       console.log('onSMSArrive()');
+    //       var IncomingSMS = e.data;
+    //       console.log(JSON.stringify(IncomingSMS));
 
-          var string = IncomingSMS.body;
-          var numbers = string.match(/\d+/g).map(Number);
-          let otp = numbers[0]
-          console.log(otp);
-          _base.stop();
-          (<HTMLInputElement>document.getElementById("partitioned")).value = otp;
-          _base.otp = otp;
-          (<HTMLButtonElement>document.getElementById("verify")).click();
+    //       var string = IncomingSMS.body;
+    //       var numbers = string.match(/\d+/g).map(Number);
+    //       let otp = numbers[0]
+    //       console.log(otp);
+    //       _base.stop();
+    //       (<HTMLInputElement>document.getElementById("partitioned")).value = otp;
+    //       _base.otp = otp;
+    //       (<HTMLButtonElement>document.getElementById("verify")).click();
 
-        });
-      },
-      () => { console.log('watch start failed') }
-    )
+    //     });
+    //   },
+    //   () => { console.log('watch start failed') }
+    // )
   }
 
   stop() {
-    SMSReceive.stopWatch(
-      () => { console.log('watch stopped') },
-      () => { console.log('watch stop failed') }
-    )
+    // SMSReceive.stopWatch(
+    //   () => { console.log('watch stopped') },
+    //   () => { console.log('watch stop failed') }
+    // )
   }
 
   getCountryCode() {
