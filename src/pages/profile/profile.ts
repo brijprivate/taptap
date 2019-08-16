@@ -235,7 +235,7 @@ export class ProfilePage {
         if (success.result[i].is_active) {
           _base.maindevice = success.result[i].device_title;
           _base.type=success.result[i].type;
-          _base.storage.set("devices",success.result[i].type);
+          _base.storage.set("devices",_base.maindevice);
           break;
         }
       }

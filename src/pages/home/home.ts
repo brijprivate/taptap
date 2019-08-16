@@ -145,8 +145,7 @@ export class HomePage {
   }
 
   chartfunc() {
-
-
+    let _base = this;
     setTimeout(() => {
      
       Morris.Donut({
@@ -168,7 +167,7 @@ export class HomePage {
       });
     }, 1000);
 
-    let _base = this;
+   
 
     // anychart.onDocumentReady(function () {
 
@@ -366,7 +365,7 @@ export class HomePage {
         console.log(chartdata);
         _base.chartfunc();
       });
-      _base.chartfunc();
+      // _base.chartfunc();
       loader.dismiss();
       console.log(err);
     })
