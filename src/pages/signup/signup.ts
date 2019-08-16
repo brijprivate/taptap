@@ -134,7 +134,7 @@ export class SignupPage {
         alert("user already registered with that Phone Number");
         return;
       }
-      alert(success.user.code)
+      // alert(success.user.code)
       _base.navCtrl.setRoot('VerifyotpPage', signupdata);
     }, function (err) {
       loader.dismiss();
