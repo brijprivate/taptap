@@ -340,6 +340,49 @@ export class ForgotpasswordPage {
     carrier.getCountryCode(function (success) {
       console.log("Success", success)
       _base.countryCode = success
+
+      if (_base.countryCode == 'in') {
+        _base.country_code = "91"
+      } else if (_base.countryCode == 'gb') {
+        _base.country_code = "44"
+      } else if (_base.countryCode == 'fr') {
+        _base.country_code = "33";
+      } else if (_base.countryCode == 'be') {
+        _base.country_code = "32";
+      } else if (_base.countryCode == 'fr') {
+        _base.country_code = "44";
+      } else if (_base.countryCode == 'es') {
+        _base.country_code = "34";
+      } else if (_base.countryCode == 'it') {
+        _base.country_code = "39";
+      }
+      else if (_base.countryCode == 'de') {
+        _base.country_code = "49";
+      }
+      else if (_base.countryCode == 'ch') {
+        _base.country_code = "41";
+      }
+      else if (_base.countryCode == 'se') {
+        _base.country_code = "46";
+      } else if (_base.countryCode == 'us') {
+        _base.country_code = "1";
+      } else if (_base.countryCode == 'ae') {
+        _base.country_code = "971";
+      } else if (_base.countryCode == 'tn') {
+        _base.country_code = "216";
+      } else if (_base.countryCode == 'om') {
+        _base.country_code = "968";
+      } else if (_base.countryCode == 'gh') {
+        _base.country_code = "233";
+      } else if (_base.countryCode == 'ng') {
+        _base.country_code = "234";
+      } else if (_base.countryCode == 'za') {
+        _base.country_code = "27";
+      }
+      else if (_base.countryCode == 'nl') {
+        _base.country_code = "31";
+      }
+
     }, function (error) {
       console.log("Error", error)
     });
