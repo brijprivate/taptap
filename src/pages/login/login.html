@@ -111,7 +111,7 @@
       <ion-item (tap)="openSimCards()">
         <ion-label floating>Phone Number / Email</ion-label>
         <!-- <ion-icon name="phone-portrait" item-left></ion-icon> -->
-        <span item-left class="countrycode">+91</span>
+        <span item-left class="countrycode">+{{country_code}}</span>
         <ion-input type="text" [(ngModel)]="contact" disabled="{{type != 'other'}}">
         </ion-input>
 
