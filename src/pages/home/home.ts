@@ -112,7 +112,7 @@ export class HomePage {
 
   }
   ionViewWillLeave() {
-    this.chart.dispose();
+    // this.chart.dispose();
    
   }
 
@@ -145,80 +145,68 @@ export class HomePage {
   }
 
   chartfunc() {
-
-
-    // setTimeout(() => {
-
-    //   Morris.Donut({
-    //     element: 'donut-example',
-    //     resize:true,
-    //     formatter:function (y, data) {console.log(y,data); return '$' + y } ,
-    //     data: [
-    //       {label: "Download Sales", value: 12},
-    //       {label: "In-Store Sales", value: 30},
-    //       {label: "Mail-Order Sales", value: 20}
-    //     ]
-    //   });
-    // }, 3000);
-
     let _base = this;
+    setTimeout(() => {
+     
+      Morris.Donut({
+        element: 'donut-example',
+        resize:true,
+        formatter:function (y, data) {console.log(y,data); return '' + y } ,
+        data: [
+          {label: "Fashion", value: _base.fashion},
+          {label: "General", value: _base.general},
+          {label: "Event", value: _base.event},
 
-    anychart.onDocumentReady(function () {
+          {label: "Contacts", value: _base.contact},
+          {label: "Business", value: _base.buisness},
+          {label: "Sports", value: _base.sports},
+          {label: "Groceries", value: _base.groceries},
+          {label: "Lost", value: _base.lost},
+        
+        ]
+      });
+    }, 1000);
 
-      if (_base.chart) {
-        _base.chart.dispose()
-      }
+   
 
+    // anychart.onDocumentReady(function () {
 
-      _base.chart = anychart.pie([
-        { x: "Fashion", value: _base.fashion },
-        { x: "General", value: _base.general },
-        { x: "Event", value: _base.event },
-        { x: "Contacts", value: _base.contact },
-        { x: "Business", value: _base.buisness },
-        { x: "Sports", value: _base.sports },
-        { x: "Groceries", value: _base.groceries },
-        { x: "Lost", value: _base.lost }       
-      ]);
-
-
-
-      var label = anychart.standalones.label();
+    //   if (_base.chart) {
+    //     _base.chart.dispose()
+    //   }
 
 
-      // if(_base.isblanck==true){
-      //   _base.chart.innerRadius("75%");
-      //   label.text("No Tap Data");
+    //   _base.chart = anychart.pie([
+    //     { x: "Fashion", value: _base.fashion },
+    //     { x: "General", value: _base.general },
+    //     { x: "Event", value: _base.event },
+    //     { x: "Contacts", value: _base.contact },
+    //     { x: "Business", value: _base.buisness },
+    //     { x: "Sports", value: _base.sports },
+    //     { x: "Groceries", value: _base.groceries },
+    //     { x: "Lost", value: _base.lost }       
+    //   ]);
 
+    //   var label = anychart.standalones.label();
+    //   _base.chart.innerRadius("25%");
+    //   label.text("TapTap");
+    //   label.width("100%");
+    //   label.height("100%");
+    //   label.adjustFontSize(true);
+    //   label.fontColor("#60727b");
+    //   label.hAlign("center");
+    //   label.vAlign("middle");
+    //   _base.chart.legend(false);
 
-      // }
-      // else{
-      //   _base.chart.innerRadius("25%");
-      //   label.text("TapTap");
+    //   _base.chart.center().content(label);
+    //   _base.chart.container("container");
+    //   _base.chart.draw();
 
-      // }
-      _base.chart.innerRadius("25%");
-      label.text("TapTap");
-      label.width("100%");
-      label.height("100%");
-      label.adjustFontSize(true);
-      label.fontColor("#60727b");
-      label.hAlign("center");
-      label.vAlign("middle");
-      _base.chart.legend(false);
-
-      // set the label as the center content
-      _base.chart.center().content(label);
-
-      // chart.title("Donut Chart: Label in the center");
-      _base.chart.container("container");
-      _base.chart.draw();
-
-    });
+    // });
 
   }
   ionViewDidLeave() {
-    this.chart.dispose();
+    // this.chart.dispose();
     this.offline=false;
     // this.chartfunc(1);
   }
@@ -348,7 +336,7 @@ export class HomePage {
 
       _base.storage.set('chartdata',success.result);
       _base.fashion = success.result.fashion;
-      _base.buisness = success.result.buisness;
+      _base.buisness = success.result.business;
       _base.contact = success.result.contact;
       _base.event = success.result.event;
       _base.general = success.result.general;

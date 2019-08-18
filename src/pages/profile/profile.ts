@@ -6,6 +6,7 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { Storage } from '@ionic/storage';
 declare var anychart;
+declare var Morris;
 /**
  * Generated class for the ProfilePage page.
  *
@@ -97,9 +98,26 @@ export class ProfilePage {
 
   }
   chartfunction() {
+    // let _base = this;
+    // setTimeout(() => {
+     
+    //   Morris.Donut({
+    //     element: 'donut-example',
+    //     resize:true,
+    //     formatter:function (y, data) {console.log(y,data); return '' + y } ,
+    //     data: [
+    //       {label: "Business_Milage", value: _base.tbmilage},
+    //       {label: "Personal_Milage ", value: _base.tpmilage},
+    //       {label: "Business_Time", value: _base.tbtime},
+
+    //       {label: "Personal_Time", value: _base.tptime },
+        
+    //     ]
+    //   });
+    // }, 1000);
+
     console.log('in the chart')
     let _base = this;
-    // anychart.onDocumentReady(function () {
 
     if (_base.chart) {
       _base.chart.dispose()
@@ -110,10 +128,7 @@ export class ProfilePage {
       { x: "Personal_Milage ", value: _base.tpmilage },
       { x: "Business_Time", value: _base.tbtime },
       { x: "Personal_Time", value: _base.tptime },
-      // { x: "Business_Milage", value:0},
-      // { x: "Personal_Milage ", value: 0},
-      // { x: "Business_Time", value: 0 },
-      // { x: "Personal_Time", value:0 },
+     
     ]);
 
     _base.chart.innerRadius("25%");
@@ -220,7 +235,7 @@ export class ProfilePage {
         if (success.result[i].is_active) {
           _base.maindevice = success.result[i].device_title;
           _base.type=success.result[i].type;
-          _base.storage.set("devices",success.result[i].type);
+          _base.storage.set("devices",_base.maindevice);
           break;
         }
       }
