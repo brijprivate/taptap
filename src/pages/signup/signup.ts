@@ -26,7 +26,7 @@ export class SignupPage {
   public contact: any;
   public password: any;
   public type: any = "other"
-  country_code: any = "+91"
+  country_code: any = ""
   public confirmpassword: any;
   public isnetwork = "Online";
   userName: any;

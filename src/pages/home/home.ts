@@ -58,7 +58,7 @@ export class HomePage {
   public tapItems: any;
   public allTapItems: any;
   public str: String = "";
-  public usrnm:any;
+  public usrnm: any;
 
   lineChart: any;
 
@@ -75,10 +75,10 @@ export class HomePage {
   public tapData: any;
   devicecount: any;
   profileImage: string;
-  base4img:any;
+  base4img: any;
   keyboards: boolean = false;
   slideselected: string;
-  offline:boolean=false;
+  offline: boolean = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -113,7 +113,7 @@ export class HomePage {
   }
   ionViewWillLeave() {
     // this.chart.dispose();
-   
+
   }
 
 
@@ -126,7 +126,7 @@ export class HomePage {
 
 
   ionViewDidEnter() {
-   
+
     // this.chart.dispose();
     this.offline = false;
     console.log("view enter--------------->>>>>>>>>>>");
@@ -147,27 +147,29 @@ export class HomePage {
   chartfunc() {
     let _base = this;
     setTimeout(() => {
-     
+
+      (<HTMLElement>document.getElementById('donut-example')).innerHTML = "";
+
       Morris.Donut({
         element: 'donut-example',
-        resize:true,
-        formatter:function (y, data) {console.log(y,data); return '' + y } ,
+        resize: true,
+        formatter: function (y, data) { console.log(y, data); return '' + y },
         data: [
-          {label: "Fashion", value: _base.fashion},
-          {label: "General", value: _base.general},
-          {label: "Event", value: _base.event},
+          { label: "Fashion", value: _base.fashion },
+          { label: "General", value: _base.general },
+          { label: "Event", value: _base.event },
 
-          {label: "Contacts", value: _base.contact},
-          {label: "Business", value: _base.buisness},
-          {label: "Sports", value: _base.sports},
-          {label: "Groceries", value: _base.groceries},
-          {label: "Lost", value: _base.lost},
-        
+          { label: "Contacts", value: _base.contact },
+          { label: "Business", value: _base.buisness },
+          { label: "Sports", value: _base.sports },
+          { label: "Groceries", value: _base.groceries },
+          { label: "Lost", value: _base.lost },
+
         ]
       });
     }, 1000);
 
-   
+
 
     // anychart.onDocumentReady(function () {
 
@@ -207,7 +209,7 @@ export class HomePage {
   }
   ionViewDidLeave() {
     // this.chart.dispose();
-    this.offline=false;
+    this.offline = false;
     // this.chartfunc(1);
   }
   selectedTab(index) {
@@ -241,23 +243,23 @@ export class HomePage {
       console.log(success);
       if (success) {
         _base.userName = success.result.name
-        _base.storage.set("username",_base.userName);
+        _base.storage.set("username", _base.userName);
         localStorage.setItem('uid', success.result.uid);
         _base.storage.set('uid', success.result.uid);
         _base.uid = success.result.uid
         if (success.result.imageId) {
           _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
-          _base.convertToDataURLviaCanvas(_base.profileImage, "image/png").then(base64img=>{
+          _base.convertToDataURLviaCanvas(_base.profileImage, "image/png").then(base64img => {
             console.log(base64img);
             _base.base4img = base64img;
-             _base.storage.set('uimg',_base.base4img);
+            _base.storage.set('uimg', _base.base4img);
           })
-        }else{
+        } else {
           _base.base4img = "assets/images/avatar.png";
-          _base.convertToDataURLviaCanvas(_base.base4img, "image/png").then(base64img=>{
+          _base.convertToDataURLviaCanvas(_base.base4img, "image/png").then(base64img => {
             console.log(base64img);
             _base.base4img = base64img;
-             _base.storage.set('uimg',_base.base4img);
+            _base.storage.set('uimg', _base.base4img);
           })
           console.log("enterr else image =============")
         }
@@ -273,21 +275,21 @@ export class HomePage {
 
       }
     }, function (err) {
-      _base.offline=true;
-      _base.storage.get("username").then((name)=>{
-        _base.userName=name;
+      _base.offline = true;
+      _base.storage.get("username").then((name) => {
+        _base.userName = name;
         console.log(_base.userName);
         console.log(name);
       });
-      _base.storage.get("uid").then((uid)=>{
-        _base.uid=uid;
+      _base.storage.get("uid").then((uid) => {
+        _base.uid = uid;
         console.log(_base.uid);
       });
-      _base.storage.get("uimg").then((uimg)=>{
-        _base.base4img=uimg;
+      _base.storage.get("uimg").then((uimg) => {
+        _base.base4img = uimg;
         console.log(_base.base4img);
       });
-    
+
       // console.log(_base.userName);
       console.log(err);
     })
@@ -334,7 +336,7 @@ export class HomePage {
       console.log("dashboard data ---------->>>>>>" + success);
       console.log(success);
 
-      _base.storage.set('chartdata',success.result);
+      _base.storage.set('chartdata', success.result);
       _base.fashion = success.result.fashion;
       _base.buisness = success.result.business;
       _base.contact = success.result.contact;
@@ -345,15 +347,16 @@ export class HomePage {
       _base.groceries = success.result.groceries;
       _base.lost = success.result.lost;
       _base.totalcount = success.result.totalTap;
-      _base.storage.set("totalcount",success.result.totalTap)
+      _base.storage.set("totalcount", success.result.totalTap)
       _base.chartfunc();
       loader.dismiss();
     }, function (err) {
 
-      _base.storage.get("chartdata").then((chartdata)=>{
+      _base.storage.get("chartdata").then((chartdata) => {
         // _base.totalcount=chartdata;
+        console.log(chartdata)
         _base.fashion = chartdata.fashion;
-        _base.buisness = chartdata.buisness;
+        _base.buisness = chartdata.business;
         _base.contact = chartdata.contact;
         _base.event = chartdata.event;
         _base.general = chartdata.general;
@@ -377,11 +380,11 @@ export class HomePage {
     this.loginsignupProvider.getTapPresentDate(this.userId).then(function (success: any) {
       console.log(success.result);
       _base.todaysTap = success.result.length;
-      _base.storage.set('todayscount',success.result.length)
+      _base.storage.set('todayscount', success.result.length)
 
     }, function (err) {
-      _base.storage.get("todayscount").then((tcount)=>{
-        _base.todaysTap=tcount;
+      _base.storage.get("todayscount").then((tcount) => {
+        _base.todaysTap = tcount;
         console.log(_base.totalcount);
       });
       console.log(err);
@@ -396,15 +399,15 @@ export class HomePage {
       // console.log(success.result.length);
       _base.tapItems = success.result;
       _base.allTapItems = success.result;
-      _base.storage.set('alltp',success.result.slice(0,10));
+      _base.storage.set('alltp', success.result.slice(0, 10));
       if (success.result.length == 0) {
         _base.isblanck = true;
         _base.blankmsg = "There Is No Tap Yet";
       }
       console.log(_base.tapItems);
     }, function (err) {
-      _base.storage.get("alltp").then((tcount)=>{
-        _base.tapItems=tcount;
+      _base.storage.get("alltp").then((tcount) => {
+        _base.tapItems = tcount;
         console.log(_base.tapItems);
       });
       console.log(err);
@@ -464,10 +467,10 @@ export class HomePage {
       console.log(success.result.length);
       // _base.devices = success.result;
       _base.devicecount = success.result.length;
-      _base.storage.set('devices',success.result.length);
+      _base.storage.set('devices', success.result.length);
     }, function (err) {
-      _base.storage.get("devices").then((devices)=>{
-        _base.devicecount=devices;
+      _base.storage.get("devices").then((devices) => {
+        _base.devicecount = devices;
         console.log(_base.devicecount);
       });
       console.log(err);
@@ -520,23 +523,23 @@ export class HomePage {
     this.slideselected = (this.slideselected == 'home') ? "history" : "home";
   }
 
-  convertToDataURLviaCanvas(url, outputFormat){
+  convertToDataURLviaCanvas(url, outputFormat) {
     return new Promise((resolve, reject) => {
-    let img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = () => {
-      let canvas = <HTMLCanvasElement> document.createElement('CANVAS'),
-        ctx = canvas.getContext('2d'),
-        dataURL;
-      canvas.height = img.height;
-      canvas.width = img.width;
-      ctx.drawImage(img, 0, 0);
-      dataURL = canvas.toDataURL(outputFormat);
-      resolve(dataURL);
-      canvas = null;
-    };
-    img.src = url;
-  });
-}
+      let img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = () => {
+        let canvas = <HTMLCanvasElement>document.createElement('CANVAS'),
+          ctx = canvas.getContext('2d'),
+          dataURL;
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        resolve(dataURL);
+        canvas = null;
+      };
+      img.src = url;
+    });
+  }
 
 }

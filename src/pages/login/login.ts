@@ -23,7 +23,7 @@ export class LoginPage {
 
   public contact: any;
   public password: any;
-  public country_code: any = "91";
+  public country_code: any = "";
   public type: any = "other"
   userName: any;
   public fb_id: any;
