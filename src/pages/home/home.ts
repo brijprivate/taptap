@@ -156,18 +156,18 @@ export class HomePage {
         formatter: function (y, data) { console.log(y, data); return '' + y },
         colors:["#bd86b6","#8769d7","#ef95c8","#80a09d","#8baeec","#d98136","#DA4567","#EC407A"],
         data: [
-          // { label: "Fashion", value: _base.fashion , labelColor:"#bd86b6"},
-          // { label: "General", value: _base.general, labelColor:"#8769d7"},
-          // { label: "Event", value: _base.event ,labelColor:"#ef95c8"},
+          { label: "Fashion", value: _base.fashion},
+          { label: "General", value: _base.general},
+          { label: "Event", value: _base.event },
 
-          // { label: "Contacts", value: _base.contact, labelColor:"#80a09d"},
-          // { label: "Business", value: _base.buisness ,labelColor:"#8baeec"},
-          // { label: "Sports", value: _base.sports ,labelColor:"#d98136"},
-          // { label: "Groceries", value: _base.groceries, labelColor:"#DA4567"},
-          // { label: "Lost", value: _base.lost ,labelColor:"#EC407A"},
-          { label: "Fashion", value: 33, labelColor:"#bd86b6"},
-          { label: "General", value: 33, labelColor:"#8769d7"},
-          { label: "Event", value: 33 ,labelColor:"#ef95c8"},
+          { label: "Contacts", value: _base.contact},
+          { label: "Business", value: _base.buisness },
+          { label: "Sports", value: _base.sports},
+          { label: "Groceries", value: _base.groceries},d
+          { label: "Lost", value: _base.lost},
+          // { label: "Fashion", value: 33, labelColor:"#bd86b6"},
+          // { label: "General", value: 33, labelColor:"#8769d7"},
+          // { label: "Event", value: 33 ,labelColor:"#ef95c8"},
         ]
       });
     }, 1000);
