@@ -163,7 +163,7 @@ export class HomePage {
           { label: "Contacts", value: _base.contact},
           { label: "Business", value: _base.buisness },
           { label: "Sports", value: _base.sports},
-          { label: "Groceries", value: _base.groceries},d
+          { label: "Groceries", value: _base.groceries},
           { label: "Lost", value: _base.lost},
           // { label: "Fashion", value: 33, labelColor:"#bd86b6"},
           // { label: "General", value: 33, labelColor:"#8769d7"},
