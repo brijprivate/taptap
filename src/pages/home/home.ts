@@ -126,7 +126,7 @@ export class HomePage {
 
 
   ionViewDidEnter() {
-    this.chartfunc()
+    // this.chartfunc()
     // this.chart.dispose();
     this.offline = false;
     console.log("view enter--------------->>>>>>>>>>>");
@@ -155,18 +155,16 @@ export class HomePage {
         resize: true,
         formatter: function (y, data) { console.log(y, data); return '' + y },
         data: [
-          // { label: "Fashion", value: _base.fashion , labelColor:"#bd86b6"},
-          // { label: "General", value: _base.general, labelColor:"#8769d7"},
-          // { label: "Event", value: _base.event ,labelColor:"#ef95c8"},
+          { label: "Fashion", value: _base.fashion , labelColor:"#bd86b6"},
+          { label: "General", value: _base.general, labelColor:"#8769d7"},
+          { label: "Event", value: _base.event ,labelColor:"#ef95c8"},
 
-          // { label: "Contacts", value: _base.contact, labelColor:"#80a09d"},
-          // { label: "Business", value: _base.buisness ,labelColor:"#8baeec"},
-          // { label: "Sports", value: _base.sports ,labelColor:"#d98136"},
-          // { label: "Groceries", value: _base.groceries, labelColor:"#DA4567"},
-          // { label: "Lost", value: _base.lost ,labelColor:"#EC407A"},
-          { label: "Sports", value: 10 ,labelColor:"#d98136"},
-          { label: "Groceries", value: 20, labelColor:"#DA4567"},
-          { label: "Lost", value: 30 ,labelColor:"#EC407A"},
+          { label: "Contacts", value: _base.contact, labelColor:"#80a09d"},
+          { label: "Business", value: _base.buisness ,labelColor:"#8baeec"},
+          { label: "Sports", value: _base.sports ,labelColor:"#d98136"},
+          { label: "Groceries", value: _base.groceries, labelColor:"#DA4567"},
+          { label: "Lost", value: _base.lost ,labelColor:"#EC407A"},
+         
 
         ]
       });
