@@ -146,6 +146,52 @@ export class HomePage {
 
   chartfunc() {
     let _base = this;
+
+    let data = [];
+    let colors = []
+    console.log(_base.fashion, typeof _base.fashion)
+    if (_base.fashion != null && _base.fashion != 0) {
+      data.push({ label: "Fashion", value: _base.fashion })
+      colors.push("#bd86b6")
+    }
+
+    if (_base.general != null && _base.general != 0) {
+      data.push({ label: "General", value: _base.general })
+      colors.push("#8769d7")
+    }
+
+    if (_base.event != null && _base.event != 0) {
+      data.push({ label: "Event", value: _base.event })
+      colors.push("#ef95c8")
+    }
+
+    if (_base.contact != null && _base.contact != 0) {
+      data.push({ label: "Contacts", value: _base.contact })
+      colors.push("#80a09d")
+    }
+
+    if (_base.buisness != null && _base.buisness != 0) {
+      data.push({ label: "Business", value: _base.buisness })
+      colors.push("#8baeec")
+    }
+
+    if (_base.sports != null && _base.sports != 0) {
+      data.push({ label: "Sports", value: _base.sports })
+      colors.push("#d98136")
+    }
+
+    if (_base.groceries != null && _base.groceries != 0) {
+      data.push({ label: "Groceries", value: _base.groceries })
+      colors.push("#DA4567")
+    }
+
+    if (_base.lost != null && _base.lost != 0) {
+      data.push({ label: "Lost", value: _base.lost })
+      colors.push("#EC407A")
+    }
+
+    console.log(data)
+
     setTimeout(() => {
 
       (<HTMLElement>document.getElementById('donut-example')).innerHTML = "";
@@ -154,21 +200,8 @@ export class HomePage {
         element: 'donut-example',
         resize: true,
         formatter: function (y, data) { console.log(y, data); return '' + y },
-        colors:["#bd86b6","#8769d7","#ef95c8","#80a09d","#8baeec","#d98136","#DA4567","#EC407A"],
-        data: [
-          { label: "Fashion", value: _base.fashion},
-          { label: "General", value: _base.general},
-          { label: "Event", value: _base.event },
-
-          { label: "Contacts", value: _base.contact},
-          { label: "Business", value: _base.buisness },
-          { label: "Sports", value: _base.sports},
-          { label: "Groceries", value: _base.groceries},
-          { label: "Lost", value: _base.lost},
-          // { label: "Fashion", value: 33, labelColor:"#bd86b6"},
-          // { label: "General", value: 33, labelColor:"#8769d7"},
-          // { label: "Event", value: 33 ,labelColor:"#ef95c8"},
-        ]
+        colors: colors,
+        data: data
       });
     }, 1000);
 
