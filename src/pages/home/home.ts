@@ -132,12 +132,12 @@ export class HomePage {
     console.log("view enter--------------->>>>>>>>>>>");
     this.userId = localStorage.getItem("userId");
     if (this.userId) {
-      this.getprofiledata();
-      this.getDashboarddata();
-      this.getpresentdateCount();
       this.getAllTapItem();
+      this.getprofiledata();
+      this.getpresentdateCount();
       this.getpairedDevice();
       this.getnotifications();
+      this.getDashboarddata();
     }
     if (this.totalcount) {
       var _base = this;
@@ -150,6 +150,16 @@ export class HomePage {
     let data = [];
     let colors = []
     console.log(_base.fashion, typeof _base.fashion)
+
+    console.log("totalcount", _base.totalcount)
+
+    // if no tap
+    if (_base.totalcount == 0) {
+      _base.isblanck = true
+    } else {
+      _base.isblanck = false
+    }
+
     if (_base.fashion != null && _base.fashion != 0) {
       data.push({ label: "Fashion", value: _base.fashion })
       colors.push("#bd86b6")
@@ -403,8 +413,8 @@ export class HomePage {
       _base.allTapItems = success.result;
       _base.storage.set('alltp', success.result.slice(0, 10));
       if (success.result.length == 0) {
-        _base.isblanck = true;
         _base.blankmsg = "There Is No Tap Yet";
+      } else {
       }
       console.log(_base.tapItems);
     }, function (err) {
