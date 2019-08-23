@@ -307,7 +307,7 @@ export class EditprofilePage {
     let _base = this;
     this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
       console.log(success);
-      _base.storage.set("prodata",success.result);
+      _base.storage.set("prodata", success.result);
       _base.profiledata = success.result;
       if (success.result.imageId) {
         // _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id+"&select=thumbnail";
@@ -320,8 +320,8 @@ export class EditprofilePage {
       }
       _base.initEmail = success.result.email ? success.result.email : ''
     }, function (err) {
-      _base.storage.get("prodata").then((prodata)=>{
-        _base.profiledata=prodata;
+      _base.storage.get("prodata").then((prodata) => {
+        _base.profiledata = prodata;
         console.log(_base.profiledata);
       });
       console.log(err);
@@ -349,7 +349,7 @@ export class EditprofilePage {
     // }
 
     let profile;
-    if (_base.initEmail != _base.profiledata.email) {
+    if (_base.initEmail != _base.profiledata.email && _base.profiledata.email.trim() != "") {
       profile = {
         email: _base.profiledata.email
       }
@@ -370,7 +370,12 @@ export class EditprofilePage {
     this.loginsignupProvider.profileUpdate(profile).then(function (success: any) {
       console.log(success);
 
-      if (_base.initEmail != _base.profiledata.email) {
+      if(success.error){
+        alert("This email is already owned")
+        return;
+      }
+
+      if (_base.initEmail != _base.profiledata.email && _base.profiledata.email.trim() != "") {
         _base.OTPAlert()
       } else {
         _base.presentAlert();
@@ -378,6 +383,7 @@ export class EditprofilePage {
       }
     }, function (err) {
       console.log(err);
+      // alert("This email is already owned")
     })
   }
   back() {
@@ -389,7 +395,7 @@ export class EditprofilePage {
       title: 'Data has been saved',
       // subTitle: 'Milage Saved',
       cssClass: 'mycss',
-     
+
     });
     alert.present();
     setTimeout(() => alert.dismiss(), 2000);
@@ -441,7 +447,7 @@ export class EditprofilePage {
 
   verifycode(code) {
     let _base = this
-    _base.loginsignupProvider.verifyUserOTP({ email: _base.profiledata.email, code: code })
+    _base.loginsignupProvider.verifyUserOTP({ email: _base.profiledata.email, code: code.trim() })
       .then(function (success: any) {
         if (success.error == false) {
           _base.presentAlert();
