@@ -193,8 +193,10 @@ export class HomePage {
     console.log(data)
 
     setTimeout(() => {
+      if ((<HTMLElement>document.getElementById('donut-example'))) {
+        (<HTMLElement>document.getElementById('donut-example')).innerHTML = "";
+      }
 
-      (<HTMLElement>document.getElementById('donut-example')).innerHTML = "";
 
       Morris.Donut({
         element: 'donut-example',
@@ -206,7 +208,7 @@ export class HomePage {
     }, 1000);
 
   }
-  
+
   ionViewDidLeave() {
     // this.chart.dispose();
     this.offline = false;
