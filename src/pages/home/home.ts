@@ -205,44 +205,8 @@ export class HomePage {
       });
     }, 1000);
 
-
-
-    // anychart.onDocumentReady(function () {
-
-    //   if (_base.chart) {
-    //     _base.chart.dispose()
-    //   }
-
-
-    //   _base.chart = anychart.pie([
-    //     { x: "Fashion", value: _base.fashion },
-    //     { x: "General", value: _base.general },
-    //     { x: "Event", value: _base.event },
-    //     { x: "Contacts", value: _base.contact },
-    //     { x: "Business", value: _base.buisness },
-    //     { x: "Sports", value: _base.sports },
-    //     { x: "Groceries", value: _base.groceries },
-    //     { x: "Lost", value: _base.lost }       
-    //   ]);
-
-    //   var label = anychart.standalones.label();
-    //   _base.chart.innerRadius("25%");
-    //   label.text("TapTap");
-    //   label.width("100%");
-    //   label.height("100%");
-    //   label.adjustFontSize(true);
-    //   label.fontColor("#60727b");
-    //   label.hAlign("center");
-    //   label.vAlign("middle");
-    //   _base.chart.legend(false);
-
-    //   _base.chart.center().content(label);
-    //   _base.chart.container("container");
-    //   _base.chart.draw();
-
-    // });
-
   }
+  
   ionViewDidLeave() {
     // this.chart.dispose();
     this.offline = false;

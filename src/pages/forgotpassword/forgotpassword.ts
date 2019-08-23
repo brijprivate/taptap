@@ -382,6 +382,9 @@ export class ForgotpasswordPage {
       else if (_base.countryCode == 'nl') {
         _base.country_code = "31";
       }
+      else if (_base.countryCode == 'no') {
+        _base.country_code = "47";
+      }
 
     }, function (error) {
       console.log("Error", error)
