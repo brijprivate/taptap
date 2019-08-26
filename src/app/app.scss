@@ -121,3 +121,26 @@ ion-modal.show-page {
 #donut-example{
   min-height: 250px;
 }
+.reset {
+  .alert-title {
+      text-align: center !important;
+  }
+
+  .alert-message {
+      text-align: center !important;
+  }
+
+  .alert-sub-title {
+      text-align: center !important;
+  }
+
+  button {
+      text-align: center !important;
+    
+  }
+  .alert-button-group.alert-button-group-vertical{
+    justify-content: center;
+    flex-direction: initial !important;
+  }
+
+}
