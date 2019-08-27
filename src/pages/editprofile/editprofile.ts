@@ -65,7 +65,6 @@ export class EditprofilePage {
   }
 
   ionViewDidLoad() {
-    this.OTPAlert()
     //creating url for profile pic
     // this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;
 
@@ -262,7 +261,12 @@ export class EditprofilePage {
 
         if (this.profileImage) {
           this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage + "&select=thumbnail";//creating url for profile pic
-          console.log(this.imageId);
+          this.convertToDataURLviaCanvas(this.imageId, "image/png").then(base64img => {
+            console.log(base64img);
+            this.imageId = base64img;
+            this.storage.remove("buimg")
+            this.storage.set('buimg', base64img);
+          })
         }
 
         // console.log(temp.imageId._id);
@@ -333,7 +337,15 @@ export class EditprofilePage {
       }
     });
 
-    _base.storage.get('uimg')
+
+    // _base.storage.get('uimg')
+    //   .then(function (image) {
+    //     if (image) {
+    //       _base.imageId = image;
+    //     }
+    //   });
+
+    _base.storage.get('buimg')
       .then(function (image) {
         if (image) {
           _base.imageId = image;
@@ -353,16 +365,16 @@ export class EditprofilePage {
         _base.convertToDataURLviaCanvas(image, "image/png").then(base64img => {
           console.log(base64img);
           // _base.imageId = base64img;
-          _base.storage.remove("uimg")
-          _base.storage.set('uimg', base64img);
+          _base.storage.remove("buimg")
+          _base.storage.set('buimg', base64img);
         })
       } else {
         _base.imageId = "assets/images/avatar.png";
         _base.convertToDataURLviaCanvas(_base.imageId, "image/png").then(base64img => {
           console.log(base64img);
           _base.imageId = base64img;
-          _base.storage.remove("uimg")
-          _base.storage.set('uimg', _base.imageId);
+          _base.storage.remove("buimg")
+          _base.storage.set('buimg', _base.imageId);
         })
         console.log("enterr else image =============")
       }
@@ -455,9 +467,8 @@ export class EditprofilePage {
   OTPAlert() {
     let _base = this
     let alert = this.alert.create({
-      title: 'ONE TIME PASSWORD has been sent to your email',
+      title: 'ONE TIME PASSWORD has been sent to your email' + _base.profiledata.email,
       cssClass: 'reset',
-
       inputs: [
         {
           name: 'code',

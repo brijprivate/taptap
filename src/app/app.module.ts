@@ -12,7 +12,6 @@ import { HttpProvider } from '../providers/http/http';
 import { LoginsignupProvider } from '../providers/loginsignup/loginsignup';
 import { SharedserviceProvider } from '../providers/sharedservice/sharedservice';
 import { NfctagProvider } from '../providers/nfctag/nfctag';
-import { Facebook } from '@ionic-native/facebook';
 import { Network } from '@ionic-native/network';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -22,7 +21,6 @@ import { Crop } from '@ionic-native/crop';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { GooglePlus } from '@ionic-native/google-plus';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 // import { Sim } from '@ionic-native/sim';
 
@@ -81,8 +79,6 @@ import { IonicImageLoader } from 'ionic-image-loader';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginsignupProvider,
     NfctagProvider,
-    Facebook,
-    GooglePlus,
     Network,
     NFC,
     Ndef,

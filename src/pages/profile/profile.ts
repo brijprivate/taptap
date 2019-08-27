@@ -34,7 +34,7 @@ export class ProfilePage {
   lineChart: any;
   public userId: any;
   public userName: any;
-  favourite: "0";
+  public favourite: any = "0";
   public devices: any = [];
   devicecount: any;
   public chart;
@@ -81,7 +81,6 @@ export class ProfilePage {
       // this.gettime();
       this.getpairedDevice();
       this.getprofiledata();
-      this.getDashboarddata();
       this.getnotifications();
       this.getmilage();
       this.gettime();
@@ -90,6 +89,19 @@ export class ProfilePage {
       // let putgraph = setTimeout(()=>{
       //   _base.chartfunction();
       // },5000)
+
+
+      if (_base.storage.get('chartdata')) {
+        _base.storage.get("chartdata").then((chartdata) => {
+          // _base.totalcount=chartdata;
+          if (chartdata) {
+            _base.favourite = chartdata.favourite;
+            console.log(_base.favourite)
+            console.log(chartdata)
+          }
+        });
+      }
+
     }
 
   }
@@ -401,48 +413,6 @@ export class ProfilePage {
     // });
     // console.log(_base.userName);
   }
-
-
-  getDashboarddata() {
-    let _base = this;
-    // let loader = this.loading.create({
-    //   content: "Please wait..."
-    // });
-    // loader.present();
-
-
-    if (_base.storage.get('favourite')) {
-      _base.storage.get("favourite").then((chartdata) => {
-        // _base.totalcount=chartdata;
-        if (chartdata) {
-          _base.favourite = chartdata;
-        }
-      });
-    }
-
-
-    this.loginsignupProvider.getDashboard(this.userId).then(function (success: any) {
-      console.log("dashboard data ---------->>>>>>" + success);
-      console.log(success);
-
-
-      _base.storage.remove("favourite")
-      _base.storage.set('favourite', success.result.favourite);
-      _base.favourite = success.result.favourite;
-      // loader.dismiss();
-    }, function (err) {
-
-      let cdata;
-
-      _base.storage.get("chartdata").then((chartdata) => {
-        // _base.totalcount=chartdata;
-        if (chartdata) {
-          _base.favourite = chartdata;
-        }
-      });
-      console.log(err);
-    })
-  }
   //go to profiledetails page....
   detail() {
     this.navCtrl.push('ProfiledetailPage');
@@ -463,33 +433,6 @@ export class ProfilePage {
           });
         }
       })
-
-
-    _base.nfctagProvider.getnotifications(localStorage.getItem('userId'))
-      .then(function (success: any) {
-        console.log("Notifications", success)
-        _base.notiCount = 0;
-        _base.storage.remove("notifications")
-        _base.storage.set("notifications", success.result)
-        success.result.forEach(item => {
-          if (item.seen == false) {
-            _base.notiCount = _base.notiCount + 1
-          }
-        });
-      }, function (error) {
-        console.log(error)
-        _base.storage.get("notifications")
-          .then(function (success) {
-            if (success) {
-              _base.notiCount = 0;
-              success.forEach(item => {
-                if (item.seen == false) {
-                  _base.notiCount = _base.notiCount + 1
-                }
-              });
-            }
-          })
-      });
   }
 
   //get time data....
