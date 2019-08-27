@@ -65,6 +65,7 @@ export class EditprofilePage {
   }
 
   ionViewDidLoad() {
+    this.OTPAlert()
     //creating url for profile pic
     // this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;
 
@@ -455,6 +456,8 @@ export class EditprofilePage {
     let _base = this
     let alert = this.alert.create({
       title: 'ONE TIME PASSWORD has been sent to your email',
+      cssClass: 'reset',
+
       inputs: [
         {
           name: 'code',
