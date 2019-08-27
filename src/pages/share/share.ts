@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the SharePage page.
@@ -17,7 +18,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 })
 export class SharePage {
   alllist: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public storage: Storage, public navCtrl: NavController, public navParams: NavParams,
     public loginsignupProvider: LoginsignupProvider,
     private socialsharing: SocialSharing
   ) {
@@ -47,12 +48,30 @@ export class SharePage {
     let _base = this;
     let date = new Date()
     let dateString = date.toISOString()
+
+    _base.storage.get("user_count")
+      .then(function (count) {
+        if (count) {
+          _base.alllist = count
+        }
+      })
+
     this.loginsignupProvider.getuserslist().then(function (success: any) {
 
       _base.alllist = success.result.length;
+
+      _base.storage.remove("user_count")
+      _base.storage.set("user_count", _base.alllist)
+
       console.log(_base.alllist);
     }, function (err) {
       console.log(err);
+      _base.storage.get("user_count")
+        .then(function (count) {
+          if (count) {
+            _base.alllist = count
+          }
+        })
     })
   }
 }

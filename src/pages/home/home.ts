@@ -9,8 +9,8 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 import { isBlank } from 'ionic-angular/umd/util/util';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Storage } from '@ionic/storage';
-import { ImageLoader } from 'ionic-image-loader';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
+import { ProfilePage } from '../profile/profile';
 declare var Morris;
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
@@ -75,7 +75,7 @@ export class HomePage {
   public tapData: any;
   devicecount: any;
   profileImage: string;
-  base4img: any;
+  base4img: any = "assets/images/avatar.png";
   keyboards: boolean = false;
   slideselected: string;
   offline: boolean = false;
@@ -91,8 +91,7 @@ export class HomePage {
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
     public alert: AlertController,
-    private storage: Storage,
-    public imageLoader: ImageLoader
+    private storage: Storage
     // private diagnostic: Diagnostic
   ) {
     this.slideselected = 'home';
@@ -140,8 +139,80 @@ export class HomePage {
       this.getDashboarddata();
     }
     if (this.totalcount) {
-      var _base = this;
+      // var _base = this;
     }
+
+    let _base = this;
+    _base.storage.get("homeSelectedTab")
+      .then(function (index) {
+        if (index) {
+          _base.slideselected = (index == 0) ? "history" : "home";
+
+          _base.slider.slideTo(index);
+          _base.getAllTapItem();
+        }
+      })
+  }
+
+
+  isEqual(value: any, other: any) {
+    // Get the value type
+    var type = Object.prototype.toString.call(value);
+
+    // If the two objects are not the same type, return false
+    if (type !== Object.prototype.toString.call(other)) return false;
+
+    // If items are not an object or array, return false
+    if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false;
+
+    // Compare the length of the length of the two items
+    var valueLen = type === '[object Array]' ? value.length : Object.keys(value).length;
+    var otherLen = type === '[object Array]' ? other.length : Object.keys(other).length;
+    if (valueLen !== otherLen) return false;
+
+    // Compare two items
+    var compare = function (item1, item2) {
+
+      // Get the object type
+      var itemType = Object.prototype.toString.call(item1);
+
+      // If an object or array, compare recursively
+      if (['[object Array]', '[object Object]'].indexOf(itemType) >= 0) {
+        // if (!isEqual(item1, item2)) return false;
+      }
+
+      // Otherwise, do a simple comparison
+      else {
+
+        // If the two items are not the same type, return false
+        if (itemType !== Object.prototype.toString.call(item2)) return false;
+
+        // Else if it's a function, convert to a string and compare
+        // Otherwise, just compare
+        if (itemType === '[object Function]') {
+          if (item1.toString() !== item2.toString()) return false;
+        } else {
+          if (item1 !== item2) return false;
+        }
+
+      }
+    };
+
+    // Compare properties
+    if (type === '[object Array]') {
+      for (var i = 0; i < valueLen; i++) {
+        if (compare(value[i], other[i]) === false) return false;
+      }
+    } else {
+      for (var key in value) {
+        if (value.hasOwnProperty(key)) {
+          if (compare(value[key], other[key]) === false) return false;
+        }
+      }
+    }
+
+    // If nothing failed, return true
+    return true;
   }
 
   chartfunc() {
@@ -210,12 +281,12 @@ export class HomePage {
 
       Morris.Donut({
         element: 'donut-example',
-        resize: true,
+        resize: false,
         formatter: function (y, data) { console.log(y, data); return '' + y },
         colors: colors,
         data: data
       });
-    }, 1000);
+    }, 1);
 
   }
 
@@ -230,6 +301,8 @@ export class HomePage {
 
     this.slider.slideTo(index);
     this.getAllTapItem();
+    this.storage.remove("homeSelectedTap")
+    this.storage.set("homeSelectedTap", index)
   }
   merchant() {
     // this.navCtrl.push('MerchantPage');
@@ -251,19 +324,42 @@ export class HomePage {
   //Get profile data...
   getprofiledata() {
     let _base = this;
+
+    console.log("USERNAME", _base.storage.get('username'))
+
+    // if user exists
+    _base.storage.get('profile')
+      .then(function (profile) {
+        if (profile) {
+          _base.userName = profile.name
+          _base.uid = profile.uid
+        }
+      })
+
+    _base.storage.get('uimg')
+      .then(function (image) {
+        if (image) {
+          _base.base4img = image;
+        }
+      });
+
+
+
     this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
       console.log(success);
       if (success) {
         _base.userName = success.result.name
-        _base.storage.set("username", _base.userName);
+        _base.storage.remove("profile")
+        _base.storage.set("profile", success.result);
         localStorage.setItem('uid', success.result.uid);
-        _base.storage.set('uid', success.result.uid);
         _base.uid = success.result.uid
         if (success.result.imageId) {
-          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
+          _base.profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id + "&select=thumbnail";
+          _base.base4img = _base.profileImage;
           _base.convertToDataURLviaCanvas(_base.profileImage, "image/png").then(base64img => {
             console.log(base64img);
             _base.base4img = base64img;
+            _base.storage.remove("uimg")
             _base.storage.set('uimg', _base.base4img);
           })
         } else {
@@ -271,6 +367,7 @@ export class HomePage {
           _base.convertToDataURLviaCanvas(_base.base4img, "image/png").then(base64img => {
             console.log(base64img);
             _base.base4img = base64img;
+            _base.storage.remove("uimg")
             _base.storage.set('uimg', _base.base4img);
           })
           console.log("enterr else image =============")
@@ -289,17 +386,23 @@ export class HomePage {
     }, function (err) {
       _base.offline = true;
       _base.storage.get("username").then((name) => {
-        _base.userName = name;
-        console.log(_base.userName);
-        console.log(name);
+        if (name) {
+          _base.userName = name;
+          console.log(_base.userName);
+          console.log(name);
+        }
       });
       _base.storage.get("uid").then((uid) => {
-        _base.uid = uid;
-        console.log(_base.uid);
+        if (uid) {
+          _base.uid = uid;
+          console.log(_base.uid);
+        }
       });
       _base.storage.get("uimg").then((uimg) => {
-        _base.base4img = uimg;
-        console.log(_base.base4img);
+        if (uimg) {
+          _base.base4img = uimg;
+          console.log(_base.base4img);
+        }
       });
 
       // console.log(_base.userName);
@@ -339,49 +442,93 @@ export class HomePage {
 
   getDashboarddata() {
     let _base = this;
-    let loader = this.loading.create({
-      content: "Please wait..."
-    });
-    loader.present();
+    // let loader = this.loading.create({
+    //   content: "Please wait..."
+    // });
+    // loader.present();
+
+    let cd = {};
+
+    if (_base.storage.get('chartdata')) {
+      _base.storage.get("chartdata").then((chartdata) => {
+        // _base.totalcount=chartdata;
+        if (chartdata) {
+          cd = chartdata
+          _base.fashion = chartdata.fashion;
+          _base.buisness = chartdata.business;
+          _base.contact = chartdata.contact;
+          _base.event = chartdata.event;
+          _base.general = chartdata.general;
+          _base.favourite = chartdata.favourite;
+          _base.sports = chartdata.sport;
+          _base.groceries = chartdata.groceries;
+          _base.lost = chartdata.lost;
+          _base.totalcount = chartdata.totalTap;
+          console.log(chartdata);
+
+          if ((<HTMLElement>document.getElementById('donut-example')).innerHTML == "") {
+            _base.chartfunc();
+          }
+        }
+      });
+    }
+
 
     this.loginsignupProvider.getDashboard(this.userId).then(function (success: any) {
       console.log("dashboard data ---------->>>>>>" + success);
       console.log(success);
 
-      _base.storage.set('chartdata', success.result);
-      _base.fashion = success.result.fashion;
-      _base.buisness = success.result.business;
-      _base.contact = success.result.contact;
-      _base.event = success.result.event;
-      _base.general = success.result.general;
-      _base.favourite = success.result.favourite;
-      _base.sports = success.result.sport;
-      _base.groceries = success.result.groceries;
-      _base.lost = success.result.lost;
-      _base.totalcount = success.result.totalTap;
-      _base.storage.set("totalcount", success.result.totalTap)
-      _base.chartfunc();
-      loader.dismiss();
+
+      if (!_base.isEqual(cd, success.result)) {
+        console.log("NOT Equal", cd)
+        console.log(success.result)
+        _base.storage.remove("chartdata")
+        _base.storage.set('chartdata', success.result);
+        _base.fashion = success.result.fashion;
+        _base.buisness = success.result.business;
+        _base.contact = success.result.contact;
+        _base.event = success.result.event;
+        _base.general = success.result.general;
+        _base.favourite = success.result.favourite;
+        _base.sports = success.result.sport;
+        _base.groceries = success.result.groceries;
+        _base.lost = success.result.lost;
+        _base.totalcount = success.result.totalTap;
+        _base.storage.remove("totalcount")
+        _base.storage.set("totalcount", success.result.totalTap)
+        _base.chartfunc();
+      } else {
+        console.log("Equal")
+      }
+      // loader.dismiss();
     }, function (err) {
+
+      let cdata;
 
       _base.storage.get("chartdata").then((chartdata) => {
         // _base.totalcount=chartdata;
-        console.log(chartdata)
-        _base.fashion = chartdata.fashion;
-        _base.buisness = chartdata.business;
-        _base.contact = chartdata.contact;
-        _base.event = chartdata.event;
-        _base.general = chartdata.general;
-        _base.favourite = chartdata.favourite;
-        _base.sports = chartdata.sport;
-        _base.groceries = chartdata.groceries;
-        _base.lost = chartdata.lost;
-        _base.totalcount = chartdata.totalTap;
-        console.log(chartdata);
-        _base.chartfunc();
+        if (chartdata) {
+          console.log(chartdata)
+          cdata = chartdata
+          console.log(chartdata);
+          if (!_base.isEqual(chartdata, cdata)) {
+            console.log("NOT Equal", cd, cdata)
+            _base.fashion = chartdata.fashion;
+            _base.buisness = chartdata.business;
+            _base.contact = chartdata.contact;
+            _base.event = chartdata.event;
+            _base.general = chartdata.general;
+            _base.favourite = chartdata.favourite;
+            _base.sports = chartdata.sport;
+            _base.groceries = chartdata.groceries;
+            _base.lost = chartdata.lost;
+            _base.totalcount = chartdata.totalTap;
+            _base.chartfunc();
+          } else {
+            console.log("Equal")
+          }
+        }
       });
-      // _base.chartfunc();
-      loader.dismiss();
       console.log(err);
     })
   }
@@ -389,15 +536,26 @@ export class HomePage {
   //get present date tap count....
   getpresentdateCount() {
     let _base = this;
+
+    _base.storage.get("todayscount").then((tcount) => {
+      if (tcount) {
+        _base.todaysTap = tcount;
+        console.log(_base.totalcount);
+      }
+    });
+
     this.loginsignupProvider.getTapPresentDate(this.userId).then(function (success: any) {
       console.log(success.result);
       _base.todaysTap = success.result.length;
+      _base.storage.remove("todayscount")
       _base.storage.set('todayscount', success.result.length)
 
     }, function (err) {
       _base.storage.get("todayscount").then((tcount) => {
-        _base.todaysTap = tcount;
-        console.log(_base.totalcount);
+        if (tcount) {
+          _base.todaysTap = tcount;
+          console.log(_base.totalcount);
+        }
       });
       console.log(err);
     })
@@ -406,11 +564,21 @@ export class HomePage {
   //get all tap items....
   getAllTapItem() {
     let _base = this;
+
+    _base.storage.get("alltp").then((tcount) => {
+      if (tcount) {
+        _base.tapItems = tcount;
+        console.log(_base.tapItems);
+      }
+    });
+
+
     this.loginsignupProvider.getTapAll(this.userId).then(function (success: any) {
       console.log("All Tapped data ,..........>>>>>");
       // console.log(success.result.length);
       _base.tapItems = success.result;
       _base.allTapItems = success.result;
+      _base.storage.remove("alltp")
       _base.storage.set('alltp', success.result.slice(0, 10));
       if (success.result.length == 0) {
         _base.blankmsg = "There Is No Tap Yet";
@@ -419,8 +587,10 @@ export class HomePage {
       console.log(_base.tapItems);
     }, function (err) {
       _base.storage.get("alltp").then((tcount) => {
-        _base.tapItems = tcount;
-        console.log(_base.tapItems);
+        if (tcount) {
+          _base.tapItems = tcount;
+          console.log(_base.tapItems);
+        }
       });
       console.log(err);
     })
@@ -474,16 +644,28 @@ export class HomePage {
   //Get paired devices...
   getpairedDevice() {
     let _base = this;
+
+    _base.storage.get("devices").then((devices) => {
+      if (devices) {
+        _base.devicecount = devices;
+        console.log(_base.devicecount);
+      }
+    });
+
+
     this.nfctagpro.getpairdevice(this.userId).then(function (success: any) {
       console.log("paired devices--------------?>>>>>>>>>");
       console.log(success.result.length);
       // _base.devices = success.result;
       _base.devicecount = success.result.length;
+      _base.storage.remove("devices")
       _base.storage.set('devices', success.result.length);
     }, function (err) {
       _base.storage.get("devices").then((devices) => {
-        _base.devicecount = devices;
-        console.log(_base.devicecount);
+        if (devices) {
+          _base.devicecount = devices;
+          console.log(_base.devicecount);
+        }
       });
       console.log(err);
     })
@@ -492,9 +674,25 @@ export class HomePage {
   getnotifications() {
     let _base = this;
     _base.notiCount = 0;
+
+    _base.storage.get("notifications")
+      .then(function (success) {
+        if (success) {
+          success.forEach(item => {
+            if (item.seen == false) {
+              _base.notiCount = _base.notiCount + 1
+            }
+          });
+        }
+      })
+
+
     _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
       .then(function (success: any) {
         console.log("Notifications", success)
+        _base.storage.remove("notifications")
+        _base.storage.set("notifications", success.result)
+        _base.notiCount = 0;
         success.result.forEach(item => {
           if (item.seen == false) {
             _base.notiCount = _base.notiCount + 1
@@ -502,6 +700,18 @@ export class HomePage {
         });
       }, function (error) {
         console.log(error)
+        _base.storage.get("notifications")
+          .then(function (success) {
+            if (success) {
+              _base.notiCount = 0;
+
+              success.forEach(item => {
+                if (item.seen == false) {
+                  _base.notiCount = _base.notiCount + 1
+                }
+              });
+            }
+          })
       });
   }
 

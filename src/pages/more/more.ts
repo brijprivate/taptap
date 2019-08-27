@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
-import { GooglePlus } from '@ionic-native/google-plus';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the MorePage page.
@@ -24,8 +23,7 @@ export class MorePage {
     public navParams: NavParams,
     public nfctagpro: NfctagProvider,
     private app: App,
-    public fb: Facebook,
-    private googlePlus: GooglePlus,
+    public storage: Storage,
     public alert: AlertController, ) {
   }
 
@@ -52,8 +50,7 @@ export class MorePage {
           text: 'Yes',
           handler: data => {
             localStorage.clear();
-            _base.googlePlus.logout()
-            _base.fb.logout()
+            _base.storage.clear();
             this.app.getRootNav().setRoot("LoginPage");
           }
         }
@@ -63,8 +60,8 @@ export class MorePage {
 
   }
   goto(x) {
-    if(x=='store'){
-      window.open('https://www.gocubetech.shop/taptap',"_system");
+    if (x == 'store') {
+      window.open('https://www.gocubetech.shop/taptap', "_system");
 
       return;
     }
@@ -74,9 +71,25 @@ export class MorePage {
   getnotifications() {
     let _base = this;
     _base.notiCount = 0;
+
+    _base.storage.get("notifications")
+      .then(function (success) {
+        if (success) {
+          success.forEach(item => {
+            if (item.seen == false) {
+              _base.notiCount = _base.notiCount + 1
+            }
+          });
+        }
+      })
+
+
     _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
       .then(function (success: any) {
         console.log("Notifications", success)
+        _base.storage.remove("notifications")
+        _base.storage.set("notifications", success.result)
+        _base.notiCount = 0;
         success.result.forEach(item => {
           if (item.seen == false) {
             _base.notiCount = _base.notiCount + 1
@@ -84,6 +97,18 @@ export class MorePage {
         });
       }, function (error) {
         console.log(error)
+        _base.storage.get("notifications")
+          .then(function (success) {
+            if (success) {
+              _base.notiCount = 0;
+
+              success.forEach(item => {
+                if (item.seen == false) {
+                  _base.notiCount = _base.notiCount + 1
+                }
+              });
+            }
+          })
       });
   }
 }

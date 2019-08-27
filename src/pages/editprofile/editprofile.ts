@@ -8,6 +8,7 @@ import { Crop } from '@ionic-native/crop';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { Storage } from '@ionic/storage';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 declare var cordova: any;
 
@@ -27,12 +28,12 @@ export class EditprofilePage {
 
   private win: any = window;
   lastImage: any;
-  public imageId = 'assets/images/avatar.png';
+  public imageId: any = 'assets/images/avatar.png';
   public data = [];
   API_URL = "https://api.taptap.org.uk";
   public userId: any;
   public profiledata: any = {};
-  profileImage: string;
+  profileImage: string = "";
   isemailchanged: boolean = false;
   initEmail: String = ""
 
@@ -259,7 +260,7 @@ export class EditprofilePage {
         console.log("profile image" + this.profileImage);
 
         if (this.profileImage) {
-          this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
+          this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage + "&select=thumbnail";//creating url for profile pic
           console.log(this.imageId);
         }
 
@@ -302,27 +303,75 @@ export class EditprofilePage {
   //   );
   // }
 
+  convertToDataURLviaCanvas(url, outputFormat) {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = () => {
+        let canvas = <HTMLCanvasElement>document.createElement('CANVAS'),
+          ctx = canvas.getContext('2d'),
+          dataURL;
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        resolve(dataURL);
+        canvas = null;
+      };
+      img.src = url;
+    });
+  }
+
   //Get profile data...
   getprofiledata() {
     let _base = this;
+    _base.storage.get("prodata").then((prodata) => {
+      if (prodata) {
+        _base.profiledata = prodata;
+        console.log(_base.profiledata);
+      }
+    });
+
+    _base.storage.get('uimg')
+      .then(function (image) {
+        if (image) {
+          _base.imageId = image;
+        }
+      });
+
     this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
       console.log(success);
+      _base.storage.remove("prodata")
       _base.storage.set("prodata", success.result);
       _base.profiledata = success.result;
       if (success.result.imageId) {
-        // _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id+"&select=thumbnail";
-        _base.imageId = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
-        _base.imageExists(_base.imageId, function (exists) {
-          if (!exists) {
-            _base.imageId = "assets/images/avatar.png"
-          }
-        });
+
+        let image = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
+        _base.imageId = image;
+        _base.profileImage = success.result.imageId._id;
+        _base.convertToDataURLviaCanvas(image, "image/png").then(base64img => {
+          console.log(base64img);
+          // _base.imageId = base64img;
+          _base.storage.remove("uimg")
+          _base.storage.set('uimg', base64img);
+        })
+      } else {
+        _base.imageId = "assets/images/avatar.png";
+        _base.convertToDataURLviaCanvas(_base.imageId, "image/png").then(base64img => {
+          console.log(base64img);
+          _base.imageId = base64img;
+          _base.storage.remove("uimg")
+          _base.storage.set('uimg', _base.imageId);
+        })
+        console.log("enterr else image =============")
       }
       _base.initEmail = success.result.email ? success.result.email : ''
     }, function (err) {
       _base.storage.get("prodata").then((prodata) => {
-        _base.profiledata = prodata;
-        console.log(_base.profiledata);
+        if (prodata) {
+          _base.profiledata = prodata;
+          console.log(_base.profiledata);
+        }
       });
       console.log(err);
     })
@@ -349,7 +398,7 @@ export class EditprofilePage {
     // }
 
     let profile;
-    if (_base.initEmail != _base.profiledata.email && _base.profiledata.email.trim() != "") {
+    if (_base.initEmail.trim() != _base.profiledata.email.trim() && _base.profiledata.email.trim() != "") {
       profile = {
         email: _base.profiledata.email
       }
@@ -359,7 +408,7 @@ export class EditprofilePage {
         address: _base.profiledata.address,
         city: _base.profiledata.city,
         country: _base.profiledata.country,
-        imageId: _base.profileImage,
+        imageId: _base.profileImage != "" ? _base.profileImage : null,
         name: _base.profiledata.name,
         website: _base.profiledata.website
       }
@@ -370,12 +419,12 @@ export class EditprofilePage {
     this.loginsignupProvider.profileUpdate(profile).then(function (success: any) {
       console.log(success);
 
-      if(success.error){
+      if (success.error) {
         alert("This email is already owned")
         return;
       }
 
-      if (_base.initEmail != _base.profiledata.email && _base.profiledata.email.trim() != "") {
+      if (_base.initEmail.trim() != _base.profiledata.email.trim() && _base.profiledata.email.trim() != "") {
         _base.OTPAlert()
       } else {
         _base.presentAlert();
