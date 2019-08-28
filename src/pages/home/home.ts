@@ -53,6 +53,7 @@ export class HomePage {
   public groceries: 0;
   public buisness: 0;
   public favourite: 0;
+  public restaurant: any = 0;
   public totalcount: 0;
   public todaysTap: 0;
   public tapItems: any;
@@ -271,6 +272,11 @@ export class HomePage {
       colors.push("#EC407A")
     }
 
+    if (_base.restaurant != null && _base.restaurant != 0) {
+      data.push({ label: "Restaurant", value: _base.restaurant })
+      colors.push("#D7761B")
+    }
+
     console.log(data)
 
     setTimeout(() => {
@@ -462,6 +468,7 @@ export class HomePage {
           _base.favourite = chartdata.favourite;
           _base.sports = chartdata.sport;
           _base.groceries = chartdata.groceries;
+          _base.restaurant = chartdata.resturant;
           _base.lost = chartdata.lost;
           _base.totalcount = chartdata.totalTap;
           console.log(chartdata);
@@ -493,6 +500,7 @@ export class HomePage {
         _base.sports = success.result.sport;
         _base.groceries = success.result.groceries;
         _base.lost = success.result.lost;
+        _base.restaurant = success.result.resturant;
         _base.totalcount = success.result.totalTap;
         _base.storage.remove("totalcount")
         _base.storage.set("totalcount", success.result.totalTap)
@@ -521,6 +529,7 @@ export class HomePage {
             _base.favourite = chartdata.favourite;
             _base.sports = chartdata.sport;
             _base.groceries = chartdata.groceries;
+            _base.restaurant = chartdata.resturant;
             _base.lost = chartdata.lost;
             _base.totalcount = chartdata.totalTap;
             _base.chartfunc();
