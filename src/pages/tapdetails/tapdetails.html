@@ -149,8 +149,7 @@
       <ion-slides pager id="myImg">
 
 
-        <ion-slide
-        (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
+        <ion-slide (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
           <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
         </ion-slide>
 
@@ -175,9 +174,10 @@
       <div class="calls down">
         <i class="fa fa-phone "></i>
       </div>
-      <div class="down" style="margin: 1em 0" (click)="download(eventdata.restaurantId.menu)">
+      <div class="down" style="margin: 1em 0">
         <button><i class="fa fa-download" aria-hidden="true"></i>
-          Download Menu</button>
+          <a href="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.menu}}">Download
+            Menu</a></button>
       </div>
     </ion-list>
     <div class="">
@@ -190,7 +190,7 @@
           </ion-col>
           <ion-col col-4 nopadding>
             <button ion-button class="save"> <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <a href="tel:{{eventdata.restaurantId.contactNumber}u}" class="button button-positive">Call</a>
+              <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">Call</a>
             </button>
           </ion-col>
           <ion-col col-4 nopadding>
@@ -217,100 +217,101 @@
           <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
           <p>{{eventdata.purpose}}</p>
           <div class=" iconss">
-                <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-                  (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
-                <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-                  (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+
+          </div>
+        </div>
+      </div>
+      <div class="imgss event">
+        <div class="ss"></div>
+
+        <ion-slides pager id="myImg">
+          <ion-slide *ngIf="eventdata.contactId.profile_pic">
+            <img
+              (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.contactId.profile_pic))"
+              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.contactId.profile_pic}}">
+          </ion-slide>
+
+          <ion-slide *ngIf="!eventdata.contactId.profile_pic"
+            (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
+            <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
+          </ion-slide>
+        </ion-slides>
+      </div>
 
     </div>
-  </div>
-  </div>
-  <div class="imgss event">
-    <div class="ss"></div>
+    <div class="coin">
 
-    <ion-slides pager id="myImg">
-      <ion-slide *ngIf="eventdata.contactId.profile_pic">
-        <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.contactId.profile_pic))"
-          src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.contactId.profile_pic}}">
-      </ion-slide>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="barcode"></ion-icon>
+          Full Name
+        </p>
+        <p class="data">{{eventdata.contactId.name}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="home"></ion-icon>
+          Company Name
+        </p>
+        <p class="data">{{eventdata.contactId.company}}</p>
+      </div>
 
-      <ion-slide *ngIf="!eventdata.contactId.profile_pic"
-        (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
-        <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
-      </ion-slide>
-    </ion-slides>
-  </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="call"></ion-icon>
+          Telephone No
+        </p>
+        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+      </div>
 
-  </div>
-  <div class="coin">
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="call"></ion-icon>
+          Mobile No
+        </p>
+        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+      </div>
 
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="barcode"></ion-icon>
-        Full Name
-      </p>
-      <p class="data">{{eventdata.contactId.name}}</p>
+
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </p>
+        <p class="data">{{eventdata.contactId.email}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="pin"></ion-icon>
+          Address
+        </p>
+        <p class="data"> {{eventdata.contactId.address}}</p>
+      </div>
+      <div class="cont">
+        <p class="header">
+          <ion-icon name="attach"></ion-icon>
+          Website
+        </p>
+        <p class="data">{{eventdata.contactId.link}}</p>
+      </div>
+      <ion-grid class="saveGrid">
+        <ion-row>
+          <ion-col col-6>
+            <button class="share" outline (click)="savecontact(eventdata.contactId)">
+              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
+            </button> </ion-col>
+          <ion-col col-6>
+            <button class="share" outline (click)="socialshare(eventdata,eventdata.contactId._id)">
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="home"></ion-icon>
-        Company Name
-      </p>
-      <p class="data">{{eventdata.contactId.company}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="call"></ion-icon>
-        Telephone No
-      </p>
-      <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
-    </div>
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="call"></ion-icon>
-        Mobile No
-      </p>
-      <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
-    </div>
-
-
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="mail"></ion-icon>
-        Email
-      </p>
-      <p class="data">{{eventdata.contactId.email}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="pin"></ion-icon>
-        Address
-      </p>
-      <p class="data"> {{eventdata.contactId.address}}</p>
-    </div>
-    <div class="cont">
-      <p class="header">
-        <ion-icon name="attach"></ion-icon>
-        Website
-      </p>
-      <p class="data">{{eventdata.contactId.link}}</p>
-    </div>
-    <ion-grid class="saveGrid">
-      <ion-row>
-        <ion-col col-6>
-          <button class="share" outline (click)="savecontact(eventdata.contactId)">
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
-          </button> </ion-col>
-        <ion-col col-6>
-          <button class="share" outline (click)="socialshare(eventdata,eventdata.contactId._id)">
-            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
   </div>
   <!-- contact end -->
 
