@@ -83,9 +83,10 @@ export class TapmodalPage {
       console.log(_base.geo)
     }).catch((error) => {
       console.log('Error getting location', error);
+      alert("Please turn on your location service")
     })
   }
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.readingTag = false;
   }
   closeModal() {
@@ -112,22 +113,24 @@ export class TapmodalPage {
       loader.dismiss();
       _base.readingTag = false;
       _base.viewCtrl.dismiss();
-      if(success.message == 'DEVICE LOST INFO'){
-        _base.navCtrl.push('LostcardPage',{lostinfo:success.lostinfo});
+      if (success.message == 'DEVICE LOST INFO') {
+        _base.navCtrl.push('LostcardPage', { lostinfo: success.lostinfo });
       }
-      else if(success.message == "DEVICE INFO "){
+      else if (success.message == "DEVICE INFO ") {
         console.log("deviceinfo--------------->>>>");
-        _base.navCtrl.push('TapdetailsPage',{devicedetail:success.lostinfo,
-        key:'device'});
+        _base.navCtrl.push('TapdetailsPage', {
+          devicedetail: success.lostinfo,
+          key: 'device'
+        });
       }
-      else if(success.message == 'Item Tapped Successfull'){
+      else if (success.message == 'Item Tapped Successfull') {
         console.log("detail page------->>>>");
         // _base.navCtrl.push('TapdetailsPage',{itemdetails:success.result});
-        _base.navCtrl.push('TapdetailsPage',success.result);
+        _base.navCtrl.push('TapdetailsPage', success.result);
 
 
       }
-    },function(err){
+    }, function (err) {
       console.log(err);
       loader.dismiss();
     })
