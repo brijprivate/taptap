@@ -23,7 +23,11 @@ page-taptap {
       position: absolute;
       color: #fff;
     }
-  
+    ion-icon.icon.icon-md.ion-md-pizza.item-icon {
+      font-size: 20px;
+      color: #b57249;
+      padding-top: 4px;
+  }
     button.mybutton.disable-hover.button.button-md.button-default.button-default-md,
     button.mybutton.disable-hover.button.button-ios.button-default.button-default-ios {
       background: transparent;

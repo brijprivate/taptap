@@ -534,4 +534,44 @@ page-tapdetails {
             right: 28px;
         }
     }
+    // for restorent
+
+    .calls i {
+        background: #6354cb;
+        color: #fff;
+        padding-top: 21px;
+        border-radius: 50%;
+        font-size: 20px;
+        height: 60px;
+        width: 60px;
+        margin: 0;
+      }
+      .down {
+        text-align: center;
+        margin: 2em 0;
+    
+        button {
+          width: 70%;
+          background: transparent;
+          border: 1px solid #222;
+          line-height: 35px;
+          border-radius: 4px;
+          font-size: 16px;
+        }
+      }
+      .add {
+        font-size: 15px;
+        text-align: center;
+        margin-top: 1em;
+      }
+    
+      .name {
+        font-size: 19px;
+        text-align: center;
+        font-weight: 600;
+      }
+      
+.save{
+    margin-left: 0 !important;
+}
 }

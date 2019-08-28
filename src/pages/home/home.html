@@ -158,6 +158,7 @@
 
                   <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'">
                   </ion-icon>
+                  <ion-icon name="pizza" item-left  *ngIf="item.purpose=='Restaurant'"></ion-icon>
 
                   <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>
                   <span *ngIf="item.purpose=='lost'">Lost or Stolen</span>
