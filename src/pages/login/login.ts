@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
-import { GooglePlus } from '@ionic-native/google-plus';
 import { ModalController } from 'ionic-angular';
 
 declare var carrier;
@@ -23,7 +21,7 @@ export class LoginPage {
 
   public contact: any;
   public password: any;
-  public country_code: any = "";
+  public country_code: any = "44";
   public type: any = "other"
   userName: any;
   public fb_id: any;
@@ -36,11 +34,9 @@ export class LoginPage {
     public signupprovider: LoginsignupProvider,
     public loading: LoadingController,
     public alert: AlertController,
-    public fb: Facebook,
     private toast: ToastController,
     public modalCtrl: ModalController,
     public sharedservice: SharedserviceProvider,
-    private googlePlus: GooglePlus
   ) {
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
@@ -308,7 +304,7 @@ export class LoginPage {
       _base.countryCode = success
 
       if (_base.countryCode == 'in') {
-        _base.country_code = "91"
+        // _base.country_code = "91"
       } else if (_base.countryCode == 'gb') {
         _base.country_code = "44"
       } else if (_base.countryCode == 'fr') {

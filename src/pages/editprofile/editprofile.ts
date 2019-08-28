@@ -142,7 +142,7 @@ export class EditprofilePage {
         console.log("here is the success image ..." + success);
         imagePath = success;
         console.log("check image path......" + imagePath);
-        _base.imageId = imagePath;
+        // _base.imageId = imagePath;
         console.log("check image source type............");
         console.log(sourceType);
 
@@ -261,7 +261,7 @@ export class EditprofilePage {
 
         if (this.profileImage) {
           this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage + "&select=thumbnail";//creating url for profile pic
-          this.convertToDataURLviaCanvas(this.imageId, "image/png").then(base64img => {
+          this.convertToDataURLviaCanvas(this.API_URL + "/file/getImage?imageId=" + this.profileImage, "image/png").then(base64img => {
             console.log(base64img);
             this.imageId = base64img;
             this.storage.remove("buimg")
@@ -411,6 +411,11 @@ export class EditprofilePage {
     // }
 
     let profile;
+
+    if (!_base.profiledata.email) {
+      _base.profiledata.email = ""
+    }
+
     if (_base.initEmail.trim() != _base.profiledata.email.trim() && _base.profiledata.email.trim() != "") {
       profile = {
         email: _base.profiledata.email
@@ -418,12 +423,12 @@ export class EditprofilePage {
     } else {
 
       profile = {
-        address: _base.profiledata.address,
-        city: _base.profiledata.city,
-        country: _base.profiledata.country,
+        address: _base.profiledata.address ? _base.profiledata.address : ' ',
+        city: _base.profiledata.city ? _base.profiledata.city : ' ',
+        country: _base.profiledata.country ? _base.profiledata.country : ' ',
         imageId: _base.profileImage != "" ? _base.profileImage : null,
-        name: _base.profiledata.name,
-        website: _base.profiledata.website
+        name: _base.profiledata.name ? _base.profiledata.name : ' ',
+        website: _base.profiledata.website ? _base.profiledata.website : ' '
       }
     }
 

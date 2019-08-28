@@ -5,6 +5,13 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import { Contacts, Contact, ContactField, ContactName, ContactOrganization, ContactAddress } from '@ionic-native/contacts';
 import * as moment from 'moment'
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { Geolocation } from '@ionic-native/geolocation';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
 /**
  * Generated class for the TapdetailsPage page.
  *
@@ -36,9 +43,14 @@ export class TapdetailsPage {
   devicedetaill: any
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
+    private transfer: FileTransfer,
+    private file: File,
     private toast: ToastController,
     public alert: AlertController,
+    private androidPermissions: AndroidPermissions,
+    private launchNavigator: LaunchNavigator,
     public loading: LoadingController,
+    private geolocation: Geolocation,
     public nfctagPro: NfctagProvider,
     private socialsharing: SocialSharing,
     public sharedservice: SharedserviceProvider,
@@ -199,7 +211,7 @@ export class TapdetailsPage {
     contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
     contact.phoneNumbers = [new ContactField('mobile', data.mobileNumber)];
     contact.organizations = [new ContactOrganization('company', data.company)];
-    contact.addresses = [new ContactAddress(false,"home", data.address)];
+    contact.addresses = [new ContactAddress(false, "home", data.address)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
     if (data.profile_pic) {
@@ -230,8 +242,8 @@ export class TapdetailsPage {
     contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.contact_info.email)];
     contact.urls = [new ContactField('website', data.contact_info.website)];
-    contact.addresses = [new ContactAddress(false,"home", data.contact_info.address)];
-    if(data.imageId){
+    contact.addresses = [new ContactAddress(false, "home", data.contact_info.address)];
+    if (data.imageId) {
       contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
     }
 
@@ -240,7 +252,7 @@ export class TapdetailsPage {
     contact.save().then((contact) => {
       console.log(contact);
       alert("contact saved");
-      
+
     }, (err) => {
       alert("contact not saved");
     })
@@ -277,6 +289,69 @@ export class TapdetailsPage {
     this.navCtrl.pop();
   }
 
+  // download pdf
+  download(pdfID: String) {
+    const url = "https://api.taptap.org.uk/file/getImage?imageId=" + pdfID;
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
+      alert('MENU download complete: ' + entry.toURL());
+    }, (error) => {
+      // handle error
+      alert("Can not download MENU")
+    });
+  }
+
+  navigate(geo: any) {
+    let _base = this
+    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      function (result) {
+        console.log('Has permission?', result.hasPermission)
+        if (!result.hasPermission) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        } else {
+          _base.geolocation.getCurrentPosition().then((resp) => {
+
+            console.log("lunch navigator");
+            let start = {
+              lat: resp.coords.latitude,
+              lng: resp.coords.longitude
+            };
+
+            let end = {
+              lat: parseFloat(geo.latitude),
+              lng: parseFloat(geo.longitude)
+            };
+
+            console.log(start, end);
+
+            _base.lunchNavigator(start, end);
+
+          }).catch((error) => {
+            console.log('Error getting location', error);
+          })
+        }
+      },
+      function (err) {
+        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+      });
+  }
+
+  lunchNavigator(start: any, end: any) {
+    console.log(start);
+    console.log(end);
+    let GStart = [start.lat, start.lng];
+    let GEnd = [end.lat, end.lng];
+    let options: LaunchNavigatorOptions = {
+      start: GStart,
+      transportMode: "driving"
+    };
+
+    this.launchNavigator.navigate(GEnd, options)
+      .then(
+        success => console.log('Launched navigator', success),
+        error => console.log('Error launching navigator', error)
+      );
+  }
 
 
   website(url) {
