@@ -141,13 +141,43 @@
       <img class="modal-content" id="img01" [src]=xx>
       <div id="caption"></div>
     </div> -->
+    <div class="head1">
+      <div class="mdl">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+  
+        <p>Restaurant</p>
+        <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
+      </div>
+    </div>
 
-
+    <div id="myModal" class="modal">
+      <span (click)="close()" class="close">&times;</span>
+      <img class="modal-content" id="img01" [src]=xx>
+      <div id="caption"></div>
+    </div>
+  
+    <div class="imgss event">
+      <!-- <div class="ss"></div> -->
+  
+  
+      <ion-slides pager id="myImg">
+  
+        <ion-slide *ngIf="eventdata.restaurantId.logo"
+        (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
+        <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
+      </ion-slide>
+  
+  
+        <input type="file" id="fileInput" style="display: none" (change)="selectFile($event)" />
+  
+      </ion-slides>
+    </div>
+  
+    <!-- 
     <div class="showcontent">
       <div class="head">
 
         <div class="mdl">
-          <!-- <ion-icon name="calendar"></ion-icon> -->
           <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
 
           <p>{{eventdata.purpose}}</p>
@@ -168,7 +198,7 @@
         </ion-slides>
       </div>
 
-    </div>
+    </div> -->
 
 
 
@@ -199,10 +229,10 @@
       </div>
     </ion-list>
     <div class="">
-      <ion-grid class="saveGrid" text-center>
+      <ion-grid class="" text-center>
         <ion-row>
           <ion-col col-6>
-            <button ion-button class="save" (click)="navigate(eventdata.restaurantId.geo)"> <i class="fa fa-map-marker"
+            <button ion-button class="save1" (click)="navigate(eventdata.restaurantId.geo)"> <i class="fa fa-map-marker"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               location</button>
           </ion-col>
@@ -212,7 +242,7 @@
             </button>
           </ion-col> -->
           <ion-col col-6>
-            <button ion-button class="save" (click)="socialshare(eventdata,eventdata.restaurantId._id)"><i
+            <button ion-button class="save1" (click)="socialshare(eventdata,eventdata.restaurantId._id)"><i
                 class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
           </ion-col>
@@ -233,7 +263,7 @@
 
   <div *ngIf="eventdata.contactId">
     <div class="showcontent">
-      <div class="head">
+      <div class="head1">
 
         <div class="mdl">
           <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>

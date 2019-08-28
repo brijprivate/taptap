@@ -654,6 +654,9 @@ page-tapdetails {
     font-size: 15px;
     text-align: center;
     margin-top: 1em;
+    width: 50%;
+    margin: 1em auto;
+    line-height: 24px;
   }
 
   .name {
@@ -667,7 +670,48 @@ page-tapdetails {
     color: black;
   }
 
-  .save {
+  .save1 {
     margin-left: 0 !important;
+    box-shadow: none;
+    height: 41px;
+    width: 95%;
+    background: #fff !important;
+    text-transform: capitalize;
+    color: #222 !important;
+    border: 1px solid #222 !important;
+    border-radius: 4px !important;
+    font-size: 15px;
   }
+  .down button a {
+    text-decoration: none;
+    color: initial;
+}
+
+  .head1 {
+
+    height: calc( 14vh - 1px);
+    background: #6354cb;
+    display: table;
+    width: 100%;
+
+    p {
+      // margin-right: 11em;
+      font-size: 18px;
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;
+
+    }
+
+    .mdl {
+      vertical-align: middle;
+      display: table-cell;
+      padding: 0 18px;
+
+      ion-icon.icon.icon-md.ion-md-arrow-round-back {
+        color: #222 !important;
+      }
+    }
+  }
+
 }
