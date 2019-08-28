@@ -151,31 +151,27 @@
           <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
 
           <p>{{eventdata.purpose}}</p>
-    
+
         </div>
       </div>
       <div class="imgss event">
         <div class="ss"></div>
 
         <ion-slides pager id="myImg">
-         
 
-          <ion-slide *ngIf="!eventdata.restaurantId.logo"
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
-            <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
+          <ion-slide *ngIf="eventdata.restaurantId.logo"
+            (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
+            <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
           </ion-slide>
-            <ion-slide *ngIf="eventdata.restaurantId.logo" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
-              <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
-            </ion-slide>
 
-        
+
         </ion-slides>
       </div>
 
     </div>
 
 
- 
+
 
 
 
@@ -189,9 +185,11 @@
       </div>
 
 
-      <div class="calls down">
-        <i class="fa fa-phone "></i>
-      </div>
+      <!-- <div class="calls down">
+        <i class="fa fa-phone ">
+          <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;Call</a>
+        </i>
+      </div> -->
       <div class="down" style="margin: 1em 0">
         <button><i class="fa fa-download" aria-hidden="true"></i>
           <a href="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.menu}}">Download
@@ -199,19 +197,19 @@
       </div>
     </ion-list>
     <div class="">
-      <ion-grid class="saveGrid" text-center >
-        <ion-row >
-          <ion-col col-4 >
+      <ion-grid class="saveGrid" text-center>
+        <ion-row>
+          <ion-col col-4>
             <button ion-button class="save" (click)="navigate(eventdata.restaurantId.geo)"> <i class="fa fa-map-marker"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               location</button>
           </ion-col>
-          <ion-col col-4 >
-            <button ion-button class="save"> <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <ion-col col-4>
+            <button ion-button class="save"> <i class="fa fa-phone" aria-hidden="true"></i>
               <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;Call</a>
             </button>
           </ion-col>
-          <ion-col col-4 >
+          <ion-col col-4>
             <button ion-button class="save" (click)="socialshare(eventdata,eventdata.restaurantId._id)"><i
                 class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
@@ -223,7 +221,7 @@
 
 
 
-    
+
   </div>
 
 

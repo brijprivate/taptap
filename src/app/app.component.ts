@@ -141,6 +141,11 @@ export class MyApp {
                     groceryId: item
                   }
                   break;
+                case 'Restaurant':
+                  object = {
+                    restaurantId: item
+                  }
+                  break;
                 case 'Verification':
                   object = {
                     verificationId: item

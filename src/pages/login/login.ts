@@ -304,7 +304,7 @@ export class LoginPage {
       _base.countryCode = success
 
       if (_base.countryCode == 'in') {
-        // _base.country_code = "91"
+        _base.country_code = "91"
       } else if (_base.countryCode == 'gb') {
         _base.country_code = "44"
       } else if (_base.countryCode == 'fr') {

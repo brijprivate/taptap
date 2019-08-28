@@ -290,6 +290,10 @@ export class LoginsignupProvider {
         route = 'verification';
         prefix = 'verification';
         break;
+      case 'Restaurant':
+        route = 'restaurant';
+        prefix = 'restaurant';
+        break;
       default:
       // code block
     }
