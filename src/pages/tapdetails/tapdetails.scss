@@ -1,577 +1,673 @@
 page-tapdetails {
-    .head {
-        height: 9vh;
-        background: #6354cb;
-        display: table;
-        width: 100%;
-        // margin-bottom: 3em;
-        p{
-            // margin-right: 11em;
-            font-size: 18px;
-            color: #fff;
-            display: inline-block;
-            vertical-align: middle;
+  .head {
+    height: 9vh;
+    background: #6354cb;
+    display: table;
+    width: 100%;
 
-        }
-        .mdl{
-            vertical-align: middle;
-            display: table-cell;
-            padding: 0 14px;
-            ion-icon.icon.icon-md.ion-md-arrow-round-back {
-                color: gray !important;
-            }
-        }   
-        
-        ion-icon.icon.ion-heart{
-            margin-right: 7px;
-            font-size: 26px;
-            color: #de1010;
-            vertical-align: middle;
-            margin-top: 15px;
-            float:right;
-        }
-        ion-icon.icon {
-            margin-right: 10px;
-            font-size: 26px;
-            color: #fff;
-            vertical-align: middle;
-            margin-left: 1em;
-        }
-    }
-    ion-icon.icon.icon-ios.ion-ios-heart{
-        margin-right: 7px;
-        font-size: 26px;
-        color: #de1010;
-        vertical-align: middle;
-        margin-top: 15px;
-        float:right;  
-    }
-    ion-slide.swiper-slide {
-        // width: 99px !important;
-    }
-    ion-datetime.datetime.datetime-md , ion-datetime.datetime.datetime-ios {
-        color: #fff;
-    }
-    
-    ion-icon.icon.icon-md.ion-ios-briefcase-outline {
-        margin-right: 10px;
-        font-size: 26px;
-        color: #222;
-    }
-    ion-icon.icon.icon-md.ion-md-time.item-icon , ion-icon.icon.icon-ios.ion-ios-time.item-icon {
-        font-size: 29px;
-        margin: -11px 5px 0px -15px;
-    }
-    
-    .scroll-content {
-        padding: 0 !important;
-    }
-    .content-md {
-        // background-color: transparent;
-    }
-    .landscape {
-        padding: 1em;
-        background: #f8f8f8;
-        text-align: center;
-        margin: -1em 1em 0 1em;
-        -webkit-box-shadow: -1px 3px 10px 0px #d6d6d6;
-        box-shadow: -1px 3px 10px 0px #d6d6d6;
-        img {
-            height: 17vh;
-            width: 17vh;
-        }
-    }
-    ion-item ion-icon.icon.icon-md , ion-item ion-icon.icon.icon-ios {
-        padding: 0;
-        margin-top: 25px;
-        font-size: 23px;
-        // margin-right: -18px;
-        color: #9093a9;
-    }
-    p.inputTitle {
-        color: #807f8c;
-        font-weight: 500;
-        margin: 10px 0 0px 29px;
-    }
-    ion-list.mobileSp.list.list-md , ion-list.mobileSp.list.list-ios {
-        padding: 1em 2em ;
-    }
-    .mobileSp ion-label {
-        margin-top: 0;
-        font-weight: 400;
-        font-size: 15px;
-        color: #83889e !important;
+    // margin-bottom: 3em;
+    p {
+      // margin-right: 11em;
+      font-size: 18px;
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;
+
     }
 
-    
-    button.save.disable-hover.button.button-md.button-default.button-default-md , button.save.disable-hover.button.button-ios.button-default.button-default-ios {
-        margin-left: 1em;
-        box-shadow: none;
-        height: 46px;
-        width: 100%;
-        background: #fff !important;
-        text-transform: capitalize;
-        color: #222 !important;
-        border: 1px solid #222 !important;
-        border-radius: 4px !important;
-    }
-    svg#arropre {
-        height: 20px;
-        width: 20px;
-        fill: #222;
-    }
-    button.previous.disable-hover.button.button-md.button-default.button-default-md , button.previous.disable-hover.button.button-ios.button-default.button-default-ios {
-        height: 46px;
-        background: transparent;
-        box-shadow: none;
-        border: 1px solid #222;
-        border-radius: 5px;
-        color: #222;
-    }
-   
-    ion-icon.icon.icon-md.ion-md-create.item-icon , ion-icon.icon.icon-ios.ion-ios-create.item-icon {
-        font-size: 13px;
-    }
-    ion-grid.saveGrid.grid {
-      text-align: center;
-      margin: 1em 0;
-    }
-    ion-icon.icon.icon-md.ion-md-close.item-icon , ion-icon.icon.icon-ios.ion-ios-close.item-icon{
-        font-size: 13px;
-    }
-    button.upload.disable-hover.button.button-md.button-default.button-default-md , button.upload.disable-hover.button.button-ios.button-default.button-default-ios {
-        background: transparent;
-        color: #222;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border: 1px solid #222;
-        margin-top: 2.6em;
-        font-size: 13px;
-        width: 86%;
-    }
-    ion-icon.icon.icon-md.ion-md-camera , ion-icon.icon.icon-ios.ion-ios-camera {
-        margin-right: 10px;
-        font-size: 26px;
+    .mdl {
+      vertical-align: middle;
+      display: table-cell;
+      padding: 0 14px;
+
+      ion-icon.icon.icon-md.ion-md-arrow-round-back {
+        color: gray !important;
       }
+    }
 
-      .imgss.event {
-        background: #fff;
-        box-shadow: none;
-        margin-top:-1px;
-        img {
-            webkit-box-shadow: 0px 0px 10px 5px #d6d6d6d4;
-            box-shadow: 0px 0px 10px 5px #0000006b;
-            padding: 4px;
-            margin: 10px;
-            /* height: 90% !important; */
-            height: 15vh;
-            width: 15vh;
-            border-radius: 50%;
-            background: #fff;
-        }
+    ion-icon.icon.ion-heart {
+      margin-right: 7px;
+      font-size: 26px;
+      color: #de1010;
+      vertical-align: middle;
+      margin-top: 15px;
+      float: right;
     }
-    .ss {
-        position: absolute;
-        top: -1px;
-        left: 0;
-        right: 0;
-        height: 6vh;
-        background: #6354cb;
-        z-index: 0;
-    }
-    
-    .imgss {
 
-        width: 100%;
-        // height: 26vh;
-        margin: auto;
-        background: rgba(70, 70, 70, 0.2);
-        border-radius: 0;
-        margin-top: 0em;
-        -webkit-box-shadow: -1px 3px 10px 0px #d6d6d68c;
-        box-shadow: -1px 3px 10px 0px #d6d6d68c;
-        position: relative;
-        // margin-bottom:2em;
-        img{
-            // width: auto;
-            // height: 100%;
-        }
-        .slide-zoom {
-            height: 100%;
-        }
-        // .showcontent {
-        //     height: 32vh;
-        // }
-      
-        .swiper-container{
-            // border-radius: 50%;
-        }
-        i.fa.fa-chevron-circle-left {
-            z-index: 99;
-            position: absolute;
-            top: 43%;
-            left: 0;
-            color: #757171;
-        }
-        i.fa.fa-chevron-circle-right {
-            position: absolute;
-            top: 43%;
-            right: 0;
-            color: #757171;
-        }
+    ion-icon.icon {
+      margin-right: 10px;
+      font-size: 26px;
+      color: #fff;
+      vertical-align: middle;
+      margin-left: 1em;
     }
-    .swiper-slide img {
+  }
+
+  ion-icon.icon.icon-ios.ion-ios-heart {
+    margin-right: 7px;
+    font-size: 26px;
+    color: #de1010;
+    vertical-align: middle;
+    margin-top: 15px;
+    float: right;
+  }
+
+  ion-slide.swiper-slide {
+    // width: 99px !important;
+  }
+
+  ion-datetime.datetime.datetime-md,
+  ion-datetime.datetime.datetime-ios {
+    color: #fff;
+  }
+
+  ion-icon.icon.icon-md.ion-ios-briefcase-outline {
+    margin-right: 10px;
+    font-size: 26px;
+    color: #222;
+  }
+
+  ion-icon.icon.icon-md.ion-md-time.item-icon,
+  ion-icon.icon.icon-ios.ion-ios-time.item-icon {
+    font-size: 29px;
+    margin: -11px 5px 0px -15px;
+  }
+
+  .scroll-content {
+    padding: 0 !important;
+  }
+
+  .content-md {
+    // background-color: transparent;
+  }
+
+  .landscape {
+    padding: 1em;
+    background: #f8f8f8;
+    text-align: center;
+    margin: -1em 1em 0 1em;
+    -webkit-box-shadow: -1px 3px 10px 0px #d6d6d6;
+    box-shadow: -1px 3px 10px 0px #d6d6d6;
+
+    img {
+      height: 17vh;
+      width: 17vh;
+    }
+  }
+
+  ion-item ion-icon.icon.icon-md,
+  ion-item ion-icon.icon.icon-ios {
+    padding: 0;
+    margin-top: 25px;
+    font-size: 23px;
+    // margin-right: -18px;
+    color: #9093a9;
+  }
+
+  p.inputTitle {
+    color: #807f8c;
+    font-weight: 500;
+    margin: 10px 0 0px 29px;
+  }
+
+  ion-list.mobileSp.list.list-md,
+  ion-list.mobileSp.list.list-ios {
+    padding: 1em 2em;
+  }
+
+  .mobileSp ion-label {
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 15px;
+    color: #83889e !important;
+  }
+
+
+  button.save.disable-hover.button.button-md.button-default.button-default-md,
+  button.save.disable-hover.button.button-ios.button-default.button-default-ios {
+    margin-left: 1em;
+    box-shadow: none;
+    height: 46px;
+    width: 100%;
+    background: #fff !important;
+    text-transform: capitalize;
+    color: #222 !important;
+    border: 1px solid #222 !important;
+    border-radius: 4px !important;
+  }
+
+  svg#arropre {
+    height: 20px;
+    width: 20px;
+    fill: #222;
+  }
+
+  button.previous.disable-hover.button.button-md.button-default.button-default-md,
+  button.previous.disable-hover.button.button-ios.button-default.button-default-ios {
+    height: 46px;
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid #222;
+    border-radius: 5px;
+    color: #222;
+  }
+
+  ion-icon.icon.icon-md.ion-md-create.item-icon,
+  ion-icon.icon.icon-ios.ion-ios-create.item-icon {
+    font-size: 13px;
+  }
+
+  ion-grid.saveGrid.grid {
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  ion-icon.icon.icon-md.ion-md-close.item-icon,
+  ion-icon.icon.icon-ios.ion-ios-close.item-icon {
+    font-size: 13px;
+  }
+
+  button.upload.disable-hover.button.button-md.button-default.button-default-md,
+  button.upload.disable-hover.button.button-ios.button-default.button-default-ios {
+    background: transparent;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #222;
+    margin-top: 2.6em;
+    font-size: 13px;
+    width: 86%;
+  }
+
+  ion-icon.icon.icon-md.ion-md-camera,
+  ion-icon.icon.icon-ios.ion-ios-camera {
+    margin-right: 10px;
+    font-size: 26px;
+  }
+
+  .imgss.event {
+    background: #fff;
+    box-shadow: none;
+    margin-top: -1px;
+
+    img {
+      webkit-box-shadow: 0px 0px 10px 5px #d6d6d6d4;
+      box-shadow: 0px 0px 10px 5px #0000006b;
+      padding: 4px;
+      margin: 10px;
+      /* height: 90% !important; */
+      height: 15vh;
+      width: 15vh;
+      border-radius: 50%;
+      background: #fff;
+    }
+  }
+
+  .ss {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 6vh;
+    background: #6354cb;
+    z-index: 0;
+  }
+
+  .imgss {
+
+    width: 100%;
+    // height: 26vh;
+    margin: auto;
+    background: rgba(70, 70, 70, 0.2);
+    border-radius: 0;
+    margin-top: 0em;
+    -webkit-box-shadow: -1px 3px 10px 0px #d6d6d68c;
+    box-shadow: -1px 3px 10px 0px #d6d6d68c;
+    position: relative;
+
+    // margin-bottom:2em;
+    img {
+      // width: auto;
+      // height: 100%;
+    }
+
+    .slide-zoom {
+      height: 100%;
+    }
+
+    // .showcontent {
+    //     height: 32vh;
+    // }
+
+    .swiper-container {
+      // border-radius: 50%;
+    }
+
+    i.fa.fa-chevron-circle-left {
+      z-index: 99;
+      position: absolute;
+      top: 43%;
+      left: 0;
+      color: #757171;
+    }
+
+    i.fa.fa-chevron-circle-right {
+      position: absolute;
+      top: 43%;
+      right: 0;
+      color: #757171;
+    }
+  }
+
+  .swiper-slide img {
     //  height: 100% !important;
-    }
-    p.header {
-        color: #7c8198;
-        margin: 0px;
-        margin-top: 11px;
-    }
-    .showcontent {
-        // padding: 13px 0 0;    
-    }
-    p.data {
+  }
+
+  p.header {
+    color: #7c8198;
+    margin: 0px;
+    margin-top: 11px;
+  }
+
+  .showcontent {
+    // padding: 13px 0 0;    
+  }
+
+  p.data {
     color: #222222db;
     font-size: 15px;
     margin: 4px 0;
     margin-left: 32px;
-    }
-    .iconss {
-        top: 0px;
-        position: absolute;
-        right: 0;
-    }
-    ion-icon.icon.icon-md.ion-md-heart-outline {
-        float: right;
-        margin-right: 19px;
-        color: red;
-        font-size: 24px !important;
-        margin-top: 0.7em;
-    }
-    .cont {
-        // border-bottom: 1px solid #d8d0d030;
-        padding: 0 2em;
-        margin:1.2em 1em 2em;
-                ion-icon {
-            margin-right: 13px;
-            font-size: 22px;
-            vertical-align: middle;
-        }
-    }
-    .time {
-        background: #e6ecfe;
-        padding: 20px 5px;
-        border-radius: 4px;
-        text-align: center;
-        margin-top: 11px;
+  }
 
-    }
-    .time span {
-        position: absolute;
-        top: 11px;
-        left: 20px;
-        color: #fff;
-        background: #1185e0;
-        border-radius: 3px;
-        line-height: 15px;
-        padding: 0 3px;
-        font-size: 12px;
-    }
-    .time::after {
-        content: "";
-        background: #fff;
-        height: 11px;
-        width: 11px;
-        position: absolute;
-        border-radius: 50%;
-        top:48%;
-        left: -1px;
-    }
-    .time::before {
-        content: "";
-        background: #fff;
-        height: 11px;
-        width: 11px;
-        position: absolute;
-        border-radius: 50%;
-        top: 48%;
-        right: 0;
-    }
-    button.share {
-        color: #6b708d;
-        border: 1px solid #6b708d;
-        background: transparent;
-        border-radius: 3px;
-        height: 42px;
-        width: 90%;
-        margin: 0 auto;
-    }
-    .cont.marginadj {
-        margin: 0 0px 0 7px;
-    }
-    .swiper-pagination-bullet-active {
-        background: #ffffff;
-        opacity: 1;
-      }
-      .swiper-pagination-bullet {
-        background: #fff;
-      }
-    ion-icon.icon.icon-md.ion-md-heart , ion-icon.icon.icon-ios.ion-ios-heart {
-        float: right;
-        margin-right: 19px;
-        color: red;
-        font-size: 24px;
-        margin-top: 0.7em;
-    }
-    ion-icon.icon.icon-md.ion-md-heart-outline , ion-icon.icon.icon-ios.ion-ios-heart-outline {
-        float: right;
-        margin-right: 19px;
-        color: red;
-        font-size: 35px;
-    }
-    button.upload.disable-hover.button.button-md.button-default.button-default-md {
-        background: transparent;
-        color: #222;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border: 1px solid #222;
-        // margin-top: 2.6em;
-        font-size: 12px;
-        width: 32%;
-        margin-top: 4em;
-    }
-    .eC {
-        padding: 1em 1em 0 1em;
-    }
-    .head.heada {
-        margin-bottom: 2em;
-    }
-    .coin {
-        // margin-top: 32vh;
-        width: 100%;
-        overflow-y: scroll;
-        height: 68vh;
-    }
+  .iconss {
+    top: 0px;
+    position: absolute;
+    right: 0;
+  }
 
-    .scroll-content {
-        overflow-y: hidden;
+  ion-icon.icon.icon-md.ion-md-heart-outline {
+    float: right;
+    margin-right: 19px;
+    color: red;
+    font-size: 24px !important;
+    margin-top: 0.7em;
+  }
+
+  .cont {
+    // border-bottom: 1px solid #d8d0d030;
+    padding: 0 2em;
+    margin: 1.2em 1em 2em;
+
+    ion-icon {
+      margin-right: 13px;
+      font-size: 22px;
+      vertical-align: middle;
     }
-    #myImg {
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      
-    //   #myImg:hover {opacity: 0.7;}
-      
-      /* The Modal (background) */
-      .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 99; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-        justify-content: center;
-        height: 100%;
-      }
-      
-      /* Modal Content (image) */
-      .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-      }
-      
-      /* Caption of Modal Image */
-      #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: #ccc;
-        padding: 10px 0;
-        height: 150px;
-      }
-      
-      /* Add Animation */
-      .modal-content, #caption {  
-        -webkit-animation-name: zoom;
-        -webkit-animation-duration: 0.6s;
-        animation-name: zoom;
-        animation-duration: 0.6s;
-      }
-      
-      @-webkit-keyframes zoom {
-        from {-webkit-transform:scale(0)} 
-        to {-webkit-transform:scale(1)}
-      }
-      
-      @keyframes zoom {
-        from {transform:scale(0)} 
-        to {transform:scale(1)}
-      }
-      
-      /* The Close Button */
-      .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-      
-      .close:hover,
-      .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      
-      /* 100% Image Width on Smaller Screens */
-      @media only screen and (max-width: 700px){
-        .modal-content {
-          width: 100%;
-        }
-      }
+  }
 
+  .time {
+    background: #e6ecfe;
+    padding: 20px 5px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 11px;
 
+  }
 
+  .time span {
+    position: absolute;
+    top: 11px;
+    left: 20px;
+    color: #fff;
+    background: #1185e0;
+    border-radius: 3px;
+    line-height: 15px;
+    padding: 0 3px;
+    font-size: 12px;
+  }
 
+  .time::after {
+    content: "";
+    background: #fff;
+    height: 11px;
+    width: 11px;
+    position: absolute;
+    border-radius: 50%;
+    top: 48%;
+    left: -1px;
+  }
 
+  .time::before {
+    content: "";
+    background: #fff;
+    height: 11px;
+    width: 11px;
+    position: absolute;
+    border-radius: 50%;
+    top: 48%;
+    right: 0;
+  }
 
+  button.share {
+    color: #6b708d;
+    border: 1px solid #6b708d;
+    background: transparent;
+    border-radius: 3px;
+    height: 42px;
+    width: 90%;
+    margin: 0 auto;
+  }
 
+  .cont.marginadj {
+    margin: 0 0px 0 7px;
+  }
 
-    //   for contact img
-    .pen {
-        height: 15vh;
-        width: 15vh;
-        position: absolute;
-        background: #fff;
-        border-radius: 50%;
-        padding: 4px;
-        left: 0;
-        right: 0;
-        margin: auto;
-        bottom: -6vh;
-        img{
-            border-radius: 50%;
-            height: 100%;
-            width: 100%;
-        }
-    }
-    .blue {
-        height: 7vh;
-        background: #6354cb;
-        margin-top: -1px;
-        position: relative;
+  .swiper-pagination-bullet-active {
+    background: #ffffff;
+    opacity: 1;
+  }
 
-    }
-    .blue .pen::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        -webkit-box-shadow: 0px 0px 40px 11px #b7a6a64d;
-        box-shadow: 0px 0px 40px 11px #b7a6a64d;
-        border-radius: 50%;
-        z-index: -9;
-    }   
+  .swiper-pagination-bullet {
+    background: #fff;
+  }
 
-    i.fa.fa-angle-left {
-        font-size: 24px;
-        vertical-align: middle;
-        color: #fff;
-        font-weight: 600;
-        margin-right: 8px;
-        margin-bottom: 2px;
+  ion-icon.icon.icon-md.ion-md-heart,
+  ion-icon.icon.icon-ios.ion-ios-heart {
+    float: right;
+    margin-right: 19px;
+    color: red;
+    font-size: 24px;
+    margin-top: 0.7em;
+  }
+
+  ion-icon.icon.icon-md.ion-md-heart-outline,
+  ion-icon.icon.icon-ios.ion-ios-heart-outline {
+    float: right;
+    margin-right: 19px;
+    color: red;
+    font-size: 35px;
+  }
+
+  button.upload.disable-hover.button.button-md.button-default.button-default-md {
+    background: transparent;
+    color: #222;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #222;
+    // margin-top: 2.6em;
+    font-size: 12px;
+    width: 32%;
+    margin-top: 4em;
+  }
+
+  .eC {
+    padding: 1em 1em 0 1em;
+  }
+
+  .head.heada {
+    margin-bottom: 2em;
+  }
+
+  .coin {
+    // margin-top: 32vh;
+    width: 100%;
+    overflow-y: scroll;
+    height: 68vh;
+  }
+
+  .scroll-content {
+    overflow-y: hidden;
+  }
+
+  #myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  //   #myImg:hover {opacity: 0.7;}
+
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 99;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+    justify-content: center;
+    height: 100%;
+  }
+
+  /* Modal Content (image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  /* Caption of Modal Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+
+  /* Add Animation */
+  .modal-content,
+  #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+
+  @-webkit-keyframes zoom {
+    from {
+      -webkit-transform: scale(0)
     }
 
-    p.companyname:after{
-        content: "";
-        height: 20px;
-        background: url(https://img.icons8.com/color/48/000000/verified-account.png);
-        position: absolute;
-        width: 20px;
-        background-size: 100% 100%;
-        top: 0;
-        margin-left: 4px;
+    to {
+      -webkit-transform: scale(1)
     }
-    p.companyname{
-        position: relative;
-        text-align: center;
-        font-size: 23px;
+  }
+
+  @keyframes zoom {
+    from {
+      transform: scale(0)
     }
 
-    .product {
-        text-align: center;
-        font-size: 17px;
-        line-height: 1px;
+    to {
+      transform: scale(1)
     }
-    .varified {
-        text-align: center;
-        font-size: 24px;
-        color: #53af51;
-        margin: 3em 0 5em;
-        line-height: 36px;
-        position: relative;
-        img.very {
-            position: absolute;
-            top: 100%;
-            height: 54px;
-            right: 28px;
-        }
-    }
-    // for restorent
+  }
 
-    .calls i {
-        background: #6354cb;
-        color: #fff;
-        padding-top: 21px;
-        border-radius: 50%;
-        font-size: 20px;
-        height: 60px;
-        width: 60px;
-        margin: 0;
-      }
-      .down {
-        text-align: center;
-        margin: 2em 0;
-    
-        button {
-          width: 70%;
-          background: transparent;
-          border: 1px solid #222;
-          line-height: 35px;
-          border-radius: 4px;
-          font-size: 16px;
-        }
-      }
-      .add {
-        font-size: 15px;
-        text-align: center;
-        margin-top: 1em;
-      }
-    
-      .name {
-        font-size: 19px;
-        text-align: center;
-        font-weight: 600;
-      }
-      
-.save{
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px) {
+    .modal-content {
+      width: 100%;
+    }
+  }
+
+
+
+
+
+
+
+
+  //   for contact img
+  .pen {
+    height: 15vh;
+    width: 15vh;
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    padding: 4px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: -6vh;
+
+    img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .blue {
+    height: 7vh;
+    background: #6354cb;
+    margin-top: -1px;
+    position: relative;
+
+  }
+
+  .blue .pen::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-box-shadow: 0px 0px 40px 11px #b7a6a64d;
+    box-shadow: 0px 0px 40px 11px #b7a6a64d;
+    border-radius: 50%;
+    z-index: -9;
+  }
+
+  i.fa.fa-angle-left {
+    font-size: 24px;
+    vertical-align: middle;
+    color: #fff;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 2px;
+  }
+
+  p.companyname:after {
+    content: "";
+    height: 20px;
+    background: url(https://img.icons8.com/color/48/000000/verified-account.png);
+    position: absolute;
+    width: 20px;
+    background-size: 100% 100%;
+    top: 0;
+    margin-left: 4px;
+  }
+
+  p.companyname {
+    position: relative;
+    text-align: center;
+    font-size: 23px;
+  }
+
+  .product {
+    text-align: center;
+    font-size: 17px;
+    line-height: 1px;
+  }
+
+  .varified {
+    text-align: center;
+    font-size: 24px;
+    color: #53af51;
+    margin: 3em 0 5em;
+    line-height: 36px;
+    position: relative;
+
+    img.very {
+      position: absolute;
+      top: 100%;
+      height: 54px;
+      right: 28px;
+    }
+  }
+
+  // for restorent
+
+  .calls i {
+    background: #6354cb;
+    color: #fff;
+    padding-top: 21px;
+    border-radius: 50%;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+    margin: 0;
+  }
+
+  .down {
+    text-align: center;
+    margin: 2em 0;
+
+    button {
+      width: 70%;
+      background: transparent;
+      border: 1px solid #222;
+      line-height: 35px;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+  }
+
+  .add {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 1em;
+  }
+
+  .name {
+    font-size: 19px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .calls a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .save {
     margin-left: 0 !important;
-}
+  }
 }

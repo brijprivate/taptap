@@ -75,6 +75,19 @@ export class LoginsignupProvider {
     });
   }
 
+  verifyEmailOTP(data) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.put(_base.apiUrl + 'user/emailVerify', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
   //API call for Login...
   login(data) {
     let _base = this;

@@ -472,7 +472,7 @@ export class EditprofilePage {
   OTPAlert() {
     let _base = this
     let alert = this.alert.create({
-      title: 'ONE TIME PASSWORD has been sent to your email' + _base.profiledata.email,
+      title: 'ONE TIME PASSWORD has been sent to your email ' + _base.profiledata.email,
       cssClass: 'reset',
       inputs: [
         {
@@ -515,7 +515,7 @@ export class EditprofilePage {
 
   verifycode(code) {
     let _base = this
-    _base.loginsignupProvider.verifyUserOTP({ email: _base.profiledata.email, code: code.trim() })
+    _base.loginsignupProvider.verifyEmailOTP({ email: _base.profiledata.email, code: code.trim(), userId: _base.userId })
       .then(function (success: any) {
         if (success.error == false) {
           _base.presentAlert();

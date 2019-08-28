@@ -185,11 +185,13 @@
       </div>
 
 
-      <!-- <div class="calls down">
-        <i class="fa fa-phone ">
-          <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;Call</a>
-        </i>
-      </div> -->
+      <div class="calls down">
+        <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;
+          <i class="fa fa-phone ">
+            <!-- call -->
+          </i>
+        </a>
+      </div>
       <div class="down" style="margin: 1em 0">
         <button><i class="fa fa-download" aria-hidden="true"></i>
           <a href="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.menu}}">Download
@@ -199,17 +201,17 @@
     <div class="">
       <ion-grid class="saveGrid" text-center>
         <ion-row>
-          <ion-col col-4>
+          <ion-col col-6>
             <button ion-button class="save" (click)="navigate(eventdata.restaurantId.geo)"> <i class="fa fa-map-marker"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               location</button>
           </ion-col>
-          <ion-col col-4>
+          <!-- <ion-col col-4>
             <button ion-button class="save"> <i class="fa fa-phone" aria-hidden="true"></i>
               <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;Call</a>
             </button>
-          </ion-col>
-          <ion-col col-4>
+          </ion-col> -->
+          <ion-col col-6>
             <button ion-button class="save" (click)="socialshare(eventdata,eventdata.restaurantId._id)"><i
                 class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
