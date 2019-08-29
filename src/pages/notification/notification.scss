@@ -162,13 +162,9 @@ page-notification {
     .seen {
       opacity: 0.6;
     }
-    // .et:nth-child(even) {
-    //     background: rgb(240, 240, 240);
-    // }
-    // .et:nth-child(even) img.imgStart {
-    //     border: 2px solid #222;
-    // }
-    // .et:nth-child(even) p.lorem {
-    //     color: #212121;
-    // }
+    p.nonoti {
+      text-align: center;
+      color: #222;
+      margin-top: 40vh;
+  }
 }

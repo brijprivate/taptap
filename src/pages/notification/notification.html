@@ -33,6 +33,7 @@
     </div>
   </div> -->
 
+  <p class="nonoti" *ngIf="notifications.length==0">No Any Notification</p>
 
   <div *ngFor="let notification of notifications">
     <p *ngIf="notification.date" class="datePadding">{{notification.date}}</p>
