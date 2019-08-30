@@ -191,6 +191,10 @@ export class ProfilePage {
 
     _base.nfc.enabled().then(function (success) {
       console.log(success)
+      if (_base.showchart) {
+        _base.chart.dispose();
+      } clearInterval(_base.interval);
+      _base.navCtrl.push('AnimatetapPage', { key: 'milage' });
       console.log("===================================================================================")
     }, function (error) {
       console.log(error)
@@ -204,11 +208,6 @@ export class ProfilePage {
       console.log("============================================================================")
       return
     })
-
-    if (this.showchart) {
-      this.chart.dispose();
-    } clearInterval(this.interval);
-    this.navCtrl.push('AnimatetapPage', { key: 'milage' });
     // this.navCtrl.push('RecordmilagePage');
 
 
@@ -222,6 +221,10 @@ export class ProfilePage {
     _base.nfc.enabled().then(function (success) {
       console.log(success)
       console.log("===================================================================================")
+      if (_base.showchart) {
+        _base.chart.dispose();
+      } clearInterval(_base.interval);
+      _base.navCtrl.push('AnimatetapPage', { key: 'time' });
     }, function (error) {
       console.log(error)
       if (error == 'NO_NFC') {
@@ -234,11 +237,6 @@ export class ProfilePage {
       console.log("============================================================================")
       return
     })
-
-    if (this.showchart) {
-      this.chart.dispose();
-    } clearInterval(this.interval);
-    this.navCtrl.push('AnimatetapPage', { key: 'time' });
 
     // this.navCtrl.push('RecordtimePage');
   }
@@ -286,6 +284,13 @@ export class ProfilePage {
       console.log(success.result);
 
       _base.devices = success.result;
+
+      if (_base.devices.length == 0) {
+        _base.storage.remove('all_devices')
+        _base.storage.remove("device")
+        _base.storage.remove("device_type")
+        _base.maindevice = null;
+      }
 
       _base.storage.remove('all_devices')
       _base.storage.set('all_devices', _base.devices)

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Address Autocomplete</ion-title>
-    <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()"
+    <ion-searchbar [(ngModel)]="autocomplete.query" id="search" [showCancelButton]="true" (ionInput)="updateSearch()"
       (ionCancel)="dismiss()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>

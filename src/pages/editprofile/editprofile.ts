@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, Platform, LoadingController, ActionSheetController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ToastController, Platform, LoadingController, ActionSheetController, AlertController } from 'ionic-angular';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
@@ -42,6 +42,7 @@ export class EditprofilePage {
     public navParams: NavParams,
     private camera: Camera,
     private transfer: FileTransfer,
+    public modalCtrl: ModalController,
     private file: File,
     private filePath: FilePath,
     public toastCtrl: ToastController,
@@ -327,6 +328,44 @@ export class EditprofilePage {
     });
   }
 
+  removePhoto() {
+    let _base = this;
+    let data = {
+      imageId: '5d67bb5c5c27994be78f2b73',
+      _id: _base.profiledata._id
+    }
+    this.loginsignupProvider.profileUpdate(data).then(function (success: any) {
+      console.log(success);
+
+      if (success.error) {
+        alert("Can not remove. Please try again")
+        return;
+      } else {
+        _base.getprofiledata()
+      }
+    }, function (err) {
+      console.log(err);
+      alert("Can not remove. please try again")
+    })
+  }
+
+  showautocomplete() {
+    let _base = this;
+    let modal = this.modalCtrl.create("AutocompletePage");
+
+    modal.onDidDismiss(data => {
+      if (Object.keys(data).length != 0) {
+        console.log(data)
+        _base.profiledata.address = data.location;
+        _base.profiledata.country = data.country;
+        _base.profiledata.city = data.city;
+      } else {
+        console.log("no data");
+      }
+    });
+    modal.present();
+  }
+
   //Get profile data...
   getprofiledata() {
     let _base = this;
@@ -416,6 +455,12 @@ export class EditprofilePage {
       _base.profiledata.email = ""
     }
 
+    if (this.initEmail.trim() != "" && _base.profiledata.email.trim() == "") {
+      alert('Removing email is now allowed. You can only change the email.')
+      _base.profiledata.email = _base.initEmail;
+      return;
+    }
+
     if (_base.initEmail.trim() != _base.profiledata.email.trim() && _base.profiledata.email.trim() != "") {
       profile = {
         email: _base.profiledata.email
@@ -423,12 +468,12 @@ export class EditprofilePage {
     } else {
 
       profile = {
-        address: _base.profiledata.address ? _base.profiledata.address : ' ',
-        city: _base.profiledata.city ? _base.profiledata.city : ' ',
-        country: _base.profiledata.country ? _base.profiledata.country : ' ',
+        address: _base.profiledata.address,
+        city: _base.profiledata.city,
+        country: _base.profiledata.country,
         imageId: _base.profileImage != "" ? _base.profileImage : null,
-        name: _base.profiledata.name ? _base.profiledata.name : ' ',
-        website: _base.profiledata.website ? _base.profiledata.website : ' '
+        name: _base.profiledata.name,
+        website: _base.profiledata.website
       }
     }
 
