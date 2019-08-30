@@ -12,6 +12,7 @@ import { Storage } from '@ionic/storage';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { ProfilePage } from '../profile/profile';
 declare var Morris;
+
 // import { Diagnostic } from '@ionic-native/diagnostic';
 declare var anychart;
 @Component({
@@ -432,18 +433,32 @@ export class HomePage {
     let _base = this;
     this.readingTag = true;
 
-    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
-      function (result) {
-        console.log('Has permission?', result.hasPermission)
-        if (!result.hasPermission) {
-          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+    _base.nfc.enabled()
+      .then(function (success) {
+        _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+          function (result) {
+            console.log('Has permission?', result.hasPermission)
+            if (!result.hasPermission) {
+              _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+            } else {
+              _base.navCtrl.push('TapmodalPage');
+            }
+          },
+          function (err) {
+            alert('Please turn on location service to use this feature.')
+            _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+          });
+      }, function (error) {
+
+        if (error == 'NO_NFC') {
+          alert('This phone is not NFC Supported')
+        } else if (error == 'NFC_DISABLED') {
+          alert('NFC is disabled on this phone.Please enable NFC to use this feature')
         } else {
-          _base.navCtrl.push('TapmodalPage');
+          alert('Unsupported NFC')
         }
-      },
-      function (err) {
-        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-      });
+
+      })
   }
 
   getDashboarddata() {

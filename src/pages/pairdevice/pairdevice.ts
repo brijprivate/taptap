@@ -18,13 +18,13 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
   templateUrl: 'pairdevice.html',
 })
 export class PairdevicePage {
-  page='';
+  page = '';
   public userId: any;
   public paircode: any;
   public tapData: any;
   public isnetwork = "Online";
 
-  alertcs:any;
+  alertcs: any;
   readingTag: boolean = true;
   writingTag: boolean = false;
   isWriting: boolean = false;
@@ -32,7 +32,7 @@ export class PairdevicePage {
   subscriptions: Array<Subscription> = new Array<Subscription>();
 
   constructor(public navCtrl: NavController,
-    public alert:AlertController,
+    public alert: AlertController,
     public navParams: NavParams,
     public nfc: NFC,
     public ndef: Ndef,
@@ -46,7 +46,7 @@ export class PairdevicePage {
       this.isnetwork = value;
     });
 
-    this.page=this.navParams.get('x');
+    this.page = this.navParams.get('x');
     console.log(this.page)
     this.userId = localStorage.getItem("userId");
     this.subscriptions.push(this.nfc.addNdefListener()
@@ -66,10 +66,10 @@ export class PairdevicePage {
           console.log("whole data", data.tag);
           console.log("tag id", s);
           this.tapData = s.substring(0, s.length - 1);
-          if(this.tapData){
+          if (this.tapData) {
             this.presentPrompt()
-            
-            
+
+
           }
           return s.substring(0, s.length - 1);
 
@@ -119,7 +119,7 @@ export class PairdevicePage {
       showtoast.present();
       return;
     }
-    
+
     let loader = this.loading.create({
       content: "Please wait..."
     });
@@ -136,7 +136,10 @@ export class PairdevicePage {
         alert(success.message)
       } else {
         // _base.navCtrl.pop();
-        _base.navCtrl.setRoot('ProfilePage');
+        // _base.navCtrl.setRoot('ProfilePage');
+        if (success.result.type == 'Keyring' || success.result.type == 'card') {
+          _base.setdefault(success.result._id)
+        }
       }
     }, function (err) {
       console.log(err);
@@ -145,50 +148,72 @@ export class PairdevicePage {
     })
   }
 
+  setdefault(deviceID: String) {
+    let _base = this;
+    let data = {
+      deviceId: deviceID,
+      is_active: true
+    }
+    console.log(data);
+    this.nfctagpro.updateDeviceName(data).then(function (success: any) {
+      console.log(success);
+      if (success.error) {
+        alert('Device paired but can not set to Default. Please set it default manually')
+        _base.navCtrl.setRoot('ProfilePage');
+      } else {
+        _base.navCtrl.setRoot('ProfilePage');
+      }
+    }, function (err) {
+      console.log(err);
+      alert('Device paired but can not set to Default. Please set it default manually')
+      _base.navCtrl.setRoot('ProfilePage');
+    })
+  }
 
-  gotovack(){
+
+  gotovack() {
     this.navCtrl.pop()
   }
 
-ionViewDidLeave(){
-  this.readingTag = false;
-// this.alertcs.dismiss();
-}
+  ionViewDidLeave() {
+    this.readingTag = false;
+    // this.alertcs.dismiss();
+  }
 
   presentPrompt() {
-   
+
 
 
     // if(this.page=='page'){
-      console.log('in promptwa 11111111111111111111111111111111111111');
-      this.alertcs = this.alert.create({
-       title: 'Provide Pairing Code',
-       inputs: [
-         {
-           
-           placeholder: 'Pairing code'
-         },
-       ],
-       buttons: [
-         {
-           text: 'Cancel',
-           role: 'cancel',
-           handler: data => {
-             console.log('Cancel clicked');
-           }
-         },
-         {
-           text: 'Save',
-           handler: data => {
-             console.log(data[0]);
-             this.paircode=data[0]
-             this.pairDevice();
-           }
-         }
-       ]
-     });
-     this.alertcs.present();
-    }
+    console.log('in promptwa 11111111111111111111111111111111111111');
+    this.alertcs = this.alert.create({
+      title: 'Provide Pairing Code',
+      inputs: [
+        {
+
+          placeholder: 'Pairing code'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log(data[0]);
+            this.paircode = data[0]
+            this.pairDevice();
+          }
+        }
+      ]
+    });
+    this.alertcs.present();
+  }
   //   this.page=''
   // }
 }
