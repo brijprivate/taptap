@@ -24,6 +24,7 @@ export class SelectdatePage {
   data: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginsignupProvider: LoginsignupProvider) {
     this.edate = new Date().toISOString();
+    this.sdate = new Date().toISOString();
     console.log(this.sdate);
     this.userId = localStorage.getItem("userId");
 
@@ -53,12 +54,12 @@ export class SelectdatePage {
   enddate() {
     // this.edate = new Date().toISOString();
     console.log(this.edate)
-    console.log(this.edate.slice(0,-16));
+    console.log(this.edate.slice(0, -16));
   }
   back() {
     this.navCtrl.pop()
   }
-  
+
   submit() {
     this.data = {};
     if (this.edate == undefined || this.sdate == undefined) {
@@ -70,10 +71,10 @@ export class SelectdatePage {
       alert('End date is smaller than Start date');
       return;
     }
-    else{
+    else {
       console.log('ok you can go');
-    } 
-    
+    }
+
     if (this.selected == undefined) {
       alert('please select type');
       return;
@@ -169,9 +170,13 @@ export class SelectdatePage {
         this.data = this.data.business.concat(this.data.personal);
       }
     }
+
+    let edate = new Date(this.edate)
+    edate.setHours(edate.getHours() + 12)
+
     var data = {
       type: this.selected,
-      date: { start: this.sdate, end: this.edate },
+      date: { start: new Date(this.sdate.toString()).toISOString(), end: edate.toISOString() },
       data: this.data
     }
     console.log(this.data);
