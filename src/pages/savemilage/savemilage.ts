@@ -283,20 +283,15 @@ export class SavemilagePage {
   }
 
   presentAlert() {
+    let _base = this;
     let alert = this.alert.create({
       title: 'Mileage has been saved',
-      cssClass: 'mycss',
-      buttons: [
-
-        {
-          text: 'OK',
-          handler: data => {
-            this.navCtrl.setRoot('ProfilePage');
-          }
-        }
-      ]
+      cssClass: 'mycss'
     });
     alert.present();
-    setTimeout(() => alert.dismiss(), 2000);
+    setTimeout(() => {
+      alert.dismiss()
+      _base.navCtrl.setRoot('ProfilePage');
+    }, 2000);
   }
 }
