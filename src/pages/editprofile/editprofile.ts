@@ -225,6 +225,7 @@ export class EditprofilePage {
   *
   */
   public uploadImage() {
+    let _base = this;
 
     if (this.lastImage) {
       // Destination URL
@@ -267,6 +268,10 @@ export class EditprofilePage {
             this.imageId = base64img;
             this.storage.remove("buimg")
             this.storage.set('buimg', base64img);
+
+            // now update the profile with the new PICTURE
+            _base.savePhoto(_base.profileImage);
+
           })
         }
 
@@ -346,6 +351,27 @@ export class EditprofilePage {
     }, function (err) {
       console.log(err);
       alert("Can not remove. please try again")
+    })
+  }
+
+  savePhoto(imageID: String) {
+    let _base = this;
+    let data = {
+      imageId: imageID,
+      _id: _base.profiledata._id
+    }
+    this.loginsignupProvider.profileUpdate(data).then(function (success: any) {
+      console.log(success);
+
+      if (success.error) {
+        alert("Can not save profile picture. Please try again")
+        return;
+      } else {
+        _base.getprofiledata()
+      }
+    }, function (err) {
+      console.log(err);
+      alert("Can not save profile picture. please try again")
     })
   }
 
