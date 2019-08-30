@@ -225,6 +225,7 @@ export class EditprofilePage {
   *
   */
   public uploadImage() {
+    let _base = this;
 
     if (this.lastImage) {
       // Destination URL
@@ -267,6 +268,10 @@ export class EditprofilePage {
             this.imageId = base64img;
             this.storage.remove("buimg")
             this.storage.set('buimg', base64img);
+
+            // now update the profile with the new PICTURE
+            _base.updateProfile();
+
           })
         }
 
