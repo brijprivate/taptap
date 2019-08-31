@@ -144,16 +144,16 @@
     <div class="head1">
       <div class="mdl">
         <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
-  
+
         <p>Restaurant</p>
 
         <div class=" iconss1">
-            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-              (click)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+            (click)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+            (click)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
 
-          </div>
+        </div>
         <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
       </div>
     </div>
@@ -163,21 +163,21 @@
       <img class="modal-content" id="img01" [src]=xx>
       <div id="caption"></div>
     </div>
-  
+
     <div class="imgss event">
       <!-- <div class="ss"></div> -->
-  
-  
+
+
       <ion-slides pager id="myImg">
-  
+
         <ion-slide *ngIf="eventdata.restaurantId.logo"
-        (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
-        <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
-      </ion-slide>
-  
-  
+          (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
+          <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
+        </ion-slide>
+
+
         <input type="file" id="fileInput" style="display: none" (change)="selectFile($event)" />
-  
+
       </ion-slides>
     </div>
 
@@ -195,7 +195,7 @@
         <!-- west bangal, India -->
       </div>
       <div class="dis">
-        <p>10% <span>OFF</span></p>
+        <p>{{eventdata.storeId.companyId.discount}}% <span>OFF</span></p>
       </div>
       <div class="down" style="margin: 1em 0">
         <button><i class="fa fa-download" aria-hidden="true"></i>
@@ -203,7 +203,7 @@
             Menu</a></button>
       </div>
       <div class="calls down">
-        <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;
+        <a href="tel:{{eventdata.storeId.companyId.phone}}" class="button button-positive">&nbsp;&nbsp;
           <i class="fa fa-phone ">
             <!-- call -->
           </i>
@@ -213,8 +213,8 @@
         <ion-grid class="" text-center style="padding: 0">
           <ion-row>
             <ion-col col-6 style="padding: 0">
-              <button ion-button class="save1" (click)="navigate(eventdata.restaurantId.geo)"> <i class="fa fa-map-marker"
-                  aria-hidden="true"></i>&nbsp;&nbsp;
+              <button ion-button class="save1" (click)="navigate(eventdata.storeId.companyId.geo)"> <i
+                  class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;
                 location</button>
             </ion-col>
             <!-- <ion-col col-4>
@@ -227,12 +227,12 @@
                   class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
             </ion-col>
-  
+
           </ion-row>
         </ion-grid>
       </div>
     </ion-list>
-  
+
 
 
 
@@ -247,7 +247,7 @@
   <div *ngIf="eventdata.contactId">
 
 
-    
+
     <div class="showcontent">
       <div class="head">
 
@@ -937,12 +937,12 @@
         <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
         <p>Verification</p>
         <div class="iconss">
-            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-              (click)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+            (click)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+            (click)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
 
-          </div>
+        </div>
       </div>
     </div>
     <div class="imgss event">

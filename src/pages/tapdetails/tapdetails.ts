@@ -179,7 +179,7 @@ export class TapdetailsPage {
       console.log(success);
       // loader.dismiss();
       if (!_base.eventdata.is_favourite == true) {
-        _base.fav(_base.eventdata, favdata)
+        // _base.fav(_base.eventdata, favdata)
       }
       _base.eventdata = success.result
 
