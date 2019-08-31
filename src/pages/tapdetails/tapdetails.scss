@@ -286,11 +286,16 @@ page-tapdetails {
     right: 0;
   }
 
+  .iconss1 {
+    top: 18px;
+    position: absolute;
+    right: 0;
+  }
   ion-icon.icon.icon-md.ion-md-heart-outline {
     float: right;
     margin-right: 19px;
     color: red;
-    font-size: 24px !important;
+    font-size: 24px;
     margin-top: 0.7em;
   }
 
@@ -357,6 +362,8 @@ page-tapdetails {
     height: 42px;
     width: 90%;
     margin: 0 auto;
+    box-shadow: 0px 0px 7px 3px #0000002e;
+
   }
 
   .cont.marginadj {
@@ -386,7 +393,8 @@ page-tapdetails {
     float: right;
     margin-right: 19px;
     color: red;
-    font-size: 35px;
+    font-size: 24px;
+    margin-top: 0.7em;
   }
 
   button.upload.disable-hover.button.button-md.button-default.button-default-md {
@@ -582,6 +590,8 @@ page-tapdetails {
     font-weight: 600;
     margin-right: 8px;
     margin-bottom: 2px;
+    width: 30px;
+    text-align: center;
   }
 
   p.companyname:after {
@@ -634,6 +644,8 @@ page-tapdetails {
     height: 60px;
     width: 60px;
     margin: 0;
+    box-shadow: 0px 0px 7px 3px #0000002e;
+
   }
 
   .down {
@@ -647,6 +659,8 @@ page-tapdetails {
       line-height: 35px;
       border-radius: 4px;
       font-size: 16px;
+      box-shadow: 0px 0px 7px 3px #0000002e;
+
     }
   }
 
@@ -681,12 +695,26 @@ page-tapdetails {
     border: 1px solid #222 !important;
     border-radius: 4px !important;
     font-size: 15px;
+    box-shadow: 0px 0px 7px 3px #0000002e;
+
   }
   .down button a {
     text-decoration: none;
     color: initial;
 }
 
+.dis p{
+  font-size: 26px;
+  font-weight: 600;
+  color: #ce833a;
+  text-align: center;
+  margin: 10px auto;
+  span{
+    font-size: 15px;
+  vertical-align: middle;
+  font-weight: 400;
+  }
+}
   .head1 {
 
     height: calc( 14vh - 1px);
