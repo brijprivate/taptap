@@ -222,7 +222,7 @@ export class HomePage {
 
     let data = [];
     let colors = []
-    console.log(_base.fashion, typeof _base.fashion)
+    console.log(_base.restaurant, typeof _base.restaurant)
 
     console.log("totalcount", _base.totalcount)
 
@@ -274,6 +274,7 @@ export class HomePage {
     }
 
     if (_base.restaurant != null && _base.restaurant != 0) {
+      console.log("Inside restaurant")
       data.push({ label: "Restaurant", value: _base.restaurant })
       colors.push("#D7761B")
     }
@@ -483,7 +484,7 @@ export class HomePage {
           _base.favourite = chartdata.favourite;
           _base.sports = chartdata.sport;
           _base.groceries = chartdata.groceries;
-          _base.restaurant = chartdata.resturant;
+          _base.restaurant = chartdata.restaurant;
           _base.lost = chartdata.lost;
           _base.totalcount = chartdata.totalTap;
           console.log(chartdata);
@@ -515,7 +516,7 @@ export class HomePage {
         _base.sports = success.result.sport;
         _base.groceries = success.result.groceries;
         _base.lost = success.result.lost;
-        _base.restaurant = success.result.resturant;
+        _base.restaurant = success.result.restaurant;
         _base.totalcount = success.result.totalTap;
         _base.storage.remove("totalcount")
         _base.storage.set("totalcount", success.result.totalTap)
@@ -544,7 +545,7 @@ export class HomePage {
             _base.favourite = chartdata.favourite;
             _base.sports = chartdata.sport;
             _base.groceries = chartdata.groceries;
-            _base.restaurant = chartdata.resturant;
+            _base.restaurant = chartdata.restaurant;
             _base.lost = chartdata.lost;
             _base.totalcount = chartdata.totalTap;
             _base.chartfunc();
