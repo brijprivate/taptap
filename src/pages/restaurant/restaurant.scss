@@ -54,6 +54,7 @@ page-restaurant {
     border: 1px solid #222 !important;
     border-radius: 4px !important;
     font-size: 15px;
+    box-shadow: 0px 0px 7px 3px #0000002e;
   }
 
 
@@ -260,6 +261,8 @@ page-restaurant {
       line-height: 35px;
       border-radius: 4px;
       font-size: 16px;
+      height: 41px;
+      box-shadow: 0px 0px 7px 3px #0000002e;
     }
   }
 
@@ -276,5 +279,18 @@ page-restaurant {
     height: 60px;
     width: 60px;
     margin: 0;
+    box-shadow: 0px 0px 7px 3px #0000002e;
+  }
+  .dis p{
+    font-size: 26px;
+    font-weight: 600;
+    color: #ce833a;
+    text-align: center;
+    margin: 10px auto;
+    span{
+      font-size: 15px;
+    vertical-align: middle;
+    font-weight: 400;
+    }
   }
 }

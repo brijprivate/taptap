@@ -64,28 +64,32 @@
       west bangal, India
     </div>
 
- 
-    <div class="calls down">
-      <i class="fa fa-phone "></i>
-    </div>
+ <div class="dis">
+   <p>10% <span>OFF</span></p>
+ </div>
+  
     <div class="down" style="margin: 1em 0">
       <button><i class="fa fa-download" aria-hidden="true"></i>
         Download Menu</button>
     </div>
+    <div class="calls down">
+      <i class="fa fa-phone "></i>
+    </div>
+    <div class="">
+      <ion-grid class="saveGrid" text-center nopadding style="padding: 0">
+        <ion-row nopadding>
+          <ion-col col-6 nopadding  style="padding: 0">
+            <button ion-button class="save" (click)="createProduct()"> <i class="fa fa-map-marker" aria-hidden="true"></i>
+              location</button>
+          </ion-col>
+          <ion-col col-6 nopadding style="padding: 0">
+            <button ion-button class="save" (click)="createProduct()"><i class="fa fa-share-alt" aria-hidden="true"></i>
+              share</button>
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+    </div>
   </ion-list>
-  <div class="">
-    <ion-grid class="saveGrid" text-center nopadding>
-      <ion-row nopadding>
-        <ion-col col-6 nopadding>
-          <button ion-button class="save" (click)="createProduct()"> <i class="fa fa-map-marker" aria-hidden="true"></i>
-            location</button>
-        </ion-col>
-        <ion-col col-6 nopadding>
-          <button ion-button class="save" (click)="createProduct()"><i class="fa fa-share-alt" aria-hidden="true"></i>
-            share</button>
-        </ion-col>
 
-      </ion-row>
-    </ion-grid>
-  </div>
 </ion-content>

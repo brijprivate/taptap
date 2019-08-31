@@ -87,7 +87,7 @@ page-about {
     .scroll-content {
         padding: 0 !important;
     }
-    .fa {
+    .social .fa {
         font-size: 18px;
         width: 40px;
         text-align: center;
@@ -114,5 +114,8 @@ page-about {
     }
     .aboutInfo {
         margin-top: 2em;
+    }
+    i.fa.fa-chevron-left {
+        margin-top: 0;
     }
 }

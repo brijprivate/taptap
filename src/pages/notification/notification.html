@@ -21,7 +21,9 @@
     </div>
   </div>
 
-
+  <div class="clear" *ngIf="notifications.length!=0">
+    <button>clear all</button>
+  </div>
   <!-- <div>
     <p class="datePadding">22 April 2019</p>
     <div class="et" *ngFor="let notification of notifications"
@@ -33,7 +35,7 @@
     </div>
   </div> -->
 
-  <p class="nonoti" *ngIf="notifications.length==0">No Any Notification</p>
+  <p class="nonoti" *ngIf="notifications.length==0">No Notification</p>
 
   <div *ngFor="let notification of notifications">
     <p *ngIf="notification.date" class="datePadding">{{notification.date}}</p>
