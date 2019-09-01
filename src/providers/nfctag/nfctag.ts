@@ -385,4 +385,16 @@ export class NfctagProvider {
         });
     });
   }
+
+  clearNotifications(userId: string) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.delete(_base.apiUrl + 'notifications/user_notification?userId=' + userId, {})
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
 }

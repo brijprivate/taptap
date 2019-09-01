@@ -106,6 +106,20 @@ export class NotificationPage {
 
       })
   }
+
+  clearNotification() {
+    let _base = this;
+    _base.nfctagpro.clearNotifications(localStorage.getItem('userId'))
+      .then(function (success: any) {
+        _base.storage.remove("notifications")
+        _base.storage.set("notifications", success.result)
+        _base.notifications = success.result;
+        _base.getnotifications()
+      }, function (error) {
+
+      })
+  }
+
   back() {
     this.navCtrl.pop()
   }

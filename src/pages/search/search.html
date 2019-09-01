@@ -158,7 +158,7 @@
 
             <div style="padding:0 1em;" class="animated 800s zoomIn delay-0.2s" *ngFor="let item of tapItems">
               <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-              <ion-item (click)="gotodetails(item)">
+              <ion-item (click)="gotoDetails(item)">
                 <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
                 <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
                 <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>

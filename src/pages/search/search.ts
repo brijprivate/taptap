@@ -223,18 +223,25 @@ export class SearchPage {
 
   }
   //Go to details page ....
-  gotodetails(item) {
+  gotoDetails(item) {
+    if (item.purpose == 'Verification') {
+      this.navCtrl.push('TapdetailsPage', { keyy: 'verification' });
+      return;
+    }
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
-      // console.log(item);
+      console.log(item);
     } else if (item.purpose == "Contact_info") {
       // this.createTap(item);
       this.navCtrl.push('TapdetailsPage', { devicedetail: item.deviceInfo, key: 'device' });
+      // this.navCtrl.push('TapdetailsPage', { devicedetaill: item, key: 'devicee' });
+
     }
     else {
-      // console.log("=====================", item);
+      console.log("=====================", item);
       this.navCtrl.push('TapdetailsPage', item);
     }
+
   }
 
   getmonth(month: string, from: any) {

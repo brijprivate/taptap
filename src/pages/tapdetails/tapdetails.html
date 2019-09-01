@@ -197,9 +197,10 @@
       <div class="dis">
         <p>{{eventdata.storeId.companyId.discount}}% <span>OFF</span></p>
       </div>
-      <div class="down" style="margin: 1em 0">
+      <div class="down" style="margin: 1em 0"
+        (tap)="showPdf('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.menu))">
         <button><i class="fa fa-download" aria-hidden="true"></i>
-          <a href="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.menu}}">Download
+          <a>Download
             Menu</a></button>
       </div>
       <div class="calls down">

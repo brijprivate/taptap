@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
-
+import { Downloader } from '@ionic-native/downloader';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpProvider } from '../providers/http/http';
@@ -52,10 +52,10 @@ import { IonicImageLoader } from 'ionic-image-loader';
     BrowserModule,
     IonicModule.forRoot(MyApp,
       {
-      tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
-      scrollAssist: true,
-      autoFocusAssist: false
-    }),
+        tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
+        scrollAssist: true,
+        autoFocusAssist: false
+      }),
     IonicStorageModule.forRoot(),
     IonicImageLoader.forRoot(),
     HttpModule,
@@ -97,6 +97,7 @@ import { IonicImageLoader } from 'ionic-image-loader';
     FilePath,
     LocationTrackerProvider,
     LaunchNavigator,
+    Downloader
     // Sim
     // Keyboard
     // Diagnostic

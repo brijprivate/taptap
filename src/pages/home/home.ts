@@ -641,7 +641,7 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    if (item == 'Verification') {
+    if (item.purpose == 'Verification') {
       this.navCtrl.push('TapdetailsPage', { keyy: 'verification' });
       return;
     }

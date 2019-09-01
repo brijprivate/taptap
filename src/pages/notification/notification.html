@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="clear" *ngIf="notifications.length!=0">
+  <div (tap)="clearNotification()" class="clear" *ngIf="notifications.length!=0">
     <button>clear all</button>
   </div>
   <!-- <div>

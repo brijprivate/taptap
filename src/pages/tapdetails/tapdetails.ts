@@ -12,6 +12,8 @@ import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
+import { Downloader, NotificationVisibility, DownloadRequest } from '@ionic-native/downloader';
+
 /**
  * Generated class for the TapdetailsPage page.
  *
@@ -45,6 +47,8 @@ export class TapdetailsPage {
     public navParams: NavParams,
     private transfer: FileTransfer,
     private file: File,
+    private fileOpener: FileOpener,
+    private downloader: Downloader,
     private toast: ToastController,
     public alert: AlertController,
     private androidPermissions: AndroidPermissions,
@@ -84,7 +88,46 @@ export class TapdetailsPage {
       console.log(this.et)
     }
 
+  }
 
+  downloadPdf(url: string) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      var request: DownloadRequest = {
+        uri: url,
+        title: 'Restaurant-Menu',
+        description: '',
+        mimeType: '',
+        visibleInDownloadsUi: true,
+        notificationVisibility: NotificationVisibility.VisibleNotifyCompleted,
+        destinationInExternalFilesDir: {
+          dirType: 'Downloads',
+          subPath: '/'
+        }
+      };
+
+
+      _base.downloader.download(request)
+        .then((location: string) => {
+          resolve(location)
+        })
+        .catch((error: any) => {
+          reject(error);
+        });
+    })
+  }
+
+  showPdf(url: string) {
+    let _base = this;
+    _base.downloadPdf(url)
+      .then(function (success: string) {
+        alert('Pdf Downloaded')
+        _base.fileOpener.open(success, 'application/pdf')
+          .then(() => console.log('File is opened'))
+          .catch(e => console.log('Error opening file', e));
+      }, function (error) {
+        alert('Can not download the pdf')
+      })
 
   }
 
@@ -229,7 +272,7 @@ export class TapdetailsPage {
 
   savedevicecontact(data) {
 
-    console.log("data",data)
+    console.log("data", data)
     console.log("data", data.contact_info.address)
     console.log("Device contact called contact called")
 
