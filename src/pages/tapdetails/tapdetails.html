@@ -716,100 +716,100 @@
   <div *ngIf="eventdata.businessId">
 
 
-    <div class="showcontent">
-      <div class="head">
+    <div class="head1">
+      <div class="mdl">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
 
-        <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{eventdata.purpose}}</p>
-          <div class="iconss">
-            <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)" item-right
-              *ngIf="eventdata.is_favourite==true"></ion-icon>
-          </div>
+        <p>Business</p>
+
+        <div class=" iconss1">
+          <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
+            (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
+          <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
+            (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
+
         </div>
+        <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
       </div>
-      <div class="imgss event">
-        <div class="ss"></div>
-
-        <ion-slides pager id="myImg">
-          <ion-slide *ngIf="eventdata.businessId.image">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}">
-          </ion-slide>
-
-          <ion-slide *ngIf="!eventdata.businessId.image"
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
-            <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
-
-
-          </ion-slide>
-
-
-
-
-        </ion-slides>
-      </div>
-
     </div>
-    <div class="coin">
 
-
-      <div class="cont">
-        <p class="header">
-          <ion-icon name="briefcase"></ion-icon>
-          Project
-        </p>
-        <p class="data">{{eventdata.businessId.name}}</p>
-      </div>
-
-      <div class="cont">
-        <p class="header">
-          <ion-icon name="person"></ion-icon>
-          Contact No
-        </p>
-        <p class="data">{{eventdata.businessId.telephoneNumber}}</p>
-      </div>
-
-      <div class="cont">
-        <p class="header">
-          <ion-icon name="pin"></ion-icon>
-          Location
-        </p>
-        <p class="data"> {{eventdata.businessId.address}}</p>
-      </div>
-
-      <div class="cont">
-        <p class="header">
-          <ion-icon name="attach"></ion-icon>
-          Website
-        </p>
-        <p class="data">{{eventdata.businessId.webLink}}</p>
-      </div>
-      <div class="cont">
-        <p class="header">
-          <ion-icon name="mail"></ion-icon>
-          Email
-        </p>
-        <p class="data">{{eventdata.businessId.email}}</p>
-      </div>
-
-
-      <ion-grid class="saveGrid">
-        <ion-row>
-          <!-- <ion-col col-6>
-          <button class="share" outline>
-            <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
-          </button> </ion-col> -->
-          <ion-col col-12>
-            <button class="share" outline (click)="socialshare(eventdata,eventdata.businessId._id)">
-              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+    <div id="myModal" class="modal">
+      <span (click)="close()" class="close">&times;</span>
+      <img class="modal-content" id="img01" [src]=xx>
+      <div id="caption"></div>
     </div>
+
+    <div class="imgss event">
+      <!-- <div class="ss"></div> -->
+
+
+      <ion-slides pager id="myImg">
+
+        <ion-slide *ngIf="eventdata.storeId"
+          (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.storeId.companyId.display_picture))">
+          <img
+            src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.storeId?eventdata.storeId.companyId.display_picture:""}}&select=thumbnail'>
+        </ion-slide>
+
+
+        <!-- <input type="file" id="fileInput" style="display: none" (change)="selectFile($event)" /> -->
+
+      </ion-slides>
+    </div>
+
+
+
+
+
+
+    <ion-list class="mobileSp">
+
+
+      <div class="name">{{eventdata.storeId?eventdata.storeId.companyId.name:''}}</div>
+
+      <div class="add">{{eventdata.storeId?eventdata.storeId.companyId.address:''}}<br>
+        <!-- west bangal, India -->
+      </div>
+      <div class="dis">
+        <p>{{eventdata.storeId.companyId?eventdata.storeId.companyId.discount:0}}% <span>OFF</span></p>
+      </div>
+      <!-- <div class="down" style="margin: 1em 0"
+        (tap)="showPdf('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.menu))">
+        <button><i class="fa fa-download" aria-hidden="true"></i>
+          <a>Download
+            Menu</a></button>
+      </div> -->
+      <div class="calls down">
+        <a href="tel:{{eventdata.storeId.companyId.phone}}" class="button button-positive">&nbsp;&nbsp;
+          <i class="fa fa-phone ">
+            <!-- call -->
+          </i>
+        </a>
+      </div>
+      <div class="">
+        <ion-grid class="" text-center style="padding: 0">
+          <ion-row>
+            <ion-col col-6 style="padding: 0">
+              <button ion-button class="save1" (click)="navigate(eventdata.storeId.companyId.geo)"> <i
+                  class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;
+                location</button>
+            </ion-col>
+            <!-- <ion-col col-4>
+              <button ion-button class="save"> <i class="fa fa-phone" aria-hidden="true"></i>
+                <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;Call</a>
+              </button>
+            </ion-col> -->
+            <ion-col col-6 style="padding: 0">
+              <button ion-button class="save1" (click)="socialshare(eventdata,eventdata.businessId._id)"><i
+                  class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;
+                share</button>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-list>
+
   </div>
   <!-- Buisness end -->
 
