@@ -602,9 +602,9 @@ export class HomePage {
       console.log("All Tapped data ,..........>>>>>");
       // console.log(success.result.length);
       _base.tapItems = success.result;
-      _base.allTapItems = success.result;
+      // _base.allTapItems = success.result;
       _base.storage.remove("alltp")
-      _base.storage.set('alltp', success.result.slice(0, 10));
+      _base.storage.set('alltp', success.result);
       if (success.result.length == 0) {
         _base.blankmsg = "There Is No Tap Yet";
       } else {

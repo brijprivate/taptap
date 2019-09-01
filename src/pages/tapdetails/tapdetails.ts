@@ -215,7 +215,7 @@ export class TapdetailsPage {
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
     if (data.profile_pic) {
-      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic)];
+      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic + "&select=thumbnail")];
     }
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
 
@@ -229,8 +229,8 @@ export class TapdetailsPage {
 
   savedevicecontact(data) {
 
-    console.log(data)
-    console.log(data.contact_info.address)
+    console.log("data",data)
+    console.log("data", data.contact_info.address)
     console.log("Device contact called contact called")
 
     let _base = this;
@@ -244,7 +244,7 @@ export class TapdetailsPage {
     contact.urls = [new ContactField('website', data.contact_info.website)];
     contact.addresses = [new ContactAddress(false, "home", data.contact_info.address)];
     if (data.imageId) {
-      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id)];
+      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id + "&select=thumbnail")];
     }
 
 
@@ -254,7 +254,8 @@ export class TapdetailsPage {
       alert("contact saved");
 
     }, (err) => {
-      alert("contact not saved");
+      console.log(err)
+      // alert("contact not saved");
     })
   }
 
