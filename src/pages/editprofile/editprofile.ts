@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController, Platform, LoadingController, ActionSheetController, AlertController } from 'ionic-angular';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
@@ -38,6 +38,7 @@ export class EditprofilePage {
   initEmail: String = ""
 
 
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private camera: Camera,
@@ -63,6 +64,10 @@ export class EditprofilePage {
       this.getprofiledata();
 
     }
+  }
+
+  onScroll($event) {
+    console.log("Scroll", $event)
   }
 
   ionViewDidLoad() {
@@ -380,7 +385,7 @@ export class EditprofilePage {
     let modal = this.modalCtrl.create("AutocompletePage");
 
     modal.onDidDismiss(data => {
-      if (Object.keys(data).length != 0) {
+      if (data && Object.keys(data).length != 0) {
         console.log(data)
         _base.profiledata.address = data.location;
         _base.profiledata.country = data.country;

@@ -79,10 +79,11 @@ export class AutocompletePage {
     let _base = this;
     geocoder.geocode({ 'address': address }, (results, status) => {
       console.log(results)
+      console.log("Country IS :", _base.getCountry(results[0].address_components))
       let latitude = results[0].geometry.location.lat();
       let longitude = results[0].geometry.location.lng();
-      let country = results[0].address_components[3].long_name;
-      let city = results[0].address_components[0].long_name;
+      let country = _base.getCountry(results[0].address_components);
+      let city = _base.getLocallity(results[0].address_components);
       let location = address;
       _base.viewCtrl.dismiss({
         lat: latitude,
@@ -93,4 +94,45 @@ export class AutocompletePage {
       });
     });
   }
+
+
+  getCountry(address_component: any) {
+    let country: String = ""
+    for (let i = 0; i <= address_component.length - 1; i++) {
+      let Component: any = address_component[i]
+      let type: any = Component.types;
+      let index = type.indexOf('country')
+      console.log(Component, type)
+      console.log(index)
+      if (index != -1) {
+        country = address_component[i].long_name
+      }
+
+      if (i == address_component.length - 1) {
+        return country;
+      }
+    }
+  }
+
+  getLocallity(address_component: any) {
+    let locality: String = ""
+    for (let i = 0; i <= address_component.length - 1; i++) {
+      let Component: any = address_component[i]
+      let type: any = Component.types;
+      let index = type.indexOf('locality')
+      let index_x = type.indexOf('postal_town')
+
+      console.log(Component, type)
+      console.log(index)
+      if (index != -1 || index_x != -1) {
+        locality = address_component[i].long_name
+      }
+
+      if (i == address_component.length - 1) {
+        return locality;
+      }
+    }
+  }
+
+
 }
