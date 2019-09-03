@@ -78,21 +78,24 @@
       <ion-icon name="call" item-left></ion-icon>
       <ion-input type="text"> </ion-input>
     </ion-item> -->
-    <ion-item>
-      <ion-label floating>Country</ion-label>
-      <ion-icon name="pin" item-left></ion-icon>
-      <ion-input type="text" [(ngModel)]="profiledata.country"> </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>City</ion-label>
-      <ion-icon name="pin" item-left></ion-icon>
-      <ion-input type="text" [(ngModel)]="profiledata.city"> </ion-input>
-    </ion-item>
     <ion-item (tap)="showautocomplete()">
       <ion-label floating>Address</ion-label>
       <ion-icon name="pin" item-left></ion-icon>
       <ion-input type="text" [(ngModel)]="profiledata.address"> </ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label floating>City</ion-label>
+      <ion-icon name="pin" item-left></ion-icon>
+      <ion-input type="text" [(ngModel)]="profiledata.city"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Country</ion-label>
+      <ion-icon name="pin" item-left></ion-icon>
+      <ion-input type="text" [(ngModel)]="profiledata.country"> </ion-input>
+    </ion-item>
+
     <button ion-button class="save" (click)="updateProfile()">Save Changes</button>
   </ion-list>
 
