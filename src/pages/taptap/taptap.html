@@ -148,7 +148,7 @@
     </div>
 
   </div>
-  <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+  <ion-slides #slider (ionSlideDidChange)="slideChanged()" [style.height]="keyboards? '90%':'67%'">
     <ion-slide>
 
         <div class="top">
