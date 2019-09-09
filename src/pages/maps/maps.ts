@@ -5,6 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
+declare let plugin: any;
 /**
  * Generated class for the MapsPage page.
  *
@@ -47,19 +48,32 @@ export class MapsPage {
 
   loadMap() {
     let _base = this
-    this.map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: _base.cords.latitude, lng: _base.cords.longitude },
-      // center: { lat: -34.397, lng: 150.644 },
-      disableDefaultUI: true,
-      zoom: 17
-    });
+    // this.map = new google.maps.Map(document.getElementById('map'), {
+    //   center: { lat: _base.cords.latitude, lng: _base.cords.longitude },
+    //   // center: { lat: -34.397, lng: 150.644 },
+    //   disableDefaultUI: true,
+    //   zoom: 17
+    // });
 
-    var marker = new google.maps.Marker({
-      position: { lat: _base.cords.latitude, lng: _base.cords.longitude },
-      map: _base.map,
-      title: 'Tapped here!'
-    });
+    this.map = plugin.google.maps.Map.getMap(document.getElementById('map'),
+      {
+        camera: {
+          latLng: { lat: _base.cords.latitude, lng: _base.cords.longitude },
+          zoom: 17
+        }
+      })
+
+    this.map.one(plugin.google.maps.event.MAP_READY, function () {
+      console.log("Map ready")
+
+      _base.map.addMarker({
+        position: { lat: _base.cords.latitude, lng: _base.cords.longitude },
+        title: 'Tapped here!'
+      })
+
+    })
   }
+
 
   navigate() {
     let _base = this
@@ -112,7 +126,7 @@ export class MapsPage {
         error => console.log('Error launching navigator', error)
       );
   }
-back(){
-  this.navCtrl.pop()
-}
+  back() {
+    this.navCtrl.pop()
+  }
 }

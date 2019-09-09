@@ -22,6 +22,8 @@
     <preference name="orientation" value="portrait" />
     <preference name="SplashScreenDelay" value="3000" />
     <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyCAUo5wLQ1660_fFrymXUmCgPLaTwdXUgY" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyCAUo5wLQ1660_fFrymXUmCgPLaTwdXUgY" />
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>We use your location for full functionality of certain app features.</string>
     </edit-config>
@@ -147,7 +149,8 @@
     <plugin name="cordova-plugin-sim" spec="1.3.3" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
     <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
-    <plugin name="com.johnwargo.carrier" spec="~0.0.3" />
     <plugin name="integrator-cordova-plugin-downloader" spec="1.1.0" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.6.2" />
+    <plugin name="com.johnwargo.carrier" spec="~0.0.3" />
     <engine name="android" spec="7.1.4" />
 </widget>

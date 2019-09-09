@@ -22,6 +22,7 @@ import { NfctagProvider } from '../providers/nfctag/nfctag';
 import { NFC, Ndef } from '@ionic-native/nfc';
 
 declare let cordova: any;
+declare let plugin: any;
 
 @Component({
   templateUrl: 'app.html'
@@ -219,6 +220,9 @@ export class MyApp {
 
     let _base = this
     this.platform.ready().then(() => {
+
+      console.log("Cordova", plugin)
+
 
       _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS).then(
         function (result) {

@@ -1,46 +1,49 @@
 page-feed1 {
-    .head {
+  .head {
 
-        height: 12vh;
-        background: #6354cb;
-        display: table;
-        width: 100%;
-    
-        p {
-          // margin-right: 11em;
-          font-size: 18px;
-          color: #fff;
-          display: inline-block;
-          vertical-align: middle;
-    
-        }
-    
-        .mdl {
-          vertical-align: middle;
-          display: table-cell;
-          padding: 0 14px;
-    
-          ion-icon.icon.icon-md.ion-md-arrow-round-back,
-          ion-icon.icon.icon-ios.ion-ios-arrow-round-back {
-            color: gray !important;
-          }
-        }
-    
-        ion-icon.icon.icon-md,
-        ion-icon.icon.icon-ios {
-          margin-right: 10px;
-          font-size: 26px;
-          color: #222;
-          vertical-align: middle;
-        }
-      }
-      .scroll-content {
-        padding: 0 !important;
+    height: 12vh;
+    background: #6354cb;
+    display: table;
+    width: 100%;
+
+    p {
+      // margin-right: 11em;
+      font-size: 18px;
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;
+
     }
+
+    .mdl {
+      vertical-align: middle;
+      display: table-cell;
+      padding: 0 14px;
+
+      ion-icon.icon.icon-md.ion-md-arrow-round-back,
+      ion-icon.icon.icon-ios.ion-ios-arrow-round-back {
+        color: gray !important;
+      }
+    }
+
+    ion-icon.icon.icon-md,
+    ion-icon.icon.icon-ios {
+      margin-right: 10px;
+      font-size: 26px;
+      color: #222;
+      vertical-align: middle;
+    }
+  }
+
+  .scroll-content {
+    padding: 0 !important;
+  }
+
   ion-slides {
     height: auto;
     padding: 1em 0 0 1.4em;
   }
+
   p.category {
     border-radius: 50%;
     height: 50px;
@@ -52,56 +55,68 @@ page-feed1 {
     color: #fff;
     font-weight: bold;
     margin: 0;
-}
-p.category.c1 {
+  }
+
+  p.category.c1 {
     background: #bd86b6;
-}
-p.category.c2 {
+  }
+
+  p.category.c2 {
     background: #6354cb;
-}
-p.category.c3 {
+  }
+
+  p.category.c3 {
     background: #ef94c8;
-}
-p.category.c4 {
+  }
+
+  p.category.c4 {
     background: #8baeec;
-}
-p.category.c5 {
+  }
+
+  p.category.c5 {
     background: #d98136;
-}
-p.category.c6 {
+  }
+
+  p.category.c6 {
     background: #776eb7;
-}
-p.category.c7 {
+  }
+
+  p.category.c7 {
     background: #a0c2be;
-}
-p.categoryContent {
+  }
+
+  p.categoryContent {
     font-size: 14px;
     margin-left: -42px;
     margin-top: 4px;
     color: #776d6dc9;
-}
-.contentEvent p {
+  }
+
+  .contentEvent p {
     margin-left: 1em;
     font-size: 18px;
     margin-bottom: 4px;
-}
-.card-background-page .card-subtitle {
-  font-size: 21pxa;
-  position: absolute;
-  bottom: 1em;
-  color: #fff;
-  left: 1em;
-  font-weight: bold;
-}
-.card-background-page .card-subtitlea {
-  font-size: 14px;
-  position: absolute;
-  bottom: 1em;
-  color: #fff;
-  left: 1.8em;
-  font-weight: bold;
-}
-.card-background-page .card-title {
+  }
+
+  .card-background-page .card-subtitle {
+    font-size: 21pxa;
+    position: absolute;
+    bottom: 1em;
+    color: #fff;
+    left: 1em;
+    font-weight: bold;
+  }
+
+  .card-background-page .card-subtitlea {
+    font-size: 14px;
+    position: absolute;
+    bottom: 1em;
+    color: #fff;
+    left: 1.8em;
+    font-weight: bold;
+  }
+
+  .card-background-page .card-title {
     // position: absolute;
     // top: 38%;
     // font-size: 16px;
@@ -115,22 +130,25 @@ p.categoryContent {
     // padding: 2px;
     // border-radius: 5px;
     position: absolute;
-        top: 8%;
-        font-size: 16px;
-        width: 79%;
-        font-weight: 700;
-        color: #222;
-        background: #fff;
-        margin: auto;
-        left: 1em;
-        padding: 3px;
-        border-radius: 5px;
-}
-ion-card.adv-map.card.card-md , ion-card.adv-map.card.card-ios {
+    top: 8%;
+    font-size: 16px;
+    width: 79%;
+    font-weight: 700;
+    color: #222;
+    background: #fff;
+    margin: auto;
+    left: 1em;
+    padding: 3px;
+    border-radius: 5px;
+  }
+
+  ion-card.adv-map.card.card-md,
+  ion-card.adv-map.card.card-ios {
     margin: 0;
     width: 100%;
-}
-.cardtitle {
+  }
+
+  .cardtitle {
     position: absolute;
     top: 12%;
     font-size: 16px;
@@ -143,21 +161,23 @@ ion-card.adv-map.card.card-md , ion-card.adv-map.card.card-ios {
     /* right: 0; */
     padding: 5px;
     border-radius: 5px;
-}
-.card-background-page ion-card {
+  }
+
+  .card-background-page ion-card {
     position: relative;
     text-align: center;
     width: 100%;
     margin-bottom: 0;
-}
-// .card-background-page .card-subtitle {
-//     font-size: 1em;
-//     position: absolute;
-//     top: 52%;
-//     width: 100%;
-//     color: #fff;
-// }
-.filter input::placeholder {
+  }
+
+  // .card-background-page .card-subtitle {
+  //     font-size: 1em;
+  //     position: absolute;
+  //     top: 52%;
+  //     width: 100%;
+  //     color: #fff;
+  // }
+  .filter input::placeholder {
     color: #999;
   }
 
@@ -175,37 +195,45 @@ ion-card.adv-map.card.card-md , ion-card.adv-map.card.card-ios {
       height: 41px;
     }
   }
-.card-background-page ion-col {
+
+  .card-background-page ion-col {
     // width: 50% ;
     // float: left;
     // margin-bottom: 4em;
-}
-.card-background-page {
+  }
+
+  .card-background-page {
     padding-right: 1.4em;
     width: 100%;
     margin-bottom: 4em;
-}
-.card-background-page img {
+  }
+
+  .card-background-page img {
     margin: 0;
-}
-ion-card img {
-  height: 20vh;
-}
-ion-item.maplace {
+  }
+
+  ion-card img {
+    height: 20vh;
+  }
+
+  ion-item.maplace {
     position: absolute;
     bottom: 0;
     background: transparent;
-}
-.maplace h2 {
+  }
+
+  .maplace h2 {
     color: #000;
     font-weight: 900;
     font-size: 19px;
-}
-.maplace p {
+  }
+
+  .maplace p {
     color: #222;
     font-size: 15px;
     font-weight: 500;
-}
+  }
+
   // search
   input {
     outline: none;
@@ -298,7 +326,8 @@ ion-item.maplace {
   }
 
   // search
-  img.mapImage {
-    height: 40vh;
-}
+  .mapImage {
+    // height: 40vh;
+    min-height: 250px !important
+  }
 }

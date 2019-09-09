@@ -24,49 +24,57 @@
     </div>
   </div> -->
   <div class="filter">
-      <ion-item>
-        <ion-input type="text" placeholder="Search Here...."></ion-input>
-        <ion-icon item-end name="search"></ion-icon>
-      </ion-item>
-    </div>
-    <div class="contentEvent">
-        <p>Explore Nearby</p>
-      </div>
+    <ion-item>
+      <ion-input type="text" placeholder="Search Here...."></ion-input>
+      <ion-icon item-end name="search"></ion-icon>
+    </ion-item>
+  </div>
+  <div class="contentEvent">
+    <p>Explore Nearby</p>
+  </div>
   <ion-slides slidesPerView="4" #slides>
 
-    <ion-slide  (click)="goto('fashion')">
-      <p class="category c1"><ion-icon ios="ios-bowtie" md="md-bowtie"></ion-icon></p>
+    <ion-slide (click)="goto('fashion')">
+      <p class="category c1">
+        <ion-icon ios="ios-bowtie" md="md-bowtie"></ion-icon>
+      </p>
       <p class="categoryContent">Fashion</p>
-      
+
 
     </ion-slide>
-    <ion-slide  (click)="goto('general')">
-      <p class="category c2"><ion-icon ios="ios-paper" md="md-paper"></ion-icon></p>
+    <ion-slide (click)="goto('general')">
+      <p class="category c2">
+        <ion-icon ios="ios-paper" md="md-paper"></ion-icon>
+      </p>
       <p class="categoryContent">General</p>
 
 
     </ion-slide>
-    <ion-slide  (click)="goto('event')" >
-      <p class="category c3"><ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+    <ion-slide (click)="goto('event')">
+      <p class="category c3">
+        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
       </p>
       <p class="categoryContent">Event</p>
 
     </ion-slide>
-    <ion-slide  (click)="goto('business')">
-      <p class="category c4"><ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>
+    <ion-slide (click)="goto('business')">
+      <p class="category c4">
+        <ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>
       </p>
       <p class="categoryContent">Business</p>
 
     </ion-slide>
-    <ion-slide  (click)="goto('sports')">
-      <p class="category c5"><ion-icon ios="ios-walk" md="md-walk"></ion-icon>
+    <ion-slide (click)="goto('sports')">
+      <p class="category c5">
+        <ion-icon ios="ios-walk" md="md-walk"></ion-icon>
       </p>
       <p class="categoryContent">Sports</p>
 
     </ion-slide>
 
-    <ion-slide  (click)="goto('groceries')">
-      <p class="category c6"><ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+    <ion-slide (click)="goto('groceries')">
+      <p class="category c6">
+        <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
       </p>
       <p class="categoryContent">Groceries</p>
 
@@ -80,24 +88,25 @@
     </ion-slide> -->
 
   </ion-slides>
-  
+
   <ion-card class="adv-map">
     <div style="position: relative">
-        <div class="cardtitle">Sat-Sun</div>
+      <div class="cardtitle">Sat-Sun</div>
 
-      <img src="../../assets/images/map.png" class="mapImage">
+      <!-- <img src="../../assets/images/map.png" class="mapImage"> -->
+      <div id="google-map" class="mapImage"></div>
       <ion-item class="maplace">
-          <!-- <ion-icon color="subtle" large item-start name='information-circle'></ion-icon> -->
-          <h2>Museum of Information</h2>
-          <p>44 Rue de Info, 75010 Paris, France</p>
-        </ion-item> 
-      <ion-fab right top>
+        <!-- <ion-icon color="subtle" large item-start name='information-circle'></ion-icon> -->
+        <h2>Museum of Information</h2>
+        <p>44 Rue de Info, 75010 Paris, France</p>
+      </ion-item>
+      <ion-fab right top (tap)="getCurrentPosition()">
         <button ion-fab color="secondary">
           <ion-icon name="pin"></ion-icon>
         </button>
       </ion-fab>
     </div>
-  
+
   </ion-card>
 
 
@@ -156,65 +165,69 @@
 
 
 
-    <ion-grid class="imageCard">
-      <div class="card-background-page">
+  <ion-grid class="imageCard">
+    <div class="card-background-page">
       <ion-row>
-       
+
         <ion-col col-6>
-            <ion-card (click)="goto('fashion')">
-                <img src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg"/>
-                <div class="card-title">23 Aug 2019</div>
-                <p class="card-subtitle">Fashion</p>
-                <!-- <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p> -->
-              </ion-card>
+          <ion-card (click)="goto('fashion')">
+            <img src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg" />
+            <div class="card-title">23 Aug 2019</div>
+            <p class="card-subtitle">Fashion</p>
+            <!-- <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p> -->
+          </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goto('business')">
-              <img src="http://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg"/>
-              <div class="card-title">Today - 19:52</div>
-              <p class="card-subtitle">Business</p>
-              <!-- <p class="card-subtitlea">Think Different.</p> -->
-            </ion-card>
-      </ion-col>
+            <img src="https://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg" />
+            <div class="card-title">Today - 19:52</div>
+            <p class="card-subtitle">Business</p>
+            <!-- <p class="card-subtitlea">Think Different.</p> -->
+          </ion-card>
+        </ion-col>
       </ion-row>
       <ion-row>
-      
+
         <ion-col col-6>
-            <ion-card (click)="goto('sports')">
-                <img src="http://www.stage-preparation-bretagne.com/wp-content/uploads/2014/02/bandeau-evenementiel.jpg"/>
-                <div class="card-title">20 Sep 2019</div>
-                <p class="card-subtitle">Sports</p>
-                <!-- <p class="card-subtitlea">Play like a Champion Today.</p> -->
-              </ion-card>
+          <ion-card (click)="goto('sports')">
+            <img src="https://www.stage-preparation-bretagne.com/wp-content/uploads/2014/02/bandeau-evenementiel.jpg" />
+            <div class="card-title">20 Sep 2019</div>
+            <p class="card-subtitle">Sports</p>
+            <!-- <p class="card-subtitlea">Play like a Champion Today.</p> -->
+          </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goto('groceries')">
-              <img src="https://cdn.skyhinews.com/wp-content/uploads/sites/9/2019/05/Shop-off-6-group-1024x630.jpg"/>
-              <div class="card-title">Tomorrow - 17:52</div>
-              <p class="card-subtitle">Groceries</p>
-              <!-- <p class="card-subtitlea">Freshness you can taste.</p> -->
-            </ion-card>
-      </ion-col>
+            <img src="https://cdn.skyhinews.com/wp-content/uploads/sites/9/2019/05/Shop-off-6-group-1024x630.jpg" />
+            <div class="card-title">Tomorrow - 17:52</div>
+            <p class="card-subtitle">Groceries</p>
+            <!-- <p class="card-subtitlea">Freshness you can taste.</p> -->
+          </ion-card>
+        </ion-col>
       </ion-row>
       <ion-row>
-      
+
         <ion-col col-6>
-            <ion-card (click)="goto('general')">
-                <img src="https://www.mch-group.com/-/media/mch-group/Images/Content/News/Blog/2017/2017-04/mch-group-live-marketing-aktivierung.jpg"/>
-                <div class="card-title">Today - 15:30</div>
-                <p class="card-subtitle">General</p>
-                <!-- <p class="card-subtitlea">Making More Possible</p> -->
-              </ion-card>
+          <ion-card (click)="goto('general')">
+            <img
+              src="https://www.mch-group.com/-/media/mch-group/Images/Content/News/Blog/2017/2017-04/mch-group-live-marketing-aktivierung.jpg" />
+            <div class="card-title">Today - 15:30</div>
+            <p class="card-subtitle">General</p>
+            <!-- <p class="card-subtitlea">Making More Possible</p> -->
+          </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goto('event')">
-              <img src="../../assets/images/e2.jpeg"/>
-              <div class="card-title">Today - 15:30</div>
-              <p class="card-subtitle">Event</p>
-              <!-- <p class="card-subtitlea">Tomorrow happens here</p> -->
-            </ion-card>
-      </ion-col>
+            <img src="../../assets/images/e2.jpeg" />
+            <div class="card-title">Today - 15:30</div>
+            <p class="card-subtitle">Event</p>
+            <!-- <p class="card-subtitlea">Tomorrow happens here</p> -->
+          </ion-card>
+        </ion-col>
       </ion-row>
     </div>
-    </ion-grid>
-  </ion-content>
+  </ion-grid>
+</ion-content>
+
+<!-- hiddent button to show direction -->
+<button id="direction" (click)="showDirection()" style="display:none">direction</button>

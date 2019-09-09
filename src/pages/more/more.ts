@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Storage } from '@ionic/storage';
+import { get } from 'scriptjs';
 
 /**
  * Generated class for the MorePage page.
@@ -30,6 +31,10 @@ export class MorePage {
   ionViewDidEnter() {
     console.log('ionViewDidLoad MorePage');
     this.getnotifications()
+  }
+
+  ionViewDidLoad() {
+    this.loadGoogle()
   }
 
   Logout() {
@@ -110,5 +115,12 @@ export class MorePage {
             }
           })
       });
+  }
+
+  loadGoogle() {
+    get("https://maps.googleapis.com/maps/api/js?key=AIzaSyCAUo5wLQ1660_fFrymXUmCgPLaTwdXUgY&libraries=drawing,places,geometry,visualization", () => {
+      //Google Maps library has been loaded...
+      console.log("Google maps library has been loaded");
+    });
   }
 }
