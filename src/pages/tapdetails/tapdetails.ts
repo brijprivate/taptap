@@ -72,6 +72,20 @@ export class TapdetailsPage {
     // console.log("device data=----------------", this.devicedetaill.deviceInfo._id);
     this.eventdata = navParams.data;
 
+    let website = this.eventdata.storeId.companyId.website;
+    if (website) {
+      if (!website.includes('http') || !website.includes('://')) {
+        this.eventdata.storeId.companyId.website = "http://" + website
+      }
+    }
+
+    if (this.eventdata.fashionId) {
+      let link = this.eventdata.fashionId.weblink;
+      if (!link.includes('http') || !link.includes('://')) {
+        this.eventdata.fashionId.weblink = "http://" + link
+      }
+    }
+
 
     if (this.eventdata.eventId) {
       console.log(this.eventdata.eventId.startTime, this.eventdata.eventId.endTime)

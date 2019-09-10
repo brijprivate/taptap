@@ -379,8 +379,8 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.sportId.image">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}">
+            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.sportId.image))"
+              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.sportId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.sportId.image"
@@ -544,8 +544,8 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.groceryId.image">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}">
+            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.groceryId.image))"
+              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.groceryId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.groceryId.image"
@@ -639,52 +639,47 @@
         <ion-grid class="headerfashion">
           <ion-row>
             <ion-col col-3 text-center>
-              <img src="../../assets/images/avatar.png" alt="">
+              <img
+                src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.storeId.companyId.display_picture}}&select=thumbnail"
+                alt="">
             </ion-col>
             <ion-col col-8>
-              <p class="title">this is the main title</p>
+              <p class="title">{{eventdata.storeId.companyId.name}}</p>
             </ion-col>
           </ion-row>
         </ion-grid>
 
 
-        <ion-slides pager id="myImg">
-          <ion-slide *ngIf="eventdata.fashionId.image">
+        <ion-slides pager id="myImg" *ngIf="eventdata.fashionId.image">
+          <ion-slide *ngFor="let image of eventdata.fashionId.image">
             <!-- <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
 
-            <img class="fashionimg"
-              (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="https://rukminim1.flixcart.com/image/738/886/jmthle80/t-shirt/p/w/x/m-usts5928-u-s-polo-association-original-imaf9huy4rjvhqzc.jpeg?q=90 ">
+            <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(image))"
+              src="https://api.taptap.org.uk/file/getImage?imageId={{image}}">
 
           </ion-slide>
 
-
-
-          <ion-slide *ngIf="!eventdata.fashionId.image" 
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
-            <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg" class="fashionimg">
-
-
-          </ion-slide>
         </ion-slides>
       </div>
 
     </div>
     <div class="">
-        <div class="dis">
-            <p style="text-align: left;
-            margin-left: 1em;">{{eventdata.fashionId.price}}  <span>30% off</span></p>
-          </div>
+      <div class="dis">
+        <p style="text-align: left;
+            margin-left: 1em;">{{eventdata.fashionId.price}} <span>{{eventdata.storeId.companyId.discount}}% off</span>
+        </p>
+      </div>
 
-          <p class="fashiondes">{{eventdata.fashionId.description}}</p>
+      <p class="fashiondes">{{eventdata.fashionId.description}}</p>
+      <p class="fashiondes"><span>Size: </span><small>{{eventdata.fashionId.size}}</small></p>
 
-      <ion-grid class="size">
-          <!-- <p class="data">Size</p> -->
+      <!-- <ion-grid class="size">
+        <p class="data">Size</p>
         <ion-row no-padding>
 
           <ion-col col-2 text-center no-padding>
-            <span >S</span>
+            <span>S</span>
           </ion-col>
           <ion-col col-2 text-center no-padding>
             <span>M</span>
@@ -702,13 +697,13 @@
             <span>XLLL</span>
           </ion-col>
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
 
-<div class="viewfashion" text-center>
-    <button class="share" outline>
-        <ion-icon name="eye"></ion-icon>&nbsp;&nbsp; View
-      </button> 
-</div>
+      <div class="viewfashion" text-center>
+        <a class="share button" href="{{eventdata.fashionId.weblink}}" outline>
+          <ion-icon name="eye"></ion-icon>&nbsp;&nbsp; view
+        </a>
+      </div>
 
       <!-- <div class="cont">
         <p class="header">
@@ -749,22 +744,22 @@
         </p>
         <p class="data">{{eventdata.fashionId.weblink}}</p>
       </div> -->
- 
+
 
       <ion-grid class="saveGrid" no-padding>
         <ion-row>
           <ion-col col-6>
-            <button class="share" outline>
+            <a class="share button" outline href="{{eventdata.storeId.companyId.website}}">
               <ion-icon name="globe"></ion-icon>&nbsp;&nbsp; Website
-            </button> </ion-col>
+            </a> </ion-col>
           <ion-col col-6>
             <button class="share" outline (click)="socialshare(eventdata,eventdata.fashionId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
           </ion-col>
 
-    
-            
+
+
         </ion-row>
       </ion-grid>
     </div>
