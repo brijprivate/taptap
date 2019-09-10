@@ -109,47 +109,56 @@ export class MyApp {
               switch (match.$args.category) {
                 case 'Business':
                   object = {
-                    businessId: item
+                    businessId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'Contacts':
                   object = {
-                    contactId: item
+                    contactId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'Sports':
                   object = {
-                    sportId: item
+                    sportId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'Fashion':
                   object = {
-                    fashionId: item
+                    fashionId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'General':
                   object = {
-                    generalId: item
+                    generalId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'Event':
                   object = {
-                    eventId: item
+                    eventId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'Groceries':
                   object = {
-                    groceryId: item
+                    groceryId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'Restaurant':
                   object = {
-                    restaurantId: item
+                    restaurantId: item,
+                    storeId: item.storeId
                   }
                   break;
                 case 'Verification':
                   object = {
-                    verificationId: item
+                    verificationId: item,
+                    storeId: item.storeId
                   }
                   break;
                 default:

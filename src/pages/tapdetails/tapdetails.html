@@ -700,10 +700,10 @@
       </ion-grid> -->
 
       <div class="viewfashion" text-center>
-        <button class="share button">
-          <a href="{{eventdata.fashionId.weblink}}" outline>
-            <ion-icon name="eye"></ion-icon>&nbsp;&nbsp; view
-          </a>
+        <button class="share button" (click)="navigate(eventdata.storeId.companyId.geo)">
+          <!-- <a href="{{eventdata.fashionId.weblink}}" outline> -->
+          <ion-icon name="navigate"></ion-icon>&nbsp;&nbsp; navigate
+          <!-- </a> -->
         </button>
 
       </div>
