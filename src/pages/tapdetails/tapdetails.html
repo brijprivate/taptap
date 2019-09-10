@@ -720,7 +720,7 @@
       <div class="mdl">
         <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
 
-        <p>Business</p>
+        <p>{{eventdata.storeId?eventdata.storeId.companyId.name:''}}</p>
 
         <div class=" iconss1">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
