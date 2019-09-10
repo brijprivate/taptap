@@ -165,6 +165,80 @@
          
           </ion-row> -->
 
+      <ion-row *ngIf="feed.categoryId.name=='Restaurant'">
+
+        <ion-col>
+          <ion-card>
+            <ion-slides pager="true">
+              <ion-slide>
+                <img src="http://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg" />
+                <div class="card-title">Today - 19:52</div>
+                <div class="register">
+                  <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <p class="card-subtitle">Business</p>
+                <p class="card-subtitlea">Think Different.</p>
+              </ion-slide>
+              <ion-slide>
+                <img src="http://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg" />
+                <div class="card-title">Today - 19:52</div>
+                <div class="register">
+                  <button><i class="fa fa-share-alt" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <p class="card-subtitle">Business</p>
+                <p class="card-subtitlea">Think Different.</p>
+              </ion-slide>
+            </ion-slides>
+          </ion-card>
+          <ion-row class="commentSection">
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <div class="pColor">12 Likes</div>
+              </button>
+            </ion-col>
+            <!-- <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon name="text"></ion-icon>
+                <div class="pColor">4 Comments</div>
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                <ion-icon name="person-add"></ion-icon>
+              </ion-note>
+            </ion-col> -->
+          </ion-row>
+          <!-- <ion-item class="at">
+            <span item-start>
+              <img src="../../assets/images/man.jpeg" class="aTepa">
+            </span>
+            <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+         
+          </ion-item>
+          <ion-item class="at">
+            <span item-start>
+              <img src="../../assets/images/man.jpeg" class="aTepa">
+            </span>
+            <span item-start><span>Lorem Ipsum is simply dummy text of the printing and typesetting </span></span>
+          
+          </ion-item>
+          <ion-item>
+            <span item-start>
+              <img src="../../assets/images/man.jpeg" class="aTep">
+            </span>
+            <span item-start><input type="text" placeholder="Add Comment...."></span>
+            <button ion-button icon-start clear item-end>
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </ion-item> -->
+
+        </ion-col>
+
+      </ion-row>
+
       <ion-row *ngIf="feed1data=='business'">
 
         <ion-col>

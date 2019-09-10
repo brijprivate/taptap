@@ -34,15 +34,25 @@
   </div>
   <ion-slides slidesPerView="4" #slides>
 
-    <ion-slide (click)="goto('fashion')">
-      <p class="category c1">
-        <ion-icon ios="ios-bowtie" md="md-bowtie"></ion-icon>
+    <ion-slide *ngFor="let category of categories;let i = index" (click)="showFeeds(category._id)">
+      <p class="category c{{i+1}}">
+
+        <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='category.name=="Fashion"'></ion-icon>
+        <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='category.name=="General"'></ion-icon>
+        <ion-icon ios="ios-contact" md="md-contact" item-left *ngIf='category.name=="Contacts"'></ion-icon>
+        <ion-icon ios="ios-calendar" md="md-calendar" item-left *ngIf='category.name=="Event"'></ion-icon>
+        <ion-icon ios="ios-briefcase" md="md-briefcase" item-left *ngIf='category.name=="Business"'></ion-icon>
+        <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" item-left *ngIf='category.name=="Verification"'>
+        </ion-icon>
+        <ion-icon ios="ios-walk" md="md-walk" item-left *ngIf='category.name=="Sports"'></ion-icon>
+        <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='category.name=="Groceries"'></ion-icon>
+        <ion-icon ios="ios-restaurant" md="md-restaurant" item-left *ngIf='category.name=="Restaurant"'></ion-icon>
       </p>
-      <p class="categoryContent">Fashion</p>
-
-
+      <p class="categoryContent">{{category.name}}</p>
     </ion-slide>
-    <ion-slide (click)="goto('general')">
+
+
+    <!-- <ion-slide (click)="goto('general')">
       <p class="category c2">
         <ion-icon ios="ios-paper" md="md-paper"></ion-icon>
       </p>
@@ -79,7 +89,7 @@
       <p class="categoryContent">Groceries</p>
 
 
-    </ion-slide>
+    </ion-slide> -->
     <!-- <ion-slide id="2" (click)="goto('contact')">
       <p class="category c7"><ion-icon ios="ios-contact" md="md-contact" class="contact"></ion-icon></p>
       <p class="categoryContent">Contact</p>
@@ -167,33 +177,30 @@
 
   <ion-grid class="imageCard">
     <div class="card-background-page">
-      <ion-row>
+      <ion-row *ngFor="let feed of feeds">
 
         <ion-col col-6>
-          <ion-card (click)="goto('fashion')">
-            <img src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg" />
-            <div class="card-title">23 Aug 2019</div>
-            <p class="card-subtitle">Fashion</p>
-            <!-- <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p> -->
+          <ion-card (click)="goto(feed)">
+            <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}&select=thumbnail" />
+            <div class="card-title">{{feed.createdDate}}</div>
+            <p class="card-subtitle">{{feed.categoryId.name}}</p>
           </ion-card>
         </ion-col>
-        <ion-col col-6>
+        <!-- <ion-col col-6>
           <ion-card (click)="goto('business')">
             <img src="https://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg" />
             <div class="card-title">Today - 19:52</div>
             <p class="card-subtitle">Business</p>
-            <!-- <p class="card-subtitlea">Think Different.</p> -->
           </ion-card>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
-      <ion-row>
+      <!-- <ion-row>
 
         <ion-col col-6>
           <ion-card (click)="goto('sports')">
             <img src="https://www.stage-preparation-bretagne.com/wp-content/uploads/2014/02/bandeau-evenementiel.jpg" />
             <div class="card-title">20 Sep 2019</div>
             <p class="card-subtitle">Sports</p>
-            <!-- <p class="card-subtitlea">Play like a Champion Today.</p> -->
           </ion-card>
         </ion-col>
         <ion-col col-6>
@@ -201,19 +208,17 @@
             <img src="https://cdn.skyhinews.com/wp-content/uploads/sites/9/2019/05/Shop-off-6-group-1024x630.jpg" />
             <div class="card-title">Tomorrow - 17:52</div>
             <p class="card-subtitle">Groceries</p>
-            <!-- <p class="card-subtitlea">Freshness you can taste.</p> -->
           </ion-card>
         </ion-col>
-      </ion-row>
-      <ion-row>
+      </ion-row> -->
+      <!-- <ion-row> -->
 
-        <ion-col col-6>
+      <!-- <ion-col col-6>
           <ion-card (click)="goto('general')">
             <img
               src="https://www.mch-group.com/-/media/mch-group/Images/Content/News/Blog/2017/2017-04/mch-group-live-marketing-aktivierung.jpg" />
             <div class="card-title">Today - 15:30</div>
             <p class="card-subtitle">General</p>
-            <!-- <p class="card-subtitlea">Making More Possible</p> -->
           </ion-card>
         </ion-col>
         <ion-col col-6>
@@ -221,10 +226,9 @@
             <img src="../../assets/images/e2.jpeg" />
             <div class="card-title">Today - 15:30</div>
             <p class="card-subtitle">Event</p>
-            <!-- <p class="card-subtitlea">Tomorrow happens here</p> -->
           </ion-card>
-        </ion-col>
-      </ion-row>
+        </ion-col> -->
+      <!-- </ion-row> -->
     </div>
   </ion-grid>
 </ion-content>

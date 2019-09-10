@@ -352,4 +352,57 @@ export class LoginsignupProvider {
     });
   }
 
+  // get all feeds list
+  getAllFeedsList(userId: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.get(_base.apiUrl + 'feeds/userfeed?userId=' + userId)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    })
+  }
+
+  getFeedsByCategory(categoryId: String) {
+    // feeds/allbycategory?categoryId=
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.get(_base.apiUrl + 'feeds/allbycategory?categoryId=' + categoryId)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    })
+  }
+
+  reactionOnFeed(reaction: any) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.post(_base.apiUrl + 'feeds/likeunlike', reaction)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  // get all categories
+  getallcategories() {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.get(_base.apiUrl + 'category/allcategory')
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
 }

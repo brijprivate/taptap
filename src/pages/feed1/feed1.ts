@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Slides, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { LoginsignupProvider } from './../../providers/loginsignup/loginsignup';
 
 declare let plugin: any;
 declare let google: any;
@@ -26,16 +27,32 @@ export class Feed1Page {
   public clusters: any;
   public info: any;
   public selectedMarker: any;
+  public categories: any = [];
+  public feeds: any = [];
 
-  constructor(private launchNavigator: LaunchNavigator,
+  constructor(private launchNavigator: LaunchNavigator, public http: LoginsignupProvider,
     public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Feed1Page');
+    // console.log('ionViewDidLoad Feed1Page');
     this.loadMap()
     this.info = new plugin.google.maps.HtmlInfoWindow();
   }
+
+  ionViewDidEnter() {
+    let _base = this;
+
+    _base.http.getallcategories()
+      .then(function (success: any) {
+        // console.log(success)
+        _base.categories = success.result;
+      }, function (error) {
+
+      })
+    this.showFeeds('5d56451555edc5862ed91263')
+  }
+
   back() {
     this.navCtrl.pop();
   }
@@ -58,7 +75,7 @@ export class Feed1Page {
 
     // You have to wait the MAP_READY event.
     this.map.one(plugin.google.maps.event.MAP_READY, function () {
-      console.log("Map Loaded")
+      // console.log("Map Loaded")
       _base.getCurrentPosition();
       // _base.map.animateCamera({
       //   target: { lat: 21.382314, lng: -157.933097 },
@@ -87,13 +104,13 @@ export class Feed1Page {
       });
       _base.searchNearby(place, 5000, [])
     }).catch((error) => {
-      console.log('Error getting location', error);
+      // console.log('Error getting location', error);
       alert("Please turn on your location service")
     })
   }
 
   showInfoWindow(position, marker, markerInstance) {
-    console.log(position, marker)
+    // console.log(position, marker)
     let _base = this;
     var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(_base.geo.latitude, _base.geo.longitude), new google.maps.LatLng(position.lat, position.lng)).toString().split('.')[0];
     _base.selectedMarker = marker;
@@ -118,8 +135,8 @@ export class Feed1Page {
   }
 
   lunchNavigator(start: any, end: any) {
-    console.log(start);
-    console.log(end);
+    // console.log(start);
+    // console.log(end);
     let GStart = [start.lat, start.lng];
     let GEnd = [end.lat, end.lng];
     let options: LaunchNavigatorOptions = {
@@ -144,11 +161,11 @@ export class Feed1Page {
       type: types,
     }, function (results, status) {
 
-      console.log(results, status)
+      // console.log(results, status)
 
       _base.generateMarkerData(results)
         .then(function (success: any) {
-          console.log("markers data", success)
+          // console.log("markers data", success)
           // if (_base.clusters) {
           //   _base.map.remove(_base.clusters)
           // }
@@ -164,9 +181,9 @@ export class Feed1Page {
 
 
           _base.clusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
-            console.log(position, marker);
-            console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
-            console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
+            // console.log(position, marker);
+            // console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
+            // console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
             // let index = success.findIndex(x => x.position.lng == position.lng);
             // console.log("Index", index)
             _base.showInfoWindow(position, marker[Object.getOwnPropertySymbols(marker)[0]], marker)
@@ -238,6 +255,33 @@ export class Feed1Page {
     //     // "icon": "./img/starbucks.png"
     //   }
     // ]
+  }
+
+  getallfeeds() {
+    let _base = this;
+    let userId = localStorage.getItem('userId')
+    _base.http.getAllFeedsList(userId)
+      .then(function (success: any) {
+        // console.log(success)
+      }, function (error) {
+        // console.log(error)
+      });
+  }
+
+  showFeeds(categoryId: String) {
+    let _base = this;
+    _base.http.getFeedsByCategory(categoryId)
+      .then(function (success: any) {
+        // console.log(success)
+        _base.feeds = success.result.map(function (feed) {
+          let date = new Date(feed.createdDate)
+          let dateString = date.toLocaleDateString()
+          feed.createdDate = dateString;
+          return feed;
+        });
+      }, function (error) {
+
+      });
   }
 
 }

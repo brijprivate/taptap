@@ -16,10 +16,11 @@ declare let plugin: any;
 })
 export class Feed2Page {
   feed1data: any;
+  public feed: any = {}
   public map: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.feed1data = this.navParams.get('feed');
-    console.log(this.feed1data)
+    this.feed = this.navParams.get('feed')
+    console.log(this.feed)
   }
 
 
