@@ -748,11 +748,12 @@ page-tapdetails {
 
   // for fashion
   img.fashionimg {
-    width: 95% !important;
+    width: auto !important;
     border-radius: 0 !important;
-    height: auto !important;
+    height: 300px !important;
+    -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    margin: 0 !important;
+    margin: 0 !important
   }
 
   p.title {
@@ -790,5 +791,9 @@ page-tapdetails {
 
 .viewfashion {
   margin: 2em 0;
+}
+.share a{
+  color:#6b708d;
+  text-decoration: none;
 }
 }
