@@ -291,6 +291,7 @@ page-tapdetails {
     position: absolute;
     right: 0;
   }
+
   ion-icon.icon.icon-md.ion-md-heart-outline {
     float: right;
     margin-right: 19px;
@@ -698,26 +699,29 @@ page-tapdetails {
     box-shadow: 0px 0px 7px 3px #0000002e;
 
   }
+
   .down button a {
     text-decoration: none;
     color: initial;
-}
-
-.dis p{
-  font-size: 26px;
-  font-weight: 600;
-  color: #ce833a;
-  text-align: center;
-  margin: 10px auto;
-  span{
-    font-size: 15px;
-  vertical-align: middle;
-  font-weight: 400;
   }
-}
+
+  .dis p {
+    font-size: 26px;
+    font-weight: 600;
+    color: #ce833a;
+    text-align: center;
+    margin: 10px auto;
+
+    span {
+      font-size: 15px;
+      vertical-align: middle;
+      font-weight: 400;
+    }
+  }
+
   .head1 {
 
-    height: calc( 14vh - 1px);
+    height: calc(14vh - 1px);
     background: #6354cb;
     display: table;
     width: 100%;
@@ -742,4 +746,49 @@ page-tapdetails {
     }
   }
 
+  // for fashion
+  img.fashionimg {
+    width: 95% !important;
+    border-radius: 0 !important;
+    height: auto !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+
+  p.title {
+    font-size: 18px;
+    color: #222;
+    margin: 10px 0 0 0;
+    // text-transform: capitalize;
+  }
+
+  ion-grid.headerfashion.grid img {
+    height: 61px;
+    width: 61px;
+    box-shadow: none;
+    border: 1px solid #6354cb;
+    margin: 0 auto;
+    margin: 0 !important;
+  }
+
+  ion-grid.size.grid span {
+    padding: 3px 8px;
+    border: 1px solid #222;
+    font-size: 12px;
+  }
+
+  ion-grid.size.grid .row {
+    margin-top: 11px;
+  }
+  p.fashiondes {
+    font-size: 16px;
+    color: #222;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-left: 21px;
+}
+
+.viewfashion {
+  margin: 2em 0;
+}
 }

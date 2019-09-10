@@ -627,7 +627,9 @@ page-taptap {
       cursor: pointer;
       margin-top: 9px;
       position: absolute;
-    right: -1px;
+      right: -1px;
+      text-indent: 1em;
+
     }
   
     #demo-2 input[type=search]:hover {

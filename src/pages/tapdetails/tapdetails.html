@@ -617,7 +617,8 @@
 
   <!-- Fashion start -->
 
-  <div *ngIf="eventdata.fashionId">
+  <div *ngIf="eventdata.fashionId" style="    overflow-y: scroll;
+  height: 100%;">
     <div class="showcontent">
       <div class="head">
 
@@ -633,14 +634,32 @@
         </div>
       </div>
       <div class="imgss event">
-        <div class="ss"></div>
+        <!-- <div class="ss"></div> -->
+
+        <ion-grid class="headerfashion">
+          <ion-row>
+            <ion-col col-3 text-center>
+              <img src="../../assets/images/avatar.png" alt="">
+            </ion-col>
+            <ion-col col-8>
+              <p class="title">this is the main title</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.fashionId.image">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}">
+            <!-- <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
+              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
+
+            <img class="fashionimg"
+              (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
+              src="https://rukminim1.flixcart.com/image/738/886/jmthle80/t-shirt/p/w/x/m-usts5928-u-s-polo-association-original-imaf9huy4rjvhqzc.jpeg?q=90 ">
+
           </ion-slide>
+
+
 
           <ion-slide *ngIf="!eventdata.fashionId.image"
             (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
@@ -652,60 +671,100 @@
       </div>
 
     </div>
-    <div class="coin">
+    <div class="">
+        <div class="dis">
+            <p style="text-align: left;
+            margin-left: 1em;">{{eventdata.fashionId.price}}  <span>30% off</span></p>
+          </div>
 
+          <p class="fashiondes">{{eventdata.fashionId.description}}</p>
 
-      <div class="cont">
+      <ion-grid class="size">
+          <!-- <p class="data">Size</p> -->
+        <ion-row no-padding>
+
+          <ion-col col-2 text-center no-padding>
+            <span >S</span>
+          </ion-col>
+          <ion-col col-2 text-center no-padding>
+            <span>M</span>
+          </ion-col>
+          <ion-col col-2 text-center no-padding>
+            <span>X</span>
+          </ion-col>
+          <ion-col col-2 text-center no-padding>
+            <span>XL</span>
+          </ion-col>
+          <ion-col col-2 text-center no-padding>
+            <span>XLL</span>
+          </ion-col>
+          <ion-col col-2 text-center no-padding>
+            <span>XLLL</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+<div class="viewfashion" text-center>
+    <button class="share" outline>
+        <ion-icon name="eye"></ion-icon>&nbsp;&nbsp; View
+      </button> 
+</div>
+
+      <!-- <div class="cont">
         <p class="header">
           <ion-icon name="bowtie"></ion-icon>
           Product
         </p>
         <p class="data">{{eventdata.fashionId.name}}</p>
-      </div>
+      </div> -->
 
-      <div class="cont">
+      <!-- <div class="cont">
         <p class="header">
           <ion-icon name="text"></ion-icon>
           Description
         </p>
         <p class="data">{{eventdata.fashionId.description}}</p>
-      </div>
+      </div> -->
 
-      <div class="cont">
+      <!-- <div class="cont">
         <p class="header">
           <ion-icon name="square"></ion-icon>
           Size
         </p>
         <p class="data">{{eventdata.fashionId.size}}</p>
-      </div>
+      </div> -->
 
-      <div class="cont">
+      <!-- <div class="cont">
         <p class="header">
           <ion-icon name="pricetags"></ion-icon>
           Price
         </p>
         <p class="data">{{eventdata.fashionId.price}}</p>
-      </div>
+      </div> -->
 
-      <div class="cont">
+      <!-- <div class="cont">
         <p class="header">
           <ion-icon name="attach"></ion-icon>
           Website
         </p>
         <p class="data">{{eventdata.fashionId.weblink}}</p>
-      </div>
+      </div> -->
+ 
 
-      <ion-grid class="saveGrid">
+      <ion-grid class="saveGrid" no-padding>
         <ion-row>
           <ion-col col-6>
             <button class="share" outline>
-              <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
+              <ion-icon name="globe"></ion-icon>&nbsp;&nbsp; Website
             </button> </ion-col>
           <ion-col col-6>
             <button class="share" outline (click)="socialshare(eventdata,eventdata.fashionId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
           </ion-col>
+
+    
+            
         </ion-row>
       </ion-grid>
     </div>
