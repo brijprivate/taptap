@@ -4,6 +4,7 @@ import { Ndef, NFC } from '@ionic-native/nfc';
 import { Subscription } from 'rxjs/Rx';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 
 /**
  * Generated class for the TapmodalPage page.
@@ -27,6 +28,7 @@ export class TapmodalPage {
   subscriptions: Array<Subscription> = new Array<Subscription>();
   public tapData: any;
   public geo: any = {}
+  public location: any = "";
 
   public userId: any;
 
@@ -34,6 +36,7 @@ export class TapmodalPage {
     public navParams: NavParams,
     public nfc: NFC,
     public ndef: Ndef,
+    private nativeGeocoder: NativeGeocoder,
     public viewCtrl: ViewController,
     public loading: LoadingController,
     private geolocation: Geolocation,
@@ -76,9 +79,15 @@ export class TapmodalPage {
   ionViewDidEnter() {
     console.log("view enter-------->>>>");
     let _base = this
-    _base.geolocation.getCurrentPosition().then((resp) => {
+    _base.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp) => {
       _base.geo.latitude = resp.coords.latitude
       _base.geo.longitude = resp.coords.longitude
+      _base.nativeGeocoder.reverseGeocode(_base.geo.latitude, _base.geo.longitude)
+        .then((result: NativeGeocoderReverseResult[]) => {
+          console.log("reverse geocode ----------------->>>>>>>", result)
+          console.log(JSON.stringify(result[0]));
+          _base.location = result[0];
+        });
       _base.readingTag = true;
       console.log(_base.geo)
     }).catch((error) => {
@@ -104,7 +113,7 @@ export class TapmodalPage {
     let data = {
       userId: this.userId,
       nfc_id: this.tapData,
-      location: '',
+      location: _base.location,
       purpose: '',
       geo: this.geo
     }
