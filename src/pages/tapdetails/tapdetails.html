@@ -645,6 +645,8 @@
             </ion-col>
             <ion-col col-8>
               <p class="title">{{eventdata.storeId.companyId.name}}</p>
+              <p class="subtitle"><small>Durgapur, West Bengal, India</small></p>
+
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -666,8 +668,8 @@
     </div>
     <div class="">
       <div class="dis">
-        <p style="text-align: left;
-            margin-left: 1em;">{{eventdata.fashionId.price}} <span>{{eventdata.storeId.companyId.discount}}% off</span>
+        <p style="text-align: center;
+            margin-left: 1em;">{{eventdata.fashionId.price}} <span >({{eventdata.storeId.companyId.discount}}% off )<span class="total"> &nbsp;£24</span></span>
         </p>
       </div>
 
@@ -699,14 +701,28 @@
         </ion-row>
       </ion-grid> -->
 
-      <div class="viewfashion" text-center>
+      <div class="fashionview ">
+          <a href="{{eventdata.storeId.companyId.website}}" class="button button-positive"
+            style="margin: 0 1em">
+          
+            View
+          </a>
+  
+          <!-- <a href="{{eventdata.storeId.companyId.website}}" class="button button-positive"
+            style="margin: 0 1em">&nbsp;&nbsp;
+            <i class="fa fa-globe" aria-hidden="true"></i>
+  
+          </a> -->
+  
+        </div>
+
+      
+      <!-- <div class="viewfashion" text-center>
         <button class="share button" (click)="navigate(eventdata.storeId.companyId.geo)">
-          <!-- <a href="{{eventdata.fashionId.weblink}}" outline> -->
           <ion-icon name="navigate"></ion-icon>&nbsp;&nbsp; navigate
-          <!-- </a> -->
         </button>
 
-      </div>
+      </div> -->
 
       <!-- <div class="cont">
         <p class="header">
@@ -752,12 +768,18 @@
       <ion-grid class="saveGrid" no-padding>
         <ion-row>
           <ion-col col-6>
-            <button class="share" outline>
+            <!-- <button class="share" outline>
               <a href="{{eventdata.storeId.companyId.website}}">
                 <ion-icon name="globe"></ion-icon>&nbsp;&nbsp; Website
               </a>
-            </button>
+            </button> -->
 
+            <button class="share" outline (click)="navigate(eventdata.storeId.companyId.geo)">
+                <!-- <a href="{{eventdata.storeId.companyId.website}}"> -->
+                    <i aria-hidden="true" class="fa fa-map-marker"></i>&nbsp;&nbsp; Location
+                  <!-- <ion-icon name="navigate"></ion-icon> -->
+                <!-- </a> -->
+              </button>
 
             <!-- <a class="share button" outline href="{{eventdata.storeId.companyId.website}}">
               <ion-icon name="globe"></ion-icon>&nbsp;&nbsp; Website

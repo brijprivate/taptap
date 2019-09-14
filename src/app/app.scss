@@ -144,3 +144,34 @@ ion-modal.show-page {
   }
 
 }
+
+// for feed
+
+ion-modal.feed-popup {
+  @media (min-width: 300px) and (min-height: 500px) {
+    ion-backdrop {
+      visibility: visible;
+    }
+  }
+
+  .modal-wrapper {
+    position: absolute;
+    overflow: hidden;
+    max-width: 100%;
+    border-radius: 2px;
+    width: 100vw;
+    height: 15vh;
+    top: initial;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 0;
+    box-shadow: 0 16px 20px rgba(0,0,0,.4);
+    background-color: #fafafa;
+  }
+}
