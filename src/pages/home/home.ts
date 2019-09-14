@@ -11,6 +11,8 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Storage } from '@ionic/storage';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { ProfilePage } from '../profile/profile';
+import { Geolocation } from '@ionic-native/geolocation';
+
 declare var Morris;
 
 // import { Diagnostic } from '@ionic-native/diagnostic';
@@ -93,7 +95,8 @@ export class HomePage {
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
     public alert: AlertController,
-    private storage: Storage
+    private storage: Storage,
+    public geolocation: Geolocation
     // private diagnostic: Diagnostic
   ) {
     this.slideselected = 'home';
@@ -125,6 +128,21 @@ export class HomePage {
     this.keyboards = true;
   }
 
+  updateLocation(lat, lng) {
+    let _base = this;
+    let data = {
+      userId: localStorage.getItem('userId'),
+      coordinates: [lat, lng],
+      type: "point",
+    }
+    _base.loginsignupProvider.userUpdateLocationOrSocket(data)
+      .then(function (success) {
+
+      }, function (error) {
+
+      });
+  }
+
 
   ionViewDidEnter() {
     this.chartfunc()
@@ -154,6 +172,27 @@ export class HomePage {
           _base.getAllTapItem();
         }
       })
+
+    //update Location
+    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      function (result) {
+        console.log('Has permission?', result.hasPermission)
+        if (!result.hasPermission) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        } else {
+          _base.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp) => {
+            _base.updateLocation(resp.coords.latitude, resp.coords.longitude)
+          }).catch((error) => {
+            console.log('Error getting location', error);
+            alert("Please turn on your location service")
+          })
+        }
+      },
+      function (err) {
+        alert('Please turn on location service for better experience with TapTap.')
+        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+      });
+
   }
 
 

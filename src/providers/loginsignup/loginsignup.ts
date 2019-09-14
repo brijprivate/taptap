@@ -391,6 +391,19 @@ export class LoginsignupProvider {
     });
   }
 
+  userUpdateLocationOrSocket(userData: any) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.put(_base.apiUrl + 'user/location_socket', userData)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
   // get all categories
   getallcategories() {
     let _base = this;

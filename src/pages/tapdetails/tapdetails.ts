@@ -72,10 +72,12 @@ export class TapdetailsPage {
     // console.log("device data=----------------", this.devicedetaill.deviceInfo._id);
     this.eventdata = navParams.data;
 
-    let website = this.eventdata.storeId.companyId.website;
-    if (website) {
-      if (!website.includes('http') || !website.includes('://')) {
-        this.eventdata.storeId.companyId.website = "http://" + website
+    if(this.eventdata.storeId){
+      let website = this.eventdata.storeId.companyId.website;
+      if (website) {
+        if (!website.includes('http') || !website.includes('://')) {
+          this.eventdata.storeId.companyId.website = "http://" + website
+        }
       }
     }
 
