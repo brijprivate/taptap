@@ -68,7 +68,7 @@
     </ul>
   </div> -->
   <div class="at">
-    showing result for {{selected_category.name}} ({{feeds.length}})
+    showing result for {{selected_category.name}}: ({{feeds.length}})
 
 
     <div class="filter">
@@ -91,8 +91,7 @@
         <ion-avatar item-start>
           <img *ngIf="!feed.adminId.imageId" src="assets/images/p4.png" class="titleImg">
           <img *ngIf="feed.adminId.imageId"
-            src="https://api.taptap.org.uk/file/getImage?imageId={{feed.adminId.imageId._id}}"
-            class="titleImg" />
+            src="https://api.taptap.org.uk/file/getImage?imageId={{feed.adminId.imageId._id}}" class="titleImg" />
         </ion-avatar>
         <h2>{{feed.adminId.name}}</h2>
         <p>{{feed.time}}</p>
@@ -102,8 +101,7 @@
       </ion-item>
 
       <img *ngIf="feed.categoryId.name == 'Fashion'" (click)="detailsPage(feed)"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.image}}"
-        class="feedImg">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.image}}" class="feedImg">
 
       <ion-card-content *ngIf="feed.categoryId.name == 'Fashion'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
@@ -116,8 +114,8 @@
       </ion-card-content>
 
       <img *ngIf="feed.categoryId.name == 'General'"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.image}}"
-        class="feedImg" (click)="detailsPage(feed)">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.image}}" class="feedImg"
+        (click)="detailsPage(feed)">
       <ion-card-content *ngIf="feed.categoryId.name == 'General'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.weblink}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
@@ -129,8 +127,7 @@
       </ion-card-content>
 
       <img *ngIf="feed.categoryId.name == 'Contacts'" (click)="detailsPage(feed)"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.profile_pic}}"
-        class="feedImg">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.profile_pic}}" class="feedImg">
       <ion-card-content *ngIf="feed.categoryId.name == 'Contacts'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.company}} </p>
@@ -142,8 +139,7 @@
       </ion-card-content>
 
       <img *ngIf="feed.categoryId.name == 'Event'" (click)="detailsPage(feed)"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.imageId}}"
-        class="feedImg">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.imageId}}" class="feedImg">
       <ion-card-content *ngIf="feed.categoryId.name == 'Event'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.event_title}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
@@ -156,8 +152,7 @@
 
 
       <img *ngIf="feed.categoryId.name == 'Groceries'" (click)="detailsPage(feed)"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.imageId}}"
-        class="feedImg">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.imageId}}" class="feedImg">
       <ion-card-content *ngIf="feed.categoryId.name == 'Groceries'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.product_name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
@@ -169,8 +164,7 @@
       </ion-card-content>
 
       <img *ngIf="feed.categoryId.name == 'Sports'" (click)="detailsPage(feed)"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.imageId}}"
-        class="feedImg">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.imageId}}" class="feedImg">
       <ion-card-content *ngIf="feed.categoryId.name == 'Sports'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.sport_name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.description}} </p>
@@ -182,8 +176,7 @@
       </ion-card-content>
 
       <img *ngIf="feed.categoryId.name == 'Business'" (click)="detailsPage(feed)"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.logo}}"
-        class="feedImg">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.logo}}" class="feedImg">
       <ion-card-content *ngIf="feed.categoryId.name == 'Business'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.name}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.address}} </p>
@@ -195,8 +188,7 @@
       </ion-card-content>
 
       <img *ngIf="feed.categoryId.name == 'Verification'" (click)="detailsPage(feed)"
-        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.images[0]}}"
-        class="feedImg">
+        src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.images[0]}}" class="feedImg">
       <ion-card-content *ngIf="feed.categoryId.name == 'Verification'" (click)="detailsPage(feed)">
         <p><strong>Title:</strong>&nbsp;{{feed.product.product}}</p>
         <p><strong>Description:</strong>&nbsp;{{feed.product.websitelink

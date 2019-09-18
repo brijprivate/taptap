@@ -53,7 +53,7 @@ export class FeedPage {
   searchfeeds(categoryID: String, category: any) {
     let _base = this
     _base.selected_category = category
-    _base.http.getfeeds(categoryID)
+    _base.getmyfeeds(categoryID)
       .then(function (success: any) {
         console.log(success)
         let lastcreateddate = "";
@@ -79,29 +79,29 @@ export class FeedPage {
   showall() {
     let _base = this
     _base.selected_category = {
-      name: 'All'
+      name: 'all'
     }
-    _base.http.getfeeds(null)
-      .then(function (success: any) {
-        console.log(success)
-        let lastcreateddate = "";
-        _base.feeds = success.result.map((item) => {
-          let obj: any = {};
-          let createddate = item.createdDate.split("T")[0]
-          console.log(createddate, lastcreateddate)
-          if (lastcreateddate != createddate) {
-            console.log("here")
-            lastcreateddate = createddate
-            obj.date = createddate
-          }
-          obj.liked = (item.users) ? (item.users.indexOf(_base.user) == -1 ? false : true) : false
-          obj.time = _base.tConvert(item.createdDate.split("T")[1].split(":")[0] + ":" + item.createdDate.split("T")[1].split(":")[1])
-          Object.assign(obj, item)
-          return obj
-        });
-      }, function (error) {
-        console.log(error)
-      })
+    // _base.http.getfeeds(null)
+    //   .then(function (success: any) {
+    //     console.log(success)
+    //     let lastcreateddate = "";
+    //     _base.feeds = success.result.map((item) => {
+    //       let obj: any = {};
+    //       let createddate = item.createdDate.split("T")[0]
+    //       console.log(createddate, lastcreateddate)
+    //       if (lastcreateddate != createddate) {
+    //         console.log("here")
+    //         lastcreateddate = createddate
+    //         obj.date = createddate
+    //       }
+    //       obj.liked = (item.users) ? (item.users.indexOf(_base.user) == -1 ? false : true) : false
+    //       obj.time = _base.tConvert(item.createdDate.split("T")[1].split(":")[0] + ":" + item.createdDate.split("T")[1].split(":")[1])
+    //       Object.assign(obj, item)
+    //       return obj
+    //     });
+    //   }, function (error) {
+    //     console.log(error)
+    //   })
   }
 
   tConvert(time) {
@@ -190,12 +190,30 @@ export class FeedPage {
       userId: localStorage.getItem("userId")
     }
     this.play()
-    _base.http.dislikefeed(feeddata)
-      .then(function (success) {
-        _base.searchfeeds(_base.selected_category._id, _base.selected_category)
-      }, function (error) {
+    // _base.http.dislikefeed(feeddata)
+    //   .then(function (success) {
+    //     _base.searchfeeds(_base.selected_category._id, _base.selected_category)
+    //   }, function (error) {
 
-      });
+    //   });
+  }
+
+  getmyfeeds(categoryID: String) {
+    let _base = this;
+    let query = {
+      "userId": localStorage.getItem('userId'),
+      "categoryId": [categoryID]
+      // "feed_type": "private" enum[private, public]
+
+    }
+    return new Promise(function (resolve, reject) {
+      _base.http.getMyFeeds(query)
+        .then(function (success: any) {
+          resolve(success)
+        }, function (error: any) {
+          reject(error)
+        });
+    });
   }
 
   play() {

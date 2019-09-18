@@ -132,7 +132,7 @@ export class HomePage {
     let _base = this;
     let data = {
       userId: localStorage.getItem('userId'),
-      coordinates: [lat, lng],
+      coordinates: [lng, lat],
       type: "point",
     }
     _base.loginsignupProvider.userUpdateLocationOrSocket(data)

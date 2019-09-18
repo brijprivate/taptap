@@ -282,27 +282,6 @@ export class NfctagProvider {
     });
   }
 
-
-  //get milage...
-  getfeeds(categoryId: String) {
-    let _base = this;
-
-    let url = _base.apiUrl + 'feeds/allbycategory'
-    if (categoryId != null) {
-      url = url + '?categoryId=' + categoryId
-    }
-
-    return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
-      _base.http.get(url)
-        .then(function (success) {
-          resolve(success);
-        }, function (error) {
-          reject(error);
-        });
-    });
-  }
-
   //get milage...
   getcategories() {
     let _base = this;
@@ -373,11 +352,11 @@ export class NfctagProvider {
     });
   }
 
-  dislikefeed(feeddata) {
+  feedAction(feeddata) {
 
     let _base = this;
     return new Promise(function (resolve, reject) {
-      _base.http.put(_base.apiUrl + 'feeds/unlike', feeddata)
+      _base.http.put(_base.apiUrl + 'feeds/likeunlike', feeddata)
         .then(function (success) {
           resolve(success);
         }, function (error) {
@@ -385,6 +364,35 @@ export class NfctagProvider {
         });
     });
   }
+
+  getMyFeeds(feedQuery: any) {
+
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.post(_base.apiUrl + 'category/filterByType', feedQuery)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+  clickFeed(click: any) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.put(_base.apiUrl + 'feeds/feed_clicked', click)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+
+
+  // category/filterByType
 
   clearNotifications(userId: string) {
     let _base = this;

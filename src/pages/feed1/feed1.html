@@ -25,7 +25,7 @@
   </div> -->
   <div class="filter">
     <ion-item>
-      <ion-input type="text" placeholder="Search Here...."></ion-input>
+      <ion-input type="text" [(ngModel)]="query.search" (keyup)="search($event)" placeholder="Search Here...."></ion-input>
       <ion-icon item-end name="search"></ion-icon>
     </ion-item>
   </div>
@@ -183,7 +183,7 @@
           <ion-card (click)="goto(feed)">
             <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}&select=thumbnail" />
             <div class="card-title">{{feed.createdDate}}</div>
-            <p class="card-subtitle">{{feed.categoryId.name}}</p>
+            <p class="card-subtitle">{{feed?.categoryId?.name}}</p>
           </ion-card>
         </ion-col>
         <!-- <ion-col col-6>

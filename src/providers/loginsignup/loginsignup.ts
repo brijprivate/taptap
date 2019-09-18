@@ -404,6 +404,19 @@ export class LoginsignupProvider {
     });
   }
 
+  getMyFeeds(feedQuery: any) {
+
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.post(_base.apiUrl + 'feeds/filters', feedQuery)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
   // get all categories
   getallcategories() {
     let _base = this;

@@ -25,10 +25,17 @@ export class Feed1Page {
   public map: any;
   public geo: any = {};
   public clusters: any;
+  public taptapclusters: any;
   public info: any;
   public selectedMarker: any;
   public categories: any = [];
   public feeds: any = [];
+  public query: any = {
+    // type: 'public'
+    userId: localStorage.getItem('userId'),
+    search: "",
+    category: []
+  };
 
   constructor(private launchNavigator: LaunchNavigator, public http: LoginsignupProvider,
     public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
@@ -50,7 +57,7 @@ export class Feed1Page {
       }, function (error) {
 
       })
-    this.showFeeds('5d56451555edc5862ed91263')
+    this.showFeeds(null)
   }
 
   back() {
@@ -102,7 +109,47 @@ export class Feed1Page {
       }, function () {
         //alert("Camera target has been changed");
       });
-      _base.searchNearby(place, 5000, [])
+
+      _base.getLocationBasedFeeds()
+        .then(function (success: any) {
+          // console.log(success)
+          _base.feeds = success.result.map(function (feed) {
+            let date = new Date(feed.createdDate)
+            let dateString = date.toLocaleDateString()
+            feed.createdDate = dateString;
+            return feed;
+          });
+
+          _base.addtomarker(_base.feeds)
+            .then(function (markers: any) {
+              if (markers.length != 0) {
+                _base.taptapclusters = _base.map.addMarkerCluster({
+                  markers: markers,
+                  icons: [
+                    { min: 2, max: 100, url: "./img/blue.png", anchor: { x: 16, y: 16 } },
+                    { min: 100, max: 1000, url: "./img/yellow.png", anchor: { x: 16, y: 16 } },
+                    { min: 1000, max: 2000, url: "./img/purple.png", anchor: { x: 24, y: 24 } },
+                    { min: 2000, url: "./img/red.png", anchor: { x: 32, y: 32 } }
+                  ]
+                });
+
+
+                _base.taptapclusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
+                  // console.log(position, marker);
+                  // console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
+                  // console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
+                  // let index = success.findIndex(x => x.position.lng == position.lng);
+                  // console.log("Index", index)
+                  _base.showInfoWindow(position, marker[Object.getOwnPropertySymbols(marker)[0]], marker)
+                });
+              }
+            });
+
+        }, function (error) {
+
+        });
+
+      _base.searchNearby(place, 5000, []);
     }).catch((error) => {
       // console.log('Error getting location', error);
       alert("Please turn on your location service")
@@ -123,6 +170,12 @@ export class Feed1Page {
     ].join("");
     this.info.setContent(html);
     this.info.open(markerInstance)
+  }
+
+
+  search(e: any) {
+    console.log(this.query)
+    this.showFeeds(null);
   }
 
   showDirection() {
@@ -269,8 +322,13 @@ export class Feed1Page {
   }
 
   showFeeds(categoryId: String) {
+    console.log(categoryId)
     let _base = this;
-    _base.http.getFeedsByCategory(categoryId)
+    if (categoryId != null) {
+      _base.query.category = [categoryId]
+    }
+
+    _base.getmyfeeds()
       .then(function (success: any) {
         // console.log(success)
         _base.feeds = success.result.map(function (feed) {
@@ -279,9 +337,102 @@ export class Feed1Page {
           feed.createdDate = dateString;
           return feed;
         });
+
+        _base.addtomarker(_base.feeds)
+          .then(function (markers: any) {
+            _base.taptapclusters = _base.map.addMarkerCluster({
+              markers: markers,
+              icons: [
+                { min: 2, max: 100, url: "./img/blue.png", anchor: { x: 16, y: 16 } },
+                { min: 100, max: 1000, url: "./img/yellow.png", anchor: { x: 16, y: 16 } },
+                { min: 1000, max: 2000, url: "./img/purple.png", anchor: { x: 24, y: 24 } },
+                { min: 2000, url: "./img/red.png", anchor: { x: 32, y: 32 } }
+              ]
+            });
+
+
+            _base.taptapclusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
+              // console.log(position, marker);
+              // console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
+              // console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
+              // let index = success.findIndex(x => x.position.lng == position.lng);
+              // console.log("Index", index)
+              _base.showInfoWindow(position, marker[Object.getOwnPropertySymbols(marker)[0]], marker)
+            });
+          });
+
       }, function (error) {
 
       });
+  }
+
+  getmyfeeds() {
+    let _base = this;
+
+    // console.log("here", _base.query.search, _base.query.search.trim().length)
+
+    let query = {
+      userId: _base.query.userId,
+      search: _base.query.search ? (_base.query.search.trim().length == 0 ? "" : _base.query.search) : "",
+      category: _base.query.category
+    };
+    return new Promise(function (resolve, reject) {
+      _base.http.getMyFeeds(query)
+        .then(function (success: any) {
+          resolve(success)
+        }, function (error: any) {
+          reject(error)
+        });
+    });
+  }
+
+  getLocationBasedFeeds() {
+    let _base = this;
+    _base.query.search = "";
+    _base.query.category = [];
+
+    // console.log("here", _base.query.search, _base.query.search.trim().length)
+
+    let query = {
+      userId: _base.query.userId,
+      location: _base.geo
+    };
+    return new Promise(function (resolve, reject) {
+      _base.http.getMyFeeds(query)
+        .then(function (success: any) {
+          resolve(success)
+        }, function (error: any) {
+          reject(error)
+        });
+    });
+  }
+
+  addtomarker(feeds: any) {
+    let _base = this;
+    let markersdata = [];
+    return new Promise(function (resolve, reject) {
+      if (feeds.length == 0) {
+        resolve(markersdata)
+      } else {
+        for (let i = 0; i <= feeds.length - 1; i++) {
+          let feed = feeds[i];
+          let place: any = {}
+          place.title = feed.product.storeId.companyId.name;
+          place.name = feed.product.storeId.companyId.name;
+          place.address = feed.product.storeId.companyId.address;
+          place.position = {
+            lat: feed.product.storeId.companyId.geo.latitude,
+            lng: feed.product.storeId.companyId.geo.longitude
+          };
+          place.id = '#12345678';
+          place.rating = 'not-rated';
+          markersdata.push(place)
+          if (i == feeds.length - 1) {
+            resolve(markersdata)
+          }
+        }
+      }
+    });
   }
 
 }
