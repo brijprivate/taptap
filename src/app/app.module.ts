@@ -38,7 +38,8 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
 // import { Keyboard } from '@ionic-native/keyboard';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicImageLoader } from 'ionic-image-loader';
-
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} };
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { IonicImageLoader } from 'ionic-image-loader';
     IonicStorageModule.forRoot(),
     IonicImageLoader.forRoot(),
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    SocketIoModule.forRoot(config)
   ],
   bootstrap: [IonicApp],
 

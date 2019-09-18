@@ -85,6 +85,7 @@
     "ionicons": "3.0.0",
     "johnwargo-cordova-plugin-carrier": "0.0.8",
     "moment": "^2.24.0",
+    "ng-socket-io": "^0.2.4",
     "pdfmake": "^0.1.56",
     "phonegap-nfc": "^1.0.3",
     "rxjs": "5.5.11",

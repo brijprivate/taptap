@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App, AlertController, ModalControl
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Storage } from '@ionic/storage';
 import { get } from 'scriptjs';
+import { Socket } from 'ng-socket-io';
 
 /**
  * Generated class for the MorePage page.
@@ -24,8 +25,9 @@ export class MorePage {
     public navParams: NavParams,
     public nfctagpro: NfctagProvider,
     private app: App,
+    public socket: Socket,
     public storage: Storage,
-    public alert: AlertController,public modalController: ModalController ) {
+    public alert: AlertController, public modalController: ModalController) {
   }
 
   ionViewDidEnter() {
@@ -57,6 +59,7 @@ export class MorePage {
             localStorage.clear();
             _base.storage.clear();
             this.app.getRootNav().setRoot("LoginPage");
+            _base.socket.disconnect()
           }
         }
       ]
@@ -129,8 +132,8 @@ export class MorePage {
 
 
   showLoginModal() {
- 
-    let modal = this.modalController.create("FeedpopupPage",{},{showBackdrop:true, enableBackdropDismiss:true});
+
+    let modal = this.modalController.create("FeedpopupPage", {}, { showBackdrop: true, enableBackdropDismiss: true });
     modal.present();
-    }
+  }
 }

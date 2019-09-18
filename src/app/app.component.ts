@@ -20,6 +20,8 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { NfctagProvider } from '../providers/nfctag/nfctag';
 import { NFC, Ndef } from '@ionic-native/nfc';
+import { Socket } from 'ng-socket-io';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare let cordova: any;
 declare let plugin: any;
@@ -31,6 +33,7 @@ export class MyApp {
   @ViewChild('nav') navCtrl: NavController;
 
 
+  location_watch: any;
   rootPage: string = '';
   params: any = {}
   public disconnectSubscription: any;
@@ -41,6 +44,7 @@ export class MyApp {
   constructor(private platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
+    public socket: Socket,
     private network: Network,
     private androidPermissions: AndroidPermissions,
     public sharedservice: SharedserviceProvider,
@@ -49,10 +53,12 @@ export class MyApp {
     private loginservice: LoginsignupProvider,
     public nfc: NFC,
     public app: App,
+    public geolocation: Geolocation,
     private backgroundGeolocation: BackgroundGeolocation,
     private locationAccuracy: LocationAccuracy,
     public nfctagProvider: NfctagProvider) {
     let _base = this;
+
     // platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.
     // Here you can do any higher level native things you might need.
@@ -226,9 +232,12 @@ export class MyApp {
 
   initializeApp() {
 
+    this.InitSocket()
 
     let _base = this
     this.platform.ready().then(() => {
+
+      _base.InitSocket()
 
       console.log("Cordova", plugin)
 
@@ -273,5 +282,48 @@ export class MyApp {
     });
 
   }
+
+  InitSocket() {
+    let _base = this;
+    this.socket.on("connect", function (socket) {
+      console.log(_base.socket.ioSocket.id)
+      _base.socket.emit("user_connected", {})
+    })
+
+    this.socket.on("connect", function (socket) {
+      console.log(_base.socket.ioSocket.id)
+      _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
+    })
+
+    this.socket.on("connected", function (socket) {
+      console.log("user has been connected")
+
+      // test - remove later
+      _base.socket.emit("location", {
+        latitude: 23.3558763,
+        longitude: 87.6878509
+      })
+
+      // test end upto this
+
+      _base.location_watch = _base.geolocation.watchPosition({ enableHighAccuracy: true }).subscribe((resp) => {
+        _base.socket.emit("location", {
+          latitude: resp.coords.latitude,
+          longitude: resp.coords.longitude
+        })
+      })
+    })
+
+    this.socket.on('nearby', function (nearby: any) {
+      console.log('Found Nearby')
+    })
+
+    this.socket.on('disconnect', function () {
+      console.log('Got disconnect!');
+      // _base.geolocation.clearWatch(_base.location_watch)
+      _base.location_watch.unsubscribe()
+    });
+  }
+
 }
 

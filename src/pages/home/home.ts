@@ -12,6 +12,7 @@ import { Storage } from '@ionic/storage';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { ProfilePage } from '../profile/profile';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Socket } from 'ng-socket-io';
 
 declare var Morris;
 
@@ -35,6 +36,8 @@ export class HomePage {
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
   @ViewChild('lineCanvas') lineCanvas;
+
+  public location_watch: any;
 
   doughnutChart: any;
   barChart: any;
@@ -89,6 +92,7 @@ export class HomePage {
     public loginsignupProvider: LoginsignupProvider,
     public nfc: NFC,
     public ndef: Ndef,
+    public socket: Socket,
     private androidPermissions: AndroidPermissions,
     public loading: LoadingController,
     public nfctagpro: NfctagProvider,
@@ -112,6 +116,40 @@ export class HomePage {
       // this.getprofiledata();
       // this.getpresentdateCount();
       // this.getAllTapItem();
+
+      this.socket.connect()
+      // let _base = this;
+
+      // this.socket.on("connect", function (socket) {
+      //   console.log(_base.socket.ioSocket.id)
+      //   _base.socket.emit("user_connected", {})
+      // })
+
+      // this.socket.on("connect", function (socket) {
+      //   console.log(_base.socket.ioSocket.id)
+      //   _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
+      // })
+
+      // this.socket.on("connected", function (socket) {
+      //   console.log("user has been connected")
+      //   _base.location_watch = _base.geolocation.watchPosition({ enableHighAccuracy: true }).subscribe((resp) => {
+      //     _base.socket.emit("location", {
+      //       latitude: resp.coords.latitude,
+      //       longitude: resp.coords.longitude
+      //     })
+      //   })
+      // })
+
+      // this.socket.on('nearby', function (nearby: any) {
+      //   console.log('Found Nearby')
+      // })
+
+      // this.socket.on('disconnect', function () {
+      //   console.log('Got disconnect!', socket);
+      //   // _base.geolocation.clearWatch(_base.location_watch)
+      //   _base.location_watch.unsubscribe()
+      // });
+
     }
 
   }
@@ -145,6 +183,7 @@ export class HomePage {
 
 
   ionViewDidEnter() {
+
     this.chartfunc()
     // this.chart.dispose();
     this.offline = false;
