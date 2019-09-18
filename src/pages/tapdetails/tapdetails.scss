@@ -356,7 +356,7 @@ page-tapdetails {
   }
 
   button.share {
-    color: #6b708d;
+    color: #000000;
     border: 1px solid #6b708d;
     background: transparent;
     border-radius: 3px;
@@ -708,14 +708,21 @@ page-tapdetails {
   .dis p {
     font-size: 26px;
     font-weight: 600;
-    color: #ce833a;
-    text-align: center;
+    color: red;
     margin: 10px auto;
-
+    text-align: center;
     span {
       font-size: 15px;
-      vertical-align: middle;
+      // vertical-align: middle;
       font-weight: 400;
+      text-transform: uppercase;
+
+    }
+    .total{
+      color: gray;
+      font-weight: 600;
+      text-decoration: line-through;
+      margin-left: 10px;
     }
   }
 
@@ -750,19 +757,42 @@ page-tapdetails {
   img.fashionimg {
     width: auto !important;
     border-radius: 0 !important;
-    height: 300px !important;
+    height: 34vh !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    margin: 0 !important
+    margin: 0 !important;
+    border: 1px solid #80808040;
+    border-radius: 8px !important;
+    
   }
 
+.fashionview{
+  a{
+    background: #6354cb;
+    color: #fff;
+    padding-top: 23px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    margin: 0.5em;
+    box-shadow: 0px 0px 7px 3px #0000002e;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
   p.title {
     font-size: 18px;
     color: #222;
-    margin: 10px 0 0 0;
-    // text-transform: capitalize;
+    margin: 7px 0 0 0;
+    font-weight: 600;
   }
-
+  p.subtitle{
+    margin: 0px 0;
+    font-size: 15px;
+    color: gray;
+  }
   ion-grid.headerfashion.grid img {
     height: 61px;
     width: 61px;
@@ -784,9 +814,13 @@ page-tapdetails {
   p.fashiondes {
     font-size: 16px;
     color: #222;
-    font-weight: 500;
     text-transform: capitalize;
     margin-left: 21px;
+}
+
+.fashionview {
+  text-align: center;
+  margin: 0 0 5vh 0;
 }
 
 .viewfashion {

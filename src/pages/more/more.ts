@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, AlertController, ModalController, ModalOptions } from 'ionic-angular';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Storage } from '@ionic/storage';
 import { get } from 'scriptjs';
@@ -25,7 +25,7 @@ export class MorePage {
     public nfctagpro: NfctagProvider,
     private app: App,
     public storage: Storage,
-    public alert: AlertController, ) {
+    public alert: AlertController,public modalController: ModalController ) {
   }
 
   ionViewDidEnter() {
@@ -123,4 +123,14 @@ export class MorePage {
       console.log("Google maps library has been loaded");
     });
   }
+
+
+
+
+
+  showLoginModal() {
+ 
+    let modal = this.modalController.create("FeedpopupPage",{},{showBackdrop:true, enableBackdropDismiss:true});
+    modal.present();
+    }
 }
