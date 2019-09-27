@@ -9,7 +9,7 @@
   <div class="head">
     <div class="mdl">
       <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
-      <p>{{feed.categoryId.name}}</p>
+      <p (tap)="showProduct()">{{feed?.product?.storeId?.companyId?.name}}</p>
     </div>
   </div>
   <!-- <div class="selectDiv">
@@ -45,12 +45,12 @@
   </div> -->
   <ion-card class="adv-map">
     <div style="position: relative">
-      <div class="cardtitle">Sat-Sun</div>
+      <div class="cardtitle">{{distance}} miles</div>
 
       <!-- <div src="../../assets/images/map.png" class="mapImage"> -->
-      <div class="mapImage" id="google-map"></div>
+      <div class="mapImage" id="google-map-div"></div>
       <ion-item class="maplace">
-        <h2>{{feed?.product?.storeId?.companyId?.name}}</h2>
+        <!-- <h2 (tap)="showProduct()">{{feed?.product?.storeId?.companyId?.name}}</h2> -->
         <p>{{feed?.product?.storeId?.companyId?.address}}</p>
       </ion-item>
       <ion-fab right top (tap)="navigate()">
@@ -74,9 +74,10 @@
               <ion-slide>
                 <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}" />
                 <div class="card-title">{{feed?.product?.storeId?.companyId?.discount}} % discount</div>
-                <div class="register">
-                  <!-- <button><i class="fa fa-share-alt" aria-hidden="true"></i>
-                  </button> -->
+                <div class="register" (tap)="showProduct()">
+                  <button>
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </button>
                 </div>
                 <p class="card-subtitle">{{feed.title}}</p>
                 <p class="card-subtitlea">{{feed.description}}.</p>
@@ -88,7 +89,7 @@
               <button ion-button icon-start clear small>
                 <i class="fa fa-heart-o" *ngIf="!like" aria-hidden="true"></i>
                 <ion-icon name="heart" *ngIf="like" aria-hidden="true"></ion-icon>
-                <div class="pColor">{{feed.favourites.length}} Favourites</div>
+                <div class="pColor">{{fav_count}} Favourites</div>
               </button>
             </ion-col>
             <!-- <ion-col>

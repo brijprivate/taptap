@@ -3,6 +3,7 @@ import { IonicPage, NavController, Slides, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { LoginsignupProvider } from './../../providers/loginsignup/loginsignup';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 
 declare let plugin: any;
 declare let google: any;
@@ -23,6 +24,7 @@ export class Feed1Page {
   @ViewChild('slider') slider_tab: Slides;
 
   public map: any;
+  public location: any = "";
   public geo: any = {};
   public clusters: any;
   public taptapclusters: any;
@@ -30,14 +32,16 @@ export class Feed1Page {
   public selectedMarker: any;
   public categories: any = [];
   public feeds: any = [];
+  public googleNearby: any = [];
+
   public query: any = {
-    // type: 'public'
+    // type: 'public',
     userId: localStorage.getItem('userId'),
     search: "",
     category: []
   };
 
-  constructor(private launchNavigator: LaunchNavigator, public http: LoginsignupProvider,
+  constructor(private nativeGeocoder: NativeGeocoder, private launchNavigator: LaunchNavigator, public http: LoginsignupProvider,
     public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
   }
 
@@ -53,11 +57,17 @@ export class Feed1Page {
     _base.http.getallcategories()
       .then(function (success: any) {
         // console.log(success)
-        _base.categories = success.result;
+        _base.categories = [];
+        _base.categories = success.result.filter(function (category) {
+          if (category.name != 'General' && category.name != 'Contacts' && category.name != 'Verification') {
+            return category;
+          }
+        });
+        console.log(_base.categories)
       }, function (error) {
 
       })
-    this.showFeeds(null)
+    this.showFeeds()
   }
 
   back() {
@@ -102,6 +112,13 @@ export class Feed1Page {
       _base.geo.latitude = resp.coords.latitude
       _base.geo.longitude = resp.coords.longitude
       let place = { lat: _base.geo.latitude, lng: _base.geo.longitude }
+
+      _base.nativeGeocoder.reverseGeocode(_base.geo.latitude, _base.geo.longitude)
+        .then((result: any) => {
+          _base.location = result[0].formatted_address;
+        });
+
+
       _base.map.animateCamera({
         target: place,
         zoom: 13,
@@ -110,44 +127,7 @@ export class Feed1Page {
         //alert("Camera target has been changed");
       });
 
-      _base.getLocationBasedFeeds()
-        .then(function (success: any) {
-          // console.log(success)
-          _base.feeds = success.result.map(function (feed) {
-            let date = new Date(feed.createdDate)
-            let dateString = date.toLocaleDateString()
-            feed.createdDate = dateString;
-            return feed;
-          });
-
-          _base.addtomarker(_base.feeds)
-            .then(function (markers: any) {
-              if (markers.length != 0) {
-                _base.taptapclusters = _base.map.addMarkerCluster({
-                  markers: markers,
-                  icons: [
-                    { min: 2, max: 100, url: "./img/blue.png", anchor: { x: 16, y: 16 } },
-                    { min: 100, max: 1000, url: "./img/yellow.png", anchor: { x: 16, y: 16 } },
-                    { min: 1000, max: 2000, url: "./img/purple.png", anchor: { x: 24, y: 24 } },
-                    { min: 2000, url: "./img/red.png", anchor: { x: 32, y: 32 } }
-                  ]
-                });
-
-
-                _base.taptapclusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
-                  // console.log(position, marker);
-                  // console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
-                  // console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
-                  // let index = success.findIndex(x => x.position.lng == position.lng);
-                  // console.log("Index", index)
-                  _base.showInfoWindow(position, marker[Object.getOwnPropertySymbols(marker)[0]], marker)
-                });
-              }
-            });
-
-        }, function (error) {
-
-        });
+      _base.showFeeds();
 
       _base.searchNearby(place, 5000, []);
     }).catch((error) => {
@@ -172,10 +152,27 @@ export class Feed1Page {
     this.info.open(markerInstance)
   }
 
+  selectCategory(categoryId: String, i) {
+    let _base = this;
+    let Index = _base.query.category.indexOf(categoryId);
+    if (Index == -1) {
+      _base.query.category.push(categoryId)
+      let element = <HTMLCollection>document.getElementsByClassName('c' + i)
+      console.log(element[0])
+      element[0].className = "category c" + i + " active"
+    } else {
+      _base.query.category.splice(Index, 1);
+      let element = <HTMLCollection>document.getElementsByClassName('c' + i)
+      console.log(element[0])
+      element[0].className = "category c" + i
+    }
+    _base.showFeeds()
+  }
+
 
   search(e: any) {
     console.log(this.query)
-    this.showFeeds(null);
+    this.showFeeds();
   }
 
   showDirection() {
@@ -214,7 +211,7 @@ export class Feed1Page {
       type: types,
     }, function (results, status) {
 
-      // console.log(results, status)
+      console.log(results, status)
 
       _base.generateMarkerData(results)
         .then(function (success: any) {
@@ -222,6 +219,7 @@ export class Feed1Page {
           // if (_base.clusters) {
           //   _base.map.remove(_base.clusters)
           // }
+          _base.googleNearby = success;
           _base.clusters = _base.map.addMarkerCluster({
             markers: success,
             icons: [
@@ -255,8 +253,18 @@ export class Feed1Page {
     });
   }
 
+  showNavigator(feed: any) {
+    let start = {
+      lat: this.geo.latitude,
+      lng: this.geo.longitude
+    };
+    let end = feed.position;
+    this.lunchNavigator(start, end)
+  }
+
   generateMarkerData(data: any) {
     let markersdata = []
+    // this.googleNearby = data;
     return new Promise(function (resolve, reject) {
       if (data.length == 0) {
         reject({})
@@ -273,6 +281,10 @@ export class Feed1Page {
         };
         place.id = item.place_id;
         place.rating = item.rating;
+        place.types = item.types;
+        console.log(item.photos)
+        // console.log(item.photos ? item.photos[0].getUrl() : 'no photo')
+        place.photo = item.photos ? item.photos[0].getUrl() : ''
         // place.icon = {
         //   'url': item.icon,
         //   scaledSize: new google.maps.Size(16, 16), // scaled size
@@ -282,6 +294,7 @@ export class Feed1Page {
         // place.isOpen = item.opening_hours.isOpen();
         markersdata.push(place)
         if (i == data.length - 1) {
+          console.log("Markers data", markersdata)
           resolve(markersdata)
         }
       }
@@ -321,49 +334,25 @@ export class Feed1Page {
       });
   }
 
-  showFeeds(categoryId: String) {
-    console.log(categoryId)
+  showFeeds() {
     let _base = this;
-    if (categoryId != null) {
-      _base.query.category = [categoryId]
-    }
-
-    _base.getmyfeeds()
-      .then(function (success: any) {
-        // console.log(success)
-        _base.feeds = success.result.map(function (feed) {
-          let date = new Date(feed.createdDate)
-          let dateString = date.toLocaleDateString()
-          feed.createdDate = dateString;
-          return feed;
-        });
-
-        _base.addtomarker(_base.feeds)
-          .then(function (markers: any) {
-            _base.taptapclusters = _base.map.addMarkerCluster({
-              markers: markers,
-              icons: [
-                { min: 2, max: 100, url: "./img/blue.png", anchor: { x: 16, y: 16 } },
-                { min: 100, max: 1000, url: "./img/yellow.png", anchor: { x: 16, y: 16 } },
-                { min: 1000, max: 2000, url: "./img/purple.png", anchor: { x: 24, y: 24 } },
-                { min: 2000, url: "./img/red.png", anchor: { x: 32, y: 32 } }
-              ]
-            });
-
-
-            _base.taptapclusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
-              // console.log(position, marker);
-              // console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
-              // console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
-              // let index = success.findIndex(x => x.position.lng == position.lng);
-              // console.log("Index", index)
-              _base.showInfoWindow(position, marker[Object.getOwnPropertySymbols(marker)[0]], marker)
-            });
+    return new Promise(function (resolve, reject) {
+      _base.getmyfeeds()
+        .then(function (success: any) {
+          // console.log(success)
+          _base.feeds = success.result.map(function (feed) {
+            let date = new Date(feed.createdDate)
+            let dateString = date.toLocaleDateString()
+            feed.createdDate = dateString;
+            return feed;
           });
 
-      }, function (error) {
+          resolve(success)
 
-      });
+        }, function (error) {
+          reject(error)
+        });
+    })
   }
 
   getmyfeeds() {
@@ -374,27 +363,7 @@ export class Feed1Page {
     let query = {
       userId: _base.query.userId,
       search: _base.query.search ? (_base.query.search.trim().length == 0 ? "" : _base.query.search) : "",
-      category: _base.query.category
-    };
-    return new Promise(function (resolve, reject) {
-      _base.http.getMyFeeds(query)
-        .then(function (success: any) {
-          resolve(success)
-        }, function (error: any) {
-          reject(error)
-        });
-    });
-  }
-
-  getLocationBasedFeeds() {
-    let _base = this;
-    _base.query.search = "";
-    _base.query.category = [];
-
-    // console.log("here", _base.query.search, _base.query.search.trim().length)
-
-    let query = {
-      userId: _base.query.userId,
+      category: _base.query.category,
       location: _base.geo
     };
     return new Promise(function (resolve, reject) {
@@ -406,6 +375,7 @@ export class Feed1Page {
         });
     });
   }
+
 
   addtomarker(feeds: any) {
     let _base = this;

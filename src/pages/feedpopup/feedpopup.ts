@@ -14,20 +14,31 @@ import { IonicPage, NavController, NavParams, ViewController, ModalController } 
   templateUrl: 'feedpopup.html',
 })
 export class FeedpopupPage {
-  counter=5;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController,   public renderer: Renderer, public viewCtrl: ViewController,) {
-    let _base=this;
+  counter = 5;
+  feed: any = {};
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController, public renderer: Renderer, public viewCtrl: ViewController, ) {
+    let _base = this;
+    // console.log(this.feed)
+    _base.feed = this.navParams.data;
     setTimeout(() => {
       _base.renderer.setElementClass(_base.viewCtrl.pageRef().nativeElement, 'feed-popup', true);
     }, 10);
   }
 
+  goto() {
+    let _base = this;
+    // clearInterval(x);
+    _base.viewCtrl.dismiss({});
+    this.navCtrl.push('Feed2Page', { feed: this.feed })
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedpopupPage');
-    let _base=this;
-    var x=setInterval(() => {
-      _base.counter= _base.counter-1;;
-      if(_base.counter==0){
+    let _base = this;
+    var x = setInterval(() => {
+      _base.counter = _base.counter - 1;;
+      if (_base.counter == 0) {
         clearInterval(x);
         _base.viewCtrl.dismiss({});
       }

@@ -1,5 +1,5 @@
 import { Component, ViewChild, Pipe, PipeTransform } from '@angular/core';
-import { NavController, Slides, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, Slides, ModalController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { NFC, Ndef } from '@ionic-native/nfc';
@@ -38,6 +38,7 @@ export class HomePage {
   @ViewChild('lineCanvas') lineCanvas;
 
   public location_watch: any;
+  public viewing: any = false;
 
   doughnutChart: any;
   barChart: any;
@@ -93,6 +94,7 @@ export class HomePage {
     public nfc: NFC,
     public ndef: Ndef,
     public socket: Socket,
+    public modalController: ModalController,
     private androidPermissions: AndroidPermissions,
     public loading: LoadingController,
     public nfctagpro: NfctagProvider,
@@ -117,38 +119,14 @@ export class HomePage {
       // this.getpresentdateCount();
       // this.getAllTapItem();
 
-      this.socket.connect()
+      // console.log('check 1', this.socket.ioSocket.connected);
+      // if (this.socket.ioSocket.connected) {
+      //   this.InitSocket()
+      //   this.socket.connect()
+      // }
+      // console.log('check 1', this.socket.ioSocket.connected);
+
       // let _base = this;
-
-      // this.socket.on("connect", function (socket) {
-      //   console.log(_base.socket.ioSocket.id)
-      //   _base.socket.emit("user_connected", {})
-      // })
-
-      // this.socket.on("connect", function (socket) {
-      //   console.log(_base.socket.ioSocket.id)
-      //   _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
-      // })
-
-      // this.socket.on("connected", function (socket) {
-      //   console.log("user has been connected")
-      //   _base.location_watch = _base.geolocation.watchPosition({ enableHighAccuracy: true }).subscribe((resp) => {
-      //     _base.socket.emit("location", {
-      //       latitude: resp.coords.latitude,
-      //       longitude: resp.coords.longitude
-      //     })
-      //   })
-      // })
-
-      // this.socket.on('nearby', function (nearby: any) {
-      //   console.log('Found Nearby')
-      // })
-
-      // this.socket.on('disconnect', function () {
-      //   console.log('Got disconnect!', socket);
-      //   // _base.geolocation.clearWatch(_base.location_watch)
-      //   _base.location_watch.unsubscribe()
-      // });
 
     }
 
@@ -156,6 +134,79 @@ export class HomePage {
   ionViewWillLeave() {
     // this.chart.dispose();
 
+  }
+
+  InitSocket() {
+    let _base = this;
+
+    console.log('check 1', this.socket.ioSocket.connected);
+    if (!this.socket.ioSocket.connected) {
+      this.socket.removeAllListeners();
+      if (_base.location_watch) {
+        _base.location_watch.unsubscribe();
+      }
+      this.socket.connect()
+    }
+    console.log('check 1', this.socket.ioSocket.connected);
+
+    // this.socket.on("connect", function (socket) {
+    //   console.log("socket emit user connected", _base.socket.ioSocket.id)
+    //   _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
+    // })
+
+    this.socket.on("connect", function (socket) {
+      console.log("user has been connected")
+
+      _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
+
+      // test - remove later
+      // _base.socket.emit("location", {
+      //   latitude: 23.3558763,
+      //   longitude: 87.6878509
+      // })
+
+      // test end upto this
+
+      if (_base.location_watch) {
+        _base.location_watch.unsubscribe();
+      }
+
+      _base.location_watch = _base.geolocation.watchPosition({ enableHighAccuracy: true }).subscribe((resp) => {
+        _base.socket.emit("location", {
+          latitude: resp.coords.latitude,
+          longitude: resp.coords.longitude
+        })
+      })
+    })
+
+    this.socket.on('nearby', function (nearby: any) {
+      console.log('Found Nearby')
+      if (nearby) {
+        // console.log("Nearby", nearby)
+        _base.shownearbypopup(nearby.data[0]);
+      }
+    })
+
+    this.socket.on('disconnect', function () {
+      console.log('Got disconnect!');
+      // _base.geolocation.clearWatch(_base.location_watch)
+      _base.location_watch.unsubscribe();
+      _base.socket.removeAllListeners()
+    });
+  }
+
+  shownearbypopup(data: any) {
+    let _base = this;
+    if (!this.viewing) {
+      let modal = this.modalController.create("FeedpopupPage", data, { showBackdrop: true, enableBackdropDismiss: true });
+      modal.present();
+      this.viewing = true;
+      modal.onDidDismiss(function () {
+        setTimeout(function () {
+          _base.viewing = false;
+        }, 60000)
+      })
+    }
   }
 
 
@@ -183,6 +234,8 @@ export class HomePage {
 
 
   ionViewDidEnter() {
+
+    // this.InitSocket();  //initialize scoket
 
     this.chartfunc()
     // this.chart.dispose();
@@ -228,7 +281,7 @@ export class HomePage {
         }
       },
       function (err) {
-        alert('Please turn on location service for better experience with TapTap.')
+        // alert('Please turn on location service for better experience with TapTap.')
         _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
       });
 

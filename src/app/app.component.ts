@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, App, ToastController, NavController } from 'ionic-angular';
+import { Platform, App, ToastController, ModalController, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -44,6 +44,7 @@ export class MyApp {
   constructor(private platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
+    public modalController: ModalController,
     public socket: Socket,
     private network: Network,
     private androidPermissions: AndroidPermissions,
@@ -282,47 +283,56 @@ export class MyApp {
     });
 
   }
+  firesocket() {
+    this.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
+  }
 
   InitSocket() {
     let _base = this;
-    this.socket.on("connect", function (socket) {
-      console.log(_base.socket.ioSocket.id)
-      _base.socket.emit("user_connected", {})
-    })
 
-    this.socket.on("connect", function (socket) {
-      console.log(_base.socket.ioSocket.id)
-      _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
-    })
+    // this.socket.on("connect", function (socket) {
+    //   console.log("socket emit user connected", _base.socket.ioSocket.id)
+    //   _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
+    // })
 
-    this.socket.on("connected", function (socket) {
-      console.log("user has been connected")
+    // this.socket.on("connected", function (socket) {
+    //   console.log("user has been connected")
 
-      // test - remove later
-      _base.socket.emit("location", {
-        latitude: 23.3558763,
-        longitude: 87.6878509
-      })
+    //   // test - remove later
+    //   _base.socket.emit("location", {
+    //     latitude: 23.3558763,
+    //     longitude: 87.6878509
+    //   })
 
-      // test end upto this
+    //   // test end upto this
 
-      _base.location_watch = _base.geolocation.watchPosition({ enableHighAccuracy: true }).subscribe((resp) => {
-        _base.socket.emit("location", {
-          latitude: resp.coords.latitude,
-          longitude: resp.coords.longitude
-        })
-      })
-    })
+    //   _base.location_watch = _base.geolocation.watchPosition({ enableHighAccuracy: true }).subscribe((resp) => {
+    //     _base.socket.emit("location", {
+    //       latitude: resp.coords.latitude,
+    //       longitude: resp.coords.longitude
+    //     })
+    //   })
+    // })
 
-    this.socket.on('nearby', function (nearby: any) {
-      console.log('Found Nearby')
-    })
+    // this.socket.on('nearby', function (nearby: any) {
+    //   console.log('Found Nearby')
+    //   if (nearby) {
+    //     console.log("Nearby", nearby)
+    //     _base.shownearbypopup();
+    //   }
+    // })
 
-    this.socket.on('disconnect', function () {
-      console.log('Got disconnect!');
-      // _base.geolocation.clearWatch(_base.location_watch)
-      _base.location_watch.unsubscribe()
-    });
+    // this.socket.on('disconnect', function () {
+    //   console.log('Got disconnect!');
+    //   // _base.geolocation.clearWatch(_base.location_watch)
+    //   _base.location_watch.unsubscribe()
+    // });
+  }
+
+  shownearbypopup() {
+
+    let modal = this.modalController.create("FeedpopupPage", {}, { showBackdrop: true, enableBackdropDismiss: true });
+    modal.present();
   }
 
 }

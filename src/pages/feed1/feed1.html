@@ -25,16 +25,17 @@
   </div> -->
   <div class="filter">
     <ion-item>
-      <ion-input type="text" [(ngModel)]="query.search" (keyup)="search($event)" placeholder="Search Here...."></ion-input>
+      <ion-input type="text" [(ngModel)]="query.search" (keyup)="search($event)" placeholder="Search Here....">
+      </ion-input>
       <ion-icon item-end name="search"></ion-icon>
     </ion-item>
   </div>
   <div class="contentEvent">
-    <p>Explore Nearby</p>
+    <p>Discover Nearby</p>
   </div>
   <ion-slides slidesPerView="4" #slides>
 
-    <ion-slide *ngFor="let category of categories;let i = index" (click)="showFeeds(category._id)">
+    <ion-slide *ngFor="let category of categories;let i = index" (click)="selectCategory(category._id,i+1)">
       <p class="category c{{i+1}}">
 
         <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='category.name=="Fashion"'></ion-icon>
@@ -101,14 +102,14 @@
 
   <ion-card class="adv-map">
     <div style="position: relative">
-      <div class="cardtitle">Sat-Sun</div>
+      <!-- <div class="cardtitle">Sat-Sun</div> -->
 
       <!-- <img src="../../assets/images/map.png" class="mapImage"> -->
       <div id="google-map" class="mapImage"></div>
       <ion-item class="maplace">
         <!-- <ion-icon color="subtle" large item-start name='information-circle'></ion-icon> -->
-        <h2>Museum of Information</h2>
-        <p>44 Rue de Info, 75010 Paris, France</p>
+        <!-- <h2>Museum of Information</h2> -->
+        <p>{{location}}</p>
       </ion-item>
       <ion-fab right top (tap)="getCurrentPosition()">
         <button ion-fab color="secondary">
@@ -177,6 +178,29 @@
 
   <ion-grid class="imageCard">
     <div class="card-background-page">
+
+      <!-- Google Nearby Output  -->
+      <ion-row *ngFor="let feed of googleNearby">
+
+        <ion-col col-6>
+          <ion-card (click)="showNavigator(feed)">
+            <img *ngIf="feed.photo != ''" src={{feed.photo}} />
+            <img *ngIf="feed.photo == ''"
+              src="https://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg" />
+            <div class="card-title">{{feed.types[0]}}</div>
+            <p class="card-subtitle">{{feed?.name}}</p>
+          </ion-card>
+        </ion-col>
+        <!-- <ion-col col-6>
+              <ion-card (click)="goto('business')">
+                <img src="https://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg" />
+                <div class="card-title">Today - 19:52</div>
+                <p class="card-subtitle">Business</p>
+              </ion-card>
+            </ion-col> -->
+      </ion-row>
+
+      <!-- TapTap Nearby Output -->
       <ion-row *ngFor="let feed of feeds">
 
         <ion-col col-6>

@@ -43,6 +43,7 @@ export class TapmodalPage {
     public nfctagProvider: NfctagProvider) {
     this.userId = localStorage.getItem("userId");
     //Read tag ....
+    
     this.subscriptions.push(this.nfc.addNdefListener()
       .subscribe(data => {
         if (this.readingTag) {
@@ -86,7 +87,8 @@ export class TapmodalPage {
         .then((result: NativeGeocoderReverseResult[]) => {
           console.log("reverse geocode ----------------->>>>>>>", result)
           console.log(JSON.stringify(result[0]));
-          _base.location = result[0];
+          let location = result[0];
+          _base.location = location.thoroughfare + ' ' + location.locality + ' ' + location.subAdministrativeArea + ' ' + location.administrativeArea + ' ' + location.countryName + ' ' + location.postalCode;
         });
       _base.readingTag = true;
       console.log(_base.geo)
