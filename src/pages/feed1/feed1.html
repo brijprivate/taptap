@@ -185,9 +185,9 @@
     <div class="card-background-page">
 
       <!-- Google Nearby Output  -->
-      <ion-row *ngFor="let feed of googleNearby">
+      <ion-row >
 
-        <ion-col col-6>
+        <ion-col col-6 *ngFor="let feed of googleNearby">
           <ion-card (click)="showNavigator(feed)">
             <img *ngIf="feed.photo != ''" src={{feed.photo}} />
             <img *ngIf="feed.photo == ''"
@@ -206,9 +206,9 @@
       </ion-row>
 
       <!-- TapTap Nearby Output -->
-      <ion-row *ngFor="let feed of feeds">
+      <ion-row >
 
-        <ion-col col-6>
+        <ion-col col-6 *ngFor="let feed of aaa">
           <ion-card (click)="goto(feed)">
             <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}&select=thumbnail" />
             <div class="card-title">{{feed.createdDate}}</div>
