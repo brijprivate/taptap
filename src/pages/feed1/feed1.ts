@@ -364,7 +364,7 @@ export class Feed1Page {
       userId: _base.query.userId,
       search: _base.query.search ? (_base.query.search.trim().length == 0 ? "" : _base.query.search) : "",
       category: _base.query.category,
-      location: _base.geo
+      location: _base.geo.latitude ? _base.geo : null
     };
     return new Promise(function (resolve, reject) {
       _base.http.getMyFeeds(query)
