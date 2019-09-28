@@ -33,6 +33,7 @@ export class Feed1Page {
   public categories: any = [];
   public feeds: any = [];
   public googleNearby: any = [];
+  public toggle_text = "hide nearby"
 
   public query: any = {
     // type: 'public',
@@ -49,9 +50,6 @@ export class Feed1Page {
     // console.log('ionViewDidLoad Feed1Page');
     this.loadMap()
     this.info = new plugin.google.maps.HtmlInfoWindow();
-  }
-
-  ionViewDidEnter() {
     let _base = this;
 
     _base.http.getallcategories()
@@ -68,6 +66,13 @@ export class Feed1Page {
 
       })
     this.showFeeds()
+    setInterval(function () {
+      (<HTMLElement>document.querySelector(".contentEvent")).click();
+    }, 500)
+  }
+
+  ionViewDidEnter() {
+
   }
 
   back() {
@@ -86,7 +91,7 @@ export class Feed1Page {
     this.map = plugin.google.maps.Map.getMap(mapDiv, {
       'camera': {
         'latLng': GOOGLE,
-        'zoom': 13
+        'zoom': 11
       }
     });
 
@@ -201,6 +206,30 @@ export class Feed1Page {
       );
   }
 
+  fitMapToMarkers(markers: any) {
+    var i;
+    // var markers = this.clusters.getMarkers();
+    console.log(markers)
+    var bounds = new google.maps.LatLngBounds();
+    for (i = 0; i < markers.length; i++) {
+      bounds.extend(markers[i].position);
+    }
+
+    this.map.fitBounds(bounds);
+  };
+
+  toggleNearbu() {
+    let element = <HTMLElement>document.getElementById('google-nearby')
+    console.log(element.style.display)
+    if (element.style.display == "none") {
+      element.style.display = "block"
+      this.toggle_text = "hide nearby"
+    } else {
+      element.style.display = "none"
+      this.toggle_text = "show nearby"
+    }
+  }
+
 
   searchNearby(place, distance, types) {
     let _base = this;
@@ -215,7 +244,7 @@ export class Feed1Page {
 
       _base.generateMarkerData(results)
         .then(function (success: any) {
-          // console.log("markers data", success)
+          console.log("markers data", success)
           // if (_base.clusters) {
           //   _base.map.remove(_base.clusters)
           // }
@@ -229,6 +258,9 @@ export class Feed1Page {
               { min: 2000, url: "./img/red.png", anchor: { x: 32, y: 32 } }
             ]
           });
+
+          // _base.fitMapToMarkers(success)
+
 
 
           _base.clusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
@@ -281,8 +313,10 @@ export class Feed1Page {
         };
         place.id = item.place_id;
         place.rating = item.rating;
-        place.types = item.types;
-        console.log(item.photos)
+        place.types = item.types.map(function (type) {
+          return type.replace(/_/g, ' ')
+        });
+        // console.log(item.photos)
         // console.log(item.photos ? item.photos[0].getUrl() : 'no photo')
         place.photo = item.photos ? item.photos[0].getUrl() : ''
         // place.icon = {
@@ -294,7 +328,7 @@ export class Feed1Page {
         // place.isOpen = item.opening_hours.isOpen();
         markersdata.push(place)
         if (i == data.length - 1) {
-          console.log("Markers data", markersdata)
+          // console.log("Markers data", markersdata)
           resolve(markersdata)
         }
       }

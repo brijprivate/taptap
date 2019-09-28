@@ -56,10 +56,12 @@ page-feed1 {
     font-weight: bold;
     margin: 6px auto;
   }
+
   p.category.active {
     box-shadow: 0px 0px 5px 4px #00000024;
     border: 1px solid red;
   }
+
   p.category.c1 {
     background: #bd86b6;
   }
@@ -108,7 +110,7 @@ page-feed1 {
   .contentEvent p {
     margin-left: 1em;
     font-size: 18px;
-    margin-bottom: 4px;
+    // margin-bottom: 4px;
   }
 
   .card-background-page .card-subtitle {
@@ -159,6 +161,7 @@ page-feed1 {
   ion-card.adv-map.card.card-ios {
     margin: 0;
     width: 100%;
+    opacity: .5 !important;
   }
 
   .cardtitle {
@@ -227,6 +230,13 @@ page-feed1 {
 
   ion-card img {
     height: 20vh;
+    background-image: url("../../assets/images/feed_placeholder.png");
+    /* The image used */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
   }
 
   ion-item.maplace {
