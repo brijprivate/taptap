@@ -13,7 +13,8 @@ import { FileOpener } from '@ionic-native/file-opener';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Downloader, NotificationVisibility, DownloadRequest } from '@ionic-native/downloader';
-
+import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+declare var require: any  
 /**
  * Generated class for the TapdetailsPage page.
  *
@@ -58,6 +59,7 @@ export class TapdetailsPage {
     public nfctagPro: NfctagProvider,
     private socialsharing: SocialSharing,
     public sharedservice: SharedserviceProvider,
+    public logregpro:LoginsignupProvider,
     private contacts: Contacts) {
     this.userId = localStorage.getItem("userId");
 
@@ -203,22 +205,51 @@ export class TapdetailsPage {
     console.log(i);
     console.log(j);
     this.link = this.uRLlink + i.purpose + '&' + 'id=' + j
-    this.socialsharing.share(this.link).then(() => {
+    let urldata = {
+      url:this.link
+    }
+    this.logregpro.shortlink(urldata).then(function(success:any){
+      console.log(success)
 
+       this.socialsharing.share(success.result.url).then(() => {
     }).catch(() => {
 
     })
+    },function(err){
+      console.log(err);
+    })
+    // this.socialsharing.share(this.link).then(() => {
+
+    // }).catch(() => {
+
+    // })
   }
 
   //social share of device....
   socialsharedevice(data) {
     console.log(data);
     this.link = this.uRLlink + 'Contact_info' + '&' + 'id=' + data.nfc_id;
-    this.socialsharing.share(this.link).then(() => {
+  
+    let urldata = {
+      url:this.link
+    }
+    this.logregpro.shortlink(urldata).then(function(success:any){
+      console.log(success)
 
+       this.socialsharing.share(success.result.url).then(() => {
     }).catch(() => {
 
     })
+    },function(err){
+      console.log(err);
+    })
+
+
+    // this.socialsharing.share(encoded).then(() => {
+
+    // }).catch(() => {
+
+    // })
   }
   //update product....
   updateProduct(favdata, fav: Boolean) {
@@ -346,7 +377,12 @@ export class TapdetailsPage {
     modal.style.display = "none";
   }
   back() {
-    this.navCtrl.pop();
+    
+    if(this.eventdata.islink == "true"){
+      this.navCtrl.setRoot("HomePage");
+    }else{
+      this.navCtrl.pop();
+    }
   }
 
   // download pdf

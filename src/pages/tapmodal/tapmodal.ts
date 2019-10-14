@@ -117,6 +117,7 @@ export class TapmodalPage {
       purpose: '',
       geo: this.geo
     }
+    console.log(data);
     this.nfctagProvider.createTap(data).then(function (success: any) {
       console.log(success);
       loader.dismiss();

@@ -99,8 +99,8 @@ const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} }
     FilePath,
     LocationTrackerProvider,
     LaunchNavigator,
-    Downloader
-    // Sim
+    Downloader,
+    // Sim,
     // Keyboard
     // Diagnostic
   ]

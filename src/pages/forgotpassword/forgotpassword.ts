@@ -26,7 +26,7 @@ export class ForgotpasswordPage {
   public password: String = ""
   public confirmpassword: String = ""
   public type: any = "other"
-  public country_code: any = "91"
+  public country_code: any = "44"
   public contact_type: any = ""
   countryCode: any;
 

@@ -304,7 +304,11 @@
           <ion-icon name="call"></ion-icon>
           Telephone No
         </p>
-        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+        
+          <a href="tel:{{eventdata.contactId.telephoneNumber}}">
+            <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+          </a>
+        
       </div>
 
       <div class="cont">
@@ -312,7 +316,9 @@
           <ion-icon name="call"></ion-icon>
           Mobile No
         </p>
-        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+        <a href="tel:{{eventdata.contactId.mobileNumber}}">
+        <p class="data">{{eventdata.contactId.mobileNumber}}</p>
+        </a>
       </div>
 
 
@@ -321,7 +327,9 @@
           <ion-icon name="mail"></ion-icon>
           Email
         </p>
+        <a href="mailto:{{eventdata.contactId.email}}">
         <p class="data">{{eventdata.contactId.email}}</p>
+      </a>
       </div>
       <div class="cont">
         <p class="header">
@@ -967,7 +975,9 @@
           <ion-icon name="call"></ion-icon>
           Telephone No
         </p>
+        <a href="tel:{{deviceData.contact_info.phoneNumber}}">
         <p class="data">{{deviceData.contact_info.phoneNumber}}</p>
+      </a>
       </div>
 
       <div class="cont">
@@ -975,7 +985,9 @@
           <ion-icon name="call"></ion-icon>
           Mobile No
         </p>
+        <a href="tel:{{deviceData.contact_info.mobileNumber}}">
         <p class="data">{{deviceData.contact_info.mobileNumber}}</p>
+      </a>
       </div>
 
 
@@ -984,7 +996,10 @@
           <ion-icon name="mail"></ion-icon>
           Email
         </p>
-        <p class="data">{{deviceData.contact_info.email}}</p>
+        <a href="mailto:{{deviceData.contact_info.email}}">
+          <p class="data">{{deviceData.contact_info.email}}</p>
+        </a>
+        
       </div>
       <div class="cont">
         <p class="header">
@@ -998,6 +1013,7 @@
           <ion-icon name="attach"></ion-icon>
           Website
         </p>
+        
         <p class="data">{{deviceData.contact_info.website}}</p>
       </div>
       <ion-grid class="saveGrid">

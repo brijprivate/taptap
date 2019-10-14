@@ -110,44 +110,44 @@ export class Feed1Page {
         //alert("Camera target has been changed");
       });
 
-      _base.getLocationBasedFeeds()
-        .then(function (success: any) {
-          // console.log(success)
-          _base.feeds = success.result.map(function (feed) {
-            let date = new Date(feed.createdDate)
-            let dateString = date.toLocaleDateString()
-            feed.createdDate = dateString;
-            return feed;
-          });
+      // _base.getLocationBasedFeeds()
+      //   .then(function (success: any) {
+      //     // console.log(success)
+      //     _base.feeds = success.result.map(function (feed) {
+      //       let date = new Date(feed.createdDate)
+      //       let dateString = date.toLocaleDateString()
+      //       feed.createdDate = dateString;
+      //       return feed;
+      //     });
 
-          _base.addtomarker(_base.feeds)
-            .then(function (markers: any) {
-              if (markers.length != 0) {
-                _base.taptapclusters = _base.map.addMarkerCluster({
-                  markers: markers,
-                  icons: [
-                    { min: 2, max: 100, url: "./img/blue.png", anchor: { x: 16, y: 16 } },
-                    { min: 100, max: 1000, url: "./img/yellow.png", anchor: { x: 16, y: 16 } },
-                    { min: 1000, max: 2000, url: "./img/purple.png", anchor: { x: 24, y: 24 } },
-                    { min: 2000, url: "./img/red.png", anchor: { x: 32, y: 32 } }
-                  ]
-                });
+      //     _base.addtomarker(_base.feeds)
+      //       .then(function (markers: any) {
+      //         if (markers.length != 0) {
+      //           _base.taptapclusters = _base.map.addMarkerCluster({
+      //             markers: markers,
+      //             icons: [
+      //               { min: 2, max: 100, url: "./img/blue.png", anchor: { x: 16, y: 16 } },
+      //               { min: 100, max: 1000, url: "./img/yellow.png", anchor: { x: 16, y: 16 } },
+      //               { min: 1000, max: 2000, url: "./img/purple.png", anchor: { x: 24, y: 24 } },
+      //               { min: 2000, url: "./img/red.png", anchor: { x: 32, y: 32 } }
+      //             ]
+      //           });
 
 
-                _base.taptapclusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
-                  // console.log(position, marker);
-                  // console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
-                  // console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
-                  // let index = success.findIndex(x => x.position.lng == position.lng);
-                  // console.log("Index", index)
-                  _base.showInfoWindow(position, marker[Object.getOwnPropertySymbols(marker)[0]], marker)
-                });
-              }
-            });
+      //           _base.taptapclusters.on(plugin.google.maps.event.MARKER_CLICK, function (position, marker) {
+      //             // console.log(position, marker);
+      //             // console.log(marker[Object.getOwnPropertySymbols(marker)[0]])
+      //             // console.log(marker[Object.getOwnPropertySymbols(marker)[1]])
+      //             // let index = success.findIndex(x => x.position.lng == position.lng);
+      //             // console.log("Index", index)
+      //             _base.showInfoWindow(position, marker[Object.getOwnPropertySymbols(marker)[0]], marker)
+      //           });
+      //         }
+      //       });
 
-        }, function (error) {
+      //   }, function (error) {
 
-        });
+      //   });
 
       _base.searchNearby(place, 5000, []);
     }).catch((error) => {
