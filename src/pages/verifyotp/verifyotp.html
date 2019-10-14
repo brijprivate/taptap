@@ -16,7 +16,7 @@
       <div id="divOuter">
         <div id="divInner">
           <input id="partitioned" type="tel" pattern="/^-?\d+\.?\d*$/"
-            onKeyPress="if(this.value.length==5) return false;" [(ngModel)]="otp" />
+            (keyup)="if(this.value.length==5) return false;" [(ngModel)]="otp" />
         </div>
       </div>
 
