@@ -60,6 +60,7 @@ export class MorePage {
             _base.storage.clear();
             this.app.getRootNav().setRoot("LoginPage");
             _base.socket.disconnect()
+            _base.socket.removeAllListeners()
           }
         }
       ]

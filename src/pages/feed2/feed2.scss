@@ -5,7 +5,7 @@ page-feed2 {
     background: #6354cb;
     display: table;
     width: 100%;
-
+    position: relative;
     p {
       // margin-right: 11em;
       font-size: 18px;
@@ -61,17 +61,18 @@ page-feed2 {
 
   .cardtitle {
     position: absolute;
-    top: 12%;
+    top: 0;
+    bottom: 0;
+    right: 17px;
     font-size: 16px;
     width: 21%;
     font-weight: 700;
     color: #222;
     background: #fff;
     margin: auto;
-    left: 1em;
-    /* right: 0; */
     padding: 5px;
     border-radius: 5px;
+    height: 30px;
   }
 
   .card-background-page ion-card {
@@ -153,21 +154,27 @@ page-feed2 {
     margin-bottom: 2em;
   }
 
-  img.mapImage {
+  .mapImage {
     // height: 31vh;
-    height: 200px;
+    height: 200px !important;
   }
 
   .register {
     position: absolute;
     top: 8%;
     right: 1em;
+    p{
+      color: #fff;
+      font-size: 11px;
+      margin-left: 1px;
+  
+    }
   }
 
   .register button {
     background: transparent;
     height: 15px;
-    width: 30px;
+    // width: 50px;
     color: #fff;
     font-size: 27px;
     outline: none;
@@ -181,6 +188,11 @@ page-feed2 {
   }
 
   i.fa.fa-heart-o {
+    color: #6354cb;
+    font-size: 19px;
+    margin-right: 4px;
+  }
+  i.fa.fa-heart {
     color: #6354cb;
     font-size: 19px;
     margin-right: 4px;

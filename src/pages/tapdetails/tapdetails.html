@@ -172,7 +172,7 @@
 
         <ion-slide *ngIf="eventdata.restaurantId.logo"
           (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
-          <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
+          <img style="border: 1px solid #6354cb;" src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
         </ion-slide>
 
 
