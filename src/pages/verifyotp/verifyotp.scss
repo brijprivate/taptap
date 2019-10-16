@@ -50,8 +50,8 @@ page-verifyotp {
         font-weight: 500;
     }
     #partitioned {
-        padding-left: 6px;
-        letter-spacing: 42px;
+        padding-left: 12px;
+        letter-spacing: 37px;
         border: 0;
         background-image: linear-gradient(to left, #9E9E9E 70%, rgba(255, 255, 255, 0) 0%);
         background-position: bottom;
@@ -65,7 +65,7 @@ page-verifyotp {
       }
       #divInner{
         left: 0;
-        position: sticky;
+        position: sticky !important;
       }
       
       #divOuter{
