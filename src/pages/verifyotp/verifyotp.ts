@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+import { TextMaskModule } from 'angular2-text-mask';
 
 /**
  * Generated class for the VerifyotpPage page.
@@ -15,7 +16,7 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
   templateUrl: 'verifyotp.html',
 })
 export class VerifyotpPage {
-
+otpmask=/^[0-9]{5}$/
   public otp: any;
   public user: any;
 
@@ -30,7 +31,16 @@ export class VerifyotpPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad VerifyotpPage');
   }
-
+  otpkeyup(){
+    
+    if(this.otpmask.test(this.otp)){
+      console.log('matched');
+      this.otpVerification()
+    }
+    else{
+      console.log('not matched')
+    }
+  }
   otpVerification() {
     if (this.otp) {
       let loader = this.loading.create({

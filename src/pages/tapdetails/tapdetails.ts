@@ -14,6 +14,8 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Downloader, NotificationVisibility, DownloadRequest } from '@ionic-native/downloader';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+import { HomePage } from '../home/home';
+import { DashboardPage } from '../dashboard/dashboard';
 declare var require: any  
 /**
  * Generated class for the TapdetailsPage page.
@@ -29,6 +31,7 @@ declare var require: any
 })
 export class TapdetailsPage {
 
+  // devicedetaill:Object
   public eventdata: any = [];
   public deviceData: any = [];
   public fromDevice: any;
@@ -43,7 +46,7 @@ export class TapdetailsPage {
   keyy: any;
   public st: any;
   public et: any;
-  devicedetaill: any
+  devicedetaill: any={}
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private transfer: FileTransfer,
@@ -64,7 +67,7 @@ export class TapdetailsPage {
     this.userId = localStorage.getItem("userId");
 
     // console.log("item details----", this.eventdata);
-    this.deviceData = this.navParams.get("devicedetail");
+    this.deviceData = this.navParams.get("devicedetaill");
     // this.devicedetaill = this.navParams.get("devicedetaill");
     this.fromDevice = this.navParams.get("key");
     // if(this.fromDevice=="devicee"){
@@ -72,8 +75,16 @@ export class TapdetailsPage {
     // }
     this.keyy = this.navParams.get("keyy");
     // console.log("device data=----------------", this.devicedetaill.deviceInfo._id);
-    this.eventdata = navParams.data;
-
+    if(this.navParams.get("devicedetaill")){
+      // this.eventdata = this.navParams.get("devicedetaill");
+      this.eventdata = navParams.data;
+      console.log("eventdata----------------?>>>>>>>>>>>>>>"+this.eventdata);
+    }else{
+      this.eventdata = navParams.data;
+    }
+    
+    
+    console.log(this.eventdata);
     if(this.eventdata.storeId){
       let website = this.eventdata.storeId.companyId.website;
       if (website) {
@@ -87,6 +98,19 @@ export class TapdetailsPage {
       let link = this.eventdata.fashionId.weblink;
       if (!link.includes('http') || !link.includes('://')) {
         this.eventdata.fashionId.weblink = "http://" + link
+      }
+    }
+    if (this.eventdata.contactId) {
+      let link = this.eventdata.contactId.link;
+      if (!link.includes('http') || !link.includes('://')) {
+        this.eventdata.contactId.link = "http://" + link
+      }
+    }
+    
+    if (this.navParams.get("devicedetaill")) {
+      let link = this.eventdata.devicedetaill.deviceInfo.contact_info.website;
+      if (!link.includes('http') || !link.includes('://')) {
+        this.eventdata.devicedetaill.deviceInfo.contact_info.website = "http://" + link
       }
     }
 
@@ -202,6 +226,7 @@ export class TapdetailsPage {
 
   //social sahre....
   socialshare(i, j) {
+    let _base=this;
     console.log(i);
     console.log(j);
     this.link = this.uRLlink + i.purpose + '&' + 'id=' + j
@@ -211,7 +236,7 @@ export class TapdetailsPage {
     this.logregpro.shortlink(urldata).then(function(success:any){
       console.log(success)
 
-       this.socialsharing.share(success.result.url).then(() => {
+       _base.socialsharing.share(success.result.url).then(() => {
     }).catch(() => {
 
     })
@@ -227,6 +252,7 @@ export class TapdetailsPage {
 
   //social share of device....
   socialsharedevice(data) {
+    let _base =this;
     console.log(data);
     this.link = this.uRLlink + 'Contact_info' + '&' + 'id=' + data.nfc_id;
   
@@ -236,7 +262,7 @@ export class TapdetailsPage {
     this.logregpro.shortlink(urldata).then(function(success:any){
       console.log(success)
 
-       this.socialsharing.share(success.result.url).then(() => {
+       _base.socialsharing.share(success.result.url).then(() => {
     }).catch(() => {
 
     })
@@ -272,6 +298,36 @@ export class TapdetailsPage {
         // _base.fav(_base.eventdata, favdata)
       }
       _base.eventdata = success.result
+
+    }, function (err) {
+      console.log(err);
+      // loader.dismiss();
+    })
+  }
+
+
+  //update product....
+  updateProductt(favdata, fav: Boolean) {
+    console.log(favdata)
+    // let loader = this.loading.create({
+    //   content:"Please wait..."
+    // });
+    // loader.present();
+    console.log("calling update");
+    let _base = this;
+    let updatedata = {
+      tappId: favdata,
+      is_favourite: !fav
+    }
+    console.log(updatedata);
+    this.nfctagPro.favUpdate(updatedata).then(function (success: any) {
+      console.log(success);
+      // loader.dismiss();
+      if (!_base.eventdata.is_favourite == true) {
+        // _base.fav(_base.eventdata, favdata)
+      }
+       
+      _base.eventdata.devicedetaill = success.result;
 
     }, function (err) {
       console.log(err);
@@ -320,21 +376,21 @@ export class TapdetailsPage {
   savedevicecontact(data) {
 
     console.log("data", data)
-    console.log("data", data.contact_info.address)
+    console.log("data", data.deviceInfo.contact_info.address)
     console.log("Device contact called contact called")
 
     let _base = this;
     var contact: Contact = this.contacts.create();
-    contact.name = new ContactName(null, null, data.contact_info.name);
-    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.mobileNumber)];
-    contact.phoneNumbers = [new ContactField('mobile', data.contact_info.phoneNumber)];
+    contact.name = new ContactName(null, null, data.deviceInfo.contact_info.name);
+    contact.phoneNumbers = [new ContactField('mobile', data.deviceInfo.contact_info.mobileNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.deviceInfo.contact_info.phoneNumber)];
 
-    contact.organizations = [new ContactOrganization('company', data.contact_info.company_name)];
-    contact.emails = [new ContactField('email', data.contact_info.email)];
-    contact.urls = [new ContactField('website', data.contact_info.website)];
-    contact.addresses = [new ContactAddress(false, "home", data.contact_info.address)];
+    contact.organizations = [new ContactOrganization('company', data.deviceInfo.contact_info.company_name)];
+    contact.emails = [new ContactField('email', data.deviceInfo.contact_info.email)];
+    contact.urls = [new ContactField('website', data.deviceInfo.contact_info.website)];
+    contact.addresses = [new ContactAddress(false, "home", data.deviceInfo.contact_info.address)];
     if (data.imageId) {
-      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.imageId._id + "&select=thumbnail")];
+      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.deviceInfo.imageId._id + "&select=thumbnail")];
     }
 
 
@@ -378,8 +434,9 @@ export class TapdetailsPage {
   }
   back() {
     
-    if(this.eventdata.islink == "true"){
-      this.navCtrl.setRoot("HomePage");
+    if(this.eventdata.islink || this.eventdata.devicedetaill){
+      console.log("in condition----------->>>>>>>>");
+      this.navCtrl.setRoot(DashboardPage);
     }else{
       this.navCtrl.pop();
     }

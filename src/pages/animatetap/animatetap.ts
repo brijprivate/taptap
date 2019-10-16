@@ -4,7 +4,7 @@ import { NFC, Ndef } from '@ionic-native/nfc';
 import { Subscription } from 'rxjs/Rx';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
-
+import * as CryptoJS from 'crypto-js';
 /**
  * Generated class for the AnimatetapPage page.
  *
@@ -19,6 +19,7 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 })
 export class AnimatetapPage {
 
+  public encryptSecretKey = "the_quick_brown_fox_jumps_over_the_lazy_dog";
    //NFC read related ....
    readingTag:   boolean   = true;
    writingTag:   boolean   = false;
@@ -58,24 +59,43 @@ export class AnimatetapPage {
     if (this.readingTag) {
       let tagid= data.tag.id;
       // let parsedid = this.nfc.bytesToString(tagid);
+
       let payload = data.tag.ndefMessage[0].payload;
       let tagContent = this.nfc.bytesToString(payload).substring(3);
       this.readingTag = true;
 
-      var s = '';
-      tagid.forEach(function(byte) {
-        s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
-      });
-      console.log("tag data", tagContent);
-      console.log("whole data", data.tag);
-      console.log("tag id", s.substring(0, s.length - 1));
-      this.tapData = s.substring(0, s.length - 1);
-      if(this.tapData){
-        // this.createTap();
+      console.log(tagContent)
+      
+      let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
+      let res = nfc_regex.test(tagContent);
+
+      if (res) {
+        // nfc id
         this.readingTag = false;
-        this.verifytag();
+        this.verifytag(tagContent);
+      } else {
+        // encrypted data
+        this.readingTag = false;
+        this.decryptData(tagContent);
       }
-      return s.substring(0, s.length - 1);
+      // let payload = data.tag.ndefMessage[0].payload;
+      // let tagContent = this.nfc.bytesToString(payload).substring(3);
+      // this.readingTag = true;
+
+      // var s = '';
+      // tagid.forEach(function(byte) {
+      //   s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
+      // });
+      // console.log("tag data", tagContent);
+      // console.log("whole data", data.tag);
+      // console.log("tag id", s.substring(0, s.length - 1));
+      // this.tapData = s.substring(0, s.length - 1);
+      // if(this.tapData){
+      //   // this.createTap();
+      //   this.readingTag = false;
+      //   this.verifytag();
+      // }
+      // return s.substring(0, s.length - 1);
       
       } 
     },
@@ -89,7 +109,7 @@ export class AnimatetapPage {
   }
 
    //Verify user's NFC tag...
-   verifytag(){
+   verifytag(tagdata){
     let _base= this;
     if(this.isnetwork == "Offline")
     {
@@ -103,7 +123,7 @@ export class AnimatetapPage {
       showtoast.present();
       return;
     }
-    else if(!this.tapData){
+    else if(!tagdata){
       let showtoast = this.toast.create({
         message: "Please approach your nfc device to verify",
         duration: 60000,
@@ -120,7 +140,7 @@ export class AnimatetapPage {
     loader.present();
     let data = {
       userid:this.userId,
-      nfcId:this.tapData
+      nfcId:tagdata
     } 
     this.nfctagProvider.verifyDevice(data).then(function(success:any){
       console.log(success);
@@ -196,5 +216,19 @@ export class AnimatetapPage {
     this.navCtrl.pop();
   }
 
+  decryptData(data) {
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if (bytes.toString()) {
+        this.tapData= JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        console.log(this.tapData)
+        this.verifytag(this.tapData)
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
 }

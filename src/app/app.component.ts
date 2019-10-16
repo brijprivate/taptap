@@ -95,7 +95,7 @@ export class MyApp {
           _base.nfctagProvider.createTap(data).then(function (success: any) {
             console.log("suc------------", success)
             _base.navCtrl.setRoot('TapdetailsPage', {
-              devicedetail: success.lostinfo,
+              devicedetaill: success.lostinfo,
               key: 'device'
             })
           }, function (err) {
