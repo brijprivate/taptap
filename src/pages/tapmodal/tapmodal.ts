@@ -127,7 +127,7 @@ export class TapmodalPage {
       if (success.message == 'DEVICE LOST INFO') {
         _base.navCtrl.push('LostcardPage', { lostinfo: success.lostinfo });
       }
-      else if (success.message == "DEVICE INFO ") {
+      else if (success.message == "DEVICE INFO") {
         console.log("deviceinfo--------------->>>>");
         _base.navCtrl.push('TapdetailsPage', {
           devicedetail: success.lostinfo,

@@ -181,6 +181,10 @@ export class Feed1Page {
   }
 
   showDirection() {
+    if (!this.geo.latitude) {
+      alert('No location access')
+      return
+    }
     let start = {
       lat: this.geo.latitude,
       lng: this.geo.longitude
@@ -286,6 +290,10 @@ export class Feed1Page {
   }
 
   showNavigator(feed: any) {
+    if (!this.geo.latitude) {
+      alert('No location access')
+      return
+    }
     let start = {
       lat: this.geo.latitude,
       lng: this.geo.longitude
