@@ -6,6 +6,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 // declare var SMSReceive: any;
 declare var carrier;
+
 /**
  * Generated class for the ForgotpasswordPage page.
  *
