@@ -39,6 +39,8 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { TextMaskModule } from 'angular2-text-mask';
+
 const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} };
 
 @NgModule({
@@ -51,6 +53,7 @@ const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} }
   ],
   imports: [
     BrowserModule,
+    TextMaskModule ,
     IonicModule.forRoot(MyApp,
       {
         tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
@@ -99,8 +102,8 @@ const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} }
     FilePath,
     LocationTrackerProvider,
     LaunchNavigator,
-    Downloader
-    // Sim
+    Downloader,
+    // Sim,
     // Keyboard
     // Diagnostic
   ]

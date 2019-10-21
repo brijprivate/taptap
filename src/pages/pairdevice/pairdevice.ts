@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Rx';
 import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
-
+import * as CryptoJS from 'crypto-js';
 /**
  * Generated class for the PairdevicePage page.
  *
@@ -24,6 +24,7 @@ export class PairdevicePage {
   public tapData: any;
   public isnetwork = "Online";
 
+  public encryptSecretKey = "the_quick_brown_fox_jumps_over_the_lazy_dog";
   alertcs: any;
   readingTag: boolean = true;
   writingTag: boolean = false;
@@ -57,21 +58,41 @@ export class PairdevicePage {
           let payload = data.tag.ndefMessage[0].payload;
           let tagContent = this.nfc.bytesToString(payload).substring(3);
           this.readingTag = true;
-
-          var s = '';
-          tagid.forEach(function (byte) {
-            s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
-          });
-          console.log("tag data", tagContent);
-          console.log("whole data", data.tag);
-          console.log("tag id", s);
-          this.tapData = s.substring(0, s.length - 1);
-          if (this.tapData) {
-            this.presentPrompt()
-
-
+    
+          console.log(tagContent)
+          
+          let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
+          let res = nfc_regex.test(tagContent);
+    
+          if (res) {
+            // nfc id
+            this.readingTag = false;
+            // this.pairDevice(tagContent);
+            this.tapData = tagContent;
+            this.presentPrompt(tagContent)
+          } else {
+            // encrypted data
+            this.readingTag = false;
+            this.decryptData(tagContent);
           }
-          return s.substring(0, s.length - 1);
+          // let payload = data.tag.ndefMessage[0].payload;
+          // let tagContent = this.nfc.bytesToString(payload).substring(3);
+          // this.readingTag = true;
+
+          // var s = '';
+          // tagid.forEach(function (byte) {
+          //   s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
+          // });
+          // console.log("tag data", tagContent);
+          // console.log("whole data", data.tag);
+          // console.log("tag id", s);
+          // this.tapData = s.substring(0, s.length - 1);
+          // if (this.tapData) {
+          //   this.presentPrompt()
+
+
+          // }
+          // return s.substring(0, s.length - 1);
 
         }
       },
@@ -84,7 +105,7 @@ export class PairdevicePage {
     console.log('ionViewDidLoad PairdevicePage');
   }
   //Pair Device...
-  pairDevice() {
+  pairDevice(tagdata) {
     let _base = this;
     if (this.isnetwork == "Offline") {
       let showtoast = this.toast.create({
@@ -97,7 +118,7 @@ export class PairdevicePage {
       showtoast.present();
       return;
     }
-    else if (!this.tapData) {
+    else if (!tagdata) {
       let showtoast = this.toast.create({
         message: "please approach a TapTap device first",
         duration: 60000,
@@ -125,7 +146,7 @@ export class PairdevicePage {
     });
     loader.present();
     let pairdata = {
-      nfc_id: this.tapData,
+      nfc_id: tagdata,
       secret_code: this.paircode,
       owner: this.userId
     }
@@ -180,7 +201,7 @@ export class PairdevicePage {
     // this.alertcs.dismiss();
   }
 
-  presentPrompt() {
+  presentPrompt(tapdata) {
 
 
 
@@ -207,7 +228,7 @@ export class PairdevicePage {
           handler: data => {
             console.log(data[0]);
             this.paircode = data[0]
-            this.pairDevice();
+            this.pairDevice(tapdata);
           }
         }
       ]
@@ -216,4 +237,20 @@ export class PairdevicePage {
   }
   //   this.page=''
   // }
+
+  decryptData(data) {
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if (bytes.toString()) {
+        this.tapData= JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        console.log(this.tapData)
+        // this.pairDevice(this.tapData)
+        this.presentPrompt(this.tapData);
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }

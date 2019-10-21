@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 /**
@@ -31,7 +32,7 @@ export class VerifyotpPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad VerifyotpPage');
   }
-
+  
   otpVerification() {
     if (this.otp) {
       let loader = this.loading.create({
