@@ -16,7 +16,9 @@ import { Downloader, NotificationVisibility, DownloadRequest } from '@ionic-nati
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { HomePage } from '../home/home';
 import { DashboardPage } from '../dashboard/dashboard';
-declare var require: any  
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
+
+declare var require: any
 /**
  * Generated class for the TapdetailsPage page.
  *
@@ -46,10 +48,11 @@ export class TapdetailsPage {
   keyy: any;
   public st: any;
   public et: any;
-  devicedetaill: any={}
+  devicedetaill: any = {}
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private transfer: FileTransfer,
+    private nativeGeocoder: NativeGeocoder,
     private file: File,
     private fileOpener: FileOpener,
     private downloader: Downloader,
@@ -62,7 +65,7 @@ export class TapdetailsPage {
     public nfctagPro: NfctagProvider,
     private socialsharing: SocialSharing,
     public sharedservice: SharedserviceProvider,
-    public logregpro:LoginsignupProvider,
+    public logregpro: LoginsignupProvider,
     private contacts: Contacts) {
     this.userId = localStorage.getItem("userId");
 
@@ -75,17 +78,17 @@ export class TapdetailsPage {
     // }
     this.keyy = this.navParams.get("keyy");
     // console.log("device data=----------------", this.devicedetaill.deviceInfo._id);
-    if(this.navParams.get("devicedetaill")){
+    if (this.navParams.get("devicedetaill")) {
       // this.eventdata = this.navParams.get("devicedetaill");
       this.eventdata = navParams.data;
-      console.log("eventdata----------------?>>>>>>>>>>>>>>"+this.eventdata);
-    }else{
+      console.log("eventdata----------------?>>>>>>>>>>>>>>" + this.eventdata);
+    } else {
       this.eventdata = navParams.data;
     }
-    
-    
+
+
     console.log(this.eventdata);
-    if(this.eventdata.storeId){
+    if (this.eventdata.storeId) {
       let website = this.eventdata.storeId.companyId.website;
       if (website) {
         if (!website.includes('http') || !website.includes('://')) {
@@ -106,7 +109,7 @@ export class TapdetailsPage {
         this.eventdata.contactId.link = "http://" + link
       }
     }
-    
+
     if (this.navParams.get("devicedetaill")) {
       let link = this.eventdata.devicedetaill.deviceInfo.contact_info.website;
       if (!link.includes('http') || !link.includes('://')) {
@@ -130,6 +133,57 @@ export class TapdetailsPage {
       console.log(this.et)
     }
 
+  }
+
+  forwardNavigate(location: any) {
+    let _base = this;
+    this.launchNavigator.navigate(location);
+
+    // let options: NativeGeocoderOptions = {
+    //   useLocale: true,
+    //   maxResults: 5
+    // };
+    // this.nativeGeocoder.forwardGeocode(location, options)
+    //   .then((result: any) => {
+    //     console.log('The coordinates are latitude=' + result[0].latitude + ' and longitude=' + result[0].longitude)
+    //     _base.navigatetolocation(result[0].latitude,result[0].longitude)
+    //   })
+    //   .catch((error: any) => console.log(error));
+  }
+
+  navigatetolocation(latitude,longitude) {
+    let _base = this
+    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      function (result) {
+        console.log('Has permission?', result.hasPermission)
+        if (!result.hasPermission) {
+          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+        } else {
+          _base.geolocation.getCurrentPosition().then((resp) => {
+
+            console.log("lunch navigator");
+            let start = {
+              lat: resp.coords.latitude,
+              lng: resp.coords.longitude
+            };
+
+            let end = {
+              lat: parseFloat(latitude),
+              lng: parseFloat(longitude)
+            };
+
+            console.log(start, end);
+
+            _base.lunchNavigator(start, end);
+
+          }).catch((error) => {
+            console.log('Error getting location', error);
+          })
+        }
+      },
+      function (err) {
+        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
+      });
   }
 
   downloadPdf(url: string) {
@@ -226,21 +280,21 @@ export class TapdetailsPage {
 
   //social sahre....
   socialshare(i, j) {
-    let _base=this;
+    let _base = this;
     console.log(i);
     console.log(j);
     this.link = this.uRLlink + i.purpose + '&' + 'id=' + j
     let urldata = {
-      url:this.link
+      url: this.link
     }
-    this.logregpro.shortlink(urldata).then(function(success:any){
+    this.logregpro.shortlink(urldata).then(function (success: any) {
       console.log(success)
 
-       _base.socialsharing.share(success.result.url).then(() => {
-    }).catch(() => {
+      _base.socialsharing.share(success.result.url).then(() => {
+      }).catch(() => {
 
-    })
-    },function(err){
+      })
+    }, function (err) {
       console.log(err);
     })
     // this.socialsharing.share(this.link).then(() => {
@@ -252,21 +306,21 @@ export class TapdetailsPage {
 
   //social share of device....
   socialsharedevice(data) {
-    let _base =this;
+    let _base = this;
     console.log(data);
     this.link = this.uRLlink + 'Contact_info' + '&' + 'id=' + data.nfc_id;
-  
+
     let urldata = {
-      url:this.link
+      url: this.link
     }
-    this.logregpro.shortlink(urldata).then(function(success:any){
+    this.logregpro.shortlink(urldata).then(function (success: any) {
       console.log(success)
 
-       _base.socialsharing.share(success.result.url).then(() => {
-    }).catch(() => {
+      _base.socialsharing.share(success.result.url).then(() => {
+      }).catch(() => {
 
-    })
-    },function(err){
+      })
+    }, function (err) {
       console.log(err);
     })
 
@@ -326,7 +380,7 @@ export class TapdetailsPage {
       if (!_base.eventdata.is_favourite == true) {
         // _base.fav(_base.eventdata, favdata)
       }
-       
+
       _base.eventdata.devicedetaill = success.result;
 
     }, function (err) {
@@ -433,11 +487,11 @@ export class TapdetailsPage {
     modal.style.display = "none";
   }
   back() {
-    
-    if(this.eventdata.islink || this.eventdata.devicedetaill){
+
+    if (this.eventdata.islink || this.eventdata.devicedetaill) {
       console.log("in condition----------->>>>>>>>");
       this.navCtrl.setRoot(DashboardPage);
-    }else{
+    } else {
       this.navCtrl.pop();
     }
   }
