@@ -151,7 +151,7 @@ export class TapdetailsPage {
     //   .catch((error: any) => console.log(error));
   }
 
-  navigatetolocation(latitude,longitude) {
+  navigatetolocation(latitude, longitude) {
     let _base = this
     _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
       function (result) {

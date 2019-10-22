@@ -69,6 +69,9 @@ export class NotificationPage {
           }
           return obj
         });
+
+        console.log("========================================")
+        console.log(_base.notifications)
         _base.storage.remove("notifications")
         _base.storage.set("notifications", _base.notifications)
       }, function (error) {
