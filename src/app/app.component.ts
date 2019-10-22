@@ -95,7 +95,7 @@ export class MyApp {
           _base.nfctagProvider.createTap(data).then(function (success: any) {
             console.log("suc------------", success)
             _base.navCtrl.setRoot('TapdetailsPage', {
-              devicedetail: success.lostinfo,
+              devicedetaill: success.lostinfo,
               key: 'device'
             })
           }, function (err) {
@@ -117,55 +117,64 @@ export class MyApp {
                 case 'Business':
                   object = {
                     businessId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'Contacts':
                   object = {
                     contactId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'Sports':
                   object = {
                     sportId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'Fashion':
                   object = {
                     fashionId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'General':
                   object = {
                     generalId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'Event':
                   object = {
                     eventId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'Groceries':
                   object = {
                     groceryId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'Restaurant':
                   object = {
                     restaurantId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 case 'Verification':
                   object = {
                     verificationId: item,
-                    storeId: item.storeId
+                    storeId: item.storeId,
+                    islink:"true"
                   }
                   break;
                 default:

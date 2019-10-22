@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Rx';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
-
+import * as CryptoJS from 'crypto-js';
 /**
  * Generated class for the TapmodalPage page.
  *
@@ -20,6 +20,7 @@ import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResul
 })
 export class TapmodalPage {
 
+  public encryptSecretKey = "the_quick_brown_fox_jumps_over_the_lazy_dog";
   //NFC read related ....
   readingTag: boolean = true;
   writingTag: boolean = false;
@@ -48,23 +49,61 @@ export class TapmodalPage {
       .subscribe(data => {
         if (this.readingTag) {
           let tagid = data.tag.id;
+          console.log(data)
           // let parsedid = this.nfc.bytesToString(tagid);
           let payload = data.tag.ndefMessage[0].payload;
           let tagContent = this.nfc.bytesToString(payload).substring(3);
           this.readingTag = true;
 
-          var s = '';
-          tagid.forEach(function (byte) {
-            s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
-          });
-          console.log("tag data", tagContent);
-          console.log("whole data", data.tag);
-          console.log("tag id", s.substring(0, s.length - 1));
-          this.tapData = s.substring(0, s.length - 1);
-          if (this.tapData) {
-            this.createTap();
+          console.log(tagContent)
+          
+          let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
+          let res = nfc_regex.test(tagContent);
+
+          if (res) {
+            // nfc id
+            this.createTap(tagContent);
+          } else {
+            // encrypted data
+            this.decryptData(tagContent);
           }
-          return s.substring(0, s.length - 1);
+
+          // this.decryptData(tagContent);
+          // var s = '';
+          // payload.forEach(function (byte) {
+          //   s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
+          // });
+
+          // console.log(s)
+
+
+
+
+          // try {
+          //   const bytes = CryptoJS.AES.decrypt(s, this.encryptSecretKey);
+          //   if (bytes.toString()) {
+          //     let decryptData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+          //     console.log(decryptData);
+          //     this.tapData = decryptData.substring(0, s.length - 1);
+          //     if (this.tapData) {
+          //       this.createTap();
+          //     }
+          //   }
+          //   return data;
+          // } catch (e) {
+          //   console.log(e);
+          // }
+
+
+
+          // console.log("tag data", tagContent);
+          // console.log("whole data", data.tag);
+          // console.log("tag id", s.substring(0, s.length - 1));
+          // this.tapData = s.substring(0, s.length - 1);
+          // if (this.tapData) {
+          //   this.createTap();
+          // }
+          // return s.substring(0, s.length - 1);
 
         }
       },
@@ -106,7 +145,7 @@ export class TapmodalPage {
   }
 
   //Save tap .....
-  createTap() {
+  createTap(tapData) {
     let _base = this;
     let loader = this.loading.create({
       content: "Please wait..."
@@ -114,11 +153,12 @@ export class TapmodalPage {
     loader.present();
     let data = {
       userId: this.userId,
-      nfc_id: this.tapData,
+      nfc_id: tapData,
       location: _base.location,
       purpose: '',
       geo: this.geo
     }
+    console.log(data);
     this.nfctagProvider.createTap(data).then(function (success: any) {
       console.log(success);
       loader.dismiss();
@@ -130,9 +170,12 @@ export class TapmodalPage {
       else if (success.message == "DEVICE INFO") {
         console.log("deviceinfo--------------->>>>");
         _base.navCtrl.push('TapdetailsPage', {
-          devicedetail: success.lostinfo,
+          devicedetaill: success.lostinfo,
           key: 'device'
         });
+      }
+      else if(success.message == "No data found"){
+         alert('No data found')
       }
       else if (success.message == 'Item Tapped Successfull') {
         console.log("detail page------->>>>");
@@ -149,5 +192,20 @@ export class TapmodalPage {
 
   gotovack() {
     this.navCtrl.pop()
+  }
+
+  decryptData(data) {
+
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if (bytes.toString()) {
+        this.tapData= JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        console.log(this.tapData)
+        this.createTap(this.tapData)
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

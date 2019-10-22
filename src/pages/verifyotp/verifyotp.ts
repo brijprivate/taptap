@@ -31,7 +31,7 @@ export class VerifyotpPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad VerifyotpPage');
   }
-
+  
   otpVerification() {
     if (this.otp) {
       let loader = this.loading.create({

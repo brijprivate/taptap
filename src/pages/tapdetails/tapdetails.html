@@ -172,7 +172,7 @@
 
         <ion-slide *ngIf="eventdata.restaurantId.logo"
           (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
-          <img style="border: 1px solid #6354cb;" src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
+          <img  src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
         </ion-slide>
 
 
@@ -209,6 +209,11 @@
             <!-- call -->
           </i>
         </a>
+        <a class="button button-positive"
+        style="margin: 0 1em">&nbsp;&nbsp;
+        <i class="fa fa-globe" aria-hidden="true"></i>
+
+      </a>
       </div>
       <div class="">
         <ion-grid class="" text-center style="padding: 0">
@@ -304,7 +309,11 @@
           <ion-icon name="call"></ion-icon>
           Telephone No
         </p>
-        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+        
+          <a href="tel:{{eventdata.contactId.telephoneNumber}}">
+            <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+          </a>
+        
       </div>
 
       <div class="cont">
@@ -312,7 +321,9 @@
           <ion-icon name="call"></ion-icon>
           Mobile No
         </p>
-        <p class="data">{{eventdata.contactId.telephoneNumber}}</p>
+        <a href="tel:{{eventdata.contactId.mobileNumber}}">
+        <p class="data">{{eventdata.contactId.mobileNumber}}</p>
+        </a>
       </div>
 
 
@@ -321,7 +332,9 @@
           <ion-icon name="mail"></ion-icon>
           Email
         </p>
+        <a href="mailto:{{eventdata.contactId.email}}">
         <p class="data">{{eventdata.contactId.email}}</p>
+      </a>
       </div>
       <div class="cont">
         <p class="header">
@@ -335,7 +348,10 @@
           <ion-icon name="attach"></ion-icon>
           Website
         </p>
-        <p class="data">{{eventdata.contactId.link}}</p>
+        <a href="{{eventdata.contactId.link}}">
+            <p class="data">{{eventdata.contactId.link}}</p>
+        </a>
+        
       </div>
       <ion-grid class="saveGrid">
         <ion-row>
@@ -669,37 +685,14 @@
     <div class="">
       <div class="dis">
         <p style="text-align: center;
-            margin-left: 1em;">{{eventdata.fashionId.price}} <span >({{eventdata.storeId.companyId.discount}}% off )<span class="total"> &nbsp;£24</span></span>
+            margin-left: 1em;">{{(eventdata.fashionId.price*(100-eventdata.storeId.companyId.discount)/100) | number : '1.2-2'}} <span >({{eventdata.storeId.companyId.discount}}% off )<span class="total"> &nbsp;{{eventdata.fashionId.price}}</span></span>
         </p>
       </div>
 
       <p class="fashiondes">{{eventdata.fashionId.description}}</p>
       <p class="fashiondes"><span>Size: </span><small>{{eventdata.fashionId.size}}</small></p>
 
-      <!-- <ion-grid class="size">
-        <p class="data">Size</p>
-        <ion-row no-padding>
-
-          <ion-col col-2 text-center no-padding>
-            <span>S</span>
-          </ion-col>
-          <ion-col col-2 text-center no-padding>
-            <span>M</span>
-          </ion-col>
-          <ion-col col-2 text-center no-padding>
-            <span>X</span>
-          </ion-col>
-          <ion-col col-2 text-center no-padding>
-            <span>XL</span>
-          </ion-col>
-          <ion-col col-2 text-center no-padding>
-            <span>XLL</span>
-          </ion-col>
-          <ion-col col-2 text-center no-padding>
-            <span>XLLL</span>
-          </ion-col>
-        </ion-row>
-      </ion-grid> -->
+      
 
       <div class="fashionview ">
           <a href="{{eventdata.storeId.companyId.website}}" class="button button-positive"
@@ -708,71 +701,16 @@
             View
           </a>
   
-          <!-- <a href="{{eventdata.storeId.companyId.website}}" class="button button-positive"
-            style="margin: 0 1em">&nbsp;&nbsp;
-            <i class="fa fa-globe" aria-hidden="true"></i>
-  
-          </a> -->
+         
   
         </div>
 
-      
-      <!-- <div class="viewfashion" text-center>
-        <button class="share button" (click)="navigate(eventdata.storeId.companyId.geo)">
-          <ion-icon name="navigate"></ion-icon>&nbsp;&nbsp; navigate
-        </button>
-
-      </div> -->
-
-      <!-- <div class="cont">
-        <p class="header">
-          <ion-icon name="bowtie"></ion-icon>
-          Product
-        </p>
-        <p class="data">{{eventdata.fashionId.name}}</p>
-      </div> -->
-
-      <!-- <div class="cont">
-        <p class="header">
-          <ion-icon name="text"></ion-icon>
-          Description
-        </p>
-        <p class="data">{{eventdata.fashionId.description}}</p>
-      </div> -->
-
-      <!-- <div class="cont">
-        <p class="header">
-          <ion-icon name="square"></ion-icon>
-          Size
-        </p>
-        <p class="data">{{eventdata.fashionId.size}}</p>
-      </div> -->
-
-      <!-- <div class="cont">
-        <p class="header">
-          <ion-icon name="pricetags"></ion-icon>
-          Price
-        </p>
-        <p class="data">{{eventdata.fashionId.price}}</p>
-      </div> -->
-
-      <!-- <div class="cont">
-        <p class="header">
-          <ion-icon name="attach"></ion-icon>
-          Website
-        </p>
-        <p class="data">{{eventdata.fashionId.weblink}}</p>
-      </div> -->
-
+   
 
       <ion-grid class="saveGrid" no-padding>
         <ion-row>
           <ion-col col-6>
-            <!-- <button class="share" outline>
-              <a href="{{eventdata.storeId.companyId.website}}">
-                <ion-icon name="globe"></ion-icon>&nbsp;&nbsp; Website
-              </a>
-            </button> -->
+           
 
             <button class="share" outline (click)="navigate(eventdata.storeId.companyId.geo)">
                 <!-- <a href="{{eventdata.storeId.companyId.website}}"> -->
@@ -781,9 +719,7 @@
                 <!-- </a> -->
               </button>
 
-            <!-- <a class="share button" outline href="{{eventdata.storeId.companyId.website}}">
-              <ion-icon name="globe"></ion-icon>&nbsp;&nbsp; Website
-            </a> -->
+           
 
           </ion-col>
           <ion-col col-6>
@@ -918,26 +854,27 @@
 
         <div class="mdl">
           <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{deviceData.type}}</p>
-          <!-- <div class="iconss">
-            <ion-icon name="heart-outline" *ngIf="devicedetaill.is_favourite==false" item-right
-              (click)="updateProduct(devicedetaill.deviceInfo?._id,devicedetaill.is_favourite)"></ion-icon>
-            <ion-icon name="heart" item-right *ngIf="devicedetaill.is_favourite==true"
-              (click)="updateProduct(devicedetaill.deviceInfo?._id,devicedetaill.is_favourite)"></ion-icon>
+          <p>{{eventdata.devicedetaill.deviceInfo.type}}</p>
 
-          </div> -->
+          <div class="iconss">
+            <ion-icon name="heart-outline" *ngIf="eventdata.devicedetaill.is_favourite==false" item-right
+              (click)="updateProductt(eventdata.devicedetaill._id,eventdata.devicedetaill.is_favourite)"></ion-icon>
+            <ion-icon name="heart" item-right *ngIf="eventdata.devicedetaill.is_favourite==true"
+              (click)="updateProductt(eventdata.devicedetaill._id,eventdata.devicedetaill.is_favourite)"></ion-icon>
+
+          </div>
         </div>
       </div>
       <div class="imgss event">
         <div class="ss"></div>
 
         <ion-slides pager id="myImg">
-          <ion-slide *ngIf="deviceData.imageId">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(deviceData.imageId._id))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{deviceData.imageId._id}}">
+          <ion-slide *ngIf="eventdata.devicedetaill.deviceInfo.imageId">
+            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.devicedetaill.deviceInfo.imageId._id))"
+              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.devicedetaill.deviceInfo.imageId._id}}">
           </ion-slide>
 
-          <ion-slide *ngIf="!deviceData.imageId"
+          <ion-slide *ngIf="!eventdata.devicedetaill.deviceInfo.imageId"
             (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
             <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
           </ion-slide>
@@ -952,14 +889,14 @@
           <ion-icon name="barcode"></ion-icon>
           Full Name
         </p>
-        <p class="data">{{deviceData.contact_info.name}}</p>
+        <p class="data">{{eventdata.devicedetaill.deviceInfo?.contact_info.name}}</p>
       </div>
       <div class="cont">
         <p class="header">
           <ion-icon name="home"></ion-icon>
           Company Name
         </p>
-        <p class="data">{{deviceData.contact_info.company_name}}</p>
+        <p class="data">{{eventdata.devicedetaill.deviceInfo?.contact_info.company_name}}</p>
       </div>
 
       <div class="cont">
@@ -967,7 +904,9 @@
           <ion-icon name="call"></ion-icon>
           Telephone No
         </p>
-        <p class="data">{{deviceData.contact_info.phoneNumber}}</p>
+        <a href="tel:{{eventdata.devicedetaill.deviceInfo?.contact_info.phoneNumber}}">
+        <p class="data">{{eventdata.devicedetaill.deviceInfo?.contact_info.phoneNumber}}</p>
+      </a>
       </div>
 
       <div class="cont">
@@ -975,7 +914,9 @@
           <ion-icon name="call"></ion-icon>
           Mobile No
         </p>
-        <p class="data">{{deviceData.contact_info.mobileNumber}}</p>
+        <a href="tel:{{eventdata.devicedetaill.deviceInfo?.contact_info.mobileNumber}}">
+        <p class="data">{{eventdata.devicedetaill.deviceInfo?.contact_info.mobileNumber}}</p>
+      </a>
       </div>
 
 
@@ -984,30 +925,36 @@
           <ion-icon name="mail"></ion-icon>
           Email
         </p>
-        <p class="data">{{deviceData.contact_info.email}}</p>
+        <a href="mailto:{{eventdata.devicedetaill.deviceInfo?.contact_info.email}}">
+          <p class="data">{{eventdata.devicedetaill.deviceInfo?.contact_info.email}}</p>
+        </a>
+        
       </div>
-      <div class="cont">
+      <div class="cont" (tap)="forwardNavigate(eventdata.devicedetaill.deviceInfo?.contact_info.address)">
         <p class="header">
           <ion-icon name="pin"></ion-icon>
           Address
         </p>
-        <p class="data"> {{deviceData.contact_info.address}}</p>
+        <p class="data"> {{eventdata.devicedetaill.deviceInfo?.contact_info.address}}</p>
       </div>
       <div class="cont">
         <p class="header">
           <ion-icon name="attach"></ion-icon>
           Website
         </p>
-        <p class="data">{{deviceData.contact_info.website}}</p>
+        <a href="{{eventdata.devicedetaill.deviceInfo?.contact_info.website}}">
+            <p class="data">{{eventdata.devicedetaill.deviceInfo?.contact_info.website}}</p>
+        </a>
+        
       </div>
       <ion-grid class="saveGrid">
         <ion-row>
           <ion-col col-6>
-            <button class="share" outline (click)="savedevicecontact(deviceData)">
+            <button class="share" outline (click)="savedevicecontact(eventdata.devicedetaill)">
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
             </button> </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialsharedevice(deviceData)">
+            <button class="share" outline (click)="socialsharedevice(eventdata.devicedetaill)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
           </ion-col>
