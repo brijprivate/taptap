@@ -74,9 +74,9 @@
               <ion-row class="commentSection">
                 <ion-col text-left (tap)="feedAction(feed._id)">
                   <button ion-button clear small>
-                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    <!-- <i class="fa fa-heart-o" aria-hidden="true"></i> -->
-                    <div class="pColor">{{feed.favourites.length}} Likes</div>
+                    <i class="fa fa-heart-o" aria-hidden="true" *ngIf="feed.like == false"></i>
+                    <i class="fa fa-heart" aria-hidden="true" *ngIf="feed.like == true"></i>
+                    <div class="pColor"> {{feed.favourites.length}} Likes</div>
                   </button>
                 </ion-col>
 
