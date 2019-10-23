@@ -169,6 +169,8 @@
                 <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
                 <ion-icon name="pizza" item-left *ngIf="item.purpose=='Restaurant'"></ion-icon>
                 <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
+                <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contact_info'"></ion-icon>
+
                 {{item.purpose}}
                 <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
               </ion-item>

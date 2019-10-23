@@ -118,63 +118,63 @@ export class MyApp {
                   object = {
                     businessId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'Contacts':
                   object = {
                     contactId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'Sports':
                   object = {
                     sportId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'Fashion':
                   object = {
                     fashionId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'General':
                   object = {
                     generalId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'Event':
                   object = {
                     eventId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'Groceries':
                   object = {
                     groceryId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'Restaurant':
                   object = {
                     restaurantId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 case 'Verification':
                   object = {
                     verificationId: item,
                     storeId: item.storeId,
-                    islink:"true"
+                    islink: "true"
                   }
                   break;
                 default:

@@ -1,0 +1,118 @@
+<ion-content class="animated 800s zoomIn delay-0.1s">
+  <div class="head">
+    <div class="mdl">
+      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+      <p>Discover</p>
+    </div>
+  </div>
+
+  <ion-segment [(ngModel)]="slideselected">
+    <ion-segment-button value="discount" (click)="selectedTab(0)">
+
+      Discount
+    </ion-segment-button>
+    <ion-segment-button value="feeds" (click)="selectedTab(1)">
+      Feeds
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="animated 800s zoomIn delay-0.3s">
+    <ion-slide class="scroll">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let company of companies">
+            <ion-card class="discard" (tap)="getproduct(company)">
+              <img src="https://api.taptap.org.uk/file/getImage?imageId={{company.display_picture}}" alt="">
+              <p style="    margin-top: 5px;
+                  ">{{company.name}}</p>
+              <p style="    margin-top: 3px; font-weight: 600; color:red;
+                  ">{{company.discount}}% OFF</p>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-slide>
+
+
+
+
+    <ion-slide class="scroll">
+
+
+      <ion-grid class="imageCard" *ngFor="let feed of feeds">
+        <div class="card-background-page">
+          <ion-row>
+
+            <ion-col>
+              <ion-card>
+                <ion-row>
+                  <ion-col col-3>
+                    <img
+                      src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.storeId.companyId.display_picture}}"
+                      class="aTep" alt="">
+
+                  </ion-col>
+                  <ion-col col-9 text-left>
+                    <p class="title">{{feed.product.storeId.companyId.name}}</p>
+                    <p><small>{{feed.createdDate}}</small> </p>
+
+                  </ion-col>
+
+                </ion-row>
+                <ion-slides pager="true">
+                  <ion-slide class="slideimage">
+                    <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}" />
+                    <!-- <div class="card-title">23 Aug 2019</div> -->
+
+                    <p class="card-subtitle">{{feed.title}}</p>
+                    <p class="card-subtitlea">{{feed.description}}.</p>
+                  </ion-slide>
+                </ion-slides>
+                <ion-row class="commentSection">
+                  <ion-col text-left (tap)="feedAction(feed._id)">
+                    <button ion-button clear small>
+                      <i class="fa fa-heart-o" aria-hidden="true" *ngIf="feed.like == false"></i>
+                      <i class="fa fa-heart" aria-hidden="true" *ngIf="feed.like == true"></i>
+                      <div class="pColor"> {{feed.favourites.length}} Likes</div>
+                    </button>
+                  </ion-col>
+  
+                  <ion-col text-right (tap)="clickFeed(feed)">
+                    <button ion-button clear small>
+                      <i class="fa fa-eye" aria-hidden="true"></i>
+                      <div class="pColor">View</div>
+                    </button>
+                  </ion-col>
+  
+  
+                </ion-row>
+              </ion-card>
+          
+
+
+            </ion-col>
+
+          </ion-row>
+
+
+
+
+
+
+
+
+        </div>
+      </ion-grid>
+
+    </ion-slide>
+
+
+  </ion-slides>
+
+
+
+
+
+</ion-content>

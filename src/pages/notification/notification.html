@@ -83,7 +83,7 @@
         <ion-row>
           <ion-col col-2>
 
-            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+            <img class="imgStart" src="../../assets/images/lostitem.svg" item-start />
 
           </ion-col>
           <ion-col col-10 style="padding-left:1em">
@@ -98,7 +98,10 @@
         (click)="viewNotification(notification._id,notification.geo)">
         <ion-row>
           <ion-col col-2>
-            <img class="imgStart" src="../../assets/images/Logo_after.png" item-start />
+            <img class="imgStart" *ngIf="notification.title!='Device Lost'" src="../../assets/images/Logo_after.png"
+              item-start />
+            <img class="imgStart" *ngIf="notification.title=='Device Lost'" src="../../assets/images/lostitem.svg"
+              item-start />
           </ion-col>
           <ion-col col-10 style="padding-left:1em">
             <p class="lorem">{{notification.title}}</p>
