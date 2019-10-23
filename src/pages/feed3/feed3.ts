@@ -52,7 +52,32 @@ export class Feed3Page {
 
   constructor(private launchNavigator: LaunchNavigator, public nativeGeocoder: NativeGeocoder, public service: NfctagProvider, public http: LoginsignupProvider,
     public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+    let _base = this;
+    _base.http.getallcategories()
+      .then(function (success: any) {
+        // console.log(success)
+        _base.categories = [];
+        _base.categories = success.result
+        console.log(_base.categories)
+      }, function (error) {
 
+      })
+  }
+
+  getCetgoryNameById(categoryId: String) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      for (let i = 0; i <= _base.categories.length - 1; i++) {
+        let category = _base.categories[i]
+        if (category._id == categoryId) {
+          resolve(category.name)
+        }
+
+        if (i == _base.categories.length - 1) {
+          reject({})
+        }
+      }
+    });
   }
 
   ionViewDidLoad() {
@@ -177,6 +202,97 @@ export class Feed3Page {
     // else if (d <= 1) return Math.round(d * 1000) + "m";
     return d;
   }
+
+
+  getproduct(company: any) {
+    let _base = this;
+    let categoryId = company.subscribed_category[0].categoryId;
+    let adminId = company.adminId._id;
+
+    _base.getCetgoryNameById(categoryId)
+      .then(function (categoryName: String) {
+        _base.http.getProductAdminCategory(categoryName, adminId)
+          .then(function (success: any) {
+            if (success.result.length != 0) {
+              console.log("success", success.result[0])
+              let product = success.result[0]
+              _base.showCompanyProduct(categoryName, product)
+            } else {
+              alert('This company has no product yet')
+            }
+          }, function (error: any) {
+            console.log("error", error)
+          });
+      });
+
+  }
+
+
+  showCompanyProduct(categoryName, product) {
+
+    let item = product;
+    let object = {}
+
+    switch (categoryName) {
+      case 'Business':
+        object = {
+          businessId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'Contacts':
+        object = {
+          contactId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'Sports':
+        object = {
+          sportId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'Fashion':
+        object = {
+          fashionId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'General':
+        object = {
+          generalId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'Event':
+        object = {
+          eventId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'Groceries':
+        object = {
+          groceryId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'Restaurant':
+        object = {
+          restaurantId: item,
+          storeId: item.storeId
+        }
+        break;
+      case 'Verification':
+        object = {
+          verificationId: item,
+          storeId: item.storeId
+        }
+        break;
+      default:
+    }
+    this.navCtrl.push('TapdetailsPage', object);
+  }
+
 
 
   showProduct(feed) {

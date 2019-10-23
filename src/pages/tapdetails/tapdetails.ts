@@ -99,21 +99,27 @@ export class TapdetailsPage {
 
     if (this.eventdata.fashionId) {
       let link = this.eventdata.fashionId.weblink;
-      if (!link.includes('http') || !link.includes('://')) {
-        this.eventdata.fashionId.weblink = "http://" + link
+      if (link) {
+        if (!link.includes('http') || !link.includes('://')) {
+          this.eventdata.fashionId.weblink = "http://" + link
+        }
       }
     }
     if (this.eventdata.contactId) {
       let link = this.eventdata.contactId.link;
-      if (!link.includes('http') || !link.includes('://')) {
-        this.eventdata.contactId.link = "http://" + link
+      if (link) {
+        if (!link.includes('http') || !link.includes('://')) {
+          this.eventdata.contactId.link = "http://" + link
+        }
       }
     }
 
     if (this.navParams.get("devicedetaill")) {
       let link = this.eventdata.devicedetaill.deviceInfo.contact_info.website;
-      if (!link.includes('http') || !link.includes('://')) {
-        this.eventdata.devicedetaill.deviceInfo.contact_info.website = "http://" + link
+      if (link) {
+        if (!link.includes('http') || !link.includes('://')) {
+          this.eventdata.devicedetaill.deviceInfo.contact_info.website = "http://" + link
+        }
       }
     }
 

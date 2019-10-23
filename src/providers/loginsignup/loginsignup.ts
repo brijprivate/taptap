@@ -322,6 +322,66 @@ export class LoginsignupProvider {
   }
 
 
+  getProductAdminCategory(category: String, adminId: String) {
+    let _base = this;
+
+    console.log(category)
+
+    let route = "";
+    let prefix = "";
+
+    switch (category) {
+      case 'Business':
+        route = 'business';
+        prefix = 'business';
+        break;
+      case 'Contacts':
+        route = 'contact';
+        prefix = 'contact';
+        break;
+      case 'Sports':
+        route = 'sports';
+        prefix = 'sport';
+        break;
+      case 'Fashion':
+        route = 'fashion';
+        prefix = 'fashion';
+        break;
+      case 'General':
+        route = 'general';
+        prefix = 'general';
+        break;
+      case 'Event':
+        route = 'events';
+        prefix = 'event';
+        break;
+      case 'Groceries':
+        route = 'groceries';
+        prefix = 'groceries';
+        break;
+      case 'Verification':
+        route = 'verification';
+        prefix = 'verification';
+        break;
+      case 'Restaurant':
+        route = 'restaurant';
+        prefix = 'restaurant';
+        break;
+      default:
+      // code block
+    }
+
+    return new Promise(function (resolve, reject) {
+      _base.http.get(_base.apiUrl + route + '/get' + prefix + 'byAdmin?adminId=' + adminId)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
+
 
   // select  for pdf generation
 
