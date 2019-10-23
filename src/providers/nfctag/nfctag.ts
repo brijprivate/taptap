@@ -405,4 +405,17 @@ export class NfctagProvider {
         });
     });
   }
+
+  // company/allcompany
+  getcompanies() {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      _base.http.get(_base.apiUrl + "company/allcompany")
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
 }

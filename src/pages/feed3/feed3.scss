@@ -176,7 +176,7 @@ page-feed3 {
     ion-slide.swiper-slide {
         align-items: baseline;
     }
-    ion-card.discard.card.card-md img {
+    ion-card.discard img {
         height: 8vh;
         width: auto;
     }
@@ -186,7 +186,12 @@ page-feed3 {
     .segment-md .segment-button {
         color: #6354cb;
     }
-    ion-card.discard.card.card-md {
+    .slideimage img{
+        height: 40vh !important;
+        width: auto;
+        margin: 10px auto !important;
+    }
+    ion-card.discard.card {
         margin: 0 auto;
         height: 20vh;
         width: 20vh;
@@ -206,5 +211,14 @@ page-feed3 {
         color: #fff;
         font-weight: 900;
         border-color: #6354cb !important;
+    }
+    .swiper-slide img {
+  
+        margin: 0 auto;
+    }
+
+    ion-slide.scroll {
+        overflow-y: scroll;
+        height: 100%;
     }
 }

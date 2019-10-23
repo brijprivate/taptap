@@ -19,29 +19,29 @@
 
   <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="animated 800s zoomIn delay-0.3s">
     <ion-slide>
-      <ion-grid>
+      <ion-grid >
         <ion-row>
-          <ion-col col-6>
-              <ion-card class="discard">
-                  <img src="../../assets/images/logo_transparent.png" alt="">
-                  <p style="    margin-top: 5px;
-                  ">J K Hotel</p>
-                  <p  style="    margin-top: 3px; font-weight: 600; color:red;
-                  ">10% OFF</p>
-                </ion-card>
+          <ion-col col-6 *ngFor="let company of companies">
+            <ion-card class="discard">
+              <img src="https://api.taptap.org.uk/file/getImage?imageId={{company.display_picture}}" alt="">
+              <p style="    margin-top: 5px;
+                  ">{{company.name}}</p>
+              <p style="    margin-top: 3px; font-weight: 600; color:red;
+                  ">{{company.discount}}% OFF</p>
+            </ion-card>
           </ion-col>
         </ion-row>
       </ion-grid>
-     
+
     </ion-slide>
 
 
 
 
-    <ion-slide>
+    <ion-slide class="scroll">
 
 
-      <ion-grid class="imageCard">
+      <ion-grid class="imageCard" *ngFor="let feed of feeds">
         <div class="card-background-page">
           <ion-row>
 
@@ -49,51 +49,44 @@
               <ion-card>
                 <ion-row>
                   <ion-col col-3>
-                    <img src="../../assets/images/fashion.jpg" class="aTep" alt="">
+                    <img
+                      src="https://api.taptap.org.uk/file/getImage?imageId={{feed.product.storeId.companyId.display_picture}}"
+                      class="aTep" alt="">
 
                   </ion-col>
                   <ion-col col-9 text-left>
-                    <p class="title">Diwali celebration</p>
-                    <p><small>27 Mar 2020</small> </p>
+                    <p class="title">{{feed.product.storeId.companyId.name}}</p>
+                    <p><small>{{feed.createdDate}}</small> </p>
 
                   </ion-col>
 
                 </ion-row>
-                <ion-slides pager="true">
-                  <ion-slide>
-                    <img
-                      src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg" />
+                <ion-slides pager="true" >
+                  <ion-slide class="slideimage">
+                    <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}" />
                     <!-- <div class="card-title">23 Aug 2019</div> -->
 
-                    <p class="card-subtitle">Fashion</p>
-                    <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p>
-                  </ion-slide>
-                  <ion-slide>
-                    <img
-                      src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/Lisaa-fashion-event-featured-image.jpg" />
-                    <div class="card-title">23 Aug 2019</div>
-
-                    <p class="card-subtitle">Fashion</p>
-                    <p class="card-subtitlea">Everyday living. Be unique, be brave, be divine.</p>
+                    <p class="card-subtitle">{{feed.title}}</p>
+                    <p class="card-subtitlea">{{feed.description}}.</p>
                   </ion-slide>
                 </ion-slides>
               </ion-card>
               <ion-row class="commentSection">
-                <ion-col text-left>
+                <ion-col text-left (tap)="feedAction(feed._id)">
                   <button ion-button clear small>
                     <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    <div class="pColor">12 Likes</div>
+                    <div class="pColor">{{feed.favourites.length}} Likes</div>
                   </button>
                 </ion-col>
 
-                <ion-col text-right>
-                    <button ion-button clear small>
-                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                      <div class="pColor">Share</div>
-                    </button>
-                  </ion-col>
+                <ion-col text-right (tap)="clickFeed(feed)">
+                  <button ion-button clear small>
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <div class="pColor">Share</div>
+                  </button>
+                </ion-col>
 
-                
+
               </ion-row>
 
 
