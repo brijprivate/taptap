@@ -36,75 +36,238 @@ page-feed3 {
     }
   }
 
-    ion-slide.swiper-slide {
-        align-items: baseline;
-    }
-    ion-card.discard img {
-        height: 8vh;
-        width: auto;
-    }
-    ion-segment.segment {
-        height: 7vh;
-    }
-    .segment-md .segment-button {
-        color: #6354cb;
-    }
-    .slideimage img{
-        height: 40vh !important;
-        width: auto;
-        margin: 10px auto !important;
-    }
-    ion-card.discard.card {
-        margin: 0 auto;
-        height: 20vh;
-        width: 20vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    ion-segment-button.segment-button {
-      border-width: 0px 0px 0px 0px !important;
-      border-color: #6354cb !important;
-      font-weight: 900;
-      border-style: solid;
-      background: #f7f7f7 !important;
-      height: 100% !important;
-      line-height: 44px !important;
-    }
-    .segment-md .segment-button{
-      border: none !important;
-      font-weight: 900;
-      background: #f7f7f7 !important;
-      height: 100% !important;
-      line-height: 44px !important;
-    }
-    ion-segment-button.segment-button.segment-activated {
-      background: #ffffff !important;
-      color: #6354cb !important;
-      font-weight: 900;
-      border-color: #6354cb !important;
-      border-width: 0px 0px 0px 0px !important;
-      background: #fff !important;
-  
-    }
-    .scroll-content {
-      padding: 0 !important;
+  .scroll-content {
+    padding: 0 !important;
+  }
+
+  .contentEvent p {
+    margin-left: 1em;
+    font-size: 18px;
+  }
+
+  .card-background-page .card-title {
+    position: absolute;
+    top: 8%;
+    font-size: 16px;
+    width: 40%;
+    font-weight: 700;
+    color: #222;
+    background: #fff;
+    margin: auto;
+    left: 1em;
+    padding: 3px;
+    border-radius: 5px;
+  }
+
+  .cardtitle {
+    position: absolute;
+    top: 12%;
+    font-size: 16px;
+    width: 21%;
+    font-weight: 700;
+    color: #222;
+    background: #fff;
+    margin: auto;
+    left: 1em;
+    /* right: 0; */
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .card-background-page ion-card {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .card-background-page .card-subtitle {
+    font-size: 26px;
+    position: absolute;
+    bottom: 1em;
+    color: #fff;
+    left: 0;
+    right: 0;
+    font-weight: bold;
+  }
+
+  .card-background-page .card-subtitlea {
+    font-size: 14px;
+    position: absolute;
+    bottom: 1em;
+    color: #fff;
+    left: 0;
+    right: 0;
+    font-weight: bold;
+  }
+
+  .card-background-page ion-col.col {
+    padding: 0;
+  }
+
+  ion-card img {
+    display: block;
+    width: 100%;
+    // padding-top: 6px
+  }
+
+
+  .register {}
+
+  .register button {
+    background: transparent;
+    height: 15px;
+    width: 30px;
+    color: #6354cb;
+    font-size: 22px;
+    outline: none;
+    border: none;
+  }
+
+  ion-row.commentSection.row {
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    padding: 4px 10px;
+  }
+
+  i.fa.fa-heart-o {
+    color: #6354cb;
+    font-size: 25px;
+    margin-right: 4px;
+  }
+
+  .pColor {
+    color: #4b4f56;
+  }
+
+  ion-icon.icon.icon-md.ion-md-text,
+  ion-icon.icon.icon-ios.ion-ios-text {
+    color: #6354cb;
+    font-size: 23px;
+    margin-right: 4px;
+  }
+
+  ion-icon.icon.icon-md.ion-md-person-add,
+  ion-icon.icon.icon-ios.ion-ios-person-add {
+    color: #6354cb;
+    font-size: 23px;
+  }
+
+  button.swiper-pagination-bullet {
+    background: #fff;
+  }
+
+  .item-md.item-block .item-inner,
+  .item-ios.item-block .item-inner {
+    border-bottom: none;
+  }
+
+  img.aTep {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 10px auto;
+  }
+
+  ion-item.at.item.item-block.item-md,
+  ion-item.at.item.item-block.item-ios {
+    margin-top: 8px;
+  }
+
+  button.disable-hover.item-button.button.button-md.button-clear.button-clear-md {
+    margin-top: 0;
+  }
+
+  button.disable-hover.item-button.button.button-ios.button-clear.button-clear-ios {
+    margin-top: 0;
+  }
+
+  p.title {
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 10px;
+  }
+
+  ion-row.commentSection.row .fa {
+    font-size: 25px;
+    margin-right: 5px;
+  }
+
+  // sliders
+
+  ion-slide.swiper-slide {
+    align-items: baseline;
+  }
+
+  ion-card.discard img {
+    height: 8vh;
+    width: auto;
+  }
+
+  ion-segment.segment {
+    height: 7vh;
+  }
+
+  // .segment-md .segment-button {
+  //     color: #6354cb;
+  // }
+  .slideimage img {
+    height: 40vh !important;
+    width: auto;
+    margin: 10px auto !important;
+  }
+
+  ion-card.discard.card {
+    margin: 0 auto;
+    height: 20vh;
+    width: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  ion-segment-button.segment-button {
+    border-width: 0px 0px 0px 0px !important;
+    border-color: #6354cb !important;
+    font-weight: 900;
+    border-style: solid;
+    background: #f7f7f7 !important;
+    height: 100% !important;
+    line-height: 44px !important;
+  }
+  .segment-md .segment-button{
+    border: none !important;
+    font-weight: 900;
+    background: #f7f7f7 !important;
+    height: 100% !important;
+    line-height: 44px !important;
+  }
+  ion-segment-button.segment-button.segment-activated {
+    background: #ffffff !important;
+    color: #6354cb !important;
+    font-weight: 900;
+    border-color: #6354cb !important;
+    border-width: 0px 0px 0px 0px !important;
+    background: #fff !important;
+
   }
   .card-background-page ion-slides {
-    border-top: 1px solid #dedede;
+    // border-top: 1px solid #dedede;
     border-bottom: 1px solid #dedede;
 }
-    .swiper-slide img {
-  
-        margin: 0 auto;
-    }
+  .swiper-slide img {
 
-.scroll {
-        overflow-y: scroll;
-      height:79vh;
-    }
-    .scroll-content {
-        overflow-y: hidden;
-    }
+    margin: 0 auto;
+  }
+
+  .scroll {
+    overflow-y: scroll;
+    height: 79vh;
+  }
+
+  .scroll-content {
+    overflow-y: hidden;
+  }
 }
