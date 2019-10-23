@@ -44,7 +44,7 @@ page-feed3 {
         width: auto;
     }
     ion-segment.segment {
-        height: 10vh;
+        height: 7vh;
     }
     .segment-md .segment-button {
         color: #6354cb;
@@ -64,17 +64,37 @@ page-feed3 {
         flex-direction: column;
     }
     ion-segment-button.segment-button {
-        border-width: 2px 2px 2px 2px !important;
-        border-color: #6354cb;
-        border-style: solid;
-        border-bottom: 2px solid #6354cb !important;
+      border-width: 0px 0px 0px 0px !important;
+      border-color: #6354cb !important;
+      font-weight: 900;
+      border-style: solid;
+      background: #f7f7f7 !important;
+      height: 100% !important;
+      line-height: 44px !important;
+    }
+    .segment-md .segment-button{
+      border: none !important;
+      font-weight: 900;
+      background: #f7f7f7 !important;
+      height: 100% !important;
+      line-height: 44px !important;
     }
     ion-segment-button.segment-button.segment-activated {
-        background: #6354cb;
-        color: #fff;
-        font-weight: 900;
-        border-color: #6354cb !important;
+      background: #ffffff !important;
+      color: #6354cb !important;
+      font-weight: 900;
+      border-color: #6354cb !important;
+      border-width: 0px 0px 0px 0px !important;
+      background: #fff !important;
+  
     }
+    .scroll-content {
+      padding: 0 !important;
+  }
+  .card-background-page ion-slides {
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+}
     .swiper-slide img {
   
         margin: 0 auto;
@@ -82,7 +102,7 @@ page-feed3 {
 
 .scroll {
         overflow-y: scroll;
-        height:76vh;
+      height:79vh;
     }
     .scroll-content {
         overflow-y: hidden;
