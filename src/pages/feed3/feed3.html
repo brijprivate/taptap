@@ -19,7 +19,7 @@
 
   <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="animated 800s zoomIn delay-0.3s">
     <ion-slide class="scroll">
-      <ion-grid >
+      <ion-grid>
         <ion-row>
           <ion-col col-6 *ngFor="let company of companies">
             <ion-card class="discard">
@@ -61,7 +61,7 @@
                   </ion-col>
 
                 </ion-row>
-                <ion-slides pager="true" >
+                <ion-slides pager="true">
                   <ion-slide class="slideimage">
                     <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}" />
                     <!-- <div class="card-title">23 Aug 2019</div> -->
@@ -75,6 +75,7 @@
                 <ion-col text-left (tap)="feedAction(feed._id)">
                   <button ion-button clear small>
                     <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-heart-o" aria-hidden="true"></i> -->
                     <div class="pColor">{{feed.favourites.length}} Likes</div>
                   </button>
                 </ion-col>
@@ -82,7 +83,7 @@
                 <ion-col text-right (tap)="clickFeed(feed)">
                   <button ion-button clear small>
                     <i class="fa fa-eye" aria-hidden="true"></i>
-                    <div class="pColor">Share</div>
+                    <div class="pColor">View</div>
                   </button>
                 </ion-col>
 

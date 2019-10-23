@@ -103,6 +103,12 @@ export class Feed3Page {
             let date = new Date(feed.createdDate)
             let dateString = date.toLocaleDateString()
             feed.createdDate = dateString;
+            let favourites = feed.favourites;
+            if (favourites.includes(localStorage.getItem('userId'))) {
+              feed.like = true
+            } else {
+              feed.like = false;
+            }
             return feed;
           }).filter(feed => {
             if (feed.product) {
