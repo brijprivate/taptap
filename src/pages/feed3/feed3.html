@@ -8,13 +8,11 @@
 
   <ion-segment [(ngModel)]="slideselected">
     <ion-segment-button value="discount" (click)="selectedTab(0)">
-
-      Discount
+      DISCOUNT
     </ion-segment-button>
     <ion-segment-button value="feeds" (click)="selectedTab(1)">
-      Feeds
+      FEEDS
     </ion-segment-button>
-
   </ion-segment>
 
   <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="animated 800s zoomIn delay-0.3s">
@@ -78,18 +76,18 @@
                       <div class="pColor"> {{feed.favourites.length}} Likes</div>
                     </button>
                   </ion-col>
-  
+
                   <ion-col text-right (tap)="clickFeed(feed)">
                     <button ion-button clear small>
                       <i class="fa fa-eye" aria-hidden="true"></i>
                       <div class="pColor">View</div>
                     </button>
                   </ion-col>
-  
-  
+
+
                 </ion-row>
               </ion-card>
-          
+
 
 
             </ion-col>
