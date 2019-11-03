@@ -15,7 +15,10 @@ import { FilePath } from '@ionic-native/file-path';
 import { Downloader, NotificationVisibility, DownloadRequest } from '@ionic-native/downloader';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { HomePage } from '../home/home';
+import { SearchPage } from '../search/search';
+import { TaptapPage } from '../taptap/taptap';
 import { DashboardPage } from '../dashboard/dashboard';
+
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 
 declare var require: any
@@ -40,6 +43,7 @@ export class TapdetailsPage {
   public thisMonth: any;
   public userId: any;
   public uRLlink = "https://taptapshare.000webhostapp.com/?category=";
+  public shareLink = "https://taptapshare.000webhostapp.com/share.php?"
   public link: any;
   isfav: boolean = false;
   public linkId: any;
@@ -308,6 +312,24 @@ export class TapdetailsPage {
     // }).catch(() => {
 
     // })
+  }
+
+  productshare(adminId: String, categoryId: String) {
+    let _base = this;
+    this.link = this.shareLink + "category=" + categoryId + '&' + 'adminId=' + adminId
+    let urldata = {
+      url: this.link
+    }
+    this.logregpro.shortlink(urldata).then(function (success: any) {
+      console.log(success)
+
+      _base.socialsharing.share(success.result.url).then(() => {
+      }).catch(() => {
+
+      })
+    }, function (err) {
+      console.log(err);
+    })
   }
 
   //social share of device....

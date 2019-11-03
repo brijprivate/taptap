@@ -72,127 +72,31 @@ export class MyApp {
     this.checkNetworkStatus();
     // });
 
-    this.deeplinks.route({
-      '/product': {},
-    }).subscribe(match => {
-      // match.$route - the route we matched, which is the matched entry from the arguments to route()
-      // match.$args - the args passed in the link
-      // match.$link - the full link data
-      console.log('Successfully matched route', match);
-      console.log(match.$args.category);
-      console.log(match.$args.id);
+    // _base.deeplinks.route({
+    //   '/product': {},
+    //   '/company': {}
+    // }).subscribe(match => {
+    //   // match.$route - the route we matched, which is the matched entry from the arguments to route()
+    //   // match.$args - the args passed in the link
+    //   // match.$link - the full link data
+    //   console.log('Successfully matched route', match);
+    //   console.log(match.$args.category);
+    //   console.log(match.$args.id);
+    //   console.log(match.$args.adminId)
 
-      if (match.$args.id != '' || match.$args.category != null) {
-        console.log("========================================")
-        if (match.$args.category == "Contact_info") {
-          let data = {
-            userId: localStorage.getItem("userId"),
-            nfc_id: match.$args.id,
-            location: '',
-            purpose: '',
-            geo: ''
-          }
-          _base.nfctagProvider.createTap(data).then(function (success: any) {
-            console.log("suc------------", success)
-            _base.navCtrl.setRoot('TapdetailsPage', {
-              devicedetaill: success.lostinfo,
-              key: 'device'
-            })
-          }, function (err) {
-            console.log("err---------------->", err);
-            alert("Link is expired");
-            _base.platform.exitApp();
-          })
-        } else {
-          _base.loginservice.getProduct(match.$args.category, match.$args.id)
-            .then(function (success: any) {
-              if (success.error) {
-                _base.platform.exitApp();
-              }
-              let item = success.result;
+    //   if (match.$args.id) {
+    //     _base.showProduct(match)
+    //   } else if (match.$args.adminId) {
+    //     _base.showcompanyProduct(match)
+    //   } else {
+    //     alert('This link is expired')
+    //   }
 
-              let object = {}
-
-              switch (match.$args.category) {
-                case 'Business':
-                  object = {
-                    businessId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'Contacts':
-                  object = {
-                    contactId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'Sports':
-                  object = {
-                    sportId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'Fashion':
-                  object = {
-                    fashionId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'General':
-                  object = {
-                    generalId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'Event':
-                  object = {
-                    eventId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'Groceries':
-                  object = {
-                    groceryId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'Restaurant':
-                  object = {
-                    restaurantId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                case 'Verification':
-                  object = {
-                    verificationId: item,
-                    storeId: item.storeId,
-                    islink: "true"
-                  }
-                  break;
-                default:
-              }
-
-              _base.navCtrl.setRoot('TapdetailsPage', object);
-            }, function (error) {
-              alert("This link is expired")
-              _base.platform.exitApp()
-            });
-        }
-      }
-
-      // alert(match.$args.category+"-"+match.$args.id)
-    }, nomatch => {
-      // nomatch.$link - the full link data
-      console.error('Got a deeplink that didn\'t match', nomatch);
-    });
+    //   // alert(match.$args.category+"-"+match.$args.id)
+    // }, nomatch => {
+    //   // nomatch.$link - the full link data
+    //   console.error('Got a deeplink that didn\'t match', nomatch);
+    // });
 
 
     // });
@@ -206,6 +110,213 @@ export class MyApp {
       localStorage.setItem("userId", "");
       this.rootPage = 'SignupPage';
     }
+  }
+
+  showProduct(match: any) {
+    let _base = this
+    if (match.$args.id != '' || match.$args.category != null) {
+      console.log("========================================")
+      if (match.$args.category == "Contact_info") {
+        let data = {
+          userId: localStorage.getItem("userId"),
+          nfc_id: match.$args.id,
+          location: '',
+          purpose: '',
+          geo: ''
+        }
+        _base.nfctagProvider.createTap(data).then(function (success: any) {
+          console.log("suc------------", success)
+          if (!success.lostinfo.deviceInfo) {
+            alert("This device is lost.")
+          } else {
+            _base.navCtrl.setRoot('TapdetailsPage', {
+              devicedetaill: success.lostinfo,
+              key: 'device',
+              islink: "true"
+            })
+          }
+        }, function (err) {
+          console.log("err---------------->", err);
+          alert("Link is expired");
+          _base.platform.exitApp();
+        })
+      } else {
+        _base.loginservice.getProduct(match.$args.category, match.$args.id)
+          .then(function (success: any) {
+            if (success.error) {
+              _base.platform.exitApp();
+            }
+            let item = success.result;
+
+            let object = {}
+
+            switch (match.$args.category) {
+              case 'Business':
+                object = {
+                  businessId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'Contacts':
+                object = {
+                  contactId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'Sports':
+                object = {
+                  sportId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'Fashion':
+                object = {
+                  fashionId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'General':
+                object = {
+                  generalId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'Event':
+                object = {
+                  eventId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'Groceries':
+                object = {
+                  groceryId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'Restaurant':
+                object = {
+                  restaurantId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              case 'Verification':
+                object = {
+                  verificationId: item,
+                  storeId: item.storeId,
+                  islink: "true"
+                }
+                break;
+              default:
+            }
+
+            _base.navCtrl.setRoot('TapdetailsPage', object);
+          }, function (error) {
+            alert("This link is expired")
+            _base.platform.exitApp()
+          });
+      }
+    }
+  }
+
+  showcompanyProduct(match: any) {
+    let _base = this;
+    _base.loginservice.getProductAdminCategory(match.$args.category, match.$args.adminId)
+      .then(function (success: any) {
+        if (success.result.length != 0) {
+          console.log("success", success.result[0])
+          let product = success.result[0]
+          _base.showCompanyProduct(match.$args.category, product)
+        } else {
+          alert("This link is expired")
+          _base.platform.exitApp()
+        }
+      }, function (error: any) {
+        console.log("error", error)
+        alert("This link is expired")
+        _base.platform.exitApp()
+      });
+  }
+
+  showCompanyProduct(categoryName, product) {
+
+    let item = product;
+    let object = {}
+
+    switch (categoryName) {
+      case 'Business':
+        object = {
+          businessId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'Contacts':
+        object = {
+          contactId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'Sports':
+        object = {
+          sportId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'Fashion':
+        object = {
+          fashionId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'General':
+        object = {
+          generalId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'Event':
+        object = {
+          eventId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'Groceries':
+        object = {
+          groceryId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'Restaurant':
+        object = {
+          restaurantId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      case 'Verification':
+        object = {
+          verificationId: item,
+          storeId: item.storeId,
+          islink: "true"
+        }
+        break;
+      default:
+    }
+    this.navCtrl.setRoot('TapdetailsPage', object);
   }
 
   /**check network status - online/offline */
@@ -274,6 +385,33 @@ export class MyApp {
         function (err) {
           _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
         });
+
+
+      _base.deeplinks.route({
+        '/product': {},
+        '/company': {}
+      }).subscribe(match => {
+        // match.$route - the route we matched, which is the matched entry from the arguments to route()
+        // match.$args - the args passed in the link
+        // match.$link - the full link data
+        console.log('Successfully matched route', match);
+        console.log(match.$args.category);
+        console.log(match.$args.id);
+        console.log(match.$args.adminId)
+
+        if (match.$args.id) {
+          _base.showProduct(match)
+        } else if (match.$args.adminId) {
+          _base.showcompanyProduct(match)
+        } else {
+          alert('This link is expired')
+        }
+
+        // alert(match.$args.category+"-"+match.$args.id)
+      }, nomatch => {
+        // nomatch.$link - the full link data
+        console.error('Got a deeplink that didn\'t match', nomatch);
+      });
 
 
       // listen nfc tags

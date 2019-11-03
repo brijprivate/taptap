@@ -54,6 +54,7 @@ export class TaptapPage {
     this.keyboards = true;
   }
   ionViewDidEnter() {
+    localStorage.setItem("page", "favourite")
     // console.log("wowowowowoowowowowowowoow");
     this.load == false;
     let _base = this;
@@ -317,7 +318,7 @@ export class TaptapPage {
         } else {
           console.log("here")
           if (from != null) {
-            let date = new Date((parseInt(month) - 20).toString()  + '/' + '15/' + this.year)
+            let date = new Date((parseInt(month) - 20).toString() + '/' + '15/' + this.year)
             let isoDate = date.toISOString();
             this.date = isoDate
             activeelement.className = activeelement.className + " active"

@@ -123,9 +123,14 @@
           </ion-col>
 
           <ion-col col-6>
-            <button class="share" outline (click)="socialshare(eventdata,eventdata.eventId._id)">
+            <button *ngIf="eventdata.is_favourite" class="share" outline
+              (click)="socialshare(eventdata,eventdata.eventId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
             </button>
+            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              (click)="productshare(eventdata.storeId.adminId._id,'Event')"><i class="fa fa-share-alt"
+                aria-hidden="true"></i>&nbsp;&nbsp;
+              share</button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -164,7 +169,7 @@
       <div id="caption"></div>
     </div>
 
-    <div class="imgss event">
+    <div class="">
       <!-- <div class="ss"></div> -->
 
 
@@ -172,7 +177,8 @@
 
         <ion-slide *ngIf="eventdata.restaurantId.logo"
           (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
-          <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}&select=thumbnail'>
+          <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}'
+            style="height:15vh">
         </ion-slide>
 
 
@@ -229,8 +235,13 @@
               </button>
             </ion-col> -->
             <ion-col col-6 style="padding: 0">
-              <button ion-button class="save1" (click)="socialshare(eventdata,eventdata.restaurantId._id)"><i
-                  class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;
+              <button *ngIf="eventdata.is_favourite" ion-button class="save1"
+                (click)="socialshare(eventdata,eventdata.restaurantId._id)"><i class="fa fa-share-alt"
+                  aria-hidden="true"></i>&nbsp;&nbsp;
+                share</button>
+              <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+                (click)="productshare(eventdata.storeId.adminId._id,'Restaurant')"><i class="fa fa-share-alt"
+                  aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
             </ion-col>
 
@@ -360,9 +371,14 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
             </button> </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialshare(eventdata,eventdata.contactId._id)">
+            <button *ngIf="eventdata.is_favourite" class="share" outline
+              (click)="socialshare(eventdata,eventdata.contactId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
+            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              (click)="productshare(eventdata.storeId.adminId._id,'Contacts')"><i class="fa fa-share-alt"
+                aria-hidden="true"></i>&nbsp;&nbsp;
+              share</button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -452,9 +468,14 @@
                 <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
               </button> </ion-col> -->
             <ion-col col-12>
-              <button class="share" outline (click)="socialshare(eventdata,eventdata.sportId._id)">
+              <button *ngIf="eventdata.is_favourite" class="share" outline
+                (click)="socialshare(eventdata,eventdata.sportId._id)">
                 <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
               </button>
+              <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+                (click)="productshare(eventdata.storeId.adminId._id,'Sports')"><i class="fa fa-share-alt"
+                  aria-hidden="true"></i>&nbsp;&nbsp;
+                share</button>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -525,9 +546,14 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Go to site
             </button> </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialshare(eventdata,eventdata.generalId._id)">
+            <button *ngIf="eventdata.is_favourite" class="share" outline
+              (click)="socialshare(eventdata,eventdata.generalId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
+            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              (click)="productshare(eventdata.storeId.adminId._id,'General')"><i class="fa fa-share-alt"
+                aria-hidden="true"></i>&nbsp;&nbsp;
+              share</button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -620,9 +646,14 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
             </button> </ion-col> -->
           <ion-col col-12>
-            <button class="share" outline (click)="socialshare(eventdata,eventdata.groceryId._id)">
+            <button *ngIf="eventdata.is_favourite" class="share" outline
+              (click)="socialshare(eventdata,eventdata.groceryId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
+            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              (click)="productshare(eventdata.storeId.adminId._id,'Groceries')"><i class="fa fa-share-alt"
+                aria-hidden="true"></i>&nbsp;&nbsp;
+              share</button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -725,9 +756,14 @@
 
           </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialshare(eventdata,eventdata.fashionId._id)">
+            <button *ngIf="eventdata.is_favourite" class="share" outline
+              (click)="socialshare(eventdata,eventdata.fashionId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
+            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              (click)="productshare(eventdata.storeId.adminId._id,'Fashion')"><i class="fa fa-share-alt"
+                aria-hidden="true"></i>&nbsp;&nbsp;
+              share</button>
           </ion-col>
 
 
@@ -834,8 +870,13 @@
               </button>
             </ion-col> -->
             <ion-col col-6 style="padding: 0">
-              <button ion-button class="save1" (click)="socialshare(eventdata,eventdata.businessId._id)"><i
-                  class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;
+              <button *ngIf="eventdata.is_favourite" ion-button class="save1"
+                (click)="socialshare(eventdata,eventdata.businessId._id)"><i class="fa fa-share-alt"
+                  aria-hidden="true"></i>&nbsp;&nbsp;
+                share</button>
+              <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+                (click)="productshare(eventdata.storeId.adminId._id,'Business')"><i class="fa fa-share-alt"
+                  aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
             </ion-col>
 

@@ -60,6 +60,7 @@ export class SearchPage {
     this.keyboards = true;
   }
   ionViewDidEnter() {
+    localStorage.setItem("page","search")
     // console.log("wowowowowoowowowowowowoow");
     this.load == false;
     let _base = this;
