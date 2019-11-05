@@ -801,7 +801,7 @@
       <div id="caption"></div>
     </div>
 
-    <div class="imgss event">
+    <div class="">
       <!-- <div class="ss"></div> -->
 
 
@@ -810,7 +810,8 @@
         <ion-slide *ngIf="eventdata.storeId"
           (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.storeId.companyId.display_picture))">
           <img
-            src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.storeId?eventdata.storeId.companyId.display_picture:""}}&select=thumbnail'>
+            src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.storeId?eventdata.storeId.companyId.display_picture:""}}'
+            style="height:15vh">
         </ion-slide>
 
 

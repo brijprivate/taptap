@@ -44,7 +44,7 @@ export class TapmodalPage {
     public nfctagProvider: NfctagProvider) {
     this.userId = localStorage.getItem("userId");
     //Read tag ....
-    
+
     this.subscriptions.push(this.nfc.addNdefListener()
       .subscribe(data => {
         if (this.readingTag) {
@@ -56,7 +56,7 @@ export class TapmodalPage {
           this.readingTag = true;
 
           console.log(tagContent)
-          
+
           let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
           let res = nfc_regex.test(tagContent);
 
@@ -119,7 +119,7 @@ export class TapmodalPage {
   ionViewDidEnter() {
     console.log("view enter-------->>>>");
     let _base = this
-    _base.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp) => {
+    _base.geolocation.getCurrentPosition({}).then((resp) => {
       _base.geo.latitude = resp.coords.latitude
       _base.geo.longitude = resp.coords.longitude
       _base.nativeGeocoder.reverseGeocode(_base.geo.latitude, _base.geo.longitude)
@@ -174,8 +174,8 @@ export class TapmodalPage {
           key: 'device'
         });
       }
-      else if(success.message == "No data found"){
-         alert('No data found')
+      else if (success.message == "No data found") {
+        alert('No data found')
       }
       else if (success.message == 'Item Tapped Successfull') {
         console.log("detail page------->>>>");
@@ -199,7 +199,7 @@ export class TapmodalPage {
     try {
       const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
-        this.tapData= JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        this.tapData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
         console.log(this.tapData)
         this.createTap(this.tapData)
       }
