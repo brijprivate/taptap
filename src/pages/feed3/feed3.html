@@ -21,8 +21,8 @@
         <ion-row>
           <ion-col col-6 *ngFor="let company of companies">
             <ion-card class="discard" (tap)="getproduct(company)">
-              <img src="https://api.taptap.org.uk/file/getImage?imageId={{company.display_picture}}&select=thumbnail"
-                alt="">
+              <img src={{company.picture}} />
+              <!-- <img src='{{company.thumbnail}}' /> -->
               <p style="    margin-top: 5px;
                   ">{{company.name}}</p>
               <p style="    margin-top: 3px; font-weight: 600; color:red;
@@ -62,7 +62,7 @@
                 </ion-row>
                 <ion-slides pager="true">
                   <ion-slide class="slideimage">
-                    <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}" />
+                    <img src='{{feed.picture}}' />
                     <!-- <div class="card-title">23 Aug 2019</div> -->
 
                     <p class="card-subtitle">{{feed.title}}</p>

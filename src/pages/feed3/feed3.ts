@@ -45,6 +45,7 @@ export class Feed3Page {
   public googleNearby: any = [];
   public toggle_text = "hide nearby"
   public companies: any = [];
+  public lazy: boolean = true;
 
   public query: any = {
     // type: 'public',
@@ -63,6 +64,23 @@ export class Feed3Page {
       }, function (error) {
 
       })
+  }
+
+  loadlazy() {
+    let _base = this;
+    let imgs = (document.querySelectorAll('img'));
+    // imgs.forEach(imga => {
+    let img = (<HTMLImageElement>imgs[4])
+    console.log()
+    let src = img.src;
+    img.src = src;
+    img.onload = function () {
+      // alert('Image loaded')
+      console.log('Loaded')
+      img.src = src.replace("&select=thumbnail", "")
+    }
+    // });
+
   }
 
   getCetgoryNameById(categoryId: String) {
@@ -137,6 +155,9 @@ export class Feed3Page {
             let date = new Date(feed.createdDate)
             let dateString = date.toLocaleDateString()
             feed.createdDate = dateString;
+            feed.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0]
+            feed.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0] + "&select=thumbnail"
+
             let favourites = feed.favourites;
             if (favourites.includes(localStorage.getItem('userId'))) {
               feed.like = true
@@ -401,11 +422,20 @@ export class Feed3Page {
     }
     _base.service.getcompanies()
       .then(function (companies: any) {
-        _base.companies = companies.result.filter(company => {
-          if (company.display_picture && company.discount) {
-            return true
-          }
-        });
+        _base.companies = companies.result
+          .filter(company => {
+            if (company.display_picture && company.discount) {
+              return true
+            }
+          })
+        _base.companies = _base.companies.map(company => {
+          console.log(company)
+          company.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture
+          company.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture + "&select=thumbnail"
+          return company
+        })
+        _base.loadlazy()
+        console.log("=========================", _base.companies)
         _base.storage.set('companies', _base.companies);
       });
   }
