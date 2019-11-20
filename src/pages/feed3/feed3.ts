@@ -6,6 +6,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { NfctagProvider } from './../../providers/nfctag/nfctag';
 import { LoginsignupProvider } from './../../providers/loginsignup/loginsignup';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the Feed3Page page.
@@ -50,7 +51,7 @@ export class Feed3Page {
     userId: localStorage.getItem('userId'),
   };
 
-  constructor(private launchNavigator: LaunchNavigator, public nativeGeocoder: NativeGeocoder, public service: NfctagProvider, public http: LoginsignupProvider,
+  constructor(private storage: Storage, private launchNavigator: LaunchNavigator, public nativeGeocoder: NativeGeocoder, public service: NfctagProvider, public http: LoginsignupProvider,
     public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
     let _base = this;
     _base.http.getallcategories()
@@ -121,6 +122,14 @@ export class Feed3Page {
   showFeeds() {
     let _base = this;
     return new Promise(function (resolve, reject) {
+
+      if (_base.storage.get('feeds')) {
+        _base.storage.get('feeds')
+          .then((feeds) => {
+            _base.feeds = feeds;
+          })
+      }
+
       _base.getmyfeeds()
         .then(function (success: any) {
           // console.log(success)
@@ -141,9 +150,17 @@ export class Feed3Page {
             }
           });
 
+          _base.storage.set("feeds", _base.feeds)
+
           resolve(success)
 
         }, function (error) {
+          if (_base.storage.get('feeds')) {
+            _base.storage.get('feeds')
+              .then((feeds) => {
+                _base.feeds = feeds;
+              })
+          }
           reject(error)
         });
     })
@@ -376,6 +393,12 @@ export class Feed3Page {
 
   getcompanies() {
     let _base = this;
+    if (_base.storage.get('companies')) {
+      _base.storage.get('companies')
+        .then((companies) => {
+          _base.companies = companies;
+        })
+    }
     _base.service.getcompanies()
       .then(function (companies: any) {
         _base.companies = companies.result.filter(company => {
@@ -383,6 +406,7 @@ export class Feed3Page {
             return true
           }
         });
+        _base.storage.set('companies', _base.companies);
       });
   }
 
