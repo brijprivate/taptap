@@ -65,12 +65,13 @@
                     <img src='{{feed.picture}}' />
                     <!-- <div class="card-title">23 Aug 2019</div> -->
 
-                    <p class="card-subtitle">{{feed.title}}</p>
+                    <!-- <p class="card-subtitle">{{feed.title}}</p> -->
                     <!-- <p class="card-subtitlea">{{feed.description}}.</p> -->
                   </ion-slide>
                 </ion-slides>
+                <p class="card-subtitle" style="text-align: left;">{{feed.title}}</p>
 
-                <p class="card-subtitlea">{{feed.description}}.</p>
+                <p style="text-align: left;">{{feed.description}}</p>
 
                 <ion-row class="commentSection">
                   <ion-col text-left (tap)="feedAction(feed._id)">
