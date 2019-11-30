@@ -65,9 +65,13 @@
                     <!-- <div class="card-title">23 Aug 2019</div> -->
 
                     <p class="card-subtitle">{{feed.title}}</p>
-                    <p class="card-subtitlea">{{feed.description}}.</p>
+                    <!-- <p class="card-subtitlea">{{feed.description}}.</p> -->
                   </ion-slide>
                 </ion-slides>
+
+
+                <p>{{feed.description}}</p>
+
                 <ion-row class="commentSection">
                   <ion-col text-left (tap)="feedAction(feed._id)">
                     <button ion-button clear small>
