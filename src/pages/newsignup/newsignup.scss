@@ -1,1245 +1,177 @@
-
 page-newsignup {
-    //================global header for all slides=================//
-    .careregbkgrnd {
-        width: 100%;
-        // height: 240px;
-        background: url('../assets/images/BG.png');
-        background-size: cover;
-        position: relative;
-        display: table;
-    }
-    .careregbkgrnd svg.logo {
-        // height: 45px;
-        display: table-cell;
-        vertical-align: middle;
-        // margin: 60px auto;
-        margin: 60px auto 0;
-        width: 13em;
-        // height: 5em;
-    }
-    //   .carewave svg.waveimg {
-    //       position: absolute;
-    //       bottom: 0px;
-    //   }
-    .unbox {
-        position: relative;
-        //   padding-top: 13%;
-        // padding-top: 75px;
-    }
-    .unboximg {
-        position: absolute;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        //   padding: 18px 0 20px;
-        width: 10em;
-        height: 6.8em;
-        padding: 0 9px 9px 0px;
-    }
-    .unbox span {
-        font-size: 17.5px;
-        color: #9c9ca6;
-        font-weight: 100;
-        font-family: 'Open Sans', sans-serif;
-    }
+  .unbox img {
+    height: 60px;
+    margin: 1.5em;
+  }
 
-    //animated wave css
-    ::selection {
-        background-color: salmon;
-        color: white;
-    }
-    .parallax>use {
-        animation: move-forever 12s linear infinite;
-    }
-    .parallax>use:nth-child(1) {
-        animation-delay: -2s;
-    }
-    .parallax>use:nth-child(2) {
-        animation-delay: -2s;
-        animation-duration: 5s;
-    }
-    .parallax>use:nth-child(3) {
-        animation-delay: -4s;
-        animation-duration: 3s;
-    }
-    @keyframes move-forever {
-        0% {
-            transform: translate(-90px, 0%);
-        }
-        100% {
-            transform: translate(85px, 0%);
-        }
-    }
-    .editorial {
-        display: block;
-        width: 100%;
-        height: 10em;
-        max-height: 100vh;
-        margin: 0;
-        position: absolute;
-        bottom: 0px;
-    }
-    /*prevent many large-by-comparison ripples by shrinking the height*/
-    
-    @media (max-width: 50em) {
-        .editorial {
-            height: 17vw;
-            // height:100%;
-        }
-    }
+  .slide-zoom {
+    height: 100%;
+  }
 
-    // ====================custom main ion-slides
-    .care_ion-slides {
-        height: auto;
-    }
+  .item-inner {
+    border-bottom: none !important;
+  }
 
-    //=====================slide(1,2,3,4) css
-    ion-input{
-        font-family: 'Lato', sans-serif;
-    }
-    .slideing-cards {
-        padding: 38px 25px;
-        position: relative;
-    }
-    .reg-form {
-        border-radius: 15px;
-        position: relative;
-        //   box-shadow: 0 0 65px 6px #dceaf0;
-        box-shadow: 0 0 65px 6px #daedf5;
-        padding: 16px 0;
-    }
-    .reg-form .list {
-        margin: 10px 0 30px;
-    }
-    .reg-form ion-label {
-        margin: 15px 0 0;
-        font-weight: 100;
-        font-size: 15px;
-        color: #9d98a0;
-    }
-    img.top-shadow {
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        bottom: 100%;
-    }
-    img.bottom-shadow {
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        top: 100%;
-    }
-    .proceedbtn {
-        padding: 11px;
-        position: absolute;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        // border: 1px solid #f4f4f4;
-        border: 1px solid #eceaea;
-        top: 89.4%;
-        // box-shadow: 0 0 32px 2px #cae8f0;
-        box-shadow: 0 0 32px 2px #d1edf5;
-        height: 45px;
-        width: 45px;
-    }
-    
-    .list .item-input:last-child {
-        border-bottom: none;
-    }
-    ion-icon.icon {
-        color: #17c4a8;
-    }
-    
-   
-    .margin0auto{
-        margin:0 auto;
-    }
-    //===================slide1 css\
-    #slide1 .reg-form .list {
-        margin: 5px 0 15px;
-    }
-    .gender{
-        padding-left:47px;
-    }
-    .urgen {
-        color: #6b7e90;
-        font-size: 15px;
-        font-family: 'Lato', sans-serif;
-        float: left;
-        padding-top: 2px;
-    }
-    .care-grid {
-        border-bottom: 1px solid #e4e4e4;
-    }
-    .radio .radio-icon {
-        left: 0;
-        top: 3px;
-        margin: 0;
-        border-radius: 50%;
-        position: relative;
-        display: block;
-        width: 17px;
-        height: 17px;
-        border-width: 3px;
-        border-style: solid;
-        // border-color: #787878;
-        border-color: rgba(51, 197, 193, 0.61);
-    }
-    .radio .radio-checked {
-        border-color: #6baced;
-    }
-    .radio .radio-checked .radio-inner {
-        left: 2px;
-        top: 2px;
-        width: 7px;
-        height: 7px;
-    }
-    #slide1 .uimg {
-        margin-top: 23px;
-    }
-    #slide1 .label {
-        margin: 0;
-        color: #6b7e90;
-        font-size: 15px;
-        font-weight: 400;
-    }
-    #slide1 .label-gender .label {
-        font-size: 14px;
-        color: #6b7e90;
-        font-weight: 400;
-        float: right;
-        margin: 2px 6px 0px 6px;
-        font-family: 'Lato', sans-serif;
-    }
-    #slide1 .reg-form .item {
-        padding-left: 4px;
-    }
-    .hrline {
-        padding: 0 18px 0 56px;
-    }
-    .hrline hr {
-        margin: 0;
-        background-color: #dedede;
-    }
-    
+  ion-input.input.input-md {
+    border: 1px solid #ae7dbf;
+    border-radius: 6px;
+  }
 
-    //===================slide2 css
-    #slide2 .reg-form .list {
-        margin: 0px 0 25px;
-    }
-    #slide2 .checkbox-md{
-        margin-top:7px;
-    }
-    #slide2 .reg-form .item {
-        padding-left: 1px;
-    }
-    #slide2 .uimg {
-        margin-top: 19px;
-    }
-    #slide2 .label {
-        margin: 0;
-        color: #6b7e90;
-        font-size: 15px;
-        font-weight: 400;
-    }
-    #slide2 .text-input {
-        color: #000;
-        font-size: 16px;
-        font-weight: 100;
-    }
-    #slide2 .datetime {
-        padding: 0;
-    }
-    #slide2 .reg-form {
-        padding: 5px 0 10px;
-    }
-    .dobcustomgrid{
-        padding: 0 5px;
-    }
-    .dob {
-        color: #6b7e90;
-        font-size: 14.5px;
-        font-weight: 400;
-        margin-top: 9px;
-        float: left;
-    }
-    .dobrow {
-        padding: 0 12px 0 53px;
-        .input-wrapper{
-            justify-content: center;
-        }
-    }
-    .datetime {
-        padding: 0 8px 0 16px;
-    }
-    .datetime-text {
-        font-size: 16px;
-        line-height: 1.8em;
-        text-align: center;
-        border-bottom: 1px solid #9fa5bc;
-        color: #9fa5bc;
-    }
-    #slide2 .proceedbtn {
-        top: 88%;
-    }
+  .item-input-has-focus .label-md[floating],
+  .input-has-focus .label-md[floating] {
+    color: #ae7dbf; //label color when focusing
+  }
 
-    //==================  slide3 otp css
-    .otptext {
-        font-size: 13px;
-        color: #6b7e90;
-        font-weight: 400;
-        display: block;
-        line-height: 2;
-    }
-    .otpPhnNo {
-        font-size: 1.3em;
-        letter-spacing: 1px;
-        color: #6b7e90;
-        font-weight: 100;
-        line-height: 1.5;
-    }
-    .otpPhnNo svg {
-        fill: #6b7e90;
-        width: 15px;
-        height: 15px;
-    }
-    #slide3 .item {
-        padding-left: 0;
-    }
-    .padding10 {
-        padding: 10px;
-    }
-    #slide3 .proceedbtn {
-        top: 89%;
-    }
-    #slide3 .text-input{
-        text-align: center;
-    }
-    .footertext{
-        font-size: 13px;
-        color: #9c9ca6;
-        font-weight: 100;
-        font-family: 'Lato', sans-serif;
-    
-        .button{
-            text-transform: none;
-            font-family: 'Lato', sans-serif;
-            vertical-align: inherit;
-            font-weight: 500;
-        }
-    }
+  ion-label {
+    padding-left: 4px;
+    margin-top: 0 !important;
+  }
 
-    //================ slide4 avatar capture
-    span.otptext.pickimg {
-        margin-top: 5px;
-    }
-    #slide4 button {
-        background: transparent;
-    }
-    #slide4 .borderRight {
-        border-right: 1px solid #b8b8bf;
-        padding-right: 15px;
-    }
-    #slide4 .imgbtn {
-        padding-left: 15px;
-    }
-    #slide4 .margin0auto {
-        margin: 0 auto;
-    }
-    #slide4 .reg-form {
-        padding: 0;
-    }
+  input.text-input.text-input-md {
+    text-indent: 4px;
+  }
 
-    //=================slide5 progress bar circle
-    .item-inner {
-        border-bottom:0;
-    }
-  
-    .slide5-text {
-        font-size: 12.5px;
-        background: #ecf2f9;
-        padding: 9px;
-        margin: 0 30px;
-        border-radius: 30px;
-        font-family: 'Open Sans', sans-serif;
-    }
-    .profileimg {
-        background: white;
-        box-shadow: 0px 2px 23px rgba(0, 0, 0, 0.07);
-        width: 90px;
-        height: 90px;
-        overflow: visible;
-        border-radius: 50%;
-        position: relative;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        
-        img{
-            border-radius: 50%;
-            width:100%;
-            height:100%;
-        }
-        ion-fab {
-            position: absolute;
-            top: 8px;
-            right: -15px;
-        
-            .fab-md{
-                background: #fe4258;
-                box-shadow: 2px 0px 5px 3px rgba(245, 61, 61, 0.27);
-                width:27px;
-                height:27px;
-                ion-icon{
-                    font-size: 16px;
-                    padding-left: 2px;
-                    color:#ffffff;
-                }
-            }
-            .fab-ios{
-                background: #fa3264;
-                box-shadow: 2px 0px 5px 3px rgba(245, 61, 61, 0.27);
-                ion-icon{
-                    font-size: 25px;
-                }
-            }
-        }
-        
-    }
-    #slide5 .item.item-block .item-inner {
-        padding-right: 8px;
-        border-bottom: 0;
-    }
-    #slide5 .proceedbtn {
-        top: 76%;
-    }
-    .progress>div {
-        display: inline-block;
-        position: relative;
-        text-align: center;
-        color: #93A2AC;
-        font-family: Lato;
-        font-weight: 100;
-        margin: 2px 0 11px;
-    }
-    .progress>div:before {
-        content: attr(data-name);
-        position: absolute;
-        width: 100%;
-        bottom: -2rem;
-        font-weight: 400;
-    }
-    .progress>div:after {
-        content: attr(data-percent);
-        position: absolute;
-        width: 100%;
-        top: 3.7rem;
-        left: 0;
-        font-size: 2rem;
-        text-align: center;
-    }
-    .progress svg {
-        width: 9rem;
-        height: 9.5rem;
-    }
-    .progress svg:nth-child(2) {
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: rotate(-90deg);
-        -webkit-transform: rotate(-90deg);
-        -moz-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-    }
-    .progress svg:nth-child(2) path {
-        fill: none;
-        stroke-width: 25;
-        stroke-dasharray: 629;
-        stroke: rgba(255, 255, 255, 0.9);
-        -webkit-animation: load 10s;
-        -moz-animation: load 10s;
-        -o-animation: load 10s;
-        animation: load 10s;
-    }
-    @-webkit-keyframes load {
-        0% {
-            stroke-dashoffset: 0
-        }
-    }
-    @-moz-keyframes load {
-        0% {
-            stroke-dashoffset: 0
-        }
-    }
-    @keyframes load {
-        0% {
-            stroke-dashoffset: 0
-        }
-    }
+  .btn button {
+    padding: 0.5em 3em;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ae7dbf;
+    color: #ae7dbf;
+    font-weight: 600;
+    margin-top: 1.5em;
+    line-height: 14px;
+    font-size: 14px;
+  }
 
-    //===============slide6 css
-    #slide6 .reg-form {
-        background: url('../assets/images/bg.svg');
-        background-size: contain;
-    }
-   
-    #slide6 ion-icon.icon {
-        color: #ffffff;
-    }
-    #slide6 .item {
-        background: transparent;
-    }
-    #slide6 .item .item-inner {
-        padding-right: 8px;
-        border-bottom: none;
-    }
-    #slide6 .range {
-        padding: 0 35px 10px;
-    }
-    #slide6 .proceedbtn{
-        top:77%;
-    }
+  p.sign {
+    color: #3b3131;
+    font-size: 26px;
+    margin: 0 auto;
+  }
 
-    //==================================for ios(iphone) css
-    .content-ios .careregbkgrnd {
-        height: 200px;
-    }
-    .content-ios .proceedbtn {
-        top: 77%;
-        height: 40px;
-        width: 40px;
-    }
-    .content-ios #slide1{
-        .reg-form{
-            padding:5px 0;
-        }
-        .proceedbtn{
-            top:90%;
-        }
-        .gender{
-            padding-left: 42px;
-        }
-         
-    }
-    .content-ios #slide3 .proceedbtn {
-        top: 89.4%;
-    }
-    .content-ios #slide6 .proceedbtn {
-        top: 78%;
-    }
-    #slide3{
-        .item-ios.item-block .item-inner {
-            padding-right: 0;
-        }
-    }
-    .content-ios .careregbkgrnd .logo {
-        height: 40px;
-    }
-    .content-ios .reg-form .list {
-        margin: 10px 0;
-    }
-    .content-ios .urgen {
-        font-size: 13px;
-        margin-top: 2px;
-    }
-    .content-ios #slide1 .label {
-        margin:3px 3px 0;
-    }
-    .content-ios .ios-none {
-        display: none;
-    }
-    .content-ios #slide1 .label,
-    .content-ios #slide2 .label {
-        font-size: 13px;
-    }
-    .content-ios hr {
-        height: 1px;
-        background-color: #dedede;
-    }
-    //   radio css for ios start
-    .radio-ios .radio-icon {
-        margin-top: 0;
-    }
-    .radio-ios .radio-checked .radio-inner {
-        left: 3px;page-register {
-            //================global header for all slides=================//
-            .careregbkgrnd {
-                width: 100%;
-                height: 240px;
-                background: url('../assets/images/BG.png');
-                background-size: cover;
-                position: relative;
-                display: table;
-            }
-            .careregbkgrnd svg.logo {
-                // height: 45px;
-                display: table-cell;
-                vertical-align: middle;
-                // margin: 60px auto;
-                margin: 60px auto 0;
-                width: 13em;
-                height: 5em;
-            }
-            //   .carewave svg.waveimg {
-            //       position: absolute;
-            //       bottom: 0px;
-            //   }
-            .unbox {
-                position: relative;
-                //   padding-top: 13%;
-                padding-top: 75px;
-            }
-            .unboximg {
-                position: absolute;
-                margin: 0 auto;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                //   padding: 18px 0 20px;
-                width: 10em;
-                height: 6.8em;
-                padding: 0 9px 9px 0px;
-            }
-            .unbox span {
-                font-size: 17.5px;
-                color: #9c9ca6;
-                font-weight: 100;
-                font-family: 'Open Sans', sans-serif;
-            }
-        
-            //animated wave css
-            ::selection {
-                background-color: salmon;
-                color: white;
-            }
-            .parallax>use {
-                animation: move-forever 12s linear infinite;
-            }
-            .parallax>use:nth-child(1) {
-                animation-delay: -2s;
-            }
-            .parallax>use:nth-child(2) {
-                animation-delay: -2s;
-                animation-duration: 5s;
-            }
-            .parallax>use:nth-child(3) {
-                animation-delay: -4s;
-                animation-duration: 3s;
-            }
-            @keyframes move-forever {
-                0% {
-                    transform: translate(-90px, 0%);
-                }
-                100% {
-                    transform: translate(85px, 0%);
-                }
-            }
-            .editorial {
-                display: block;
-                width: 100%;
-                height: 10em;
-                max-height: 100vh;
-                margin: 0;
-                position: absolute;
-                bottom: 0px;
-            }
-            /*prevent many large-by-comparison ripples by shrinking the height*/
-            
-            @media (max-width: 50em) {
-                .editorial {
-                    height: 17vw;
-                    // height:100%;
-                }
-            }
-        
-            // ====================custom main ion-slides
-            .care_ion-slides {
-                height: auto;
-            }
-        
-            //=====================slide(1,2,3,4) css
-            ion-input{
-                font-family: 'Lato', sans-serif;
-            }
-            .slideing-cards {
-                padding: 38px 25px;
-                position: relative;
-            }
-            .reg-form {
-                border-radius: 15px;
-                position: relative;
-                //   box-shadow: 0 0 65px 6px #dceaf0;
-                box-shadow: 0 0 65px 6px #daedf5;
-                padding: 16px 0;
-            }
-            .reg-form .list {
-                margin: 10px 0 30px;
-            }
-            .reg-form ion-label {
-                margin: 15px 0 0;
-                font-weight: 100;
-                font-size: 15px;
-                color: #9d98a0;
-            }
-            img.top-shadow {
-                position: absolute;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                bottom: 100%;
-            }
-            img.bottom-shadow {
-                position: absolute;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                top: 100%;
-            }
-            .proceedbtn {
-                padding: 11px;
-                position: absolute;
-                margin: 0 auto;
-                left: 0;
-                right: 0;
-                // border: 1px solid #f4f4f4;
-                border: 1px solid #eceaea;
-                top: 89.4%;
-                // box-shadow: 0 0 32px 2px #cae8f0;
-                box-shadow: 0 0 32px 2px #d1edf5;
-                height: 45px;
-                width: 45px;
-            }
-            
-            .list .item-input:last-child {
-                border-bottom: none;
-            }
-            ion-icon.icon {
-                color: #17c4a8;
-            }
-            
-           
-            .margin0auto{
-                margin:0 auto;
-            }
-            //===================slide1 css\
-            #slide1 .reg-form .list {
-                margin: 5px 0 15px;
-            }
-            .gender{
-                padding-left:47px;
-            }
-            .urgen {
-                color: #6b7e90;
-                font-size: 15px;
-                font-family: 'Lato', sans-serif;
-                float: left;
-                padding-top: 2px;
-            }
-            .care-grid {
-                border-bottom: 1px solid #e4e4e4;
-            }
-            .radio .radio-icon {
-                left: 0;
-                top: 3px;
-                margin: 0;
-                border-radius: 50%;
-                position: relative;
-                display: block;
-                width: 17px;
-                height: 17px;
-                border-width: 3px;
-                border-style: solid;
-                // border-color: #787878;
-                border-color: rgba(51, 197, 193, 0.61);
-            }
-            .radio .radio-checked {
-                border-color: #6baced;
-            }
-            .radio .radio-checked .radio-inner {
-                left: 2px;
-                top: 2px;
-                width: 7px;
-                height: 7px;
-            }
-            #slide1 .uimg {
-                margin-top: 23px;
-            }
-            #slide1 .label {
-                margin: 0;
-                color: #6b7e90;
-                font-size: 15px;
-                font-weight: 400;
-            }
-            #slide1 .label-gender .label {
-                font-size: 14px;
-                color: #6b7e90;
-                font-weight: 400;
-                float: right;
-                margin: 2px 6px 0px 6px;
-                font-family: 'Lato', sans-serif;
-            }
-            #slide1 .reg-form .item {
-                padding-left: 4px;
-            }
-            .hrline {
-                padding: 0 18px 0 56px;
-            }
-            .hrline hr {
-                margin: 0;
-                background-color: #dedede;
-            }
-            
-        
-            //===================slide2 css
-            #slide2 .reg-form .list {
-                margin: 0px 0 25px;
-            }
-            #slide2 .checkbox-md{
-                margin-top:7px;
-            }
-            #slide2 .reg-form .item {
-                padding-left: 1px;
-            }
-            #slide2 .uimg {
-                margin-top: 19px;
-            }
-            #slide2 .label {
-                margin: 0;
-                color: #6b7e90;
-                font-size: 15px;
-                font-weight: 400;
-            }
-            #slide2 .text-input {
-                color: #000;
-                font-size: 16px;
-                font-weight: 100;
-            }
-            #slide2 .datetime {
-                padding: 0;
-            }
-            #slide2 .reg-form {
-                padding: 5px 0 10px;
-            }
-            .dobcustomgrid{
-                padding: 0 5px;
-            }
-            .dob {
-                color: #6b7e90;
-                font-size: 14.5px;
-                font-weight: 400;
-                margin-top: 9px;
-                float: left;
-            }
-            .dobrow {
-                padding: 0 12px 0 53px;
-                .input-wrapper{
-                    justify-content: center;
-                }
-            }
-            .datetime {
-                padding: 0 8px 0 16px;
-            }
-            .datetime-text {
-                font-size: 16px;
-                line-height: 1.8em;
-                text-align: center;
-                border-bottom: 1px solid #9fa5bc;
-                color: #9fa5bc;
-            }
-            #slide2 .proceedbtn {
-                top: 88%;
-            }
-        
-            //==================  slide3 otp css
-            .otptext {
-                font-size: 13px;
-                color: #6b7e90;
-                font-weight: 400;
-                display: block;
-                line-height: 2;
-            }
-            .otpPhnNo {
-                font-size: 1.3em;
-                letter-spacing: 1px;
-                color: #6b7e90;
-                font-weight: 100;
-                line-height: 1.5;
-            }
-            .otpPhnNo svg {
-                fill: #6b7e90;
-                width: 15px;
-                height: 15px;
-            }
-            #slide3 .item {
-                padding-left: 0;
-            }
-            .padding10 {
-                padding: 10px;
-            }
-            #slide3 .proceedbtn {
-                top: 89%;
-            }
-            #slide3 .text-input{
-                text-align: center;
-            }
-            .footertext{
-                font-size: 13px;
-                color: #9c9ca6;
-                font-weight: 100;
-                font-family: 'Lato', sans-serif;
-            
-                .button{
-                    text-transform: none;
-                    font-family: 'Lato', sans-serif;
-                    vertical-align: baseline;
-                    font-weight: 500;
-                }
-            }
-        
-            //================ slide4 avatar capture
-            span.otptext.pickimg {
-                margin-top: 5px;
-            }
-            #slide4 button {
-                background: transparent;
-            }
-            #slide4 .borderRight {
-                border-right: 1px solid #b8b8bf;
-                padding-right: 15px;
-            }
-            #slide4 .imgbtn {
-                padding-left: 15px;
-            }
-            #slide4 .margin0auto {
-                margin: 0 auto;
-            }
-            #slide4 .reg-form {
-                padding: 0;
-            }
-        
-            //=================slide5 progress bar circle
-            .item-inner {
-                border-bottom:0;
-            }
-          
-            .slide5-text {
-                font-size: 12.5px;
-                background: #ecf2f9;
-                padding: 9px;
-                margin: 0 30px;
-                border-radius: 30px;
-                font-family: 'Open Sans', sans-serif;
-            }
-            .profileimg {
-                background: white;
-                box-shadow: 0px 2px 23px rgba(0, 0, 0, 0.07);
-                width: 90px;
-                height: 90px;
-                overflow: visible;
-                border-radius: 50%;
-                position: relative;
-                margin: 0 auto;
-                left: 0;
-                right: 0;
-                
-                img{
-                    border-radius: 50%;
-                    width:100%;
-                    height:100%;
-                }
-                ion-fab {
-                    position: absolute;
-                    top: 8px;
-                    right: -15px;
-                
-                    .fab-md{
-                        background: #fe4258;
-                        box-shadow: 2px 0px 5px 3px rgba(245, 61, 61, 0.27);
-                        width:27px;
-                        height:27px;
-                        ion-icon{
-                            font-size: 16px;
-                            padding-left: 2px;
-                            color:#ffffff;
-                        }
-                    }
-                    .fab-ios{
-                        background: #fa3264;
-                        box-shadow: 2px 0px 5px 3px rgba(245, 61, 61, 0.27);
-                        ion-icon{
-                            font-size: 25px;
-                        }
-                    }
-                }
-                
-            }
-            #slide5 .item.item-block .item-inner {
-                padding-right: 8px;
-                border-bottom: 0;
-            }
-            #slide5 .proceedbtn {
-                top: 76%;
-            }
-            .progress>div {
-                display: inline-block;
-                position: relative;
-                text-align: center;
-                color: #93A2AC;
-                font-family: Lato;
-                font-weight: 100;
-                margin: 2px 0 11px;
-            }
-            .progress>div:before {
-                content: attr(data-name);
-                position: absolute;
-                width: 100%;
-                bottom: -2rem;
-                font-weight: 400;
-            }
-            .progress>div:after {
-                content: attr(data-percent);
-                position: absolute;
-                width: 100%;
-                top: 3.7rem;
-                left: 0;
-                font-size: 2rem;
-                text-align: center;
-            }
-            .progress svg {
-                width: 9rem;
-                height: 9.5rem;
-            }
-            .progress svg:nth-child(2) {
-                position: absolute;
-                left: 0;
-                top: 0;
-                transform: rotate(-90deg);
-                -webkit-transform: rotate(-90deg);
-                -moz-transform: rotate(-90deg);
-                -ms-transform: rotate(-90deg);
-            }
-            .progress svg:nth-child(2) path {
-                fill: none;
-                stroke-width: 25;
-                stroke-dasharray: 629;
-                stroke: rgba(255, 255, 255, 0.9);
-                -webkit-animation: load 10s;
-                -moz-animation: load 10s;
-                -o-animation: load 10s;
-                animation: load 10s;
-            }
-            @-webkit-keyframes load {
-                0% {
-                    stroke-dashoffset: 0
-                }
-            }
-            @-moz-keyframes load {
-                0% {
-                    stroke-dashoffset: 0
-                }
-            }
-            @keyframes load {
-                0% {
-                    stroke-dashoffset: 0
-                }
-            }
-        
-            //===============slide6 css
-            #slide6 .reg-form {
-                background: url('../assets/images/bg.svg');
-                background-size: contain;
-            }
-           
-            #slide6 ion-icon.icon {
-                color: #ffffff;
-            }
-            #slide6 .item {
-                background: transparent;
-            }
-            #slide6 .item .item-inner {
-                padding-right: 8px;
-                border-bottom: none;
-            }
-            #slide6 .range {
-                padding: 0 35px 10px;
-            }
-            #slide6 .proceedbtn{
-                top:77%;
-            }
-        
-            //==================================for ios(iphone) css
-            .content-ios .careregbkgrnd {
-                height: 200px;
-            }
-            .content-ios .proceedbtn {
-                top: 77%;
-                height: 40px;
-                width: 40px;
-            }
-            .content-ios #slide1{
-                .reg-form{
-                    padding:5px 0;
-                }
-                .proceedbtn{
-                    top:90%;
-                }
-                .gender{
-                    padding-left: 42px;
-                }
-                 
-            }
-            .content-ios #slide3 .proceedbtn {
-                top: 89.4%;
-            }
-            .content-ios #slide6 .proceedbtn {
-                top: 78%;
-            }
-            #slide3{
-                .item-ios.item-block .item-inner {
-                    padding-right: 0;
-                }
-            }
-            .content-ios .careregbkgrnd .logo {
-                height: 40px;
-            }
-            .content-ios .reg-form .list {
-                margin: 10px 0;
-            }
-            .content-ios .urgen {
-                font-size: 13px;
-                margin-top: 2px;
-            }
-            .content-ios #slide1 .label {
-                margin:3px 3px 0;
-            }
-            .content-ios .ios-none {
-                display: none;
-            }
-            .content-ios #slide1 .label,
-            .content-ios #slide2 .label {
-                font-size: 13px;
-            }
-            .content-ios hr {
-                height: 1px;
-                background-color: #dedede;
-            }
-            //   radio css for ios start
-            .radio-ios .radio-icon {
-                margin-top: 0;
-            }
-            .radio-ios .radio-checked .radio-inner {
-                left: 3px;
-                top: 0;
-                width: 5px;
-                height: 9px;
-            }
-            //   radio css for ios end
-        
-            //second slide
-            .content-ios .datetime-text {
-                font-size: 13px;
-            }
-            .content-ios .dob {
-                font-size: 12.5px;
-                margin-top: 9px;
-            }
-            .content-ios #slide2 {
-                .proceedbtn {
-                  top: 90%;
-                }
-                .footertext{
-                    font-size: 12px;
-                }
-                .footertext .button{
-                    font-size: 12px;
-                }
-                .checkbox-ios{
-                  padding-top:17px;
-                }
-            }
-        
-            //6th slide 
-            .content-ios #slide6 .deletebtn {
-               top: 7px;
-               right: 89px;
-            }
-            #slide5 .item-ios.item-block .item-inner {
-                padding-right: 8px;
-                border-bottom: 0;
-            }
-           
-        
-        
-            //for ipad responsive
-            @media screen and (max-width: 1024px) and (min-width: 768px) {
-                .content-ios .careregbkgrnd {
-                    height: 370px;
-                }
-                .careregbkgrnd svg.logo {
-                    margin: 80px auto 0;
-                    width: 16em;
-                    height: 60px !important;
-                }
-        
-            }
-        }
-        
-        top: 0;
-        width: 5px;
-        height: 9px;
-    }
-    //   radio css for ios end
+  p.cont {
+    color: #3b3131;
+    font-size: 14px;
+    margin: 12px 0 0 0;
+  }
 
-    //second slide
-    .content-ios .datetime-text {
-        font-size: 13px;
-    }
-    .content-ios .dob {
-        font-size: 12.5px;
-        margin-top: 9px;
-    }
-    .content-ios #slide2 {
-        .proceedbtn {
-          top: 90%;
-        }
-        .footertext{
-            font-size: 12px;
-        }
-        .footertext .button{
-            font-size: 12px;
-        }
-        .checkbox-ios{
-          padding-top:17px;
-        }
-    }
+  .step {
+    height: 20px;
+    width: 20px;
+    margin: 0 11px;
+    position: relative;
+    border: 1px solid #ae7dbf;
+    border-radius: 50%;
+    display: inline-block;
+  }
 
-    //6th slide 
-    .content-ios #slide6 .deletebtn {
-       top: 7px;
-       right: 89px;
-    }
-    #slide5 .item-ios.item-block .item-inner {
-        padding-right: 8px;
-        border-bottom: 0;
-    }
-   
+  .step:after {
+    content: '';
+    height: 1px;
+    width: 21px;
+    position: absolute;
+    top: 9px;
+    left: 23px;
+    background: #161f1f66;
+  }
+
+  .step:last-child:after {
+    width: 0 !important;
+  }
+
+  .step.active {
+    background-color: #ae7dbf;
+  }
+
+  .step.active:before {
+    content: '\2713';
+    position: absolute;
+    top: -2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #fff;
+  }
 
 
-    //for ipad responsive
-    @media screen and (max-width: 1024px) and (min-width: 768px) {
-        .content-ios .careregbkgrnd {
-            height: 370px;
-        }
-        .careregbkgrnd svg.logo {
-            margin: 80px auto 0;
-            width: 16em;
-            height: 60px !important;
-        }
 
-    }
+  //   css for otp only
+  #divOuter {
+    width: 240px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  #divInner {
+    left: 0;
+    position: sticky !important;
+  }
+
+  #partitioned {
+    padding-left: 12px;
+    letter-spacing: 37px;
+    border: 0;
+    color: #ae7dbf;
+    background-image: linear-gradient(to left, gray 70%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 50px 2px;
+    background-repeat: repeat-x;
+    background-position-x: 35px;
+    width: 275px;
+    min-width: 275px;
+    font-size: 21px;
+
+  }
+
+  p.otp {
+    margin-bottom: 10px;
+    color: #ae7dbf;
+    text-transform: uppercase;
+  }
+
+  //  end css for otp only
+
+
+
+
+  // image slide
+
+  .img img {
+    height: 100px;
+    width: 100px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    padding: 2px;
+  }
+
+  .img p {
+    color: gray;
+    font-size: 13px;
+  }
+
+  .tnc {
+    // position: absolute;
+    bottom: 7%;
+    font-size: 12px;
+    vertical-align: middle;
+    color: #3c3535;
+    margin-left: 2em;
+  }
+
+  ion-checkbox.checkbox.checkbox-md {
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  .opacity{
+      opacity: 0.5;
+  }
+  //  end image slide
+  .hoverbold:active{
+    font-weight: 900;
+    opacity: 0.8;
+  }
+
 }
