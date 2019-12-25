@@ -27,21 +27,8 @@ declare var SMS: any;
 })
 export class NewsignupPage {
 
-
-  public isChecked: boolean = false;
-  public isDone: any;
-  currentOTP: number;
-  data: any = {};
-  options: InAppBrowserOptions =
-    {
-      location: 'no',
-      clearcache: 'yes',
-      toolbar: 'no',
-      closebuttoncaption: 'back',
-      hardwareback: 'no',
-      zoom: "no"
-    };
-
+ 
+  public loader:boolean=false;
 
   @ViewChild(Slides) slides: Slides;
 
@@ -80,10 +67,11 @@ export class NewsignupPage {
     this.slides.lockSwipes(false);
     this.slides.slideTo(index, 250);
     this.slides.lockSwipes(true);
-
-
   }
 
+  finish(){
+this.loader=!this.loader
+  }
 
 
 }

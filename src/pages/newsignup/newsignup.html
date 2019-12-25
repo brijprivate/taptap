@@ -238,7 +238,7 @@
 
 
     <div text-center class="btn">
-      <button class="opacity" (click)="Finish()"> Finish</button>
+      <button class="opacity" (click)="finish()"> Finish</button>
     </div>
 
 
@@ -255,4 +255,11 @@
   </ion-slides>
 
 
+  <div class="loader" *ngIf="loader">
+    <div class="loadimg">
+      <img src="../../assets/images/loader.gif" alt="">
+     <p > please wait...</p>
+      <p ><small>your profile is getting created</small> </p>
+    </div>
+  </div>
 </ion-content>
