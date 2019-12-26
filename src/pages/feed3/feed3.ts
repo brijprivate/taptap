@@ -6,6 +6,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { NfctagProvider } from './../../providers/nfctag/nfctag';
 import { LoginsignupProvider } from './../../providers/loginsignup/loginsignup';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the Feed3Page page.
@@ -44,13 +45,14 @@ export class Feed3Page {
   public googleNearby: any = [];
   public toggle_text = "hide nearby"
   public companies: any = [];
+  public lazy: boolean = true;
 
   public query: any = {
     // type: 'public',
     userId: localStorage.getItem('userId'),
   };
 
-  constructor(private launchNavigator: LaunchNavigator, public nativeGeocoder: NativeGeocoder, public service: NfctagProvider, public http: LoginsignupProvider,
+  constructor(private storage: Storage, private launchNavigator: LaunchNavigator, public nativeGeocoder: NativeGeocoder, public service: NfctagProvider, public http: LoginsignupProvider,
     public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
     let _base = this;
     _base.http.getallcategories()
@@ -62,6 +64,23 @@ export class Feed3Page {
       }, function (error) {
 
       })
+  }
+
+  loadlazy() {
+    let _base = this;
+    let imgs = (document.querySelectorAll('img'));
+    // imgs.forEach(imga => {
+    let img = (<HTMLImageElement>imgs[4])
+    console.log()
+    let src = img.src;
+    img.src = src;
+    img.onload = function () {
+      // alert('Image loaded')
+      console.log('Loaded')
+      img.src = src.replace("&select=thumbnail", "")
+    }
+    // });
+
   }
 
   getCetgoryNameById(categoryId: String) {
@@ -121,6 +140,14 @@ export class Feed3Page {
   showFeeds() {
     let _base = this;
     return new Promise(function (resolve, reject) {
+
+      if (_base.storage.get('feeds')) {
+        _base.storage.get('feeds')
+          .then((feeds) => {
+            _base.feeds = feeds;
+          })
+      }
+
       _base.getmyfeeds()
         .then(function (success: any) {
           // console.log(success)
@@ -128,6 +155,9 @@ export class Feed3Page {
             let date = new Date(feed.createdDate)
             let dateString = date.toLocaleDateString()
             feed.createdDate = dateString;
+            feed.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0]
+            feed.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0] + "&select=thumbnail"
+
             let favourites = feed.favourites;
             if (favourites.includes(localStorage.getItem('userId'))) {
               feed.like = true
@@ -141,9 +171,17 @@ export class Feed3Page {
             }
           });
 
+          _base.storage.set("feeds", _base.feeds)
+
           resolve(success)
 
         }, function (error) {
+          if (_base.storage.get('feeds')) {
+            _base.storage.get('feeds')
+              .then((feeds) => {
+                _base.feeds = feeds;
+              })
+          }
           reject(error)
         });
     })
@@ -376,13 +414,29 @@ export class Feed3Page {
 
   getcompanies() {
     let _base = this;
+    if (_base.storage.get('companies')) {
+      _base.storage.get('companies')
+        .then((companies) => {
+          _base.companies = companies;
+        })
+    }
     _base.service.getcompanies()
       .then(function (companies: any) {
-        _base.companies = companies.result.filter(company => {
-          if (company.display_picture && company.discount) {
-            return true
-          }
-        });
+        _base.companies = companies.result
+          .filter(company => {
+            if (company.display_picture && company.discount) {
+              return true
+            }
+          })
+        _base.companies = _base.companies.map(company => {
+          console.log(company)
+          company.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture
+          company.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture + "&select=thumbnail"
+          return company
+        })
+        _base.loadlazy()
+        console.log("=========================", _base.companies)
+        _base.storage.set('companies', _base.companies);
       });
   }
 
