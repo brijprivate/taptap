@@ -39,6 +39,7 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { ElementsProvider } from '../providers/elements/elements';
 
 const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} };
 
@@ -101,6 +102,7 @@ const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} }
     LocationTrackerProvider,
     LaunchNavigator,
     Downloader,
+    ElementsProvider,
     // Sim,
     // Keyboard
     // Diagnostic
