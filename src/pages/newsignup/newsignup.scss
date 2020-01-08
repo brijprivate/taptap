@@ -48,8 +48,15 @@ page-newsignup {
   ion-input.input.input-md {
     border: 1px solid #ae7dbf;
     border-radius: 6px;
-  }
+    padding: 5px 0;
 
+  }
+  .item-md.item-input.input-has-focus .item-inner {
+    box-shadow: none;
+}
+  .label-md[floating] {
+    transform: translate3d(0, 33px, 0);
+  }
   .item-input-has-focus .label-md[floating],
   .input-has-focus .label-md[floating] {
     color: #ae7dbf; //label color when focusing

@@ -273,7 +273,8 @@ export class LoginPage {
 
 
   signup() {
-    this.navCtrl.push('SignupPage');
+    // this.navCtrl.push('SignupPage');
+    this.navCtrl.push('NewsignupPage');
   }
 
   checkpattern(email) {

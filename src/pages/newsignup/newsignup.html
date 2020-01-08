@@ -4,7 +4,7 @@
 
 
   <ion-slides>
-<!-- slide 1 -->
+    <!-- slide 1 -->
     <ion-slide>
 
       <div text-left class="unbox">
@@ -15,14 +15,14 @@
         <p class="sign">Sign Up</p>
         <p class="cont">to continue</p>
       </div>
-   <div class="progress">
-    <div style="text-align:center;margin-top:15px;">
-      <span class="step active"></span>
-      <span class="step "></span>
-      <span class="step"></span>
-      <span class="step"></span>
-    </div>
-   </div>
+      <div class="progress">
+        <div style="text-align:center;margin-top:15px;">
+          <span class="step active"></span>
+          <span class="step "></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+      </div>
 
       <ion-grid>
         <ion-row>
@@ -30,7 +30,7 @@
           <ion-col col-10>
             <ion-item>
               <ion-label floating class="phn-no"> Full Name</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="name"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col col-1> </ion-col>
@@ -42,7 +42,7 @@
           <ion-col col-10>
             <ion-item>
               <ion-label floating class="phn-no"> Email</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="email"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col col-1> </ion-col>
@@ -52,7 +52,7 @@
           <ion-col col-10>
             <ion-item>
               <ion-label floating class="phn-no"> Password</ion-label>
-              <ion-input type="Password"></ion-input>
+              <ion-input type="Password" [(ngModel)]="password"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col col-1> </ion-col>
@@ -62,7 +62,7 @@
           <ion-col col-10>
             <ion-item>
               <ion-label floating class="phn-no"> Confirm Password</ion-label>
-              <ion-input type="Password"></ion-input>
+              <ion-input type="Password" [(ngModel)]="cpassword"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col col-1> </ion-col>
@@ -70,7 +70,7 @@
 
 
         <div text-center class="btn">
-          <button (click)="nextform(1)"> Next</button>
+          <button (click)="checkval(1)"> Next</button>
         </div>
 
       </ion-grid>
@@ -82,7 +82,7 @@
 
 
 
-<!-- slide 2 -->
+    <!-- slide 2 -->
 
     <ion-slide>
 
@@ -94,33 +94,39 @@
         <p class="sign">Sign Up</p>
         <p class="cont">to continue</p>
       </div>
-   <div class="progress">
-    <div style="text-align:center;margin-top:15px;">
-      <span class="step active"></span>
-      <span class="step active"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-    </div>
-   </div>
+      <div class="progress">
+        <div style="text-align:center;margin-top:15px;">
+          <span class="step active"></span>
+          <span class="step active"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+      </div>
 
       <ion-grid>
         <ion-row>
           <ion-col col-1> </ion-col>
-          <ion-col col-10>
+          <ion-col col-3 style="    padding: 5px 0;">
             <ion-item>
+              <ion-label floating class="phn-no">code</ion-label>
+              <ion-input type="tel" text-center [(ngModel)]="country_code">+</ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-7>
+            <ion-item no-padding>
               <ion-label floating class="phn-no"> Mobile No</ion-label>
-              <ion-input type="tel"></ion-input>
+              <ion-input type="tel" [(ngModel)]="phonenumber"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col col-1> </ion-col>
         </ion-row>
 
 
-     
+
 
 
         <div text-center class="btn">
-          <button (click)="nextform(2)"> Next</button>
+          <button (click)="getotp(2)"> Next</button>
         </div>
 
       </ion-grid>
@@ -129,7 +135,7 @@
 
 
     </ion-slide>
- 
+
 
     <!-- slide 3 -->
 
@@ -146,43 +152,42 @@
         <p class="sign">Sign Up</p>
         <p class="cont">to continue</p>
       </div>
-   <div class="progress">
-    <div style="text-align:center;margin-top:15px;">
-      <span class="step active"></span>
-      <span class="step active"></span>
-      <span class="step active"></span>
-      <span class="step"></span>
-    </div>
-   </div>
+      <div class="progress">
+        <div style="text-align:center;margin-top:15px;">
+          <span class="step active"></span>
+          <span class="step active"></span>
+          <span class="step active"></span>
+          <span class="step"></span>
+        </div>
+      </div>
 
       <ion-grid>
         <ion-row>
           <ion-col col-1> </ion-col>
           <ion-col col-10>
 
-        
+
 
             <p text-center class="otp">Otp</p>
             <div class="input">
               <div id="divOuter">
                 <div id="divInner">
-                  <input id="partitioned" type="tel"  maxlength="5"
-                    />
+                  <input id="partitioned" type="tel" maxlength="5" [(ngModel)]="code" />
                 </div>
               </div>
-        
-        
+
+
             </div>
           </ion-col>
           <ion-col col-1> </ion-col>
         </ion-row>
 
 
-     
+
 
 
         <div text-center class="btn">
-          <button (click)="nextform(3)"> Next</button>
+          <button (click)="newsignup(3)"> Next</button>
         </div>
 
       </ion-grid>
@@ -191,64 +196,64 @@
 
 
     </ion-slide>
- 
-<!-- slide 4 -->
+
+    <!-- slide 4 -->
 
 
 
-<ion-slide>
+    <ion-slide>
 
-  <div text-left class="unbox">
-    <img src="../../assets/images/Logo_after.png" height="60px" alt="">
+      <div text-left class="unbox">
+        <img src="../../assets/images/Logo_after.png" height="60px" alt="">
 
-  </div>
-  <div text-center class="header">
-    <p class="sign">Sign Up</p>
-    <p class="cont">to continue</p>
-  </div>
-<div class="progress">
-<div style="text-align:center;margin-top:15px;">
-  <span class="step active"></span>
-  <span class="step active"></span>
-  <span class="step active"></span>
-  <span class="step active"></span>
-</div>
-</div>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col col-1> </ion-col>
-      <ion-col col-10>
-
-        <div class="img">
-          <p>Upload image</p>
-
-          <img src="../../assets/images/avatar.png" alt="">
-          <p><small class="hoverbold">Maybe later</small></p>
+      </div>
+      <div text-center class="header">
+        <p class="sign">Sign Up</p>
+        <p class="cont">to continue</p>
+      </div>
+      <div class="progress">
+        <div style="text-align:center;margin-top:15px;">
+          <span class="step active"></span>
+          <span class="step active"></span>
+          <span class="step active"></span>
+          <span class="step active"></span>
         </div>
-      </ion-col>
-      <ion-col col-1> </ion-col>
-    </ion-row>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-1> </ion-col>
+          <ion-col col-10>
+
+            <div class="img">
+              <p>Upload image</p>
+
+              <img src="../../assets/images/avatar.png" alt="">
+              <p><small class="hoverbold">Maybe later</small></p>
+            </div>
+          </ion-col>
+          <ion-col col-1> </ion-col>
+        </ion-row>
 
 
-    <div class="tnc">
-      <ion-checkbox></ion-checkbox>
-      By Signing up, I accept the <strong class="hoverbold">Terms and Conditions</strong>
-    </div>
+        <div class="tnc">
+          <ion-checkbox></ion-checkbox>
+          By Signing up, I accept the <strong class="hoverbold">Terms and Conditions</strong>
+        </div>
 
 
-    <div text-center class="btn">
-      <button class="opacity" (click)="finish()"> Finish</button>
-    </div>
-
-
-
-  </ion-grid>
+        <div text-center class="btn">
+          <button class="opacity" (click)="finish()"> Finish</button>
+        </div>
 
 
 
+      </ion-grid>
 
-</ion-slide>
+
+
+
+    </ion-slide>
 
 
 
@@ -258,8 +263,8 @@
   <div class="loader" *ngIf="loader">
     <div class="loadimg">
       <img src="../../assets/images/loader.gif" alt="">
-     <p > please wait...</p>
-      <p ><small>your profile is getting created</small> </p>
+      <p> please wait...</p>
+      <p><small>your profile is getting created</small> </p>
     </div>
   </div>
 </ion-content>
