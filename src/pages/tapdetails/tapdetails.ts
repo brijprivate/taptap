@@ -15,7 +15,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { Downloader, NotificationVisibility, DownloadRequest } from '@ionic-native/downloader';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { HomePage } from '../home/home';
-import { SearchPage } from '../search/search';
+// import { SearchPage } from '../search/search';
 import { TaptapPage } from '../taptap/taptap';
 import { DashboardPage } from '../dashboard/dashboard';
 
