@@ -274,6 +274,7 @@ export class LoginPage {
 
   signup() {
     this.navCtrl.push('SignupPage');
+    // this.navCtrl.push('NewsignupPage');
   }
 
   checkpattern(email) {
@@ -346,6 +347,15 @@ export class LoginPage {
       }
       else if (_base.countryCode == 'no') {
         _base.country_code = "47";
+      }
+      else if (_base.countryCode == 'zaf') {
+        _base.country_code = "27";
+      }
+      else if (_base.countryCode == 'nga') {
+        _base.country_code = "234";
+      }
+      else if (_base.countryCode == 'sle') {
+        _base.country_code = "232";
       }
 
     }, function (error) {
