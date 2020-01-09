@@ -108,9 +108,9 @@ export class MyApp {
       this.rootPage = "DashboardPage";
     } else {
       localStorage.setItem("userId", "");
-      // this.rootPage = 'SignupPage';
+      this.rootPage = 'SignupPage';
       // this.rootPage = 'NewsignupPage';
-      this.rootPage = 'LoginPage';
+      // this.rootPage = 'LoginPage';
 
     }
   }
