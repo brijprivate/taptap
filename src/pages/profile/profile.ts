@@ -73,7 +73,10 @@ export class ProfilePage {
       // this.getprofiledata();
     }
   }
-
+  goto(page){
+    console.log(page)
+    this.navCtrl.push(page)
+  }
   ionViewDidEnter() {
     let _base = this;
     this.userId = localStorage.getItem("userId");

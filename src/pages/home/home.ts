@@ -559,7 +559,10 @@ imageExists(url, callback) {
   img.onerror = function () { callback(false); };
   img.src = url;
 }
-
+goto(page){
+  console.log(page)
+  this.navCtrl.push(page)
+}
 //Tap on product....
 tapItem() {
   let _base = this;
