@@ -40,7 +40,7 @@ export class PairdevicePage {
     public loading: LoadingController,
     public nfctagpro: NfctagProvider,
     public sharedservice: SharedserviceProvider,
-    private toast: ToastController, ) {
+    private toast: ToastController ) {
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
       console.log("network status------------------>>>>>>", value);

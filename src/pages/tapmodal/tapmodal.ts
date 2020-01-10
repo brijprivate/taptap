@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, ViewController } from 'ionic-angular';
 import { Ndef, NFC } from '@ionic-native/nfc';
 import { Subscription } from 'rxjs/Rx';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
@@ -35,6 +35,7 @@ export class TapmodalPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     public nfc: NFC,
     public ndef: Ndef,
     private nativeGeocoder: NativeGeocoder,
@@ -183,10 +184,133 @@ export class TapmodalPage {
         _base.navCtrl.push('TapdetailsPage', success.result);
 
 
+      } else if (success.message == 'NOT PAIRED') {
+        // if device is not paired
+        _base.navCtrl.pop();
+        _base.devicepair_confirmation(success);
+
       }
     }, function (err) {
       console.log(err);
       loader.dismiss();
+    })
+  }
+
+
+  devicepair_confirmation(success: any) {
+    let _base = this;
+    let alert = this.alertCtrl.create({
+      title: 'Pair this ' + success.deviceInfo.type,
+      message: 'This ' + success.deviceInfo.type + ' is not paired. Please pair the ' + success.deviceInfo.type + ' to use it.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Continue',
+          handler: () => {
+            console.log('Buy clicked');
+            _base.paircode_prompt(success.deviceInfo);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+
+  paircode_prompt(device: any) {
+    let _base = this;
+    let alert = this.alertCtrl.create({
+      title: 'Pairing Code',
+      inputs: [
+        {
+          name: 'code',
+          placeholder: 'Pairing Code'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Pair',
+          handler: data => {
+            if (data.code) {
+              // got code
+              _base.pairDevice(device.nfc_id, data.code)
+            } else {
+              // no code
+
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  pairDevice(nfc_id: String, pair_code) {
+    let _base = this;
+    let loader = this.loading.create({
+      content: "Please wait..."
+    });
+    loader.present();
+    let pairdata = {
+      nfc_id: nfc_id,
+      secret_code: pair_code,
+      owner: this.userId
+    }
+    this.nfctagProvider.pairDevice(pairdata).then(function (success: any) {
+      console.log(success);
+      loader.dismiss();
+      if (success.error) {
+        alert(success.message)
+      } else {
+        // alert('Device paired successfully')
+        let showtoast = this.toast.create({
+          message: "Device paired successfully",
+          duration: 4000,
+          position: "bottom",
+          showCloseButton: true,
+          closeButtonText: "OK"
+        })
+        showtoast.present();
+        // _base.navCtrl.pop();
+        // _base.navCtrl.setRoot('ProfilePage');
+        if (success.result.type == 'Keyring' || success.result.type == 'card') {
+          _base.setdefault(success.result._id)
+        }
+      }
+    }, function (err) {
+      console.log(err);
+      alert(JSON.parse(err._body).message)
+      loader.dismiss();
+    })
+  }
+
+  setdefault(deviceID: String) {
+    let _base = this;
+    let data = {
+      deviceId: deviceID,
+      is_active: true
+    }
+    console.log(data);
+    this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
+      console.log(success);
+      if (success.error) {
+      } else {
+      }
+    }, function (err) {
+      console.log(err);
     })
   }
 
