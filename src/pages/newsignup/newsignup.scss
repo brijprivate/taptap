@@ -1,0 +1,217 @@
+page-newsignup {
+
+  // loader\
+
+  .loader{
+    position: fixed;
+    background: #0000009e;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    .loadimg{
+      background: #fff;
+      border-radius: 5px;
+      text-align: center;
+      padding: 2em;
+      img{
+        height: 100px;
+        margin: 1em;      }
+      p{
+        margin: 3px auto;
+      }
+      
+    }
+  }
+ 
+  //  end loader
+  .unbox img {
+    height: 60px;
+    margin: 1.5em;
+  }
+
+  .slide-zoom {
+    height: 100%;
+  }
+
+  .item-inner {
+    border-bottom: none !important;
+  }
+
+  ion-input.input.input-md {
+    border: 1px solid #ae7dbf;
+    border-radius: 6px;
+    padding: 5px 0;
+
+  }
+  .item-md.item-input.input-has-focus .item-inner {
+    box-shadow: none;
+}
+  .label-md[floating] {
+    transform: translate3d(0, 33px, 0);
+  }
+  .item-input-has-focus .label-md[floating],
+  .input-has-focus .label-md[floating] {
+    color: #ae7dbf; //label color when focusing
+  }
+
+  ion-label {
+    padding-left: 4px;
+    margin-top: 0 !important;
+  }
+
+  input.text-input.text-input-md {
+    text-indent: 4px;
+  }
+
+  .btn button {
+    padding: 0.5em 3em;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ae7dbf;
+    color: #ae7dbf;
+    font-weight: 600;
+    margin-top: 1.5em;
+    line-height: 14px;
+    font-size: 14px;
+  }
+
+  p.sign {
+    color: #3b3131;
+    font-size: 26px;
+    margin: 0 auto;
+  }
+
+  p.cont {
+    color: #3b3131;
+    font-size: 14px;
+    margin: 12px 0 0 0;
+  }
+
+  .step {
+    height: 20px;
+    width: 20px;
+    margin: 0 11px;
+    position: relative;
+    border: 1px solid #ae7dbf;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .step:after {
+    content: '';
+    height: 1px;
+    width: 21px;
+    position: absolute;
+    top: 9px;
+    left: 23px;
+    background: #161f1f66;
+  }
+
+  .step:last-child:after {
+    width: 0 !important;
+  }
+
+  .step.active {
+    background-color: #ae7dbf;
+  }
+
+  .step.active:before {
+    content: '\2713';
+    position: absolute;
+    top: -2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #fff;
+  }
+
+
+
+  //   css for otp only
+  #divOuter {
+    width: 240px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  #divInner {
+    left: 0;
+    position: sticky !important;
+  }
+
+  #partitioned {
+    padding-left: 12px;
+    letter-spacing: 37px;
+    border: 0;
+    color: #ae7dbf;
+    background-image: linear-gradient(to left, gray 70%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 50px 2px;
+    background-repeat: repeat-x;
+    background-position-x: 35px;
+    width: 275px;
+    min-width: 275px;
+    font-size: 21px;
+
+  }
+
+  p.otp {
+    margin-bottom: 10px;
+    color: #ae7dbf;
+    text-transform: uppercase;
+  }
+
+  //  end css for otp only
+
+
+
+
+  // image slide
+
+  .img img {
+    height: 100px;
+    width: 100px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    padding: 2px;
+  }
+
+  .img p {
+    color: gray;
+    font-size: 13px;
+  }
+
+  .tnc {
+    // position: absolute;
+    bottom: 7%;
+    font-size: 12px;
+    vertical-align: middle;
+    color: #3c3535;
+    margin-left: 2em;
+  }
+
+  ion-checkbox.checkbox.checkbox-md {
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  .opacity{
+      opacity: 0.5;
+  }
+  //  end image slide
+  .hoverbold:active{
+    font-weight: 900;
+    opacity: 0.8;
+  }
+
+}

@@ -21,7 +21,9 @@ import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 })
 export class DashboardPage {
   profilePage = 'ProfilePage';
-  searchPage = 'SearchPage';
+  // searchPage = 'SearchPage';
+  TapmodalPage = 'TapmodalPage';
+
   taptapPage = 'TaptapPage';
   // taptapPage='Favourite';
   helpPage = 'HelpPage';

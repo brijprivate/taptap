@@ -64,7 +64,7 @@ page-home {
     background: #6354cb;
     // background: linear-gradient(to top, #7357cf, #6367be, #6961c4, #5d6fb5);
     color: #6856cd;
-    padding: 8px 0;
+    padding: 8px 0 0;
 
     .img {
       height: 69px;
@@ -89,7 +89,10 @@ page-home {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       text-transform: capitalize;
-
+      width: 52vw;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     p.sm {
@@ -892,5 +895,10 @@ ion-icon.icon.icon-md.ion-md-pizza.item-icon {
   font-size: 20px;
   color: #b57249;
   padding-top: 4px;
+}
+
+
+ion-segment-button.segment-button {
+  border: none !important;
 }
 }

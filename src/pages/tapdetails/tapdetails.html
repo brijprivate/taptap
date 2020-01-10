@@ -1087,4 +1087,129 @@
     </div>
   </div>
   <!-- Varification-->
+
+
+
+
+
+
+  <!-- art start -->
+
+  <div style="    overflow-y: scroll;
+  height: 100%;">
+    <div class="showcontent">
+      <div class="head">
+
+        <div class="mdl">
+          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <p>Sciece Art </p>
+          <div class="iconss">
+            <ion-icon name="heart-outline" item-right></ion-icon>
+            <!-- <ion-icon name="heart" item-right
+              ></ion-icon> -->
+          </div>
+        </div>
+      </div>
+      <div class="imgss event">
+        <!-- <div class="ss"></div> -->
+
+        <ion-grid class="headerfashion">
+          <ion-row>
+            <ion-col col-3 text-center>
+              <img
+                src="https://i.ytimg.com/vi/FClM6Uz0-Gg/maxresdefault.jpg"
+                alt="">
+            </ion-col>
+            <ion-col col-8>
+              <p class="title">Sciece City</p>
+              <p class="subtitle"><small>Durgapur, West Bengal, India</small></p>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+        <ion-slides pager id="myImg" >
+          <ion-slide >
+            <!-- <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
+              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
+
+            <img class="fashionimg" src="https://i0.wp.com/wastonchen.com/wp-content/uploads/2017/02/LED-Smart-bulb-part.jpg?fit=640%2C448&ssl=1">
+
+          </ion-slide>
+
+        </ion-slides>
+      </div>
+
+    </div>
+    <div class="">
+      <!-- <div class="dis">
+        <p style="text-align: center;
+            margin-left: 1em;">
+          {{(eventdata.fashionId.price*(100-eventdata.storeId.companyId.discount)/100) | number : '1.2-2'}}
+          <span>({{eventdata.storeId.companyId.discount}}% off )<span class="total">
+              &nbsp;{{eventdata.fashionId.price}}</span></span>
+        </p>
+      </div> -->
+      <p class="title" text-center>Engineer an LED Night-Light
+      </p>
+
+      <p class="fashiondes" style="    height: 16vh;
+      overflow-y: scroll;
+      padding: 10px 0;">Night-lights can be found in many homes; you might even have one in your bedroom! Using a
+        night-light is a great way to avoid stubbing your toe on furniture during a midnight trip to the bathroom. In
+        this fun engineering project, you will design and build your own night-light. You will need to build the
+        circuit, but you will also need to think about the physical design of the product. Most people probably do not
+        want an ugly, bare circuit board sitting around their house. Can you make a functional, aesthetically pleasing
+        case or enclosure for your circuit? You could make a case using craft materials, wood, or even a 3D printer if
+        you have access to one.</p>
+      <!-- <p class="fashiondes"><span>Size: </span><small>{{eventdata.fashionId.size}}</small></p> -->
+
+
+
+      <div class="fashionview ">
+        <a href="#" class="button button-positive" style="margin: 0 1em">
+
+          View
+        </a>
+
+
+
+      </div>
+
+
+
+      <ion-grid class="saveGrid" no-padding>
+        <ion-row>
+          <ion-col col-6>
+
+
+            <button class="share" outline >
+              <!-- <a href="{{eventdata.storeId.companyId.website}}"> -->
+              <i aria-hidden="true" class="fa fa-map-marker"></i>&nbsp;&nbsp; Location
+              <!-- <ion-icon name="navigate"></ion-icon> -->
+              <!-- </a> -->
+            </button>
+
+
+
+          </ion-col>
+          <ion-col col-6>
+            <button  class="share" outline
+              >
+              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+            </button>
+            <!-- <button  ion-button class="save1"
+              ><i class="fa fa-share-alt"
+                aria-hidden="true"></i>&nbsp;&nbsp;
+              share</button> -->
+          </ion-col>
+
+
+
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <!-- art end -->
 </ion-content>

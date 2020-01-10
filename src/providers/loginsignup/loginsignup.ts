@@ -505,4 +505,47 @@ export class LoginsignupProvider {
     });
   }
 
+
+
+
+  // to correct things
+  individualprofile(link){
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.post(_base.apiUrl + 'user/shorten_url', link)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+  resendOtp(link){
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.post(_base.apiUrl + 'user/shorten_url', link)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+  
+  //API call for signup...
+  newregister(data) {
+    let _base = this;
+    return new Promise(function (resolve, reject) {
+      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      _base.http.post(_base.apiUrl + 'user/newregistration', data)
+        .then(function (success) {
+          resolve(success);
+        }, function (error) {
+          reject(error);
+        });
+    });
+  }
+
 }

@@ -24,7 +24,7 @@
           </ion-col>
           <ion-col col-9>
             <div class="profile">
-              <p class="name">{{userName}}</p>
+              <p class="name"  (click)="goto('EditprofilePage')">{{userName}}</p>
               <ion-grid>
                 <ion-row>
 
@@ -33,7 +33,7 @@
                     <p class="sm"> {{uid}}</p>
                     <p class="num">UID</p>
                   </ion-col>
-                  <ion-col col-4>
+                  <ion-col col-4 >
 
                     <p class="sm">
                       <ion-icon name="star"></ion-icon>
@@ -41,7 +41,7 @@
                     </p>
                     <p class="num">Favourite</p>
                   </ion-col>
-                  <ion-col col-4>
+                  <ion-col col-4 (click)="goto('ManagedevicePage')">
 
 
                     <p class="sm">

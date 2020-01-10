@@ -23,7 +23,7 @@ export class TaptapPage {
 
   monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   monthName = "";
-  year: String = "2019";
+  year: String = "2020";
   load: boolean = false;
 
   public tapItems: any;

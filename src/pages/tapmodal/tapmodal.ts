@@ -140,8 +140,8 @@ export class TapmodalPage {
     this.readingTag = false;
   }
   closeModal() {
-    this.viewCtrl.dismiss();
-    // this.navCtrl.setRoot('HomePage');
+    // this.viewCtrl.dismiss();
+    this.navCtrl.push('HomePage');
   }
 
   //Save tap .....
@@ -163,7 +163,7 @@ export class TapmodalPage {
       console.log(success);
       loader.dismiss();
       _base.readingTag = false;
-      _base.viewCtrl.dismiss();
+      // _base.viewCtrl.dismiss();
       if (success.message == 'DEVICE LOST INFO') {
         _base.navCtrl.push('LostcardPage', { lostinfo: success.lostinfo });
       }

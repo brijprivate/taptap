@@ -39,6 +39,7 @@ page-dashboard {
         height: 35px;
         width: 35px;
     }
+
     .tabs-md .tab-button[aria-selected=true] .tab-button-icon.icon.icon-md.ion-md-custom-chat {
         background: url(../../assets/images/logo_before.png) no-repeat;
         background-size: contain;
@@ -90,6 +91,24 @@ page-dashboard {
     }
     a#tab-t0-2 {
         padding: 0;
+    }
+
+
+    ion-icon.tab-button-icon.icon.icon-md.ion-md-managedevice
+    {
+        background: url(../../assets/images/mobile.png) no-repeat;
+        background-size: contain;
+        height: 22px;
+        width: 24px;
+    
+    }
+
+    .tabs-md .tab-button[aria-selected=true] .tab-button-icon.icon.icon-md.ion-md-managedevice {
+        background: url(../../assets/images/mobile1.png) no-repeat;
+        background-size: contain;
+        height: 22px;
+        width: 24px;
+    
     }
 
 }
