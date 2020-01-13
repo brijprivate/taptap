@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { Storage } from '@ionic/storage';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 declare var cordova: any;
 
@@ -49,6 +50,7 @@ export class EditprofilePage {
     public toastCtrl: ToastController,
     public platform: Platform,
     public loadingCtrl: LoadingController,
+    public sharedservice: SharedserviceProvider,
     private crop: Crop,
     public actionSheetCtrl: ActionSheetController,
     private DomSanitizer: DomSanitizer,
@@ -59,35 +61,16 @@ export class EditprofilePage {
   ) {
 
     this.userId = localStorage.getItem("userId");
-    console.log(this.userId);
-    if (this.userId) {
-      this.getprofiledata();
-
-    }
+    let _base = this;
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
+        _base.getprofiledata(response.profile, response.display_picture)
+      })
   }
 
   onScroll($event) {
-    console.log("Scroll", $event)
+    
   }
-
-  ionViewDidLoad() {
-    //creating url for profile pic
-    // this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;
-
-    console.log('ionViewDidLoad EditprofilePage');
-  }
-
-  ionViewDidEnter() {
-    this.userId = localStorage.getItem("userId");
-    console.log(this.userId);
-    if (this.userId) {
-      this.getprofiledata();
-    }
-    // console.log("get profile image------->>>>");
-    // this.imageId = this.API_URL+"/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
-
-  }
-
 
   /**
    * @desc Action sheet to select camera/gallery option to choose profile pic
@@ -107,7 +90,7 @@ export class EditprofilePage {
           text: 'Use Camera',
           handler: () => {
             this.takePicture(this.camera.PictureSourceType.CAMERA);
-            console.log("open camera:")
+            
           }
         },
         {
@@ -137,7 +120,7 @@ export class EditprofilePage {
 
     // Get the data of an image...
     this.camera.getPicture(options).then((imagePath) => {
-      console.log("imagePath trace.........." + imagePath);
+      
 
       //Crop function to crop the image...
       this.crop.crop(imagePath, {
@@ -145,16 +128,16 @@ export class EditprofilePage {
         targetWidth: 160,
         targetHeight: 160,
       }).then(function (success: any) {
-        console.log("here is the success image ..." + success);
+        
         imagePath = success;
-        console.log("check image path......" + imagePath);
+        
         // _base.imageId = imagePath;
-        console.log("check image source type............");
-        console.log(sourceType);
+        
+        
 
         // Speacial handleing for Android platform...
         if (_base.platform.is('android') || sourceType == options.sourceType.PHOTOLIBRARY) {
-          console.log("selected from library.......");
+          
 
           _base.filePath.resolveNativePath(imagePath)
             .then(filePath => {
@@ -192,12 +175,12 @@ export class EditprofilePage {
    */
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-      console.log("image file trace ................>>>");
-      console.log(this.file);
-      console.log(newFileName);
-      console.log(cordova.file.dataDirectory);
-      console.log(namePath);
-      console.log(currentName);
+      
+      
+      
+      
+      
+      
       this.lastImage = newFileName;
       if (this.lastImage) {
         this.uploadImage();
@@ -210,7 +193,7 @@ export class EditprofilePage {
 
   getTrustImg(imgsrc) {
     let path = this.win.Ionic.WebView.convertFileSrc(imgsrc);
-    console.log(path);
+    
     return path;
   }
 
@@ -256,41 +239,35 @@ export class EditprofilePage {
         mimeType: "image/jpeg",
         params: { 'fileName': filename }
       };
-      console.log("click in upload image .....");
+      
       fileTransfer.upload(targetPath, url, options).then(data => {
 
-        console.log("image upload trace.......");
+        
         var temp: any;
         temp = data;
-        console.log(temp);
+        
         this.profileImage = JSON.parse(temp.response).upload._id;
-        console.log("profile image" + this.profileImage);
+        
 
         if (this.profileImage) {
-          this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage + "&select=thumbnail";//creating url for profile pic
+          // this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage + "&select=thumbnail";//creating url for profile pic
           this.convertToDataURLviaCanvas(this.API_URL + "/file/getImage?imageId=" + this.profileImage, "image/png").then(base64img => {
-            console.log(base64img);
-            this.imageId = base64img;
-            this.storage.remove("buimg")
-            this.storage.set('buimg', base64img);
-
-            // now update the profile with the new PICTURE
             _base.savePhoto(_base.profileImage);
 
           })
         }
 
-        // console.log(temp.imageId._id);
+        // 
 
         loader.dismiss();
-        this.presentToast('Image succesful uploaded.');
+        // this.presentToast('Image succesfully uploaded. Will be shown on profile in a moment');
         // this.update();//update after image uploaded successfully
 
       },
         err => {
           loader.dismiss();
           this.presentToast('Error while uploading file.' + err);
-          console.log("Error in image upload function...." + err);
+          
         });
     }
     else {
@@ -301,7 +278,7 @@ export class EditprofilePage {
   presentToast(text) {
     let toast = this.toastCtrl.create({
       message: text,
-      duration: 1000,
+      duration: 4000,
       position: 'top'
     });
 
@@ -311,11 +288,11 @@ export class EditprofilePage {
   //check permissions....
   // checkpermissions(){
   //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
-  //     result => console.log('Has permission?',result.hasPermission),
+  //     result => ,
   //     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
   //   );
   //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE).then(
-  //     result => console.log('Has permission?',result.hasPermission),
+  //     result => ,
   //   );
   // }
 
@@ -345,16 +322,10 @@ export class EditprofilePage {
       _id: _base.profiledata._id
     }
     this.loginsignupProvider.profileUpdate(data).then(function (success: any) {
-      console.log(success);
-
-      if (success.error) {
-        alert("Can not remove. Please try again")
-        return;
-      } else {
-        _base.getprofiledata()
-      }
+      
+      _base.presentToast('Profile picture will be removed shortly in a moment');
     }, function (err) {
-      console.log(err);
+      
       alert("Can not remove. please try again")
     })
   }
@@ -366,16 +337,17 @@ export class EditprofilePage {
       _id: _base.profiledata._id
     }
     this.loginsignupProvider.profileUpdate(data).then(function (success: any) {
-      console.log(success);
+      
 
       if (success.error) {
         alert("Can not save profile picture. Please try again")
         return;
       } else {
-        _base.getprofiledata()
+        // _base.getprofiledata()
+        _base.presentToast('Profile Picture will be shown on profile in a moment.');
       }
     }, function (err) {
-      console.log(err);
+      
       alert("Can not save profile picture. please try again")
     })
   }
@@ -386,78 +358,22 @@ export class EditprofilePage {
 
     modal.onDidDismiss(data => {
       if (data && Object.keys(data).length != 0) {
-        console.log(data)
+        
         _base.profiledata.address = data.location;
         _base.profiledata.country = data.country;
         _base.profiledata.city = data.city;
       } else {
-        console.log("no data");
+        
       }
     });
     modal.present();
   }
 
   //Get profile data...
-  getprofiledata() {
+  getprofiledata(profile, display_picture) {
     let _base = this;
-    _base.storage.get("prodata").then((prodata) => {
-      if (prodata) {
-        _base.profiledata = prodata;
-        console.log(_base.profiledata);
-      }
-    });
-
-
-    // _base.storage.get('uimg')
-    //   .then(function (image) {
-    //     if (image) {
-    //       _base.imageId = image;
-    //     }
-    //   });
-
-    _base.storage.get('buimg')
-      .then(function (image) {
-        if (image) {
-          _base.imageId = image;
-        }
-      });
-
-    this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
-      console.log(success);
-      _base.storage.remove("prodata")
-      _base.storage.set("prodata", success.result);
-      _base.profiledata = success.result;
-      if (success.result.imageId) {
-
-        let image = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
-        _base.imageId = image;
-        _base.profileImage = success.result.imageId._id;
-        _base.convertToDataURLviaCanvas(image, "image/png").then(base64img => {
-          console.log(base64img);
-          // _base.imageId = base64img;
-          _base.storage.remove("buimg")
-          _base.storage.set('buimg', base64img);
-        })
-      } else {
-        _base.imageId = "assets/images/avatar.png";
-        _base.convertToDataURLviaCanvas(_base.imageId, "image/png").then(base64img => {
-          console.log(base64img);
-          _base.imageId = base64img;
-          _base.storage.remove("buimg")
-          _base.storage.set('buimg', _base.imageId);
-        })
-        console.log("enterr else image =============")
-      }
-      _base.initEmail = success.result.email ? success.result.email : ''
-    }, function (err) {
-      _base.storage.get("prodata").then((prodata) => {
-        if (prodata) {
-          _base.profiledata = prodata;
-          console.log(_base.profiledata);
-        }
-      });
-      console.log(err);
-    })
+    _base.profiledata = profile;
+    _base.imageId = display_picture;
   }
 
   imageExists(url, callback) {
@@ -469,16 +385,6 @@ export class EditprofilePage {
 
   updateProfile() {
     let _base = this;
-    // let data = {
-    //   name:_base.profiledata.name,
-    //   website:_base.profiledata.website,
-    //   city:_base.profiledata.city,
-    //   address:_base.profiledata.address,
-    //   zip:_base.profiledata.zip,
-    //   country:_base.profiledata.country,
-    //   imageId:_base.profileImage,
-    //   milage_prefrence:"mile"
-    // }
 
     let profile;
 
@@ -492,40 +398,37 @@ export class EditprofilePage {
       return;
     }
 
-    if (_base.initEmail.trim() != _base.profiledata.email.trim() && _base.profiledata.email.trim() != "") {
-      profile = {
-        email: _base.profiledata.email
-      }
-    } else {
+    // if (_base.initEmail.trim() != _base.profiledata.email.trim() && _base.profiledata.email.trim() != "") {
+    //   profile = {
+    //     email: _base.profiledata.email
+    //   }
+    // } else {
 
-      profile = {
-        address: _base.profiledata.address,
-        city: _base.profiledata.city,
-        country: _base.profiledata.country,
-        imageId: _base.profileImage != "" ? _base.profileImage : null,
-        name: _base.profiledata.name,
-        website: _base.profiledata.website
-      }
+    profile = {
+      address: _base.profiledata.address,
+      email: _base.profiledata.email,
+      city: _base.profiledata.city,
+      country: _base.profiledata.country,
+      imageId: _base.profileImage != "" ? _base.profileImage : null,
+      name: _base.profiledata.name,
+      website: _base.profiledata.website
     }
+    // }
 
-    Object.assign(_base.profiledata, { imageId: _base.profileImage });
-    console.log(_base.profiledata);
     this.loginsignupProvider.profileUpdate(profile).then(function (success: any) {
-      console.log(success);
+      
 
       if (success.error) {
         alert("This email is already owned")
         return;
       }
 
-      if (_base.initEmail.trim() != _base.profiledata.email.trim() && _base.profiledata.email.trim() != "") {
-        _base.OTPAlert()
-      } else {
-        _base.presentAlert();
-        _base.navCtrl.pop();
-      }
+
+      _base.presentAlert();
+      _base.navCtrl.pop();
+
     }, function (err) {
-      console.log(err);
+      
       // alert("This email is already owned")
     })
   }
@@ -561,7 +464,7 @@ export class EditprofilePage {
           text: 'Cancel',
           role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
+            
           }
         },
         {
@@ -601,7 +504,7 @@ export class EditprofilePage {
           _base.OTPAlert()
         }
       }, function (error) {
-        console.log(error)
+        
         alert(JSON.parse(error._body).message)
         _base.OTPAlert()
       });

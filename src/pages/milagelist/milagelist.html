@@ -10,11 +10,11 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <!-- <div class="head">
     <div class="mdl">
       <p><span>
-          <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+          <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
         </span>Mileage  List</p>
     </div>
 
@@ -25,7 +25,7 @@
   <div *ngIf="data.business">
     <div class="milageList" *ngFor="let list of data.business">
       <ion-card>
-        <ion-card-content (click)="createPdf()">
+        <ion-card-content (tap)="createPdf()">
           <div>
             <p><strong>Title:</strong>{{list.title}}</p>
             <p><strong>Start Time:</strong>{{list.startTime}}</p>
@@ -33,7 +33,7 @@
             <p><strong>description:</strong>{{list.description}}</p>
           </div>
 
-          <button (click)="downloadPdf()">download</button>
+          <button (tap)="downloadPdf()">download</button>
         </ion-card-content>
 
       </ion-card>
@@ -45,7 +45,7 @@
   <div *ngIf="data.personal">
     <div class="milageList" *ngFor="let list of data.personal">
       <ion-card>
-        <ion-card-content (click)="createPdf()">
+        <ion-card-content (tap)="createPdf()">
           <div>
             <p><strong>Title:</strong>{{list.title}}</p>
             <p><strong>Start Time:</strong>{{list.startTime}}</p>
@@ -53,16 +53,16 @@
             <p><strong>description:</strong>{{list.description}}</p>
           </div>
 
-          <button (click)="downloadPdf()">download</button>
+          <button (tap)="downloadPdf()">download</button>
         </ion-card-content>
 
       </ion-card>
     </div>
   </div> -->
   <!-- <div class="btn">
-    <button ion-buttton (click)="createPdf()"> Create (1)</button>
+    <button ion-buttton (tap)="createPdf()"> Create (1)</button>
 
-    <button ion-buttton (click)="downloadPdf()"> Dowanload (2)</button>
+    <button ion-buttton (tap)="downloadPdf()"> Dowanload (2)</button>
   
   </div> -->
   

@@ -10,7 +10,7 @@
       <div class="mdl">
         <!-- <ion-icon name="calendar"></ion-icon> -->
         <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
-        <i class="fa fa-chevron-left"  aria-hidden="true"(click)="back()"></i>
+        <i class="fa fa-chevron-left"  aria-hidden="true"(tap)="back()"></i>
 
         <p>Invitation</p>
       </div>
@@ -78,11 +78,11 @@
     <ion-grid class="saveGrid" *ngIf="type=='Business'">
       <ion-row *ngIf="seen==false">
         <ion-col col-6>
-          <button class="share" outline style="color:red;border-color: red;" (click)="acceptInvitation('declined')">
+          <button class="share" outline style="color:red;border-color: red;" (tap)="acceptInvitation('declined')">
             <ion-icon name="thumbs-down"></ion-icon>&nbsp;&nbsp; Reject
           </button> </ion-col>
         <ion-col col-6>
-          <button class="share" outline (click)="acceptInvitation('confirmed')">
+          <button class="share" outline (tap)="acceptInvitation('confirmed')">
             <ion-icon name="thumbs-up"></ion-icon>&nbsp;&nbsp; Accept
           </button>
         </ion-col>

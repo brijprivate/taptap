@@ -6,7 +6,7 @@
 -->
 
 
-<ion-content padding class="animated 800s zoomIn delay-0.1s">
+<ion-content padding >
   <div class="verifyContent">
     <img src="../../assets/images/touch.png" id="touch">
     <p class="verify">Verification</p>
@@ -27,10 +27,10 @@
     <ion-grid class="buttonGrid">
       <ion-row>
         <ion-col col-7>
-          <button ion-button class="verifyCode" (click)="otpVerification()">Verify code</button>
+          <button ion-button class="verifyCode" (tap)="otpVerification()">Verify code</button>
         </ion-col>
         <ion-col col-5>
-          <button ion-button class="resend" (click)="resendOTP()" outline>Resend</button>
+          <button ion-button class="resend" (tap)="resendOTP()" outline>Resend</button>
         </ion-col>
       </ion-row>
     </ion-grid>

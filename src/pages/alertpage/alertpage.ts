@@ -19,7 +19,7 @@ export class AlertpagePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlertpagePage');
+    
   }
 
 }

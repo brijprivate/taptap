@@ -29,7 +29,7 @@ export class VerifyotpPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad VerifyotpPage');
+    
   }
   
   otpVerification() {
@@ -46,15 +46,15 @@ export class VerifyotpPage {
       }
       this.signupprovider.verifyotp(otpdata).then(function (success: any) {
         loader.dismiss();
-        console.log(success);
+        
         if (success) {
           localStorage.setItem("userId", success.result._id);
-          _base.navCtrl.setRoot('DashboardPage');
+          _base.navCtrl.setRoot('SynchroniserPage');
         }
       }, function (err) {
         loader.dismiss();
         alert("Incorrect OTP")
-        console.log(err);
+        
       })
     } else {
       alert("Please Provide OTP to Continue");
@@ -69,7 +69,7 @@ export class VerifyotpPage {
     });
     loader.present();
     this.signupprovider.register(this.user).then(function (success: any) {
-      console.log(success);
+      
       loader.dismiss();
       if (success.error == true) {
         alert("user already registered with that phone number");
@@ -81,13 +81,13 @@ export class VerifyotpPage {
     }, function (err) {
       loader.dismiss();
       alert("Somethig went wrong, Please try again");
-      console.log(err);
+      
     })
   }
   // keyUpChecker(ev) {
 
   //   if (this.otp.length >4) {
-  //     console.log(this.otp)
+  //     
   //     this.otp.slice(0,-1);
   //   }
 

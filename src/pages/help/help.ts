@@ -26,9 +26,7 @@ export class HelpPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HelpPage');
-  }
+
   toggleGroup(group) {
     if (this.isGroupShown(group)) {
       this.shownGroup = null;

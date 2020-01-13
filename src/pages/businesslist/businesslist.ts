@@ -24,7 +24,7 @@ export class BusinesslistPage {
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidLoad BusinesslistPage');
+    
     this.getBusinesses();
   }
   goPage(business: any) {
@@ -40,13 +40,13 @@ export class BusinesslistPage {
     _base.http.getbusinesses(localStorage.getItem('userId'))
       .then(function (success: any) {
         _base.businessList = success.result.map((business) => {
-          console.log(business)
-          console.log(business.logo)
+          
+          
           business.imageId = (business.logo) ? 'https://api.taptap.org.uk/file/getImage?imageId=' + business.logo : '../../assets/images/Logo_after.png'
           return business;
         });
       }, function (error) {
-        console.log(error)
+        
       });
   }
 }

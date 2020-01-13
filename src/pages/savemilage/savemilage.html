@@ -7,7 +7,7 @@
 <!-- <ion-header>
   <ion-navbar>
 
-      <ion-title class="animated 800s fadeIn delay-0.2s" >Save Mileage
+      <ion-title >Save Mileage
 
         </ion-title>
     <a class="helpimg">
@@ -30,7 +30,7 @@
 </ion-header> -->
 
 <ion-content >
-    <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+    <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
 
     <div class="milageTitle">
         <svg class="record" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@
              c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" />
               </g>
             </svg> </button></ion-col>
-        <ion-col col-10><button ion-button class="saveButton" (click)="saveMilage()">Save</button></ion-col>
+        <ion-col col-10><button ion-button class="saveButton" (tap)="saveMilage()">Save</button></ion-col>
 
       </ion-row>
     </ion-grid>

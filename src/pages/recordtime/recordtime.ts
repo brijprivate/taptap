@@ -61,7 +61,7 @@ export class RecordtimePage {
     this.tapData = navParams.get("tapdata");
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
+      
       this.isnetwork = value;
     });
 
@@ -71,7 +71,7 @@ export class RecordtimePage {
     this.navCtrl.push('SaveTimePage');
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RecordtimePage');
+    
     let _base = this
     let count = 0;
     _base.showtimesub = setInterval(function () {
@@ -82,7 +82,7 @@ export class RecordtimePage {
   
 
   ionViewDidEnter(){
-    console.log("didenter=----------------->>>>>>>");
+    
   }
   //Start record time...
 
@@ -155,7 +155,7 @@ export class RecordtimePage {
     // let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
     let timeElapsed: any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
 
-    console.log(currentTime);
+    
     let hour = timeElapsed.getUTCHours()
     let min = timeElapsed.getUTCMinutes()
     let sec = timeElapsed.getUTCSeconds()
@@ -173,7 +173,7 @@ export class RecordtimePage {
 
       // this.time = new Date().getTime();
       
-    console.log(this.time)
+    
   };
 
   //Stop clock...
@@ -194,7 +194,7 @@ export class RecordtimePage {
     this.running = false;
     this.timeStopped = new Date();
     clearInterval(this.started);
-    console.log(this.time);
+    
     this.navCtrl.push('SaveTimePage', {
       endtime: this.endTime,
       starttime:this.startTime,

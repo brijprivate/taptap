@@ -1,9 +1,9 @@
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="maincontent">
       <div class="head">
           <div class="mdl">
             <p><span>
-              <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+              <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
             </span> Select Dates</p>
           </div>
   </div>
@@ -28,10 +28,10 @@
           </ion-item> -->
 
 
-          <ion-grid class="custompadd animated 800s zoomIn delay-0.2s">
+          <ion-grid class="custompadd ">
               <ion-row>
                 <ion-col col-6 class="nopadd">
-                  <ion-card class="recordCard m1" (click)="select('time')" [ngClass]="{'selec': selected=='time'}">
+                  <ion-card class="recordCard m1" (tap)="select('time')" [ngClass]="{'selec': selected=='time'}">
                     <ion-card-content>
                       <!-- <img src="../../assets/images/alarm-clock.png" class="record"> -->
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -56,7 +56,7 @@
                   </ion-card>
                 </ion-col>
                 <ion-col col-6 class="nopadd">
-                  <ion-card class="recordCard m2" (click)="select('milage')" [ngClass]="{'selec': selected=='milage'}" >
+                  <ion-card class="recordCard m2" (tap)="select('milage')" [ngClass]="{'selec': selected=='milage'}" >
                     <ion-card-content>
                       <!-- <img src="../../assets/images/fast.png" class="record"> -->
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -96,7 +96,7 @@
 
               <ion-row style="margin-top: 2em;">
                   <ion-col col-6 class="nopadd">
-                    <ion-card class="recordCard m1" (click)="selectt('Business')" [ngClass]="{'selec': busi}">
+                    <ion-card class="recordCard m1" (tap)="selectt('Business')" [ngClass]="{'selec': busi}">
                       <ion-card-content>
                         
             
@@ -105,7 +105,7 @@
                     </ion-card>
                   </ion-col>
                   <ion-col col-6 class="nopadd">
-                    <ion-card class="recordCard m2" (click)="selectt('Personal')" [ngClass]="{'selec': pers}">
+                    <ion-card class="recordCard m2" (tap)="selectt('Personal')" [ngClass]="{'selec': pers}">
                       <ion-card-content>
                        
             
@@ -117,7 +117,7 @@
             </ion-grid>
 
         <div class="btn">
-            <button (click)="submit()">Submit</button>
+            <button (tap)="submit()">Submit</button>
   
         </div>
       </div>

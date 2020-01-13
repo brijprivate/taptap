@@ -126,7 +126,7 @@ export class SignupPage {
       role: "user"
     }
     this.signupprovider.register(signupdata).then(function (success: any) {
-      console.log(success);
+      
       loader.dismiss();
       if (success.error == true) {
         alert("user already registered with that Phone Number");
@@ -137,13 +137,13 @@ export class SignupPage {
     }, function (err) {
       loader.dismiss();
       alert(JSON.parse(err._body).message);
-      console.log(err);
+      
     })
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+    
     this.getCountryCode()
   }
 
@@ -153,12 +153,12 @@ export class SignupPage {
 
   //check pattern...
   checkpattern(email) {
-    // console.log("aaaaaa");
+    // 
     let _base = this;
     let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
     let result = pattern.test(email);
     if (!result) {
-      console.log("miss");
+      
       let showtoast = _base.toast.create({
         message: "Please provide valid email",
         duration: 60000,
@@ -170,9 +170,9 @@ export class SignupPage {
       return;
 
     } else {
-      console.log("matched");
+      
     }
-    console.log(pattern)
+    
   }
 
 
@@ -187,7 +187,7 @@ export class SignupPage {
     modal.present();
 
     modal.onDidDismiss((data) => {
-      console.log("Data from modal page", data)
+      
       let length = Object.keys(data).length
       if (length != 0) {
         let card = data
@@ -277,7 +277,7 @@ export class SignupPage {
   getCountryCode() {
     let _base = this
     carrier.getCountryCode(function (success) {
-      console.log("Success", success)
+      
       _base.countryCode = success
 
       if (_base.countryCode == 'in') {
@@ -327,7 +327,7 @@ export class SignupPage {
 
 
     }, function (error) {
-      console.log("Error", error)
+      
     });
   }
 

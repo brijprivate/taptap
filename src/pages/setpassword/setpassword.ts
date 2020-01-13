@@ -30,7 +30,7 @@ export class SetpasswordPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SetpasswordPage');
+    
   }
 
   register() {
@@ -66,21 +66,21 @@ export class SetpasswordPage {
       password: this.password
     }
     this.signupprovider.fblogin(fbdata).then(function (success: any) {
-      console.log("facebook login ----------->>>>>>>>", success);
+      
       loader.dismiss();
 
       if (success.error) {
         alert(success.message)
       } else {
-        console.log(success.result._id);
+        
         localStorage.setItem("userId", success.result._id);
-        _base.navCtrl.setRoot('DashboardPage');
+        _base.navCtrl.setRoot('SynchroniserPage');
       }
 
     }, function (err) {
       loader.dismiss();
       alert("Can not register. Please try again later")
-      console.log("fb login error---------->>>>>>>", err);
+      
     })
   }
 

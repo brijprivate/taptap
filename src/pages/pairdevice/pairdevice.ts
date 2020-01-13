@@ -40,15 +40,15 @@ export class PairdevicePage {
     public loading: LoadingController,
     public nfctagpro: NfctagProvider,
     public sharedservice: SharedserviceProvider,
-    private toast: ToastController ) {
+    private toast: ToastController) {
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
+
       this.isnetwork = value;
     });
 
     this.page = this.navParams.get('x');
-    console.log(this.page)
+
     this.userId = localStorage.getItem("userId");
     this.subscriptions.push(this.nfc.addNdefListener()
       .subscribe(data => {
@@ -58,12 +58,12 @@ export class PairdevicePage {
           let payload = data.tag.ndefMessage[0].payload;
           let tagContent = this.nfc.bytesToString(payload).substring(3);
           this.readingTag = true;
-    
-          console.log(tagContent)
-          
+
+
+
           let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
           let res = nfc_regex.test(tagContent);
-    
+
           if (res) {
             // nfc id
             this.readingTag = false;
@@ -83,9 +83,9 @@ export class PairdevicePage {
           // tagid.forEach(function (byte) {
           //   s += ('0' + (byte & 0xFF).toString(16)).slice(-2) + ':';
           // });
-          // console.log("tag data", tagContent);
-          // console.log("whole data", data.tag);
-          // console.log("tag id", s);
+          // 
+          // 
+          // 
           // this.tapData = s.substring(0, s.length - 1);
           // if (this.tapData) {
           //   this.presentPrompt()
@@ -102,7 +102,7 @@ export class PairdevicePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PairdevicePage');
+
   }
   //Pair Device...
   pairDevice(tagdata) {
@@ -151,7 +151,7 @@ export class PairdevicePage {
       owner: this.userId
     }
     this.nfctagpro.pairDevice(pairdata).then(function (success: any) {
-      console.log(success);
+
       loader.dismiss();
       if (success.error) {
         alert(success.message)
@@ -163,7 +163,7 @@ export class PairdevicePage {
         }
       }
     }, function (err) {
-      console.log(err);
+
       alert(JSON.parse(err._body).message)
       loader.dismiss();
     })
@@ -175,19 +175,19 @@ export class PairdevicePage {
       deviceId: deviceID,
       is_active: true
     }
-    console.log(data);
+
     this.nfctagpro.updateDeviceName(data).then(function (success: any) {
-      console.log(success);
+
       if (success.error) {
         alert('Device paired but can not set to Default. Please set it default manually')
-        _base.navCtrl.setRoot('ProfilePage');
+        // _base.navCtrl.pop();
       } else {
-        _base.navCtrl.setRoot('ProfilePage');
+        // _base.navCtrl.pop();
       }
     }, function (err) {
-      console.log(err);
+
       alert('Device paired but can not set to Default. Please set it default manually')
-      _base.navCtrl.setRoot('ProfilePage');
+      // _base.navCtrl.pop();
     })
   }
 
@@ -206,7 +206,7 @@ export class PairdevicePage {
 
 
     // if(this.page=='page'){
-    console.log('in promptwa 11111111111111111111111111111111111111');
+
     this.alertcs = this.alert.create({
       title: 'Provide Pairing Code',
       inputs: [
@@ -220,13 +220,13 @@ export class PairdevicePage {
           text: 'Cancel',
           role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
+
           }
         },
         {
           text: 'Save',
           handler: data => {
-            console.log(data[0]);
+
             this.paircode = data[0]
             this.pairDevice(tapdata);
           }
@@ -243,14 +243,14 @@ export class PairdevicePage {
     try {
       const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
-        this.tapData= JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        console.log(this.tapData)
+        this.tapData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
         // this.pairDevice(this.tapData)
         this.presentPrompt(this.tapData);
       }
       return data;
     } catch (e) {
-      console.log(e);
+
     }
   }
 }

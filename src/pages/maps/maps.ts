@@ -30,19 +30,19 @@ export class MapsPage {
     private launchNavigator: LaunchNavigator,
     public navCtrl: NavController, public navParams: NavParams) {
     this.cords = this.navParams.data
-    console.log(this.cords)
+
     let _base = this
     _base.nativeGeocoder.reverseGeocode(this.cords.latitude, this.cords.longitude)
       .then((result: NativeGeocoderReverseResult[]) => {
-        console.log("reverse geocode ----------------->>>>>>>", result)
-        console.log(JSON.stringify(result[0]));
+
+
         _base.location = result[0];
       });
 
   }
 
   ionViewDidLoad() {
-    console.log("load map")
+
     this.loadMap();
   }
 
@@ -64,7 +64,7 @@ export class MapsPage {
       })
 
     this.map.one(plugin.google.maps.event.MAP_READY, function () {
-      console.log("Map ready")
+
 
       _base.map.addMarker({
         position: { lat: _base.cords.latitude, lng: _base.cords.longitude },
@@ -79,13 +79,13 @@ export class MapsPage {
     let _base = this
     _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
       function (result) {
-        console.log('Has permission?', result.hasPermission)
+
         if (!result.hasPermission) {
           _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
         } else {
           _base.geolocation.getCurrentPosition().then((resp) => {
 
-            console.log("lunch navigator");
+
             let start = {
               lat: resp.coords.latitude,
               lng: resp.coords.longitude
@@ -96,12 +96,12 @@ export class MapsPage {
               lng: parseFloat(_base.cords.longitude)
             };
 
-            console.log(start, end);
+
 
             _base.lunchNavigator(start, end);
 
           }).catch((error) => {
-            console.log('Error getting location', error);
+
           })
         }
       },
@@ -111,8 +111,8 @@ export class MapsPage {
   }
 
   lunchNavigator(start: any, end: any) {
-    console.log(start);
-    console.log(end);
+
+
     let GStart = [start.lat, start.lng];
     let GEnd = [end.lat, end.lng];
     let options: LaunchNavigatorOptions = {
@@ -122,8 +122,8 @@ export class MapsPage {
 
     this.launchNavigator.navigate(GEnd, options)
       .then(
-        success => console.log('Launched navigator', success),
-        error => console.log('Error launching navigator', error)
+        success => { },
+        error => { }
       );
   }
   back() {

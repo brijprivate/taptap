@@ -14,7 +14,7 @@
 
 
   <div id="myModal" class="modal">
-    <span (click)="close()" class="close">&times;</span>
+    <span (tap)="close()" class="close">&times;</span>
     <img class="modal-content" id="img01" [src]=xx>
     <div id="caption"></div>
   </div>
@@ -30,15 +30,15 @@
 
         <div class="mdl">
           <!-- <ion-icon name="calendar"></ion-icon> -->
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
+          <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
 
-          <p>{{eventdata.purpose}}</p>
+          <p (tap)="back()">{{eventdata.purpose}}</p>
           <div class="iconss">
 
             <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite ==false" item-right
-              (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
+              (tap)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
             <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-              (click)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
+              (tap)="updateProduct(eventdata.eventId._id,eventdata.is_favourite)"></ion-icon>
           </div>
         </div>
       </div>
@@ -47,12 +47,12 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.eventId.imageId">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.eventId.imageId._id))"
+            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.eventId.imageId._id))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.eventId.imageId._id}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.eventId.imageId"
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
+            (tap)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
             <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
 
 
@@ -124,11 +124,11 @@
 
           <ion-col col-6>
             <button *ngIf="eventdata.is_favourite" class="share" outline
-              (click)="socialshare(eventdata,eventdata.eventId._id)">
+              (tap)="socialshare(eventdata,eventdata.eventId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
             </button>
             <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-              (click)="productshare(eventdata.storeId.adminId._id,'Event')"><i class="fa fa-share-alt"
+              (tap)="productshare(eventdata.storeId.adminId._id,'Event')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
           </ion-col>
@@ -142,29 +142,29 @@
   <!-- Restaurant MODULE -->
   <div *ngIf="eventdata.restaurantId">
     <!-- <div id="myModal" class="modal">
-      <span (click)="close()" class="close">&times;</span>
+      <span (tap)="close()" class="close">&times;</span>
       <img class="modal-content" id="img01" [src]=xx>
       <div id="caption"></div>
     </div> -->
     <div class="head1">
       <div class="mdl">
-        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+        <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
 
         <p>Restaurant</p>
 
         <div class=" iconss1">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
+            (tap)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
           <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-            (click)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
+            (tap)="updateProduct(eventdata.restaurantId._id,eventdata.is_favourite)"></ion-icon>
 
         </div>
-        <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
+        <!-- <ion-icon (tap)="share()" ios="ios-share" md="md-share"></ion-icon> -->
       </div>
     </div>
 
     <div id="myModal" class="modal">
-      <span (click)="close()" class="close">&times;</span>
+      <span (tap)="close()" class="close">&times;</span>
       <img class="modal-content" id="img01" [src]=xx>
       <div id="caption"></div>
     </div>
@@ -176,7 +176,7 @@
       <ion-slides pager id="myImg">
 
         <ion-slide *ngIf="eventdata.restaurantId.logo"
-          (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
+          (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
           <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}'
             style="height:15vh">
         </ion-slide>
@@ -225,7 +225,7 @@
         <ion-grid class="" text-center style="padding: 0">
           <ion-row>
             <ion-col col-6 style="padding: 0">
-              <button ion-button class="save1" (click)="navigate(eventdata.storeId.companyId.geo)"> <i
+              <button ion-button class="save1" (tap)="navigate(eventdata.storeId.companyId.geo)"> <i
                   class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;
                 location</button>
             </ion-col>
@@ -236,11 +236,11 @@
             </ion-col> -->
             <ion-col col-6 style="padding: 0">
               <button *ngIf="eventdata.is_favourite" ion-button class="save1"
-                (click)="socialshare(eventdata,eventdata.restaurantId._id)"><i class="fa fa-share-alt"
+                (tap)="socialshare(eventdata,eventdata.restaurantId._id)"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
               <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-                (click)="productshare(eventdata.storeId.adminId._id,'Restaurant')"><i class="fa fa-share-alt"
+                (tap)="productshare(eventdata.storeId.adminId._id,'Restaurant')"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
             </ion-col>
@@ -269,13 +269,13 @@
       <div class="head">
 
         <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{eventdata.purpose}}</p>
+          <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
+          <p (tap)="back()">{{eventdata.purpose}}</p>
           <div class=" iconss">
             <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+              (tap)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
             <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-              (click)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
+              (tap)="updateProduct(eventdata.contactId._id,eventdata.is_favourite)"></ion-icon>
 
           </div>
         </div>
@@ -286,12 +286,12 @@
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.contactId.profile_pic">
             <img
-              (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.contactId.profile_pic))"
+              (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.contactId.profile_pic))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.contactId.profile_pic}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.contactId.profile_pic"
-            (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
+            (tap)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
             <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
           </ion-slide>
         </ion-slides>
@@ -367,16 +367,16 @@
       <ion-grid class="saveGrid">
         <ion-row>
           <ion-col col-6>
-            <button class="share" outline (click)="savecontact(eventdata.contactId)">
+            <button class="share" outline (tap)="savecontact(eventdata.contactId)">
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
             </button> </ion-col>
           <ion-col col-6>
             <button *ngIf="eventdata.is_favourite" class="share" outline
-              (click)="socialshare(eventdata,eventdata.contactId._id)">
+              (tap)="socialshare(eventdata,eventdata.contactId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
             <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-              (click)="productshare(eventdata.storeId.adminId._id,'Contacts')"><i class="fa fa-share-alt"
+              (tap)="productshare(eventdata.storeId.adminId._id,'Contacts')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
           </ion-col>
@@ -396,12 +396,12 @@
       <div class="head">
 
         <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{eventdata.purpose}}</p>
+          <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
+          <p (tap)="back()">{{eventdata.purpose}}</p>
           <div class="iconss">
             <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" (click)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)" item-right
+              (tap)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (tap)="updateProduct(eventdata.sportId._id,eventdata.is_favourite)" item-right
               *ngIf="eventdata.is_favourite==true"></ion-icon>
           </div>
         </div>
@@ -411,12 +411,12 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.sportId.image">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.sportId.image))"
+            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.sportId.image))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.sportId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.sportId.image"
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
+            (tap)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
             <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
 
 
@@ -469,11 +469,11 @@
               </button> </ion-col> -->
             <ion-col col-12>
               <button *ngIf="eventdata.is_favourite" class="share" outline
-                (click)="socialshare(eventdata,eventdata.sportId._id)">
+                (tap)="socialshare(eventdata,eventdata.sportId._id)">
                 <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
               </button>
               <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-                (click)="productshare(eventdata.storeId.adminId._id,'Sports')"><i class="fa fa-share-alt"
+                (tap)="productshare(eventdata.storeId.adminId._id,'Sports')"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
             </ion-col>
@@ -493,12 +493,12 @@
       <div class="head">
 
         <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{eventdata.purpose}}</p>
+          <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
+          <p (tap)="back()">{{eventdata.purpose}}</p>
           <div class="iconss">
             <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" (click)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)" item-right
+              (tap)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (tap)="updateProduct(eventdata.generalId._id,eventdata.is_favourite)" item-right
               *ngIf="eventdata.is_favourite==true"></ion-icon>
           </div>
         </div>
@@ -508,12 +508,12 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.generalId.image">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.generalId.image))"
+            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.generalId.image))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.generalId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.generalId.image"
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
+            (tap)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
             <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
           </ion-slide>
 
@@ -547,11 +547,11 @@
             </button> </ion-col>
           <ion-col col-6>
             <button *ngIf="eventdata.is_favourite" class="share" outline
-              (click)="socialshare(eventdata,eventdata.generalId._id)">
+              (tap)="socialshare(eventdata,eventdata.generalId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
             <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-              (click)="productshare(eventdata.storeId.adminId._id,'General')"><i class="fa fa-share-alt"
+              (tap)="productshare(eventdata.storeId.adminId._id,'General')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
           </ion-col>
@@ -571,12 +571,12 @@
       <div class="head">
 
         <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{eventdata.purpose}}</p>
+          <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
+          <p (tap)="back()">{{eventdata.purpose}}</p>
           <div class="iconss">
             <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" (click)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)" item-right
+              (tap)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (tap)="updateProduct(eventdata.groceryId._id,eventdata.is_favourite)" item-right
               *ngIf="eventdata.is_favourite==true"></ion-icon>
           </div>
         </div>
@@ -586,12 +586,12 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.groceryId.image">
-            <img (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.groceryId.image))"
+            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.groceryId.image))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.groceryId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.groceryId.image"
-            (click)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
+            (tap)="showfull('https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg')">
             <img src="https://www.midlandcareconnection.org/wp-content/uploads/cropped-placeholder.jpg">
 
 
@@ -647,11 +647,11 @@
             </button> </ion-col> -->
           <ion-col col-12>
             <button *ngIf="eventdata.is_favourite" class="share" outline
-              (click)="socialshare(eventdata,eventdata.groceryId._id)">
+              (tap)="socialshare(eventdata,eventdata.groceryId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
             <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-              (click)="productshare(eventdata.storeId.adminId._id,'Groceries')"><i class="fa fa-share-alt"
+              (tap)="productshare(eventdata.storeId.adminId._id,'Groceries')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
           </ion-col>
@@ -670,12 +670,12 @@
       <div class="head">
 
         <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{eventdata.purpose}}</p>
+          <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
+          <p (tap)="back()">{{eventdata.purpose}}</p>
           <div class="iconss">
             <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-              (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)"></ion-icon>
-            <ion-icon name="heart" (click)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)" item-right
+              (tap)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)"></ion-icon>
+            <ion-icon name="heart" (tap)="updateProduct(eventdata.fashionId._id,eventdata.is_favourite)" item-right
               *ngIf="eventdata.is_favourite==true"></ion-icon>
           </div>
         </div>
@@ -701,10 +701,10 @@
 
         <ion-slides pager id="myImg" *ngIf="eventdata.fashionId.image">
           <ion-slide *ngFor="let image of eventdata.fashionId.image">
-            <!-- <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
+            <!-- <img class="fashionimg" (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
 
-            <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(image))"
+            <img class="fashionimg" (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(image))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{image}}">
 
           </ion-slide>
@@ -745,7 +745,7 @@
           <ion-col col-6>
 
 
-            <button class="share" outline (click)="navigate(eventdata.storeId.companyId.geo)">
+            <button class="share" outline (tap)="navigate(eventdata.storeId.companyId.geo)">
               <!-- <a href="{{eventdata.storeId.companyId.website}}"> -->
               <i aria-hidden="true" class="fa fa-map-marker"></i>&nbsp;&nbsp; Location
               <!-- <ion-icon name="navigate"></ion-icon> -->
@@ -757,11 +757,11 @@
           </ion-col>
           <ion-col col-6>
             <button *ngIf="eventdata.is_favourite" class="share" outline
-              (click)="socialshare(eventdata,eventdata.fashionId._id)">
+              (tap)="socialshare(eventdata,eventdata.fashionId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
             <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-              (click)="productshare(eventdata.storeId.adminId._id,'Fashion')"><i class="fa fa-share-alt"
+              (tap)="productshare(eventdata.storeId.adminId._id,'Fashion')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
           </ion-col>
@@ -780,23 +780,23 @@
 
     <div class="head1">
       <div class="mdl">
-        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+        <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
 
-        <p>{{eventdata.storeId?eventdata.storeId.companyId.name:''}}</p>
+        <p (tap)="back()">{{eventdata.storeId?eventdata.storeId.companyId.name:''}}</p>
 
         <div class=" iconss1">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
+            (tap)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
           <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-            (click)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
+            (tap)="updateProduct(eventdata.businessId._id,eventdata.is_favourite)"></ion-icon>
 
         </div>
-        <!-- <ion-icon (click)="share()" ios="ios-share" md="md-share"></ion-icon> -->
+        <!-- <ion-icon (tap)="share()" ios="ios-share" md="md-share"></ion-icon> -->
       </div>
     </div>
 
     <div id="myModal" class="modal">
-      <span (click)="close()" class="close">&times;</span>
+      <span (tap)="close()" class="close">&times;</span>
       <img class="modal-content" id="img01" [src]=xx>
       <div id="caption"></div>
     </div>
@@ -808,7 +808,7 @@
       <ion-slides pager id="myImg">
 
         <ion-slide *ngIf="eventdata.storeId"
-          (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.storeId.companyId.display_picture))">
+          (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.storeId.companyId.display_picture))">
           <img
             src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.storeId?eventdata.storeId.companyId.display_picture:""}}'
             style="height:15vh">
@@ -861,7 +861,7 @@
         <ion-grid class="" text-center style="padding: 0">
           <ion-row>
             <ion-col col-6 style="padding: 0">
-              <button ion-button class="save1" (click)="navigate(eventdata.storeId.companyId.geo)"> <i
+              <button ion-button class="save1" (tap)="navigate(eventdata.storeId.companyId.geo)"> <i
                   class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;
                 location</button>
             </ion-col>
@@ -872,11 +872,11 @@
             </ion-col> -->
             <ion-col col-6 style="padding: 0">
               <button *ngIf="eventdata.is_favourite" ion-button class="save1"
-                (click)="socialshare(eventdata,eventdata.businessId._id)"><i class="fa fa-share-alt"
+                (tap)="socialshare(eventdata,eventdata.businessId._id)"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
               <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
-                (click)="productshare(eventdata.storeId.adminId._id,'Business')"><i class="fa fa-share-alt"
+                (tap)="productshare(eventdata.storeId.adminId._id,'Business')"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
             </ion-col>
@@ -897,14 +897,14 @@
       <div class="head">
 
         <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>{{eventdata.devicedetaill.deviceInfo.type}}</p>
+          <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
+          <p (tap)="back()">{{eventdata.devicedetaill.deviceInfo.type}}</p>
 
           <div class="iconss">
             <ion-icon name="heart-outline" *ngIf="eventdata.devicedetaill.is_favourite==false" item-right
-              (click)="updateProductt(eventdata.devicedetaill._id,eventdata.devicedetaill.is_favourite)"></ion-icon>
+              (tap)="updateProductt(eventdata.devicedetaill._id,eventdata.devicedetaill.is_favourite)"></ion-icon>
             <ion-icon name="heart" item-right *ngIf="eventdata.devicedetaill.is_favourite==true"
-              (click)="updateProductt(eventdata.devicedetaill._id,eventdata.devicedetaill.is_favourite)"></ion-icon>
+              (tap)="updateProductt(eventdata.devicedetaill._id,eventdata.devicedetaill.is_favourite)"></ion-icon>
 
           </div>
         </div>
@@ -915,12 +915,12 @@
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.devicedetaill.deviceInfo.imageId">
             <img
-              (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.devicedetaill.deviceInfo.imageId._id))"
+              (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.devicedetaill.deviceInfo.imageId._id))"
               src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.devicedetaill.deviceInfo.imageId._id}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.devicedetaill.deviceInfo.imageId"
-            (click)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
+            (tap)="showfull('https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg')">
             <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg">
           </ion-slide>
         </ion-slides>
@@ -995,11 +995,11 @@
       <ion-grid class="saveGrid">
         <ion-row>
           <ion-col col-6>
-            <button class="share" outline (click)="savedevicecontact(eventdata.devicedetaill)">
+            <button class="share" outline (tap)="savedevicecontact(eventdata.devicedetaill)">
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
             </button> </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialsharedevice(eventdata.devicedetaill)">
+            <button class="share" outline (tap)="socialsharedevice(eventdata.devicedetaill)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
           </ion-col>
@@ -1023,13 +1023,13 @@
     <div class="head">
 
       <div class="mdl">
-        <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-        <p>Verification</p>
+        <i class="fa fa-angle-left" style="font-size:24px" (tap)="back()"></i>
+        <p (tap)="back()">Verification</p>
         <div class="iconss">
           <ion-icon name="heart-outline" *ngIf="eventdata.is_favourite==false" item-right
-            (click)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
+            (tap)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
           <ion-icon name="heart" item-right *ngIf="eventdata.is_favourite==true"
-            (click)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
+            (tap)="updateProduct(eventdata.verificationId._id,eventdata.is_favourite)"></ion-icon>
 
         </div>
       </div>
@@ -1042,16 +1042,15 @@
 
         <ion-slide *ngIf="eventdata.verificationId.images">
           <img
-            (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.verificationId.images[0]))"
+            (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.verificationId.images[0]))"
             src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.verificationId.images[0]}}">
         </ion-slide>
         <!-- </ion-slides> -->
         <!-- </div> -->
 
         <ion-slide *ngIf="!eventdata.verificationId.images">
-          <img (click)="showfull('../../assets/images/product.png')" src="../../assets/images/product.png">
+          <img (tap)="showfull('../../assets/images/product.png')" src="../../assets/images/product.png">
           <!-- <img src="https://i1.wp.com/grueneroadpharmacy.com/wp-content/uploads/2017/02/user-placeholder-1.jpg"> -->
-
         </ion-slide>
       </ion-slides>
     </div>
@@ -1073,12 +1072,12 @@
       <ion-grid class="saveGrid">
         <ion-row>
           <ion-col col-6>
-            <button class="share" outline (click)="website(eventdata.verificationId.websitelink)">
+            <button class="share" outline (tap)="website(eventdata.verificationId.websitelink)">
 
               <ion-icon name="globe"></ion-icon>&nbsp;&nbsp; Website
             </button> </ion-col>
           <ion-col col-6>
-            <button class="share" outline (click)="socialsharedevice(deviceData.nfc_id)">
+            <button class="share" outline (tap)="socialsharedevice(deviceData.nfc_id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
           </ion-col>
@@ -1087,129 +1086,4 @@
     </div>
   </div>
   <!-- Varification-->
-
-
-
-
-
-
-  <!-- art start -->
-
-  <div style="    overflow-y: scroll;
-  height: 100%;">
-    <div class="showcontent">
-      <div class="head">
-
-        <div class="mdl">
-          <i class="fa fa-angle-left" style="font-size:24px" (click)="back()"></i>
-          <p>Sciece Art </p>
-          <div class="iconss">
-            <ion-icon name="heart-outline" item-right></ion-icon>
-            <!-- <ion-icon name="heart" item-right
-              ></ion-icon> -->
-          </div>
-        </div>
-      </div>
-      <div class="imgss event">
-        <!-- <div class="ss"></div> -->
-
-        <ion-grid class="headerfashion">
-          <ion-row>
-            <ion-col col-3 text-center>
-              <img
-                src="https://i.ytimg.com/vi/FClM6Uz0-Gg/maxresdefault.jpg"
-                alt="">
-            </ion-col>
-            <ion-col col-8>
-              <p class="title">Sciece City</p>
-              <p class="subtitle"><small>Durgapur, West Bengal, India</small></p>
-
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
-
-        <ion-slides pager id="myImg" >
-          <ion-slide >
-            <!-- <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
-
-            <img class="fashionimg" src="https://i0.wp.com/wastonchen.com/wp-content/uploads/2017/02/LED-Smart-bulb-part.jpg?fit=640%2C448&ssl=1">
-
-          </ion-slide>
-
-        </ion-slides>
-      </div>
-
-    </div>
-    <div class="">
-      <!-- <div class="dis">
-        <p style="text-align: center;
-            margin-left: 1em;">
-          {{(eventdata.fashionId.price*(100-eventdata.storeId.companyId.discount)/100) | number : '1.2-2'}}
-          <span>({{eventdata.storeId.companyId.discount}}% off )<span class="total">
-              &nbsp;{{eventdata.fashionId.price}}</span></span>
-        </p>
-      </div> -->
-      <p class="title" text-center>Engineer an LED Night-Light
-      </p>
-
-      <p class="fashiondes" style="    height: 16vh;
-      overflow-y: scroll;
-      padding: 10px 0;">Night-lights can be found in many homes; you might even have one in your bedroom! Using a
-        night-light is a great way to avoid stubbing your toe on furniture during a midnight trip to the bathroom. In
-        this fun engineering project, you will design and build your own night-light. You will need to build the
-        circuit, but you will also need to think about the physical design of the product. Most people probably do not
-        want an ugly, bare circuit board sitting around their house. Can you make a functional, aesthetically pleasing
-        case or enclosure for your circuit? You could make a case using craft materials, wood, or even a 3D printer if
-        you have access to one.</p>
-      <!-- <p class="fashiondes"><span>Size: </span><small>{{eventdata.fashionId.size}}</small></p> -->
-
-
-
-      <div class="fashionview ">
-        <a href="#" class="button button-positive" style="margin: 0 1em">
-
-          View
-        </a>
-
-
-
-      </div>
-
-
-
-      <ion-grid class="saveGrid" no-padding>
-        <ion-row>
-          <ion-col col-6>
-
-
-            <button class="share" outline >
-              <!-- <a href="{{eventdata.storeId.companyId.website}}"> -->
-              <i aria-hidden="true" class="fa fa-map-marker"></i>&nbsp;&nbsp; Location
-              <!-- <ion-icon name="navigate"></ion-icon> -->
-              <!-- </a> -->
-            </button>
-
-
-
-          </ion-col>
-          <ion-col col-6>
-            <button  class="share" outline
-              >
-              <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
-            </button>
-            <!-- <button  ion-button class="save1"
-              ><i class="fa fa-share-alt"
-                aria-hidden="true"></i>&nbsp;&nbsp;
-              share</button> -->
-          </ion-col>
-
-
-
-        </ion-row>
-      </ion-grid>
-    </div>
-  </div>
-  <!-- art end -->
 </ion-content>

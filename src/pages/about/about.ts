@@ -19,9 +19,7 @@ export class AboutPage {
     public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutPage');
-  }
+
   back() {
     this.navCtrl.pop();
   }
@@ -33,6 +31,6 @@ export class AboutPage {
   }
 
   showsh1() {
-    console.log("Clicked on google login")
+    
   }
 }

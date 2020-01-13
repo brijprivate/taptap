@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Storage } from '@ionic/storage';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the SharePage page.
@@ -17,18 +18,23 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'share.html',
 })
 export class SharePage {
-  alllist: any;
-  constructor(public storage: Storage, public navCtrl: NavController, public navParams: NavParams,
+  alllist: any = 0;
+  constructor(public sharedservice: SharedserviceProvider, public storage: Storage, public navCtrl: NavController, public navParams: NavParams,
     public loginsignupProvider: LoginsignupProvider,
     private socialsharing: SocialSharing
   ) {
+    let _base = this;
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
+        _base.alllist = response.user_count;
+      })
   }
 
   // http://onelink.to/pxu5ar
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SharePage');
-    this.getuserslist();
+    
+    // this.getuserslist();
   }
   back() {
     this.navCtrl.pop();
@@ -37,41 +43,9 @@ export class SharePage {
   socialshare() {
     let link = "http://onelink.to/pxu5ar"
     this.socialsharing.share(link).then(() => {
-      alert("Thank your for sharing TapTap")
+      alert("Thank your for sharing TapTap.")
     }).catch(() => {
 
-    })
-  }
-
-
-  getuserslist() {
-    let _base = this;
-    let date = new Date()
-    let dateString = date.toISOString()
-
-    _base.storage.get("user_count")
-      .then(function (count) {
-        if (count) {
-          _base.alllist = count
-        }
-      })
-
-    this.loginsignupProvider.getuserslist().then(function (success: any) {
-
-      _base.alllist = success.result.length;
-
-      _base.storage.remove("user_count")
-      _base.storage.set("user_count", _base.alllist)
-
-      console.log(_base.alllist);
-    }, function (err) {
-      console.log(err);
-      _base.storage.get("user_count")
-        .then(function (count) {
-          if (count) {
-            _base.alllist = count
-          }
-        })
     })
   }
 }

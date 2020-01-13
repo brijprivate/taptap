@@ -7,6 +7,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { Crop } from '@ionic-native/crop';
 import { Geolocation } from '@ionic-native/geolocation';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 declare var cordova: any;
 declare var google
@@ -33,7 +34,7 @@ export class DevicededetailPage {
   public imageId: any;
   profileImage: string;
   API_URL = "https://api.taptap.org.uk";
-  
+
 
 
   constructor(public navCtrl: NavController,
@@ -41,6 +42,7 @@ export class DevicededetailPage {
     public nfctagProvider: NfctagProvider,
     private camera: Camera,
     private transfer: FileTransfer,
+    public sharedservice: SharedserviceProvider,
     private file: File,
     private filePath: FilePath,
     public toastCtrl: ToastController,
@@ -49,27 +51,22 @@ export class DevicededetailPage {
     public loadingCtrl: LoadingController,
     private crop: Crop,
     public actionSheetCtrl: ActionSheetController,
-    public alert:AlertController,
+    public alert: AlertController,
     private GoogleAutocomplete: Geolocation,
-    ) 
-    {
-      this.devicedetail = navParams.get("devicedetail");
-      console.log(this.devicedetail);
-      console.log(this.lost);
-     
-  }
-
-  ionViewDidLoad() {
-    if (this.devicedetail.imageId) {
-      this.imageId = this.API_URL + "/file/getImage?imageId=" + this.devicedetail.imageId._id;//creating url for profile pic
-
-    }
-
-    console.log('ionViewDidLoad DevicededetailPage');
+  ) {
+    let index = navParams.get("devicedetail");
+    let _base = this;
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
+        _base.devicedetail = response.devices[index]
+        if (_base.devicedetail.imageId) {
+          _base.imageId = _base.devicedetail.image
+        }
+      })
   }
 
   // notify(){
-  //   console.log(this.lost);
+  //   
   // }
 
   updatedetail() {
@@ -89,13 +86,13 @@ export class DevicededetailPage {
         website: this.devicedetail.contact_info.website
       }
     }
-    console.log(ddata);
+    
     this.nfctagProvider.updateDeviceName(ddata).then(function (success) {
-      console.log(success);
+      
       _base.presentAlert();
-      _base.navCtrl.pop();
+      // _base.navCtrl.pop();
     }, function (err) {
-      console.log(err);
+      
     })
   }
 
@@ -106,12 +103,12 @@ export class DevicededetailPage {
       deviceId: id,
       is_lost: this.lost
     }
-    console.log(this.lost);
+    
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      console.log(success);
+      
       // _base.getpairedDevice();
     }, function (err) {
-      console.log(err);
+      
     })
   }
   notifyy(id) {
@@ -120,12 +117,12 @@ export class DevicededetailPage {
       deviceId: id,
       is_lost: this.islost
     }
-    console.log(this.islost);
+    
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      console.log(success);
+      
       // _base.getpairedDevice();
     }, function (err) {
-      console.log(err);
+      
     })
   }
   back() {
@@ -151,7 +148,7 @@ export class DevicededetailPage {
           text: 'Use Camera',
           handler: () => {
             this.takePicture(this.camera.PictureSourceType.CAMERA);
-            console.log("open camera:")
+            
           }
         },
         {
@@ -181,7 +178,7 @@ export class DevicededetailPage {
 
     // Get the data of an image...
     this.camera.getPicture(options).then((imagePath) => {
-      console.log("imagePath trace.........." + imagePath);
+      
 
       //Crop function to crop the image...
       this.crop.crop(imagePath, {
@@ -189,16 +186,16 @@ export class DevicededetailPage {
         targetWidth: 160,
         targetHeight: 160,
       }).then(function (success: any) {
-        console.log("here is the success image ..." + success);
+        
         imagePath = success;
-        console.log("check image path......" + imagePath);
-        _base.imageId = imagePath;
-        console.log("check image source type............");
-        console.log(sourceType);
+        
+        // _base.imageId = imagePath;
+        
+        
 
         // Speacial handleing for Android platform...
         if (_base.platform.is('android') || sourceType == options.sourceType.PHOTOLIBRARY) {
-          console.log("selected from library.......");
+          
 
           _base.filePath.resolveNativePath(imagePath)
             .then(filePath => {
@@ -236,12 +233,12 @@ export class DevicededetailPage {
    */
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-      console.log("image file trace ................>>>");
-      console.log(this.file);
-      console.log(newFileName);
-      console.log(cordova.file.dataDirectory);
-      console.log(namePath);
-      console.log(currentName);
+      
+      
+      
+      
+      
+      
       this.lastImage = newFileName;
       if (this.lastImage) {
         this.uploadImage();
@@ -268,7 +265,7 @@ export class DevicededetailPage {
   *
   */
   public uploadImage() {
-
+    let _base = this;
     if (this.lastImage) {
       // Destination URL
       // var url = "https://memeapi.memeinfotech.com/file/fileUpload";
@@ -293,32 +290,29 @@ export class DevicededetailPage {
         mimeType: "image/jpeg",
         params: { 'fileName': filename }
       };
-      console.log("click in upload image .....");
+      
       fileTransfer.upload(targetPath, url, options).then(data => {
 
-        console.log("image upload trace.......");
+        
         var temp: any;
         temp = data;
-        console.log(temp);
-        this.profileImage = JSON.parse(temp.response).upload._id;
-        console.log("profile image" + this.profileImage);
+        
+        _base.profileImage = JSON.parse(temp.response).upload._id;
+        
 
-        if (this.profileImage) {
-          this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage;//creating url for profile pic
-          console.log(this.imageId);
+        if (_base.profileImage) {
+          
         }
 
-        // console.log(temp.imageId._id);
-
         loader.dismiss();
-        this.presentToast('Image succesful uploaded.');
-        // this.update();//update after image uploaded successfully
+        _base.presentToast('Image succesful uploaded. Now saving the image to profile.');
+        _base.updatedetail();
 
       },
         err => {
           loader.dismiss();
-          this.presentToast('Error while uploading file.' + err);
-          console.log("Error in image upload function...." + err);
+          _base.presentToast('Error while uploading file.');
+          
         });
     }
     else {
@@ -344,15 +338,15 @@ export class DevicededetailPage {
       if (Object.keys(data).length != 0) {
         _base.devicedetail.contact_info.address = data.location;
       } else {
-        console.log("no data");
+        
       }
     });
     modal.present();
   }
   presentAlert() {
     let alert = this.alert.create({
-      title: 'Data has been saved',
-      cssClass:'mycss',
+      title: 'Data has been saved. Will be relfected in a moment',
+      cssClass: 'mycss',
       // buttons: [
       //   {
       //     text: 'OK',
@@ -362,13 +356,13 @@ export class DevicededetailPage {
       // ]
     });
     alert.present();
-    setTimeout(()=>alert.dismiss(),2000);
+    setTimeout(() => alert.dismiss(), 2000);
 
   }
 
   // updateSearchResults(inp){
 
-  //   console.log("clicked0------------", inp);
+  //   
   //   if (this.devicedetail.address == '') {
   //     this.autocompleteItems = [];
   //     return;
@@ -379,13 +373,13 @@ export class DevicededetailPage {
   //     this.zone.run(() => {
   //       predictions.forEach((prediction) => {
   //         this.autocompleteItems.push(prediction);
-  //         console.log(prediction);
+  //         
   //       });
   //     });
   //   });
   // }
 
-   //To add the full address through autocomplete search
+  //To add the full address through autocomplete search
   //  initmap() {
 
   //   var defaultBounds = new google.maps.LatLngBounds
@@ -399,9 +393,9 @@ export class DevicededetailPage {
   //   var options =
   //     {
   //       bounds: defaultBounds
-       
+
   //     };
-  //   console.log("working");
+  //   
 
   //   let autocomplete = new google.maps.places.Autocomplete(input, options);
   // }
@@ -409,10 +403,10 @@ export class DevicededetailPage {
   // updatedetaill(){
   //   let toast = this.toastCtrl.create({
   //     message:'<ion-icon name="pin"></ion-icon>',
-      
+
   //   });
-    // this.devicedetail.address = (<HTMLInputElement>document.getElementById('pac-input')).value;
-    // console.log(this.devicedetail.address);
+  // this.devicedetail.address = (<HTMLInputElement>document.getElementById('pac-input')).value;
+  // 
 
   // }
 

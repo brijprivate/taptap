@@ -42,7 +42,7 @@ export class ForgotpasswordPage {
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidLoad ForgotpasswordPage');
+    
     let _base = this
     this.getCountryCode()
   }
@@ -52,11 +52,11 @@ export class ForgotpasswordPage {
     if (_base.contact.length != 0) {
 
       if (this.contact) {
-        console.log(parseInt(this.contact))
+        
         if (parseInt(this.contact)) {
 
           if (parseInt(this.contact).toString().length != this.contact.length) {
-            console.log('Email')
+            
 
             let isValidEmail = this.checkpattern(this.contact)
             if (!isValidEmail) {
@@ -66,12 +66,12 @@ export class ForgotpasswordPage {
             }
 
           } else {
-            console.log('phone')
+            
             this.contact_type = "phone"
           }
 
         } else {
-          console.log('email')
+          
           let isValidEmail = this.checkpattern(this.contact)
           if (!isValidEmail) {
             return;
@@ -102,7 +102,7 @@ export class ForgotpasswordPage {
             alert(success.message)
           }
         }, function (error) {
-          console.log(JSON.parse(error._body).message)
+          
           alert(JSON.parse(error._body).message)
         });
     } else {
@@ -131,7 +131,7 @@ export class ForgotpasswordPage {
           alert(success.message)
         }
       }, function (error) {
-        console.log(error)
+        
         alert(JSON.parse(error._body).message)
       });
   }
@@ -190,12 +190,12 @@ export class ForgotpasswordPage {
 
   //check pattern...
   checkpattern(email) {
-    // console.log("aaaaaa");
+    // 
     let _base = this;
     let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
     let result = pattern.test(email);
     if (!result) {
-      console.log("miss");
+      
       let showtoast = _base.toast.create({
         message: "Please provide valid email",
         duration: 60000,
@@ -219,7 +219,7 @@ export class ForgotpasswordPage {
     modal.present();
 
     modal.onDidDismiss((data) => {
-      console.log("Data from modal page", data)
+      
       let length = Object.keys(data).length
       if (length != 0) {
         let card = data
@@ -308,16 +308,16 @@ export class ForgotpasswordPage {
     let _base = this
     // SMSReceive.startWatch(
     //   () => {
-    //     console.log('watch started');
+    //     
     //     document.addEventListener('onSMSArrive', (e: any) => {
-    //       console.log('onSMSArrive()');
+    //       
     //       var IncomingSMS = e.data;
-    //       console.log(JSON.stringify(IncomingSMS));
+    //       
 
     //       var string = IncomingSMS.body;
     //       var numbers = string.match(/\d+/g).map(Number);
     //       let otp = numbers[0]
-    //       console.log(otp);
+    //       
     //       _base.stop();
     //       (<HTMLInputElement>document.getElementById("partitioned")).value = otp;
     //       _base.otp = otp;
@@ -325,21 +325,21 @@ export class ForgotpasswordPage {
 
     //     });
     //   },
-    //   () => { console.log('watch start failed') }
+    //   () => {  }
     // )
   }
 
   stop() {
     // SMSReceive.stopWatch(
-    //   () => { console.log('watch stopped') },
-    //   () => { console.log('watch stop failed') }
+    //   () => {  },
+    //   () => {  }
     // )
   }
 
   getCountryCode() {
     let _base = this
     carrier.getCountryCode(function (success) {
-      console.log("Success", success)
+      
       _base.countryCode = success
 
       if (_base.countryCode == 'in') {
@@ -388,7 +388,7 @@ export class ForgotpasswordPage {
       }
 
     }, function (error) {
-      console.log("Error", error)
+      
     });
   }
 

@@ -10,10 +10,10 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="head">
     <div class="mdl">
-      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
 
       <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
       <p>Business</p>
@@ -92,10 +92,10 @@
     <ion-grid class="saveGrid">
       <ion-row>
         <ion-col col-9>
-          <button ion-button class="save" (click)="savePermission()">Save</button>
+          <button ion-button class="save" (tap)="savePermission()">Save</button>
         </ion-col>
 
-        <ion-col col-3 (click)="deleteBusiness()" style="z-index:99999999900">
+        <ion-col col-3 (tap)="deleteBusiness()" style="z-index:99999999900">
           <button ion-button class="save">
             <ion-icon ios="ios-trash" md="md-trash" ></ion-icon>
           </button>

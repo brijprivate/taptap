@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, NavParams, Slides } from 'ionic-angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -7,6 +7,7 @@ import { NfctagProvider } from './../../providers/nfctag/nfctag';
 import { LoginsignupProvider } from './../../providers/loginsignup/loginsignup';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { Storage } from '@ionic/storage';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the Feed3Page page.
@@ -52,18 +53,22 @@ export class Feed3Page {
     userId: localStorage.getItem('userId'),
   };
 
-  constructor(private storage: Storage, private launchNavigator: LaunchNavigator, public nativeGeocoder: NativeGeocoder, public service: NfctagProvider, public http: LoginsignupProvider,
+  constructor(public sharedservice: SharedserviceProvider, public toastCtrl: ToastController, private storage: Storage, private launchNavigator: LaunchNavigator, public nativeGeocoder: NativeGeocoder, public service: NfctagProvider, public http: LoginsignupProvider,
     public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
     let _base = this;
-    _base.http.getallcategories()
-      .then(function (success: any) {
-        // console.log(success)
-        _base.categories = [];
-        _base.categories = success.result
-        console.log(_base.categories)
-      }, function (error) {
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
 
+        _base.getcompanies(response.companies)
+        _base.showfeeds(response.feeds)
       })
+  }
+
+  showfeeds(feeds: any) {
+    if (JSON.stringify(feeds) == JSON.stringify(this.feeds)) {
+      return
+    }
+    this.feeds = feeds;
   }
 
   loadlazy() {
@@ -71,12 +76,12 @@ export class Feed3Page {
     let imgs = (document.querySelectorAll('img'));
     // imgs.forEach(imga => {
     let img = (<HTMLImageElement>imgs[4])
-    console.log()
+
     let src = img.src;
     img.src = src;
     img.onload = function () {
       // alert('Image loaded')
-      console.log('Loaded')
+
       img.src = src.replace("&select=thumbnail", "")
     }
     // });
@@ -99,26 +104,13 @@ export class Feed3Page {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Feed3Page');
-  }
   selectedTab(index) {
-
     this.slideselected = (this.slideselected == 'discount') ? "feeds" : "discount";
     this.slider.slideTo(index);
-
   }
+
   slideChanged() {
     this.slideselected = (this.slideselected == 'discount') ? "feeds" : "discount";
-  }
-
-  ionViewDidEnter() {
-    // console.log('ionViewDidLoad Feed1Page');
-    // this.loadMap()
-    // this.info = new plugin.google.maps.HtmlInfoWindow();
-    let _base = this;
-    _base.getCurrentPosition()
-    _base.getcompanies()
   }
 
   goto(x) {
@@ -126,140 +118,37 @@ export class Feed3Page {
   }
 
 
-  getallfeeds() {
-    let _base = this;
-    let userId = localStorage.getItem('userId')
-    _base.http.getAllFeedsList(userId)
-      .then(function (success: any) {
-        // console.log(success)
-      }, function (error) {
-        // console.log(error)
-      });
-  }
 
-  showFeeds() {
-    let _base = this;
-    return new Promise(function (resolve, reject) {
-
-      if (_base.storage.get('feeds')) {
-        _base.storage.get('feeds')
-          .then((feeds) => {
-            _base.feeds = feeds;
-          })
-      }
-
-      _base.getmyfeeds()
-        .then(function (success: any) {
-          // console.log(success)
-          _base.feeds = success.result.map(function (feed) {
-            let date = new Date(feed.createdDate)
-            let dateString = date.toLocaleDateString()
-            feed.createdDate = dateString;
-            feed.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0]
-            feed.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0] + "&select=thumbnail"
-
-            let favourites = feed.favourites;
-            if (favourites.includes(localStorage.getItem('userId'))) {
-              feed.like = true
-            } else {
-              feed.like = false;
-            }
-            return feed;
-          }).filter(feed => {
-            if (feed.product) {
-              return true
-            }
-          });
-
-          _base.storage.set("feeds", _base.feeds)
-
-          resolve(success)
-
-        }, function (error) {
-          if (_base.storage.get('feeds')) {
-            _base.storage.get('feeds')
-              .then((feeds) => {
-                _base.feeds = feeds;
-              })
-          }
-          reject(error)
-        });
-    })
-  }
-
-  getmyfeeds() {
-    let _base = this;
-
-    // console.log("here", _base.query.search, _base.query.search.trim().length)
-
-    let query = {
-      userId: _base.query.userId,
-      location: _base.geo
-    };
-    return new Promise(function (resolve, reject) {
-      _base.http.getMyFeeds(query)
-        .then(function (success: any) {
-          resolve(success)
-        }, function (error: any) {
-          reject(error)
-        });
+  presentToast(text) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 1000,
+      position: 'top'
     });
+
+    toast.present();
   }
-
-  getCurrentPosition() {
-    let _base = this;
-    _base.geolocation.getCurrentPosition().then((resp) => {
-      _base.geo.latitude = resp.coords.latitude
-      _base.geo.longitude = resp.coords.longitude
-      let place = { lat: _base.geo.latitude, lng: _base.geo.longitude }
-
-      // _base.nativeGeocoder.reverseGeocode(_base.geo.latitude, _base.geo.longitude)
-      //   .then((result: any) => {
-      //     _base.location = result[0].formatted_address;
-      //   });
-
-      _base.showFeeds();
-
-      // _base.searchNearby(place, 5000, []);
-    }).catch((error) => {
-      // console.log('Error getting location', error);
-      alert("Please turn on your location service")
-    })
-  }
-
-  calculatedistance(lat1, lon1, lat2, lon2) {
-    var R = 3963.2; // km (change this constant to get miles)
-    var dLat = (lat2 - lat1) * Math.PI / 180;
-    var dLon = (lon2 - lon1) * Math.PI / 180;
-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-      Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c;
-    // if (d > 1) return Math.round(d) + "km";
-    // else if (d <= 1) return Math.round(d * 1000) + "m";
-    return d;
-  }
-
 
   getproduct(company: any) {
     let _base = this;
     let categoryId = company.subscribed_category[0].categoryId;
     let adminId = company.adminId._id;
 
+    console.log(categoryId, adminId)
+
     _base.getCetgoryNameById(categoryId)
       .then(function (categoryName: String) {
         _base.http.getProductAdminCategory(categoryName, adminId)
           .then(function (success: any) {
             if (success.result.length != 0) {
-              console.log("success", success.result[0])
+
               let product = success.result[0]
               _base.showCompanyProduct(categoryName, product)
             } else {
-              alert('This company has no product yet')
+              _base.presentToast('This company has no product yet')
             }
           }, function (error: any) {
-            console.log("error", error)
+
           });
       });
 
@@ -412,32 +301,13 @@ export class Feed3Page {
       });
   }
 
-  getcompanies() {
+  getcompanies(companies) {
     let _base = this;
-    if (_base.storage.get('companies')) {
-      _base.storage.get('companies')
-        .then((companies) => {
-          _base.companies = companies;
-        })
+    if (JSON.stringify(_base.companies) == JSON.stringify(companies)) {
+      return
     }
-    _base.service.getcompanies()
-      .then(function (companies: any) {
-        _base.companies = companies.result
-          .filter(company => {
-            if (company.display_picture && company.discount) {
-              return true
-            }
-          })
-        _base.companies = _base.companies.map(company => {
-          console.log(company)
-          company.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture
-          company.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture + "&select=thumbnail"
-          return company
-        })
-        _base.loadlazy()
-        console.log("=========================", _base.companies)
-        _base.storage.set('companies', _base.companies);
-      });
+    _base.companies = companies;
+
   }
 
   feedAction(_id: String) {
@@ -448,9 +318,8 @@ export class Feed3Page {
     }
     _base.service.feedAction(click)
       .then(function (success: any) {
-        _base.showFeeds()
+        _base.presentToast('Your reaction will be updated in a moment');
       }, function (error) {
-
       });
   }
 
@@ -459,29 +328,32 @@ export class Feed3Page {
     let _base = this
     _base.geolocation.getCurrentPosition().then((resp) => {
 
-      console.log("lunch navigator");
+
       let start = {
         lat: resp.coords.latitude,
         lng: resp.coords.longitude
       };
+
+      localStorage.setItem("lat", start.lat.toString())
+      localStorage.setItem("lng", start.lng.toString())
 
       let end = {
         lat: parseFloat(_base.feed.product.storeId.companyId.geo.latitude),
         lng: parseFloat(_base.feed.product.storeId.companyId.geo.longitude)
       };
 
-      console.log(start, end);
+
 
       _base.lunchNavigator(start, end);
 
     }).catch((error) => {
-      console.log('Error getting location', error);
+
     })
   }
 
   lunchNavigator(start: any, end: any) {
-    console.log(start);
-    console.log(end);
+
+
     let GStart = [start.lat, start.lng];
     let GEnd = [end.lat, end.lng];
     let options: LaunchNavigatorOptions = {
@@ -491,8 +363,8 @@ export class Feed3Page {
 
     this.launchNavigator.navigate(GEnd, options)
       .then(
-        success => console.log('Launched navigator', success),
-        error => console.log('Error launching navigator', error)
+        success => { },
+        error => { }
       );
   }
 

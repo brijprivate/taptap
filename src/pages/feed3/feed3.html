@@ -1,21 +1,21 @@
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="head">
     <div class="mdl">
-      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
       <p>Discover</p>
     </div>
   </div>
 
   <ion-segment [(ngModel)]="slideselected">
-    <ion-segment-button value="discount" (click)="selectedTab(0)">
+    <ion-segment-button value="discount" (tap)="selectedTab(0)">
       DISCOUNT
     </ion-segment-button>
-    <ion-segment-button value="feeds" (click)="selectedTab(1)">
+    <ion-segment-button value="feeds" (tap)="selectedTab(1)">
       FEEDS
     </ion-segment-button>
   </ion-segment>
 
-  <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="animated 800s zoomIn delay-0.3s">
+  <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="">
     <ion-slide class="scroll">
       <ion-grid>
         <ion-row>

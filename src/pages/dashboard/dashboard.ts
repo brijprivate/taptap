@@ -28,36 +28,22 @@ export class DashboardPage {
   // taptapPage='Favourite';
   helpPage = 'HelpPage';
   morePage = 'MorePage';
-  homePage = HomePage;
+  homePage = 'HomePage';
 
   public userId: any;
   public userName: any;
-
+  public sharedata: any = {};
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loginsignupProvider: LoginsignupProvider) {
-    this.userId = localStorage.getItem("userId");
-    if (this.userId) {
-      this.getprofiledata();
+    this.sharedata = navParams.data;
+    
+    if (Object.keys(this.sharedata).length != 0) {
+      this.navCtrl.push("TapdetailsPage", this.sharedata)
     }
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
-  }
-
-  //Get profile data...
-  getprofiledata() {
-    let _base = this;
-    this.loginsignupProvider.getProfile(this.userId).then(function (success: any) {
-      console.log(success);
-      if (success) {
-        _base.userName = success.result.name;
-
-      }
-    }, function (err) {
-      console.log(err);
-    })
+  readTag() {
+    this.navCtrl.push('TapmodalPage');
   }
 }

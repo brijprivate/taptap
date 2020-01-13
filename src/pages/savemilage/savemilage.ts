@@ -62,30 +62,30 @@ export class SavemilagePage {
     this.startTime = this.navParams.get("starttime");
     this.unit = this.navParams.get("unit");
     this.finalLocationarray = this.navParams.get("cords");
-    console.log(this.finalLocationarray);
+    
     // this.endPos = this.navParams.get("endLocation");
     // this.cords = this.navParams.get("cords");
-    console.log(this.endtime);
+    
     this.duration = this.navParams.get("tduration");
-    console.log("duration----------->>>>>>>>", this.duration);
+    
     this.presentDate = Date.now();
 
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
+      
       this.isnetwork = value;
     });
 
 
     this.sharedservice.getlocation().subscribe((value) => {
-      console.log("shared location------------>>>>>>>>>>.");
-      console.log(value);
+      
+      
       if (Object.keys(value).length == 0 || value == null) {
         return;
       } else {
         // this.locations.push(value);
-        console.log("array of locations------------->>>>>>>>");
-        console.log(this.locations);
+        
+        
         // this.loop();
       }
     });
@@ -100,19 +100,19 @@ export class SavemilagePage {
     var x = setInterval(function () {
 
       _base.backgroundGeolocation.getCurrentLocation().then((location: BackgroundGeolocationResponse) => {
-        console.log("location on stop--------->>>>>>", location);
+        
         _base.nativeGeocoder.reverseGeocode(location.latitude, location.longitude)
           .then((result: NativeGeocoderReverseResult[]) => {
-            console.log("reverse geocode end location----------------->>>>>>>", result)
-            console.log(JSON.stringify(result[0]));
+            
+            
             _base.endLocation = result[0];
 
 
           });
       });
-      console.log('in the interval')
+      
       if (_base.endLocation.length != 0) {
-        console.log('clearedddddddddddddddddddddd');
+        
         clearInterval(x);
         var fetchedlocation = {
           latitude: _base.endLocation.latitude,
@@ -134,7 +134,7 @@ export class SavemilagePage {
 
   // }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SavemilagePage');
+    
   }
 
   //save milage....
@@ -196,15 +196,15 @@ export class SavemilagePage {
         this.endLocation.subAdministrativeArea + ',' + this.endLocation.administrativeArea + ',' +
         this.endLocation.countryName + ',' + this.endLocation.postalCode,
     }
-    console.log("milage data -------------------->>>>", timedata);
-    console.log(timedata);
+    
+    
     this.nfctagPro.createMilage(timedata).then(function (success: any) {
-      console.log(success);
+      
       loader.dismiss();
       _base.presentAlert();
       // _base.navCtrl.push('ProfilePage');
     }, function (err) {
-      console.log(err);
+      
       loader.dismiss();
 
     })
@@ -228,7 +228,7 @@ export class SavemilagePage {
     var loa2 = 0
 
     for (i = 0; i < this.finalLocationarray.length; i++) {
-      console.log("first location------->>>>", i[0]);
+      
       if (i == this.locations.length - 1) {
         return;
       }
@@ -246,10 +246,10 @@ export class SavemilagePage {
       } else {
         this.showdistance = this.totaldis.toFixed(2);
       }
-      console.log("show distance-----", this.showdistance);
-      console.log('total distance', this.totaldis);
+      
+      
       // if(this.totaldis){
-      console.log("in loooooopppppppppp----------->>>>>>>");
+      
 
       // }
 

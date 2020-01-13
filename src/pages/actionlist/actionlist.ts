@@ -19,7 +19,7 @@ export class ActionlistPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ActionlistPage');
+    
   }
   changepass(){
     this.navCtrl.push('ChangepasswordPage');

@@ -40,18 +40,18 @@ export class SaveTimePage {
     this.recordtype = this.navParams.get("recordtype");
     this.startTime = this.navParams.get("starttime");
     this.duration = this.navParams.get("duration");
-    console.log(this.endtime);
+
     this.presentDate = Date.now();
 
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
+
       this.isnetwork = value;
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SaveTimePage');
+
   }
 
   //API call for save time and data....
@@ -104,14 +104,14 @@ export class SaveTimePage {
       userId: this.userId,
       nfc_id: this.nfcid
     }
-    console.log(timedata);
+
     this.nfctagPro.recordTime(timedata).then(function (success: any) {
-      console.log(success);
+
       loader.dismiss();
       _base.presentAlert();
       //  _base.navCtrl.push('ProfilePage');
     }, function (err) {
-      console.log(err);
+
       loader.dismiss();
     })
 
@@ -125,7 +125,7 @@ export class SaveTimePage {
     alert.present();
     setTimeout(() => {
       alert.dismiss()
-      _base.navCtrl.setRoot('ProfilePage');
+      _base.navCtrl.pop();
     }, 2000);
   }
   back() {

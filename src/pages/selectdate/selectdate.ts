@@ -25,14 +25,11 @@ export class SelectdatePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginsignupProvider: LoginsignupProvider) {
     this.edate = new Date().toISOString();
     this.sdate = new Date().toISOString();
-    console.log(this.sdate);
+    
     this.userId = localStorage.getItem("userId");
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SelectdatePage');
-  }
   select(item) {
     this.selected = item;
   }
@@ -49,12 +46,12 @@ export class SelectdatePage {
   //get start date...
   startdate() {
     // this.sdate = this.sdate;
-    console.log(this.sdate);
+    
   }
   enddate() {
     // this.edate = new Date().toISOString();
-    console.log(this.edate)
-    console.log(this.edate.slice(0, -16));
+    
+    
   }
   back() {
     this.navCtrl.pop()
@@ -72,7 +69,7 @@ export class SelectdatePage {
       return;
     }
     else {
-      console.log('ok you can go');
+      
     }
 
     if (this.selected == undefined) {
@@ -85,7 +82,7 @@ export class SelectdatePage {
       return
     }
     if (this.pers) {
-      console.log('personal')
+      
     }
 
     if (this.selected == 'time') {
@@ -102,7 +99,7 @@ export class SelectdatePage {
     let _base = this;
     _base.loginsignupProvider.selectdate(_base.userId, timeurl, _base.sdate, _base.edate).then(function (success: any) {
       if (success) {
-        console.log(success);
+        
         if (!success.result) {
 
           if (_base.selected == 'time') {
@@ -157,7 +154,7 @@ export class SelectdatePage {
       }
     },
       function (err) {
-        console.log(err);
+        
       })
   }
 
@@ -179,7 +176,7 @@ export class SelectdatePage {
       date: { start: new Date(this.sdate.toString()).toISOString(), end: edate.toISOString() },
       data: this.data
     }
-    console.log(this.data);
+    
     this.navCtrl.push('MilagelistPage', { data: data })
 
   }

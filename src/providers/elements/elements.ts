@@ -14,7 +14,7 @@ import { AlertController } from 'ionic-angular';
 export class ElementsProvider {
 
   constructor(public http: Http, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
-    console.log('Hello ElementsProvider Provider');
+    
   }
 
   showLoader(content: string, hide: boolean) {

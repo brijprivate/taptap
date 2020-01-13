@@ -10,10 +10,10 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="head">
     <div class="mdl">
-      <i class="fa fa-chevron-left " aria-hidden="true" (click)="back()"></i>
+      <i class="fa fa-chevron-left " aria-hidden="true" (tap)="back()"></i>
       <p class="">Item Tapped</p>
     </div>
   </div>
@@ -33,7 +33,7 @@
       <ion-col col-4>
         <div class="locationInfoa">
           <img src="../../assets/images/direction.png">
-          <button (click)="navigate()" class="navigate">Navigate</button>
+          <button (tap)="navigate()" class="navigate">Navigate</button>
         </div>
       </ion-col>
     </ion-row>
@@ -49,10 +49,10 @@
     {{location.postalCode}}postalCode -->
   </div>
 
-  <!-- <button class="stop" (click)="navigate()">
+  <!-- <button class="stop" (tap)="navigate()">
     Navigate
   </button> -->
-  <button class="dBtat" (click)="navigate()">
+  <button class="dBtat" (tap)="navigate()">
     <img src="../../assets/images/directionpic.png">Go
   </button>
 </ion-content>

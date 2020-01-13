@@ -6,11 +6,11 @@
 -->
 
 
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="head">
     <div class="mdl">
       <!-- <ion-icon name="arrow-round-back" ></ion-icon> -->
-      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+      <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
       <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
       <p>Share</p>
       <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
@@ -23,7 +23,7 @@
     <h2>{{alllist}}</h2>
     <p class="shade">Happy Users</p>
     <p class="greeting">Because of you TapTap is reaching around the world. Thank You!</p>
-    <svg version="1.1" class="animated infinite tada delay-0.1s" id="review" xmlns="http://www.w3.org/2000/svg"
+    <svg version="1.1" id="review" xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
       style="enable-background:new 0 0 512 512;" xml:space="preserve">
       <g>
@@ -96,7 +96,7 @@
 
 
     </p>
-    <div class="share" (click)="socialshare()">
+    <div class="share" (tap)="socialshare()">
       <Button>
         <ion-icon name="share"></ion-icon> Share
       </Button>

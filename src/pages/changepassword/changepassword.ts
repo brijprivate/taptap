@@ -31,7 +31,7 @@ export class ChangepasswordPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChangepasswordPage');
+
     this.getUser();
   }
 
@@ -39,7 +39,7 @@ export class ChangepasswordPage {
     let _base = this;
     _base.signupprovider.getProfile(localStorage.getItem('userId'))
       .then(function (success: any) {
-        console.log(success.result.name);
+
         _base.user = success.result;
         _base.userName = success.result.name.split(" ")[0];
       }, function (error: any) {
@@ -73,14 +73,14 @@ export class ChangepasswordPage {
     _base.signupprovider.resetpassword(updateData)
       .then(function (success) {
         alert("password reset successfull");
-        _base.navCtrl.setRoot(HomePage);
+        _base.navCtrl.pop();
       }, function (error) {
         alert("Can not reset password");
       });
   }
 
   skip() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.pop();
   }
 
 }

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController, AlertController, 
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 // import { ProfilePage } from '../profile/profile';
 import { Storage } from '@ionic/storage';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the ManagedevicePage page.
@@ -26,70 +27,34 @@ export class ManagedevicePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfctagProvider: NfctagProvider,
+    public sharedservice: SharedserviceProvider,
     private toast: ToastController,
     public alert: AlertController,
     public storage: Storage,
     public loading: LoadingController, ) {
     this.userId = localStorage.getItem("userId");
-    // if(this.userId){
-    //   this.getpairedDevice();
-    // }
+    let _base = this;
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
+        _base.getpairedDevice(response.devices)
+      })
   }
   backProfile() {
     this.navCtrl.push('ProfilePage');
 
   }
-  ionViewDidEnter() {
-    this.islost = true;
 
-    console.log("did enter------>>>>");
-    this.userId = localStorage.getItem("userId");
-    if (this.userId) {
-      this.getpairedDevice();
+  getpairedDevice(devices: any) {
+    if (JSON.stringify(this.devices) == JSON.stringify(devices)) {
+      return
     }
+    this.devices = devices;
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ManagedevicePage');
-  }
+
   gotodevice(device) {
     this.navCtrl.push('DevicededetailPage', { devicedetail: device });
   }
 
-  //get paired devices....
-  //Get paired devices...
-  getpairedDevice() {
-    let _base = this;
-    // let loader = this.loading.create({
-    //   content: "Please wait..."
-    // });
-    // loader.present();
-
-    _base.storage.get('all_devices')
-      .then(function (devices) {
-        if (devices) {
-          _base.devices = devices;
-        }
-      });
-
-    this.nfctagProvider.getpairdevice(this.userId).then(function (success: any) {
-      console.log("paired devices--------------?>>>>>>>>>");
-      console.log(success);
-
-      // loader.dismiss();
-      _base.devices = success.result;
-      _base.storage.remove('all_devices')
-      _base.storage.set('all_devices', _base.devices)
-
-    }, function (err) {
-      console.log(err);
-      _base.storage.get('all_devices')
-        .then(function (devices) {
-          if (devices) {
-            _base.devices = devices;
-          }
-        });
-    })
-  }
 
   presentPrompt(nfcid) {
     let alert = this.alert.create({
@@ -105,13 +70,13 @@ export class ManagedevicePage {
           text: 'Cancel',
           role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
+            
           }
         },
         {
           text: 'Save',
           handler: data => {
-            console.log(data[0]);
+            
             this.deviceName = data[0];
             if (this.deviceName) {
               this.changedevicename(nfcid);
@@ -126,22 +91,15 @@ export class ManagedevicePage {
 
   changedevicename(nfcid) {
     let _base = this;
-    // let loader = this.loading.create({
-    //   content: "Please wait..."
-    // });
-    // loader.present();
     let data = {
       deviceId: nfcid,
       device_title: _base.deviceName
     }
-    console.log(data);
+    
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      // loader.dismiss();
-      console.log(success);
-      _base.getpairedDevice();
+      
     }, function (err) {
-      console.log(err);
-      // loader.dismiss();
+      
     })
   }
 
@@ -153,12 +111,6 @@ export class ManagedevicePage {
 
   deleteDevice(nfcid) {
     this.navCtrl.push('AnimatetapPage', { key: "delete" })
-    // var _base=this;
-    // this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
-    //   _base.getpairedDevice();
-    // },function(err){
-    //   alert("unable to delete device please try again");
-    // })
   }
 
   //mark as lost...
@@ -168,12 +120,10 @@ export class ManagedevicePage {
       deviceId: id,
       is_lost: this.lost
     }
-    console.log(this.lost);
+    
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      console.log(success);
-      _base.getpairedDevice();
     }, function (err) {
-      console.log(err);
+      
     })
   }
 
@@ -183,12 +133,11 @@ export class ManagedevicePage {
       deviceId: id,
       is_lost: this.islost
     }
-    console.log(this.islost);
+    
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      console.log(success);
-      _base.getpairedDevice();
+      
     }, function (err) {
-      console.log(err);
+      
     })
   }
 
@@ -199,7 +148,7 @@ export class ManagedevicePage {
 
 
 
-  setdefault(nfcid) {
+  setdefault(nfcid, i) {
     let _base = this;
     let loader = this.loading.create({
       content: "Please wait..."
@@ -209,16 +158,28 @@ export class ManagedevicePage {
       deviceId: nfcid,
       is_active: true
     }
-    console.log(data);
+    
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
       loader.dismiss();
-      console.log(success);
-      _base.getpairedDevice();
+      
+      _base.localdefault(i)
     }, function (err) {
-      console.log(err);
+      
       loader.dismiss();
     })
   }
+
+  localdefault(i) {
+    let k = 0;
+    for (k = 0; k <= this.devices.length - 1; k++) {
+      if (k != i) {
+        this.devices[i].is_active = false;
+      } else {
+        this.devices[i].is_active = false;
+      }
+    }
+  }
+
   goto(url) {
     this.navCtrl.push('PairdevicePage', { x: 'pair' });
   }

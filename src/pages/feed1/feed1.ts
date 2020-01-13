@@ -47,21 +47,21 @@ export class Feed1Page {
   }
 
   ionViewDidEnter() {
-    // console.log('ionViewDidLoad Feed1Page');
+    // 
     // this.loadMap()
     // this.info = new plugin.google.maps.HtmlInfoWindow();
     let _base = this;
 
     _base.http.getallcategories()
       .then(function (success: any) {
-        // console.log(success)
+        // 
         _base.categories = [];
         _base.categories = success.result.filter(function (category) {
           if (category.name != 'General' && category.name != 'Contacts' && category.name != 'Verification') {
             return category;
           }
         });
-        console.log(_base.categories)
+        
       }, function (error) {
 
       })
@@ -94,7 +94,7 @@ export class Feed1Page {
 
       // _base.searchNearby(place, 5000, []);
     }).catch((error) => {
-      // console.log('Error getting location', error);
+      // 
       alert("Please turn on your location service")
     })
   }
@@ -105,12 +105,12 @@ export class Feed1Page {
     if (Index == -1) {
       _base.query.category.push(categoryId)
       let element = <HTMLCollection>document.getElementsByClassName('c' + i)
-      console.log(element[0])
+      
       element[0].className = "category c" + i + " active"
     } else {
       _base.query.category.splice(Index, 1);
       let element = <HTMLCollection>document.getElementsByClassName('c' + i)
-      console.log(element[0])
+      
       element[0].className = "category c" + i
     }
     _base.showFeeds()
@@ -118,13 +118,13 @@ export class Feed1Page {
 
 
   search(e: any) {
-    console.log(this.query)
+    
     this.showFeeds();
   }
 
   toggleNearbu() {
     let element = <HTMLElement>document.getElementById('google-nearby')
-    console.log(element.style.display)
+    
     if (element.style.display == "none") {
       element.style.display = "block"
       this.toggle_text = "hide nearby"
@@ -139,9 +139,9 @@ export class Feed1Page {
     let userId = localStorage.getItem('userId')
     _base.http.getAllFeedsList(userId)
       .then(function (success: any) {
-        // console.log(success)
+        // 
       }, function (error) {
-        // console.log(error)
+        // 
       });
   }
 
@@ -150,7 +150,7 @@ export class Feed1Page {
     return new Promise(function (resolve, reject) {
       _base.getmyfeeds()
         .then(function (success: any) {
-          // console.log(success)
+          // 
           _base.feeds = success.result.map(function (feed) {
             let date = new Date(feed.createdDate)
             let dateString = date.toLocaleDateString()
@@ -173,7 +173,7 @@ export class Feed1Page {
   getmyfeeds() {
     let _base = this;
 
-    // console.log("here", _base.query.search, _base.query.search.trim().length)
+    // 
 
     let query = {
       userId: _base.query.userId,

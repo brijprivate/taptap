@@ -19,7 +19,7 @@ export class ProfiledetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfiledetailPage');
+    
   }
 
   gotoedit(){

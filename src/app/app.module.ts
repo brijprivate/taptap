@@ -23,6 +23,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 // import { Sim } from '@ionic-native/sim';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
@@ -38,21 +39,19 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
 // import { Keyboard } from '@ionic-native/keyboard';
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicImageLoader } from 'ionic-image-loader';
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { ElementsProvider } from '../providers/elements/elements';
-
-const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} };
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    // HomePage,
     // SavemilagePage,
     // SaveTimePage,
 
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     IonicModule.forRoot(MyApp,
       {
         tabsPlacement: 'bottom ', tabsHideOnSubPages: true, scrollPadding: false,
@@ -62,14 +61,13 @@ const config: SocketIoConfig = { url: 'https://api.taptap.org.uk', options: {} }
     IonicStorageModule.forRoot(),
     IonicImageLoader.forRoot(),
     HttpModule,
-    HttpClientModule,
-    SocketIoModule.forRoot(config)
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
 
   entryComponents: [
     MyApp,
-    HomePage,
+    // HomePage,
     // SavemilagePage,
     // SaveTimePage,
 

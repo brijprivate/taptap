@@ -40,43 +40,44 @@ export class MilagelistPage {
     private fileOpener: FileOpener) {
 
     this.data = this.navParams.get('data');
-    console.log(this.data)
+    
     if (this.data) {
       this.getMilageList();
     }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MilagelistPage');
+  ionViewDidEnter() {
+    
     // this.getprofiledata()
+    
   }
 
 
   getprofiledata() {
     let _base = this;
     this.loginsignpro.getProfile(localStorage.getItem("userId")).then(function (success: any) {
-      console.log(success);
+      
       if (success) {
         _base.address = success.result;
         _base.createPdf();
 
       }
     }, function (err) {
-      console.log(err);
+      
     })
   }
 
   getMilageList() {
     let _base = this;
     this.loginsignpro.getmilage(localStorage.getItem("userId")).then(function (success: any) {
-      console.log(success);
+      
       _base.milagelist = success.result.records;
       if (_base.milagelist) {
         _base.getprofiledata()
 
       }
     }, function (err) {
-      console.log(err);
+      
     })
 
   }
@@ -106,7 +107,7 @@ export class MilagelistPage {
         table: {
           headerRows: 1,
 
-          widths: ['10%', '9%', '9%', '10%', '15%', '15%', '15%', '8%','8%'],
+          widths: ['10%', '9%', '9%', '10%', '15%', '15%', '15%', '8%', '8%'],
           body: this.buildTableBody(data, columns)
         }
       };
@@ -116,7 +117,7 @@ export class MilagelistPage {
 
         table: {
           headerRows: 1,
-          widths: ['14.28%', '14.28%','14.28%','14.28%','14.28%','14.28%','14.28%',],
+          widths: ['14.28%', '14.28%', '14.28%', '14.28%', '14.28%', '14.28%', '14.28%',],
           fontSize: 11,
           body: this.buildTableBody(data, columns)
         }
@@ -141,7 +142,7 @@ export class MilagelistPage {
   }
 
   addtimes(start, end) {
-    console.log(start, end)
+    
     var a = start.split(":");
     var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
     var b = end.split(":");
@@ -151,7 +152,7 @@ export class MilagelistPage {
     date.setSeconds(seconds + seconds2);
 
     var c = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-    console.log(c);
+    
     return c;
   }
 
@@ -172,15 +173,15 @@ export class MilagelistPage {
       externalDataRetrievedFromServer = this.data.data;
       title = "Business & Personal"
     }
-    console.log(externalDataRetrievedFromServer);
+    
     var total = '00:00:00'
 
 
     for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
       // total = total + externalDataRetrievedFromServer[i].duration
-      console.log(i)
+      
       total = this.addtimes(total, externalDataRetrievedFromServer[i].duration);
-      console.log(total)
+      
     }
 
 
@@ -189,21 +190,21 @@ export class MilagelistPage {
     var totalmilage = 0;
     var dynamicttile = [];
     if (this.data.type == 'time') {
-      dynamicttile = [{ text: 'Date', key:'createdDate', bold: true }, { text: 'Type',key: 'recordType', bold: true },{ text: 'Title',key: 'title', bold: true }, {text: 'Description', key: 'description', bold: true }, { text: 'From',key: 'startTime', bold: true }, {text: 'To', key: 'endTime', bold: true }, { text: 'Duration',key: 'duration', bold: true }];
+      dynamicttile = [{ text: 'Date', key: 'createdDate', bold: true }, { text: 'Type', key: 'recordType', bold: true }, { text: 'Title', key: 'title', bold: true }, { text: 'Description', key: 'description', bold: true }, { text: 'From', key: 'startTime', bold: true }, { text: 'To', key: 'endTime', bold: true }, { text: 'Duration', key: 'duration', bold: true }];
 
       for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
-        console.log(i)
+        
         externalDataRetrievedFromServer[i].createdDate = moment(externalDataRetrievedFromServer[i].createdDate).format('DD-MM-YYYY');
       }
     }
     else if (this.data.type == 'milage') {
-      dynamicttile = [{text:'Date', key: 'createdDate', bold: true, },{text:'Time',  key: 'startTime', bold: true, }, {text:'Type',  key: 'recordType', bold: true ,}, { text:'Title', key: 'title', bold: true ,}, {text:'Description',  key: 'description', bold: true, }, { text:'From', key: 'startLocation', bold: true, }, { text:'To', key: 'endLocation', bold: true ,}, { text:'Duration', key: 'duration', bold: true ,}, { text:'Mileage', key: 'milage', bold: true, }];
+      dynamicttile = [{ text: 'Date', key: 'createdDate', bold: true, }, { text: 'Time', key: 'startTime', bold: true, }, { text: 'Type', key: 'recordType', bold: true, }, { text: 'Title', key: 'title', bold: true, }, { text: 'Description', key: 'description', bold: true, }, { text: 'From', key: 'startLocation', bold: true, }, { text: 'To', key: 'endLocation', bold: true, }, { text: 'Duration', key: 'duration', bold: true, }, { text: 'Mileage', key: 'milage', bold: true, }];
       for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
-        console.log(i)
+        
         externalDataRetrievedFromServer[i].milage = parseFloat(externalDataRetrievedFromServer[i].milage).toFixed(2);
         externalDataRetrievedFromServer[i].createdDate = moment(externalDataRetrievedFromServer[i].createdDate).format('DD-MM-YYYY');
 
-        console.log(externalDataRetrievedFromServer[i].milage)
+        
 
         totalmilage = totalmilage + parseFloat(parseFloat(externalDataRetrievedFromServer[i].milage).toFixed(2))
 
@@ -240,9 +241,9 @@ export class MilagelistPage {
         },
         margin: [40, 15, 0, 0]
       },
-      { text: "Gocube Technology Limited | Company No: 111444", bold: true, fontSize: 13,alignment: "center", margin: [40, 0, 40, 0], },
+      { text: "Gocube Technology Limited | Company No: 111444", bold: true, fontSize: 13, alignment: "center", margin: [40, 0, 40, 0], },
 
-      { text: "Future Business Centre, Kings Hedges Road,Cambridge, England, CB4 2HY", fontSize: 12,alignment: "center", margin: [40, 0, 0, 0] },
+      { text: "Future Business Centre, Kings Hedges Road,Cambridge, England, CB4 2HY", fontSize: 12, alignment: "center", margin: [40, 0, 0, 0] },
 
       {
         text: "",
@@ -305,7 +306,7 @@ export class MilagelistPage {
           fontSize: 14,
           'listStyle': 'none'
         },
-       
+
         story: {
           italic: true,
           alignment: 'center',
@@ -314,12 +315,12 @@ export class MilagelistPage {
       }
 
     }
-    console.log("creating");
+    
     this.pdfObj = pdfMake.createPdf(docDefinition);
     if (this.pdfObj) {
       this.downloadPdf();
       this.show = false;
-
+      this.navCtrl.pop();
     }
   }
 
@@ -332,7 +333,7 @@ export class MilagelistPage {
         this.file.writeFile(this.file.dataDirectory, 'taptapstatement.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
           this.fileOpener.open(this.file.dataDirectory + 'taptapstatement.pdf', 'application/pdf');
-          console.log("open");
+          
         })
       });
     } else {

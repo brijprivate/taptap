@@ -4,7 +4,7 @@ import { HomePage } from './home';
 import { IonicImageLoader } from 'ionic-image-loader';
 @NgModule({
   declarations: [
-    // HomePage,
+    HomePage,
   ],
   imports: [
     IonicPageModule.forChild(HomePage),

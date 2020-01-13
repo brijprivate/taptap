@@ -40,13 +40,13 @@ export class LoginPage {
   ) {
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
+      
       this.isnetwork = value;
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    
     this.getCountryCode()
   }
 
@@ -86,11 +86,11 @@ export class LoginPage {
     }
 
     if (this.contact) {
-      console.log(parseInt(this.contact))
+      
       if (parseInt(this.contact)) {
 
         if (parseInt(this.contact).toString().length != this.contact.length) {
-          console.log('Email')
+          
 
           let isValidEmail = this.checkpattern(this.contact)
           if (!isValidEmail) {
@@ -100,12 +100,12 @@ export class LoginPage {
           }
 
         } else {
-          console.log('phone')
+          
           this.contact_type = "phone"
         }
 
       } else {
-        console.log('email')
+        
         let isValidEmail = this.checkpattern(this.contact)
         if (!isValidEmail) {
           return;
@@ -139,18 +139,18 @@ export class LoginPage {
     }
 
     this.signupprovider.login(logindata).then(function (success: any) {
-      console.log(success);
+      
       loader.dismiss();
       if (success) {
-        console.log(success.user._id);
+        
         localStorage.setItem("userId", success.user._id);
-        _base.navCtrl.setRoot('DashboardPage');
+        _base.navCtrl.setRoot('SynchroniserPage');
       }
     }, function (err) {
       loader.dismiss();
       let temp: any;
       temp = err.responce;
-      console.log(temp);
+      
       // if(err._body.message == 'User does not exist'){
       let showtoast = _base.toast.create({
         message: "Please provide valid credentials",
@@ -169,7 +169,7 @@ export class LoginPage {
 
 
   openSimCards() {
-    console.log("FOcus")
+    
     let _base = this
     if (_base.type == 'other') {
       return
@@ -177,11 +177,11 @@ export class LoginPage {
     const modal = _base.modalCtrl.create('SimcardsPage');
     modal.present();
 
-    console.log(modal)
+    
 
     modal.onDidDismiss((data) => {
-      console.log(modal)
-      console.log("Data from modal page", data)
+      
+      
       let length = Object.keys(data).length
       if (length != 0) {
         let card = data
@@ -278,12 +278,12 @@ export class LoginPage {
   }
 
   checkpattern(email) {
-    // console.log("aaaaaa");
+    // 
     let _base = this;
     let pattern = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/;
     let result = pattern.test(email);
     if (!result) {
-      console.log("miss");
+      
       let showtoast = _base.toast.create({
         message: "Please provide valid email",
         duration: 60000,
@@ -301,7 +301,7 @@ export class LoginPage {
   getCountryCode() {
     let _base = this
     carrier.getCountryCode(function (success) {
-      console.log("Success", success)
+      
       _base.countryCode = success
 
       if (_base.countryCode == 'in') {
@@ -359,7 +359,7 @@ export class LoginPage {
       }
 
     }, function (error) {
-      console.log("Error", error)
+      
     });
   }
 

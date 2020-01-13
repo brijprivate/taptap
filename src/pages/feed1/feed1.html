@@ -1,4 +1,4 @@
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="filter">
     <ion-item>
       <ion-input type="text" [(ngModel)]="query.search" (keyup)="search($event)" placeholder="Search Here....">
@@ -11,7 +11,7 @@
   </div>
   <ion-slides slidesPerView="4" #slides>
 
-    <ion-slide *ngFor="let category of categories;let i = index" (click)="selectCategory(category._id,i+1)">
+    <ion-slide *ngFor="let category of categories;let i = index" (tap)="selectCategory(category._id,i+1)">
       <p class="category c{{i+1}}">
 
         <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='category.name=="Fashion"'></ion-icon>
@@ -59,7 +59,7 @@
       <ion-row>
 
         <ion-col col-6 *ngFor="let feed of feeds">
-          <ion-card (click)="goto(feed)">
+          <ion-card (tap)="goto(feed)">
             <img src="https://api.taptap.org.uk/file/getImage?imageId={{feed.imageId[0]}}&select=thumbnail" />
             <div class="card-title">{{feed?.product?.storeId?.companyId?.discount}} % discount</div>
             <p class="card-subtitle">{{feed?.categoryId?.name}}</p>

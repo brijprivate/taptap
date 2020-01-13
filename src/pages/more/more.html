@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="head">
     <div class="mdl">
       <p><span>
@@ -20,7 +20,7 @@
 
   </div>
   <div class="contentDetail">
-    <ion-item (click)="goto('NotificationPage')">
+    <ion-item (tap)="goto('NotificationPage')">
       <div class="pContent">
         <p class="cName ">
           <ion-icon name="notifications-outline" item-left></ion-icon>
@@ -33,7 +33,7 @@
         <!-- <p class="cNumber">Montaki Cake</p> -->
       </div>
     </ion-item>
-    <!-- <ion-item (click)="goto('BusinesslistPage')">
+    <!-- <ion-item (tap)="goto('BusinesslistPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="briefcase" item-left></ion-icon>
@@ -41,7 +41,7 @@
         </p>
       </div>
     </ion-item> -->
-    <!-- <ion-item (click)="goto('FeedPage')">
+    <!-- <ion-item (tap)="goto('FeedPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="paper" item-left></ion-icon>
@@ -51,7 +51,7 @@
     </ion-item> -->
 
 
-    <!-- <ion-item (click)="goto('Feed1Page')">
+    <!-- <ion-item (tap)="goto('Feed1Page')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="paper" item-left></ion-icon>
@@ -61,7 +61,7 @@
     </ion-item> -->
 
 
-    <ion-item (click)="goto('Feed3Page')">
+    <ion-item (tap)="goto('Feed3Page')">
       <div class="pContent">
         <p class="cName">
 
@@ -72,7 +72,7 @@
     </ion-item>
 
 
-    <ion-item (click)="goto('store')">
+    <ion-item (tap)="goto('store')">
       <div class="pContent">
         <p class="cName">
           <ion-icon ios="ios-home" md="md-home" item-left></ion-icon>
@@ -82,7 +82,7 @@
     </ion-item>
 
 
-    <ion-item (click)="goto('HelpPage')">
+    <ion-item (tap)="goto('HelpPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="help-circle" item-left></ion-icon>
@@ -91,7 +91,7 @@
         <!-- <p class="cNumber">Montaki Cake</p> -->
       </div>
     </ion-item>
-    <ion-item (click)="goto('SharePage')">
+    <ion-item (tap)="goto('SharePage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="cube" item-left></ion-icon>
@@ -100,7 +100,7 @@
         <!-- <p class="cNumber">Montaki Cake</p> -->
       </div>
     </ion-item>
-    <ion-item (click)="goto('AboutPage')">
+    <ion-item (tap)="goto('AboutPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="call" item-left></ion-icon>
@@ -110,7 +110,7 @@
       </div>
     </ion-item>
 
-    <!-- <ion-item (click)="goto('RestaurantPage')">
+    <!-- <ion-item (tap)="goto('RestaurantPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="call" item-left></ion-icon>
@@ -119,7 +119,7 @@
       </div>
     </ion-item> -->
 
-    <ion-item (click)="goto('SelectdatePage')">
+    <ion-item (tap)="goto('SelectdatePage')">
       <div class="pContent">
         <p class="cName">
           <i class="fa fa-file-pdf-o"></i>
@@ -129,17 +129,17 @@
     </ion-item>
 
 
-    <ion-item (click)="goto('TapdetailsPage')">
+    <!-- <ion-item (tap)="goto('TapdetailsPage')">
       <div class="pContent">
         <p class="cName">
           <i class="fa fa-file-pdf-o"></i>
          Art Page
         </p>
       </div>
-    </ion-item>
+    </ion-item> -->
 
 
-    <!-- <ion-item (click)="showLoginModal()">
+    <!-- <ion-item (tap)="showLoginModal()">
       <div class="pContent">
         <p class="cName">
           <i class="fa fa-file-pdf-o"></i>
@@ -148,7 +148,7 @@
       </div>
     </ion-item> -->
 
-    <!-- <ion-item (click)="goto('LostcardPage')">
+    <!-- <ion-item (tap)="goto('LostcardPage')">
       <div class="pContent">
         <p class="cName">
           <ion-icon name="navigate" item-left></ion-icon>
@@ -158,7 +158,7 @@
     </ion-item> -->
 
     <div style="text-align:center;margin-top:3em;">
-      <button class="sharea" outline (click)="Logout()">
+      <button class="sharea" outline (tap)="Logout()">
         <ion-icon name="power"></ion-icon>&nbsp;&nbsp;Logout
       </button>
 

@@ -6,10 +6,10 @@
 -->
 
 
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="head">
     <div class="mdl">
-        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+        <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
 
       <!-- <ion-icon name="ios-briefcase-outline" item-left></ion-icon> -->
       <p>Help</p>
@@ -18,7 +18,7 @@
   </div>
 
   <ion-list>
-    <ion-item *ngFor="let d of diseases; let i=index" text-wrap (click)="toggleGroup(i)"
+    <ion-item *ngFor="let d of diseases; let i=index" text-wrap (tap)="toggleGroup(i)"
       [ngClass]="{active: isGroupShown(i)}">
       <h3 class="h3">
         {{d.title}}

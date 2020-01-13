@@ -47,10 +47,10 @@ export class AnimatetapPage {
   {
     this.userId = localStorage.getItem("userId");
     this.keyvalue = navParams.get("key");
-    console.log(this.keyvalue);
+    
      //Get Network status...
      this.sharedservice.getNetworkStat().subscribe((value)=>{
-      console.log("network status------------------>>>>>>",value);
+      
       this.isnetwork = value;
     });
     //Read tag ....
@@ -64,7 +64,7 @@ export class AnimatetapPage {
       let tagContent = this.nfc.bytesToString(payload).substring(3);
       this.readingTag = true;
 
-      console.log(tagContent)
+      
       
       let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
       let res = nfc_regex.test(tagContent);
@@ -86,9 +86,9 @@ export class AnimatetapPage {
       // tagid.forEach(function(byte) {
       //   s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
       // });
-      // console.log("tag data", tagContent);
-      // console.log("whole data", data.tag);
-      // console.log("tag id", s.substring(0, s.length - 1));
+      // 
+      // 
+      // 
       // this.tapData = s.substring(0, s.length - 1);
       // if(this.tapData){
       //   // this.createTap();
@@ -102,10 +102,6 @@ export class AnimatetapPage {
     err => {
     })
   );
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AnimatetapPage');
   }
 
    //Verify user's NFC tag...
@@ -143,7 +139,7 @@ export class AnimatetapPage {
       nfcId:tagdata
     } 
     this.nfctagProvider.verifyDevice(data).then(function(success:any){
-      console.log(success);
+      
       loader.dismiss();
       if(success.message == 'Device not found with user'){
         alert("This is not a paired device");
@@ -162,7 +158,7 @@ export class AnimatetapPage {
       }
       // _base.presentAlert();
     },function(err){
-      console.log(err);
+      
       loader.dismiss();
       alert("Your device is not paired");
       _base.readingTag = true;
@@ -186,7 +182,7 @@ export class AnimatetapPage {
           text: 'No',
           role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
+            
             this.navCtrl.pop();
           }
         },
@@ -222,12 +218,12 @@ export class AnimatetapPage {
       const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
         this.tapData= JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        console.log(this.tapData)
+        
         this.verifytag(this.tapData)
       }
       return data;
     } catch (e) {
-      console.log(e);
+      
     }
   }
 

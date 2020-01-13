@@ -14,14 +14,14 @@ export class NfctagProvider {
   public apiUrl: string = "https://api.taptap.org.uk/";
 
   constructor(public http: HttpProvider, public httpOne: HttpClient) {
-    console.log('Hello NfctagProvider Provider');
+    
   }
 
   //API call for pair device...
   pairDevice(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.put(_base.apiUrl + 'device/pairdevice', data)
         .then(function (success) {
           resolve(success);
@@ -35,7 +35,7 @@ export class NfctagProvider {
   getpairdevice(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'device/pairedList?owner=' + data)
         .then(function (success) {
           resolve(success);
@@ -47,10 +47,10 @@ export class NfctagProvider {
 
   //API call for pair device...
   verifyDevice(data) {
-    console.log(data);
+    
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'device/verifyuser?owner=' + data.userid + '&' + 'nfc_id=' + data.nfcId)
         .then(function (success) {
           resolve(success);
@@ -64,7 +64,7 @@ export class NfctagProvider {
   recordTime(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.post(_base.apiUrl + 'time/recordTime', data)
         .then(function (success) {
           resolve(success);
@@ -78,7 +78,7 @@ export class NfctagProvider {
   createTap(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.post(_base.apiUrl + 'tapped/create', data)
         .then(function (success) {
           resolve(success);
@@ -92,7 +92,7 @@ export class NfctagProvider {
   createMilage(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.post(_base.apiUrl + 'milage/recordMilage', data)
         .then(function (success) {
           resolve(success);
@@ -106,7 +106,7 @@ export class NfctagProvider {
   createFav(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.post(_base.apiUrl + 'favourite/addFavourite', data)
         .then(function (success) {
           resolve(success);
@@ -118,10 +118,10 @@ export class NfctagProvider {
 
   //API call for update product ...
   favUpdate(data) {
-    console.log('data in service', data);
+    
     let _base = this;
     return new Promise(function (resolve, reject) {
-      console.log(_base.apiUrl + 'tapped/update', data)
+      
       _base.http.put(_base.apiUrl + 'tapped/update', data)
         .then(function (success) {
           resolve(success);
@@ -132,10 +132,10 @@ export class NfctagProvider {
   }
   //API get product by id...
   getproductbyide(data) {
-    console.log(data);
+    
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'product/productbyId?id=' + data)
         .then(function (success) {
           resolve(success);
@@ -149,7 +149,7 @@ export class NfctagProvider {
   getbusinesses(userID: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'business/businessByUserId?userId=' + userID)
         .then(function (success) {
           resolve(success);
@@ -187,7 +187,7 @@ export class NfctagProvider {
   getnotifications(userID: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'notifications/list?userId=' + userID)
         .then(function (success) {
           resolve(success);
@@ -228,7 +228,7 @@ export class NfctagProvider {
   getusermonthlytaps(userid: String, month: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'tapped/usermonthly?userId=' + userid + "&month=" + month)
         .then(function (success) {
           resolve(success);
@@ -244,7 +244,7 @@ export class NfctagProvider {
     // return this.http.put(this.apiUrl+'device/removeOwner?nfc_id=', nfcid);
     let _base = this;
     return new Promise(function (resolve, reject) {
-      console.log(_base.apiUrl + 'device/removeOwner?nfc_id=' + nfcid)
+      
       _base.http.put(_base.apiUrl + 'device/removeOwner?nfc_id=' + nfcid, {})
         .then(function (success) {
           resolve(success);
@@ -258,7 +258,7 @@ export class NfctagProvider {
   removebusiness(data) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.put(_base.apiUrl + 'business/removebusiness', data)
         .then(function (success) {
           resolve(success);
@@ -272,7 +272,7 @@ export class NfctagProvider {
   getmilage(userid: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'milage/usermilage?userId=' + userid)
         .then(function (success) {
           resolve(success);
@@ -286,7 +286,7 @@ export class NfctagProvider {
   getcategories() {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'category/allcategory')
         .then(function (success) {
           resolve(success);
@@ -300,7 +300,7 @@ export class NfctagProvider {
   gettime(userid: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'time/usertime?userId=' + userid)
         .then(function (success) {
           resolve(success);
@@ -315,7 +315,7 @@ export class NfctagProvider {
   getcount(userid: String) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'milage/totalCount?userId=' + userid)
         .then(function (success) {
           resolve(success);
@@ -329,7 +329,7 @@ export class NfctagProvider {
   getimage(userid) {
     let _base = this;
     return new Promise(function (resolve, reject) {
-      // console.log("url==============>>>>>>>>>>"+ _base.apiUrl + '/register?'+'username='+userName+'&email='+email+'&phone='+phoneNumber+'&password='+password);
+      // 
       _base.http.get(_base.apiUrl + 'file/getImage?imageId=' + userid)
         .then(function (success) {
           resolve(success);

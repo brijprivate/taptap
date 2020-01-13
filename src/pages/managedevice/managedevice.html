@@ -6,72 +6,72 @@
 -->
 <ion-header>
   <ion-navbar>
-      <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+    <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
 
-          <ion-title class="animated 800s fadeIn delay-0.2s" >Manage device
+    <ion-title>Manage device
 
     </ion-title>
   </ion-navbar>
-  <ion-icon (click)="goto()" class="plucircle animated 800s zoomIn delay-0.2s">
-      <svg version="1.1" id="svgPl" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-      viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
-   <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M38.5,28H28v11c0,1.104-0.896,2-2,2
+  <ion-icon (tap)="goto()" class="plucircle ">
+    <svg version="1.1" id="svgPl" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+      y="0px" viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
+      <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M38.5,28H28v11c0,1.104-0.896,2-2,2
      s-2-0.896-2-2V28H13.5c-1.104,0-2-0.896-2-2s0.896-2,2-2H24V14c0-1.104,0.896-2,2-2s2,0.896,2,2v10h10.5c1.104,0,2,0.896,2,2
-     S39.604,28,38.5,28z"/>
-   <g>
-   </g>
-</svg>   
+     S39.604,28,38.5,28z" />
+      <g>
+      </g>
+    </svg>
   </ion-icon>
 </ion-header>
 
-<ion-content padding class="animated 800s zoomIn delay-0.2s">
-  <div  *ngFor="let device of devices" style="position:relative; border-bottom: 1px solid #00000012;">
-      <ion-item  >
-      
-          <ion-icon item-start>
-            <img *ngIf='device.type =="card"' src="../../assets/images/TapTap Card.png" class="pen">
-            <img *ngIf='device.type =="Keyring"' src="../../assets/images/TapTap Keyring.png" class="keyring">
+<ion-content padding>
+  <div *ngFor="let device of devices;let i = index" style="position:relative; border-bottom: 1px solid #00000012;">
+    <ion-item>
+
+      <ion-icon item-start>
+        <img *ngIf='device.type =="card"' src="../../assets/images/TapTap Card.png" class="pen">
+        <img *ngIf='device.type =="Keyring"' src="../../assets/images/TapTap Keyring.png" class="keyring">
 
 
-          </ion-icon>
-          <span class="online">
-            <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-              x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-              <g>
-                <g>
-                  <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
-                </g>
-              </g>
-            </svg>
-          </span>
-         <span (click)="gotodevice(device)">{{device.device_title}}</span> 
-         <button *ngIf="device.is_active" class="defaultDevice">Default</button>
-  
+      </ion-icon>
+      <span class="online">
+        <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+          <g>
+            <g>
+              <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z" />
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span (tap)="gotodevice(i)">{{device.device_title}}</span>
+      <button *ngIf="device.is_active" class="defaultDevice">Default</button>
+
+    </ion-item>
+
+
+    <div class="dropdown">
+      <!-- <p class="dropbtn">Dropdown</p> -->
+      <i class="fa fa-ellipsis-v dropbtn"></i>
+      <div class="dropdown-content">
+        <a (tap)="presentPrompt(device._id)">Edit Name</a>
+        <a (tap)="setdefault(device._id,i)">Set as default</a>
+        <a (tap)="gotodevice(i)">Manage</a>
+        <a (tap)="delete(device.nfc_id)">Delete</a>
+
+        <!-- <a >Lost or stolen <ion-checkbox></ion-checkbox> -->
+        <ion-item>
+          <ion-label style="color:#de4963;" (tap)="gotodevice(device)">Lost or stolen</ion-label>
+          <ion-toggle [(ngModel)]="lost" *ngIf="device.is_lost==false" (ionChange)="notify(device._id)"></ion-toggle>
+          <ion-toggle [(ngModel)]="islost" *ngIf="device.is_lost==true" (ionChange)="notifyy(device._id)"></ion-toggle>
         </ion-item>
-
-
-        <div class="dropdown">
-            <!-- <p class="dropbtn">Dropdown</p> -->
-            <i class="fa fa-ellipsis-v dropbtn"></i>
-            <div class="dropdown-content">
-              <a (click)="presentPrompt(device._id)">Edit Name</a>
-              <a (click)="setdefault(device._id)">Set as default</a>
-              <a (click)="gotodevice(device)">Manage</a>
-              <a (click)="delete(device.nfc_id)">Delete</a>
-
-              <!-- <a >Lost or stolen <ion-checkbox></ion-checkbox> -->
-                <ion-item>
-                    <ion-label style="color:#de4963;" (click)="gotodevice(device)">Lost or stolen</ion-label>
-                    <ion-toggle [(ngModel)]="lost" *ngIf="device.is_lost==false" (ionChange)="notify(device._id)"></ion-toggle>
-                    <ion-toggle [(ngModel)]="islost" *ngIf="device.is_lost==true" (ionChange)="notifyy(device._id)"></ion-toggle>
-                  </ion-item>
-            </div>
-          </div>
+      </div>
+    </div>
   </div>
-    
 
-      
-      <!-- <hr class="margino">
+
+
+  <!-- <hr class="margino">
       <ion-item>
         <ion-icon item-start>
           <img src="../../assets/images/pen.png" class="pen">

@@ -26,7 +26,7 @@ export class FeedPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedPage');
+    
     // this.http.getfeeds()
     this.getcategories()
   }
@@ -38,7 +38,7 @@ export class FeedPage {
     let _base = this
     _base.http.getcategories()
       .then(function (success: any) {
-        console.log(success)
+        
         _base.categories = success.result.filter((item) => {
           if (item.name == 'Fashion' || item.name == 'General' || item.name == 'Event') {
             return item
@@ -46,7 +46,7 @@ export class FeedPage {
         })
         _base.showall()
       }, function (error) {
-        console.log(error)
+        
       })
   }
 
@@ -55,14 +55,14 @@ export class FeedPage {
     _base.selected_category = category
     _base.getmyfeeds(categoryID)
       .then(function (success: any) {
-        console.log(success)
+        
         let lastcreateddate = "";
         _base.feeds = success.result.map((item) => {
           let obj: any = {};
           let createddate = item.createdDate.split("T")[0]
-          console.log(createddate, lastcreateddate)
+          
           if (lastcreateddate != createddate) {
-            console.log("here")
+            
             lastcreateddate = createddate
             obj.date = createddate
           }
@@ -72,7 +72,7 @@ export class FeedPage {
           return obj
         });
       }, function (error) {
-        console.log(error)
+        
       })
   }
 
@@ -83,14 +83,14 @@ export class FeedPage {
     }
     // _base.http.getfeeds(null)
     //   .then(function (success: any) {
-    //     console.log(success)
+    //     
     //     let lastcreateddate = "";
     //     _base.feeds = success.result.map((item) => {
     //       let obj: any = {};
     //       let createddate = item.createdDate.split("T")[0]
-    //       console.log(createddate, lastcreateddate)
+    //       
     //       if (lastcreateddate != createddate) {
-    //         console.log("here")
+    //         
     //         lastcreateddate = createddate
     //         obj.date = createddate
     //       }
@@ -100,7 +100,7 @@ export class FeedPage {
     //       return obj
     //     });
     //   }, function (error) {
-    //     console.log(error)
+    //     
     //   })
   }
 

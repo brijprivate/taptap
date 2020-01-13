@@ -19,13 +19,13 @@ export class LostcardPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) 
   {
     this.lostinformation = navParams.get("lostinfo");
-    console.log(this.lostinformation);
+    
   }
   back() {
     this.navCtrl.pop();
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LostcardPage');
+    
   }
   //call 
   callNumber(number){

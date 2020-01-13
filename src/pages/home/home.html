@@ -5,26 +5,25 @@
 
     <div class="main">
 
-      <i (click)="notifications()" class="fa fa-bell animated 800s wobble delay-0.5s" aria-hidden="true"></i><span
-        (click)="notifications()">{{notiCount}}</span>
+      <i (tap)="notifications()" name="start" aria-hidden="true"></i><span (tap)="notifications()">{{notiCount}}</span>
 
       <ion-grid class="p0">
         <ion-row>
 
           <ion-col col-3>
-            <div class="img" (click)="detail()">
-              <!-- <img image-saver *ngIf=!profileImage name="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt=""directory="taptap">
-              <img image-saver *ngIf=profileImage name="{{profileImage}}" class="animated 800s pulse delay-0.5s" alt=""directory="taptap"> -->
+            <div class="img" (tap)="detail()">
+              <!-- <img image-saver *ngIf=!profileImage name="assets/images/avatar.png"  alt=""directory="taptap">
+              <img image-saver *ngIf=profileImage name="{{profileImage}}"  alt=""directory="taptap"> -->
 
-              <!-- <img *ngIf="!profileImage && !offline" src="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt=""> -->
-              <img *ngIf=base4img src="{{base4img}}" class="animated 800s pulse delay-0.5s" alt="">
-              <!-- <img *ngIf=offline src="{{base4img}}" class="animated 800s pulse delay-0.5s" alt=""> -->
+              <!-- <img *ngIf="!profileImage && !offline" src="assets/images/avatar.png"  alt=""> -->
+              <img *ngIf=base4img src="{{base4img}}" alt="">
+              <!-- <img *ngIf=offline src="{{base4img}}"  alt=""> -->
 
             </div>
           </ion-col>
           <ion-col col-9>
             <div class="profile">
-              <p class="name"  (click)="goto('EditprofilePage')">{{userName}}</p>
+              <p class="name" (tap)="goto('EditprofilePage')">{{userName}}</p>
               <ion-grid>
                 <ion-row>
 
@@ -33,7 +32,7 @@
                     <p class="sm"> {{uid}}</p>
                     <p class="num">UID</p>
                   </ion-col>
-                  <ion-col col-4 >
+                  <ion-col col-4>
 
                     <p class="sm">
                       <ion-icon name="star"></ion-icon>
@@ -41,7 +40,7 @@
                     </p>
                     <p class="num">Favourite</p>
                   </ion-col>
-                  <ion-col col-4 (click)="goto('ManagedevicePage')">
+                  <ion-col col-4 (tap)="goto('ManagedevicePage')">
 
 
                     <p class="sm">
@@ -59,15 +58,15 @@
       </ion-grid>
 
     </div>
-    <div class="paddi animated 800s zoomIn delay-0.3s">
+    <div class="paddi ">
 
       <!-- <ion-toolbar> -->
       <ion-segment [(ngModel)]="slideselected" color="dark">
-        <ion-segment-button value="home" (click)="selectedTab(0)">
+        <ion-segment-button value="home" (tap)="selectedTab(0)">
           <!-- <ion-icon name="camera"></ion-icon> -->
           Tap chart
         </ion-segment-button>
-        <ion-segment-button value="history" (click)="selectedTab(1)">
+        <ion-segment-button value="history" (tap)="selectedTab(1)">
           <!-- <ion-icon name="bookmark"></ion-icon> -->
           tap history
         </ion-segment-button>
@@ -76,7 +75,7 @@
       <!-- </ion-toolbar> -->
     </div>
   </div>
-  <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="animated 800s zoomIn delay-0.3s">
+  <ion-slides #slider (ionSlideDidChange)="slideChanged()" class="">
     <ion-slide>
       <div class="canvas">
         <!-- <canvas #doughnutCanvas></canvas> -->
@@ -92,7 +91,7 @@
 
       </div>
 
-      <button class="btn" (click)="tapItem()">
+      <button class="btn" (tap)="tapItem()">
         <!-- <ion-icon name="add"></ion-icon> -->
         Tap new items
       </button>
@@ -111,21 +110,21 @@
       <div *ngIf="isblanck==false" style="margin-bottom: auto;width: 100%;">
 
 
-        <div class="filter">
+        <!-- <div class="filter">
           <ion-item>
             <ion-input type="text" placeholder="Search" [(ngModel)]="str" (keyup)="search()" (focus)=focus()
               (blur)=blur()></ion-input>
             <ion-icon item-end name="search"></ion-icon>
           </ion-item>
-        </div>
+        </div> -->
 
         <div class="top">
           <div class="section">
-            <div class="scroll animated 800s zoomIn delay-0.3s" [style.margin-bottom]="keyboards? '5vh':'35vh'">
+            <div class="scroll " [style.margin-bottom]="keyboards? '5vh':'35vh'">
               <!-- <div>
                 <p class="day">dummy data</p>
 
-                <ion-item (click)="gotoDetails('Verification')">
+                <ion-item (tap)="gotoDetails('Verification')">
 
                   <ion-icon ios="ios-bowtie" md="md-bowtie" item-left></ion-icon>
 
@@ -134,10 +133,10 @@
                 </ion-item>
 
               </div> -->
-              <div *ngFor="let item of tapItems">
+              <div *ngFor="let item of shownItems">
                 <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
 
-                <ion-item (click)="gotoDetails(item)">
+                <ion-item (tap)="gotoDetails(item)">
                   <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
 
                   <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
@@ -158,7 +157,7 @@
 
                   <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'">
                   </ion-icon>
-                  <ion-icon name="pizza" item-left  *ngIf="item.purpose=='Restaurant'"></ion-icon>
+                  <ion-icon name="pizza" item-left *ngIf="item.purpose=='Restaurant'"></ion-icon>
 
                   <span *ngIf="item.purpose!='lost' && item.purpose!='Contact_info'">{{item.purpose}}</span>
                   <span *ngIf="item.purpose=='lost'">Lost or Stolen</span>
@@ -166,7 +165,6 @@
 
                   <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
                 </ion-item>
-
               </div>
             </div>
           </div>

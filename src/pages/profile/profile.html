@@ -2,25 +2,25 @@
 
   <div class="main">
 
-    <i class="fa fa-bell animated 800s wobble delay-0.5s" aria-hidden="true"
-      (click)="notifications()"></i><span>{{notiCount}}</span>
+    <i  aria-hidden="true"
+      (tap)="notifications()"></i><span>{{notiCount}}</span>
 
     <ion-grid class="p0">
       <ion-row>
 
         <ion-col col-3>
-          <div class="img" (click)="detail()">
-            <!-- <img *ngIf=!profileImage src="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt="">
-            <img *ngIf=profileImage src="{{profileImage}}" class="animated 800s pulse delay-0.5s" alt=""> -->
+          <div class="img" (tap)="detail()">
+            <!-- <img *ngIf=!profileImage src="assets/images/avatar.png"  alt="">
+            <img *ngIf=profileImage src="{{profileImage}}"  alt=""> -->
 
-            <!-- <img *ngIf="!profileImage && !offline" src="assets/images/avatar.png" class="animated 800s pulse delay-0.5s" alt=""> -->
-              <img *ngIf=base4img src="{{base4img}}" class="animated 800s pulse delay-0.5s" alt="">
-              <!-- <img *ngIf=offline src="{{base4img}}" class="animated 800s pulse delay-0.5s" alt=""> -->
+            <!-- <img *ngIf="!profileImage && !offline" src="assets/images/avatar.png"  alt=""> -->
+              <img *ngIf=base4img src="{{base4img}}"  alt="">
+              <!-- <img *ngIf=offline src="{{base4img}}"  alt=""> -->
           </div>
         </ion-col>
         <ion-col col-9>
           <div class="profile">
-            <p class="name"  (click)="goto('EditprofilePage')">{{userName}}</p>
+            <p class="name"  (tap)="goto('EditprofilePage')">{{userName}}</p>
             <ion-grid>
               <ion-row>
 
@@ -37,7 +37,7 @@
                   </p>
                   <p class="num">Favourite</p>
                 </ion-col>
-                <ion-col col-4 (click)="goto('ManagedevicePage')">
+                <ion-col col-4 (tap)="goto('ManagedevicePage')">
 
 
                   <p class="sm">
@@ -56,7 +56,7 @@
 
   </div>
   <div class="">
-  <ion-card class="tapCard animated 800s zoomIn delay-0.3s">
+  <ion-card class="tapCard ">
     <ion-card-content>
       <ion-item *ngIf="maindevice">
         <ion-icon item-start>
@@ -82,19 +82,19 @@
       <ion-grid>
         <ion-row text-center>
           <ion-col col-6>
-            <button ion-button outline class="newpair" (click)="pairDevice()">
+            <button ion-button outline class="newpair" (tap)="pairDevice()">
               <ion-icon name="add"></ion-icon>Pair new device
             </button>
           </ion-col>
           <ion-col col-6>
-            <button ion-button outline class="view" (click)="manageDevice()">View and manage</button>
+            <button ion-button outline class="view" (tap)="manageDevice()">View and manage</button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
   </ion-card>
 
-  <div class="canvas animated 800s zoomIn delay-0.2s">
+  <div class="canvas ">
     <!-- <canvas #doughnutCanvas></canvas> -->
     <div class="circle" *ngIf="!showchart">
       No Tap Data
@@ -106,24 +106,24 @@
         <ion-row>
           <ion-col col-6>
             <p>
-              <span (click)="presentPrompt()">Total Time(P/B)</span></p>
+              <span (tap)="presentPrompt()">Total Time(P/B)</span></p>
           </ion-col>
           <ion-col col-6>
             <p>
-              <span (click)="presentPromptt()">Total Mileage(P/B)</span></p>
+              <span (tap)="presentPromptt()">Total Mileage(P/B)</span></p>
           </ion-col>
         </ion-row>
       </ion-grid>
 
 
-      <!-- <p><span (click)="presentPrompt()">Total Time(P/B)</span><span (click)="presentPromptt()">Total Mileage(P/B)</span></p> -->
+      <!-- <p><span (tap)="presentPrompt()">Total Time(P/B)</span><span (tap)="presentPromptt()">Total Mileage(P/B)</span></p> -->
     </div>
   </div>
 
-  <ion-grid class="custompadd animated 800s zoomIn delay-0.2s">
+  <ion-grid class="custompadd ">
     <ion-row>
       <ion-col col-6 class="nopadd">
-        <ion-card class="recordCard m1" (click)="recordTime()">
+        <ion-card class="recordCard m1" (tap)="recordTime()">
           <ion-card-content>
             <!-- <img src="../../assets/images/alarm-clock.png" class="record"> -->
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -145,7 +145,7 @@
         </ion-card>
       </ion-col>
       <ion-col col-6 class="nopadd">
-        <ion-card class="recordCard m2" (click)="recordMilage()">
+        <ion-card class="recordCard m2" (tap)="recordMilage()">
           <ion-card-content>
             <!-- <img src="../../assets/images/fast.png" class="record"> -->
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

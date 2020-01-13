@@ -27,7 +27,7 @@ export class SimcardsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SimcardsPage');
+    
     this.viewCtrl.dismiss({})
   }
 
@@ -41,12 +41,12 @@ export class SimcardsPage {
   //     .then(function (sucess: any) {
   //       _base.getSimInformation()
   //         .then(function (sim: any) {
-  //           console.log("Sim", sim)
+  //           
   //           _base.cards = sim.cards.filter(function (sim) {
-  //             console.log('outside')
-  //             console.log('phone number', sim.phoneNumber)
+  //             
+  //             
   //             if (sim.phoneNumber != null || sim.phoneNumber != '' || sim.phoneNumber != undefined) {
-  //               console.log('inside')
+  //               
   //               return sim
   //             }
   //           });
@@ -68,7 +68,7 @@ export class SimcardsPage {
   //           }
 
   //         }, function (error: any) {
-  //           console.log("Error", error)
+  //           
   //         })
   //     }, function (error: any) {
 

@@ -1,13 +1,13 @@
 <ion-content>
   <div class="head">
     <div class="mdl">
-        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+        <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
         <p>Business</p>
       <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
     </div>
   </div>
 
-  <div class="et" *ngFor="let business of businessList" (click)="goPage(business)">
+  <div class="et" *ngFor="let business of businessList" (tap)="goPage(business)">
     <img class="imgStart" src={{business.imageId}} item-start />
     <p class="lorem">{{business.name}}</p>
     <p class="lorema">{{business.address}}</p>

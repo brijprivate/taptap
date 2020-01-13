@@ -48,11 +48,11 @@ export class EventdetailPage {
       this.product.image = this.product.logo
     }
 
-    console.log(this.navParams.data)
+    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventdetailPage');
+    
     let _base = this;
 
     if (_base.type == 'Event')

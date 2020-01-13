@@ -14,21 +14,25 @@ import { BehaviorSubject, Subject } from "rxjs/Rx";
 export class SharedserviceProvider {
 
   public bSubject = new BehaviorSubject("a");
-  public medicinesArrays=new BehaviorSubject([]);
-  public treatmentArray=new BehaviorSubject([]);
+  public medicinesArrays = new BehaviorSubject([]);
+  public treatmentArray = new BehaviorSubject([]);
   // public medicines:any=[];
   private isModal = new BehaviorSubject<boolean>(false);
-  private networkStatus=new BehaviorSubject<string>('');
-  private linkid=new BehaviorSubject<string>('');
-  private location=new BehaviorSubject<object>({});
+  private networkStatus = new BehaviorSubject<string>('');
+  private linkid = new BehaviorSubject<string>('');
+  private location = new BehaviorSubject<object>({});
+  public httpresponse = new BehaviorSubject<object>({});
+  public triggerhttp = new BehaviorSubject<object>({});
+  public readNFC = new BehaviorSubject<object>({});
+
   // isModalOpen = this.isModal.asObservable();
 
   constructor(public http: Http) {
-    console.log("Hello SharedserviceProvider Provider");
+    
   }
   public update(data: any) {
     this.bSubject.next(data);
-    console.log("got data" + data);
+    
   }
   public filterhistories(data: any) {
     this.bSubject.next(data);
@@ -49,25 +53,25 @@ export class SharedserviceProvider {
   //   return this.isModal.asObservable();
   // }
 
-  setnetworkStat(stat){
+  setnetworkStat(stat) {
     this.networkStatus.next(stat);
   }
 
-  getNetworkStat(){
-   return this.networkStatus.asObservable();
+  getNetworkStat() {
+    return this.networkStatus.asObservable();
   }
-  locations(stat){
+  locations(stat) {
     this.location.next(stat);
   }
-  getlocation(){
+  getlocation() {
     return this.location.asObservable();
-   }
-   setlinkid(stat){
+  }
+  setlinkid(stat) {
     this.linkid.next(stat);
   }
-  getlinkid(){
+  getlinkid() {
     return this.linkid.asObservable();
-   }
+  }
 
 
   // gettreatmentdetails(data)
@@ -75,5 +79,19 @@ export class SharedserviceProvider {
   //   this.treatmentArray.next(data);
 
   // }
+
+
+  // newly written code - Pushpendu Ghosh
+  httpLoad(response) {
+    return this.httpresponse.next(response)
+  }
+
+  loadHttp(type) {
+    return this.triggerhttp.next(type)
+  }
+
+  scanNFC(value) {
+    return this.readNFC.next({ value: value })
+  }
 
 }

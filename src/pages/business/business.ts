@@ -24,9 +24,9 @@ export class BusinessPage {
 
   constructor(public http: NfctagProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.business = this.navParams.data;
-    console.log(typeof this.business.user)
+    
     this.permission = this.getPermission(this.business.user)
-    console.log(this.permission)
+    
     if (this.permission == 'all') {
       this.milage = true;
       this.timer = true
@@ -37,25 +37,25 @@ export class BusinessPage {
       this.milage = true;
       this.timer = false
     }
-    console.log(this.milage, this.timer)
+    
   }
 
   back() {
     this.navCtrl.pop();
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BusinessPage');
+    
   }
 
   getPermission(users: any) {
-    console.log(users)
+    
     let permission = "";
     permission = users.permission;
     return permission;
   }
 
   savePermission() {
-    console.log(this.timer, this.milage);
+    
     if (this.timer == false && this.milage == false) {
       alert("You can not revoke the permission completely")
       this.permission = this.getPermission(this.business.user)

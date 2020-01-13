@@ -19,10 +19,10 @@ export class RestaurantPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RestaurantPage');
+    
   }
   showfull(src) {
-    console.log(src)
+    
     var modal = document.getElementById("myModal");
     var img = document.getElementById("myImg");
 

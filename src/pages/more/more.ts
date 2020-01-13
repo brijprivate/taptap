@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, App, AlertController, ModalControl
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Storage } from '@ionic/storage';
 import { get } from 'scriptjs';
-import { Socket } from 'ng-socket-io';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the MorePage page.
@@ -25,18 +25,14 @@ export class MorePage {
     public navParams: NavParams,
     public nfctagpro: NfctagProvider,
     private app: App,
-    public socket: Socket,
     public storage: Storage,
+    public sharedservice: SharedserviceProvider,
     public alert: AlertController, public modalController: ModalController) {
-  }
-
-  ionViewDidEnter() {
-    console.log('ionViewDidLoad MorePage');
-    this.getnotifications()
-  }
-
-  ionViewDidLoad() {
-    this.loadGoogle()
+    let _base = this;
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
+        _base.notiCount = response.noticount
+      })
   }
 
   Logout() {
@@ -50,17 +46,17 @@ export class MorePage {
           text: 'No',
           role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
+            
           }
         },
         {
           text: 'Yes',
           handler: data => {
             localStorage.clear();
-            _base.storage.clear();
-            this.app.getRootNav().setRoot("LoginPage");
-            _base.socket.disconnect()
-            _base.socket.removeAllListeners()
+            _base.storage.clear()
+              .then(function () {
+                _base.app.getRootNav().setRoot("LoginPage");
+              });
           }
         }
       ]
@@ -75,57 +71,6 @@ export class MorePage {
       return;
     }
     this.navCtrl.push(x)
-  }
-
-  getnotifications() {
-    let _base = this;
-    _base.notiCount = 0;
-
-    _base.storage.get("notifications")
-      .then(function (success) {
-        if (success) {
-          success.forEach(item => {
-            if (item.seen == false) {
-              _base.notiCount = _base.notiCount + 1
-            }
-          });
-        }
-      })
-
-
-    _base.nfctagpro.getnotifications(localStorage.getItem('userId'))
-      .then(function (success: any) {
-        console.log("Notifications", success)
-        _base.storage.remove("notifications")
-        _base.storage.set("notifications", success.result)
-        _base.notiCount = 0;
-        success.result.forEach(item => {
-          if (item.seen == false) {
-            _base.notiCount = _base.notiCount + 1
-          }
-        });
-      }, function (error) {
-        console.log(error)
-        _base.storage.get("notifications")
-          .then(function (success) {
-            if (success) {
-              _base.notiCount = 0;
-
-              success.forEach(item => {
-                if (item.seen == false) {
-                  _base.notiCount = _base.notiCount + 1
-                }
-              });
-            }
-          })
-      });
-  }
-
-  loadGoogle() {
-    get("https://maps.googleapis.com/maps/api/js?key=AIzaSyCAUo5wLQ1660_fFrymXUmCgPLaTwdXUgY&libraries=drawing,places,geometry,visualization", () => {
-      //Google Maps library has been loaded...
-      console.log("Google maps library has been loaded");
-    });
   }
 
 

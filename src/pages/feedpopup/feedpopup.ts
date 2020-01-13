@@ -19,7 +19,7 @@ export class FeedpopupPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalController: ModalController, public renderer: Renderer, public viewCtrl: ViewController, ) {
     let _base = this;
-    // console.log(this.feed)
+    // 
     _base.feed = this.navParams.data;
     setTimeout(() => {
       _base.renderer.setElementClass(_base.viewCtrl.pageRef().nativeElement, 'feed-popup', true);
@@ -34,7 +34,7 @@ export class FeedpopupPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedpopupPage');
+    
     let _base = this;
     var x = setInterval(() => {
       _base.counter = _base.counter - 1;;

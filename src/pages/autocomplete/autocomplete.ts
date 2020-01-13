@@ -29,7 +29,7 @@ export class AutocompletePage {
 
   ionViewDidLoad() {
     let elem = <HTMLInputElement>document.querySelector('ion-searchbar');
-    console.log(elem)
+    
     elem.focus()
     if (elem) {
       elem.click();
@@ -78,8 +78,8 @@ export class AutocompletePage {
     let geocoder = new google.maps.Geocoder();
     let _base = this;
     geocoder.geocode({ 'address': address }, (results, status) => {
-      console.log(results)
-      console.log("Country IS :", _base.getCountry(results[0].address_components))
+      
+      
       let latitude = results[0].geometry.location.lat();
       let longitude = results[0].geometry.location.lng();
       let country = _base.getCountry(results[0].address_components);
@@ -102,8 +102,8 @@ export class AutocompletePage {
       let Component: any = address_component[i]
       let type: any = Component.types;
       let index = type.indexOf('country')
-      console.log(Component, type)
-      console.log(index)
+      
+      
       if (index != -1) {
         country = address_component[i].long_name
       }
@@ -122,8 +122,8 @@ export class AutocompletePage {
       let index = type.indexOf('locality')
       let index_x = type.indexOf('postal_town')
 
-      console.log(Component, type)
-      console.log(index)
+      
+      
       if (index != -1 || index_x != -1) {
         locality = address_component[i].long_name
       }

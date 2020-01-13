@@ -20,7 +20,6 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { NfctagProvider } from '../providers/nfctag/nfctag';
 import { NFC, Ndef } from '@ionic-native/nfc';
-import { Socket } from 'ng-socket-io';
 import { Geolocation } from '@ionic-native/geolocation';
 
 declare let cordova: any;
@@ -45,7 +44,6 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     public modalController: ModalController,
-    public socket: Socket,
     private network: Network,
     private androidPermissions: AndroidPermissions,
     public sharedservice: SharedserviceProvider,
@@ -79,10 +77,10 @@ export class MyApp {
     //   // match.$route - the route we matched, which is the matched entry from the arguments to route()
     //   // match.$args - the args passed in the link
     //   // match.$link - the full link data
-    //   console.log('Successfully matched route', match);
-    //   console.log(match.$args.category);
-    //   console.log(match.$args.id);
-    //   console.log(match.$args.adminId)
+    //   
+    //   
+    //   
+    //   
 
     //   if (match.$args.id) {
     //     _base.showProduct(match)
@@ -95,7 +93,7 @@ export class MyApp {
     //   // alert(match.$args.category+"-"+match.$args.id)
     // }, nomatch => {
     //   // nomatch.$link - the full link data
-    //   console.error('Got a deeplink that didn\'t match', nomatch);
+    //   
     // });
 
 
@@ -105,7 +103,7 @@ export class MyApp {
       localStorage.getItem("userId") != undefined &&
       localStorage.getItem("userId").length != 0
     ) {
-      this.rootPage = "DashboardPage";
+      this.rootPage = "SynchroniserPage";
     } else {
       localStorage.setItem("userId", "");
       this.rootPage = 'SignupPage';
@@ -118,7 +116,7 @@ export class MyApp {
   showProduct(match: any) {
     let _base = this
     if (match.$args.id != '' || match.$args.category != null) {
-      console.log("========================================")
+      
       if (match.$args.category == "Contact_info") {
         let data = {
           userId: localStorage.getItem("userId"),
@@ -128,18 +126,23 @@ export class MyApp {
           geo: ''
         }
         _base.nfctagProvider.createTap(data).then(function (success: any) {
-          console.log("suc------------", success)
+          
           if (!success.lostinfo.deviceInfo) {
             alert("This device is lost.")
           } else {
-            _base.navCtrl.setRoot('TapdetailsPage', {
+            // _base.navCtrl.setRoot('TapdetailsPage', {
+            //   devicedetaill: success.lostinfo,
+            //   key: 'device',
+            //   islink: "true"
+            // })
+            _base.navCtrl.setRoot('SynchroniserPage', {
               devicedetaill: success.lostinfo,
               key: 'device',
               islink: "true"
             })
           }
         }, function (err) {
-          console.log("err---------------->", err);
+          
           alert("Link is expired");
           _base.platform.exitApp();
         })
@@ -220,7 +223,7 @@ export class MyApp {
               default:
             }
 
-            _base.navCtrl.setRoot('TapdetailsPage', object);
+            _base.navCtrl.setRoot('SynchroniserPage', object);
           }, function (error) {
             alert("This link is expired")
             _base.platform.exitApp()
@@ -234,7 +237,7 @@ export class MyApp {
     _base.loginservice.getProductAdminCategory(match.$args.category, match.$args.adminId)
       .then(function (success: any) {
         if (success.result.length != 0) {
-          console.log("success", success.result[0])
+          
           let product = success.result[0]
           _base.showCompanyProduct(match.$args.category, product)
         } else {
@@ -242,7 +245,7 @@ export class MyApp {
           _base.platform.exitApp()
         }
       }, function (error: any) {
-        console.log("error", error)
+        
         alert("This link is expired")
         _base.platform.exitApp()
       });
@@ -319,7 +322,7 @@ export class MyApp {
         break;
       default:
     }
-    this.navCtrl.setRoot('TapdetailsPage', object);
+    this.navCtrl.setRoot('SynchroniserPage', object);
   }
 
   /**check network status - online/offline */
@@ -327,7 +330,7 @@ export class MyApp {
     // watch network for a disconnect
     this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
       this.sharedservice.setnetworkStat('Offline');
-      console.log("network was disconnected :-(");
+      
       if (this.networkStatus == "" || this.networkStatus == "Online") {
         this.showToast();
         this.networkStatus = "Offline";
@@ -336,7 +339,7 @@ export class MyApp {
     // watch network for a connection
     this.connectSubscription = this.network.onConnect().subscribe(() => {
       this.sharedservice.setnetworkStat('Online');
-      console.log("network connected!");
+      
       if (this.networkStatus == "" || this.networkStatus == "Offline") {
         this.networkStatus = "Online";
       }
@@ -356,19 +359,16 @@ export class MyApp {
 
   initializeApp() {
 
-    this.InitSocket()
 
     let _base = this
     this.platform.ready().then(() => {
 
-      _base.InitSocket()
-
-      console.log("Cordova", plugin)
+      
 
 
       _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS).then(
         function (result) {
-          console.log('Has permission?', result.hasPermission)
+          
           if (!result.hasPermission) {
             _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS)
           }
@@ -380,7 +380,7 @@ export class MyApp {
 
       _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
         function (result) {
-          console.log('Has permission?', result.hasPermission)
+          
           if (!result.hasPermission) {
             _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
           }
@@ -397,86 +397,46 @@ export class MyApp {
         // match.$route - the route we matched, which is the matched entry from the arguments to route()
         // match.$args - the args passed in the link
         // match.$link - the full link data
-        console.log('Successfully matched route', match);
-        console.log(match.$args.category);
-        console.log(match.$args.id);
-        console.log(match.$args.adminId)
+        
+        
+        
+        
 
-        if (match.$args.id) {
-          _base.showProduct(match)
-        } else if (match.$args.adminId) {
-          _base.showcompanyProduct(match)
+        if (localStorage.getItem('userId') != null || localStorage.getItem('userId') != undefined) {
+          if (match.$args.id) {
+            _base.showProduct(match)
+          } else if (match.$args.adminId) {
+            _base.showcompanyProduct(match)
+          } else {
+            alert('This link is expired')
+          }
         } else {
-          alert('This link is expired')
+          alert('Please login to see shared info')
+          _base.navCtrl.setRoot('LoginPage')
         }
 
         // alert(match.$args.category+"-"+match.$args.id)
       }, nomatch => {
         // nomatch.$link - the full link data
-        console.error('Got a deeplink that didn\'t match', nomatch);
+        
       });
 
 
       // listen nfc tags
       _base.nfc.addMimeTypeListener("text/json",
         function (success) {
-          console.log(success)
+          
           alert("Success")
         }, function (error) {
-          console.log(error)
+          
           alert("Error")
         });
 
 
 
-      console.log("initialized------------------------>>>>>>>>>>>>>>");
+      
     });
 
-  }
-  firesocket() {
-    this.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
-  }
-
-  InitSocket() {
-    let _base = this;
-
-    // this.socket.on("connect", function (socket) {
-    //   console.log("socket emit user connected", _base.socket.ioSocket.id)
-    //   _base.socket.emit("user_connected", { userId: localStorage.getItem('userId') })
-    // })
-
-    // this.socket.on("connected", function (socket) {
-    //   console.log("user has been connected")
-
-    //   // test - remove later
-    //   _base.socket.emit("location", {
-    //     latitude: 23.3558763,
-    //     longitude: 87.6878509
-    //   })
-
-    //   // test end upto this
-
-    //   _base.location_watch = _base.geolocation.watchPosition({ enableHighAccuracy: true }).subscribe((resp) => {
-    //     _base.socket.emit("location", {
-    //       latitude: resp.coords.latitude,
-    //       longitude: resp.coords.longitude
-    //     })
-    //   })
-    // })
-
-    // this.socket.on('nearby', function (nearby: any) {
-    //   console.log('Found Nearby')
-    //   if (nearby) {
-    //     console.log("Nearby", nearby)
-    //     _base.shownearbypopup();
-    //   }
-    // })
-
-    // this.socket.on('disconnect', function () {
-    //   console.log('Got disconnect!');
-    //   // _base.geolocation.clearWatch(_base.location_watch)
-    //   _base.location_watch.unsubscribe()
-    // });
   }
 
   shownearbypopup() {

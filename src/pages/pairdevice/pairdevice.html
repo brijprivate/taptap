@@ -1,8 +1,7 @@
-
 <!-- <ion-content>
     <div class="head">
         <div class="mdl">
-            <i class="fa fa-chevron-left animated 800s fadeInLeft delay-0.2s" aria-hidden="true" (click)="back()"></i>
+            <i class="fa fa-chevron-left animated 800s fadeInLeft delay-0.2s" aria-hidden="true" (tap)="back()"></i>
     
           <p class="animated 800s lightSpeedIn delay-0.2s">Pair Device</p>
         </div>
@@ -36,34 +35,32 @@
         <ion-grid>
             <ion-row class="centerPlace">
               <ion-col col-12>
-                  <button ion-button class="pairbutton"  (click)="pairDevice()">Pair Device</button>
+                  <button ion-button class="pairbutton"  (tap)="pairDevice()">Pair Device</button>
               </ion-col>
             </ion-row>
             </ion-grid>
   </ion-content> 
  -->
 
-  <ion-content padding>
+<ion-content padding (tap)="gotovack()">
 
-  
-    <i class="fa fa-chevron-left" (click)="gotovack()"></i>
-    <div class="bluePair">
-        
-  
-  
-      <div class="containers">
+  <div class="bluePair">
+
+
+
+    <div class="containers">
       <div class="svg-box">
-      <img id="fingerTap" src="../../assets/images/phone.png" alt="" >
+        <img id="fingerTap" src="../../assets/images/phone.png" alt="">
 
 
-        </div>
-        <div class="circle delay1"></div>
-        <div class="circle delay2"></div>
-        <div class="circle delay3"></div>
-        <div class="circle delay4"></div>
-   </div>
-   
-        <p class="device">Approach TapTap Item</p>
+      </div>
+      <div class="circle delay1"></div>
+      <div class="circle delay2"></div>
+      <div class="circle delay3"></div>
+      <div class="circle delay4"></div>
+    </div>
+
+    <p class="device">Approach TapTap Item. Touch on screen to exit</p>
   </div>
 
 </ion-content>

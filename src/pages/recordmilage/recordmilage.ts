@@ -93,21 +93,21 @@ export class RecordmilagePage {
 
     //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
+      
       this.isnetwork = value;
     });
     //  this.locations = [];
     //  this.startBackgroundTracking();
     this.sharedservice.getlocation().subscribe((value: any) => {
-      console.log("shared location------------>>>>>>>>>>.");
-      console.log(value);
+      
+      
       if (Object.keys(value).length == 0 || value == null) {
         return;
       } else {
         this.locations.push(value);
         if (value.latitude && value.longitude) {
           this.loop(value);
-          console.log("updated location------------->>>>>>>", value);
+          
         }
 
         if (this.currentPosition == "") {
@@ -117,16 +117,16 @@ export class RecordmilagePage {
           loader.present();
           this.nativeGeocoder.reverseGeocode(this.locations[0].latitude, this.locations[0].longitude)
             .then((result: NativeGeocoderReverseResult[]) => {
-              console.log("reverse geocode ----------------->>>>>>>", result)
-              console.log(JSON.stringify(result[0]));
+              
+              
               this.currentPosition = result[0];
               this.checkp = true;
               loader.dismiss();
             });
         }
 
-        console.log("array of locations------------->>>>>>>>");
-        console.log(this.locations);
+        
+        
       }
     });
   }
@@ -138,7 +138,7 @@ export class RecordmilagePage {
     // _base.sdistance = _base.totaldis;
     // _base.stime = _base.time;
     _base.interval = setInterval(function () {
-      // console.log("interval location",_base.locations);
+      // 
       // if(_base.locations.length >= 2){
       // _base.loop(_base.locations);
       _base.sdistance = _base.totaldis;
@@ -252,7 +252,7 @@ export class RecordmilagePage {
     this.endTime = new Date().toTimeString().slice(0, 8);
     this.eduration = new Date().getTime();
     this.totalduration = (((this.eduration) - (this.sduration)) / 60000).toFixed(2);
-    console.log("ddddddd--------", this.totalduration);
+    
     this.navCtrl.push('SavemilagePage',
       {
         endtime: this.endTime,
@@ -267,7 +267,7 @@ export class RecordmilagePage {
         tduration: this.totalduration
       });
     this.active = !this.active;
-    console.log(this.totaldis);
+    
     this.reset()
   }
 
@@ -297,7 +297,7 @@ export class RecordmilagePage {
     //   longitude: 87.323277,
     // }]
 
-    // console.log(this.value,value,'oooooooooooooooooooooooooooooooooooo  ')
+    // 
     // let i = 0;
 
     // var laa1 = 0
@@ -316,9 +316,9 @@ export class RecordmilagePage {
     //   loa1 = (loca[u].longitude);
     //   loa2 = (loca[u + 1].longitude);
     //   var x = _base.distance(laa1, loa1, laa2, loa2, 'K');
-    //   console.log(x)
+    //   
     //   _base.totaldis = _base.totaldis+x
-    //   console.log(_base.totaldis)
+    //   
     //   u=u+1;
 
     //    }, 2000);
@@ -326,15 +326,15 @@ export class RecordmilagePage {
       this.value = this.locations[0];
       return;
     }
-    console.log(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K')
+    
     var x = this.distance(this.value.latitude, this.value.longitude, value.latitude, value.longitude, 'K');
     this.value = value;
     this.totaldis = (this.totaldis + x);
-    console.log('total distance-------------------->>>>>>>>', this.totaldis)
+    
     // this.sdistance=(this.sdistance*this.multiplier).toFixed(2);
 
     // for (i = 0; i < this.locations.length; i++) {
-    //   console.log("first location------->>>>", i[0]);
+    //   
     //   if (i == this.locations.length - 1) {
     //     return;
     //   }
@@ -345,10 +345,10 @@ export class RecordmilagePage {
 
 
     // var x = this.distance(laa1, loa1, laa2, loa2, 'K');
-    //   console.log(x,this.totaldis+"------------------------------------------>>>>>>>>>")
+    //   
     //   this.totaldis = parseInt((this.totaldis + x).toFixed(2));
 
-    //   console.log('total distance', this.totaldis);
+    //   
 
 
     // }
@@ -381,7 +381,7 @@ export class RecordmilagePage {
 
   enableLocation() {
     this.locationAccuracy.canRequest().then((canRequest: boolean) => {
-      console.log("in condition");
+      
       if (canRequest) {
         // the accuracy option will be ignored by iOS
         this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
@@ -394,7 +394,7 @@ export class RecordmilagePage {
     });
   }
   change(event) {
-    console.log(event.target.checked);
+    
     if (event.target.checked) {
       this.unit = 'MPH';
       this.multiplier = 0.621371;

@@ -1,140 +1,23 @@
 <ion-content>
 
-  <!-- <p class="fav">Search</p> -->
-  <!-- <div class="filter">
-      <ion-item>
-        <ion-input type="text" placeholder="search"></ion-input>
-        <ion-icon item-end name="search"></ion-icon>
-      </ion-item>
-  
-  
-    </div> -->
-
   <div class="head">
     <div class="mdl">
-      <!-- <img src="../../assets/images/Logo_after.png" class="tapLogo" item-left> -->
-      <!-- <ion-icon ios="ios-book" md="md-book" class="animated 800s fadeInLeft delay-5s" item-left></ion-icon> -->
-      <i class="fa fa-heart animated 800s fadeInLeft delay-0.2s"></i>
-      <p class="animated 800s lightSpeedIn delay-0.2s">Favourite</p>
-      <!-- <ion-icon ios="ios-menu" md="md-menu"></ion-icon> -->
-      <form id="demo-2" class="animated 800s fadeInRight delay-0.2s">
-        <input type="search" name="search" [(ngModel)]="str" (keyup)="merchant()" (focus)=focus() (blur)=blur()
-          placeholder="Search">
+      <i class="fa fa-heart"></i>
+      <p>Favourite</p>
+      <form id="demo-2">
       </form>
     </div>
   </div>
 
   <div [style.display]="keyboards? 'none':'block'">
-    <div class="arrowbutton">
-
-      <ul class="list-inline sileUl">
-        <!-- <li> <button type="submit" float-left ion-button color="primary" class="btnPrev" (click)="prev()">
-            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-          </button>
-        </li> -->
-        <li>
-          <ion-slides slidesPerView="3" #slides>
-
-            <ion-slide id="21" (click)="getmonth(21)">
-              <p class="count">January</p>
-
-            </ion-slide>
-            <ion-slide id="22" (click)="getmonth(22)">
-              <p class="count ">February</p>
-
-            </ion-slide>
-            <ion-slide id="23" class="" (click)="getmonth(23)">
-              <p class="count">March</p>
-
-            </ion-slide>
-            <ion-slide id="24" (click)="getmonth(24)">
-              <p class="count">April</p>
-
-            </ion-slide>
-            <ion-slide id="25" (click)="getmonth(25)">
-              <p class="count">May</p>
-            </ion-slide>
-            <ion-slide id="26" (click)="getmonth(26)">
-              <p class="count">June</p>
-            </ion-slide>
-            <ion-slide id="27" (click)="getmonth(27)">
-              <p class="count">July</p>
-
-            </ion-slide>
-            <ion-slide id="28" (click)="getmonth(28)">
-              <p class="count">August</p>
-
-            </ion-slide>
-            <ion-slide id="29" (click)="getmonth(29)">
-              <p class="count">September</p>
-
-            </ion-slide>
-            <ion-slide id="30" (click)="getmonth(30)">
-              <p class="count">October</p>
-
-            </ion-slide>
-            <ion-slide id="31" (click)="getmonth(31)">
-              <p class="count">November</p>
-
-            </ion-slide>
-            <ion-slide id="32" (click)="getmonth(32)">
-              <p class="count">December</p>
-
-            </ion-slide>
-          </ion-slides>
-        </li>
-        <!-- <li> <button type="submit" float-right ion-button color="primary" class="btnNext" (click)="next()">
-            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-          </button>
-        </li> -->
-      </ul>
-    </div>
-    <!-- <div class="main">
-          <ion-grid>
-            <ion-row>
-      
-              <ion-col col-3>
-                <div class="img">
-                  <img src="../../assets/images/modi.jpeg" alt="">
-                </div>
-              </ion-col>
-              <ion-col col-9>
-                <div >
-                  <p class="name">Brij Kishor</p>
-                  <ion-grid>
-                      <ion-row>
-                
-                        <ion-col col-4>
-                       
-                            <p class="sm"> AI32G5</p>
-                             <p class="num">UID</p>
-                          </ion-col>
-                          <ion-col col-4>
-                         
-                              <p class="sm"> <ion-icon name="star"></ion-icon>
-                                1340</p>
-                               <p class="num">Favourite</p>
-                            </ion-col>
-                            <ion-col col-4>
-                                <p class="sm">2</p>  <p class="num">Devices</p>
-                              </ion-col>
-                          </ion-row>
-                          </ion-grid>
-                </div>
-      
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-      
-        </div> -->
     <div class="paddi">
-      <p><strong>{{searchcount}}</strong> Favourite in {{monthName+' '+year}}</p>
+      <p><strong>{{searchcount}}</strong> Favourites in total</p>
 
       <ion-segment [(ngModel)]="page" color="dark">
-        <ion-segment-button id="category" value="category" (click)="selectedTab(0)">
+        <ion-segment-button id="category" value="category" (tap)="selectedTab(0)">
           Category
         </ion-segment-button>
-        <ion-segment-button value="marchent" (click)="selectedTab(1)">
+        <ion-segment-button value="marchent" (tap)="selectedTab(1)">
           Merchant
         </ion-segment-button>
 
@@ -144,7 +27,7 @@
 
     <div *ngIf="isdata==true">
 
-      <p class="nohis">No Favourite history</p>
+      <p class="nohis">No Favourite yet</p>
     </div>
 
   </div>
@@ -155,9 +38,9 @@
         <div class="section">
           <div class="scroll">
 
-            <div style="padding:0 1em;" class="animated 800s zoomIn delay-0.2s" *ngFor="let item of tapItems">
+            <div style="padding:0 1em;" *ngFor="let item of shownItems">
               <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-              <ion-item (click)="gotodetails(item)">
+              <ion-item (tap)="gotodetails(item)">
                 <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
                 <ion-icon ios="ios-bowtie" md="md-bowtie" item-left *ngIf='item.purpose=="Fashion"'></ion-icon>
                 <ion-icon ios="ios-paper" md="md-paper" item-left *ngIf='item.purpose=="General"'></ion-icon>
@@ -169,7 +52,8 @@
                 <ion-icon ios="ios-cart" md="md-cart" item-left *ngIf='item.purpose=="Groceries"'></ion-icon>
                 <ion-icon name="pizza" item-left *ngIf="item.purpose=='Restaurant'"></ion-icon>
                 <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contacts'"></ion-icon>
-                <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contact_info'"></ion-icon>
+                <ion-icon ios="ios-contact" md="md-contact" class="contact" *ngIf="item.purpose=='Contact_info'">
+                </ion-icon>
 
                 {{item.purpose}}
                 <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
@@ -190,7 +74,7 @@
           <div class="scroll">
             <div style="padding:0 1em;" *ngFor="let item of tapItems">
               <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
-              <ion-item (click)="gotodetails(item)">
+              <ion-item (tap)="gotodetails(item)">
                 <ion-icon name="apps" class="merchantIcon"></ion-icon>
                 {{item?.storeId?.companyId?.name}}
                 <span *ngIf='item.purpose=="General"'>{{item.purpose}}</span>

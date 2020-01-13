@@ -29,7 +29,7 @@ export class Feed2Page {
   constructor(public http: NfctagProvider, private androidPermissions: AndroidPermissions, public geolocation: Geolocation,
     private launchNavigator: LaunchNavigator, public navCtrl: NavController, public navParams: NavParams) {
     this.feed = this.navParams.get('feed')
-    console.log(this.feed)
+
     this.like = this.feed.favourites.indexOf(localStorage.getItem('userId')) == -1 ? false : true
     this.fav_count = this.feed.favourites.length;
     this.getCurrentPosition();
@@ -41,9 +41,9 @@ export class Feed2Page {
       _base.current_location.latitude = resp.coords.latitude
       _base.current_location.longitude = resp.coords.longitude
       _base.distance = Math.floor(_base.calculatedistance(_base.current_location.latitude, _base.current_location.longitude, _base.feed.product.storeId.companyId.geo.latitude, _base.feed.product.storeId.companyId.geo.longitude))
-      console.log("Distance", _base.distance)
+
     }).catch((error) => {
-      // console.log('Error getting location', error);
+      // 
       alert("Please turn on your location service")
     })
   }
@@ -132,7 +132,7 @@ export class Feed2Page {
     let GOOGLE = { "lat": geo.latitude, "lng": geo.longitude };
     let mapDiv = <HTMLElement>document.getElementById("google-map-div");
 
-    console.log(geo)
+
 
     let _base = this;
     // Initialize the map plugin
@@ -145,7 +145,7 @@ export class Feed2Page {
 
     // You have to wait the MAP_READY event.
     this.map.one(plugin.google.maps.event.MAP_READY, function () {
-      console.log("Map ready")
+
 
       _base.map.addMarker({
         position: { lat: geo.latitude, lng: geo.longitude },
@@ -157,9 +157,9 @@ export class Feed2Page {
 
   ionViewDidEnter() {
     this.clickFeed()
-    console.log('ionViewDidLoad Feed2Page');
-    console.log(this.feed, "DID ENTER")
-    console.log(this.feed.product.storeId)
+
+
+
     this.loadMap(this.feed.product.storeId.companyId.geo)
   }
 
@@ -197,7 +197,7 @@ export class Feed2Page {
     let _base = this
     _base.geolocation.getCurrentPosition().then((resp) => {
 
-      console.log("lunch navigator");
+
       let start = {
         lat: resp.coords.latitude,
         lng: resp.coords.longitude
@@ -208,18 +208,18 @@ export class Feed2Page {
         lng: parseFloat(_base.feed.product.storeId.companyId.geo.longitude)
       };
 
-      console.log(start, end);
+
 
       _base.lunchNavigator(start, end);
 
     }).catch((error) => {
-      console.log('Error getting location', error);
+
     })
   }
 
   lunchNavigator(start: any, end: any) {
-    console.log(start);
-    console.log(end);
+
+
     let GStart = [start.lat, start.lng];
     let GEnd = [end.lat, end.lng];
     let options: LaunchNavigatorOptions = {
@@ -229,8 +229,8 @@ export class Feed2Page {
 
     this.launchNavigator.navigate(GEnd, options)
       .then(
-        success => console.log('Launched navigator', success),
-        error => console.log('Error launching navigator', error)
+        success => { },
+        error => { }
       );
   }
 

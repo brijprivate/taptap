@@ -26,7 +26,7 @@ export class LocationTrackerProvider {
   constructor(public zone: NgZone, public geolocation: Geolocation,
     public backgroundGeolocation: BackgroundGeolocation,
     public sharedservice: SharedserviceProvider, ) {
-    console.log('Hello LocationTrackerProvider Provider');
+    
   }
 
 
@@ -43,15 +43,15 @@ export class LocationTrackerProvider {
     };
 
     // this.backgroundGeolocation.configure(config).then((location) => {
-    //   console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
+    //   
     //   // Run update inside of Angular's zone
     //   this.zone.run(() => {
     //     this.lat = location.latitude;
     //     this.lng = location.longitude;
-    //     // console.log("lat long b-----",this.lat,this.lng);
+    //     // 
     //   });
     // }, (err) => {
-    //   console.log(err);
+    //   
     // });
 
 
@@ -60,10 +60,10 @@ export class LocationTrackerProvider {
       // this.zone.run(() => {
       this.lat = location.latitude;
       this.lng = location.longitude;
-      // console.log("lat long b-----",this.lat,this.lng);
+      // 
       // });
     }, (err) => {
-      console.log(err);
+      
     });
     // Turn ON the background-geolocation system.
     this.backgroundGeolocation.start();
@@ -79,7 +79,7 @@ export class LocationTrackerProvider {
     this.watch = this.geolocation.watchPosition(options).
       filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
 
-        // console.log(position);
+        // 
 
         // Run update inside of Angular's zone
         // this.zone.run(() => {
@@ -91,7 +91,7 @@ export class LocationTrackerProvider {
         }
         this.arr.push(fetchedlocation);
         this.sharedservice.locations(fetchedlocation);
-        // console.log("position inside zone -------->>>>>pro", fetchedlocation);
+        // 
         // });
 
       });
@@ -99,7 +99,7 @@ export class LocationTrackerProvider {
 
   stopTracking() {
 
-    console.log('stopTracking');
+    
 
     this.backgroundGeolocation.stop();
     this.watch.unsubscribe();

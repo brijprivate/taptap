@@ -5,10 +5,10 @@
   Ionic pages and navigation.
 -->
 <ion-header no-border>
-  <ion-navbar>
-    <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+  <ion-navbar (tap)="back()">
+    <i class="fa fa-chevron-left" aria-hidden="true" ></i>
 
-    <ion-title class="animated 800s fadeInLeft delay-0.1s">Device details
+    <ion-title >Device details
       <!-- <button ion-button class="managebutton">
           <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
@@ -25,15 +25,15 @@
 
 <ion-content padding>
   <div class="blue">
-    <div class="pen animated 800s pulse delay-0.1s">
+    <div class="pen">
 
       <img *ngIf="!imageId" src="../../assets/images/logo_before.png" alt="">
       <img *ngIf="imageId" src="{{imageId}}" alt="">
-      <i class="fa fa-camera abs" aria-hidden="true" (click)="presentActionSheet()"></i>
+      <i class="fa fa-camera abs" aria-hidden="true" (tap)="presentActionSheet()"></i>
 
     </div>
   </div>
-  <div class="cont animated 800s zoomIn delay-0.1s">
+  <div class="cont ">
     <div class="container">
       <p class="tapPen">{{devicedetail.type}} <span>Online</span> </p>
 
@@ -138,7 +138,7 @@
              c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" />
             </g>
           </svg> </button></ion-col>
-      <ion-col col-8><button ion-button class="saveButton" (click)=" updatedetail()">Save</button></ion-col>
+      <ion-col col-8><button ion-button class="saveButton" (tap)=" updatedetail()">Save</button></ion-col>
       <ion-col col-2><button ion-button class="previous">
           <svg version="1.1" id="arropre" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" width="729.837px" height="729.838px" viewBox="0 0 729.837 729.838"

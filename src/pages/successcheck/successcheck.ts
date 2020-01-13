@@ -19,7 +19,7 @@ export class SuccesscheckPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SuccesscheckPage');
+    
   }
 
 }

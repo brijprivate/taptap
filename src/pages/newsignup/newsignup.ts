@@ -67,7 +67,7 @@ export class NewsignupPage {
 
        //Get Network status...
     this.sharedservice.getNetworkStat().subscribe((value) => {
-      console.log("network status------------------>>>>>>", value);
+      
       this.isnetwork = value;
     });
   }
@@ -100,7 +100,7 @@ this.loader=!this.loader
   getCountryCode() {
     let _base = this
     carrier.getCountryCode(function (success) {
-      console.log("Success", success)
+      
       _base.countryCode = success
 
       if (_base.countryCode == 'in') {
@@ -150,7 +150,7 @@ this.loader=!this.loader
 
 
     }, function (error) {
-      console.log("Error", error)
+      
     });
   }
 
@@ -317,7 +317,7 @@ this.loader=!this.loader
       role: "user"
     }
     this.loginsignupProvider.register(signupdata).then(function (success: any) {
-      console.log(success);
+      
       // loader.dismiss();
       if (success.error == true) {
         alert("user already registered with that Phone Number");
@@ -330,7 +330,7 @@ this.loader=!this.loader
     }, function (err) {
       // loader.dismiss();
       alert(JSON.parse(err._body).message);
-      console.log(err);
+      
     })
 
   }
@@ -357,12 +357,12 @@ this.loader=!this.loader
       company_name:"",
       mobileNumber:""
     }
-    console.log(signupdata);
+    
     _base.loginsignupProvider.newregister(signupdata).then(function(success){
-      console.log(success);
+      
 
     },function(err){
-      console.log(err);
+      
     })
   }
 }

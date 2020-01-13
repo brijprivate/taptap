@@ -6,7 +6,7 @@
 -->
 <!-- <ion-header no-border>
   <ion-navbar>
-    <ion-title class="animated 800s fadeInLeft delay-0.1s">Lost Card
+    <ion-title >Lost Card
       <button ion-button class="managebutton">
         <svg version="1.1" id="editButton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
           x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
@@ -21,19 +21,19 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content class="animated 800s zoomIn delay-0.1s">
+<ion-content >
   <div class="head">
     <div class="mdl">
       <p><span>
           <!-- <ion-icon ios="ios-search" md="md-search"></ion-icon> -->
           <!-- <svg id="item" height="512pt" viewBox="0 -39 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m492 78.667969h-137.09375v-58.667969c0-11.046875-8.953125-20-20-20h-157.574219c-11.046875 0-20 8.953125-20 20v58.667969h-137.332031c-11.046875 0-20 8.953125-20 20v314.667969c0 11.042968 8.953125 20 20 20h472c11.046875 0 20-8.957032 20-20v-314.667969c0-11.046875-8.953125-20-20-20zm-294.667969-38.667969h117.574219v38.667969h-117.574219zm274.667969 353.335938h-432v-274.667969h432zm-146.933594-189.125c.929688 24.539062-11.371094 47.941406-32.105468 61.082031-10.621094 6.730469-16.960938 17.898437-16.960938 29.875v.167969c0 11.042968-8.953125 20-20 20s-20-8.957032-20-20v-.167969c0-25.753907 13.289062-49.554688 35.550781-63.660157 8.878907-5.628906 13.941407-15.265624 13.542969-25.78125-.570312-15.09375-12.84375-27.367187-27.9375-27.9375-16.601562-.632812-30.273438 12.582032-30.273438 29.09375 0 11.046876-8.953124 20-20 20-11.042968 0-20-8.953124-20-20 0-38.847656 32.152344-70.570312 71.792969-69.066406 35.863281 1.363282 65.027344 30.527344 66.390625 66.394532zm-44.066406 144.789062c0 13.808594-11.191406 25-25 25s-25-11.191406-25-25 11.191406-25 25-25 25 11.191406 25 25zm0 0"/></svg> -->
-          <!-- <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i> -->
+          <!-- <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i> -->
         </span>Lost Item</p>
     </div>
 
   </div>
   <div class="blue">
-    <div class="pen animated 800s pulse delay-0.1s">
+    <div class="pen">
       <!-- <svg version="1.1" id="pen" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
         y="0px" viewBox="0 0 314.021 314.021" style="enable-background:new 0 0 314.021 314.021;" xml:space="preserve">
         <g>
@@ -71,7 +71,7 @@
 
     </div>
   </div>
-  <div class="cont animated 800s zoomIn delay-0.1s">
+  <div class="cont ">
     <div class="container">
       <p class="tapPen">THIS DEVICE IS LOST OR STOLEN !!!</p>
       <p class="tapPea">Please Contact</p>
@@ -100,7 +100,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-6 class="">
-              <button class="aotn" (click)="callNumber(lostinformation.mobileNumber)">
+              <button class="aotn" (tap)="callNumber(lostinformation.mobileNumber)">
             <div class="circle">
                 <ion-icon ios="ios-call" md="md-call"></ion-icon>
             </div>
@@ -108,7 +108,7 @@
             <p>Call</p>
           </ion-col>
           <ion-col col-6 class="">
-              <button class="aotn" (click)="emailto(lostinformation.email)">
+              <button class="aotn" (tap)="emailto(lostinformation.email)">
               <div class="circle circlemail">
             <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
             </div>
@@ -119,7 +119,7 @@
  
         <ion-row>
             <ion-col  class="">
-              <button class="dismiss" (click)="back()">Dismiss</button>
+              <button class="dismiss" (tap)="back()">Dismiss</button>
             </ion-col>
           </ion-row>
 
