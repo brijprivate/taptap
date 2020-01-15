@@ -838,7 +838,7 @@ page-home {
 
   /* give the outermost container a predefined size */
   position: absolute;
-  // top: 55px;
+  top: 0px;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -857,7 +857,7 @@ page-home {
   min-height: 0;
 }
 .scroll div:last-child {
-  margin-bottom: 3em;
+  margin-bottom: 30vh;
 }
 .slide-zoom {
   display: flex;

@@ -4,13 +4,22 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
-    <ion-title *ngIf="count != total_load">Synchronizing ... {{count}}/{{total_load}}</ion-title>
-    <ion-title *ngIf="count == total_load">Synchronization Done !</ion-title>
+   
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
-  <button ion-button *ngIf="count == total_load" (tap)="app()">Let's Go</button>
+<ion-content >
+<div class="flex">
+  <div class="innerbody">
+    <!-- <img src="../../assets/images/Logo_after.png" alt=""> -->
+    <div class="bottom">
+      <span *ngIf="count != total_load">Synchronizing ... {{count}}/{{total_load}}</span>
+      <span  *ngIf="count == total_load">Synchronization Done !</span>
+      <!-- <button ion-button *ngIf="count == total_load" (tap)="app()">Let's Go</button> -->
+    </div>
+  </div>
+</div>
+
 </ion-content>
