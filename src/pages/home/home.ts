@@ -296,23 +296,35 @@ export class HomePage {
     }
 
 
-
     if (JSON.stringify(_base.graphdata) == JSON.stringify(data)) {
       return
     }
 
     _base.graphdata = data;
-    (<HTMLElement>document.getElementById('donut-example')).innerHTML = ""
 
-    Morris.Donut({
-      element: 'donut-example',
-      resize: false,
-      formatter: function (y, data) { return '' + y },
-      colors: colors,
-      data: data,
-      animation: false
-    });
+    if (_base.doughnutChart) {
+      for (var property in data) {
+        if (data.hasOwnProperty(property)) {
+          // Do things here
+          console.log(data[property].value)
+          console.log(typeof data[property].value)
+        }
+      }
+      _base.doughnutChart.setData(data)
+    } else {
+      (<HTMLElement>document.getElementById('donut-example')).innerHTML = ""
+      _base.doughnutChart = Morris.Donut({
+        element: 'donut-example',
+        // resize: false,
+        formatter: function (y, data) { return '' + y },
+        colors: colors,
+        data: data
+      });
+    }
+  }
 
+  ionViewDidEnter() {
+    this.doughnutChart.setData(this.graphdata)
   }
 
   ionViewDidLeave() {

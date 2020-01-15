@@ -314,14 +314,25 @@ export class SynchroniserPage {
         Object.assign(obj, item)
         return obj
       });
-      _base.app_state.favourites = fav_items.slice(0,50);
+      _base.app_state.favourites = fav_items.slice(0, 50);
       _base.app_state.favcount = fav_items.length;
-      _base.getcompanies();
+      _base.getcategories();
     }, function (err) {
       _base.app_state.favourites = [];
       _base.app_state.favcount = 0;
-      _base.getcompanies();
+      _base.getcategories();
     })
+  }
+  
+  getcategories() {
+    let _base = this
+    _base.loginHttp.getallcategories()
+      .then(function (success: any) {
+        _base.app_state.categories = success.result
+        _base.getcompanies();
+      }, function (error) {
+        _base.loadHttp()
+      })
   }
 
   getcompanies() {

@@ -58,9 +58,11 @@ export class Feed3Page {
     let _base = this;
     _base.sharedservice.httpresponse
       .subscribe(function (response: any) {
-
-        _base.getcompanies(response.companies)
-        _base.showfeeds(response.feeds)
+        if (Object.keys(response).length != 0) {
+          _base.getcompanies(response.companies)
+          _base.showfeeds(response.feeds)
+          _base.categories = response.categories
+        }
       })
   }
 
@@ -90,9 +92,11 @@ export class Feed3Page {
 
   getCetgoryNameById(categoryId: String) {
     let _base = this;
+    
     return new Promise(function (resolve, reject) {
       for (let i = 0; i <= _base.categories.length - 1; i++) {
         let category = _base.categories[i]
+        
         if (category._id == categoryId) {
           resolve(category.name)
         }
@@ -134,10 +138,11 @@ export class Feed3Page {
     let categoryId = company.subscribed_category[0].categoryId;
     let adminId = company.adminId._id;
 
-    console.log(categoryId, adminId)
+
 
     _base.getCetgoryNameById(categoryId)
       .then(function (categoryName: String) {
+        
         _base.http.getProductAdminCategory(categoryName, adminId)
           .then(function (success: any) {
             if (success.result.length != 0) {

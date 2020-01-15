@@ -152,37 +152,33 @@ export class TapdetailsPage {
 
   navigatetolocation(latitude, longitude) {
     let _base = this
-    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
-      function (result) {
 
-        if (!result.hasPermission) {
-          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-        } else {
-          _base.geolocation.getCurrentPosition().then((resp) => {
+    if (localStorage.getItem('lat') != null || localStorage.getItem('lat') != undefined) {
+      let start = {
+        lat: localStorage.getItem('lat'),
+        lng: localStorage.getItem('lng')
+      };
 
+      let end = {
+        lat: parseFloat(latitude),
+        lng: parseFloat(longitude)
+      };
 
-            let start = {
-              lat: resp.coords.latitude,
-              lng: resp.coords.longitude
-            };
+      _base.lunchNavigator(start, end);
+    } else {
+      _base.presentToast('Please turn on location service')
+    }
 
-            let end = {
-              lat: parseFloat(latitude),
-              lng: parseFloat(longitude)
-            };
+  }
 
+  presentToast(text) {
+    let toast = this.toast.create({
+      message: text,
+      duration: 3000,
+      position: 'top'
+    });
 
-
-            _base.lunchNavigator(start, end);
-
-          }).catch((error) => {
-
-          })
-        }
-      },
-      function (err) {
-        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-      });
+    toast.present();
   }
 
   downloadPdf(url: string) {
@@ -488,40 +484,22 @@ export class TapdetailsPage {
 
   navigate(geo: any) {
     let _base = this
-    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
-      function (result) {
 
-        if (!result.hasPermission) {
-          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-        } else {
-          _base.geolocation.getCurrentPosition().then((resp) => {
+    if (localStorage.getItem('lat') != null || localStorage.getItem('lat') != undefined) {
+      let start = {
+        lat: localStorage.getItem('lat'),
+        lng: localStorage.getItem('lng')
+      };
 
+      let end = {
+        lat: parseFloat(geo.latitude),
+        lng: parseFloat(geo.longitude)
+      };
 
-            let start = {
-              lat: resp.coords.latitude,
-              lng: resp.coords.longitude
-            };
-
-            localStorage.setItem('lat', start.lat.toString());
-            localStorage.set('lng', start.lng.toString())
-
-            let end = {
-              lat: parseFloat(geo.latitude),
-              lng: parseFloat(geo.longitude)
-            };
-
-
-
-            _base.lunchNavigator(start, end);
-
-          }).catch((error) => {
-
-          })
-        }
-      },
-      function (err) {
-        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-      });
+      _base.lunchNavigator(start, end);
+    } else {
+      _base.presentToast('Please turn on location service')
+    }
   }
 
   lunchNavigator(start: any, end: any) {

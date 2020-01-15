@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
@@ -28,21 +28,19 @@ export class MapsPage {
     private geolocation: Geolocation,
     private androidPermissions: AndroidPermissions,
     private launchNavigator: LaunchNavigator,
+    public toast: ToastController,
     public navCtrl: NavController, public navParams: NavParams) {
     this.cords = this.navParams.data
 
     let _base = this
     _base.nativeGeocoder.reverseGeocode(this.cords.latitude, this.cords.longitude)
       .then((result: NativeGeocoderReverseResult[]) => {
-
-
         _base.location = result[0];
       });
 
   }
 
-  ionViewDidLoad() {
-
+  ionViewDidEnter() {
     this.loadMap();
   }
 
@@ -77,37 +75,32 @@ export class MapsPage {
 
   navigate() {
     let _base = this
-    _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
-      function (result) {
 
-        if (!result.hasPermission) {
-          _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-        } else {
-          _base.geolocation.getCurrentPosition().then((resp) => {
+    if (localStorage.getItem('lat') != null || localStorage.getItem('lat') != undefined) {
+      let start = {
+        lat: localStorage.getItem('lat'),
+        lng: localStorage.getItem('lng')
+      };
 
+      let end = {
+        lat: parseFloat(_base.cords.latitude),
+        lng: parseFloat(_base.cords.longitude)
+      };
 
-            let start = {
-              lat: resp.coords.latitude,
-              lng: resp.coords.longitude
-            };
+      _base.lunchNavigator(start, end);
+    } else {
+      _base.presentToast('Please turn on location service')
+    }
+  }
 
-            let end = {
-              lat: parseFloat(_base.cords.latitude),
-              lng: parseFloat(_base.cords.longitude)
-            };
+  presentToast(text) {
+    let toast = this.toast.create({
+      message: text,
+      duration: 3000,
+      position: 'top'
+    });
 
-
-
-            _base.lunchNavigator(start, end);
-
-          }).catch((error) => {
-
-          })
-        }
-      },
-      function (err) {
-        _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
-      });
+    toast.present();
   }
 
   lunchNavigator(start: any, end: any) {

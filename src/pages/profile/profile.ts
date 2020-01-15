@@ -93,6 +93,8 @@ export class ProfilePage {
   chartfunction() {
 
     let _base = this;
+
+
     if (_base.chart) {
       _base.chart.dispose()
     }
@@ -249,7 +251,9 @@ export class ProfilePage {
 
   //get time data...
   getcount(chdata) {
-    let _base = this;
+    let _base = this;     
+
+
     if (_base.tbmilage == chdata.total_milage_business && _base.tpmilage == chdata.total_milage_personal && _base.tptime == chdata.total_time_personal && _base.tbtime == chdata.total_time_business) {
       return
     }

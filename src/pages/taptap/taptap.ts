@@ -55,7 +55,7 @@ export class TaptapPage {
   }
 
   _showfavourite(favlist, favcount) {
-    console.log(favlist)
+
     this.searchcount = favcount;
     this.tapItems = favlist;
     this.shownItems = favlist.slice(0, 10)
@@ -68,24 +68,10 @@ export class TaptapPage {
 
 
   selectedTab(index) {
-    this.page = (this.page == 'category') ? "marchent" : "category";
     this.slider_tab.slideTo(index);
-    this.storage.remove("selectedFavouriteTab")
-    this.storage.set("selectedFavouriteTab", index)
-  }
-
-  next() {
-    this.slider.slideNext();
-  }
-  prev() {
-    this.slider.slidePrev();
   }
 
 
-  // for category...
-  category() {
-    this.ifmerchant = false;
-  }
 
   //Go to details page ....
   gotodetails(item) {
@@ -102,14 +88,7 @@ export class TaptapPage {
     }
   }
 
-
-  slide(count: number) {
-    for (let i = 1; i <= count - 2; i++) {
-      this.slider.slideNext();
-    }
-  }
-  slideChanged() {
-    this.page = (this.page == 'category') ? "marchent" : "category";
-    // 
+  slideChanged($event) {
+    this.page = ($event.realIndex == 1) ? "marchent" : "category";
   }
 }

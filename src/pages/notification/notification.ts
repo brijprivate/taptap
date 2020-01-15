@@ -64,16 +64,17 @@ export class NotificationPage {
   }
 
   viewNotification(notificationID: String, geo) {
-    
+
     let _base = this;
     _base.nfctagpro.viewNotification(notificationID)
       .then(function (sucess) {
-        if (geo) {
-          _base.navCtrl.push('MapsPage', geo)
-        }
       }, function (error) {
-
       })
+    if (geo) {
+      _base.navCtrl.push('MapsPage', geo)
+    } else {
+      _base.presentToast('This notification does not contain location')
+    }
   }
 
   clearNotification() {
