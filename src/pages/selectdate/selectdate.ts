@@ -78,7 +78,7 @@ export class SelectdatePage {
     }
 
     if (this.busi == false && this.pers == false) {
-      alert('please select the ' + this.selected + 'Type');
+      alert('please select the ' + this.selected + ' '+'Type');
       return
     }
     if (this.pers) {
@@ -88,7 +88,7 @@ export class SelectdatePage {
     if (this.selected == 'time') {
       this.calltime('time/timeHistory?userId=')
     }
-    else if (this.selected == 'milage') {
+    else if (this.selected == 'mileage') {
       this.calltime('milage/milageHistory?userId=')
     }
 
@@ -124,7 +124,7 @@ export class SelectdatePage {
 
           }
 
-          if (_base.selected == 'milage') {
+          if (_base.selected == 'mileage') {
             if (success.Business.length != 0 && (_base.busi)) {
               Object.assign(_base.data, { business: success.Business })
             }

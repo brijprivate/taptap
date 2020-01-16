@@ -346,14 +346,7 @@ page-profile {
         // width: 85vw !important;
         margin: 16px auto !important;
     }
-    i.fa.fa-bell {
-        position: absolute;
-        font-size: 15px;
-        z-index: 999;
-        color: #fff;
-        right: 13px;
-        top: 53px;
-    }
+
     .main span {
         position: absolute;
         z-index: 99999;
@@ -370,8 +363,12 @@ page-profile {
         font-size: 19px;
         z-index: 999;
         color: #fff;
-        right: 1.18em;
+        right: 0em;
         top: 23px;
+        padding: 0px;
+        width: 41px;
+        height: 31px;
+        vertical-align: middle;
     }
     .main span {
         position: absolute;

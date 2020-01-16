@@ -190,6 +190,7 @@ page-home {
     border-radius: 4px;
     opacity: 1;
     color: #9e67eb !important;
+    background: #f8f8f8;
   }
   .segment-ios .segment-button.activated,
   .segment-ios .segment-button.segment-activated {
@@ -200,6 +201,8 @@ page-home {
     border-radius: 4px;
     opacity: 1;
     color: #9e67eb !important;
+    background: #f8f8f8;
+
   }
 
   .segment-md .segment-button.activated,
@@ -209,6 +212,8 @@ page-home {
     border-color: #624eb0;
     color: #624eb0 !important;
     border-right: 1px solid #e1e1e6 !important;
+    background: #f8f8f8;
+
   }
   .segment-ios .segment-button.activated,
   page-recordmilage .segment-ios .segment-button.segment-activated {
@@ -217,6 +222,8 @@ page-home {
     border-color: #624eb0;
     color: #624eb0 !important;
     border-right: 1px solid #e1e1e6 !important;
+    background: #f8f8f8;
+
   }
 
   ion-segment.segment.segment-md,ion-segment.segment.segment-ios {
