@@ -23,7 +23,6 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 // import { Sim } from '@ionic-native/sim';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // import { SavemilagePage } from '../pages/savemilage/savemilage';
 // import { SaveTimePage } from '../pages/save-time/save-time';
@@ -40,6 +39,7 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
 import { IonicStorageModule } from '@ionic/storage';
 import { IonicImageLoader } from 'ionic-image-loader';
 import { ElementsProvider } from '../providers/elements/elements';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [

@@ -37,6 +37,7 @@ export class HomePage {
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
   @ViewChild('lineCanvas') lineCanvas;
+  monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   public location_watch: any;
   public viewing: any = false;
@@ -74,6 +75,8 @@ export class HomePage {
 
   public chart;
   public time = new Date();
+
+  public scrollCount = 1;
 
 
   //NFC read related ....
@@ -303,18 +306,31 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    this.doughnutChart.setData(this.graphdata)
+    if (this.doughnutChart) {
+      this.doughnutChart.setData(this.graphdata)
+    }
+
+    if (document.getElementById('scroll')) {
+      this.scrollSubscriber();
+    }
   }
 
   ionViewDidLeave() {
     // this.chart.dispose();
     this.offline = false;
-    this.shownItems = this.tapItems.splice(0, 7)
+    this.destroyScrollSubscriber()
     // this.chartfunc(1);
   }
   selectedTab(index) {
     this.slideselected = (this.slideselected == 'home') ? "history" : "home";
     this.slider.slideTo(index);
+    if (this.slideselected == 'home') {
+      let length = this.tapItems.length;
+      let slice_end = length >= 10 ? 10 : length - 1
+      this.shownItems = this.tapItems.slice(0, slice_end)
+      this.scrollCount = 1
+      document.getElementById("scroll").scrollTop = 0;
+    }
   }
   merchant() {
     // this.navCtrl.push('MerchantPage');
@@ -327,9 +343,6 @@ export class HomePage {
   }
   prev() {
     this.slides.slidePrev();
-  }
-  ionViewDidLoad() {
-    // this.chartfunc();
   }
 
   //Get profile data...
@@ -418,8 +431,17 @@ export class HomePage {
     if (alltaps.length == _base.tapItems.length) {
       return
     }
-    _base.shownItems = alltaps.slice(0, 10);
-    _base.tapItems = alltaps;
+    let lastcreateddate = "";
+    _base.tapItems = alltaps.map((item) => {
+      let createddate = item.createdDate.split("T")[0]
+      let obj: any = item;
+      if (lastcreateddate != createddate) {
+        lastcreateddate = createddate
+        let d = new Date(createddate)
+        obj.date = d.getDate() + ' ' + _base.monthNames[d.getMonth()] + ', ' + d.getFullYear()
+      }
+      return obj
+    });
   }
 
   search() {
@@ -510,6 +532,13 @@ export class HomePage {
   }
   slideChanged() {
     this.slideselected = (this.slideselected == 'home') ? "history" : "home";
+    if (this.slideselected == 'home') {
+      let length = this.tapItems.length;
+      let slice_end = length >= 10 ? 10 : length - 1
+      this.shownItems = this.tapItems.slice(0, slice_end)
+      this.scrollCount = 1
+      document.getElementById("scroll").scrollTop = 0;
+    }
   }
 
   convertToDataURLviaCanvas(url, outputFormat) {
@@ -531,8 +560,60 @@ export class HomePage {
     });
   }
 
-  doInfinite($event) {
+  detectBottom() {
+    console.log("Bottom Detected")
+  }
 
+  scrollSubscriber() {
+    console.debug("Scroll Event");
+    let _base = this;
+    let length = this.tapItems.length;
+    let slice_end = length >= 10 ? 10 : length - 1
+    this.shownItems = this.tapItems.slice(0, slice_end)
+    document.getElementById('scroll').scrollTop = 0;
+    document.getElementById('scroll').addEventListener(
+      'scroll',
+      function () {
+        let item = document.querySelectorAll('#scroll-item')[0].scrollHeight;
+        let scrollTop = document.getElementById('scroll').scrollTop;
+        let scrollHeight = document.getElementById('scroll').scrollHeight; // added
+        let offsetHeight = document.getElementById('scroll').offsetHeight;
+        // var clientHeight = document.getElementById('box').clientHeight;
+        let contentHeight = scrollHeight - offsetHeight; // added
+        console.log(contentHeight)
+        console.log(scrollTop)
+        if (contentHeight <= scrollTop + 200) // modified
+        {
+          console.log("Scroll Down")
+          // Now this is called when scroll end!
+          if (_base.scrollCount < _base.tapItems.length / 10) {
+            let slength = _base.shownItems.length;
+            let tlength = _base.tapItems.length;
+            let difference = tlength - slength;
+            let slice_start = _base.scrollCount * 10;
+            let slice_end = 0;
+            if (difference < 10) {
+              slice_end = slice_start + difference
+            } else {
+              slice_end = slice_start + 10
+            }
+            _base.shownItems = _base.tapItems.slice(0, slice_end)
+            _base.scrollCount = _base.scrollCount + 1;
+            // document.getElementById('scroll').scrollTop = 0
+          }
+        }
+      },
+      false
+    )
+  }
+
+  destroyScrollSubscriber() {
+    let length = this.tapItems.length;
+    let slice_end = length >= 10 ? 10 : length - 1
+    this.shownItems = this.tapItems.slice(0, slice_end)
+    document.getElementById("scroll").scrollTop = 0;
+    document.getElementById('scroll').addEventListener('scroll', function () { }, true)
+    this.scrollCount = 1;
   }
 
 }

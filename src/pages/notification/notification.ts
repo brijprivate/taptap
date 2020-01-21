@@ -56,7 +56,7 @@ export class NotificationPage {
       if (lastcreateddate != createddate) {
         lastcreateddate = createddate
         let d = new Date(createddate)
-        obj.date = d.getDate() + ' ' + _base.monthNames[d.getMonth() + 1] + ', ' + d.getFullYear()
+        obj.date = d.getDate() + ' ' + _base.monthNames[d.getMonth()] + ', ' + d.getFullYear()
       }
       return obj
     });

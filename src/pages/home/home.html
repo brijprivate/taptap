@@ -5,7 +5,8 @@
 
     <div class="main">
 
-      <i (tap)="notifications()" name="start" class="fa fa-bell" aria-hidden="true"></i><span (tap)="notifications()">{{notiCount}}</span>
+      <i (tap)="notifications()" name="start" class="fa fa-bell" aria-hidden="true"></i><span
+        (tap)="notifications()">{{notiCount}}</span>
 
       <ion-grid class="p0">
         <ion-row>
@@ -120,7 +121,7 @@
 
         <div class="top">
           <div class="section">
-            <div class="scroll " [style.margin-bottom]="true? '5vh':'35vh'">
+            <div class="scroll" id="scroll" [style.margin-bottom]="true? '5vh':'35vh'">
               <!-- [style.margin-bottom]="keyboards? '5vh':'35vh'" -->
               <!-- <div>
                 <p class="day">dummy data</p>
@@ -136,9 +137,9 @@
               </div> -->
 
 
-              
-              <div *ngFor="let item of shownItems">
-                <p class="day">{{item.createdDate | date:'dd/MM/yyyy'}}</p>
+
+              <div id="scroll-item" *ngFor="let item of shownItems">
+                <p *ngIf="item.date" class="day">{{item.date}}</p>
 
                 <ion-item (tap)="gotoDetails(item)">
                   <!-- <ion-icon name="apps" class="merchantIcon"></ion-icon> -->
@@ -168,6 +169,13 @@
                   <span *ngIf="item.purpose=='Contact_info'">{{item.deviceInfo?.device_title}}</span>
 
                   <ion-badge item-end>{{item.createdDate | date:'HH:mm'}} GMT</ion-badge>
+                </ion-item>
+              </div>
+              <div id="loadMore">
+                <ion-item>
+                  <ion-spinner name="dots" item-start></ion-spinner>
+                  <p style="text-align:center">Loading More Content</p>
+                  <ion-spinner name="dots" item-end></ion-spinner>
                 </ion-item>
               </div>
             </div>

@@ -93,6 +93,7 @@
     "moment": "^2.24.0",
     "ng-in-viewport": "^6.0.3",
     "ng-socket-io": "^0.2.4",
+    "ngx-infinite-scroll": "^0.8.4",
     "node-bitlyapi": "^0.4.0",
     "pdfmake": "^0.1.56",
     "phonegap-nfc": "^1.0.3",
