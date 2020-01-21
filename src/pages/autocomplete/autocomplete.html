@@ -2,12 +2,14 @@
   <ion-toolbar>
     <ion-title>Address Autocomplete</ion-title>
     <ion-searchbar [(ngModel)]="autocomplete.query" id="search" [showCancelButton]="true" (ionInput)="updateSearch()"
-      (ionCancel)="dismiss()"></ion-searchbar>
+    (ionCancel)="dismiss()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list style="margin-top: 7px;">
+ 
+
     <ion-item *ngFor="let item of autocompleteItems" tappable (tap)="chooseItem(item)">
       {{ item }}
     </ion-item>
