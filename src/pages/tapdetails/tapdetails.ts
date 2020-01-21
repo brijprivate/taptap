@@ -388,23 +388,40 @@ export class TapdetailsPage {
     let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.name);
-    contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber)];
-    contact.phoneNumbers = [new ContactField('mobile', data.mobileNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.telephoneNumber), new ContactField('mobile', data.mobileNumber)];
+    // contact.phoneNumbers = [new ContactField('mobile', data.mobileNumber)];
     contact.organizations = [new ContactOrganization('company', data.company)];
     contact.addresses = [new ContactAddress(false, "home", data.address)];
     contact.emails = [new ContactField('email', data.email)];
     contact.urls = [new ContactField('website', data.link)];
-    if (data.profile_pic) {
-      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic + "&select=thumbnail")];
-    }
+    // if (data.profile_pic) {
+    //   contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.profile_pic + "&select=thumbnail")];
+    // }
     // contact.photos = [new ContactField(new URL(_base.API_URL+"/file/getImage?imageId="+data.image))];
+    let base4img = "assets/images/avatar.png";
+    _base.convertToDataURLviaCanvas(_base.API_URL + "/file/getImage?imageId=" + data.profile_pic, "image/png").then(function (base64img: string) {
+      let stringimage: string = base64img;
+      contact.photos = [new ContactField('photo', stringimage, true)];
 
+      contact.save().then((contact) => {
 
-    contact.save().then((contact) => {
-      alert("contact saved");
-    }, (err) => {
-      alert("contact not saved");
+        alert("contact saved");
+
+      }, function (err) {
+
+        // alert("contact not saved");
+      })
+    }, error => {
+      contact.save().then((contact) => {
+
+        alert("contact saved");
+
+      }, function (err) {
+
+        alert("contact not saved");
+      })
     })
+
   }
 
   savedevicecontact(data) {
@@ -416,27 +433,63 @@ export class TapdetailsPage {
     let _base = this;
     var contact: Contact = this.contacts.create();
     contact.name = new ContactName(null, null, data.deviceInfo.contact_info.name);
-    contact.phoneNumbers = [new ContactField('mobile', data.deviceInfo.contact_info.mobileNumber)];
-    contact.phoneNumbers = [new ContactField('mobile', data.deviceInfo.contact_info.phoneNumber)];
+    contact.phoneNumbers = [new ContactField('mobile', data.deviceInfo.contact_info.mobileNumber), new ContactField('mobile', data.deviceInfo.contact_info.phoneNumber)];
+    // contact.phoneNumbers = [new ContactField('mobile', data.deviceInfo.contact_info.phoneNumber)];
 
     contact.organizations = [new ContactOrganization('company', data.deviceInfo.contact_info.company_name)];
     contact.emails = [new ContactField('email', data.deviceInfo.contact_info.email)];
     contact.urls = [new ContactField('website', data.deviceInfo.contact_info.website)];
     contact.addresses = [new ContactAddress(false, "home", data.deviceInfo.contact_info.address)];
-    if (data.imageId) {
-      contact.photos = [new ContactField('photo', _base.API_URL + "/file/getImage?imageId=" + data.deviceInfo.imageId._id + "&select=thumbnail")];
-    }
+    // if (data.imageId) {
+    //   contact.photos = [new ContactField('image', _base.API_URL + "/file/getImage?imageId=" + data.deviceInfo.imageId._id + "&select=thumbnail", true)];
+    // }
 
+    let base4img = "assets/images/avatar.png";
+    _base.convertToDataURLviaCanvas(_base.API_URL + "/file/getImage?imageId=" + data.deviceInfo.imageId._id, "image/png").then(function (base64img: string) {
+      let stringimage: string = base64img;
+      contact.photos = [new ContactField('photo', stringimage, true)];
 
+      contact.save().then((contact) => {
 
-    contact.save().then((contact) => {
+        alert("contact saved");
 
-      alert("contact saved");
+      }, function (err) {
 
-    }, (err) => {
+        // alert("contact not saved");
+      })
+    }, error => {
+      contact.save().then((contact) => {
 
-      // alert("contact not saved");
+        alert("contact saved");
+
+      }, function (err) {
+
+        alert("contact not saved");
+      })
     })
+  }
+
+  convertToDataURLviaCanvas(url, outputFormat) {
+    return new Promise((resolve, reject) => {
+      let img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = () => {
+        let canvas = <HTMLCanvasElement>document.createElement('CANVAS'),
+          ctx = canvas.getContext('2d'),
+          dataURL;
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        resolve(dataURL);
+        canvas = null;
+      };
+      img.onerror = function () {
+        //display error
+        reject({})
+      };
+      img.src = url;
+    });
   }
 
 

@@ -239,7 +239,6 @@ export class HomePage {
 
   chartfunc() {
     let _base = this;
-
     let data = [];
     let colors = []
     // if no tap
@@ -248,17 +247,14 @@ export class HomePage {
     } else {
       _base.isblanck = false
     }
-
     if (_base.fashion != null && _base.fashion != 0) {
       data.push({ label: "Fashion", value: _base.fashion })
       colors.push("#bd86b6")
     }
-
     if (_base.general != null && _base.general != 0) {
       data.push({ label: "General", value: _base.general })
       colors.push("#8769d7")
     }
-
     if (_base.event != null && _base.event != 0) {
       data.push({ label: "Event", value: _base.event })
       colors.push("#ef95c8")
@@ -268,48 +264,31 @@ export class HomePage {
       data.push({ label: "Contacts", value: _base.contact })
       colors.push("#80a09d")
     }
-
     if (_base.buisness != null && _base.buisness != 0) {
       data.push({ label: "Business", value: _base.buisness })
       colors.push("#8baeec")
     }
-
     if (_base.sports != null && _base.sports != 0) {
       data.push({ label: "Sports", value: _base.sports })
       colors.push("#d98136")
     }
-
     if (_base.groceries != null && _base.groceries != 0) {
       data.push({ label: "Groceries", value: _base.groceries })
       colors.push("#DA4567")
     }
-
     if (_base.lost != null && _base.lost != 0) {
       data.push({ label: "Lost", value: _base.lost })
       colors.push("#EC407A")
     }
-
     if (_base.restaurant != null && _base.restaurant != 0) {
-
       data.push({ label: "Restaurant", value: _base.restaurant })
       colors.push("#D7761B")
     }
-
-
     if (JSON.stringify(_base.graphdata) == JSON.stringify(data)) {
       return
     }
-
     _base.graphdata = data;
-
     if (_base.doughnutChart) {
-      for (var property in data) {
-        if (data.hasOwnProperty(property)) {
-          // Do things here
-          console.log(data[property].value)
-          console.log(typeof data[property].value)
-        }
-      }
       _base.doughnutChart.setData(data)
     } else {
       (<HTMLElement>document.getElementById('donut-example')).innerHTML = ""
@@ -319,7 +298,7 @@ export class HomePage {
         formatter: function (y, data) { return '' + y },
         colors: colors,
         data: data
-      });
+      })
     }
   }
 

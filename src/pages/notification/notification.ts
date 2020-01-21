@@ -64,10 +64,10 @@ export class NotificationPage {
   }
 
   viewNotification(notificationID: String, geo) {
-
     let _base = this;
     _base.nfctagpro.viewNotification(notificationID)
       .then(function (sucess) {
+        _base.sharedservice.triggerNotification(true)
       }, function (error) {
       })
     if (geo) {
@@ -81,7 +81,8 @@ export class NotificationPage {
     let _base = this;
     _base.nfctagpro.clearNotifications(localStorage.getItem('userId'))
       .then(function (success: any) {
-        _base.presentToast('Notifications will be removed shortly in a moment')
+        // _base.presentToast('Notifications will be removed shortly in a moment')
+        _base.sharedservice.triggerNotification(true)
       }, function (error) {
 
       })

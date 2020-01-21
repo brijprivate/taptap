@@ -24,15 +24,17 @@ export class SharedserviceProvider {
   public httpresponse = new BehaviorSubject<object>({});
   public triggerhttp = new BehaviorSubject<object>({});
   public readNFC = new BehaviorSubject<object>({});
+  public fetchNotification = new BehaviorSubject<object>({});
+  public fetchProfile = new BehaviorSubject<object>({});
 
   // isModalOpen = this.isModal.asObservable();
 
   constructor(public http: Http) {
-    
+
   }
   public update(data: any) {
     this.bSubject.next(data);
-    
+
   }
   public filterhistories(data: any) {
     this.bSubject.next(data);
@@ -92,6 +94,14 @@ export class SharedserviceProvider {
 
   scanNFC(value) {
     return this.readNFC.next({ value: value })
+  }
+
+  triggerNotification(value) {
+    return this.fetchNotification.next({ value: value })
+  }
+
+  triggerProfile(value) {
+    return this.fetchProfile.next({ value: value })
   }
 
 }

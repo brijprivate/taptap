@@ -69,6 +69,24 @@ export class SynchroniserPage {
           }
         }
       })
+
+    _base.sharedHttp.fetchNotification
+      .subscribe(function (data: any) {
+        if (data) {
+          if (data.value) {
+            _base.singlegetnotifications();
+          }
+        }
+      });
+
+    _base.sharedHttp.fetchProfile
+      .subscribe(function (data: any) {
+        if (data) {
+          if (data.value) {
+            _base.singlegetprofiledata();
+          }
+        }
+      });
   }
 
   loadHttp() {
@@ -323,7 +341,7 @@ export class SynchroniserPage {
       _base.getcategories();
     })
   }
-  
+
   getcategories() {
     let _base = this
     _base.loginHttp.getallcategories()
@@ -360,6 +378,56 @@ export class SynchroniserPage {
       });
   }
 
+
+  /** SIngle Events **/
+  singlegetnotifications() {
+    let _base = this;
+    _base.count = 5;
+    let notiCount = 0;
+    _base.nfcHttp.getnotifications(localStorage.getItem('userId'))
+      .then(function (success: any) {
+        _base.app_state.notifications = success.result;
+        success.result.forEach(item => {
+          if (item.seen == false) {
+            notiCount = notiCount + 1
+          }
+        });
+        _base.app_state.noticount = notiCount;
+        _base.share_app_state();
+      }, function (error) {
+      });
+  }
+
+  singlegetprofiledata() {
+    let _base = this;
+    this.loginHttp.getProfile(this.userId).then(function (success: any) {
+      if (success) {
+        _base.count = 2;
+        localStorage.setItem('uid', success.result.uid);
+        _base.app_state.profile = success.result;
+        if (success.result.imageId) {
+          let profileImage = _base.API_URL + "/file/getImage?imageId=" + success.result.imageId._id;
+          let base4img = profileImage;
+          _base.convertToDataURLviaCanvas(profileImage, "image/png").then(base64img => {
+            let base4img = base64img;
+            _base.storage.remove("uimg")
+            _base.app_state.display_picture = base4img;
+            _base.storage.set('uimg', base4img);
+          })
+        } else {
+          let base4img = "assets/images/avatar.png";
+          _base.convertToDataURLviaCanvas(base4img, "image/png").then(base64img => {
+            let base4img = base64img;
+            _base.storage.remove("uimg")
+            _base.storage.set('uimg', base4img);
+            _base.app_state.alltaps = base4img;
+          })
+        }
+        _base.share_app_state();
+      }
+    }, function (err) {
+    })
+  }
 
   share_app_state() {
     let _base = this;

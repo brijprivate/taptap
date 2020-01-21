@@ -69,7 +69,7 @@ export class EditprofilePage {
   }
 
   onScroll($event) {
-    
+
   }
 
   /**
@@ -90,7 +90,7 @@ export class EditprofilePage {
           text: 'Use Camera',
           handler: () => {
             this.takePicture(this.camera.PictureSourceType.CAMERA);
-            
+
           }
         },
         {
@@ -120,7 +120,7 @@ export class EditprofilePage {
 
     // Get the data of an image...
     this.camera.getPicture(options).then((imagePath) => {
-      
+
 
       //Crop function to crop the image...
       this.crop.crop(imagePath, {
@@ -128,16 +128,16 @@ export class EditprofilePage {
         targetWidth: 160,
         targetHeight: 160,
       }).then(function (success: any) {
-        
+
         imagePath = success;
-        
+
         // _base.imageId = imagePath;
-        
-        
+
+
 
         // Speacial handleing for Android platform...
         if (_base.platform.is('android') || sourceType == options.sourceType.PHOTOLIBRARY) {
-          
+
 
           _base.filePath.resolveNativePath(imagePath)
             .then(filePath => {
@@ -175,12 +175,12 @@ export class EditprofilePage {
    */
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       this.lastImage = newFileName;
       if (this.lastImage) {
         this.uploadImage();
@@ -193,7 +193,7 @@ export class EditprofilePage {
 
   getTrustImg(imgsrc) {
     let path = this.win.Ionic.WebView.convertFileSrc(imgsrc);
-    
+
     return path;
   }
 
@@ -239,15 +239,15 @@ export class EditprofilePage {
         mimeType: "image/jpeg",
         params: { 'fileName': filename }
       };
-      
+
       fileTransfer.upload(targetPath, url, options).then(data => {
 
-        
+
         var temp: any;
         temp = data;
-        
+
         this.profileImage = JSON.parse(temp.response).upload._id;
-        
+
 
         if (this.profileImage) {
           // this.imageId = this.API_URL + "/file/getImage?imageId=" + this.profileImage + "&select=thumbnail";//creating url for profile pic
@@ -267,7 +267,7 @@ export class EditprofilePage {
         err => {
           loader.dismiss();
           this.presentToast('Error while uploading file.' + err);
-          
+
         });
     }
     else {
@@ -322,10 +322,11 @@ export class EditprofilePage {
       _id: _base.profiledata._id
     }
     this.loginsignupProvider.profileUpdate(data).then(function (success: any) {
-      
-      _base.presentToast('Profile picture will be removed shortly in a moment');
+
+      // _base.presentToast('Profile picture will be removed shortly in a moment');
+      _base.sharedservice.triggerProfile(true)
     }, function (err) {
-      
+
       alert("Can not remove. please try again")
     })
   }
@@ -337,17 +338,18 @@ export class EditprofilePage {
       _id: _base.profiledata._id
     }
     this.loginsignupProvider.profileUpdate(data).then(function (success: any) {
-      
+
 
       if (success.error) {
         alert("Can not save profile picture. Please try again")
         return;
       } else {
         // _base.getprofiledata()
-        _base.presentToast('Profile Picture will be shown on profile in a moment.');
+        // _base.presentToast('Profile Picture will be shown on profile in a moment.');
+        _base.sharedservice.triggerProfile(true)
       }
     }, function (err) {
-      
+
       alert("Can not save profile picture. please try again")
     })
   }
@@ -358,12 +360,12 @@ export class EditprofilePage {
 
     modal.onDidDismiss(data => {
       if (data && Object.keys(data).length != 0) {
-        
+
         _base.profiledata.address = data.location;
         _base.profiledata.country = data.country;
         _base.profiledata.city = data.city;
       } else {
-        
+
       }
     });
     modal.present();
@@ -416,19 +418,19 @@ export class EditprofilePage {
     // }
 
     this.loginsignupProvider.profileUpdate(profile).then(function (success: any) {
-      
+
 
       if (success.error) {
         alert("This email is already owned")
         return;
       }
 
-
+      _base.sharedservice.triggerProfile(true)
       _base.presentAlert();
       _base.navCtrl.pop();
 
     }, function (err) {
-      
+
       // alert("This email is already owned")
     })
   }
@@ -464,7 +466,7 @@ export class EditprofilePage {
           text: 'Cancel',
           role: 'cancel',
           handler: data => {
-            
+
           }
         },
         {
@@ -504,7 +506,7 @@ export class EditprofilePage {
           _base.OTPAlert()
         }
       }, function (error) {
-        
+
         alert(JSON.parse(error._body).message)
         _base.OTPAlert()
       });
