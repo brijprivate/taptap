@@ -1,3 +1,10 @@
 page-autocomplete {
-
+    .toolbar-title.toolbar-title-md{
+        text-align: center;
+        margin: 8px 0;
+        font-size: 18px
+    }
+    ion-searchbar#search {
+        padding: 0px;
+    }
 }
