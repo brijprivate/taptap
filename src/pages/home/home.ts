@@ -612,7 +612,7 @@ export class HomePage {
     let slice_end = length >= 10 ? 10 : length - 1
     this.shownItems = this.tapItems.slice(0, slice_end)
     document.getElementById("scroll").scrollTop = 0;
-    document.getElementById('scroll').addEventListener('scroll', function () { }, true)
+    document.getElementById('scroll').removeEventListener('scroll', function () { }, true)
     this.scrollCount = 1;
   }
 

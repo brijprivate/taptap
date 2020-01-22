@@ -19,7 +19,7 @@ import { SharedserviceProvider } from '../../providers/sharedservice/sharedservi
 export class NotificationPage {
   notifications: any = [];
   shownnotification: any = [];
-
+  scrollCount: any = 1;
   monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
@@ -60,7 +60,7 @@ export class NotificationPage {
       }
       return obj
     });
-    _base.shownnotification = _base.notifications.slice(0, 10)
+    // _base.shownnotification = _base.notifications.slice(0, 10)
   }
 
   viewNotification(notificationID: String, geo) {
@@ -83,6 +83,7 @@ export class NotificationPage {
       .then(function (success: any) {
         // _base.presentToast('Notifications will be removed shortly in a moment')
         _base.sharedservice.triggerNotification(true)
+        _base.destroyScrollSubscriber();
       }, function (error) {
 
       })
@@ -92,4 +93,68 @@ export class NotificationPage {
   back() {
     this.navCtrl.pop()
   }
+
+  scrollSubscriber() {
+    console.debug("Scroll Event");
+    let _base = this;
+    let length = this.notifications.length;
+    let slice_end = length >= 10 ? 10 : length - 1
+    this.shownnotification = this.notifications.slice(0, slice_end)
+    document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollTop = 0;
+    document.querySelectorAll("#notification_scroll .scroll-content")[0].addEventListener(
+      'scroll',
+      function () {
+        let scrollTop = document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollTop;
+        let scrollHeight = document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollHeight; // added
+        let offsetHeight = (<HTMLElement>document.querySelectorAll("#notification_scroll .scroll-content")[0]).offsetHeight;
+        // var clientHeight = document.getElementById('box').clientHeight;
+        let contentHeight = scrollHeight - offsetHeight; // added
+        if (contentHeight <= scrollTop + 50) // modified
+        {
+          // Now this is called when scroll end!
+          if (_base.scrollCount < _base.notifications.length / 10) {
+            let slength = _base.shownnotification.length;
+            let tlength = _base.notifications.length;
+            let difference = tlength - slength;
+            let slice_start = _base.scrollCount * 10;
+            let slice_end = 0;
+            if (difference < 10) {
+              slice_end = slice_start + difference
+            } else {
+              slice_end = slice_start + 10
+            }
+            _base.shownnotification = _base.notifications.slice(0, slice_end)
+            _base.scrollCount = _base.scrollCount + 1;
+            // document.getElementById('scroll').scrollTop = 0
+          }
+        }
+      },
+      false
+    )
+  }
+
+  destroyScrollSubscriber() {
+    console.log("Destroy scroll subscription")
+    let length = this.notifications.length;
+    let slice_end = length >= 10 ? 10 : length - 1
+    this.shownnotification = this.notifications.slice(0, slice_end)
+    document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollTop = 0;
+    document.querySelectorAll("#notification_scroll .scroll-content")[0].removeEventListener('scroll', function () { }, true)
+    this.scrollCount = 1;
+  }
+
+  ionViewDidEnter() {
+    console.log("View DID Enter")
+    if (document.getElementById('notification_scroll')) {
+      this.scrollSubscriber();
+    }
+  }
+
+  ionViewDidLeave() {
+    console.log("View did leave")
+    if (document.getElementById('notification_scroll')) {
+      this.destroyScrollSubscriber()
+    }
+  }
+
 }
