@@ -20,6 +20,7 @@ export class TaptapPage {
   @ViewChild('slides') slider: Slides;
   @ViewChild('slider') slider_tab: Slides;
 
+  public scrollCount: any = 1;
 
   monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   monthName = "";
@@ -90,5 +91,116 @@ export class TaptapPage {
 
   slideChanged($event) {
     this.page = ($event.realIndex == 1) ? "marchent" : "category";
+    this.destroyScrollSubscriber();
+    if (document.getElementById('category_scroll')) {
+      this.scrollCategorySubscriber();
+      this.scrollMarchantSubscriber();
+    }
+  }
+
+
+  scrollCategorySubscriber() {
+    
+    let _base = this;
+    let length = this.tapItems.length;
+    let slice_end = length >= 10 ? 10 : length - 1
+    this.shownItems = this.tapItems.slice(0, slice_end)
+    document.querySelectorAll("#category_scroll")[0].scrollTop = 0;
+    document.querySelectorAll("#category_scroll")[0].addEventListener(
+      'scroll',
+      function () {
+        let scrollTop = document.querySelectorAll("#category_scroll")[0].scrollTop;
+        let scrollHeight = document.querySelectorAll("#category_scroll")[0].scrollHeight; // added
+        let offsetHeight = (<HTMLElement>document.querySelectorAll("#category_scroll")[0]).offsetHeight;
+        // var clientHeight = document.getElementById('box').clientHeight;
+        let contentHeight = scrollHeight - offsetHeight; // added
+        if (contentHeight <= scrollTop + 50) // modified
+        {
+          // Now this is called when scroll end!
+          if (_base.scrollCount < _base.tapItems.length / 10) {
+            let slength = _base.shownItems.length;
+            let tlength = _base.tapItems.length;
+            let difference = tlength - slength;
+            let slice_start = _base.scrollCount * 10;
+            let slice_end = 0;
+            if (difference < 10) {
+              slice_end = slice_start + difference
+            } else {
+              slice_end = slice_start + 10
+            }
+            _base.shownItems = _base.tapItems.slice(0, slice_end)
+            _base.scrollCount = _base.scrollCount + 1;
+            // document.getElementById('scroll').scrollTop = 0
+          }
+        }
+      },
+      false
+    )
+  }
+
+  scrollMarchantSubscriber() {
+    
+    let _base = this;
+    let length = this.tapItems.length;
+    let slice_end = length >= 10 ? 10 : length - 1
+    this.shownItems = this.tapItems.slice(0, slice_end)
+    document.querySelectorAll("#marchant_scroll")[0].scrollTop = 0;
+    document.querySelectorAll("#marchant_scroll")[0].addEventListener(
+      'scroll',
+      function () {
+        let scrollTop = document.querySelectorAll("#marchant_scroll")[0].scrollTop;
+        let scrollHeight = document.querySelectorAll("#marchant_scroll")[0].scrollHeight; // added
+        let offsetHeight = (<HTMLElement>document.querySelectorAll("#marchant_scroll")[0]).offsetHeight;
+        // var clientHeight = document.getElementById('box').clientHeight;
+        let contentHeight = scrollHeight - offsetHeight; // added
+        if (contentHeight <= scrollTop + 50) // modified
+        {
+          // Now this is called when scroll end!
+          if (_base.scrollCount < _base.tapItems.length / 10) {
+            let slength = _base.shownItems.length;
+            let tlength = _base.tapItems.length;
+            let difference = tlength - slength;
+            let slice_start = _base.scrollCount * 10;
+            let slice_end = 0;
+            if (difference < 10) {
+              slice_end = slice_start + difference
+            } else {
+              slice_end = slice_start + 10
+            }
+            _base.shownItems = _base.tapItems.slice(0, slice_end)
+            _base.scrollCount = _base.scrollCount + 1;
+            // document.getElementById('scroll').scrollTop = 0
+          }
+        }
+      },
+      false
+    )
+  }
+
+  destroyScrollSubscriber() {
+    
+    let length = this.tapItems.length;
+    let slice_end = length >= 10 ? 10 : length - 1
+    this.shownItems = this.tapItems.slice(0, slice_end)
+    document.querySelectorAll("#category_scroll")[0].scrollTop = 0;
+    document.querySelectorAll("#category_scroll")[0].removeEventListener('scroll', function () { }, true)
+    document.querySelectorAll("#marchant_scroll")[0].scrollTop = 0;
+    document.querySelectorAll("#marchant_scroll")[0].removeEventListener('scroll', function () { }, true)
+    this.scrollCount = 1;
+  }
+
+  ionViewDidEnter() {
+    
+    if (document.getElementById('category_scroll')) {
+      this.scrollCategorySubscriber();
+      this.scrollMarchantSubscriber();
+    }
+  }
+
+  ionViewDidLeave() {
+    
+    if (document.getElementById('category_scroll')) {
+      this.destroyScrollSubscriber()
+    }
   }
 }

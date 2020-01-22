@@ -36,7 +36,7 @@
 
       <div class="top">
         <div class="section">
-          <div class="scroll">
+          <div class="scroll" id="category_scroll">
 
             <div style="padding:0 1em;" *ngFor="let item of shownItems">
               <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
@@ -71,8 +71,8 @@
       <!-- for month -->
       <div class="top">
         <div class="section">
-          <div class="scroll">
-            <div style="padding:0 1em;" *ngFor="let item of tapItems">
+          <div class="scroll" id="marchant_scroll">
+            <div style="padding:0 1em;" *ngFor="let item of shownItems">
               <p class="day" *ngIf="item.date">{{item.date | date:'dd/MM/yyyy'}}</p>
               <ion-item (tap)="gotodetails(item)">
                 <ion-icon name="apps" class="merchantIcon"></ion-icon>
