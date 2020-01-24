@@ -187,7 +187,7 @@ export class SelectdatePage {
       data: this.data
     }
 
-    console.log("===================")
+    
     this.navCtrl.push('MilagelistPage', { data: data })
 
   }

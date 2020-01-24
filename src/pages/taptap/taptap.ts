@@ -76,15 +76,13 @@ export class TaptapPage {
 
   //Go to details page ....
   gotodetails(item) {
+    
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
-      // 
     } else if (item.purpose == "Contact_info") {
-      // this.createTap(item);
       this.navCtrl.push('TapdetailsPage', { devicedetaill: item, key: 'device' });
     }
     else {
-      // 
       this.navCtrl.push('TapdetailsPage', item);
     }
   }
@@ -100,7 +98,7 @@ export class TaptapPage {
 
 
   scrollCategorySubscriber() {
-    
+
     let _base = this;
     let length = this.tapItems.length;
     let slice_end = length >= 10 ? 10 : length - 1
@@ -139,7 +137,7 @@ export class TaptapPage {
   }
 
   scrollMarchantSubscriber() {
-    
+
     let _base = this;
     let length = this.tapItems.length;
     let slice_end = length >= 10 ? 10 : length - 1
@@ -178,7 +176,7 @@ export class TaptapPage {
   }
 
   destroyScrollSubscriber() {
-    
+
     let length = this.tapItems.length;
     let slice_end = length >= 10 ? 10 : length - 1
     this.shownItems = this.tapItems.slice(0, slice_end)
@@ -190,7 +188,7 @@ export class TaptapPage {
   }
 
   ionViewDidEnter() {
-    
+
     if (document.getElementById('category_scroll')) {
       this.scrollCategorySubscriber();
       this.scrollMarchantSubscriber();
@@ -198,7 +196,7 @@ export class TaptapPage {
   }
 
   ionViewDidLeave() {
-    
+
     if (document.getElementById('category_scroll')) {
       this.destroyScrollSubscriber()
     }

@@ -95,7 +95,7 @@ export class NotificationPage {
   }
 
   scrollSubscriber() {
-    console.debug("Scroll Event");
+    
     let _base = this;
     let length = this.notifications.length;
     let slice_end = length >= 10 ? 10 : length - 1
@@ -107,11 +107,9 @@ export class NotificationPage {
         let scrollTop = document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollTop;
         let scrollHeight = document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollHeight; // added
         let offsetHeight = (<HTMLElement>document.querySelectorAll("#notification_scroll .scroll-content")[0]).offsetHeight;
-        // var clientHeight = document.getElementById('box').clientHeight;
         let contentHeight = scrollHeight - offsetHeight; // added
         if (contentHeight <= scrollTop + 50) // modified
         {
-          // Now this is called when scroll end!
           if (_base.scrollCount < _base.notifications.length / 10) {
             let slength = _base.shownnotification.length;
             let tlength = _base.notifications.length;
@@ -134,7 +132,7 @@ export class NotificationPage {
   }
 
   destroyScrollSubscriber() {
-    console.log("Destroy scroll subscription")
+    
     let length = this.notifications.length;
     let slice_end = length >= 10 ? 10 : length - 1
     this.shownnotification = this.notifications.slice(0, slice_end)
@@ -144,14 +142,14 @@ export class NotificationPage {
   }
 
   ionViewDidEnter() {
-    console.log("View DID Enter")
+    
     if (document.getElementById('notification_scroll')) {
       this.scrollSubscriber();
     }
   }
 
   ionViewDidLeave() {
-    console.log("View did leave")
+    
     if (document.getElementById('notification_scroll')) {
       this.destroyScrollSubscriber()
     }

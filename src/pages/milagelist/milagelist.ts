@@ -7,6 +7,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { FileOpener } from '@ionic-native/file-opener';
 import { File } from '@ionic-native/file';
 import * as moment from 'moment';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the MilagelistPage page.
@@ -36,52 +37,26 @@ export class MilagelistPage {
     public navParams: NavParams,
     public loginsignpro: LoginsignupProvider,
     private plt: Platform,
+    public sharedservice: SharedserviceProvider,
     private file: File,
     private fileOpener: FileOpener) {
 
     this.data = this.navParams.get('data');
 
+    let _base = this;
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
+
+        if (Object.keys(response).length != 0) {
+          _base.address = response.profile;
+        }
+      })
+
     if (this.data) {
-      console.log(this.data)
-      this.getMilageList();
+      this.createPdf();
     }
   }
 
-  ionViewDidEnter() {
-
-    // this.getprofiledata()
-
-  }
-
-
-  getprofiledata() {
-    let _base = this;
-    this.loginsignpro.getProfile(localStorage.getItem("userId")).then(function (success: any) {
-
-      if (success) {
-        _base.address = success.result;
-        _base.createPdf();
-
-      }
-    }, function (err) {
-
-    })
-  }
-
-  getMilageList() {
-    let _base = this;
-    this.loginsignpro.getmilage(localStorage.getItem("userId")).then(function (success: any) {
-
-      _base.milagelist = success.result.records;
-      if (_base.milagelist) {
-        _base.getprofiledata()
-
-      }
-    }, function (err) {
-
-    })
-
-  }
 
   buildTableBody(data, columns) {
     var body = [];
