@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { LoginsignupProvider } from '../../providers/loginsignup/loginsignup';
 import { HomePage } from '../home/home';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the ChangepasswordPage page.
@@ -27,24 +28,24 @@ export class ChangepasswordPage {
     public signupprovider: LoginsignupProvider,
     public loading: LoadingController,
     public alert: AlertController,
+    public sharedservice: SharedserviceProvider,
     private toast: ToastController) {
-  }
-
-  ionViewDidLoad() {
-
-    this.getUser();
-  }
-
-  getUser() {
     let _base = this;
-    _base.signupprovider.getProfile(localStorage.getItem('userId'))
-      .then(function (success: any) {
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
 
-        _base.user = success.result;
-        _base.userName = success.result.name.split(" ")[0];
-      }, function (error: any) {
+        if (Object.keys(response).length != 0) {
 
-      });
+          _base.getUser(response.profile)
+        }
+      })
+  }
+
+
+  getUser(user: any) {
+    let _base = this;
+    _base.user = user;
+    _base.userName = user.name.split(" ")[0];
   }
 
 
