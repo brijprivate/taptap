@@ -7,6 +7,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { FileOpener } from '@ionic-native/file-opener';
 import { File } from '@ionic-native/file';
 import * as moment from 'moment';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 
 /**
  * Generated class for the MilagelistPage page.
@@ -36,51 +37,26 @@ export class MilagelistPage {
     public navParams: NavParams,
     public loginsignpro: LoginsignupProvider,
     private plt: Platform,
+    public sharedservice: SharedserviceProvider,
     private file: File,
     private fileOpener: FileOpener) {
 
     this.data = this.navParams.get('data');
-    
+
+    let _base = this;
+    _base.sharedservice.httpresponse
+      .subscribe(function (response: any) {
+
+        if (Object.keys(response).length != 0) {
+          _base.address = response.profile;
+        }
+      })
+
     if (this.data) {
-      this.getMilageList();
+      this.createPdf();
     }
   }
 
-  ionViewDidEnter() {
-    
-    // this.getprofiledata()
-    
-  }
-
-
-  getprofiledata() {
-    let _base = this;
-    this.loginsignpro.getProfile(localStorage.getItem("userId")).then(function (success: any) {
-      
-      if (success) {
-        _base.address = success.result;
-        _base.createPdf();
-
-      }
-    }, function (err) {
-      
-    })
-  }
-
-  getMilageList() {
-    let _base = this;
-    this.loginsignpro.getmilage(localStorage.getItem("userId")).then(function (success: any) {
-      
-      _base.milagelist = success.result.records;
-      if (_base.milagelist) {
-        _base.getprofiledata()
-
-      }
-    }, function (err) {
-      
-    })
-
-  }
 
   buildTableBody(data, columns) {
     var body = [];
@@ -101,7 +77,7 @@ export class MilagelistPage {
   }
 
   table(data, columns) {
-    if (this.data.type == 'milage') {
+    if (this.data.type == 'mileage') {
       return {
 
         table: {
@@ -142,7 +118,7 @@ export class MilagelistPage {
   }
 
   addtimes(start, end) {
-    
+
     var a = start.split(":");
     var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
     var b = end.split(":");
@@ -152,7 +128,7 @@ export class MilagelistPage {
     date.setSeconds(seconds + seconds2);
 
     var c = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-    
+
     return c;
   }
 
@@ -173,15 +149,15 @@ export class MilagelistPage {
       externalDataRetrievedFromServer = this.data.data;
       title = "Business & Personal"
     }
-    
+
     var total = '00:00:00'
 
 
     for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
       // total = total + externalDataRetrievedFromServer[i].duration
-      
+
       total = this.addtimes(total, externalDataRetrievedFromServer[i].duration);
-      
+
     }
 
 
@@ -193,18 +169,18 @@ export class MilagelistPage {
       dynamicttile = [{ text: 'Date', key: 'createdDate', bold: true }, { text: 'Type', key: 'recordType', bold: true }, { text: 'Title', key: 'title', bold: true }, { text: 'Description', key: 'description', bold: true }, { text: 'From', key: 'startTime', bold: true }, { text: 'To', key: 'endTime', bold: true }, { text: 'Duration', key: 'duration', bold: true }];
 
       for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
-        
+
         externalDataRetrievedFromServer[i].createdDate = moment(externalDataRetrievedFromServer[i].createdDate).format('DD-MM-YYYY');
       }
     }
-    else if (this.data.type == 'milage') {
+    else if (this.data.type == 'mileage') {
       dynamicttile = [{ text: 'Date', key: 'createdDate', bold: true, }, { text: 'Time', key: 'startTime', bold: true, }, { text: 'Type', key: 'recordType', bold: true, }, { text: 'Title', key: 'title', bold: true, }, { text: 'Description', key: 'description', bold: true, }, { text: 'From', key: 'startLocation', bold: true, }, { text: 'To', key: 'endLocation', bold: true, }, { text: 'Duration', key: 'duration', bold: true, }, { text: 'Mileage', key: 'milage', bold: true, }];
       for (var i = 0; i < externalDataRetrievedFromServer.length; i++) {
-        
+
         externalDataRetrievedFromServer[i].milage = parseFloat(externalDataRetrievedFromServer[i].milage).toFixed(2);
         externalDataRetrievedFromServer[i].createdDate = moment(externalDataRetrievedFromServer[i].createdDate).format('DD-MM-YYYY');
 
-        
+
 
         totalmilage = totalmilage + parseFloat(parseFloat(externalDataRetrievedFromServer[i].milage).toFixed(2))
 
@@ -315,7 +291,7 @@ export class MilagelistPage {
       }
 
     }
-    
+
     this.pdfObj = pdfMake.createPdf(docDefinition);
     if (this.pdfObj) {
       this.downloadPdf();
@@ -333,7 +309,7 @@ export class MilagelistPage {
         this.file.writeFile(this.file.dataDirectory, 'taptapstatement.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
           this.fileOpener.open(this.file.dataDirectory + 'taptapstatement.pdf', 'application/pdf');
-          
+
         })
       });
     } else {

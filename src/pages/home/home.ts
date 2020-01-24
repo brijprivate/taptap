@@ -467,24 +467,15 @@ export class HomePage {
 
   //go to detail page ...
   gotoDetails(item) {
-    if (item.purpose == 'Verification') {
-      this.navCtrl.push('TapdetailsPage', { keyy: 'verification' });
-      return;
-    }
+    
     if (item.purpose == "lost") {
       this.navCtrl.push('LostcardPage', { lostinfo: item.deviceInfo.contact_info });
-
     } else if (item.purpose == "Contact_info") {
-      // this.createTap(item);
-      // this.navCtrl.push('TapdetailsPage', { devicedetail: item.deviceInfo, key: 'device' });
       this.navCtrl.push('TapdetailsPage', { devicedetaill: item, key: 'device' });
-
     }
     else {
-
       this.navCtrl.push('TapdetailsPage', item);
     }
-
   }
 
   //go to edit profile page ...
@@ -561,11 +552,11 @@ export class HomePage {
   }
 
   detectBottom() {
-    console.log("Bottom Detected")
+    
   }
 
   scrollSubscriber() {
-    console.debug("Scroll Event");
+    
     let _base = this;
     let length = this.tapItems.length;
     let slice_end = length >= 10 ? 10 : length - 1
@@ -580,11 +571,11 @@ export class HomePage {
         let offsetHeight = document.getElementById('scroll').offsetHeight;
         // var clientHeight = document.getElementById('box').clientHeight;
         let contentHeight = scrollHeight - offsetHeight; // added
-        console.log(contentHeight)
-        console.log(scrollTop)
+        
+        
         if (contentHeight <= scrollTop + 200) // modified
         {
-          console.log("Scroll Down")
+          
           // Now this is called when scroll end!
           if (_base.scrollCount < _base.tapItems.length / 10) {
             let slength = _base.shownItems.length;
@@ -612,7 +603,7 @@ export class HomePage {
     let slice_end = length >= 10 ? 10 : length - 1
     this.shownItems = this.tapItems.slice(0, slice_end)
     document.getElementById("scroll").scrollTop = 0;
-    document.getElementById('scroll').addEventListener('scroll', function () { }, true)
+    document.getElementById('scroll').removeEventListener('scroll', function () { }, true)
     this.scrollCount = 1;
   }
 

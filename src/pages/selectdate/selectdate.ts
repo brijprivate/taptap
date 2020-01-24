@@ -22,11 +22,16 @@ export class SelectdatePage {
   public edate: any;
   userId: string;
   data: any;
+  loading: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginsignupProvider: LoginsignupProvider) {
     this.edate = new Date().toISOString();
     this.sdate = new Date().toISOString();
-    
+
     this.userId = localStorage.getItem("userId");
+
+  }
+
+  ionViewDidEnter() {
 
   }
 
@@ -46,12 +51,12 @@ export class SelectdatePage {
   //get start date...
   startdate() {
     // this.sdate = this.sdate;
-    
+
   }
   enddate() {
     // this.edate = new Date().toISOString();
-    
-    
+
+
   }
   back() {
     this.navCtrl.pop()
@@ -69,7 +74,7 @@ export class SelectdatePage {
       return;
     }
     else {
-      
+
     }
 
     if (this.selected == undefined) {
@@ -78,11 +83,11 @@ export class SelectdatePage {
     }
 
     if (this.busi == false && this.pers == false) {
-      alert('please select the ' + this.selected + ' '+'Type');
+      alert('please select the ' + this.selected + ' ' + 'Type');
       return
     }
     if (this.pers) {
-      
+
     }
 
     if (this.selected == 'time') {
@@ -97,9 +102,11 @@ export class SelectdatePage {
   calltime(timeurl) {
     this.data = [];
     let _base = this;
+    _base.loading = true;
     _base.loginsignupProvider.selectdate(_base.userId, timeurl, _base.sdate, _base.edate).then(function (success: any) {
       if (success) {
-        
+        _base.loading = false;
+
         if (!success.result) {
 
           if (_base.selected == 'time') {
@@ -151,16 +158,19 @@ export class SelectdatePage {
         }
 
         _base.gotopage()
+      } else {
+        _base.loading = false;
       }
     },
       function (err) {
-        
+        _base.loading = false;
       })
   }
 
 
 
   gotopage() {
+
 
     if (this.busi == true && this.pers == true) {
       if (this.data.business && this.data.personal) {
@@ -176,6 +186,7 @@ export class SelectdatePage {
       date: { start: new Date(this.sdate.toString()).toISOString(), end: edate.toISOString() },
       data: this.data
     }
+
     
     this.navCtrl.push('MilagelistPage', { data: data })
 
