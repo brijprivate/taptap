@@ -1,25 +1,37 @@
 page-synchroniser {
-    .flex{
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
-        justify-content: center;
-        align-items: center;
-        background-image:  url(../../assets/images/splash.png);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;    
-         .innerbody{
-            .bottom{
-                span{
-                    position: absolute;
-                    bottom: 2em;
-                    left: 0;
-                    right: 0;
-                    color: #fff;
-                    margin: 0 auto;
-                    text-align: center;
-                }
-            }
+  .flex {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../assets/images/Screen_loader.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    .innerbody {
+      .bottom {
+        span {
+          position: fixed;
+          bottom: 10vh;
+          left: 0;
+          right: 0;
+          color: #fff;
+          margin: 0 auto;
+          text-align: center;
         }
+      }
     }
+  }
+
+
+  .image img {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 21vh;
+  }
 }
