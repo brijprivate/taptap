@@ -26,6 +26,7 @@ export class SharedserviceProvider {
   public readNFC = new BehaviorSubject<object>({});
   public fetchNotification = new BehaviorSubject<object>({});
   public fetchProfile = new BehaviorSubject<object>({});
+  public fetchDevices = new BehaviorSubject<object>({});
 
   // isModalOpen = this.isModal.asObservable();
 
@@ -103,5 +104,10 @@ export class SharedserviceProvider {
   triggerProfile(value) {
     return this.fetchProfile.next({ value: value })
   }
+
+  triggerDevices(value) {
+    return this.fetchDevices.next({ value: value })
+  }
+
 
 }

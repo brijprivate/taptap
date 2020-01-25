@@ -1,5 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i> Notifications
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<div (tap)="clearNotification()" class="clear" *ngIf="notifications.length!=0">
+  <button>clear all</button>
+</div>
 <ion-content id="notification_scroll">
-  <div class="head">
+  <!-- <div class="head">
     <div class="mdl">
       <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
 
@@ -9,7 +18,7 @@
 
   <div (tap)="clearNotification()" class="clear" *ngIf="notifications.length!=0">
     <button>clear all</button>
-  </div>
+  </div> -->
 
 
   <p class="nonoti" *ngIf="shownnotification.length==0">No Notification</p>

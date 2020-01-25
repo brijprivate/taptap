@@ -559,7 +559,7 @@ export class HomePage {
     
     let _base = this;
     let length = this.tapItems.length;
-    let slice_end = length >= 10 ? 10 : length - 1
+    let slice_end = length >= 10 ? 10 : length
     this.shownItems = this.tapItems.slice(0, slice_end)
     document.getElementById('scroll').scrollTop = 0;
     document.getElementById('scroll').addEventListener(
@@ -600,7 +600,7 @@ export class HomePage {
 
   destroyScrollSubscriber() {
     let length = this.tapItems.length;
-    let slice_end = length >= 10 ? 10 : length - 1
+    let slice_end = length >= 10 ? 10 : length
     this.shownItems = this.tapItems.slice(0, slice_end)
     document.getElementById("scroll").scrollTop = 0;
     document.getElementById('scroll').removeEventListener('scroll', function () { }, true)

@@ -98,7 +98,7 @@ export class NotificationPage {
     
     let _base = this;
     let length = this.notifications.length;
-    let slice_end = length >= 10 ? 10 : length - 1
+    let slice_end = length >= 10 ? 10 : length
     this.shownnotification = this.notifications.slice(0, slice_end)
     document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollTop = 0;
     document.querySelectorAll("#notification_scroll .scroll-content")[0].addEventListener(
@@ -134,7 +134,7 @@ export class NotificationPage {
   destroyScrollSubscriber() {
     
     let length = this.notifications.length;
-    let slice_end = length >= 10 ? 10 : length - 1
+    let slice_end = length >= 10 ? 10 : length
     this.shownnotification = this.notifications.slice(0, slice_end)
     document.querySelectorAll("#notification_scroll .scroll-content")[0].scrollTop = 0;
     document.querySelectorAll("#notification_scroll .scroll-content")[0].removeEventListener('scroll', function () { }, true)

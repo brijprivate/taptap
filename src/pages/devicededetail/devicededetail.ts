@@ -88,7 +88,7 @@ export class DevicededetailPage {
     }
     
     this.nfctagProvider.updateDeviceName(ddata).then(function (success) {
-      
+      _base.sharedservice.triggerDevices(true)
       _base.presentAlert();
       // _base.navCtrl.pop();
     }, function (err) {
@@ -97,34 +97,21 @@ export class DevicededetailPage {
   }
 
   //mark as lost...
-  notify(id) {
+  notify(device) {
     let _base = this;
     let data = {
-      deviceId: id,
-      is_lost: this.lost
+      deviceId: device._id,
+      is_lost: device.islost
     }
     
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      
+       _base.sharedservice.triggerDevices(true)
       // _base.getpairedDevice();
     }, function (err) {
       
     })
   }
-  notifyy(id) {
-    let _base = this;
-    let data = {
-      deviceId: id,
-      is_lost: this.islost
-    }
-    
-    this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      
-      // _base.getpairedDevice();
-    }, function (err) {
-      
-    })
-  }
+  
   back() {
     this.navCtrl.pop();
   }

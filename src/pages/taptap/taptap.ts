@@ -140,7 +140,7 @@ export class TaptapPage {
 
     let _base = this;
     let length = this.tapItems.length;
-    let slice_end = length >= 10 ? 10 : length - 1
+    let slice_end = length >= 10 ? 10 : length
     this.shownItems = this.tapItems.slice(0, slice_end)
     document.querySelectorAll("#marchant_scroll")[0].scrollTop = 0;
     document.querySelectorAll("#marchant_scroll")[0].addEventListener(
@@ -178,7 +178,7 @@ export class TaptapPage {
   destroyScrollSubscriber() {
 
     let length = this.tapItems.length;
-    let slice_end = length >= 10 ? 10 : length - 1
+    let slice_end = length >= 10 ? 10 : length
     this.shownItems = this.tapItems.slice(0, slice_end)
     document.querySelectorAll("#category_scroll")[0].scrollTop = 0;
     document.querySelectorAll("#category_scroll")[0].removeEventListener('scroll', function () { }, true)

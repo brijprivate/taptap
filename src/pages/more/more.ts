@@ -46,7 +46,7 @@ export class MorePage {
           text: 'No',
           role: 'cancel',
           handler: data => {
-            
+
           }
         },
         {
@@ -66,7 +66,7 @@ export class MorePage {
   }
   goto(x) {
     if (x == 'store') {
-      window.open('https://www.gocubetech.shop/taptap', "_system");
+      window.open('https://taptap.org.uk/shop', "_system");
 
       return;
     }

@@ -20,95 +20,93 @@ import * as CryptoJS from 'crypto-js';
 export class AnimatetapPage {
 
   public encryptSecretKey = "the_quick_brown_fox_jumps_over_the_lazy_dog";
-   //NFC read related ....
-   readingTag:   boolean   = true;
-   writingTag:   boolean   = false;
-   isWriting:    boolean   = false;
-   ndefMsg:      string    = '';
-   subscriptions: Array<Subscription> = new Array<Subscription>();
-   public tapData:any;
+  //NFC read related ....
+  readingTag: boolean = true;
+  writingTag: boolean = false;
+  isWriting: boolean = false;
+  ndefMsg: string = '';
+  subscriptions: Array<Subscription> = new Array<Subscription>();
+  public tapData: any;
 
-   public userId:any;
-   public isnetwork= "Online";
-   deviceVerify:boolean = false;
-   public keyvalue:any;
+  public userId: any;
+  public isnetwork = "Online";
+  deviceVerify: boolean = false;
+  public keyvalue: any;
 
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public nfc: NFC,
     public ndef: Ndef,
     public viewCtrl: ViewController,
-    public loading:LoadingController,
-    public nfctagProvider:NfctagProvider,
+    public loading: LoadingController,
+    public nfctagProvider: NfctagProvider,
     public sharedservice: SharedserviceProvider,
     private toast: ToastController,
-    public alert:AlertController,) 
-  {
+    public alert: AlertController, ) {
     this.userId = localStorage.getItem("userId");
     this.keyvalue = navParams.get("key");
-    
-     //Get Network status...
-     this.sharedservice.getNetworkStat().subscribe((value)=>{
-      
+
+    //Get Network status...
+    this.sharedservice.getNetworkStat().subscribe((value) => {
+
       this.isnetwork = value;
     });
     //Read tag ....
-  this.subscriptions.push(this.nfc.addNdefListener()
-  .subscribe(data => {
-    if (this.readingTag) {
-      let tagid= data.tag.id;
-      // let parsedid = this.nfc.bytesToString(tagid);
+    this.subscriptions.push(this.nfc.addNdefListener()
+      .subscribe(data => {
+        if (this.readingTag) {
+          let tagid = data.tag.id;
+          // let parsedid = this.nfc.bytesToString(tagid);
 
-      let payload = data.tag.ndefMessage[0].payload;
-      let tagContent = this.nfc.bytesToString(payload).substring(3);
-      this.readingTag = true;
+          let payload = data.tag.ndefMessage[0].payload;
+          let tagContent = this.nfc.bytesToString(payload).substring(3);
+          this.readingTag = true;
 
-      
-      
-      let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
-      let res = nfc_regex.test(tagContent);
 
-      if (res) {
-        // nfc id
-        this.readingTag = false;
-        this.verifytag(tagContent);
-      } else {
-        // encrypted data
-        this.readingTag = false;
-        this.decryptData(tagContent);
-      }
-      // let payload = data.tag.ndefMessage[0].payload;
-      // let tagContent = this.nfc.bytesToString(payload).substring(3);
-      // this.readingTag = true;
 
-      // var s = '';
-      // tagid.forEach(function(byte) {
-      //   s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
-      // });
-      // 
-      // 
-      // 
-      // this.tapData = s.substring(0, s.length - 1);
-      // if(this.tapData){
-      //   // this.createTap();
-      //   this.readingTag = false;
-      //   this.verifytag();
-      // }
-      // return s.substring(0, s.length - 1);
-      
-      } 
-    },
-    err => {
-    })
-  );
+          let nfc_regex = /^(((([0-9]|[a-z]){2}):){6})(([0-9]|[a-z]){2})/i;
+          let res = nfc_regex.test(tagContent);
+
+          if (res) {
+            // nfc id
+            this.readingTag = false;
+            this.verifytag(tagContent);
+          } else {
+            // encrypted data
+            this.readingTag = false;
+            this.decryptData(tagContent);
+          }
+          // let payload = data.tag.ndefMessage[0].payload;
+          // let tagContent = this.nfc.bytesToString(payload).substring(3);
+          // this.readingTag = true;
+
+          // var s = '';
+          // tagid.forEach(function(byte) {
+          //   s += ('0' + (byte & 0xFF).toString(16)).slice(-2)+':';
+          // });
+          // 
+          // 
+          // 
+          // this.tapData = s.substring(0, s.length - 1);
+          // if(this.tapData){
+          //   // this.createTap();
+          //   this.readingTag = false;
+          //   this.verifytag();
+          // }
+          // return s.substring(0, s.length - 1);
+
+        }
+      },
+        err => {
+        })
+    );
   }
 
-   //Verify user's NFC tag...
-   verifytag(tagdata){
-    let _base= this;
-    if(this.isnetwork == "Offline")
-    {
+  //Verify user's NFC tag...
+  verifytag(tagdata) {
+    let _base = this;
+    if (this.isnetwork == "Offline") {
       let showtoast = this.toast.create({
         message: "Please check your internet connection and try again",
         duration: 60000,
@@ -119,7 +117,7 @@ export class AnimatetapPage {
       showtoast.present();
       return;
     }
-    else if(!tagdata){
+    else if (!tagdata) {
       let showtoast = this.toast.create({
         message: "Please approach your nfc device to verify",
         duration: 60000,
@@ -131,34 +129,34 @@ export class AnimatetapPage {
       return;
     }
     let loader = this.loading.create({
-      content:"Please wait..."
+      content: "Please wait..."
     });
     loader.present();
     let data = {
-      userid:this.userId,
-      nfcId:tagdata
-    } 
-    this.nfctagProvider.verifyDevice(data).then(function(success:any){
-      
+      userid: this.userId,
+      nfcId: tagdata
+    }
+    this.nfctagProvider.verifyDevice(data).then(function (success: any) {
+
       loader.dismiss();
-      if(success.message == 'Device not found with user'){
+      if (success.message == 'Device not found with user') {
         alert("This is not a paired device");
         _base.readingTag = true;
         return;
       }
       // _base.deviceVerify = true;
-      else if(_base.keyvalue == 'milage'){
+      else if (_base.keyvalue == 'milage') {
         // _base.navCtrl.pop();
-        _base.navCtrl.push("RecordmilagePage",{tapdata:_base.tapData});
-      }else if(_base.keyvalue == 'time'){
+        _base.navCtrl.push("RecordmilagePage", { tapdata: _base.tapData });
+      } else if (_base.keyvalue == 'time') {
         // _base.navCtrl.pop();
-        _base.navCtrl.push("RecordtimePage",{tapdata:_base.tapData});
-      }else if(_base.keyvalue == 'delete'){
+        _base.navCtrl.push("RecordtimePage", { tapdata: _base.tapData });
+      } else if (_base.keyvalue == 'delete') {
         _base.delete(_base.tapData);
       }
       // _base.presentAlert();
-    },function(err){
-      
+    }, function (err) {
+
       loader.dismiss();
       alert("Your device is not paired");
       _base.readingTag = true;
@@ -176,20 +174,20 @@ export class AnimatetapPage {
   delete(nfcid) {
     let alert = this.alert.create({
       title: 'Are you sure want to delete',
-     
+
       buttons: [
         {
           text: 'No',
           role: 'cancel',
           handler: data => {
-            
+
             this.navCtrl.pop();
           }
         },
         {
           text: 'Yes',
           handler: data => {
-              this.deleteDevice(nfcid);
+            this.deleteDevice(nfcid);
           }
         }
       ]
@@ -197,18 +195,19 @@ export class AnimatetapPage {
     alert.present();
   }
 
-  deleteDevice(nfcid){
+  deleteDevice(nfcid) {
     // this.navCtrl.push('AnimatetapPage',{key:"delete"})
-    var _base=this;
-    this.nfctagProvider.deletedevice(nfcid).then(function(success:any){
+    var _base = this;
+    this.nfctagProvider.deletedevice(nfcid).then(function (success: any) {
       // _base.getpairedDevice();
       // _base.navCtrl.setRoot('ManagedevicePage');
+      _base.sharedservice.triggerDevices(true)
       _base.navCtrl.pop();
-    },function(err){
+    }, function (err) {
       alert("unable to delete device please try again");
     })
   }
-  back(){
+  back() {
     this.navCtrl.pop();
   }
 
@@ -217,13 +216,13 @@ export class AnimatetapPage {
     try {
       const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
-        this.tapData= JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        
+        this.tapData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
         this.verifytag(this.tapData)
       }
       return data;
     } catch (e) {
-      
+
     }
   }
 

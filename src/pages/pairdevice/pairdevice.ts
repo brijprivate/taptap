@@ -5,6 +5,7 @@ import { NFC, Ndef } from '@ionic-native/nfc';
 import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
 import * as CryptoJS from 'crypto-js';
+
 /**
  * Generated class for the PairdevicePage page.
  *
@@ -179,15 +180,19 @@ export class PairdevicePage {
     this.nfctagpro.updateDeviceName(data).then(function (success: any) {
 
       if (success.error) {
+        _base.sharedservice.triggerDevices(true)
         alert('Device paired but can not set to Default. Please set it default manually')
+
         // _base.navCtrl.pop();
       } else {
         // _base.navCtrl.pop();
+        _base.sharedservice.triggerDevices(true)
       }
     }, function (err) {
 
       alert('Device paired but can not set to Default. Please set it default manually')
       // _base.navCtrl.pop();
+      _base.sharedservice.triggerDevices(true)
     })
   }
 

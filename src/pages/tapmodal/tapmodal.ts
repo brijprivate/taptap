@@ -6,6 +6,8 @@ import { NfctagProvider } from '../../providers/nfctag/nfctag';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 import * as CryptoJS from 'crypto-js';
+import { SharedserviceProvider } from '../../providers/sharedservice/sharedservice';
+
 /**
  * Generated class for the TapmodalPage page.
  *
@@ -38,6 +40,7 @@ export class TapmodalPage {
     public alertCtrl: AlertController,
     public nfc: NFC,
     public ndef: Ndef,
+    public sharedService: SharedserviceProvider,
     private nativeGeocoder: NativeGeocoder,
     public viewCtrl: ViewController,
     public loading: LoadingController,
@@ -255,6 +258,8 @@ export class TapmodalPage {
 
       if (success.error) {
       } else {
+        _base.sharedService.triggerDevices(true)
+        alert("Device has bben paired")
       }
     }, function (err) {
 

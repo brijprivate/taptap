@@ -70,13 +70,13 @@ export class ManagedevicePage {
           text: 'Cancel',
           role: 'cancel',
           handler: data => {
-            
+
           }
         },
         {
           text: 'Save',
           handler: data => {
-            
+
             this.deviceName = data[0];
             if (this.deviceName) {
               this.changedevicename(nfcid);
@@ -95,11 +95,11 @@ export class ManagedevicePage {
       deviceId: nfcid,
       device_title: _base.deviceName
     }
-    
+
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      
+      _base.sharedservice.triggerDevices(true)
     }, function (err) {
-      
+
     })
   }
 
@@ -114,33 +114,21 @@ export class ManagedevicePage {
   }
 
   //mark as lost...
-  notify(id) {
+  notify(device) {
     let _base = this;
+    console.log(device.is_lost)
+
     let data = {
-      deviceId: id,
-      is_lost: this.lost
+      deviceId: device._id,
+      is_lost: device.is_lost
     }
-    
+
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
+      _base.sharedservice.triggerDevices(true)
     }, function (err) {
-      
+
     })
   }
-
-  notifyy(id) {
-    let _base = this;
-    let data = {
-      deviceId: id,
-      is_lost: this.islost
-    }
-    
-    this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-      
-    }, function (err) {
-      
-    })
-  }
-
 
   back() {
     this.navCtrl.pop();
@@ -158,13 +146,13 @@ export class ManagedevicePage {
       deviceId: nfcid,
       is_active: true
     }
-    
+
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
       loader.dismiss();
-      
-      _base.localdefault(i)
+
+      _base.sharedservice.triggerDevices(true)
     }, function (err) {
-      
+
       loader.dismiss();
     })
   }

@@ -87,6 +87,16 @@ export class SynchroniserPage {
           }
         }
       });
+
+    _base.sharedHttp.fetchDevices
+      .subscribe(function (data: any) {
+        if (data) {
+          if (data.value) {
+            console.log("Fetch devices")
+            _base.singleDevicesList();
+          }
+        }
+      });
   }
 
   loadHttp() {
@@ -396,6 +406,22 @@ export class SynchroniserPage {
         _base.share_app_state();
       }, function (error) {
       });
+  }
+
+  singleDevicesList() {
+    let _base = this;
+    this.nfcHttp.getpairdevice(this.userId).then(function (success: any) {
+      _base.count = 4;
+      _base.app_state.devices = success.result.map(device => {
+        if (device.imageId) {
+          let image = _base.API_URL + "/file/getImage?imageId=" + device.imageId._id + "&select=thumbnail";
+          device.image = image
+        }
+        return device;
+      });
+      _base.share_app_state();
+    }, function (err) {
+    })
   }
 
   singlegetprofiledata() {
