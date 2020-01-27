@@ -84,8 +84,8 @@
           {{lostinformation.name}}
         </p>
         <p *ngIf="lostinformation.phoneNumber">
-          <ion-icon ios="ios-call" md="md-call"></ion-icon>
-          {{lostinformation.phoneNumber}}
+          <ion-icon name="phone-portrait"></ion-icon>
+          {{"  "+lostinformation.phoneNumber}}
         </p>
         <p *ngIf="lostinformation.email">
           <ion-icon ios="ios-mail" md="md-mail"></ion-icon>

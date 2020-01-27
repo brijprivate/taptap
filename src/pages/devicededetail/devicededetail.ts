@@ -59,6 +59,9 @@ export class DevicededetailPage {
     let index = navParams.get("index");
     let _base = this;
     _base.devicedetail = device
+    if (_base.devicedetail.image) {
+      _base.imageId = _base.devicedetail.image
+    }
     _base.sharedservice.httpresponse
       .subscribe(function (response: any) {
         let device_details = response.devices[index]
