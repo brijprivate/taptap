@@ -41,8 +41,8 @@ export class MyApp {
   public arr;
 
   constructor(private platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
     public modalController: ModalController,
     private network: Network,
     private androidPermissions: AndroidPermissions,
@@ -61,10 +61,7 @@ export class MyApp {
     // platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.
     // Here you can do any higher level native things you might need.
-    statusBar.styleLightContent();
-    statusBar.backgroundColorByHexString("#6354cb");
-    // statusBar.styleDefault();
-    splashScreen.hide();
+
     this.arr = [];
     this.initializeApp();
     this.checkNetworkStatus();
@@ -116,7 +113,7 @@ export class MyApp {
   showProduct(match: any) {
     let _base = this
     if (match.$args.id != '' || match.$args.category != null) {
-      
+
       if (match.$args.category == "Contact_info") {
         let data = {
           userId: localStorage.getItem("userId"),
@@ -126,7 +123,7 @@ export class MyApp {
           geo: ''
         }
         _base.nfctagProvider.createTap(data).then(function (success: any) {
-          
+
           if (!success.lostinfo.deviceInfo) {
             alert("This device is lost.")
           } else {
@@ -142,7 +139,7 @@ export class MyApp {
             })
           }
         }, function (err) {
-          
+
           alert("Link is expired");
           _base.platform.exitApp();
         })
@@ -237,7 +234,7 @@ export class MyApp {
     _base.loginservice.getProductAdminCategory(match.$args.category, match.$args.adminId)
       .then(function (success: any) {
         if (success.result.length != 0) {
-          
+
           let product = success.result[0]
           _base.showCompanyProduct(match.$args.category, product)
         } else {
@@ -245,7 +242,7 @@ export class MyApp {
           _base.platform.exitApp()
         }
       }, function (error: any) {
-        
+
         alert("This link is expired")
         _base.platform.exitApp()
       });
@@ -330,7 +327,7 @@ export class MyApp {
     // watch network for a disconnect
     this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
       this.sharedservice.setnetworkStat('Offline');
-      
+
       if (this.networkStatus == "" || this.networkStatus == "Online") {
         this.showToast();
         this.networkStatus = "Offline";
@@ -339,7 +336,7 @@ export class MyApp {
     // watch network for a connection
     this.connectSubscription = this.network.onConnect().subscribe(() => {
       this.sharedservice.setnetworkStat('Online');
-      
+
       if (this.networkStatus == "" || this.networkStatus == "Offline") {
         this.networkStatus = "Online";
       }
@@ -363,12 +360,16 @@ export class MyApp {
     let _base = this
     this.platform.ready().then(() => {
 
-      
+
+
+      _base.statusBar.styleLightContent();
+      _base.statusBar.backgroundColorByHexString("#6354cb");
+      _base.splashScreen.hide();
 
 
       _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS).then(
         function (result) {
-          
+
           if (!result.hasPermission) {
             _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.READ_CONTACTS)
           }
@@ -380,7 +381,7 @@ export class MyApp {
 
       _base.androidPermissions.checkPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION).then(
         function (result) {
-          
+
           if (!result.hasPermission) {
             _base.androidPermissions.requestPermission(_base.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION)
           }
@@ -397,10 +398,10 @@ export class MyApp {
         // match.$route - the route we matched, which is the matched entry from the arguments to route()
         // match.$args - the args passed in the link
         // match.$link - the full link data
-        
-        
-        
-        
+
+
+
+
 
         if (localStorage.getItem('userId') != null || localStorage.getItem('userId') != undefined) {
           if (match.$args.id) {
@@ -418,23 +419,23 @@ export class MyApp {
         // alert(match.$args.category+"-"+match.$args.id)
       }, nomatch => {
         // nomatch.$link - the full link data
-        
+
       });
 
 
       // listen nfc tags
       _base.nfc.addMimeTypeListener("text/json",
         function (success) {
-          
+
           alert("Success")
         }, function (error) {
-          
+
           alert("Error")
         });
 
 
 
-      
+
     });
 
   }

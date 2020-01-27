@@ -53,7 +53,7 @@ export class MorePage {
           text: 'Yes',
           handler: data => {
             localStorage.clear();
-            _base.storage.clear()
+            _base.storage.remove("app_state")
               .then(function () {
                 _base.app.getRootNav().setRoot("LoginPage");
               });

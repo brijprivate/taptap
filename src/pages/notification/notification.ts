@@ -60,7 +60,9 @@ export class NotificationPage {
       }
       return obj
     });
-    // _base.shownnotification = _base.notifications.slice(0, 10)
+    if (_base.notifications.length == 0) {
+      _base.shownnotification = [];
+    }
   }
 
   viewNotification(notificationID: String, geo) {
@@ -95,7 +97,7 @@ export class NotificationPage {
   }
 
   scrollSubscriber() {
-    
+
     let _base = this;
     let length = this.notifications.length;
     let slice_end = length >= 10 ? 10 : length
@@ -132,7 +134,7 @@ export class NotificationPage {
   }
 
   destroyScrollSubscriber() {
-    
+
     let length = this.notifications.length;
     let slice_end = length >= 10 ? 10 : length
     this.shownnotification = this.notifications.slice(0, slice_end)
@@ -142,14 +144,14 @@ export class NotificationPage {
   }
 
   ionViewDidEnter() {
-    
+
     if (document.getElementById('notification_scroll')) {
       this.scrollSubscriber();
     }
   }
 
   ionViewDidLeave() {
-    
+
     if (document.getElementById('notification_scroll')) {
       this.destroyScrollSubscriber()
     }

@@ -54,13 +54,23 @@ export class DevicededetailPage {
     public alert: AlertController,
     private GoogleAutocomplete: Geolocation,
   ) {
-    let index = navParams.get("devicedetail");
+    let device = navParams.get("devicedetail");
+    let device_string = JSON.stringify(device)
+    let index = navParams.get("index");
     let _base = this;
+    _base.devicedetail = device
     _base.sharedservice.httpresponse
       .subscribe(function (response: any) {
-        _base.devicedetail = response.devices[index]
-        if (_base.devicedetail.imageId) {
-          _base.imageId = _base.devicedetail.image
+        let device_details = response.devices[index]
+        if (device_string != JSON.stringify(device_details)) {
+          console.log("Not Equal")
+          _base.devicedetail = device_details
+          if (_base.devicedetail.imageId) {
+            _base.imageId = _base.devicedetail.image
+          }
+        } else {
+          console.log("Equal")
+
         }
       })
   }
@@ -86,13 +96,13 @@ export class DevicededetailPage {
         website: this.devicedetail.contact_info.website
       }
     }
-    
+
     this.nfctagProvider.updateDeviceName(ddata).then(function (success) {
       _base.sharedservice.triggerDevices(true)
       _base.presentAlert();
       // _base.navCtrl.pop();
     }, function (err) {
-      
+
     })
   }
 
@@ -101,17 +111,17 @@ export class DevicededetailPage {
     let _base = this;
     let data = {
       deviceId: device._id,
-      is_lost: device.islost
+      is_lost: device.is_lost
     }
-    
+
     this.nfctagProvider.updateDeviceName(data).then(function (success: any) {
-       _base.sharedservice.triggerDevices(true)
+      _base.sharedservice.triggerDevices(true)
       // _base.getpairedDevice();
     }, function (err) {
-      
+
     })
   }
-  
+
   back() {
     this.navCtrl.pop();
   }
@@ -135,7 +145,7 @@ export class DevicededetailPage {
           text: 'Use Camera',
           handler: () => {
             this.takePicture(this.camera.PictureSourceType.CAMERA);
-            
+
           }
         },
         {
@@ -165,7 +175,7 @@ export class DevicededetailPage {
 
     // Get the data of an image...
     this.camera.getPicture(options).then((imagePath) => {
-      
+
 
       //Crop function to crop the image...
       this.crop.crop(imagePath, {
@@ -173,16 +183,16 @@ export class DevicededetailPage {
         targetWidth: 160,
         targetHeight: 160,
       }).then(function (success: any) {
-        
+
         imagePath = success;
-        
+
         // _base.imageId = imagePath;
-        
-        
+
+
 
         // Speacial handleing for Android platform...
         if (_base.platform.is('android') || sourceType == options.sourceType.PHOTOLIBRARY) {
-          
+
 
           _base.filePath.resolveNativePath(imagePath)
             .then(filePath => {
@@ -220,12 +230,12 @@ export class DevicededetailPage {
    */
   private copyFileToLocalDir(namePath, currentName, newFileName) {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
       this.lastImage = newFileName;
       if (this.lastImage) {
         this.uploadImage();
@@ -277,18 +287,18 @@ export class DevicededetailPage {
         mimeType: "image/jpeg",
         params: { 'fileName': filename }
       };
-      
+
       fileTransfer.upload(targetPath, url, options).then(data => {
 
-        
+
         var temp: any;
         temp = data;
-        
+
         _base.profileImage = JSON.parse(temp.response).upload._id;
-        
+
 
         if (_base.profileImage) {
-          
+
         }
 
         loader.dismiss();
@@ -299,7 +309,7 @@ export class DevicededetailPage {
         err => {
           loader.dismiss();
           _base.presentToast('Error while uploading file.');
-          
+
         });
     }
     else {
@@ -325,7 +335,7 @@ export class DevicededetailPage {
       if (Object.keys(data).length != 0) {
         _base.devicedetail.contact_info.address = data.location;
       } else {
-        
+
       }
     });
     modal.present();

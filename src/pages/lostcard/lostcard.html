@@ -21,7 +21,7 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content >
+<ion-content>
   <div class="head">
     <div class="mdl">
       <p><span>
@@ -80,15 +80,15 @@
       <div class="lostDevice">
         <!-- <h4>We are ready to help You..!</h4> -->
         <p *ngIf="lostinformation.name">
-          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>        
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
           {{lostinformation.name}}
         </p>
-        <p *ngIf="lostinformation.mobileNumber">
-          <ion-icon ios="ios-call" md="md-call"></ion-icon>        
-          {{lostinformation.mobileNumber}}
+        <p *ngIf="lostinformation.phoneNumber">
+          <ion-icon ios="ios-call" md="md-call"></ion-icon>
+          {{lostinformation.phoneNumber}}
         </p>
         <p *ngIf="lostinformation.email">
-          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>  
+          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
           {{lostinformation.email}}
         </p>
 
@@ -97,34 +97,34 @@
     </div>
   </div>
   <div class="contact">
-      <ion-grid>
-        <ion-row>
-          <ion-col col-6 class="">
-              <button class="aotn" (tap)="callNumber(lostinformation.mobileNumber)">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 class="">
+          <button class="aotn" (tap)="callNumber(lostinformation.phoneNumber)">
             <div class="circle">
-                <ion-icon ios="ios-call" md="md-call"></ion-icon>
+              <ion-icon ios="ios-call" md="md-call"></ion-icon>
             </div>
           </button>
-            <p>Call</p>
-          </ion-col>
-          <ion-col col-6 class="">
-              <button class="aotn" (tap)="emailto(lostinformation.email)">
-              <div class="circle circlemail">
-            <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+          <p>Call</p>
+        </ion-col>
+        <ion-col col-6 class="">
+          <button class="aotn" (tap)="emailto(lostinformation.email)">
+            <div class="circle circlemail">
+              <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
             </div>
           </button>
-            <p>Mail</p>
-          </ion-col>
-        </ion-row>
- 
-        <ion-row>
-            <ion-col  class="">
-              <button class="dismiss" (tap)="back()">Dismiss</button>
-            </ion-col>
-          </ion-row>
+          <p>Mail</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="">
+          <button class="dismiss" (tap)="back()">Dismiss</button>
+        </ion-col>
+      </ion-row>
 
 
-      </ion-grid>
-    </div>
+    </ion-grid>
+  </div>
 
 </ion-content>

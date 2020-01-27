@@ -363,6 +363,8 @@ export class SynchroniserPage {
       })
   }
 
+
+
   getcompanies() {
     let _base = this;
     _base.nfcHttp.getcompanies()
@@ -387,6 +389,18 @@ export class SynchroniserPage {
         _base.loadHttp()
       });
   }
+
+  //get all tap items....
+  // getAllTapItemSingle() {
+  //   let _base = this;
+  //   this.loginHttp.getTapAll(this.userId).then(function (success: any) {
+  //     _base.count = 1;
+  //     _base.app_state.alltaps = success.result;
+  //     _base.share_app_state()
+  //   }, function (err) {
+
+  //   })
+  // }
 
 
   /** SIngle Events **/

@@ -51,8 +51,8 @@ export class ManagedevicePage {
     this.devices = devices;
   }
 
-  gotodevice(device) {
-    this.navCtrl.push('DevicededetailPage', { devicedetail: device });
+  gotodevice(device, i) {
+    this.navCtrl.push('DevicededetailPage', { devicedetail: device, index: i });
   }
 
 

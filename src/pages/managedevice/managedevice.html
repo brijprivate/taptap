@@ -44,7 +44,7 @@
           </g>
         </svg>
       </span>
-      <span (tap)="gotodevice(i)">{{device.device_title}}</span>
+      <span (tap)="gotodevice(device,i)">{{device.device_title}}</span>
       <button *ngIf="device.is_active" class="defaultDevice">Default</button>
 
     </ion-item>
@@ -56,12 +56,12 @@
       <div class="dropdown-content">
         <a (tap)="presentPrompt(device._id)">Edit Name</a>
         <a (tap)="setdefault(device._id,i)">Set as default</a>
-        <a (tap)="gotodevice(i)">Manage</a>
+        <a (tap)="gotodevice(device,i)">Manage</a>
         <a (tap)="delete(device.nfc_id)">Delete</a>
 
         <!-- <a >Lost or stolen <ion-checkbox></ion-checkbox> -->
         <ion-item>
-          <ion-label style="color:#de4963;" (tap)="gotodevice(device)">Lost or stolen</ion-label>
+          <ion-label style="color:#de4963;" (tap)="gotodevice(device,i)">Lost or stolen</ion-label>
           <ion-toggle [(ngModel)]="device.is_lost" (ionChange)="notify(device)"></ion-toggle>
         </ion-item>
       </div>

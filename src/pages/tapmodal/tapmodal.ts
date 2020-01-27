@@ -225,17 +225,6 @@ export class TapmodalPage {
       if (success.error) {
         alert(success.message)
       } else {
-        // alert('Device paired successfully')
-        let showtoast = this.toast.create({
-          message: "Device paired successfully",
-          duration: 4000,
-          position: "bottom",
-          showCloseButton: true,
-          closeButtonText: "OK"
-        })
-        showtoast.present();
-        // _base.navCtrl.pop();
-        // _base.navCtrl.setRoot('ProfilePage');
         if (success.result.type == 'Keyring' || success.result.type == 'card') {
           _base.setdefault(success.result._id)
         }
@@ -259,7 +248,7 @@ export class TapmodalPage {
       if (success.error) {
       } else {
         _base.sharedService.triggerDevices(true)
-        alert("Device has bben paired")
+        alert("Device has been paired")
       }
     }, function (err) {
 

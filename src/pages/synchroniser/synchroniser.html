@@ -10,20 +10,20 @@
   </ion-navbar>
 </ion-header> -->
 
-<ion-content >
-<div class="flex">
+<ion-content>
+  <div class="flex">
 
-  <div class="image">
-    <img src="../../assets/images/logo.png" alt="">
-  </div>
-  <div class="innerbody">
-    <!-- <img src="../../assets/images/Logo_after.png" alt=""> -->
-    <div class="bottom">
-      <span *ngIf="count != total_load">Synchronizing ... {{count}}/{{total_load}}</span>
-      <span  *ngIf="count == total_load">Synchronization Done !</span>
-      <!-- <button ion-button *ngIf="count == total_load" (tap)="app()">Let's Go</button> -->
+    <div class="image">
+      <img src="../../assets/images/taptap_logo.png" alt="">
+    </div>
+    <div class="innerbody">
+      <!-- <img src="../../assets/images/Logo_after.png" alt=""> -->
+      <div class="bottom">
+        <span *ngIf="count != total_load">Synchronizing ... {{count}}/{{total_load}}</span>
+        <span *ngIf="count == total_load">Synchronization Done !</span>
+        <!-- <button ion-button *ngIf="count == total_load" (tap)="app()">Let's Go</button> -->
+      </div>
     </div>
   </div>
-</div>
 
 </ion-content>
