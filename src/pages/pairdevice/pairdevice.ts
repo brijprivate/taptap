@@ -121,7 +121,7 @@ export class PairdevicePage {
     }
     else if (!tagdata) {
       let showtoast = this.toast.create({
-        message: "please approach a TapTap device first",
+        message: "please approach a ThingTap device first",
         duration: 60000,
         position: "bottom",
         showCloseButton: true,

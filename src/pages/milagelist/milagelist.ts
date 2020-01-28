@@ -236,7 +236,7 @@ export class MilagelistPage {
           width: 35,
           height: 35
         },
-        { text: 'TapTap', style: 'header', fontSize: 13 },
+        { text: 'ThingTap', style: 'header', fontSize: 13 },
 
         { text: this.formatdata(today), alignment: 'right', margin: [0, 0, 0, 0], fontSize: 13 },
 
@@ -306,9 +306,9 @@ export class MilagelistPage {
         var blob = new Blob([buffer], { type: 'application/pdf' });
 
         // Save the PDF to the data Directory of our App
-        this.file.writeFile(this.file.dataDirectory, 'taptapstatement.pdf', blob, { replace: true }).then(fileEntry => {
+        this.file.writeFile(this.file.dataDirectory, 'ThingTapstatement.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
-          this.fileOpener.open(this.file.dataDirectory + 'taptapstatement.pdf', 'application/pdf');
+          this.fileOpener.open(this.file.dataDirectory + 'ThingTapstatement.pdf', 'application/pdf');
 
         })
       });
