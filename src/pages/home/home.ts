@@ -427,6 +427,7 @@ export class HomePage {
 
   //get all tap items....
   getAllTapItem(alltaps) {
+    console.log("all taps",alltaps)
     let _base = this;
     if (alltaps.length == _base.tapItems.length) {
       return

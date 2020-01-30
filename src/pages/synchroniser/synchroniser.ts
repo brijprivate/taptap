@@ -146,7 +146,7 @@ export class SynchroniserPage {
             let base4img = base64img;
             _base.storage.remove("uimg")
             _base.storage.set('uimg', base4img);
-            _base.app_state.alltaps = base4img;
+            _base.app_state.display_picture = base4img;
           })
         }
 
@@ -460,7 +460,7 @@ export class SynchroniserPage {
             let base4img = base64img;
             _base.storage.remove("uimg")
             _base.storage.set('uimg', base4img);
-            _base.app_state.alltaps = base4img;
+            _base.app_state.display_picture = base4img;
           })
         }
         _base.share_app_state();
