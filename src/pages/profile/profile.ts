@@ -109,7 +109,7 @@ export class ProfilePage {
 
     var label = anychart.standalones.label();
 
-    label.text("TapTap");
+    label.text("ThingTap");
     label.width("100%");
     label.height("100%");
     label.adjustFontSize(true);

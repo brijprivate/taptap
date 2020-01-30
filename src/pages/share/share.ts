@@ -43,7 +43,7 @@ export class SharePage {
   socialshare() {
     let link = "http://onelink.to/pxu5ar"
     this.socialsharing.share(link).then(() => {
-      alert("Thank your for sharing TapTap.")
+      alert("Thank your for sharing ThingTap.")
     }).catch(() => {
 
     })
