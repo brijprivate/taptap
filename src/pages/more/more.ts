@@ -70,6 +70,17 @@ export class MorePage {
 
       return;
     }
+    if (x == 'HelpPage') {
+      window.open('https://www.thingtap.com/help', "_system");
+
+      return;
+    }
+
+
+
+    
+
+
     this.navCtrl.push(x)
   }
 
