@@ -37,13 +37,14 @@ declare var require: any
 export class TapdetailsPage {
 
   // devicedetaill:Object
+  share: boolean = true;
   public eventdata: any = [];
   public deviceData: any = [];
   public fromDevice: any;
   public thisMonth: any;
   public userId: any;
-  public uRLlink = "https://taptapshare.000webhostapp.com/?category=";
-  public shareLink = "https://taptapshare.000webhostapp.com/share.php?"
+  public uRLlink = "https://share.thingtap.com/?category=";
+  public shareLink = "https://share.thingtap.com/share.php?"
   public link: any;
   isfav: boolean = false;
   public linkId: any;
@@ -255,16 +256,21 @@ export class TapdetailsPage {
     let urldata = {
       url: this.link
     }
-    this.logregpro.shortlink(urldata).then(function (success: any) {
 
-
-      _base.socialsharing.share(success.result.url).then(() => {
-      }).catch(() => {
-
-      })
-    }, function (err) {
+    _base.socialsharing.share(this.link).then(() => {
+    }).catch(() => {
 
     })
+    // this.logregpro.shortlink(urldata).then(function (success: any) {
+
+
+    //   _base.socialsharing.share(success.result.url).then(() => {
+    //   }).catch(() => {
+
+    //   })
+    // }, function (err) {
+
+    // })
     // this.socialsharing.share(this.link).then(() => {
 
     // }).catch(() => {
@@ -278,16 +284,21 @@ export class TapdetailsPage {
     let urldata = {
       url: this.link
     }
-    this.logregpro.shortlink(urldata).then(function (success: any) {
 
-
-      _base.socialsharing.share(success.result.url).then(() => {
-      }).catch(() => {
-
-      })
-    }, function (err) {
+    _base.socialsharing.share(this.link).then(() => {
+    }).catch(() => {
 
     })
+    // this.logregpro.shortlink(urldata).then(function (success: any) {
+
+
+    //   _base.socialsharing.share(success.result.url).then(() => {
+    //   }).catch(() => {
+
+    //   })
+    // }, function (err) {
+
+    // })
   }
 
   //social share of device....

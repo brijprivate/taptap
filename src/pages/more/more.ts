@@ -66,7 +66,7 @@ export class MorePage {
   }
   goto(x) {
     if (x == 'store') {
-      window.open('https://taptap.org.uk/shop', "_system");
+      window.open('https://www.thingtap.com/shop', "_system");
 
       return;
     }

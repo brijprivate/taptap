@@ -123,11 +123,11 @@
           </ion-col>
 
           <ion-col col-6>
-            <button *ngIf="eventdata.is_favourite" class="share" outline
+            <button *ngIf="eventdata.purpose" class="share" outline
               (tap)="socialshare(eventdata,eventdata.eventId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; share
             </button>
-            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+            <button *ngIf="!eventdata.purpose" ion-button class="save1"
               (tap)="productshare(eventdata.storeId.adminId._id,'Event')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
@@ -235,11 +235,11 @@
               </button>
             </ion-col> -->
             <ion-col col-6 style="padding: 0">
-              <button *ngIf="eventdata.is_favourite" ion-button class="save1"
+              <button *ngIf="eventdata.purpose" ion-button class="save1"
                 (tap)="socialshare(eventdata,eventdata.restaurantId._id)"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
-              <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              <button *ngIf="!eventdata.purpose" ion-button class="save1"
                 (tap)="productshare(eventdata.storeId.adminId._id,'Restaurant')"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
@@ -371,11 +371,11 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Save Contact
             </button> </ion-col>
           <ion-col col-6>
-            <button *ngIf="eventdata.is_favourite" class="share" outline
+            <button *ngIf="eventdata.purpose" class="share" outline
               (tap)="socialshare(eventdata,eventdata.contactId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
-            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+            <button *ngIf="!eventdata.purpose" ion-button class="save1"
               (tap)="productshare(eventdata.storeId.adminId._id,'Contacts')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
@@ -468,11 +468,11 @@
                 <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
               </button> </ion-col> -->
             <ion-col col-12>
-              <button *ngIf="eventdata.is_favourite" class="share" outline
+              <button *ngIf="eventdata.purpose" class="share" outline
                 (tap)="socialshare(eventdata,eventdata.sportId._id)">
                 <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
               </button>
-              <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              <button *ngIf="!eventdata.purpose" ion-button class="save1"
                 (tap)="productshare(eventdata.storeId.adminId._id,'Sports')"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
@@ -546,11 +546,11 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Go to site
             </button> </ion-col>
           <ion-col col-6>
-            <button *ngIf="eventdata.is_favourite" class="share" outline
+            <button *ngIf="eventdata.purpose" class="share" outline
               (tap)="socialshare(eventdata,eventdata.generalId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
-            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+            <button *ngIf="!eventdata.purpose" ion-button class="save1"
               (tap)="productshare(eventdata.storeId.adminId._id,'General')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
@@ -646,11 +646,11 @@
               <ion-icon name="person"></ion-icon>&nbsp;&nbsp; Register Interest
             </button> </ion-col> -->
           <ion-col col-12>
-            <button *ngIf="eventdata.is_favourite" class="share" outline
+            <button *ngIf="eventdata.purpose" class="share" outline
               (tap)="socialshare(eventdata,eventdata.groceryId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
-            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+            <button *ngIf="!eventdata.purpose" ion-button class="save1"
               (tap)="productshare(eventdata.storeId.adminId._id,'Groceries')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
@@ -756,11 +756,11 @@
 
           </ion-col>
           <ion-col col-6>
-            <button *ngIf="eventdata.is_favourite" class="share" outline
+            <button *ngIf="eventdata.purpose" class="share" outline
               (tap)="socialshare(eventdata,eventdata.fashionId._id)">
               <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
             </button>
-            <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+            <button *ngIf="!eventdata.purpose" ion-button class="save1"
               (tap)="productshare(eventdata.storeId.adminId._id,'Fashion')"><i class="fa fa-share-alt"
                 aria-hidden="true"></i>&nbsp;&nbsp;
               share</button>
@@ -871,11 +871,11 @@
               </button>
             </ion-col> -->
             <ion-col col-6 style="padding: 0">
-              <button *ngIf="eventdata.is_favourite" ion-button class="save1"
+              <button *ngIf="eventdata.purpose" ion-button class="save1"
                 (tap)="socialshare(eventdata,eventdata.businessId._id)"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
-              <button *ngIf="!eventdata.is_favourite" ion-button class="save1"
+              <button *ngIf="!eventdata.purpose" ion-button class="save1"
                 (tap)="productshare(eventdata.storeId.adminId._id,'Business')"><i class="fa fa-share-alt"
                   aria-hidden="true"></i>&nbsp;&nbsp;
                 share</button>
