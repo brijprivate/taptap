@@ -48,7 +48,7 @@ export class TapdetailsPage {
   isfav: boolean = false;
   public linkId: any;
   xx: any;
-  API_URL = "https://api.taptap.org.uk";
+  API_URL = "https://api.thingtap.com";
   keyy: any;
   public st: any;
   public et: any;
@@ -525,7 +525,7 @@ export class TapdetailsPage {
 
   // download pdf
   download(pdfID: String) {
-    const url = "https://api.taptap.org.uk/file/getImage?imageId=" + pdfID;
+    const url = "https://api.thingtap.com/file/getImage?imageId=" + pdfID;
     const fileTransfer: FileTransferObject = this.transfer.create();
     fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
       alert('MENU download complete: ' + entry.toURL());

@@ -47,8 +47,8 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.eventId.imageId">
-            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.eventId.imageId._id))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.eventId.imageId._id}}">
+            <img (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.eventId.imageId._id))"
+              src="https://api.thingtap.com/file/getImage?imageId={{eventdata.eventId.imageId._id}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.eventId.imageId"
@@ -176,8 +176,8 @@
       <ion-slides pager id="myImg">
 
         <ion-slide *ngIf="eventdata.restaurantId.logo"
-          (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.logo))">
-          <img src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.restaurantId.logo}}'
+          (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.restaurantId.logo))">
+          <img src='https://api.thingtap.com/file/getImage?imageId={{eventdata.restaurantId.logo}}'
             style="height:15vh">
         </ion-slide>
 
@@ -204,7 +204,7 @@
         <p>{{eventdata.storeId.companyId.discount}}% <span>OFF</span></p>
       </div>
       <div class="down" style="margin: 1em 0"
-        (tap)="showPdf('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.menu))">
+        (tap)="showPdf('https://api.thingtap.com/file/getImage?imageId='+(eventdata.restaurantId.menu))">
         <button><i class="fa fa-download" aria-hidden="true"></i>
           <a>Download
             Menu</a></button>
@@ -286,8 +286,8 @@
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.contactId.profile_pic">
             <img
-              (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.contactId.profile_pic))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.contactId.profile_pic}}">
+              (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.contactId.profile_pic))"
+              src="https://api.thingtap.com/file/getImage?imageId={{eventdata.contactId.profile_pic}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.contactId.profile_pic"
@@ -411,8 +411,8 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.sportId.image">
-            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.sportId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.sportId.image}}">
+            <img (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.sportId.image))"
+              src="https://api.thingtap.com/file/getImage?imageId={{eventdata.sportId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.sportId.image"
@@ -508,8 +508,8 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.generalId.image">
-            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.generalId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.generalId.image}}">
+            <img (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.generalId.image))"
+              src="https://api.thingtap.com/file/getImage?imageId={{eventdata.generalId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.generalId.image"
@@ -586,8 +586,8 @@
 
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.groceryId.image">
-            <img (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.groceryId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.groceryId.image}}">
+            <img (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.groceryId.image))"
+              src="https://api.thingtap.com/file/getImage?imageId={{eventdata.groceryId.image}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.groceryId.image"
@@ -687,7 +687,7 @@
           <ion-row>
             <ion-col col-3 text-center>
               <img
-                src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.storeId.companyId.display_picture}}&select=thumbnail"
+                src="https://api.thingtap.com/file/getImage?imageId={{eventdata.storeId.companyId.display_picture}}&select=thumbnail"
                 alt="">
             </ion-col>
             <ion-col col-8>
@@ -701,11 +701,11 @@
 
         <ion-slides pager id="myImg" *ngIf="eventdata.fashionId.image">
           <ion-slide *ngFor="let image of eventdata.fashionId.image">
-            <!-- <img class="fashionimg" (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
+            <!-- <img class="fashionimg" (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.fashionId.image))"
+              src="https://api.thingtap.com/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
 
-            <img class="fashionimg" (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(image))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{image}}">
+            <img class="fashionimg" (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(image))"
+              src="https://api.thingtap.com/file/getImage?imageId={{image}}">
 
           </ion-slide>
 
@@ -808,9 +808,9 @@
       <ion-slides pager id="myImg">
 
         <ion-slide *ngIf="eventdata.storeId"
-          (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.storeId.companyId.display_picture))">
+          (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.storeId.companyId.display_picture))">
           <img
-            src='https://api.taptap.org.uk/file/getImage?imageId={{eventdata.storeId?eventdata.storeId.companyId.display_picture:""}}'
+            src='https://api.thingtap.com/file/getImage?imageId={{eventdata.storeId?eventdata.storeId.companyId.display_picture:""}}'
             style="height:15vh">
         </ion-slide>
 
@@ -837,7 +837,7 @@
         <p>{{eventdata.storeId.companyId?eventdata.storeId.companyId.discount:0}}% <span>OFF</span></p>
       </div>
       <!-- <div class="down" style="margin: 1em 0"
-        (tap)="showPdf('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.restaurantId.menu))">
+        (tap)="showPdf('https://api.thingtap.com/file/getImage?imageId='+(eventdata.restaurantId.menu))">
         <button><i class="fa fa-download" aria-hidden="true"></i>
           <a>Download
             Menu</a></button>
@@ -915,8 +915,8 @@
         <ion-slides pager id="myImg">
           <ion-slide *ngIf="eventdata.devicedetaill.deviceInfo.imageId">
             <img
-              (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.devicedetaill.deviceInfo.imageId._id))"
-              src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.devicedetaill.deviceInfo.imageId._id}}">
+              (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.devicedetaill.deviceInfo.imageId._id))"
+              src="https://api.thingtap.com/file/getImage?imageId={{eventdata.devicedetaill.deviceInfo.imageId._id}}">
           </ion-slide>
 
           <ion-slide *ngIf="!eventdata.devicedetaill.deviceInfo.imageId"
@@ -1042,8 +1042,8 @@
 
         <ion-slide *ngIf="eventdata.verificationId.images">
           <img
-            (tap)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.verificationId.images[0]))"
-            src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.verificationId.images[0]}}">
+            (tap)="showfull('https://api.thingtap.com/file/getImage?imageId='+(eventdata.verificationId.images[0]))"
+            src="https://api.thingtap.com/file/getImage?imageId={{eventdata.verificationId.images[0]}}">
         </ion-slide>
         <!-- </ion-slides> -->
         <!-- </div> -->

@@ -11,7 +11,7 @@ import { HttpProvider } from '../http/http';
 @Injectable()
 export class NfctagProvider {
 
-  public apiUrl: string = "https://api.taptap.org.uk/";
+  public apiUrl: string = "https://api.thingtap.com/";
 
   constructor(public http: HttpProvider, public httpOne: HttpClient) {
     

@@ -42,7 +42,7 @@ export class BusinesslistPage {
         _base.businessList = success.result.map((business) => {
           
           
-          business.imageId = (business.logo) ? 'https://api.taptap.org.uk/file/getImage?imageId=' + business.logo : '../../assets/images/Logo_after.png'
+          business.imageId = (business.logo) ? 'https://api.thingtap.com/file/getImage?imageId=' + business.logo : '../../assets/images/Logo_after.png'
           return business;
         });
       }, function (error) {

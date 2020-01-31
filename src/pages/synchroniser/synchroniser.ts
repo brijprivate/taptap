@@ -21,7 +21,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 export class SynchroniserPage {
 
   public userId: String = ""
-  public API_URL = "https://api.taptap.org.uk";
+  public API_URL = "https://api.thingtap.com";
   public count = 0;
   public total_load = 8;
   public app_state: any = {};
@@ -285,8 +285,8 @@ export class SynchroniserPage {
               let date = new Date(feed.createdDate)
               let dateString = date.toLocaleDateString()
               feed.createdDate = dateString;
-              feed.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0]
-              feed.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + feed.imageId[0] + "&select=thumbnail"
+              feed.picture = "https://api.thingtap.com/file/getImage?imageId=" + feed.imageId[0]
+              feed.thumbnail = "https://api.thingtap.com/file/getImage?imageId=" + feed.imageId[0] + "&select=thumbnail"
 
               let favourites = feed.favourites;
               if (favourites.includes(localStorage.getItem('userId'))) {
@@ -377,8 +377,8 @@ export class SynchroniserPage {
             }
           })
         companies = companies.map(company => {
-          company.picture = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture
-          company.thumbnail = "https://api.taptap.org.uk/file/getImage?imageId=" + company.display_picture + "&select=thumbnail"
+          company.picture = "https://api.thingtap.com/file/getImage?imageId=" + company.display_picture
+          company.thumbnail = "https://api.thingtap.com/file/getImage?imageId=" + company.display_picture + "&select=thumbnail"
           return company
         })
         _base.app_state.companies = companies;

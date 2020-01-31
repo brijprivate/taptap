@@ -29,7 +29,7 @@ export class HomePage {
     loop: true
   };
   public images: any;
-  API_URL = "https://api.taptap.org.uk";
+  API_URL = "https://api.thingtap.com";
 
   @ViewChild('slider') slider: Slides;
   @ViewChild('slides') slides: Slides;

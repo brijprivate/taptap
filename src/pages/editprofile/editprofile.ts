@@ -31,7 +31,7 @@ export class EditprofilePage {
   lastImage: any;
   public imageId: any = 'assets/images/avatar.png';
   public data = [];
-  API_URL = "https://api.taptap.org.uk";
+  API_URL = "https://api.thingtap.com";
   public userId: any;
   public profiledata: any = {};
   profileImage: string = "";

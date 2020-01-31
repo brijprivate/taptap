@@ -33,7 +33,7 @@ export class DevicededetailPage {
   lastImage: any;
   public imageId: any;
   profileImage: string;
-  API_URL = "https://api.taptap.org.uk";
+  API_URL = "https://api.thingtap.com";
 
 
 

@@ -28,7 +28,7 @@ export class ProfilePage {
   @ViewChild('lineCanvas') lineCanvas;
 
   profileImage: string;
-  API_URL = "https://api.taptap.org.uk";
+  API_URL = "https://api.thingtap.com";
 
   doughnutChart: any;
   barChart: any;
