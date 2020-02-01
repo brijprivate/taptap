@@ -257,25 +257,20 @@ export class TapdetailsPage {
       url: this.link
     }
 
-    _base.socialsharing.share(this.link).then(() => {
-    }).catch(() => {
-
-    })
-    // this.logregpro.shortlink(urldata).then(function (success: any) {
-
-
-    //   _base.socialsharing.share(success.result.url).then(() => {
-    //   }).catch(() => {
-
-    //   })
-    // }, function (err) {
-
-    // })
-    // this.socialsharing.share(this.link).then(() => {
-
+    // _base.socialsharing.share(this.link).then(() => {
     // }).catch(() => {
 
     // })
+    this.logregpro.shortlink(urldata).then(function (success: any) {
+
+
+      _base.socialsharing.share(success.result.url).then(() => {
+      }).catch(() => {
+
+      })
+    }, function (err) {
+
+    })
   }
 
   productshare(adminId: String, categoryId: String) {
@@ -285,20 +280,20 @@ export class TapdetailsPage {
       url: this.link
     }
 
-    _base.socialsharing.share(this.link).then(() => {
-    }).catch(() => {
-
-    })
-    // this.logregpro.shortlink(urldata).then(function (success: any) {
-
-
-    //   _base.socialsharing.share(success.result.url).then(() => {
-    //   }).catch(() => {
-
-    //   })
-    // }, function (err) {
+    // _base.socialsharing.share(this.link).then(() => {
+    // }).catch(() => {
 
     // })
+    this.logregpro.shortlink(urldata).then(function (success: any) {
+
+
+      _base.socialsharing.share(success.result.url).then(() => {
+      }).catch(() => {
+
+      })
+    }, function (err) {
+
+    })
   }
 
   //social share of device....

@@ -54,7 +54,7 @@ export class ProfilePage {
   totalBtime = 0;
   totalPmilage = 0;
   totalBmilage = 0;
-  showchart = true;
+  showchart = false;
   type: any;
   base4img: any;
 
@@ -109,7 +109,7 @@ export class ProfilePage {
 
     var label = anychart.standalones.label();
 
-    label.text("ThingTap");
+    label.text("");
     label.width("100%");
     label.height("100%");
     label.adjustFontSize(true);
@@ -225,8 +225,8 @@ export class ProfilePage {
 
     _base.devicecount = devices.length;
     let mdevice = _base.findMainDevice(devices);
-    _base.maindevice = mdevice.title;
-    _base.type = mdevice.type;
+    _base.maindevice = mdevice ? mdevice.title : '';
+    _base.type = mdevice ? mdevice.type : '';
   }
 
   //Get profile data...
@@ -251,7 +251,7 @@ export class ProfilePage {
 
   //get time data...
   getcount(chdata) {
-    let _base = this;     
+    let _base = this;
 
 
     if (_base.tbmilage == chdata.total_milage_business && _base.tpmilage == chdata.total_milage_personal && _base.tptime == chdata.total_time_personal && _base.tbtime == chdata.total_time_business) {
