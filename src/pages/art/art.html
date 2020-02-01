@@ -1,0 +1,237 @@
+<ion-content>
+
+<!-- art start -->
+
+<div *ngIf="art" style="    overflow-y: scroll; 
+height: 100%;">
+  <div class="showcontent">
+    <div class="head">
+
+      <div class="mdl" >
+        <i class="fa fa-angle-left" style="font-size:24px" (click)="goback()" ></i>
+        <p > Art </p>
+        <div class="iconss" >
+          <ion-icon name="heart-outline" item-right ></ion-icon>
+          <!-- <ion-icon name="heart" item-right
+            ></ion-icon> -->
+        </div>
+      </div>
+    </div>
+    <div class="imgss event">
+      <!-- <div class="ss"></div> -->
+
+      <ion-grid class="headerfashion" (click)="back()">
+        <ion-row>
+          <ion-col col-3 text-center>
+            <img
+              src="../../assets/images/mr_foster.JPG"
+              alt="">
+          </ion-col>
+          <ion-col col-8>
+            <p class="title">Abdulai Abdul Aziz</p>
+            <p class="subtitle"><small>Kantoment, Accra, Ghana</small></p>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      <ion-slides pager id="myImg" >
+        <ion-slide >
+          <!-- <img class="fashionimg" (click)="showfull('https://api.taptap.org.uk/file/getImage?imageId='+(eventdata.fashionId.image))"
+            src="https://api.taptap.org.uk/file/getImage?imageId={{eventdata.fashionId.image}}"> -->
+
+          <img class="fashionimg" src="../../assets/images/art.jpg">
+
+        </ion-slide>
+
+      </ion-slides>
+    </div>
+
+  </div>
+  <div class="">
+    <!-- <div class="dis">
+      <p style="text-align: center;
+          margin-left: 1em;">
+        {{(eventdata.fashionId.price*(100-eventdata.storeId.companyId.discount)/100) | number : '1.2-2'}}
+        <span>({{eventdata.storeId.companyId.discount}}% off )<span class="total">
+            &nbsp;{{eventdata.fashionId.price}}</span></span>
+      </p>
+    </div> -->
+    <p class="title" text-center>African Credence (Belief in Truth)
+    </p>
+
+    <p class="fashiondes" style=" height: 16vh;
+    overflow-y: scroll;
+    padding: 10px 3em;
+    text-align: center;">
+        African Credence (Belief in Truth) is an amazing art created from the heart and soul of Abdulai Abdul Aziz.
+        It captures the truth when you belive in one self. You get the gist from here, so more information can be put here.
+  </p>
+    <!-- <p class="fashiondes"><span>Size: </span><small>{{eventdata.fashionId.size}}</small></p> -->
+
+
+
+    <!-- <div class="fashionview ">
+      <a href="#" class="button button-positive" style="margin: 0 1em">
+
+        View
+      </a> 
+    </div>-->
+
+
+
+    <ion-grid class="saveGrid" no-padding>
+      <ion-row>
+        <ion-col col-6>
+
+
+          <button class="share" outline (click)="back()" >
+            <!-- <a href="{{eventdata.storeId.companyId.website}}"> -->
+            <i aria-hidden="true" class="fa fa-pencil" ></i>&nbsp;&nbsp; Register Interest
+            <!-- <ion-icon name="navigate"></ion-icon> -->
+            <!-- </a> -->
+          </button>
+
+
+
+        </ion-col>
+        <ion-col col-6>
+          <button  class="share" outline
+            >
+            <ion-icon name="share"></ion-icon>&nbsp;&nbsp; Share
+          </button>
+          <!-- <button  ion-button class="save1"
+            ><i class="fa fa-share-alt"
+              aria-hidden="true"></i>&nbsp;&nbsp;
+            share</button> -->
+        </ion-col>
+
+
+
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
+<!-- art end -->
+
+
+<!-- buisness start -->
+<div *ngIf="!art">
+
+
+  <div class="head1">
+    <div class="mdl">
+      <i class="fa fa-chevron-left" aria-hidden="true" (tap)="back()"></i>
+
+      <p (tap)="back()">Profile</p>
+
+      <div class=" iconss1">
+        
+        <ion-icon name="heart" item-right ></ion-icon>
+
+      </div>
+      <!-- <ion-icon (tap)="share()" ios="ios-share" md="md-share"></ion-icon> -->
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <span (tap)="close()" class="close">&times;</span>
+    <img class="modal-content" id="img01" [src]=xx>
+    <div id="caption"></div>
+  </div>
+
+  <div class="">
+    <!-- <div class="ss"></div> -->
+
+
+    <ion-slides pager id="myImg">
+
+      <ion-slide 
+        >
+        <img
+          src='../../assets/images/mr_foster.JPG'
+          style="height:15vh;margin-top: 1.5em;
+          border-radius: 50%;">
+      </ion-slide>
+
+
+      <!-- <input type="file" id="fileInput" style="display: none" (change)="selectFile($event)" /> -->
+
+    </ion-slides>
+  </div>
+
+
+
+
+
+
+  <ion-list class="mobileSp">
+
+
+    <div class="name">Abdulai Abdul Aziz</div>
+
+    <div class="add">Kantoment, Accra, Ghana<br>
+      <!-- west bangal, India -->
+    </div>
+    <!-- <div class="dis">
+      <p>{{eventdata.storeId.companyId?eventdata.storeId.companyId.discount:0}}% <span>OFF</span></p>
+    </div> -->
+    <!-- <div class="down" style="margin: 1em 0"
+      (tap)="showPdf('https://api.thingtap.com/file/getImage?imageId='+(eventdata.restaurantId.menu))">
+      <button><i class="fa fa-download" aria-hidden="true"></i>
+        <a>Download
+          Menu</a></button>
+    </div> -->
+<div class="fashionview ">
+      <a href="#" class="button button-positive" style="margin: 0 1em" (tap)="openURL('../../assets/images/bio.pdf')">
+
+        Download Bio
+      </a> 
+    </div>
+
+    
+    <div class="calls down ">
+      <a href="tel:+233248903325" class="button button-positive"
+        style="margin: 0 1em">&nbsp;&nbsp;
+        <i class="fa fa-phone ">
+          <!-- call -->
+        </i>
+      </a>
+
+      <a href="https://www.thingtap.com" class="button button-positive"
+        style="margin: 0 1em">&nbsp;&nbsp;
+        <i class="fa fa-globe" aria-hidden="true"></i>
+
+      </a>
+
+    </div>
+    <div class="">
+      <ion-grid class="" text-center style="padding: 0">
+        <ion-row>
+          <ion-col col-6 style="padding: 0">
+            <button ion-button class="save1" > <i
+                class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;
+              location</button>
+          </ion-col>
+          <!-- <ion-col col-4>
+            <button ion-button class="save"> <i class="fa fa-phone" aria-hidden="true"></i>
+              <a href="tel:{{eventdata.restaurantId.contactNumber}}" class="button button-positive">&nbsp;&nbsp;Call</a>
+            </button>
+          </ion-col> -->
+          <ion-col col-6 style="padding: 0">
+            <button  ion-button class="save1"
+             ><i class="fa fa-share-alt"
+                aria-hidden="true"></i>&nbsp;&nbsp;
+              share</button>
+           
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-list>
+
+</div>
+<!-- Buisness end -->
+</ion-content>
