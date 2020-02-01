@@ -43,8 +43,8 @@ export class TapdetailsPage {
   public fromDevice: any;
   public thisMonth: any;
   public userId: any;
-  public uRLlink = "https://share.thingtap.com/?category=";
-  public shareLink = "https://share.thingtap.com/share.php?"
+  public uRLlink = "https://share.thingtap.com/";
+  public shareLink = "https://share.thingtap.com/"
   public link: any;
   isfav: boolean = false;
   public linkId: any;
@@ -252,67 +252,64 @@ export class TapdetailsPage {
     let _base = this;
 
 
-    this.link = this.uRLlink + i.purpose + '&' + 'id=' + j
+    this.link = this.uRLlink + 'p-' + i.purpose.toLowerCase() + '-' + j
+    console.log(this.link)
     let urldata = {
       url: this.link
     }
 
-    // _base.socialsharing.share(this.link).then(() => {
-    // }).catch(() => {
-
-    // })
-    this.logregpro.shortlink(urldata).then(function (success: any) {
-
-
-      _base.socialsharing.share(success.result.url).then(() => {
-      }).catch(() => {
-
-      })
-    }, function (err) {
+    _base.socialsharing.share(this.link).then(() => {
+    }).catch(() => {
 
     })
+    // this.logregpro.shortlink(urldata).then(function (success: any) {
+
+
+    //   _base.socialsharing.share(success.result.url).then(() => {
+    //   }).catch(() => {
+
+    //   })
+    // }, function (err) {
+
+    // })
   }
 
   productshare(adminId: String, categoryId: String) {
     let _base = this;
-    this.link = this.shareLink + "category=" + categoryId + '&' + 'adminId=' + adminId
+    this.link = this.shareLink + 'c-' + categoryId.toLowerCase() + '-' + adminId
     let urldata = {
       url: this.link
     }
 
-    // _base.socialsharing.share(this.link).then(() => {
-    // }).catch(() => {
+    console.log(this.link);
 
-    // })
-    this.logregpro.shortlink(urldata).then(function (success: any) {
-
-
-      _base.socialsharing.share(success.result.url).then(() => {
-      }).catch(() => {
-
-      })
-    }, function (err) {
+    _base.socialsharing.share(this.link).then(() => {
+    }).catch(() => {
 
     })
+    // this.logregpro.shortlink(urldata).then(function (success: any) {
+
+
+    //   _base.socialsharing.share(success.result.url).then(() => {
+    //   }).catch(() => {
+
+    //   })
+    // }, function (err) {
+
+    // })
   }
 
   //social share of device....
   socialsharedevice(data) {
     let _base = this;
 
-    this.link = this.uRLlink + 'Contact_info' + '&' + 'id=' + data.nfc_id;
+    this.link = this.uRLlink + 'd-' + 'contact_info' + '-' + data.nfc_id.replace(new RegExp(":", 'g'), "zx");
 
     let urldata = {
       url: this.link
     }
-    this.logregpro.shortlink(urldata).then(function (success: any) {
-
-
-      _base.socialsharing.share(success.result.url).then(() => {
-      }).catch(() => {
-
-      })
-    }, function (err) {
+    _base.socialsharing.share(this.link).then(() => {
+    }).catch(() => {
 
     })
   }
