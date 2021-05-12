@@ -52,7 +52,7 @@
     "angular2-infinite-scroll": "^0.3.5",
     "angular2-text-mask": "^9.0.0",
     "animate.css": "^3.7.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "cordova-android": "7.1.4",
     "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-android-permissions": "^1.0.0",
